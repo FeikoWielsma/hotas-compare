@@ -93,7 +93,8 @@ external_reviews:
     summary: "Testing the waters budget tier. It's ancient, runs on potentiometers and will develop drift eventually. But it flies, and if you're not sure the hobby sticks, don't spend more than that. Being phased out."
     tag: neutral
     date: '2026-09-15'
-verification: draft
+verification: verified
 sources:
   - https://www.logitechg.com/en-us/products/flight.html
 images: []
+

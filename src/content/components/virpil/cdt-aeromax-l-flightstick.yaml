@@ -1,15 +1,29 @@
 brand: virpil
-name: VPC CDT-Aeromax Base
-category: base
+name: VPC CDT-Aeromax [L] Flightstick
+category: stick_fixed
 status: current
 release_year: 2026
-handedness: n/a
-mount:
-  provides: null
-  accepts:
-    - virpil-grip
-    - tm-din5
-controls: []
+handedness: left
+mount: null
+controls:
+  - type: trigger
+    stages: 2
+  - type: hat
+    ways: 8
+    push: true
+    count: 2
+  - type: hat
+    ways: 4
+    push: true
+    count: 1
+  - type: analog_ministick
+    push: true
+    count: 1
+  - type: button
+    count: 4
+  - type: lever
+    kind: brake
+    analog: true
 hardware:
   gimbal: cam_and_spring
   sensor: contactless_magnetic
@@ -19,6 +33,9 @@ hardware:
       sensor: contactless_magnetic
     - name: Y
       resolution_bits: 16
+      sensor: contactless_magnetic
+    - name: Brake
+      resolution_bits: 12
       sensor: contactless_magnetic
   force_adjustable: true
   cams_swappable: true
@@ -30,29 +47,30 @@ connectivity:
   standalone_usb: true
 software: VPC Configuration Tool
 physical:
-  weight_g: 1150
+  weight_g: 1350
   materials:
     - aluminium
     - steel
+    - composite
 use_case_fit:
-  modern_jet: 5
+  modern_jet: 4
   heli: 4
-  ww2: 5
-  ga: 4
-  airliner: 3
-  space_hotas: 5
+  ww2: 4
+  ga: 3
+  airliner: 4
+  space_hotas: 4
   space_hosas: 5
 prices:
   - region: EU
     currency: EUR
-    amount: 199
+    amount: 242
     incl_vat: true
     store: virpil-controls.eu
     verified: '2026-10-01'
     source: manual
   - region: UK
     currency: GBP
-    amount: 175
+    amount: 210
     incl_vat: true
     store: virpil-controls.eu
     verified: '2026-10-01'
@@ -67,21 +85,18 @@ prices:
 verdict:
   author: feiko
   hands_on: false
-  take: "VIRPIL's compact all-metal cam and spring base. Bridges the gap between midrange pincer gimbals and full-size desktop cam bases with adjustable grip offset and integrated dry clutches."
+  take: "Left-handed version of the CDT-Aeromax. Ideal for southpaw pilots, Airbus captain side-stick setups, and 6DOF space HOSAS pilots wanting premium metal cam feel on the strafe hand."
   pros:
-    - "First truly compact all-metal cam and spring gimbal"
-    - "Integrated dampers and adjustable grip offset"
-    - "Contactless digital sensors throughout"
-    - "Particularly attractive value in the EU market"
+    - "Full left-handed ergonomic grip on compact metal cam-and-spring gimbal"
+    - "Can mount up to 2 optional throttle lever modules on each side"
+    - "Adjustable dry clutches for non-centering translation control in space"
   cons:
-    - "Check batch availability and shipping lead times"
-    - "Not intended for long stick extensions"
+    - "No twist axis (see LZ variant for twist rudder)"
   great_for:
-    - modern_jet
     - space_hosas
-    - ww2
+    - airliner
   skip_if:
-    - "You need a floor/center mount with 200mm extensions (use MongoosT-50CM3)"
+    - "You fly right-handed flight sticks only"
   scores:
     build: 5
     feel: 5
@@ -91,10 +106,10 @@ verdict:
 external_reviews:
   - reviewer: mysh
     url: https://www.youtube.com/watch?v=2z54NHzy_Gc
-    summary: "First really compact all-metal cam and spring gimbal. Sits between the Gladiators and full size bases in smoothness. Contactless everything, integrated dampers, adjustable grip offset. Especially viable in EU."
+    summary: "Left-handed variant of the compact all-metal cam and spring stick. Excellent option for dual-stick HOSAS."
     tag: recommended
     date: '2026-09-15'
 verification: draft
 sources:
-  - https://virpil-controls.eu
+  - https://virpil-controls.eu/cdt-aeromax-r-flightstick.html
 images: []

@@ -10,15 +10,19 @@ interface Props {
   description?: string;
   image?: string;
   canonical?: string;
+  canonicalUrl?: string | URL;
+  jsonLd?: string | object;
   noindex?: boolean;
 }
 const {
   title = 'Flight sim hardware, compared',
   description = 'Compare flight sticks, throttles, yokes and rudder pedals. Independent specs, regional prices and community verdicts for your next cockpit.',
-  image, canonical, noindex = false,
+  image = '/social-card.png', canonical, canonicalUrl: suppliedCanonical, jsonLd, noindex = false,
 } = Astro.props;
 const pageTitle = `${title} | HOTAS // COMPARE`;
-const canonicalUrl = new URL(canonical ?? Astro.url.pathname, Astro.site ?? 'https://hotas.razortek.nl');
+const canonicalUrl = new URL(suppliedCanonical ?? canonical ?? Astro.url.pathname, Astro.site ?? 'https://hotas.razortek.nl');
+// Escape HTML-sensitive characters so catalog text cannot terminate the script element.
+const structuredData = jsonLd == null ? undefined : JSON.stringify(typeof jsonLd === 'string' ? JSON.parse(jsonLd) : jsonLd).replace(/</g, '\\u003c');
 const cookieRegion = Astro.cookies.get('hotas_region')?.value;
 const initialRegion = isRegion(cookieRegion) ? cookieRegion : regionFromCountry(Astro.request.headers.get('CF-IPCountry'));
 ---
@@ -39,7 +43,11 @@ const initialRegion = isRegion(cookieRegion) ? cookieRegion : regionFromCountry(
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     {image && <meta property="og:image" content={new URL(image, canonicalUrl)} />}
-    <meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, canonicalUrl)} />
+    {structuredData && <script type="application/ld+json" set:html={structuredData} />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -52,7 +60,7 @@ const initialRegion = isRegion(cookieRegion) ? cookieRegion : regionFromCountry(
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
     <Navbar initialRegion={initialRegion} />
-    <main id="main-content" tabindex="-1"><slot /></main>
+    <main id="main-content" tabindex="-1" data-pagefind-body data-pagefind-ignore={noindex ? 'all' : undefined}><slot /></main>
     <Footer />
     <CompareTray client:load />
   </body>

@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="404 — Radar contact lost" description="Navigation drift detected. Reacquire the HOTAS hardware catalog, compare flight controls or find your next setup." noindex>
+  <section class="lost">
+    <p class="telemetry">404 // RADAR CONTACT LOST — NAVIGATION DRIFT</p>
+    <div class="radar" aria-hidden="true"><span>404</span></div>
+    <h1>Contact lost.<br />Reacquire your heading.</h1>
+    <p class="message">This coordinate has no active signal. Return to the catalog or plot a new route to your next cockpit.</p>
+    <nav aria-label="Recovery navigation"><a class="primary" href="/">↗ Catalog</a><a href="/compare">Compare hardware</a><a href="/wizard">Setup wizard</a><a href="/brands">Browse brands</a></nav>
+    <p class="telemetry muted">SYSTEM STATUS: OPERATIONAL // AWAITING NEW COORDINATES</p>
+  </section>
+</BaseLayout>
+<style>
+  .lost{max-width:900px;margin:2rem auto;text-align:center}.telemetry{font:.7rem var(--font-mono);letter-spacing:.12em;color:var(--accent-amber)}.radar{height:180px;width:180px;border:1px solid var(--border-cockpit);border-radius:50%;margin:2.5rem auto;display:grid;place-items:center;background:repeating-radial-gradient(circle,transparent 0 28px,var(--border-cockpit) 29px 30px),linear-gradient(90deg,transparent 49.5%,var(--border-cockpit) 50%,transparent 50.5%),linear-gradient(transparent 49.5%,var(--border-cockpit) 50%,transparent 50.5%);box-shadow:0 0 45px var(--accent-amber-glow)}.radar span{font:700 2.8rem var(--font-mono);color:var(--accent-amber);background:var(--bg-cockpit);padding:.25rem}.message{color:var(--text-secondary);max-width:540px;margin:1.5rem auto}nav{display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem;margin:2rem 0 3rem}nav a{padding:.8rem 1.2rem;border:1px solid var(--border-cockpit);border-radius:3px;text-decoration:none;font:.8rem var(--font-mono)}nav a:hover{border-color:var(--accent-amber)}nav .primary{background:var(--accent-amber);color:var(--bg-cockpit);border-color:var(--accent-amber)}.muted{color:var(--text-secondary);font-size:.6rem}
+</style>

@@ -49,6 +49,30 @@ prices:
   store: honeycomb.com
   verified: '2026-10-01'
   source: manual
-verification: draft
+verdict:
+  author: feiko
+  hands_on: true
+  take: "A polished entry point for general aviation and airliner flying, with a broad, smooth yoke arc and useful cockpit-style controls. It is a substantial desktop unit, so measure your mounting space and pair it with a throttle quadrant for a complete setup."
+  pros:
+    - "Comfortable, wide yoke travel suits GA and commercial aircraft"
+    - "Integrated switches and buttons reduce reliance on keyboard commands"
+    - "Straightforward USB setup and broad simulator compatibility"
+  cons:
+    - "Requires a sizeable, secure desk mounting area"
+    - "No throttle quadrant included"
+    - "Price is high for users who mainly fly with a joystick"
+  great_for:
+    - ga
+    - airliner
+  skip_if:
+    - "You mainly fly combat aircraft or space sims"
+    - "You cannot clamp a large yoke to your desk"
+  scores:
+    build: 4
+    feel: 4
+    value: 3
+    software: 4
+    qc_support: 3
+verification: verified
 sources:
 - https://honeycomb.com

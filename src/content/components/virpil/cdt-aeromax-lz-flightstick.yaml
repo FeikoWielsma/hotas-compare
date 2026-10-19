@@ -1,0 +1,118 @@
+brand: virpil
+name: VPC CDT-Aeromax [LZ] Flightstick
+category: stick_fixed
+status: current
+release_year: 2026
+handedness: left
+mount: null
+controls:
+  - type: trigger
+    stages: 2
+  - type: hat
+    ways: 8
+    push: true
+    count: 2
+  - type: hat
+    ways: 4
+    push: true
+    count: 1
+  - type: analog_ministick
+    push: true
+    count: 1
+  - type: button
+    count: 4
+  - type: lever
+    kind: brake
+    analog: true
+hardware:
+  gimbal: cam_and_spring
+  sensor: contactless_magnetic
+  axes:
+    - name: X
+      resolution_bits: 16
+      sensor: contactless_magnetic
+    - name: Y
+      resolution_bits: 16
+      sensor: contactless_magnetic
+    - name: Twist_Z
+      resolution_bits: 14
+      sensor: contactless_magnetic
+    - name: Brake
+      resolution_bits: 12
+      sensor: contactless_magnetic
+  force_adjustable: true
+  cams_swappable: true
+  damping: dry_clutch
+  extension_support: false
+  throw_deg: 36
+connectivity:
+  usb: c
+  standalone_usb: true
+software: VPC Configuration Tool
+physical:
+  weight_g: 1380
+  materials:
+    - aluminium
+    - steel
+    - composite
+use_case_fit:
+  modern_jet: 4
+  heli: 4
+  ww2: 4
+  ga: 3
+  airliner: 4
+  space_hotas: 4
+  space_hosas: 5
+prices:
+  - region: EU
+    currency: EUR
+    amount: 254
+    incl_vat: true
+    store: virpil-controls.eu
+    verified: '2026-10-01'
+    source: manual
+  - region: UK
+    currency: GBP
+    amount: 220
+    incl_vat: true
+    store: virpil-controls.eu
+    verified: '2026-10-01'
+    source: manual
+  - region: US
+    currency: USD
+    amount: 229
+    incl_vat: false
+    store: virpil-controls.us
+    verified: '2026-10-01'
+    source: manual
+verdict:
+  author: feiko
+  hands_on: false
+  take: "The left-handed twist version of the CDT-Aeromax. Offers 4 full analog axes in one hand on an all-metal cam-and-spring gimbal with dry clutches, making it one of the most capable space HOSAS strafe sticks on the market."
+  pros:
+    - "Left-hand ergonomic flight stick with integrated contactless twist Z-axis"
+    - "All-metal compact cam and spring gimbal"
+    - "Adjustable dry clutches for non-centering throttle/strafe use in space flight"
+  cons:
+    - "Max 1 optional throttle lever module can be installed on Z-axis variant"
+  great_for:
+    - space_hosas
+    - airliner
+  skip_if:
+    - "You use foot pedals for vertical/lateral strafe"
+  scores:
+    build: 5
+    feel: 5
+    value: 5
+    software: 4
+    qc_support: 5
+external_reviews:
+  - reviewer: mysh
+    url: https://www.youtube.com/watch?v=2z54NHzy_Gc
+    summary: "Left-hand twist variant. Metal cam and spring with clutches in a compact standalone body."
+    tag: recommended
+    date: '2026-09-15'
+verification: draft
+sources:
+  - https://virpil-controls.eu/cdt-aeromax-r-flightstick.html
+images: []

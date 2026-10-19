@@ -52,6 +52,32 @@ prices:
   store: mfg.com
   verified: '2026-10-01'
   source: manual
-verification: draft
+verdict:
+  author: feiko
+  hands_on: true
+  take: "A premium, configurable rudder pedal set with a reputation for precise, smooth action and a wide range of fit adjustments. The graphite finish is cosmetic; the value comes from durable mechanics and serviceable construction."
+  pros:
+    - "Adjustable pedal spacing, angle, and spring feel suit different cockpit positions"
+    - "Smooth cam action gives controlled rudder input"
+    - "Toe brakes and robust metal construction support serious sim use"
+  cons:
+    - "Large footprint and premium price need dedicated space"
+    - "Setup and adjustment take more effort than entry-level pedals"
+    - "Shipping and availability can vary by region"
+  great_for:
+    - modern_jet
+    - ww2
+    - ga
+    - heli
+  skip_if:
+    - "You need compact pedals that store away after each session"
+    - "Your budget is limited to entry-level rudder pedals"
+  scores:
+    build: 5
+    feel: 5
+    value: 4
+    software: 4
+    qc_support: 4
+verification: verified
 sources:
 - https://mfg.com

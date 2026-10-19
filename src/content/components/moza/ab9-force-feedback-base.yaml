@@ -22,7 +22,52 @@ use_case_fit:
   airliner: 3
   space_hotas: 4
   space_hosas: 3
-prices: []
-verification: draft
+prices:
+  - region: EU
+    currency: EUR
+    amount: 599
+    incl_vat: true
+    store: moza-racing.com
+    verified: '2026-10-01'
+    source: manual
+  - region: UK
+    currency: GBP
+    amount: 529
+    incl_vat: true
+    store: moza-racing.com
+    verified: '2026-10-01'
+    source: manual
+  - region: US
+    currency: USD
+    amount: 599
+    incl_vat: false
+    store: moza-racing.com
+    verified: '2026-10-01'
+    source: manual
+verdict:
+  author: feiko
+  hands_on: true
+  take: "The AB9 brings active force feedback to desktop flight simulation at a more approachable price than bespoke FFB bases. Its appeal depends on tuning and game support, and it needs a compatible grip plus a very solid mount."
+  pros:
+    - "Active force feedback can reproduce aircraft loading and trim forces"
+    - "Compact base is easier to fit than large industrial direct-drive units"
+    - "MOZA ecosystem offers a growing range of flight hardware"
+  cons:
+    - "High entry cost before adding a grip and mounting hardware"
+    - "Force feedback support and profiles vary by simulator"
+    - "Requires a rigid mount to control reaction forces"
+  great_for:
+    - modern_jet
+    - space_hotas
+  skip_if:
+    - "You want a plug-and-play conventional spring joystick"
+    - "Your desk or mount cannot safely handle force feedback loads"
+  scores:
+    build: 4
+    feel: 5
+    value: 3
+    software: 3
+    qc_support: 3
+verification: verified
 sources:
   - https://mozaracing.com/collections/flight-series

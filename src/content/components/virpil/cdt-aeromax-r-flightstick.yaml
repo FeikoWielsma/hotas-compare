@@ -1,0 +1,119 @@
+brand: virpil
+name: VPC CDT-Aeromax [R] Flightstick
+category: stick_fixed
+status: current
+release_year: 2026
+handedness: right
+mount: null
+controls:
+  - type: trigger
+    stages: 2
+  - type: hat
+    ways: 8
+    push: true
+    count: 2
+  - type: hat
+    ways: 4
+    push: true
+    count: 1
+  - type: analog_ministick
+    push: true
+    count: 1
+  - type: button
+    count: 4
+  - type: lever
+    kind: brake
+    analog: true
+hardware:
+  gimbal: cam_and_spring
+  sensor: contactless_magnetic
+  axes:
+    - name: X
+      resolution_bits: 16
+      sensor: contactless_magnetic
+    - name: Y
+      resolution_bits: 16
+      sensor: contactless_magnetic
+    - name: Brake
+      resolution_bits: 12
+      sensor: contactless_magnetic
+  force_adjustable: true
+  cams_swappable: true
+  damping: dry_clutch
+  extension_support: false
+  throw_deg: 36
+connectivity:
+  usb: c
+  standalone_usb: true
+software: VPC Configuration Tool
+physical:
+  weight_g: 1350
+  materials:
+    - aluminium
+    - steel
+    - composite
+use_case_fit:
+  modern_jet: 5
+  heli: 4
+  ww2: 5
+  ga: 4
+  airliner: 3
+  space_hotas: 5
+  space_hosas: 5
+prices:
+  - region: EU
+    currency: EUR
+    amount: 242
+    incl_vat: true
+    store: virpil-controls.eu
+    verified: '2026-10-01'
+    source: manual
+  - region: UK
+    currency: GBP
+    amount: 210
+    incl_vat: true
+    store: virpil-controls.eu
+    verified: '2026-10-01'
+    source: manual
+  - region: US
+    currency: USD
+    amount: 219
+    incl_vat: false
+    store: virpil-controls.us
+    verified: '2026-10-01'
+    source: manual
+verdict:
+  author: feiko
+  hands_on: false
+  take: "VIRPIL's groundbreaking standalone desktop flight stick. Packs a true compact all-metal cam-and-spring gimbal with interchangeable cams, springs, adjustable grip offset, and integrated dry clutches directly into a compact desktop form factor for €199.95 (excl. VAT)."
+  pros:
+    - "First truly compact all-metal cam and spring standalone flightstick"
+    - "Integrated adjustable dry clutch dampers for smooth motion or dead-stick heli flying"
+    - "Contactless digital sensors across all axes"
+    - "Adjustable grip offset angle"
+    - "Supports up to 2 optional add-on throttle lever modules on each side"
+  cons:
+    - "No twist Z-axis (choose RZ variant if twist yaw is needed without rudder pedals)"
+    - "Check batch pre-order availability on EU store"
+  great_for:
+    - modern_jet
+    - space_hotas
+    - ww2
+  skip_if:
+    - "You need built-in twist rudder (pick CDT-Aeromax RZ instead)"
+  scores:
+    build: 5
+    feel: 5
+    value: 5
+    software: 4
+    qc_support: 5
+external_reviews:
+  - reviewer: mysh
+    url: https://www.youtube.com/watch?v=2z54NHzy_Gc
+    summary: "First really compact all-metal cam and spring gimbal in a standalone stick. Sits between the Gladiators and full size bases in smoothness. Contactless everything, integrated dampers, adjustable grip offset. Especially viable in the EU."
+    tag: recommended
+    date: '2026-09-15'
+verification: draft
+sources:
+  - https://virpil-controls.eu/cdt-aeromax-r-flightstick.html
+images: []

@@ -85,7 +85,7 @@ prices:
     source: manual
 verdict:
   author: feiko
-  hands_on: false
+  hands_on: true
   take: "The best budget desktop flight stick in the EU. Offers a glass-fiber pincer gimbal, contactless magnetic sensors, and lockable twist with integrated dampers for under €100."
   pros:
     - "Glass fiber reinforced pincer gimbal is far smoother and more durable than ball-and-cup"
@@ -112,7 +112,7 @@ external_reviews:
     summary: "Best budget stick in EU. Glass fiber pincer gimbal, contactless sensors, lockable twist, integrated dampers. Everything else is decent; the hats are the weak spot."
     tag: recommended
     date: '2026-09-15'
-verification: draft
+verification: verified
 sources:
   - https://winwing.cn
 images: []

@@ -1,0 +1,120 @@
+brand: virpil
+name: VPC CDT-Aeromax [RZ] Flightstick
+category: stick_fixed
+status: current
+release_year: 2026
+handedness: right
+mount: null
+controls:
+  - type: trigger
+    stages: 2
+  - type: hat
+    ways: 8
+    push: true
+    count: 2
+  - type: hat
+    ways: 4
+    push: true
+    count: 1
+  - type: analog_ministick
+    push: true
+    count: 1
+  - type: button
+    count: 4
+  - type: lever
+    kind: brake
+    analog: true
+hardware:
+  gimbal: cam_and_spring
+  sensor: contactless_magnetic
+  axes:
+    - name: X
+      resolution_bits: 16
+      sensor: contactless_magnetic
+    - name: Y
+      resolution_bits: 16
+      sensor: contactless_magnetic
+    - name: Twist_Z
+      resolution_bits: 14
+      sensor: contactless_magnetic
+    - name: Brake
+      resolution_bits: 12
+      sensor: contactless_magnetic
+  force_adjustable: true
+  cams_swappable: true
+  damping: dry_clutch
+  extension_support: false
+  throw_deg: 36
+connectivity:
+  usb: c
+  standalone_usb: true
+software: VPC Configuration Tool
+physical:
+  weight_g: 1380
+  materials:
+    - aluminium
+    - steel
+    - composite
+use_case_fit:
+  modern_jet: 5
+  heli: 4
+  ww2: 5
+  ga: 4
+  airliner: 3
+  space_hotas: 5
+  space_hosas: 5
+prices:
+  - region: EU
+    currency: EUR
+    amount: 254
+    incl_vat: true
+    store: virpil-controls.eu
+    verified: '2026-10-01'
+    source: manual
+  - region: UK
+    currency: GBP
+    amount: 220
+    incl_vat: true
+    store: virpil-controls.eu
+    verified: '2026-10-01'
+    source: manual
+  - region: US
+    currency: USD
+    amount: 229
+    incl_vat: false
+    store: virpil-controls.us
+    verified: '2026-10-01'
+    source: manual
+verdict:
+  author: feiko
+  hands_on: false
+  take: "The RZ variant of the CDT-Aeromax adds an integrated contactless twist Z-axis to VIRPIL's compact metal cam-and-spring gimbal. Perfect for desktop pilots who fly without dedicated rudder pedals."
+  pros:
+    - "Compact metal cam-and-spring gimbal with contactless twist Z-axis"
+    - "No separate base required: ready out of the box for desktop flying"
+    - "Integrated dry clutch dampers for dead-stick stability"
+    - "Can attach 1 optional throttle lever module"
+  cons:
+    - "Z-axis mechanism limits throttle lever modules to max 1 (vs 2 on standard R)"
+  great_for:
+    - space_hosas
+    - space_hotas
+    - modern_jet
+  skip_if:
+    - "You already own high-end rudder pedals and prefer a locked rigid stick"
+  scores:
+    build: 5
+    feel: 5
+    value: 5
+    software: 4
+    qc_support: 5
+external_reviews:
+  - reviewer: mysh
+    url: https://www.youtube.com/watch?v=2z54NHzy_Gc
+    summary: "RZ version includes twist axis for pilots without rudder pedals. Compact all-metal cam and spring mechanism with dampers."
+    tag: recommended
+    date: '2026-09-15'
+verification: draft
+sources:
+  - https://virpil-controls.eu/cdt-aeromax-r-flightstick.html
+images: []

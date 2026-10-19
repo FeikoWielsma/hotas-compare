@@ -1,0 +1,92 @@
+brand: virpil
+name: VPC CDT-Aeromax Throttle Lever Module
+category: module
+status: current
+release_year: 2026
+handedness: ambi
+mount: null
+controls:
+  - type: lever
+    kind: throttle_single
+    analog: true
+    count: 1
+    label: Add-on Throttle Lever
+hardware:
+  gimbal: null
+  sensor: contactless_magnetic
+  axes:
+    - name: Throttle_Lever
+      resolution_bits: 12
+      sensor: contactless_magnetic
+  force_adjustable: false
+  cams_swappable: false
+  damping: friction_pad
+  extension_support: false
+  throw_deg: 45
+connectivity:
+  usb: null
+  standalone_usb: false
+software: VPC Configuration Tool
+physical:
+  weight_g: 120
+  materials:
+    - aluminium
+    - abs
+use_case_fit:
+  modern_jet: 4
+  heli: 4
+  ww2: 4
+  ga: 5
+  airliner: 4
+  space_hotas: 4
+  space_hosas: 4
+prices:
+  - region: EU
+    currency: EUR
+    amount: 18
+    incl_vat: true
+    store: virpil-controls.eu
+    verified: '2026-10-01'
+    source: manual
+  - region: UK
+    currency: GBP
+    amount: 16
+    incl_vat: true
+    store: virpil-controls.eu
+    verified: '2026-10-01'
+    source: manual
+  - region: US
+    currency: USD
+    amount: 15
+    incl_vat: false
+    store: virpil-controls.us
+    verified: '2026-10-01'
+    source: manual
+verdict:
+  author: feiko
+  hands_on: false
+  take: "Modular add-on throttle lever for the VPC CDT-Aeromax flightstick series. Mounts directly to the side of the stick body to add physical throttle control for €14.95 (excl. VAT). Supports up to 2 modules on standard R and L sticks, or max 1 module on RZ and LZ twist variants."
+  pros:
+    - "Very inexpensive (€14.95 excl. VAT) way to add analog throttle control directly onto the stick base"
+    - "Contactless digital magnetic angle sensor"
+    - "Can stack up to 2 levers on standard non-twist R and L sticks"
+  cons:
+    - "Limited to max 1 lever on RZ and LZ twist models due to internal wiring / body clearance"
+    - "Requires CDT-Aeromax stick (not standalone USB)"
+  great_for:
+    - ga
+    - modern_jet
+    - space_hotas
+  skip_if:
+    - "You already use a dedicated standalone throttle unit like MongoosT-50CM3 or STECS"
+  scores:
+    build: 4
+    feel: 4
+    value: 5
+    software: 4
+    qc_support: 5
+external_reviews: []
+verification: draft
+sources:
+  - https://virpil-controls.eu/cdt-aeromax-r-flightstick.html
+images: []
