@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-cockpit: #0b0e14;
+    --bg-panel: #121721;
+    --bg-panel-elevated: #18202d;
+    --border-cockpit: #222e40;
+    --border-cockpit-glow: rgba(245, 158, 11, 0.3);
+    
+    --text-primary: #e6edf3;
+    --text-secondary: #8e9dae;
+    --text-muted: #54657a;
+
+    --accent-amber: #f59e0b;
+    --accent-amber-glow: rgba(245, 158, 11, 0.2);
+    --accent-amber-light: #fbbf24;
+
+    --hud-green: #10b981;
+    --hud-cyan: #06b6d4;
+    --hud-red: #ef4444;
+  }
+
+  :root.light {
+    --bg-cockpit: #f8fafc;
+    --bg-panel: #ffffff;
+    --bg-panel-elevated: #f1f5f9;
+    --border-cockpit: #e2e8f0;
+    --border-cockpit-glow: rgba(217, 119, 6, 0.25);
+    
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+
+    --accent-amber: #d97706;
+    --accent-amber-glow: rgba(217, 119, 6, 0.15);
+    --accent-amber-light: #b45309;
+
+    --hud-green: #059669;
+    --hud-cyan: #0891b2;
+    --hud-red: #dc2626;
+  }
+
+  body {
+    background-color: var(--bg-cockpit);
+    color: var(--text-primary);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  .font-mono-numbers {
+    font-variant-numeric: tabular-nums;
+  }
+}

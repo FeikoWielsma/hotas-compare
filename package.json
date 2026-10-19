@@ -1,0 +1,28 @@
+{
+  "name": "hotas-compare",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.22.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^14.4.0",
+    "@astrojs/svelte": "^9.1.0",
+    "@keystatic/astro": "^6.0.0",
+    "@keystatic/core": "^0.6.9",
+    "astro": "^7.4.0",
+    "svelte": "^5.57.2",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "tailwindcss": "^4.3.3",
+    "vitest": "^5.0.5"
+  }
+}
