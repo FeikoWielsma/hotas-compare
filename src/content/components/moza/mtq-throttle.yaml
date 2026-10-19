@@ -3,6 +3,50 @@ name: MOZA MTQ Throttle
 category: throttle
 status: current
 handedness: n/a
+controls:
+- type: lever
+  location: handle
+  kind: throttle_dual
+  analog: true
+  count: 2
+  label: Included TQF fighter throttle grips
+  source: https://mozaracing.com/products/mtq-throttle
+- type: lever
+  location: panel
+  kind: flap
+  analog: true
+  count: 1
+  label: Flap lever
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtq_throttle_panel_manual.pdf?v=1779862954
+- type: lever
+  location: panel
+  kind: speedbrake
+  analog: true
+  count: 1
+  label: Speedbrake lever
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtq_throttle_panel_manual.pdf?v=1779862954
+- type: button
+  location: panel
+  count: 10
+  label: Multifunction panel buttons
+  source: https://mozaracing.com/products/mtq-throttle
+- type: rotary
+  location: panel
+  count: 3
+  label: Panel rotary knobs
+  source: https://mozaracing.com/products/mtq-throttle
+- type: lever
+  location: panel
+  kind: other
+  analog: false
+  count: 1
+  label: Landing gear lever
+  source: https://mozaracing.com/products/mtq-throttle
+controls_evidence:
+  coverage: partial
+  source: https://mozaracing.com/products/mtq-throttle
+  checked: '2026-10-19'
+  notes: 'Default supplied grips are TQF fighter type; TQA/TQB are alternatives. The official product page explicitly itemizes 10 multifunction buttons, 3 rotary knobs, 3 toggle switches, and a landing-gear lever; the six RGB-backlit buttons are a subset/description, not added to the ten. The page also names three toggle switches, but their number of positions is unspecified; since the schema defaults an omitted toggle-way count to two, those three known switches are noted here and not added to the structured array. The same page says 23 physical controls while its specs report 17 physical toggle switches, so panel inventory is partial and no extra controls are inferred from those aggregates. TQF layout has two throttle axes plus flap and speedbrake axes per manual.'
 verification: draft
 sources:
 - https://mozaracing.com

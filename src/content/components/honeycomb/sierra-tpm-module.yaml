@@ -10,24 +10,40 @@ controls:
   kind: throttle_single
   analog: true
   count: 3
-  label: Throttle, propeller, and mixture verniers
-- type: rotary
+  label: Push-pull throttle, propeller, and mixture verniers
+  location: handle
+  source: https://flyhoneycomb.com/products/sierra-tpm-module
+- type: encoder
   count: 1
-  label: Trim wheel
+  label: Low-profile trim wheel
+  location: panel
+  source: https://flyhoneycomb.com/products/sierra-tpm-module
 - type: lever
   kind: other
   analog: false
   count: 1
-  label: Parking brake
+  label: Parking-brake control
+  location: panel
+  source: https://flyhoneycomb.com/products/sierra-tpm-module
 - type: lever
   kind: flap
   analog: false
   count: 1
-  label: Flaps
-- type: toggle
+  label: Flap lever
+  location: panel
+  source: https://flyhoneycomb.com/products/sierra-tpm-module
+- type: lever
+  kind: other
+  analog: false
   count: 1
-  ways: 2
-  label: Landing gear
+  label: Landing-gear lever with LED indicator
+  location: panel
+  source: https://flyhoneycomb.com/products/sierra-tpm-module
+controls_evidence:
+  coverage: partial
+  source: https://flyhoneycomb.com/products/sierra-tpm-module
+  checked: '2026-10-19'
+  notes: Verified three vernier axes and the trim wheel, parking brake, flap, and gear controls. Trim wheel classified as encoder, consistent with incremental digital trim adjustment; electronic implementation is undocumented. Manufacturer product page does not document its digital input behavior, detents, button groups, or switch counts; no physical switches inferred from indicator LEDs.
 hardware:
   gimbal: null
   sensor: null

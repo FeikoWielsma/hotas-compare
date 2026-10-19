@@ -3,6 +3,40 @@ name: MOZA MHG Flight Grip
 category: grip
 status: current
 handedness: right
+controls:
+- type: trigger
+  location: grip
+  count: 1
+  stages: 2
+  label: Dual-stage trigger
+  source: https://uk.mozaracing.com/products/mhg-flightstick
+- type: analog_ministick
+  location: grip
+  count: 1
+  label: Mini stick
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mhg_flightsticks_manual.pdf?v=1779866649
+- type: button
+  location: grip
+  count: 4
+  label: Dedicated buttons (launch, warning, mode cycle, nosewheel lock)
+  source: https://uk.mozaracing.com/products/mhg-flightstick
+- type: toggle
+  location: grip
+  count: 1
+  ways: 3
+  label: Management switch (3-way)
+  source: https://uk.mozaracing.com/products/mhg-flightstick
+- type: switch
+  count: 3
+  location: grip
+  label: 'Management switches (manufacturer: five-way)'
+  source: https://uk.mozaracing.com/products/mhg-flightstick
+  notes: Exact directional arrangement and center push remain unconfirmed. Not represented as three-position toggles.
+controls_evidence:
+  coverage: partial
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mhg_flightsticks_manual.pdf?v=1779866649
+  checked: '2026-10-19'
+  notes: Manual diagram labels the mini stick, four dedicated buttons, dual-stage trigger, and four management switches (target, countermeasure, sensor, navigation). Product text calls the stick a Hall-effect hat configurable as axis or button input; it is counted once as the physical mini stick above. Marketing calls three management switches “5-way,” but neither diagram nor text defines their electrical/directional arrangement, so no mapping is guessed and those three are recorded as generic switches without guessed directions. The explicitly stated 3-way management switch is recorded. Four dedicated buttons exclude trigger and management switches; overall coverage remains partial.
 verification: draft
 sources:
 - https://mozaracing.com

@@ -6,6 +6,11 @@ release_year: 2021
 handedness: n/a
 mount: null
 controls: []
+controls_evidence:
+  coverage: complete
+  source: https://virpil-controls.eu/vpc-mongoost-50cm3-base.html
+  checked: '2026-10-19'
+  notes: 'Bare flightstick gimbal/base; manufacturer describes two sensor axes and mechanical adjustment, with no installed standalone buttons, hats, switches, or controls panel.'
 hardware:
   gimbal: dual_cam
   sensor: contactless_magnetic

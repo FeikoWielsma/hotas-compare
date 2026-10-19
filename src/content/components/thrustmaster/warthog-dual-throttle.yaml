@@ -9,18 +9,92 @@ controls:
 - type: lever
   kind: throttle_dual
   analog: true
+  count: 2
+  label: Independent throttle levers
+  source: https://ts.thrustmaster.com/download/accessories/pc/hotas/manual/HOTAS_Warthog/HOTAS_Warthog_Manual.pdf
 - type: detent
   count: 2
   customizable: false
-  label: Idle and afterburner detents
-- type: toggle
-  count: 5
-  ways: 2
+  label: Idle and removable Afterburner stops
+  source: https://ts.thrustmaster.com/download/accessories/pc/hotas/manual/HOTAS_Warthog/HOTAS_Warthog_Manual.pdf
+- type: hat
+  ways: 8
+  push: false
+  location: handle
+  label: POV hat
+  source: https://ts.thrustmaster.com/download/accessories/pc/hotas/manual/HOTAS_Warthog/HOTAS_Warthog_Manual.pdf
+- type: hat
+  ways: 8
+  push: true
+  location: handle
+  label: Mouse hat / slew control
+  source: https://ts.thrustmaster.com/download/accessories/pc/hotas/manual/HOTAS_Warthog/HOTAS_Warthog_Manual.pdf
 - type: hat
   ways: 4
   push: true
+  location: handle
+  label: 4-way hat
+  source: https://ts.thrustmaster.com/download/accessories/pc/hotas/manual/HOTAS_Warthog/HOTAS_Warthog_Manual.pdf
 - type: button
-  count: 18
+  count: 1
+  location: handle
+  label: Throttle-grip pushbutton
+  source: https://ts.thrustmaster.com/download/accessories/pc/hotas/manual/HOTAS_Warthog/HOTAS_Warthog_Manual.pdf
+- type: button
+  count: 2
+  location: panel
+  label: Control-panel pushbuttons
+  source: https://ts.thrustmaster.com/download/accessories/pc/hotas/manual/HOTAS_Warthog/HOTAS_Warthog_Manual.pdf
+- type: toggle
+  count: 2
+  ways: 3
+  momentary: false
+  location: handle
+  label: Three-position switches, all three positions permanent
+  source: https://ts.thrustmaster.com/download/accessories/pc/hotas/manual/HOTAS_Warthog/HOTAS_Warthog_Manual.pdf
+- type: toggle
+  count: 1
+  ways: 3
+  location: handle
+  label: Three-position switch, two momentary directions and one permanent position
+  source: https://ts.thrustmaster.com/download/accessories/pc/hotas/manual/HOTAS_Warthog/HOTAS_Warthog_Manual.pdf
+- type: toggle
+  count: 1
+  ways: 3
+  location: handle
+  label: Three-position switch, one momentary direction and two permanent positions
+  source: https://ts.thrustmaster.com/download/accessories/pc/hotas/manual/HOTAS_Warthog/HOTAS_Warthog_Manual.pdf
+
+- type: toggle
+  count: 5
+  ways: 2
+  location: panel
+  label: Panel two-position switches; manual identifies two permanent switches
+  source: https://ts.thrustmaster.com/download/accessories/pc/hotas/manual/HOTAS_Warthog/HOTAS_Warthog_Manual.pdf
+- type: toggle
+  count: 2
+  ways: 3
+  momentary: false
+  location: panel
+  label: Panel three-position switches, all positions permanent
+  source: https://ts.thrustmaster.com/download/accessories/pc/hotas/manual/HOTAS_Warthog/HOTAS_Warthog_Manual.pdf
+- type: toggle
+  count: 2
+  ways: 3
+  location: panel
+  label: Panel three-position switches; one momentary and two permanent positions
+  source: https://ts.thrustmaster.com/download/accessories/pc/hotas/manual/HOTAS_Warthog/HOTAS_Warthog_Manual.pdf
+- type: rotary
+  mode: analog
+  count: 1
+  location: panel
+  label: Trim wheel axis
+  source: https://ts.thrustmaster.com/download/accessories/pc/hotas/manual/HOTAS_Warthog/HOTAS_Warthog_Manual.pdf
+controls_evidence:
+  coverage: partial
+  source: https://ts.thrustmaster.com/download/accessories/pc/hotas/manual/HOTAS_Warthog/HOTAS_Warthog_Manual.pdf
+  checked: '2026-10-19'
+  notes: Manual pages 3-4 inventory throttle grip and panel separately. The 17 action-button aggregate excludes separately listed POV and mouse hats. Manual also describes a friction adjustment wheel, which is mechanical and not an electrical input; schema lacks a passive adjustment-wheel type so it is not included as a control. Panel has one actual trim-wheel axis. Mixed momentary/latching sets are grouped because exact individual switch identity is not clear from the text list.
 hardware:
   gimbal: null
   sensor: hall

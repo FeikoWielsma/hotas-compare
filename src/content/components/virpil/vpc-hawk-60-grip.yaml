@@ -8,22 +8,42 @@ mount:
   provides: virpil-rotor-grip
   accepts: []
 controls:
-- type: trigger
-  stages: 1
-  count: 1
-- type: hat
-  ways: 8
-  push: true
-  count: 4
-- type: hat
-  ways: 2
-  push: true
-  count: 1
-- type: toggle
-  ways: 3
-  count: 1
-- type: button
-  count: 1
+  - type: trigger
+    location: grip
+    stages: 1
+    count: 1
+    label: Single-stage trigger
+    source: https://virpil-controls.eu/vpc-hawk-60-collective-grip.html
+  - type: hat
+    location: grip
+    ways: 8
+    push: true
+    count: 4
+    label: 8-way hats (configurable as 4-way)
+    source: https://virpil-controls.eu/vpc-hawk-60-collective-grip.html
+  - type: hat
+    location: grip
+    ways: 2
+    push: true
+    count: 1
+    source: https://virpil-controls.eu/vpc-hawk-60-collective-grip.html
+  - type: toggle
+    location: grip
+    ways: 3
+    count: 1
+    label: ON-OFF-ON toggle
+    source: https://virpil-controls.eu/vpc-hawk-60-collective-grip.html
+  - type: button
+    location: grip
+    count: 1
+    backlit: true
+    label: RGB push button
+    source: https://virpil-controls.eu/vpc-hawk-60-collective-grip.html
+controls_evidence:
+  coverage: complete
+  source: https://virpil-controls.eu/vpc-hawk-60-collective-grip.html
+  checked: '2026-10-19'
+  notes: 'Preinstalled Hawk-60 VPC-012-001 layout. Four 8-way hats can be configured as 4-way; retained as installed physical 8-way modules. The manufacturer calls the switch ON-OFF-ON but does not say whether it is maintained or momentary, so behavior is left unknown.'
 hardware:
   gimbal: null
   sensor: contactless_magnetic

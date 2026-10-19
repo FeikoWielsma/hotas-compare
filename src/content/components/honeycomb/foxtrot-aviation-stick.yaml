@@ -8,37 +8,60 @@ mount: null
 controls:
 - type: trigger
   stages: 1
-  label: Trigger
+  label: Grip trigger
+  location: grip
+  source: https://flyhoneycomb.com/products/foxtrot-aviation-stick
 - type: hat
   ways: 8
   label: POV switch
+  location: grip
+  source: https://flyhoneycomb.com/products/foxtrot-aviation-stick
 - type: rocker
   count: 2
-  ways: 2
   label: Grip rocker switches
+  location: grip
+  source: https://flyhoneycomb.com/products/foxtrot-aviation-stick
 - type: button
   count: 8
-  label: Action and system buttons including home
+  label: Four action, three system, and one Home button
+  location: grip
+  source: https://flyhoneycomb.com/products/foxtrot-aviation-stick
 - type: toggle
   count: 5
   ways: 2
-  label: Light switches
+  label: Beacon, landing, taxi, navigation, and strobe light switches
+  location: panel
+  source: https://flyhoneycomb.com/products/foxtrot-aviation-stick
 - type: toggle
-  count: 1
   ways: 3
+  count: 1
   label: Starter switch
+  location: panel
+  source: https://flyhoneycomb.com/products/foxtrot-aviation-stick
 - type: hat
   ways: 4
   label: Radio communications switch
+  location: panel
+  source: https://flyhoneycomb.com/products/foxtrot-aviation-stick
 - type: encoder
   count: 1
-  label: Radio communications encoder
-- type: hat
-  ways: 5
+  label: Radio communications rotary encoder
+  location: panel
+  source: https://flyhoneycomb.com/products/foxtrot-aviation-stick
+- type: switch
   label: Autopilot switch
+  location: panel
+  source: https://flyhoneycomb.com/products/foxtrot-aviation-stick
 - type: encoder
   count: 1
-  label: Autopilot encoder
+  label: Autopilot rotary encoder
+  location: panel
+  source: https://flyhoneycomb.com/products/foxtrot-aviation-stick
+controls_evidence:
+  coverage: partial
+  source: https://flyhoneycomb.com/products/foxtrot-aviation-stick
+  checked: '2026-10-19'
+  notes: Corrected starter selector from five to three positions. Four-way radio switch and five-way autopilot switch are directional switch controls paired with separate rotary encoders. Added three system buttons and Home button omitted from prior grip button count. Manufacturer descriptions disagree on whether 4 or 5 two-way switches (switch-row description says five; detailed panel description lists five light switches plus the starter; product photos/callouts do not resolve any further distinction), so light-switch count is the detailed five-light-switch panel, with coverage partial.
 hardware:
   gimbal: linear
   sensor: hall

@@ -9,9 +9,35 @@ mount:
   accepts: []
 controls:
 - type: trigger
-  stages: 2
+  location: grip
+  label: Folding metal trigger
+  notes: "Manufacturer does not specify whether this is a single or staged trigger input."
+  source: https://vkbsimcontrollers.com/products/gnx-kg12-add-on-grip-us
+- type: lever
+  location: grip
+  kind: other
+  analog: false
+  label: Pinky metal lever
+  notes: "VKB identifies it as a button; model as digital lever to preserve its physical form."
+  source: https://vkbsimcontrollers.com/products/gnx-kg12-add-on-grip-us
+- type: hat
+  location: grip
+  ways: 8
+  label: 8-way hat switch
+  source: https://vkbsimcontrollers.com/products/gnx-kg12-add-on-grip-us
 - type: button
-  count: 1
+  location: grip
+  label: Bomb release button
+  source: https://vkbsimcontrollers.com/products/gnx-kg12-add-on-grip-us
+- type: button
+  location: grip
+  label: Side button
+  source: https://vkbsimcontrollers.com/products/gnx-kg12-add-on-grip-us
+controls_evidence:
+  coverage: complete
+  source: https://vkbsimcontrollers.com/products/gnx-kg12-add-on-grip-us
+  checked: '2026-10-19'
+  notes: "Exact GNX KG12 add-on listing and the database image source identify the installed GNX generation. The GNX-specific inventory names one folding trigger, pinky metal lever/button, bomb-release button, 8-way hat and side button; twist adapter is an axis, not a discrete control. Trigger stages and hat center-push are unstated and left unknown. This is not the older Gunfighter KG12 Gen.1 or Mk.III-compatible Gen.2 SKU."
 hardware:
   gimbal: null
   sensor: contactless_magnetic

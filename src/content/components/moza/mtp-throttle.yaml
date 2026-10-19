@@ -8,16 +8,29 @@ mount:
   accepts: []
 controls:
 - type: lever
+  location: handle
   kind: throttle_dual
   analog: true
   count: 2
+  label: Dual throttle grips
+  source: https://support.mozaracing.com/en/support/solutions/articles/70000679591-moza-mtp-throttle-support
 - type: detent
+  location: handle
   count: 2
   customizable: true
-- type: hat
-  ways: 8
-  push: true
-  count: 2
+  label: Adjustable throttle detents
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtp_throttle_panel_manual.pdf?v=1779863093
+- type: analog_ministick
+  location: handle
+  count: 1
+  label: Hall-effect thumb joystick
+  notes: 'In software it can switch between analog axes and 4-way button mode; this is one physical device and is not counted twice. Center push behavior is not stated.'
+  source: https://support.mozaracing.com/en/support/solutions/articles/70000679591-moza-mtp-throttle-support
+controls_evidence:
+  coverage: partial
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtp_throttle_panel_manual.pdf?v=1779863093
+  checked: '2026-10-19'
+  notes: 'Official support describes one Hall-effect thumb joystick that operates as axes or 4-way buttons; it is represented once as the physical analog ministick, not as an additional hat. Push behavior is unstated. The official support and product pages both count 27 programmable physical switches but do not itemize the panel controls, so standalone button/rotary/toggle totals remain unresolved. Detents are mechanical adjustments, not separate inputs.'
 hardware:
   axes: []
 connectivity:

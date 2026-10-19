@@ -8,22 +8,59 @@ mount: null
 controls:
   - type: trigger
     stages: 2
-  - type: hat
-    ways: 8
-    push: true
-    count: 2
+    location: grip
+    label: Dual-stage trigger
+    source: https://virpil-controls.eu/cdt-aero-r-grip.html
+  - type: trigger
+    stages: 1
+    action: flip
+    flip: true
+    location: grip
+    label: Flip trigger
+    source: https://virpil-controls.eu/cdt-aero-r-grip.html
   - type: hat
     ways: 4
     push: true
-    count: 1
+    count: 3
+    location: grip
+    label: 4-way hats
+    source: https://virpil-controls.eu/cdt-aero-r-grip.html
   - type: analog_ministick
     push: true
     count: 1
+    location: grip
+    label: Analogue ministick
+    source: https://virpil-controls.eu/cdt-aero-r-grip.html
   - type: button
-    count: 4
+    count: 3
+    location: grip
+    label: Push buttons
+    source: https://virpil-controls.eu/cdt-aero-r-grip.html
+  - type: lever
+    analog: false
+    count: 1
+    location: grip
+    label: Grip paddle switch
+    source: https://virpil-controls.eu/cdt-aero-r-grip.html
   - type: lever
     kind: brake
     analog: true
+    count: 1
+    location: grip
+    label: Brake lever axis
+    source: https://virpil-controls.eu/cdt-aero-r-grip.html
+  - type: slider
+    analog: true
+    count: 1
+    location: grip
+    label: Mode slider
+    notes: AEROMAX uses the AEROMAX grip design; the CDT-AERO mapping template depicts this as a continuous SLDR axis (0–100).
+    source: https://support.virpil.com/en/support/solutions/articles/47001285226-vpc-cdt-aero-r-grip
+controls_evidence:
+  coverage: partial
+  source: https://virpil-controls.eu/cdt-aeromax-r-flightstick.html
+  checked: '2026-10-19'
+  notes: Exact SKU VPC-120-R. The manufacturer page says the grip uses the AEROMAX design but does not enumerate its physical inputs. Inventory cross-checked against the manufacturer's CDT-AERO L/R input lists and mapping sheets, which describe that same grip design; keep partial until VIRPIL publishes an explicit AEROMAX physical control list. Optional throttle modules are not included in this inventory.
 hardware:
   gimbal: cam_and_spring
   sensor: contactless_magnetic
@@ -32,6 +69,9 @@ hardware:
   - name: Y
   - name: Brake
   - name: Twist
+  - name: Ministick X
+  - name: Ministick Y
+  - name: Mode slider
   force_adjustable: true
   cams_swappable: true
   damping: dry_clutch

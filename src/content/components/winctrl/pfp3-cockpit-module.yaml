@@ -6,11 +6,14 @@ handedness: n/a
 mount:
   provides: null
   accepts: []
-controls:
-  - type: button
-    count: 16
-  - type: rotary
-    count: 4
+controls: []
+controls_evidence:
+  coverage: partial
+  source: https://eu.winctrl.com/view/goods-details.html?id=1065
+  checked: '2026-10-19'
+  notes: >-
+    Rendered storefront record ID 1065 is titled/described as Panel of Auto Pilot 3, while the assigned file is PFP3. Download Center has an exact PFP-3N (Panel of Flight Plan) manual, a different model. Neither is safe evidence for this assigned SKU, so counts remain undocumented pending identity confirmation.
+
 hardware:
   axes: []
 connectivity:
@@ -30,5 +33,6 @@ verification: draft
 sources:
   - https://eu.winctrl.com/view/shopping.html
   - https://eu.winctrl.com/view/goods-details.html?id=1065
+  - https://eu.winctrl.com/static/download/QmbGxzEGivxtFbfrnZMJNK68t6kx4XcbkBN4Qsct9L9ALQ?filename=PFP-3N-User+Manual+V1.0-20250124.pdf
 
 images: []

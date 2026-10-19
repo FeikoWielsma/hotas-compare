@@ -7,25 +7,54 @@ mount:
   provides: null
   accepts: []
 controls:
-  - type: lever
-    kind: throttle_single
-    analog: true
-    count: 1
-  - type: button
-    count: 2
-  - type: hat
-    ways: 5
-    push: true
-    count: 1
-  - type: analog_ministick
-    push: true
-    count: 1
-  - type: rotary
-    count: 2
-    label: Pressable rotary wheels
-  - type: toggle
-    ways: 3
-    count: 2
+- type: hat
+  count: 1
+  location: handle
+  label: Five-way switch
+  source: https://eu.winctrl.com/view/goods-details.html?id=1765
+  notes: Manufacturer calls this a five-way control; direction count versus center-push interpretation is not confirmed. Neither five directional contacts nor center push is assumed.
+- type: analog_ministick
+  push: true
+  count: 1
+  location: handle
+  label: Pressable mini-joystick
+  source: https://eu.winctrl.com/view/goods-details.html?id=1765
+- type: rotary
+  count: 2
+  push: true
+  location: handle
+  label: Pressable rotary wheels
+  source: https://eu.winctrl.com/view/goods-details.html?id=1765
+  notes: Manufacturer specifies pressable rotary wheels; continuous analog versus incremental encoder behavior is not established.
+- type: button
+  count: 2
+  location: handle
+  label: Buttons
+  source: https://eu.winctrl.com/view/goods-details.html?id=1765
+- type: toggle
+  count: 2
+  ways: 3
+  location: handle
+  label: Three-position switches
+  source: https://eu.winctrl.com/view/goods-details.html?id=1765
+- type: lever
+  kind: throttle_single
+  analog: true
+  count: 1
+  location: handle
+  label: Main throttle axis with idle and afterburner detents
+  source: https://eu.winctrl.com/view/goods-details.html?id=1765
+- type: detent
+  count: 1
+  customizable: true
+  location: handle
+  label: Arc rail detent system
+  source: https://eu.winctrl.com/view/goods-details.html?id=1765
+controls_evidence:
+  coverage: partial
+  source: https://eu.winctrl.com/view/goods-details.html?id=1765
+  checked: '2026-10-19'
+  notes: 'Rendered exact ViperAce throttle grip 2.0 listing (model VIPER.TG.L.MET.2) specifies 10 physical switches excluding axes: 2 buttons, one 5-way switch, one pressable mini-joystick, two pressable rotary wheels, and two 3-position switches. It also names folding and locking mechanism controls; their electrical input behavior is unspecified. The main throttle has idle/work/afterburner zones; three included guide rails support different detent layouts, so only one installed rail/detent system is counted. Rotary wheels are represented as scroll wheels because no discrete encoder vs analog behavior is stated; thumb rotary count is zero for this model. Folding/locking hardware is not counted as electrical switches without confirmation. Rotary wheel input mode remains unknown. Five-way marketing terminology is preserved without guessing the split between directional contacts and center press.'
 hardware:
   axes: []
 connectivity:

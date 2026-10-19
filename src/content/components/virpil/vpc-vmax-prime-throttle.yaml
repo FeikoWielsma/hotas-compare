@@ -10,45 +10,71 @@ controls:
     kind: throttle_dual
     analog: true
     count: 2
+    label: Split throttle axes
+    source: https://virpil-controls.eu/vpc-vmax-prime-throttle.html
   - type: lever
     kind: other
     analog: true
     count: 1
     label: Auxiliary axis
+    source: https://virpil-controls.eu/vpc-vmax-prime-throttle.html
   - type: detent
-    count: 4
+    count: 1
     customizable: true
+    label: Preinstalled Aerobatics detent plate set
+    notes: This is one installed plate set, not a count of detent points; the Classic+, Warthog, and CosmoSim sets are supplied alternatives.
+    source: https://virpil-controls.eu/vpc-vmax-prime-throttle.html
   - type: hat
     ways: 4
     push: true
     count: 2
+    source: https://virpil-controls.eu/vpc-vmax-prime-throttle.html
   - type: hat
     ways: 2
     push: true
     count: 1
+    source: https://virpil-controls.eu/vpc-vmax-prime-throttle.html
   - type: analog_ministick
     push: true
+    count: 1
+    source: https://virpil-controls.eu/vpc-vmax-prime-throttle.html
   - type: rotary
-    count: 1
+    mode: analog
     push: true
+    count: 1
     label: Contactless dial axis
-  - type: encoder
-    count: 1
+    source: https://virpil-controls.eu/vpc-vmax-prime-throttle.html
+  - type: rotary
     push: true
+    count: 1
     label: Digital axis dial
+    notes: Manufacturer names this a digital axis dial; available sources do not define its rotation behavior as analog or a fixed-position selector.
+    source: https://virpil-controls.eu/vpc-vmax-prime-throttle.html
   - type: encoder
     count: 2
     push: true
     label: Encoder dials
+    source: https://virpil-controls.eu/vpc-vmax-prime-throttle.html
   - type: toggle
     count: 5
     ways: 3
     momentary: true
+    label: ON-OFF-ON momentary toggles
+    source: https://virpil-controls.eu/vpc-vmax-prime-throttle.html
   - type: rotary
     count: 1
+    mode: selector
     label: Mode switch dial
+    source: https://virpil-controls.eu/vpc-vmax-prime-throttle.html
   - type: button
     count: 12
+    label: Momentary push buttons
+    source: https://virpil-controls.eu/vpc-vmax-prime-throttle.html
+controls_evidence:
+  coverage: complete
+  source: https://virpil-controls.eu/vpc-vmax-prime-throttle.html
+  checked: '2026-10-19'
+  notes: 'Preinstalled VPC-203 input list checked. The flattened input list does not establish which listed buttons, toggles, encoders, dials, or hats sit on the handles versus panel, so locations are left unknown. The user manual confirms one Aerobatics detent plate set preinstalled and three alternate sets supplied; manual confirms one preinstalled Aerobatics plate set and three supplied alternatives; only the installed set is recorded and its detent point count is unspecified. The digital axis dial rotation behavior is unspecified. Alternate button/hat modules are not counted as installed. Manufacturer total of 49 button inputs includes mode/shift expansion and is not a physical button count.'
 hardware:
   gimbal: null
   sensor: contactless_magnetic

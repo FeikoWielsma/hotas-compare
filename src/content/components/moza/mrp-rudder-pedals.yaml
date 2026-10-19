@@ -7,16 +7,23 @@ mount:
   provides: null
   accepts: []
 controls:
-- type: lever
-  kind: other
-  analog: true
+- type: axis
+  kind: rudder
   count: 1
   label: Rudder pedals
-- type: lever
-  kind: brake
-  analog: true
+  source: https://support.mozaracing.com/en/support/solutions/articles/70000684204-mrp-rudder-pedals
+  location: other
+- type: axis
+  kind: toe_brake
   count: 2
   label: Toe brakes
+  source: https://support.mozaracing.com/en/support/solutions/articles/70000684204-mrp-rudder-pedals
+  location: other
+controls_evidence:
+  coverage: partial
+  source: https://support.mozaracing.com/en/support/solutions/articles/70000684204-mrp-rudder-pedals
+  checked: '2026-10-19'
+  notes: Official guide confirms Hall-effect yaw plus differential toe-brake control. Physical lever groups represent pedals, not added switches. I found no official confirmation whether this variant exposes toe-brake input as two separate axes or one combined axis; no standalone switches are represented. Pedal movements are represented explicitly as axes; they are not hand-operated levers or rocker switches.
 hardware:
   axes:
   - name: Yaw

@@ -3,6 +3,33 @@ name: MOZA MFY Yoke Pro
 category: yoke
 status: current
 handedness: n/a
+controls:
+  - type: hat
+    location: handle
+    ways: 8
+    count: 2
+    label: 8-way hat switches
+    source: https://us.mozaracing.com/pages/mfy-pro-yoke
+  - type: analog_ministick
+    location: handle
+    count: 2
+    label: Hall Effect thumbsticks
+    source: https://us.mozaracing.com/pages/mfy-pro-yoke
+  - type: button
+    location: handle
+    count: 2
+    label: Bumpers (LB/RB)
+    source: https://us.mozaracing.com/pages/mfy-pro-yoke
+  - type: trigger
+    location: handle
+    count: 2
+    label: Triggers
+    source: https://us.mozaracing.com/pages/mfy-pro-yoke
+controls_evidence:
+  coverage: partial
+  source: https://us.mozaracing.com/pages/mfy-pro-yoke
+  checked: '2026-10-19'
+  notes: Official specs enumerate two hats, two Hall Effect thumbsticks, two bumpers and two triggers. No touchscreen interaction is represented by the current controls schema; it is not counted as physical buttons. Thumbstick push and trigger stages remain unspecified.
 verification: draft
 sources:
 - https://mozaracing.com

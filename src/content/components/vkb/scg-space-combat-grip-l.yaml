@@ -8,20 +8,38 @@ mount:
   provides: vkb-rev-b
   accepts: []
 controls:
-- type: trigger
-  stages: 2
-- type: hat
-  ways: 4
-  push: true
-  count: 3
-- type: analog_ministick
-  push: true
-  count: 1
-- type: button
-  count: 4
-- type: trigger
-  stages: 1
-  label: Rapid-fire secondary trigger
+  - type: trigger
+    location: "grip"
+    stages: 2
+    action: "sequential"
+    label: "Main dual-action trigger"
+    source: "https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/"
+  - type: trigger
+    location: "grip"
+    label: "Rapid-fire trigger; actuation stage unspecified"
+    source: "https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/"
+  - type: hat
+    ways: 4
+    push: true
+    count: 3
+    location: "grip"
+    label: "Center-push hats"
+    source: "https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/"
+  - type: analog_ministick
+    push: true
+    location: "grip"
+    label: "A1 analog ministick"
+    source: "https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/"
+  - type: button
+    count: 3
+    location: "grip"
+    label: "Installed buttons; C1 supplied module is a replacement"
+    source: "https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/"
+controls_evidence:
+  coverage: complete
+  source: https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/
+  checked: '2026-10-19'
+  notes: "Exact Premium L/R; grip-only inventory. Europe listing specifies three installed buttons; its included C1 button and A1 hat modules are alternatives/replacements, not simultaneous installed controls. Some US marketing describes a different button configuration; this inventory follows the exact variant listing. Secondary trigger stage count unspecified."
 hardware:
   gimbal: null
   sensor: contactless_magnetic

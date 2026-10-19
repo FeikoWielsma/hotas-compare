@@ -9,23 +9,66 @@ mount:
   accepts: []
 controls:
 - type: trigger
+  location: grip
   stages: 2
+  action: sequential
+  label: Dual-action trigger
+  source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-omni-throttle-left-hand-us
+- type: trigger
+  location: grip
+  label: Rapid-fire trigger
+  notes: "Separate secondary trigger; stage/input count is not specified."
+  source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-omni-throttle-left-hand-us
 - type: hat
-  ways: 8
-  push: true
-  count: 2
-- type: hat
+  location: grip
   ways: 4
   push: true
+  count: 3
+  label: Four-way hats
+  source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-omni-throttle-left-hand-us
 - type: analog_ministick
+  location: grip
   push: true
+  label: Eight-way analog ministick
+  notes: "A1 location also described as an interchangeable hat module; do not count alternative module twice."
+  source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-omni-throttle-left-hand-us
 - type: button
+  location: grip
   count: 4
-- type: lever
-  kind: throttle_single
-  analog: true
+  label: Programmable grip buttons
+  notes: "Four programmable grip buttons are separately enumerated from the included C1 button module."
+  source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-omni-throttle-left-hand-us
+- type: button
+  location: grip
+  count: 1
+  label: C1 button module
+  source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-omni-throttle-left-hand-us
+- type: toggle
+  location: base
+  ways: 3
+  momentary: true
+  label: Auto-centering switch
+  source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-base-only-us
+- type: rotary
+  location: base
+  mode: analog
+  label: Throttle wheel
+  source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-base-only-us
 - type: encoder
-  count: 2
+  location: base
+  label: Rotary encoder
+  notes: "Center push not specified by manufacturer."
+  source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-base-only-us
+- type: button
+  location: base
+  count: 3
+  label: Base buttons
+  source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-base-only-us
+controls_evidence:
+  coverage: partial
+  source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-omni-throttle-left-hand-us
+  checked: '2026-10-19'
+  notes: "Exact US LH SKU ships with SCG GNX Premium Grip, preinstalled OTA and EVO base. Its Premium specification enumerates three center-push 4-way hats, four programmable buttons, a center-push 8-way analog ministick, a rapid-fire trigger, a C1 button module and an A1 hat module. C1 is recorded as one added button module. The additional A1 hat module is not represented because the listing does not give direction count and schema defaults omitted ways to 4. Base controls are sourced to its base-only listing. Rapid-fire trigger input count and encoder push are unspecified; the full inventory therefore stays partial."
 hardware:
   gimbal: null
   sensor: contactless_magnetic

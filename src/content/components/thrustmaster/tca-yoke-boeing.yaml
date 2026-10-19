@@ -6,13 +6,29 @@ release_year: 2021
 handedness: n/a
 mount: null
 controls:
-- type: trigger
-  stages: 1
-- type: button
-  count: 18
+- type: lever
+  kind: throttle_dual
+  analog: true
+  count: 2
+  location: base
+  label: Built-in throttle axes
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Yoke_Boeing/TCA_Yoke_Boeing_Edition_user_manual.pdf
 - type: hat
   ways: 8
+  count: 1
+  label: Point-of-view hat
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Yoke_Boeing/TCA_Yoke_Boeing_Edition_user_manual.pdf
+- type: analog_ministick
   push: true
+  count: 1
+  label: Mini-stick
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Yoke_Boeing/TCA_Yoke_Boeing_Edition_user_manual.pdf
+controls_evidence:
+  coverage: partial
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Yoke_Boeing/TCA_Yoke_Boeing_Edition_user_manual.pdf
+  checked: '2026-10-19'
+  notes: 'Product 4460209 manual gives an aggregate 18 action-button total, but the diagram does not verify 18 standalone pushbuttons; omitted from physical button count. Hat, pushable mini-stick and dual throttle axes are identified. Landing gear and Xbox controls are not fully classified, so coverage is partial.'
+
 hardware:
   gimbal: pendular
   sensor: hall

@@ -1,6 +1,7 @@
 import { deriveComponentStats, deriveControlsSummary, resolvePrice } from './derive';
 import type { ControlsSummary, ResolvedPrice } from './derive';
 import type { Component, Bundle, Region, UseCaseFit, Verdict } from './schema';
+import type { ControlSection } from './control-inventory';
 
 export interface CatalogItem {
   /** Collection ID, including the brand path; stable across region changes. */
@@ -21,6 +22,7 @@ export interface CatalogItem {
   hasMinistick: boolean;
   hasBrakeAxis: boolean;
   controlsSummary: ControlsSummary;
+  controlSections?: ControlSection[];
   sensor: string | null;
   gimbal: string | null;
   use_case_fit: UseCaseFit;
@@ -84,6 +86,7 @@ export async function loadCatalog(region: Region = 'EU', now = new Date()) {
       totalLogicalButtons: controlsSummary.totalLogicalButtons,
       hasMinistick: controlsSummary.hasMinistick, hasBrakeAxis: controlsSummary.hasBrakeAxis,
       controlsSummary, sensor: hardwareValues('sensor'), gimbal: hardwareValues('gimbal'),
+      controlSections: members.map(({ name, category, controls, controls_evidence }) => ({ name, category, controls, ...(controls_evidence ? { controls_evidence } : {}) })),
       use_case_fit, verdict: data.verdict ?? null, scores: data.verdict?.scores ?? null,
       images: data.images, componentIds: 'components' in data ? data.components : [],
       formerBrandNames: brand.former_names,

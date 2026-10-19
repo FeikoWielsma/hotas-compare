@@ -11,7 +11,7 @@ beforeEach(() => {
     mount_standards: [],
     components: [
       { id: 'test/base', data: ComponentSchema.parse({ brand: 'test', name: 'Base', category: 'base', hardware: { axes: [{ name: 'x' }, { name: 'y' }], gimbal: 'cam', sensor: 'hall' } }) },
-      { id: 'test/grip', data: ComponentSchema.parse({ brand: 'test', name: 'Grip', category: 'grip', controls: [{ type: 'analog_ministick' }, { type: 'lever', kind: 'brake' }] }) },
+      { id: 'test/grip', data: ComponentSchema.parse({ brand: 'test', name: 'Grip', category: 'grip', controls: [{ type: 'analog_ministick' }, { type: 'lever', kind: 'brake', analog: true }] }) },
     ],
     bundles: [{ id: 'test/combo', data: BundleSchema.parse({ brand: 'test', name: 'Combo', category: 'stick_combo', components: ['test/base', 'test/grip'], prices: [{ region: 'UK', currency: 'GBP', amount: 120, store: 'Test', verified: '2026-10-01' }] }) }],
   };
@@ -23,7 +23,10 @@ describe('catalog serialization', () => {
     expect(brands).toHaveLength(1);
     expect(mount_standards).toEqual([]);
     const combo = items.find((item) => item.id === 'test/combo')!;
-    expect(combo).toMatchObject({ item_type: 'bundle', totalAxes: 5, totalLogicalButtons: 1, hasMinistick: true, hasBrakeAxis: true, sensor: 'hall', gimbal: 'cam', brandName: 'Test Flight', verdict: null, scores: null });
+    expect(combo).toMatchObject({ item_type: 'bundle', totalAxes: 5, totalLogicalButtons: 0, hasMinistick: true, hasBrakeAxis: true, sensor: 'hall', gimbal: 'cam', brandName: 'Test Flight', verdict: null, scores: null });
+    expect(combo.controlSections?.map(s => s.name)).toEqual(['Base', 'Grip']);
+    expect(combo.controlSections?.[1].controls[0]).toMatchObject({ type: 'analog_ministick' });
+    expect(combo.controlSections?.[1].controls[0]).not.toHaveProperty('push');
     expect(combo.resolvedPrice.price?.amount).toBe(120);
     expect(JSON.parse(JSON.stringify(items))).toEqual(items);
     expect(resolveCatalogRegion(combo, 'EU').resolvedPrice.price).toBeUndefined();

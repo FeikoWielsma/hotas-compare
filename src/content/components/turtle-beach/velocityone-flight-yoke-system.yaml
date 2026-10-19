@@ -6,43 +6,82 @@ handedness: n/a
 mount: null
 controls:
 - type: lever
-  kind: throttle_dual
+  kind: other
   analog: true
   count: 4
-  label: Throttle quadrant levers
-- type: hat
-  ways: 8
-  count: 2
-  label: POV switches
+  label: Rotational quadrant levers
+  source: https://support.turtlebeach.com/articles/en_US/Knowledge/4409140258715-VelocityOne-Flight-Features-And-Controls
+  push: true
+  notes: Each lever activates an additional contact in its lower detent. This is not a separately actuated standalone push button.
+- type: lever
+  kind: other
+  analog: true
+  count: 3
+  location: base
+  label: TPM linear throttle, propeller, and mixture levers
+  source: https://support.turtlebeach.com/articles/en_US/Knowledge/4409140258715-VelocityOne-Flight-Features-And-Controls
 - type: hat
   ways: 4
   count: 2
-  label: HAT switches
+  location: grip
+  label: POV-1 and POV-2 (four cardinal directions documented)
+  source: https://support.turtlebeach.com/articles/en_US/Knowledge/4409140258715-VelocityOne-Flight-Features-And-Controls
+- type: hat
+  ways: 4
+  count: 2
+  location: grip
+  label: HAT-1 and HAT-2
+  source: https://support.turtlebeach.com/articles/en_US/Knowledge/4409140258715-VelocityOne-Flight-Features-And-Controls
+- type: trigger
+  count: 2
+  location: grip
+  label: LT and RT rudder controls
+  source: https://support.turtlebeach.com/articles/en_US/Knowledge/4409140258715-VelocityOne-Flight-Features-And-Controls
 - type: button
-  count: 18
-  label: Front, rear, and quadrant buttons
-- type: encoder
+  count: 2
+  location: grip
+  label: B1 and B2 yoke-handle buttons
+  source: https://support.turtlebeach.com/articles/en_US/Knowledge/4409140258715-VelocityOne-Flight-Features-And-Controls
+- type: button
+  count: 2
+  location: grip
+  label: LB and RB yoke bumpers
+  source: https://support.turtlebeach.com/articles/en_US/Knowledge/4409140258715-VelocityOne-Flight-Features-And-Controls
+- type: button
+  count: 10
+  location: base
+  label: Quadrant buttons B3-B12
+  source: https://support.turtlebeach.com/articles/en_US/Knowledge/4409140258715-VelocityOne-Flight-Features-And-Controls
+- type: button
+  count: 4
+  location: panel
+  label: FMD menu up, down, select, and back buttons
+  source: https://support.turtlebeach.com/articles/en_US/Knowledge/4409140258715-VelocityOne-Flight-Features-And-Controls
+- type: rotary
+  mode: analog
   count: 1
+  location: base
   label: Trim wheel
+  source: https://support.turtlebeach.com/articles/en_US/Knowledge/4409140258715-VelocityOne-Flight-Features-And-Controls
+controls_evidence:
+  coverage: partial
+  source: https://support.turtlebeach.com/articles/en_US/Knowledge/4409140258715-VelocityOne-Flight-Features-And-Controls
+  checked: '2026-10-19'
+  notes: 'Records controls named in the support guide: handle POV/HATs, triggers, seven throttle/prop/mixture levers, quadrant buttons and detents, Xbox controls, FMD buttons, and trim wheel. Manufacturer also advertises 18 assignable buttons but does not reconcile that total with physical-control naming; aggregate was not used. Trigger behavior, POV diagonal gating/push, and wheel encoding are unspecified. Rotary analog approximates the trim-wheel axis because schema has no wheel-axis type. Xbox navigation mappings may reuse flight controls, so unverified console-only button groups are not counted again. Lever detent contacts stay attached to their levers. Hardware axis names cover the ten directly documented yoke/quadrant movements; rudder-trigger output encoding remains unconfirmed. Prior toe-brake and twist axis names did not belong to this yoke system and were removed.'
 hardware:
   gimbal: null
   sensor: contactless_magnetic
   axes:
   - name: Pitch
-    sensor: contactless_magnetic
   - name: Roll
-    sensor: contactless_magnetic
-  - name: Twist
-  - name: Left Toe Brake
-  - name: Right Toe Brake
-  - name: Throttle 1
-    sensor: variable_resistor
-  - name: Throttle 2
-    sensor: variable_resistor
-  - name: Throttle 3
-    sensor: variable_resistor
-  - name: Throttle 4
-    sensor: variable_resistor
+  - name: Quadrant lever 1
+  - name: Quadrant lever 2
+  - name: Quadrant lever 3
+  - name: Quadrant lever 4
+  - name: Vernier throttle
+  - name: Vernier propeller
+  - name: Vernier mixture
+  - name: Trim wheel
   force_adjustable: null
   cams_swappable: null
   damping: null

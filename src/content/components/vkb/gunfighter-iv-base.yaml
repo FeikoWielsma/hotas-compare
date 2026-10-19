@@ -7,11 +7,12 @@ handedness: n/a
 mount:
   provides: vkb-rev-c
   accepts: []
-controls:
-- type: encoder
-  count: 2
-- type: button
-  count: 3
+controls: []
+controls_evidence:
+  coverage: complete
+  source: https://vkbsimcontrollers.com/products/gunfighter-mk-iv-base-only-us
+  checked: '2026-10-19'
+  notes: "Base-only package explicitly excludes the grip; manufacturer lists only gimbal, cams, springs, controller, cables and tabletop plate, with no installed buttons, hats, switches or wheels on the bare mechanical base. Thus physical standalone base controls: none. Grip controls are separate and must not be attributed to this base."
 hardware:
   gimbal: dual_cam
   sensor: contactless_magnetic

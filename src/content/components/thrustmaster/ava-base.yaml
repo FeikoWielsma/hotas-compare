@@ -8,7 +8,16 @@ mount:
   provides: tm-din5
 controls:
 - type: button
-  count: 2
+  count: 1
+  location: base
+  label: Calibration button
+  notes: Rear service/calibration control; not a flight-binding button.
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/AVA_Base/AVA_Base_User_Manual.pdf
+controls_evidence:
+  coverage: complete
+  source: https://www.thrustmaster.com/products/ava-base/
+  checked: '2026-10-19'
+  notes: Bare AVA Base only, without a grip. Two control axes; the only documented physical button is the rear calibration button, which is not a flight input.
 hardware:
   gimbal: modular_cam_gimbal
   sensor: hall

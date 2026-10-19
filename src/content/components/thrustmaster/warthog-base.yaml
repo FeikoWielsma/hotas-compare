@@ -7,6 +7,11 @@ handedness: n/a
 mount:
   provides: tm-din5
 controls: []
+controls_evidence:
+  coverage: complete
+  source: https://ts.thrustmaster.com/download/accessories/pc/hotas/manual/HOTAS_Warthog/HOTAS_Warthog_Manual.pdf
+  checked: '2026-10-19'
+  notes: Standalone magnetic flight base/gimbal only; the manual identifies the grip as detachable and documents the grip controls separately. The base itself has no standalone buttons, hats, switches, or levers. Its X/Y axes are recorded under hardware.
 hardware:
   gimbal: ball_joint
   sensor: hall

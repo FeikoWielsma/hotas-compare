@@ -6,16 +6,46 @@ release_year: 2025
 handedness: right
 mount: null
 controls:
+- type: hat
+  count: 2
+  location: grip
+  label: Grip hat switches
+  source: https://www.thrustmaster.com/en-us/products/sol-r-1-flightstick/
 - type: trigger
+  count: 1
+  location: grip
   stages: 2
-- type: hat
-  ways: 8
-  push: true
-- type: hat
-  ways: 4
-  push: true
-- type: button
-  count: 6
+  label: Dual-position trigger
+  source: https://www.thrustmaster.com/en-us/products/sol-r-1-flightstick/
+- type: trigger
+  count: 1
+  location: grip
+  stages: 1
+  label: Secondary trigger
+  source: https://www.thrustmaster.com/en-us/products/sol-r-1-flightstick/
+- type: analog_ministick
+  count: 1
+  location: grip
+  label: Ministick
+  source: https://www.thrustmaster.com/en-us/products/sol-r-1-flightstick/
+- type: rotary
+  count: 1
+  location: grip
+  label: Thumbwheel
+  notes: Manufacturer identifies a thumbwheel axis but does not specify analog versus incremental reporting.
+  source: https://www.thrustmaster.com/en-us/products/sol-r-1-flightstick/
+- type: lever
+  kind: throttle_single
+  analog: true
+  count: 1
+  location: base
+  label: Central throttle
+  source: https://www.thrustmaster.com/en-us/products/sol-r-1-flightstick/
+controls_evidence:
+  coverage: partial
+  source: https://www.thrustmaster.com/en-us/products/sol-r-1-flightstick/
+  checked: '2026-10-19'
+  notes: Product combines removable grip and base. Grip's two triggers, two hats, ministick and thumbwheel are identified. Hat directions and push properties remain unknown and omitted. Manufacturer calls thumbwheel a virtual axis; rotary mode is unknown. Marketing total of 44 assignable actions is not a physical-button count; base button inventory is unresolved.
 hardware:
   gimbal: ball_joint
   sensor: hall

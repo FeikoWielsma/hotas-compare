@@ -6,27 +6,48 @@ release_year: 2026
 handedness: n/a
 mount: null
 controls:
-  - type: lever
-    kind: throttle_dual
-    analog: true
-    count: 2
-  - type: lever
-    kind: other
-    analog: true
-    count: 1
-    label: Auxiliary axis
-  - type: hat
-    ways: 4
-    push: true
-    count: 3
-  - type: analog_ministick
-    push: true
-  - type: rotary
-    count: 2
-    push: true
-    label: Axis dials
-  - type: button
-    count: 4
+- type: lever
+  kind: throttle_dual
+  analog: true
+  count: 2
+  label: Throttle axes
+  source: https://virpil-controls.eu/vpc-cdt-vmax-throttle.html
+- type: lever
+  kind: other
+  analog: true
+  count: 1
+  label: Auxiliary axis
+  source: https://virpil-controls.eu/vpc-cdt-vmax-throttle.html
+- type: hat
+  ways: 4
+  push: true
+  count: 3
+  source: https://virpil-controls.eu/vpc-cdt-vmax-throttle.html
+- type: analog_ministick
+  push: true
+  count: 1
+  source: https://virpil-controls.eu/vpc-cdt-vmax-throttle.html
+- type: detent
+  count: 2
+  customizable: true
+  label: Throttle idle and afterburner detents
+  source: https://virpil-controls.eu/vpc-cdt-vmax-throttle.html
+- type: rotary
+  mode: analog
+  count: 2
+  push: true
+  label: Axis dials
+  source: https://virpil-controls.eu/vpc-cdt-vmax-throttle.html
+- type: button
+  count: 4
+  label: Momentary buttons
+  source: https://virpil-controls.eu/vpc-cdt-vmax-throttle.html
+controls_evidence:
+  coverage: complete
+  source: https://virpil-controls.eu/vpc-cdt-vmax-throttle.html
+  checked: '2026-10-19'
+  notes: 'Manufacturer lists 4 momentary buttons, 3 push hats, analogue ministick, 2 axis dials with push, 2 throttle axes and 1 auxiliary axis. Preinstalled mechanical throttle detents are adjustable between idle and afterburner points; the included CosmoSim plate is an alternative with one central detent.'
+
 hardware:
   gimbal: null
   sensor: contactless

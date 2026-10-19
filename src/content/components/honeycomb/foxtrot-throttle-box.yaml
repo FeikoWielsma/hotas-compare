@@ -10,17 +10,28 @@ controls:
   kind: throttle_dual
   analog: true
   count: 4
-  label: Throttle levers
+  label: Four throttle levers with reverse-thrust detents
+  location: handle
+  source: https://flyhoneycomb.com/products/foxtrot-takeoff-kit
 - type: lever
   kind: other
   analog: false
   count: 1
-  label: Parking brake
+  label: Parking-brake lever
+  location: panel
+  source: https://flyhoneycomb.com/products/foxtrot-takeoff-kit
 - type: lever
   kind: other
   analog: false
   count: 1
-  label: Landing gear
+  label: Landing-gear lever
+  location: panel
+  source: https://flyhoneycomb.com/products/foxtrot-takeoff-kit
+controls_evidence:
+  coverage: partial
+  source: https://flyhoneycomb.com/products/foxtrot-takeoff-kit
+  checked: '2026-10-19'
+  notes: Throttle Box is also sold bundled with Foxtrot Takeoff Kit; source page describes four levers, parking brake, gear lever, and engine switches, but does not state how many engine switches or their positions. Engine switches are mentioned in the bundle description but their count and positions are unspecified, so no count is entered. No standalone button/hat counts can be substantiated from accessible official text.
 hardware:
   gimbal: null
   sensor: null

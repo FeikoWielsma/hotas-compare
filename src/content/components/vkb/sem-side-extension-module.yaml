@@ -10,13 +10,31 @@ controls:
   kind: flap
   analog: true
   count: 2
+  location: panel
+  label: Multi-function axes (two physical axes)
+  source: https://vkbsimcontrollers.com/products/gnx-sem-side-extension-module-us
 - type: toggle
-  count: 3
-  ways: 3
+  count: 2
+  location: panel
+  label: K-switches with integrated central pushes; position/action details unspecified
+  source: https://vkbsimcontrollers.com/products/gnx-sem-side-extension-module-us
+  push: true
 - type: button
-  count: 4
+  count: 7
+  location: panel
+  label: Standalone push buttons (K-switch center pushes are integrated)
+  source: https://vkbsimcontrollers.com/products/gnx-sem-side-extension-module-us
 - type: rotary
   count: 1
+  mode: selector
+  location: panel
+  label: Rotary switch; position count unspecified
+  source: https://vkbsimcontrollers.com/products/gnx-sem-side-extension-module-us
+controls_evidence:
+  coverage: partial
+  source: https://vkbsimcontrollers.com/products/gnx-sem-side-extension-module-us
+  checked: '2026-10-19'
+  notes: Exact GNX SEM. Manufacturer specifies two multifunction axes, seven standalone push buttons, two K-switches with central push, and one rotary switch; logical output totals vary by configuration and are not physical button counts. K-switch position/momentary behavior and exact axis functions remain unclear. Center pushes are stored on their K-switch groups.
 hardware:
   gimbal: null
   sensor: contactless_magnetic

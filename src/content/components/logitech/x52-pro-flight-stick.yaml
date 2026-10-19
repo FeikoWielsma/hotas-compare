@@ -5,16 +5,50 @@ status: current
 handedness: right
 mount: null
 controls:
-- type: trigger
-  stages: 2
-- type: hat
-  ways: 8
-  push: true
-- type: hat
-  ways: 4
-  push: true
-- type: button
-  count: 6
+  - type: trigger
+    location: grip
+    stages: 2
+    label: Two-stage metal trigger
+    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+  - type: button
+    location: grip
+    label: Fire button(s)
+    count: 2
+    notes: Product feature sheet labels two fire buttons; not inferred from programmable button totals.
+    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+  - type: button
+    location: grip
+    label: Missile launcher button
+    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+  - type: hat
+    location: grip
+    ways: 8
+    count: 2
+    push: false
+    label: Hat switches
+    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+  - type: toggle
+    location: grip
+    ways: 3
+    label: Mode selector
+    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+  - type: toggle
+    location: grip
+    count: 3
+    ways: 2
+    momentary: true
+    label: Spring-loaded base switches
+    notes: Three spring-loaded switches provide six programmed commands (each switch has two directions).
+    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+  - type: button
+    location: grip
+    label: Pinkie switch
+    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+controls_evidence:
+  coverage: partial
+  source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+  checked: '2026-10-19'
+  notes: Shared X52 family manual/product sheet checked. Stick controls documented; distinguish X52 Pro fire button layout from standard X52 where exact generation images/mapping are ambiguous.
 hardware:
   gimbal: ball_joint
   sensor: hall

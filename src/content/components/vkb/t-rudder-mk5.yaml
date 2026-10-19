@@ -5,7 +5,18 @@ status: current
 release_year: 2022
 handedness: n/a
 mount: null
-controls: []
+controls:
+- type: axis
+  kind: rudder
+  count: 1
+  location: other
+  label: Pedal rudder axis; single analog Z axis
+  source: https://vkbsimcontrollers.com/products/t-rudders-mk-v-rudder-pedals-us
+controls_evidence:
+  coverage: complete
+  source: https://vkbsimcontrollers.com/products/t-rudders-mk-v-rudder-pedals-us
+  checked: '2026-10-19'
+  notes: Exact Mk.V pedal pair. Manufacturer documents one analog Z axis and explicitly says there are no toe brakes; no separate switches or push controls are documented. Pedal movements are represented explicitly as axes; they are not hand-operated levers or rocker switches.
 hardware:
   gimbal: cam
   sensor: contactless_magnetic

@@ -5,16 +5,33 @@ status: current
 handedness: right
 mount: null
 controls:
-- type: trigger
-  stages: 2
-- type: hat
-  ways: 8
-  push: true
-  count: 4
-- type: analog_ministick
-  push: true
-- type: button
-  count: 8
+  - type: trigger
+    location: grip
+    stages: 2
+    label: Trigger
+    source: https://www.logitech.com/assets/65324/x56-hotas.pdf
+  - type: button
+    location: grip
+    count: 4
+    label: A, B, D and pinkie controls
+    notes: Manual labels stick buttons in controller test, while diagram identifies pinkie and flying-pinkie contacts; firmware names are not treated as twelve logical bindings.
+    source: https://www.logitech.com/assets/65324/x56-hotas.pdf
+  - type: hat
+    location: grip
+    ways: 8
+    count: 2
+    label: POV hats H1 and H2
+    source: https://www.logitech.com/assets/65324/x56-hotas.pdf
+  - type: analog_ministick
+    location: grip
+    push: true
+    label: Thumb mini analog stick
+    source: https://www.logitech.com/assets/65324/x56-hotas.pdf
+controls_evidence:
+  coverage: complete
+  source: https://www.logitech.com/assets/65324/x56-hotas.pdf
+  checked: '2026-10-19'
+  notes: X56 user manual overview checked for exact separate unit. Rotary axes and inset button labeling are not clear enough to assert separate click-button counts; installed control types are otherwise covered.
 hardware:
   gimbal: ball_joint
   sensor: hall

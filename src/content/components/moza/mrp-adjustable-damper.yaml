@@ -3,6 +3,12 @@ name: MOZA MRP Adjustable Damper
 category: module
 status: current
 handedness: n/a
+controls: []
+controls_evidence:
+  coverage: complete
+  source: https://eu.mozaracing.com/products/mrp-damper
+  checked: '2026-10-19'
+  notes: Optional mechanical pedal damper accessory; it adds adjustable resistance and has no user-operated electrical controls or inputs.
 verification: draft
 sources:
 - https://mozaracing.com

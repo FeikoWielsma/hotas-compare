@@ -5,16 +5,34 @@ status: current
 handedness: n/a
 mount: null
 controls:
-- type: hat
-  ways: 8
-  push: false
-- type: rocker
-  count: 6
-- type: button
-  count: 2
-- type: toggle
-  ways: 3
-  count: 1
+  - type: hat
+    location: grip
+    ways: 8
+    push: false
+    label: POV hat
+    source: https://origin-saitek2.logitech.com/uk/blog/wp-content/uploads/2014/08/07-14.pdf
+  - type: rocker
+    location: grip
+    count: 3
+    analog: false
+    label: B1/B2 and paired rockers
+    source: https://origin-saitek2.logitech.com/uk/blog/wp-content/uploads/2014/08/07-14.pdf
+  - type: button
+    location: grip
+    count: 2
+    label: Yoke buttons
+    source: https://origin-saitek2.logitech.com/uk/blog/wp-content/uploads/2014/08/07-14.pdf
+  - type: toggle
+    location: base
+    ways: 3
+    count: 1
+    label: Mode selector
+    source: https://origin-saitek2.logitech.com/uk/blog/wp-content/uploads/2014/08/07-14.pdf
+controls_evidence:
+  coverage: complete
+  source: https://origin-saitek2.logitech.com/uk/blog/wp-content/uploads/2014/08/07-14.pdf
+  checked: '2026-10-19'
+  notes: Primary product/manual evidence checked; coverage applies to the physical inventory described by this exact component.
 hardware:
   gimbal: shaft
   sensor: potentiometer

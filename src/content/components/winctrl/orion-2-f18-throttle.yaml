@@ -6,17 +6,14 @@ handedness: n/a
 mount:
   provides: null
   accepts: []
-controls:
-  - type: lever
-    kind: throttle_dual
-    analog: true
-    count: 2
-  - type: detent
-    count: 2
-    customizable: true
-    label: Finger lifts and afterburner detents
-  - type: trigger
-    count: 2
+controls: []
+controls_evidence:
+  coverage: partial
+  source: https://eu.winctrl.com/view/goods-details.html?id=375
+  checked: '2026-10-19'
+  notes: >-
+    Rendered exact Orion2 NavyAce combo page only names selectable throttle base and grip options; it does not describe the F/A-18 dual-handle control layout. Generic Orion2 detent information does not verify this exact installed handle pair; no unsupported counts are asserted.
+
 hardware:
   axes: []
 connectivity:
@@ -40,5 +37,3 @@ images:
   - file: /images/winctrl/orion-2-f18-throttle.jpg
     source: https://eu.winctrl.com/view/goods-details.html?id=375
     caption: Orion 2 FA-18 Dual Throttle Handles
-
-images: []

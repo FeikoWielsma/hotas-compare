@@ -7,21 +7,32 @@ mount:
   provides: null
   accepts: []
 controls:
-  - type: lever
-    kind: other
-    analog: true
+  - type: axis
+    kind: rudder
     count: 1
-    label: Main rudder axis
-  - type: lever
+    location: other
+    label: Main yaw axis
+    source: https://eu.winctrl.com/view/goods-details.html?id=543
+  - type: axis
     kind: other
-    analog: true
-    count: 1
-    label: Pedal axis
+    count: 2
+    location: other
+    label: Left and right pedal pitch axes (brake function not specified)
+    source: https://eu.winctrl.com/view/goods-details.html?id=543
+controls_evidence:
+  coverage: complete
+  source: https://eu.winctrl.com/view/goods-details.html?id=543
+  checked: '2026-10-19'
+  notes: >-
+    Rendered official Orion/Skywalker pedal page explicitly gives a 38-degree main axis, independently pivoting left/right pedal footrests (30-degree pitch), and Hall sensors on main and pedal axes. Three selectable control modes are mechanical spring/return configurations, not extra electrical switches. Product badge may read Skywalker or Orion2; manufacturer says performance parameters are the same. Whether the pedal pitch axes serve as toe brakes is unspecified.
+
 hardware:
   axes:
-    - name: Main
+    - name: Rudder
       sensor: hall
-    - name: Pedal
+    - name: Left pedal pitch
+      sensor: hall
+    - name: Right pedal pitch
       sensor: hall
 connectivity:
   standalone_usb: true

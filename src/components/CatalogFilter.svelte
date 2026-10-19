@@ -48,7 +48,7 @@
 </script>
 
 <section aria-label="Hardware catalog">
-  <div class="search-bar"><label class="search">SEARCH CATALOG<input type="search" bind:value={search} placeholder="Search hardware, brands, sensors…" /></label><label>SORT BY<select bind:value={sort}><option value="name">Name A–Z</option><option value="price-low">Price: Low–High</option><option value="price-high">Price: High–Low</option><option value="buttons">Logical Buttons</option><option value="axes">Axes</option><option value="score">Overall Score</option></select></label></div>
+  <div class="search-bar"><label class="search">SEARCH CATALOG<input type="search" bind:value={search} placeholder="Search hardware, brands, sensors…" /></label><label>SORT BY<select bind:value={sort}><option value="name">Name A–Z</option><option value="price-low">Price: Low–High</option><option value="price-high">Price: High–Low</option><option value="buttons">Estimated logical inputs</option><option value="axes">Axes</option><option value="score">Overall Score</option></select></label></div>
   <fieldset class="categories"><legend>Hardware category</legend><div class="pills">{#each Object.keys(categories) as name}<button type="button" class:active={category === name} aria-pressed={category === name} onclick={() => category = name}>{name}</button>{/each}</div></fieldset>
   <div class="workspace"><aside aria-label="Catalog filters">
     <div class="filter-heading"><span>REFINE YOUR LOADOUT</span><button type="button" class="reset" onclick={reset}>Reset filters</button></div>

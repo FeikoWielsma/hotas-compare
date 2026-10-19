@@ -54,29 +54,41 @@ export const BudgetTierEnum = z.enum(['budget', 'mid', 'high_end', 'enthusiast']
 export type BudgetTier = z.infer<typeof BudgetTierEnum>;
 
 // Controls Schema
+const controlDetails = {
+  location: z.enum(['grip', 'base', 'handle', 'panel', 'other']).optional(),
+  notes: z.string().optional(),
+  source: z.url().optional(),
+};
+
 export const TriggerControlSchema = z.object({
+  ...controlDetails,
   type: z.literal('trigger'),
-  stages: z.number().int().min(1).default(1),
+  count: z.number().int().min(1).default(1).optional(),
+  stages: z.number().int().min(1).optional(),
+  action: z.enum(['sequential', 'bidirectional', 'flip']).optional(),
   flip: z.boolean().optional(),
   label: z.string().optional(),
 });
 
 export const HatControlSchema = z.object({
+  ...controlDetails,
   type: z.literal('hat'),
-  ways: z.number().int().min(2).max(8).default(4),
-  push: z.boolean().default(false),
+  ways: z.number().int().min(2).max(8).optional(),
+  push: z.boolean().optional(),
   count: z.number().int().min(1).default(1),
   label: z.string().optional(),
 });
 
 export const MinistickControlSchema = z.object({
+  ...controlDetails,
   type: z.literal('analog_ministick'),
-  push: z.boolean().default(true),
+  push: z.boolean().optional(),
   count: z.number().int().min(1).default(1),
   label: z.string().optional(),
 });
 
 export const ButtonControlSchema = z.object({
+  ...controlDetails,
   type: z.literal('button'),
   count: z.number().int().min(1).default(1),
   label: z.string().optional(),
@@ -84,36 +96,48 @@ export const ButtonControlSchema = z.object({
 });
 
 export const LeverControlSchema = z.object({
+  ...controlDetails,
   type: z.literal('lever'),
-  kind: z.enum(['brake', 'throttle_single', 'throttle_dual', 'flap', 'speedbrake', 'other']).default('other'),
-  analog: z.boolean().default(true),
+  kind: z.enum(['brake', 'throttle_single', 'throttle_dual', 'flap', 'speedbrake', 'collective', 'other']).default('other'),
+  analog: z.boolean().optional(),
+  push: z.boolean().optional(),
+  positions: z.number().int().min(2).optional(),
+  momentary: z.boolean().optional(),
   count: z.number().int().min(1).default(1),
   label: z.string().optional(),
 });
 
 export const EncoderControlSchema = z.object({
+  ...controlDetails,
   type: z.literal('encoder'),
   count: z.number().int().min(1).default(1),
   push: z.boolean().optional(),
+  push_stages: z.number().int().min(1).optional(),
   label: z.string().optional(),
 });
 
 export const ToggleControlSchema = z.object({
+  ...controlDetails,
   type: z.literal('toggle'),
   count: z.number().int().min(1).default(1),
-  ways: z.number().int().min(2).max(3).default(2),
+  ways: z.number().int().min(2).max(3).optional(),
   momentary: z.boolean().optional(),
+  push: z.boolean().optional(),
   label: z.string().optional(),
 });
 
 export const SliderControlSchema = z.object({
+  ...controlDetails,
   type: z.literal('slider'),
   count: z.number().int().min(1).default(1),
+  analog: z.boolean().optional(),
+  positions: z.number().int().min(2).optional(),
   center_detent: z.boolean().optional(),
   label: z.string().optional(),
 });
 
 export const DetentControlSchema = z.object({
+  ...controlDetails,
   type: z.literal('detent'),
   count: z.number().int().min(1).default(1),
   customizable: z.boolean().optional(),
@@ -121,15 +145,49 @@ export const DetentControlSchema = z.object({
 });
 
 export const RockerControlSchema = z.object({
+  ...controlDetails,
   type: z.literal('rocker'),
   count: z.number().int().min(1).default(1),
+  analog: z.boolean().optional(),
   push: z.boolean().optional(),
   label: z.string().optional(),
 });
 
 export const RotaryControlSchema = z.object({
+  ...controlDetails,
   type: z.literal('rotary'),
+  mode: z.enum(['analog', 'selector']).optional(),
+  positions: z.number().int().min(2).optional(),
+  push: z.boolean().optional(),
   count: z.number().int().min(1).default(1),
+  label: z.string().optional(),
+});
+
+export const ScrollWheelControlSchema = z.object({
+  ...controlDetails,
+  type: z.literal('scroll_wheel'),
+  count: z.number().int().min(1).default(1),
+  push: z.boolean().optional(),
+  push_stages: z.number().int().min(1).optional(),
+  label: z.string().optional(),
+});
+
+// Preserve documented switch counts when the manufacturer does not identify the mechanism.
+export const SwitchControlSchema = z.object({
+  ...controlDetails,
+  type: z.literal('switch'),
+  count: z.number().int().min(1).default(1),
+  positions: z.number().int().min(2).optional(),
+  push: z.boolean().optional(),
+  momentary: z.boolean().optional(),
+  label: z.string().optional(),
+});
+
+export const AxisControlSchema = z.object({
+  ...controlDetails,
+  type: z.literal('axis'),
+  count: z.number().int().min(1).default(1),
+  kind: z.enum(['rudder', 'toe_brake', 'twist', 'roll', 'pitch', 'other']),
   label: z.string().optional(),
 });
 
@@ -145,6 +203,9 @@ export const ControlItemSchema = z.discriminatedUnion('type', [
   DetentControlSchema,
   RockerControlSchema,
   RotaryControlSchema,
+  ScrollWheelControlSchema,
+  SwitchControlSchema,
+  AxisControlSchema,
 ]);
 export type ControlItem = z.infer<typeof ControlItemSchema>;
 
@@ -294,6 +355,12 @@ export const ComponentSchema = z.object({
   handedness: HandednessEnum.default('n/a'),
   mount: MountSchema,
   controls: z.array(ControlItemSchema).default([]),
+  controls_evidence: z.object({
+    coverage: z.enum(['partial', 'complete']),
+    source: z.url(),
+    checked: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+    notes: z.string().optional(),
+  }).optional(),
   hardware: HardwareSchema,
   connectivity: ConnectivitySchema.default({ standalone_usb: true }),
   software: z.string().optional(),

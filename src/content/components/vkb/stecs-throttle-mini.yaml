@@ -1,23 +1,62 @@
 brand: vkb
-name: STECS Mini Throttle
+name: STECS Modern Throttle System Mk.II Mini
 category: throttle
 status: current
 release_year: 2023
 handedness: ambi
 mount: null
 controls:
-- type: lever
-  kind: throttle_single
-  analog: true
-- type: hat
-  ways: 8
-  push: true
-  count: 2
-- type: button
-  count: 6
-- type: encoder
-  count: 1
-  push: true
+  - type: lever
+    kind: "throttle_single"
+    analog: true
+    location: "handle"
+    label: "Main throttle lever"
+    source: "https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-mini-us"
+  - type: hat
+    ways: 4
+    push: true
+    count: 2
+    location: "grip"
+    label: "MTG-R center-push hats"
+    source: "https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-mini-us"
+  - type: analog_ministick
+    push: true
+    location: "grip"
+    label: "MTG-R analog ministick; 2-axis"
+    source: "https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-mini-us"
+  - type: rotary
+    mode: "analog"
+    count: 1
+    location: "grip"
+    label: "MTG-R analog wheel axis"
+    source: "https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-mini-us"
+  - type: encoder
+    count: 2
+    location: "grip"
+    label: "MTG-L wheel encoders; push unspecified"
+    source: "https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-mini-us"
+  - type: button
+    count: 6
+    location: "grip"
+    label: "MTG-L/MTG-R push buttons (2 + 4)"
+    source: "https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-mini-us"
+  - type: button
+    count: 2
+    location: "base"
+    label: "Base push buttons"
+    source: "https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-mini-us"
+  - type: rotary
+    mode: "selector"
+    positions: 5
+    count: 1
+    location: "base"
+    label: "Five-position base rotary switch"
+    source: "https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-mini-us"
+controls_evidence:
+  coverage: partial
+  source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-mini-us
+  checked: '2026-10-19'
+  notes: "Exact STECS Modern Throttle System Mk.II Mini (current product page/revision); Mk.I differs. The grips/base and one main lever are enumerated. Page also states two base analog axes and one grip analog wheel axis without clear allocation of base axes to installed mechanisms; inventory remains partial. One detent frame and multiple interchangeable profiles ship, so no detent count is recorded."
 hardware:
   gimbal: null
   sensor: contactless_magnetic
@@ -98,4 +137,4 @@ sources:
 images:
   - file: /images/vkb/stecs-throttle-mini.jpg
     source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-mini-us
-    caption: STECS Mini Throttle
+    caption: STECS Mini Throttle\n

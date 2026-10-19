@@ -5,11 +5,23 @@ status: current
 handedness: n/a
 mount: null
 controls:
-- type: lever
-  kind: brake
-  analog: true
+- type: axis
+  kind: toe_brake
   count: 2
-  label: Toe brakes
+  label: Independent left and right toe-brake axes
+  source: https://slawdevice.com/en/rudder-pedals/48-pre-order-rh-rotor-v2-rudder-pedals.html
+  location: other
+- type: axis
+  kind: rudder
+  count: 1
+  location: other
+  label: Rudder pedal axis
+  source: https://slawdevice.com/en/rudder-pedals/48-pre-order-rh-rotor-v2-rudder-pedals.html
+controls_evidence:
+  coverage: complete
+  source: https://slawdevice.com/en/rudder-pedals/48-pre-order-rh-rotor-v2-rudder-pedals.html
+  checked: '2026-10-19'
+  notes: 'RH Rotor V2 has three analog sensed axes: rudder plus two separate toe brakes. The controls schema has no generic axis item for rudder, so controls lists only the two brake pedals. Optional hydraulic damper is not installed/included and is not an input. Pedal movements are represented explicitly as axes; they are not hand-operated levers or rocker switches.'
 hardware:
   gimbal: cam
   sensor: contactless_magnetic

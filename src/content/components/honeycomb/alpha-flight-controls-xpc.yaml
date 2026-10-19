@@ -6,24 +6,33 @@ handedness: n/a
 mount: null
 controls:
 - type: hat
-  count: 2
+  count: 1
   ways: 8
-  label: Handle POV switches
+  label: Left-handle POV switch
+  location: handle
+  source: https://flyhoneycomb.com/products/alpha-flight-controls-xpc
 - type: rocker
   count: 4
-  ways: 2
-  label: Handle rocker switches
+  label: Two vertical and two horizontal 2-way rockers
+  location: handle
+  source: https://flyhoneycomb.com/products/alpha-flight-controls-xpc
 - type: button
-  count: 8
-  label: Handle buttons including push-to-talk
-- type: toggle
   count: 4
-  ways: 2
-  label: Main, alternator, avionics, and light switches
-- type: lever
-  analog: false
+  label: Programmable handle buttons (two per handle, detailed callouts)
+  location: handle
+  source: https://flyhoneycomb.com/products/alpha-flight-controls-xpc
+- type: rotary
+  mode: selector
+  positions: 5
   count: 1
-  label: 5-position ignition switch
+  label: Ignition selector
+  location: panel
+  source: https://flyhoneycomb.com/products/alpha-flight-controls-xpc
+controls_evidence:
+  coverage: partial
+  source: https://flyhoneycomb.com/products/alpha-flight-controls-xpc
+  checked: '2026-10-19'
+  notes: Detailed left/right handle callouts specify one POV hat on the left and two buttons on each handle, conflicting with broad prose saying both handles have a POV and three buttons plus PTT per handle; counts follow the specific callouts. The product page names four switch categories but does not enumerate physical panel switch count or mechanism, so no panel control count is inferred from categories. Ignition is modeled as a five-position rotary selector. PTT inclusion/placement remains unclear.
 hardware:
   gimbal: null
   sensor: contactless_magnetic

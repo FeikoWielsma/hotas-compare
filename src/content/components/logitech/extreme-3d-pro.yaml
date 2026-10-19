@@ -7,15 +7,27 @@ handedness: right
 mount: null
 controls:
   - type: trigger
+    location: grip
     stages: 1
+    label: Main trigger
+    source: https://www.logitechg.com/en-us/shop/p/extreme-3d-pro-joystick
   - type: hat
+    location: grip
     ways: 8
     push: false
-  - type: button
-    count: 12
+    label: POV hat
+    source: https://www.logitechg.com/en-us/shop/p/extreme-3d-pro-joystick
   - type: lever
     kind: throttle_single
     analog: true
+    location: base
+    label: Throttle lever
+    source: https://www.logitechg.com/en-us/shop/p/extreme-3d-pro-joystick
+controls_evidence:
+  coverage: partial
+  source: https://www.logitechg.com/en-us/shop/p/extreme-3d-pro-joystick
+  checked: '2026-10-19'
+  notes: Logitech product page separately advertises 12 programmable buttons and a rapid-fire trigger but does not establish whether the trigger is included in 12 or enumerate the standalone button count and grip/base split. Trigger is recorded separately; the aggregate 12 is not converted into a physical button group. Hat and throttle are documented. Partial inventory.
 hardware:
   gimbal: ball_joint
   sensor: potentiometer

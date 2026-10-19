@@ -9,22 +9,43 @@ controls:
   kind: throttle_dual
   analog: true
   count: 6
-  label: Throttle, flap, spoiler, and thrust-reverser levers
+  label: Six configurable throttle, flap, spoiler, or reverser levers
+  location: handle
+  source: https://flyhoneycomb.com/products/bravo-throttle-quadrant
 - type: toggle
   count: 7
   ways: 2
-  label: Assignable switches
+  label: Assignable autopilot-panel switches
+  location: panel
+  source: https://flyhoneycomb.com/products/bravo-throttle-quadrant
 - type: button
   count: 1
-  label: TOGA button
+  label: TOGA button on throttle lever
+  location: handle
+  source: https://flyhoneycomb.com/products/bravo-throttle-quadrant
 - type: lever
   kind: other
   analog: false
   count: 1
-  label: Landing gear lever
-- type: rotary
+  label: Landing-gear lever
+  location: panel
+  source: https://flyhoneycomb.com/products/bravo-throttle-quadrant
+- type: encoder
   count: 1
   label: Trim wheel
+  location: panel
+  source: https://flyhoneycomb.com/products/bravo-throttle-quadrant
+- type: detent
+  count: 6
+  customizable: true
+  label: Lever detents; flap kit offers optional 5/7/9-position plates
+  location: handle
+  source: https://flyhoneycomb.com/products/bravo-throttle-quadrant
+controls_evidence:
+  coverage: partial
+  source: https://flyhoneycomb.com/products/bravo-throttle-quadrant
+  checked: '2026-10-19'
+  notes: Six levers refers to installed lever slots, with interchangeable GA/commercial caps rather than additional levers. Trim wheel classified as encoder, consistent with incremental digital trim adjustment; electronic implementation is undocumented. Page gives seven assignable switches and 14 indicator lights; lights are outputs, not controls. Autopilot control types and lever detent count are not fully enumerated; optional flap-kit plates are accessories, not installed controls.
 hardware:
   gimbal: null
   sensor: contactless_magnetic

@@ -7,6 +7,11 @@ mount:
   provides: moza-flight-qr
   accepts: []
 controls: []
+controls_evidence:
+  coverage: partial
+  source: https://support.mozaracing.com/en/support/solutions/articles/70000668982-moza-ab9-base-support
+  checked: '2026-10-19'
+  notes: No onboard flight controls are specified in the AB9 support inventory; optional Active Shifter Knob and attached grips are excluded. Absence of every possible physical base control was not fully established.
 hardware:
   axes: []
 connectivity:

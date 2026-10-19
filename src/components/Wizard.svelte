@@ -150,7 +150,7 @@
                   <ul class="pills">{#each piece.explanations as explanation}<li>{explanation}</li>{/each}</ul>
                 </article>
               {/each}
-              <dl class="totals"><div><dt>PACKAGE TOTAL</dt><dd>{money(loadout.totalPrice)}</dd></div><div><dt>LOGICAL BUTTONS</dt><dd>{loadout.totalLogicalButtons}</dd></div><div><dt>ANALOG AXES</dt><dd>{loadout.totalAxes}</dd></div></dl>
+              <dl class="totals"><div><dt>PACKAGE TOTAL</dt><dd>{money(loadout.totalPrice)}</dd></div><div><dt>EST. LOGICAL INPUTS</dt><dd>{loadout.totalLogicalButtons}</dd></div><div><dt>ANALOG AXES</dt><dd>{loadout.totalAxes}</dd></div></dl>
               <p class="hint">Listed {regionStore.region} prices; tax treatment varies by store. Shipping and separate mounts excluded. Two copies of the same ambidextrous stick count twice in totals and once in compare.</p>
               {#if compareIds.length <= MAX_COMPARE_ITEMS}<a class="primary action-link" href={`/compare?${new URLSearchParams({ items: compareIds.join(',') })}`}>Compare this loadout ↗</a>{:else}<p class="notice">This package has {compareIds.length} distinct products. Compare supports four at a time:</p><div class="presets">{#each Array.from({ length: Math.ceil(compareIds.length / MAX_COMPARE_ITEMS) }, (_, index) => index) as batch}<a href={`/compare?${new URLSearchParams({ items: compareIds.slice(batch * MAX_COMPARE_ITEMS, (batch + 1) * MAX_COMPARE_ITEMS).join(',') })}`}>Compare loadout · part {batch + 1} ↗</a>{/each}</div>{/if}
             {/if}

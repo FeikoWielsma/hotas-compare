@@ -1,0 +1,22 @@
+# MOZA control inventory review
+
+> Research trail: consult [the integration review](controls-integration-review.md) and [current catalog audit](../control-data-audit.md) for subsequent corrections and current schema capabilities.
+
+Checked 2026-10-19 against MOZA product/support pages and linked manuals. Counts below describe documented physical controls, never software signal totals. All records remain `partial`: MOZA does not provide sufficient exact-variant inventories to establish every control and absence.
+
+| Product | Saved inventory and source-backed findings | Remaining uncertainty |
+|---|---|---|
+| AB6 Force Feedback Base | 8 customizable RGB-backlit buttons and 2 assignable axis sliders. The support guide separately identifies the power button; it is not counted as a flight input. [AB6 complete guide](https://support.mozaracing.com/en/support/solutions/articles/70000684201-ab6-force-feedback-base) | Whether any other input control exists is undocumented. |
+| AB9 Force Feedback Base | No input controls recorded; official overview lists ports and compatible grips, but does not explicitly establish physical absence. [AB9 support](https://support.mozaracing.com/en/support/solutions/articles/70000668982-moza-ab9-base-support) | Partial inventory; optional shifter and attached grips excluded. |
+| AY210 Yoke Base | No `button` controls asserted. MOZA specifies 13 programmable front-panel "switches," RGB, telemetry sync, and long-press behavior but does not establish switch mechanism or standalone physical button arrangement. [AY210 support](https://support.mozaracing.com/en/support/solutions/articles/70000679586-moza-ay210-yoke-base-support) | Requires a generic switch control type to represent without misclassifying as push buttons. Thirteen is the documented switch count, not a verified momentary-button count. |
+| AY90 Yoke Base | 1 hat (direction count omitted), 4 digital rockers, 2 digital slider switches. [AY90 official specs](https://us.mozaracing.com/pages/ay90-yoke-base) | Marketing says “5-Way Hat Switch”; no diagram/manual definition supports whether this means five directions or four directions plus center press. Hat push, rocker action, and slider positions are unknown. |
+| J04 Yoke | Provisional mirror of MFY: 2 eight-way switches, 2 Hall-effect joysticks, 2 LB/RB buttons, 2 triggers. [MFY support specs](https://support.mozaracing.com/en/support/solutions/articles/70000679589-moza-mfy-yoke-support) | MOZA calls the product MFY; no official page/manual found identifying J04 as a distinct retail variant. Treat this file as a provisional alias. Joystick push and trigger stages are unspecified. |
+| MA3X Side Stick | 1 trigger, 1 ALPS 8-way hat, 1 toggle. [MA3X support specs](https://support.mozaracing.com/en/support/solutions/articles/70000679588-moza-ma3x-side-stick-support) | Trigger stages, hat center push, and toggle positions/latching behavior are unspecified. The 12 programmable inputs are logical capacity, not physical button count. |
+| MFY Pro Yoke | 2 eight-way hats, 2 Hall-effect thumbsticks, 2 bumpers, 2 triggers. [MFY Pro specs](https://us.mozaracing.com/pages/mfy-pro-yoke) | Thumbstick push and trigger stages are unspecified. Screen touch controls are not represented in the schema; 26 output signals are not buttons. |
+| MH16 Flightstick Grip | 1 two-stage trigger, 1 eight-way ALPS hat, 1 binary paddle lever. [MH16 manual](https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mh16_flightstick_manual.pdf?v=1779862948), [MH16 support](https://support.mozaracing.com/en/support/solutions/articles/70000679587-moza-mh16-flightstick-support) | Manual identifies other named switches/buttons in a diagram but does not provide an unambiguous itemized count suitable for extra records. Hat push unknown. Side module is removable; it adds a five-way hat and three-position selector, while the retail box lists the grip and toolkit only. Excluded from default SKU. |
+
+## Corrections and schema notes
+
+Removed AY90's unverified `ways: 5`; removed unsupported negative hat-push assertions from MA3X and MH16. Removed AY210's 13 momentary-button claim because "switch" does not establish that mechanism. Cleaned duplicate `controls` keys in AB6 and AB9 while preserving their inventories.
+
+The schema can leave hat direction count, analog behavior, and push properties unknown by omitting those fields. It still cannot represent an unspecified generic panel switch mechanism (AY210), nor the MFY Pro touchscreen as a physical interaction surface.

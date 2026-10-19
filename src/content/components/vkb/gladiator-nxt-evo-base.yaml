@@ -9,15 +9,32 @@ mount:
   accepts:
     - vkb-rev-b
 controls:
-  - type: encoder
-    count: 2
-    push: false
-  - type: lever
-    kind: throttle_single
-    analog: true
-    count: 1
-  - type: button
-    count: 3
+- type: toggle
+  location: base
+  ways: 3
+  momentary: true
+  label: Auto-centering switch
+  source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-base-only-us
+- type: rotary
+  location: base
+  mode: analog
+  label: Throttle wheel
+  source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-base-only-us
+- type: encoder
+  location: base
+  label: Rotary encoder
+  notes: "Center push not specified by manufacturer."
+  source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-base-only-us
+- type: button
+  location: base
+  count: 3
+  label: Base buttons
+  source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-base-only-us
+controls_evidence:
+  coverage: complete
+  source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-base-only-us
+  checked: '2026-10-19'
+  notes: "Base-only EVO physical controls verified. The page specifies one rotary encoder (older NXT base layouts differ); encoder center-click behavior is unstated. LEDs are indicators, not controls."
 hardware:
   gimbal: gimbal_ring
   sensor: contactless_magnetic

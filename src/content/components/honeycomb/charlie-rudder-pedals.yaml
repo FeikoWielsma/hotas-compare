@@ -5,11 +5,23 @@ status: current
 handedness: n/a
 mount: null
 controls:
-- type: lever
-  kind: brake
-  analog: true
+- type: axis
+  kind: toe_brake
   count: 2
-  label: Toe brakes
+  label: Left and right toe-brake pedals
+  location: other
+  source: https://flyhoneycomb.com/products/charlie-rudder-pedals
+- type: axis
+  kind: rudder
+  count: 1
+  location: other
+  label: Rudder pedal axis
+  source: https://flyhoneycomb.com/products/charlie-rudder-pedals
+controls_evidence:
+  coverage: complete
+  source: https://flyhoneycomb.com/products/charlie-rudder-pedals
+  checked: '2026-10-19'
+  notes: Three analog axes are rudder plus left and right toe brakes; the two brakes are axis inputs, not standalone buttons. Official page lists no physical switches, hats, or buttons. Pedal movements are represented explicitly as axes; they are not hand-operated levers or rocker switches.
 hardware:
   gimbal: cam
   sensor: contactless_magnetic

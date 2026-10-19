@@ -6,34 +6,112 @@ release_year: 2021
 handedness: n/a
 mount: null
 controls:
-  - type: lever
-    kind: throttle_dual
-    analog: true
-    count: 2
-  - type: detent
-    count: 4
-    customizable: true
-  - type: hat
-    ways: 8
-    push: true
-    count: 2
-  - type: hat
-    ways: 4
-    push: true
-    count: 1
-  - type: analog_ministick
-    push: true
-    count: 1
-  - type: encoder
-    count: 3
-    push: true
-  - type: toggle
-    count: 6
-    ways: 3
-    momentary: true
-  - type: button
-    count: 7
-    backlit: true
+- type: lever
+  kind: throttle_dual
+  analog: true
+  count: 2
+  location: handle
+  label: Throttle axes
+  source: https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
+- type: lever
+  kind: other
+  analog: true
+  count: 1
+  location: other
+  label: Auxiliary axis
+  source: https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
+- type: slider
+  analog: true
+  count: 1
+  location: handle
+  label: Slider axis
+  source: https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
+- type: detent
+  count: 2
+  customizable: true
+  location: handle
+  label: Throttle detents
+  notes: 'Detent plates are swappable/configurable mechanical stops on the paired throttle axes.'
+  source: https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
+- type: hat
+  ways: 8
+  push: true
+  count: 1
+  location: handle
+  source: https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
+- type: hat
+  ways: 4
+  push: true
+  count: 3
+  location: handle
+  source: https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
+- type: hat
+  ways: 2
+  push: true
+  count: 1
+  location: handle
+  source: https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
+- type: analog_ministick
+  push: true
+  count: 1
+  location: handle
+  source: https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
+- type: encoder
+  count: 1
+  location: handle
+  label: Encoder without push
+  source: https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
+- type: encoder
+  count: 1
+  push: true
+  location: handle
+  label: Encoder with push
+  source: https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
+- type: encoder
+  count: 2
+  push: true
+  location: panel
+  label: Base panel encoder dials
+  source: https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
+- type: button
+  count: 6
+  backlit: true
+  location: panel
+  label: RGB momentary buttons
+  source: https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
+- type: button
+  count: 4
+  location: handle
+  label: Handle momentary buttons
+  source: https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
+- type: toggle
+  count: 3
+  ways: 3
+  momentary: true
+  location: panel
+  label: ON-OFF-ON momentary toggles
+  source: https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
+- type: toggle
+  count: 4
+  ways: 2
+  momentary: false
+  location: panel
+  label: ON-ON latched toggles
+  source: https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
+- type: rotary
+  count: 1
+  mode: selector
+  positions: 5
+  location: panel
+  label: 5-way mode dial
+  notes: 'May be configured as five button inputs or as a shift selector.'
+  source: https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
+controls_evidence:
+  coverage: complete
+  source: https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
+  checked: '2026-10-19'
+  notes: "Exact product is original VPC-201-003; evidence is on VIRPIL's B-stock listing VPC-201-003-B, which describes the same CM3 throttle hardware. Separate base-panel and handle controls are listed. Mechanical detent plates are options, not extra buttons."
+
 hardware:
   gimbal: null
   sensor: contactless_magnetic

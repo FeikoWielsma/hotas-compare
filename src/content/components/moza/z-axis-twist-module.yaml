@@ -9,14 +9,21 @@ mount:
   - moza-flight-qr
 controls:
 - type: lever
+  location: other
   kind: other
   analog: true
   count: 1
   label: Z-axis twist
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_z_axis_manual.pdf?v=1779863078
+controls_evidence:
+  coverage: partial
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_z_axis_manual.pdf?v=1779863078
+  checked: '2026-10-19'
+  notes: Separate mechanical twist-axis accessory; no discrete controls are documented. Product is installed between grip and compatible base and represents one analog twist input. The official product page specifies a 16-bit Hall sensor and ±20° travel; the one-page manual is brief.
 hardware:
   axes:
   - name: Twist
-    resolution_bits: 15
+    resolution_bits: 16
     sensor: hall_effect
 connectivity:
   standalone_usb: true

@@ -3,6 +3,19 @@ name: MOZA AY210 Yoke Base
 category: base
 status: current
 handedness: n/a
+controls:
+- type: switch
+  count: 13
+  location: panel
+  label: Programmable RGB panel switches
+  source: https://support.mozaracing.com/en/support/solutions/articles/70000679586-moza-ay210-yoke-base-support
+  notes: Manufacturer specifies thirteen switches; their physical mechanisms and press/position
+    behavior are not identified.
+controls_evidence:
+  coverage: partial
+  source: https://support.mozaracing.com/en/support/solutions/articles/70000679586-moza-ay210-yoke-base-support
+  checked: '2026-10-19'
+  notes: MOZA documents 13 programmable front-panel switches with RGB lighting, telemetry sync, and long-press commands, but does not identify physical mechanisms or provide a clear control diagram. Recorded as generic switches because their exact mechanisms are not established; no standalone push-button count is inferred. Count refers to listed switches, not independent logical outputs.
 verification: draft
 sources:
 - https://mozaracing.com

@@ -6,11 +6,23 @@ release_year: 2020
 handedness: n/a
 mount: null
 controls:
-  - type: lever
-    kind: brake
-    analog: true
-    count: 2
-    label: Toe brakes
+- type: axis
+  location: other
+  kind: toe_brake
+  count: 2
+  label: Toe brake pedals
+  source: https://virpil-controls.eu/vpc-ace-interceptor-pedals.html
+- type: axis
+  kind: rudder
+  count: 1
+  location: other
+  label: Rudder pedal axis
+  source: https://virpil-controls.eu/vpc-ace-interceptor-pedals.html
+controls_evidence:
+  coverage: complete
+  source: https://virpil-controls.eu/vpc-ace-interceptor-pedals.html
+  checked: '2026-10-19'
+  notes: Three physical pedal assemblies map to rudder yaw plus two independent toe-brake axes; brakes are axes, not push buttons. Exact SKU VPC-302-001. Pedal movements are represented explicitly as axes; they are not hand-operated levers or rocker switches.
 hardware:
   gimbal: null
   sensor: contactless_magnetic

@@ -4,7 +4,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { productJsonLd } from '../../lib/structured-data';
 import { productImageSrc } from '../../lib/catalog-ui';
 import AddCompare from '../../components/AddCompare.svelte';
-import { deriveComponentStats, deriveControlsSummary } from '../../lib/derive';
+import ControlInventory from '../../components/ControlInventory.svelte';
+import { deriveComponentStats } from '../../lib/derive';
 const [brands, mounts, reviewers] = await Promise.all([getCollection('brands'), getCollection('mount_standards'), getCollection('reviewers')]);
 const brandMap = new Map(brands.map(x => [x.id, x.data]));
 const mountMap = new Map(mounts.map(x => [x.id, x.data]));
@@ -14,8 +15,6 @@ const { component: entry } = Astro.props;
 const { id, data:c } = entry;
 const brand = brandMap.get(c.brand);
 const stats = deriveComponentStats(c);
-const controls = deriveControlsSummary(c.controls);
-const itemLabel = (x:any) => `${x.count ?? 1} × ${x.label ?? x.type.replaceAll('_',' ')}${x.type === 'trigger' ? ` (${x.stages} stages)` : ''}${x.type === 'hat' ? ` (${x.ways}-way${x.push ? ', push' : ''})` : ''}${x.type === 'analog_ministick' && x.push ? ' (push)' : ''}`;
 const correction = `https://github.com/FeikoWielsma/hotas-compare/issues/new?title=Correction:+${encodeURIComponent(c.name)}&body=${encodeURIComponent(`Product: ${c.name}\nPage: /components/${id}\n\nWhat should be corrected?`)}`;
 const money = (p:any) => new Intl.NumberFormat('en', {style:'currency',currency:p.currency}).format(p.amount);
 const description = `${brand?.name ?? c.brand} ${c.name}: specifications, controls, compatibility and regional pricing.`;
@@ -26,9 +25,10 @@ const heroSrc = productImageSrc(c.images[0]?.file);
 <div class="page">
   <nav class="crumb"><a href="/">Home</a> / <a href="/components">Components</a> / <a href={`/brands/${c.brand}`}>{brand?.name ?? c.brand}</a> / {c.name}</nav>
   <header class="hero">{heroSrc && <figure class="shot"><img src={heroSrc} alt={c.images[0]?.caption ?? c.name} />{c.images[0]?.source && <figcaption><a href={c.images[0].source} rel="external noopener">Manufacturer photo</a></figcaption>}</figure>}<div><p class="eyebrow">{brand?.name ?? c.brand} / {c.category.replaceAll('_',' ')}</p><h1>{c.name}</h1><div class="pills"><a class="pill" href={`/brands/${c.brand}`}>{brand?.name ?? c.brand}</a><span class="pill">{c.category.replaceAll('_',' ')}</span><span class="pill">{c.status}</span><span class="pill">{c.verification}</span>{c.release_year && <span class="pill">Released {c.release_year}</span>}</div></div><div class="actions"><AddCompare id={id} client:load /><a class="button secondary" href={correction}>Suggest a correction</a></div></header>
+  <ControlInventory sections={[c]} />
   <div class="grid">
     <section class="card"><h2>Hardware</h2><dl><dt>Gimbal</dt><dd>{c.hardware?.gimbal ?? 'Not specified'}</dd><dt>Sensor</dt><dd>{c.hardware?.sensor ?? 'Not specified'}</dd><dt>Axes</dt><dd>{c.hardware?.axes?.length ? <ul>{c.hardware.axes.map((a:any)=><li>{a.name}{a.resolution_bits ? ` — ${a.resolution_bits}-bit` : ''}{a.sensor ? `, ${a.sensor}` : ''}</li>)}</ul> : `${stats.totalAxes} axes estimated`}</dd><dt>Force adjustable</dt><dd>{c.hardware?.force_adjustable == null ? 'Not specified' : c.hardware.force_adjustable ? 'Yes' : 'No'}</dd><dt>Swappable cams</dt><dd>{c.hardware?.cams_swappable == null ? 'Not specified' : c.hardware.cams_swappable ? 'Yes' : 'No'}</dd><dt>Damping</dt><dd>{c.hardware?.damping ?? 'Not specified'}</dd><dt>Extension support</dt><dd>{c.hardware?.extension_support == null ? 'Not specified' : c.hardware.extension_support ? 'Yes' : 'No'}</dd><dt>Throw</dt><dd>{c.hardware?.throw_deg != null ? `${c.hardware.throw_deg}°` : 'Not specified'}</dd></dl></section>
-    <section class="card"><h2>Physical controls</h2>{c.controls.length ? <ul class="controls">{c.controls.map((x:any)=><li>{itemLabel(x)}</li>)}</ul> : <p>No control breakdown available.</p>}<p class="totals"><strong>{controls.totalLogicalButtons}</strong> logical buttons · <strong>{stats.totalAxes}</strong> axes · <strong>{controls.ministickCount}</strong> ministicks</p></section>
+
     <section class="card"><h2>Mount compatibility</h2><p><b>Provides:</b> {c.mount?.provides ? (mountMap.get(c.mount.provides)?.name ?? c.mount.provides) : 'Not specified'}</p><p><b>Accepts:</b> {c.mount?.accepts?.length ? c.mount.accepts.map((x:string)=>mountMap.get(x)?.name ?? x).join(', ') : 'Not specified'}</p>{c.mount?.provides && <p>{mountMap.get(c.mount.provides)?.description ?? mountMap.get(c.mount.provides)?.physical_type}</p>}{c.mount?.accepts?.map((x:string)=><p>{mountMap.get(x)?.description}</p>)}</section>
     <section class="card"><h2>Physical &amp; software</h2><dl><dt>Weight</dt><dd>{c.physical?.weight_g != null ? `${c.physical.weight_g} g` : 'Not specified'}</dd><dt>Materials</dt><dd>{c.physical?.materials?.join(', ') || 'Not specified'}</dd><dt>USB</dt><dd>{c.connectivity?.usb ?? 'Not specified'}</dd><dt>Standalone USB</dt><dd>{c.connectivity?.standalone_usb ? 'Yes' : 'No'}</dd><dt>Configuration software</dt><dd>{c.software ?? 'Not specified'}</dd></dl></section>
   </div>

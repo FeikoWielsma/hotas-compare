@@ -7,20 +7,38 @@ handedness: ambi
 mount: null
 controls:
   - type: trigger
+    count: 1
+    location: grip
     stages: 1
+    label: Ergonomic trigger
+    source: https://www.thrustmaster.com/en-us/products/t-16000m-fcs/
   - type: hat
     ways: 8
-    push: false
     count: 1
+    location: grip
+    label: Point-of-view hat
+    source: https://www.thrustmaster.com/en-us/products/t-16000m-fcs/
   - type: button
     count: 3
-    label: Grip Buttons
+    location: grip
+    label: Grip buttons
+    source: https://www.thrustmaster.com/en-us/products/t-16000m-fcs/
   - type: button
     count: 12
-    label: Base Buttons (6 left / 6 right)
+    location: base
+    label: Base buttons (6 per side)
+    source: https://www.thrustmaster.com/en-us/products/t-16000m-fcs/
   - type: slider
     count: 1
-    label: Base Throttle Slider
+    analog: true
+    location: base
+    label: Base throttle slider
+    source: https://www.thrustmaster.com/en-us/products/t-16000m-fcs/
+controls_evidence:
+  coverage: complete
+  source: https://www.thrustmaster.com/en-us/products/t-16000m-fcs/
+  checked: '2026-10-19'
+  notes: Manufacturer specifies 16 action buttons, one 8-way PoV hat and trigger. Physical split is 12 base buttons plus three grip buttons and trigger. Hat push is not stated and remains unknown.
 hardware:
   gimbal: ball_joint
   sensor: hall

@@ -1,109 +1,237 @@
 brand: vkb
+
 name: Modern Combat Grip Ultimate
+
 category: grip
+
 status: current
+
 release_year: 2021
+
 handedness: right
+
 mount:
+
   provides: vkb-rev-c
+
   accepts: []
+
 controls:
+
 - type: trigger
+
+  location: grip
+
   stages: 2
-- type: hat
-  ways: 8
-  push: true
-  count: 3
-- type: hat
-  ways: 4
-  push: true
+
+  action: sequential
+
+  label: Main trigger
+
+  source: https://vkbsimcontrollers.com/products/mcg-ultimate-add-on-grip-for-gunfighter-mk-iv-us
+
+- type: trigger
+
+  location: grip
+
+  stages: 2
+
+  action: flip
+
+  label: Metal folding trigger
+
+  notes: "Two-position sensor reports flipped up/down; model as two-position flip trigger."
+
+  source: https://vkbsimcontrollers.com/products/mcg-ultimate-add-on-grip-for-gunfighter-mk-iv-us
+
+- type: lever
+
+  location: grip
+
+  kind: brake
+
+  analog: true
+
+  label: Brake lever
+
+  source: https://vkbsimcontrollers.com/products/mcg-ultimate-add-on-grip-for-gunfighter-mk-iv-us
+
 - type: analog_ministick
-  push: true
-- type: button
-  count: 6
-- type: toggle
-  count: 1
-  ways: 2
-- type: rotary
-  count: 1
+
+  location: grip
+
+  count: 2
+
+  label: Slew and trimmer ministick axes
+
+  notes: "Manufacturer specifies two slew axes and two trimmer axes. Mini-stick and hat modules are interchangeable alternatives; the alternative hat module is not counted as an additional simultaneously installed ministick. Push behavior is not stated."
+
+  source: https://vkbsimcontrollers.com/products/mcg-ultimate-add-on-grip-for-gunfighter-mk-iv-us
+
+controls_evidence:
+
+  coverage: partial
+
+  source: https://vkbsimcontrollers.com/products/mcg-ultimate-add-on-grip-for-gunfighter-mk-iv-us
+
+  checked: '2026-10-19'
+
+  notes: "The exact Mk.IV RevC listing specifies two slew axes, two trimmer axes, a brake lever, dual-stage main trigger and two-position folding trigger. The mini-stick and hat modules are interchangeable; the alternative hat module is not counted as a simultaneous extra control. The 24–32 figure is programmable/logical button count, not a standalone physical button inventory; exact hat direction count and push behavior are not enumerated. The twist adapter is a separate selectable variant and is not intrinsic to the base grip SKU."
+
 hardware:
+
   gimbal: null
+
   sensor: contactless_magnetic
-  axes:
-  - name: Twist
-    sensor: contactless_magnetic
+
+  axes: []
+
   force_adjustable: false
+
   cams_swappable: false
+
   damping: null
+
   extension_support: false
+
   throw_deg: null
+
 connectivity:
+
   usb: null
+
   standalone_usb: false
+
 software: VKBDevCfg
+
 physical:
+
   weight_g: 700
+
   materials:
+
   - al6061_aluminium
+
   - polymer
+
 use_case_fit:
+
   modern_jet: 5
+
   heli: 5
+
   ww2: 3
+
   ga: 2
+
   airliner: 1
+
   space_hotas: 3
+
   space_hosas: 2
+
 prices:
+
 - region: EU
+
   currency: EUR
+
   amount: 300
+
   incl_vat: true
+
   store: flightsimcontrols.com
+
   verified: '2026-10-01'
+
   source: manual
+
 - region: UK
+
   currency: GBP
+
   amount: 258
+
   incl_vat: true
+
   store: flightsimcontrols.com
+
   verified: '2026-10-01'
+
   source: manual
+
 - region: US
+
   currency: USD
+
   amount: 285
+
   incl_vat: false
+
   store: vkbcontrollers.com
+
   verified: '2026-10-01'
+
   source: manual
+
 verdict:
+
   author: feiko
+
   hands_on: false
+
   take: 'Draft assessment: Modern Combat Grip Ultimate is a purpose-built grip for
+
     sim pilots who value precise inputs and configurable controls. Confirm regional
+
     configuration and included accessories before purchase.'
+
   pros:
+
   - Metal construction with modular hats and ministick
+
   - Extensive controls for modern combat aircraft
+
   - Configurable grip modules and twist adapter
+
   cons:
+
   - Heavy grip is best paired with Gunfighter base
+
   - Premium price
+
   great_for:
+
   - modern_jet
+
   - heli
+
   skip_if:
+
   - Heavy grip is best paired with Gunfighter base
+
   scores:
+
     build: 4
+
     feel: 4
+
     value: 4
+
     software: 4
+
     qc_support: 4
+
 verification: draft
+
 sources:
+
 - https://vkbcontrollers.com/products/mcg-ultimate-grip
+
 images:
+
   - file: /images/vkb/mcg-ultimate-grip.jpg
+
     source: https://vkbsimcontrollers.com/products/mcg-ultimate-add-on-grip-for-gunfighter-mk-iv-us
+
     caption: Modern Combat Grip Ultimate

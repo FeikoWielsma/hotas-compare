@@ -7,12 +7,30 @@ mount:
   provides: moza-flight-qr
   accepts: []
 controls:
-- type: trigger
-  stages: 2
-- type: hat
-  ways: 8
-  push: false
-  count: 1
+  - type: trigger
+    location: grip
+    count: 1
+    stages: 2
+    label: Two-stage trigger
+    source: https://support.mozaracing.com/en/support/solutions/articles/70000679587-moza-mh16-flightstick-support
+  - type: hat
+    location: grip
+    ways: 8
+    count: 1
+    label: ALPS 8-way hat
+    source: https://support.mozaracing.com/en/support/solutions/articles/70000679587-moza-mh16-flightstick-support
+  - type: lever
+    location: grip
+    kind: other
+    analog: false
+    count: 1
+    label: Paddle lever (binary input)
+    source: https://support.mozaracing.com/en/support/solutions/articles/70000679587-moza-mh16-flightstick-support
+controls_evidence:
+  coverage: partial
+  source: https://support.mozaracing.com/en/support/solutions/articles/70000679587-moza-mh16-flightstick-support
+  checked: '2026-10-19'
+  notes: Core grip has a two-stage trigger, 8-way ALPS hat, and binary paddle. MOZA describes a detachable side expansion with 5-way hat and 3-position selector; its installed status for the standalone SKU is unclear, so those controls are excluded. 30 programmable signals are not treated as physical-control count.
 hardware:
   axes: []
 connectivity:

@@ -6,13 +6,23 @@ release_year: 2017
 handedness: n/a
 mount: null
 controls:
-- type: rocker
+- type: axis
   count: 1
-  label: Pendular rudder axis
-- type: lever
-  kind: brake
-  analog: true
+  label: Rudder axis
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TPR/TPR_Rudder_User_Manual.pdf
+  kind: rudder
+  location: other
+- type: axis
+  kind: toe_brake
   count: 2
+  label: Differential brake pedals
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TPR/TPR_Rudder_User_Manual.pdf
+  location: other
+controls_evidence:
+  coverage: complete
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TPR/TPR_Rudder_User_Manual.pdf
+  checked: '2026-10-19'
+  notes: Manual identifies one rudder axis and two differential brake axes operated by the pedals; its parts and adjustment diagrams show no separate buttons, hats, switches, wheels, or levers. Pedal axes are represented as rocker and brake levers because the schema has no pedal-axis subtype. Pedal movements are represented explicitly as axes; they are not hand-operated levers or rocker switches.
 hardware:
   gimbal: pendular
   sensor: hall

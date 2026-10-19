@@ -7,17 +7,33 @@ mount:
   provides: null
   accepts: []
 controls:
-  - type: trigger
-    stages: 1
-  - type: hat
-    ways: 5
-    push: true
-    count: 1
-  - type: button
-    count: 14
-  - type: slider
-    count: 1
-    label: Throttle slider
+- type: button
+  count: 14
+  location: base
+  label: Button switches
+  source: https://eu.winctrl.com/static/download/QmTNG9wYC7V5h4a5U4m2ZbYY55uag2c3wQc2MUw9m7KXHK?filename=URSA+MINOR-Airlines-Joystick+L-User+Manual-V1.3.pdf
+- type: switch
+  count: 1
+  location: grip
+  label: Multifunction switch (key 20)
+  source: https://eu.winctrl.com/static/download/QmTNG9wYC7V5h4a5U4m2ZbYY55uag2c3wQc2MUw9m7KXHK?filename=URSA+MINOR-Airlines-Joystick+L-User+Manual-V1.3.pdf
+- type: hat
+  count: 1
+  location: grip
+  label: Hidden five-way switch under magnetic cover
+  source: https://eu.winctrl.com/static/download/QmTNG9wYC7V5h4a5U4m2ZbYY55uag2c3wQc2MUw9m7KXHK?filename=URSA+MINOR-Airlines-Joystick+L-User+Manual-V1.3.pdf
+  notes: Manufacturer calls this a five-way control; direction count versus center-push interpretation is not confirmed. Neither five directional contacts nor center push is assumed.
+- type: slider
+  analog: true
+  count: 1
+  location: base
+  label: 38 mm throttle slider
+  source: https://eu.winctrl.com/static/download/QmTNG9wYC7V5h4a5U4m2ZbYY55uag2c3wQc2MUw9m7KXHK?filename=URSA+MINOR-Airlines-Joystick+L-User+Manual-V1.3.pdf
+controls_evidence:
+  coverage: partial
+  source: https://eu.winctrl.com/static/download/QmTNG9wYC7V5h4a5U4m2ZbYY55uag2c3wQc2MUw9m7KXHK?filename=URSA+MINOR-Airlines-Joystick+L-User+Manual-V1.3.pdf
+  checked: '2026-10-19'
+  notes: 'Exact left-hand V1.3 manual found in official Download Center (manual cover says V1.0 2024.06): it labels 14 button switches, multifunction switch key 20, a hidden 5-way switch under a magnetic cover, a HAT, X/Y axes, Z rotation axis, and a 38 mm potentiometer slider. The 14-button map appears on the base; function map identifies the grip controls. HAT direction count and push behavior are not stated. The prior R-hand manual URL was the wrong variant. Five-way marketing terminology is preserved without guessing the split between directional contacts and center press.'
 hardware:
   axes:
     - name: X
@@ -51,7 +67,7 @@ prices:
 verification: draft
 sources:
   - https://eu.winctrl.com/view/goods-details.html?id=559
-  - https://eu.winctrl.com/static/download/QmR4moLrmDjfb5jngvrKBdU7jugeqUXTGgBodULdaxquSJ?filename=URSA+MINOR-Airlines-Joystick+R-User+Manual-V1.0.pdf
+  - https://eu.winctrl.com/static/download/QmTNG9wYC7V5h4a5U4m2ZbYY55uag2c3wQc2MUw9m7KXHK?filename=URSA+MINOR-Airlines-Joystick+L-User+Manual-V1.3.pdf
 
 images:
   - file: /images/winctrl/ursa-minor-airline-joystick-l.jpg

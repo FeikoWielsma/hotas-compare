@@ -3,6 +3,32 @@ name: MOZA TQB Throttle Module
 category: module
 status: current
 handedness: n/a
+controls:
+- type: lever
+  location: handle
+  kind: throttle_dual
+  analog: true
+  count: 2
+  label: Boeing-style throttle grips (alternative MTQ modules)
+  source: https://eu.mozaracing.com/products/tqb-mod
+- type: lever
+  location: handle
+  kind: other
+  analog: false
+  count: 1
+  label: Lift-to-arm reverse-thrust lever
+  notes: 'The official description identifies a physical lift-to-arm lever; its exact electrical mapping is not specified.'
+  source: https://eu.mozaracing.com/products/tqb-mod
+- type: button
+  location: handle
+  count: 1
+  label: TO/GA button
+  source: https://mozaracing.com/products/mtq-throttle
+controls_evidence:
+  coverage: partial
+  source: https://mozaracing.com/products/mtq-throttle
+  checked: '2026-10-19'
+  notes: 'Boeing TQB is an optional replacement module, not installed alongside the default TQF grips. Official MTQ page explicitly attributes a TO/GA button to the Boeing lever and a lift-to-arm reverse-thrust lever; other module controls and exact reverse-thrust input encoding are not specified.'
 verification: draft
 sources:
 - https://mozaracing.com

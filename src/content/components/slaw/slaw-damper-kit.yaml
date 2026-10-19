@@ -4,7 +4,12 @@ category: module
 status: current
 handedness: n/a
 mount: null
-controls: [] # no published input list
+controls: []
+controls_evidence:
+  coverage: complete
+  source: https://slawdevice.com/en/rudder-pedals/48-pre-order-rh-rotor-v2-rudder-pedals.html
+  checked: '2026-10-19'
+  notes: 'Optional hydraulic shock absorber/damper is a mechanical accessory with no discrete electrical inputs. The RH Rotor product page explicitly says the damper is optional and not included; standalone Slaw damper-kit documentation was not separately found.'
 hardware:
   gimbal: null
   sensor: contactless_magnetic

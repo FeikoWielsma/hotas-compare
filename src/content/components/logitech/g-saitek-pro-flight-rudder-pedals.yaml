@@ -5,10 +5,23 @@ status: current
 handedness: n/a
 mount: null
 controls:
-- type: lever
-  kind: brake
-  analog: true
+- type: axis
+  kind: rudder
+  count: 1
+  label: Rudder pedal axis
+  source: https://www.logitechg.com/en-us/shop/p/flight-simulator-rudder-pedals.945-000024
+  location: other
+- type: axis
+  kind: toe_brake
   count: 2
+  label: Independent toe brake axes
+  source: https://www.logitechg.com/en-us/shop/p/flight-simulator-rudder-pedals.945-000024
+  location: other
+controls_evidence:
+  coverage: complete
+  source: https://www.logitechg.com/en-us/shop/p/flight-simulator-rudder-pedals.945-000024
+  checked: '2026-10-19'
+  notes: Primary product/manual evidence checked; coverage applies to the physical inventory described by this exact component. Pedal movements are represented explicitly as axes; they are not hand-operated levers or rocker switches.
 hardware:
   gimbal: null
   sensor: potentiometer

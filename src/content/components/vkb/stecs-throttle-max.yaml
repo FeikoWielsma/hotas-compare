@@ -1,5 +1,5 @@
 brand: vkb
-name: STECS Max Throttle
+name: STECS Modern Throttle System Mk.II Max
 category: throttle
 status: current
 release_year: 2023
@@ -10,24 +10,106 @@ controls:
   kind: throttle_dual
   analog: true
   count: 2
+  location: handle
+  label: Dual main throttle axes
+  source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-max-us
 - type: hat
-  ways: 8
+  ways: 4
   push: true
   count: 3
+  location: grip
+  label: MTG-R center-push hats
+  source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-max-us
 - type: analog_ministick
   push: true
-  count: 2
-- type: button
-  count: 12
+  location: grip
+  label: MTG-R 2-axis analog ministick
+  source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-max-us
+- type: rotary
+  mode: analog
+  count: 1
+  location: grip
+  label: MTG-R analog wheel axis
+  source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-max-us
 - type: encoder
-  count: 4
+  count: 2
+  location: grip
+  label: MTG-L wheel encoders; push unspecified
+  source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-max-us
+- type: rocker
+  count: 1
   push: true
-- type: detent
-  count: 6
-  customizable: true
-- type: toggle
+  location: grip
+  label: MTG-R 2-way rocker with center push
+  source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-max-us
+- type: button
   count: 4
+  location: grip
+  label: MTG-L/MTG-R push buttons
+  source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-max-us
+- type: button
+  count: 2
+  location: base
+  label: Base push buttons
+  source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-max-us
+- type: button
+  count: 8
+  location: panel
+  label: STEM standalone push buttons
+  source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-max-us
+- type: button
+  count: 6
+  location: panel
+  label: ATEM push buttons including safety-lid protected buttons
+  source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-max-us
+- type: trigger
+  count: 4
+  location: grip
+  label: Two triggers on each MTG-L and MTG-R grip; stages unspecified
+  source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-max-us
+- type: rotary
+  mode: selector
+  positions: 5
+  count: 1
+  location: base
+  label: Five-position base rotary switch
+  source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-max-us
+- type: encoder
+  count: 2
+  push: true
+  location: panel
+  label: STEM encoders with central push
+  source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-max-us
+- type: encoder
+  count: 1
+  push: true
+  location: panel
+  label: ATEM 4-way directional rotary encoder with central push
+  source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-max-us
+- type: toggle
+  count: 2
+  location: panel
+  label: STEM K-switches with integrated central pushes; positions unspecified
+  source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-max-us
+  push: true
+- type: toggle
+  count: 1
   ways: 3
+  momentary: true
+  location: panel
+  label: STEM self-centering 3-position flip switch
+  source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-max-us
+- type: toggle
+  count: 1
+  ways: 3
+  location: panel
+  label: STEM 3-position flip switch; momentary behavior unspecified
+  source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-max-us
+controls_evidence:
+  coverage: complete
+  source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-max-us
+  checked: '2026-10-19'
+  notes: Exact STECS Modern Throttle System Mk.II Max (current product page/revision); Mk.I differs. Two main throttle levers. STEM has eight standalone buttons plus two K-switches with integrated center pushes, two push encoders, and two separate three-position flip switches (one self-centering). Spare replacement modules are not installed controls. Detent frame/inserts are configurable alternatives; installed detent count is not asserted. Schema cannot encode integrated K-switch pushes.
 hardware:
   gimbal: null
   sensor: contactless_magnetic
@@ -111,4 +193,4 @@ sources:
 images:
   - file: /images/vkb/stecs-throttle-max.jpg
     source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-max-us
-    caption: STECS Max Throttle
+    caption: STECS Max Throttle\n

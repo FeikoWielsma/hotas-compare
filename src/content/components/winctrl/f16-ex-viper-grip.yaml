@@ -10,27 +10,32 @@ mount:
 controls:
   - type: trigger
     stages: 2
+    source: https://eu.winctrl.com/view/goods-details.html?id=314
   - type: hat
     ways: 4
-    push: true
     count: 5
   - type: hat
     ways: 8
-    push: true
     count: 1
   - type: analog_ministick
-    push: true
     count: 1
   - type: lever
     kind: brake
     analog: true
-    count: 1
+    push: true
+    count: 2
+    label: Brake/trigger levers (Hall axis plus switch)
+    source: https://eu.winctrl.com/view/goods-details.html?id=314
   - type: button
     count: 2
-  - type: trigger
-    stages: 1
-    flip: false
-    label: Pinky Lever switch
+    label: Physical switches
+    source: https://eu.winctrl.com/view/goods-details.html?id=341
+controls_evidence:
+  coverage: partial
+  source: https://eu.winctrl.com/view/goods-details.html?id=341
+  checked: '2026-10-19'
+  notes: >-
+    Rendered official variant comparison at the legacy HOTAS listing identifies ViperAce EX separately from standard ViperAce: five 4-direction and one 8-direction switches, one mini joystick, two brake/trigger levers each with Hall sensor plus switch, two physical switches, and one dual-stage trigger. Hat and ministick push behavior are not specified for EX, so omitted. The F-16 joystick grip manual and EX2 J2-2 manual are in the official Download Center; exact control-by-control mapping between the standalone EX SKU and the mixed ViperAce EX bundle remains unclear.
 hardware:
   gimbal: null
   sensor: null
@@ -114,6 +119,8 @@ sources:
   - https://eu.winctrl.com/view/goods-details.html?id=314
   - https://eu.winctrl.com/view/goods-details.html?id=340
   - https://eu.winctrl.com/view/goods-details.html?id=341
+  - https://eu.winctrl.com/static/download/QmPtTVatYdWyuGYVSFHMhBXTEWM9iU3g5S2nomoLczHDuS?filename=EX2_J2_2-User+Manual+EN+V1.2.pdf
+  - https://eu.winctrl.com/static/download/Qmbw11j3CZkVhfaFXFNx3aYRU2fJMKRLJj8eC7DtNyghMm?filename=JOYSTICK+GRIP+OF+16+H.O.T.A.S-User+MANUAL+EN+V+2.1.pdf
 images:
   - file: /images/winctrl/f16-ex-viper-grip.jpg
     source: https://eu.winctrl.com/view/goods-details.html?id=341

@@ -5,19 +5,49 @@ status: current
 handedness: n/a
 mount: null
 controls:
-- type: lever
-  kind: throttle_single
-  analog: true
-- type: hat
-  ways: 8
-  push: true
-- type: hat
-  ways: 4
-  push: true
-- type: button
-  count: 12
-- type: rotary
-  count: 2
+  - type: lever
+    kind: throttle_single
+    analog: true
+    label: Progressive throttle
+    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+  - type: detent
+    count: 2
+    label: Idle and afterburner detents
+    customizable: true
+    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+  - type: scroll_wheel
+    label: Rear index-finger scroll wheel
+    push: true
+    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+  - type: hat
+    ways: 8
+    label: Thumb POV hat
+    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+  - type: hat
+    ways: 8
+    label: Mouse controller hat mode
+    notes: Mouse controller can function as a hat; alternate mode, not an additional simultaneously installed control.
+    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+  - type: button
+    label: Mouse left button
+    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+  - type: button
+    label: Clutch button
+    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+  - type: slider
+    analog: true
+    label: Thumb slider
+    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+  - type: rotary
+    mode: analog
+    count: 2
+    label: Analog throttle rotaries
+    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+controls_evidence:
+  coverage: partial
+  source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+  checked: '2026-10-19'
+  notes: Shared X52 Pro manual describes throttle head and base controls. Throttle rotary/slider behavior is described as axes, but exact physical segmentation differs across X52 revision and standard/Pro bundle manuals; coverage remains partial.
 hardware:
   gimbal: null
   sensor: potentiometer

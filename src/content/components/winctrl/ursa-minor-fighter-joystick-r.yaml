@@ -10,22 +10,37 @@ mount:
 controls:
   - type: trigger
     stages: 2
+    location: grip
+    label: First and second stage trigger
+    source: https://eu.winctrl.com/static/download/QmZmKJ7NdwQ8FDSQrSCgHTz8czJdWTEi9YduELWz63pqMU?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+EN+V1.0.pdf
   - type: hat
-    ways: 8
-    push: true
-    count: 2
-  - type: hat
-    ways: 4
-    push: true
     count: 1
+    location: grip
+    label: HAT switch (direction count and push unspecified)
+    source: https://eu.winctrl.com/static/download/QmZmKJ7NdwQ8FDSQrSCgHTz8czJdWTEi9YduELWz63pqMU?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+EN+V1.0.pdf
   - type: analog_ministick
-    push: true
     count: 1
+    location: grip
+    label: Rx/Ry mini joystick
+    source: https://eu.winctrl.com/static/download/QmZmKJ7NdwQ8FDSQrSCgHTz8czJdWTEi9YduELWz63pqMU?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+EN+V1.0.pdf
   - type: button
     count: 14
+    location: base
+    label: Button switches
+    source: https://eu.winctrl.com/static/download/QmZmKJ7NdwQ8FDSQrSCgHTz8czJdWTEi9YduELWz63pqMU?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+EN+V1.0.pdf
   - type: slider
+    analog: true
     count: 1
-    label: Base Throttle Slider
+    location: base
+    label: Throttle slider axis
+    source: https://eu.winctrl.com/static/download/QmZmKJ7NdwQ8FDSQrSCgHTz8czJdWTEi9YduELWz63pqMU?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+EN+V1.0.pdf
+controls_evidence:
+  coverage: partial
+  source: https://eu.winctrl.com/static/download/QmTvHcYNoR17Ro8AHmA7j6jpqwnHHbaYWS8dXGxM8QbTgh?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+V1.3+20250708.pdf
+  checked: '2026-10-19'
+  notes: >-
+    Exact right-hand V1.3 manual is listed in official Download Center. Readable older right-hand V1.0 manual confirms the common control map: two-stage trigger, HAT, Rx/Ry mini-stick, 14 base button switches, and base slider; axes X/Y, Z twist, and Rx/Ry are separately mapped. Current V1.3 manual PDF was not readable in this pass; hat directions and pressability remain unknown. Older manual is corroboration, not exact-revision proof.
+
 hardware:
   gimbal: pincer
   sensor: contactless_magnetic
@@ -116,6 +131,8 @@ external_reviews:
 verification: verified
 sources:
   - https://eu.winctrl.com/view/goods-details.html?id=551
+  - https://eu.winctrl.com/static/download/QmTvHcYNoR17Ro8AHmA7j6jpqwnHHbaYWS8dXGxM8QbTgh?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+V1.3+20250708.pdf
+  - https://eu.winctrl.com/static/download/QmZmKJ7NdwQ8FDSQrSCgHTz8czJdWTEi9YduELWz63pqMU?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+EN+V1.0.pdf
 images:
   - file: /images/winctrl/ursa-minor-fighter-joystick-r.jpg
     source: https://eu.winctrl.com/view/goods-details.html?id=551

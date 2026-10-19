@@ -3,6 +3,11 @@ name: MOZA MA3X Side Stick
 category: grip
 status: current
 handedness: right
+controls_evidence:
+  coverage: partial
+  source: https://support.mozaracing.com/en/support/solutions/articles/70000679588-moza-ma3x-side-stick-support
+  checked: '2026-10-19'
+  notes: Official spec itemizes one ALPS 8-way hat, one trigger, and one toggle. The 12 programmable-input total is logical mapping capacity; trigger stages and toggle positions/latching are not specified. The manual/support spec identifies an 8-way ALPS hat but does not establish center push; omitted as unknown.
 verification: draft
 sources:
 - https://mozaracing.com
@@ -20,8 +25,19 @@ prices:
   verified: '2026-10-19'
   source: manual
 controls:
-- type: trigger
-- type: hat
-  ways: 8
-  push: false
-  count: 1
+  - type: trigger
+    location: grip
+    count: 1
+    label: Trigger
+    source: https://support.mozaracing.com/en/support/solutions/articles/70000679588-moza-ma3x-side-stick-support
+  - type: hat
+    location: grip
+    ways: 8
+    count: 1
+    label: ALPS 8-way hat
+    source: https://support.mozaracing.com/en/support/solutions/articles/70000679588-moza-ma3x-side-stick-support
+  - type: toggle
+    location: grip
+    count: 1
+    label: Toggle switch
+    source: https://support.mozaracing.com/en/support/solutions/articles/70000679588-moza-ma3x-side-stick-support

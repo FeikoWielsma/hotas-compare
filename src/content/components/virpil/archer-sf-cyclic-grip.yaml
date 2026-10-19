@@ -11,17 +11,32 @@ controls:
 - type: trigger
   stages: 2
   count: 1
+  location: grip
+  label: Dual-stage trigger
+  source: https://virpil-controls.eu/archer-sf-cyclic-grip.html
 - type: button
   count: 1
   label: Safety guard
+  location: grip
+  notes: Guarded button input; guard itself is not an additional button.
+  source: https://virpil-controls.eu/archer-sf-cyclic-grip.html
 - type: button
   count: 3
   label: Momentary buttons
+  location: grip
+  source: https://virpil-controls.eu/archer-sf-cyclic-grip.html
 - type: hat
   ways: 4
   push: true
   count: 5
   label: Gated hats
+  location: grip
+  source: https://virpil-controls.eu/archer-sf-cyclic-grip.html
+controls_evidence:
+  coverage: complete
+  source: https://virpil-controls.eu/archer-sf-cyclic-grip.html
+  checked: '2026-10-19'
+  notes: Official input list specifies one dual-stage trigger, guarded button input, three momentary buttons, and five gated four-way hats with push. No other physical inputs are listed; RGB button-label lighting is not an input.
 hardware:
   gimbal: null
   sensor: null

@@ -8,37 +8,62 @@ mount:
   provides: virpil-grip
   accepts: []
 controls:
-- type: trigger
-  stages: 1
-  count: 1
-  label: Primary trigger
-- type: trigger
-  stages: 2
-  flip: true
-  count: 1
-  label: Dual-stage flip trigger
-- type: trigger
-  stages: 1
-  flip: true
-  count: 1
-  label: Front flip trigger
-- type: button
-  count: 8
-- type: hat
-  ways: 2
-  push: true
-  count: 2
-- type: hat
-  ways: 4
-  push: true
-  count: 1
-- type: analog_ministick
-  push: true
-  count: 1
-- type: lever
-  kind: brake
-  analog: true
-  count: 1
+  - type: trigger
+    location: grip
+    stages: 1
+    count: 1
+    label: Primary trigger
+    source: https://virpil-controls.eu/vpc-flnkr-grip.html
+  - type: trigger
+    location: grip
+    stages: 2
+    action: flip
+    count: 1
+    label: Dual-stage weapon flip trigger
+    source: https://virpil-controls.eu/vpc-flnkr-grip.html
+  - type: trigger
+    location: grip
+    stages: 1
+    action: flip
+    count: 1
+    label: Front flip trigger
+    source: https://virpil-controls.eu/vpc-flnkr-grip.html
+  - type: button
+    location: grip
+    count: 8
+    label: Momentary push buttons, preinstalled layout
+    source: https://virpil-controls.eu/vpc-flnkr-grip.html
+  - type: hat
+    location: grip
+    ways: 2
+    push: true
+    count: 2
+    label: 2-way hats, preinstalled layout
+    source: https://virpil-controls.eu/vpc-flnkr-grip.html
+  - type: hat
+    location: grip
+    ways: 4
+    push: true
+    count: 1
+    label: 4-way hat, preinstalled layout
+    source: https://virpil-controls.eu/vpc-flnkr-grip.html
+  - type: analog_ministick
+    location: grip
+    push: true
+    count: 1
+    source: https://virpil-controls.eu/vpc-flnkr-grip.html
+  - type: lever
+    location: grip
+    kind: brake
+    analog: true
+    count: 1
+    label: Brake lever axis
+    source: https://virpil-controls.eu/vpc-flnkr-grip.html
+controls_evidence:
+  coverage: complete
+  source: https://virpil-controls.eu/vpc-flnkr-grip.html
+  checked: '2026-10-19'
+  notes: 'Counts are for the preinstalled configuration (2 two-way + push hats, 1 four-way + push hat, 8 momentary buttons). Alternate configuration replaces two 2-way hats and one button with additional four-way hats (4 total); these alternatives are not simultaneous. Mapping counts include 2 virtual buttons which are logical bindings, not separate physical controls. RGB status LEDs are not inputs.'
 hardware:
   gimbal: null
   sensor: contactless_magnetic

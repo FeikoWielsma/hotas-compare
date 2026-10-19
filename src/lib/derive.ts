@@ -40,15 +40,15 @@ export function deriveControlsSummary(controls: ControlItem[] = []): ControlsSum
   for (const ctrl of controls) {
     switch (ctrl.type) {
       case 'trigger': {
-        triggerStages += ctrl.stages;
-        totalLogicalButtons += ctrl.stages;
+        triggerStages += (ctrl.stages ?? 0) * (ctrl.count ?? 1);
+        totalLogicalButtons += (ctrl.stages ?? 0) * (ctrl.count ?? 1);
         break;
       }
       case 'hat': {
         const count = ctrl.count || 1;
         hatCount += count;
         // Each hat direction can be a logical button
-        totalLogicalButtons += count * ctrl.ways;
+        totalLogicalButtons += count * (ctrl.ways ?? 0);
         if (ctrl.push) {
           totalLogicalButtons += count;
         }
@@ -76,31 +76,35 @@ export function deriveControlsSummary(controls: ControlItem[] = []): ControlsSum
           if (ctrl.kind === 'brake') {
             hasBrakeAxis = true;
           }
-        } else {
+        } else if (ctrl.analog === false) {
           totalLogicalButtons += count;
         }
+        if (ctrl.push) totalLogicalButtons += count;
         break;
       }
+      case 'scroll_wheel':
       case 'encoder': {
         const count = ctrl.count || 1;
-        encoderCount += count;
+        if (ctrl.type === 'encoder') encoderCount += count;
         // Encoders typically send 2 logical inputs (CW and CCW) + optional push
         totalLogicalButtons += count * 2;
         if (ctrl.push) {
-          totalLogicalButtons += count;
+          totalLogicalButtons += count * (ctrl.push_stages ?? 1);
         }
         break;
       }
       case 'toggle': {
         const count = ctrl.count || 1;
         toggleCount += count;
-        totalLogicalButtons += count * (ctrl.ways || 2);
+        totalLogicalButtons += count * (ctrl.ways ?? 0);
+        if (ctrl.push) totalLogicalButtons += count;
         break;
       }
       case 'slider': {
         const count = ctrl.count || 1;
         sliderCount += count;
-        estimatedAxes += count;
+        if (ctrl.analog === false) totalLogicalButtons += count * (ctrl.positions ?? 0);
+        else if (ctrl.analog === true) estimatedAxes += count;
         break;
       }
       case 'detent': {
@@ -110,12 +114,25 @@ export function deriveControlsSummary(controls: ControlItem[] = []): ControlsSum
       case 'rocker': {
         const count = ctrl.count || 1;
         rockerCount += count;
-        totalLogicalButtons += count * 2 + (ctrl.push ? count : 0);
+        if (ctrl.analog) estimatedAxes += count;
+        else if (ctrl.analog === false) totalLogicalButtons += count * 2;
+        if (ctrl.push) totalLogicalButtons += count;
         break;
       }
       case 'rotary': {
         const count = ctrl.count || 1;
-        estimatedAxes += count;
+        if (ctrl.mode === 'selector') totalLogicalButtons += count * (ctrl.positions ?? 0);
+        else if (ctrl.mode === 'analog') estimatedAxes += count;
+        if (ctrl.push) totalLogicalButtons += count;
+        break;
+      }
+      case 'switch': {
+        // A generic switch specification establishes physical count, not its binding behavior.
+        break;
+      }
+      case 'axis': {
+        estimatedAxes += ctrl.count;
+        if (ctrl.kind === 'toe_brake') hasBrakeAxis = true;
         break;
       }
     }

@@ -9,13 +9,23 @@ controls:
 - type: hat
   ways: 8
   label: POV switch
+  location: handle
+  source: https://flyhoneycomb.com/products/alpha-flight-controls-lite
 - type: rocker
   count: 2
-  ways: 2
-  label: 2-way rocker switches
+  label: Two 2-way rockers
+  location: handle
+  source: https://flyhoneycomb.com/products/alpha-flight-controls-lite
 - type: button
   count: 4
-  label: Programmable buttons
+  label: Programmable buttons (two per handle)
+  location: handle
+  source: https://flyhoneycomb.com/products/alpha-flight-controls-lite
+controls_evidence:
+  coverage: complete
+  source: https://flyhoneycomb.com/products/alpha-flight-controls-lite
+  checked: '2026-10-19'
+  notes: Official product page enumerates one POV, two 2-way rockers, and four programmable buttons. No other installed switch types are described; button-mapping totals are not used as physical counts.
 hardware:
   gimbal: null
   sensor: null

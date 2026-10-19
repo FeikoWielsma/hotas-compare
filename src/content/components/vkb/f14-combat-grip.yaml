@@ -9,19 +9,40 @@ mount:
   accepts: []
 controls:
 - type: trigger
+  location: grip
   stages: 2
-- type: hat
-  ways: 8
-  push: true
+  action: sequential
+  label: Dual-stage trigger
+  source: https://vkbsimcontrollers.com/products/gnx-f-14-add-on-grip-us
+- type: trigger
+  location: grip
+  label: Emergency Autopilot Disable trigger
+  notes: "Manufacturer names it separately but does not specify its actuation stages."
+  source: https://vkbsimcontrollers.com/products/gnx-f-14-add-on-grip-us
 - type: lever
+  location: grip
   kind: other
   analog: true
-  label: DLC wheel
+  label: DLC maneuver wheel
+  source: https://vkbsimcontrollers.com/products/gnx-f-14-add-on-grip-us
 - type: rotary
-  count: 1
-  label: Four-position weapon selector
+  location: grip
+  mode: selector
+  positions: 4
+  push: true
+  label: Ammo selector with safety lock and push
+  notes: "Four-position selector; manufacturer does not specify whether safety lock adds a distinct input."
+  source: https://vkbsimcontrollers.com/products/gnx-f-14-add-on-grip-us
 - type: button
+  location: grip
   count: 4
+  label: Programmable buttons
+  source: https://vkbsimcontrollers.com/products/gnx-f-14-add-on-grip-us
+controls_evidence:
+  coverage: partial
+  source: https://vkbsimcontrollers.com/products/gnx-f-14-add-on-grip-us
+  checked: '2026-10-19'
+  notes: "Exact GNX F-14 listing confirms a center-push hat but gives no directional count; because the schema defaults omitted ways to 4, its ways field is left unknown and coverage is partial. The four-position ammo selector and push are modeled as one discrete selector with push; whether the safety lock is an extra input is unspecified. The page also identifies the Emergency Autopilot Disable trigger as a separate physical trigger, but does not state its actuation stages. Twist adapter is an axis, outside this controls inventory. Do not transfer compatibility claims from the older Mk.III variant."
 hardware:
   gimbal: null
   sensor: contactless_magnetic

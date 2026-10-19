@@ -9,18 +9,41 @@ mount:
   - tm-din5
 controls:
 - type: trigger
+  count: 1
   stages: 2
+  action: sequential
+  location: grip
+  label: Dual-stage metal trigger
+  source: https://ts.thrustmaster.com/download/accessories/pc/hotas/manual/HOTAS_Warthog/HOTAS_Warthog_Manual.pdf
 - type: hat
   ways: 8
-  push: true
-- type: hat
-  ways: 4
-  push: true
-- type: hat
-  ways: 4
   push: false
+  location: grip
+  label: POV hat
+  source: https://ts.thrustmaster.com/download/accessories/pc/hotas/manual/HOTAS_Warthog/HOTAS_Warthog_Manual.pdf
+- type: hat
+  ways: 8
+  count: 2
+  push: false
+  location: grip
+  label: Two 8-way hats
+  source: https://ts.thrustmaster.com/download/accessories/pc/hotas/manual/HOTAS_Warthog/HOTAS_Warthog_Manual.pdf
+- type: hat
+  ways: 4
+  push: true
+  location: grip
+  label: 4-way hat with push
+  source: https://ts.thrustmaster.com/download/accessories/pc/hotas/manual/HOTAS_Warthog/HOTAS_Warthog_Manual.pdf
 - type: button
   count: 4
+  location: grip
+  label: Two pushbuttons and two pinkie pushbuttons
+  source: https://ts.thrustmaster.com/download/accessories/pc/hotas/manual/HOTAS_Warthog/HOTAS_Warthog_Manual.pdf
+controls_evidence:
+  coverage: complete
+  source: https://ts.thrustmaster.com/download/accessories/pc/hotas/manual/HOTAS_Warthog/HOTAS_Warthog_Manual.pdf
+  checked: '2026-10-19'
+  notes: Manual's exact grip list identifies one POV hat, two 8-way hats, one 4-way hat with push, one dual metal trigger, two pushbuttons, and two pinkie pushbuttons. Count physical controls rather than logical button numbers; the manual separately calls out CMS push button as button 19.
 hardware:
   gimbal: null
   sensor: null

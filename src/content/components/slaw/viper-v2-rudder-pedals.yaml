@@ -4,7 +4,18 @@ category: pedals
 status: discontinued
 handedness: n/a
 mount: null
-controls: [] # no published input list
+controls:
+- type: axis
+  kind: toe_brake
+  count: 2
+  label: Independent left and right toe-brake axes
+  source: https://slawdevice.com/en/glowna/47-pre-order-rx-viper-v3-rudder-pedals-silver.html
+  location: other
+controls_evidence:
+  coverage: partial
+  source: https://slawdevice.com/en/blog/post/7-Announcement-RX-Viper-V2-rudder-pedals.html
+  checked: '2026-10-19'
+  notes: Viper V2 is discontinued; the manufacturer states production was suspended indefinitely in 2022. V3 documentation says its assembly process is the same as V2 and documents rudder plus two toe-brake axes, but that does not establish every V2 physical detail or resolution. Rudder axis cannot be represented in controls schema; no discrete buttons are documented. Pedal movements are represented explicitly as axes; they are not hand-operated levers or rocker switches.
 hardware:
   gimbal: cam
   sensor: contactless_magnetic

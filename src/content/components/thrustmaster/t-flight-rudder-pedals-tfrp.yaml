@@ -6,13 +6,24 @@ release_year: 2015
 handedness: n/a
 mount: null
 controls:
-- type: rocker
+- type: axis
   count: 1
-  label: Rudder axis
-- type: lever
-  kind: brake
-  analog: true
+  location: other
+  label: Rudder pedal axis
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TFRP/TFRP_User_Manual.pdf
+  kind: rudder
+- type: axis
+  kind: toe_brake
   count: 2
+  location: other
+  label: Differential toe-brake pedals
+  notes: Two separate foot-operated toe-brake axes, one per pedal.
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TFRP/TFRP_User_Manual.pdf
+controls_evidence:
+  coverage: complete
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TFRP/TFRP_User_Manual.pdf
+  checked: '2026-10-19'
+  notes: 'Three analog axes total: one rudder axis and two differential brake axes. Device has no standalone buttons, hats or hand levers; toe brakes are foot pedal mechanisms, represented as brake controls because schema has no pedal type. Pedal movements are represented explicitly as axes; they are not hand-operated levers or rocker switches.'
 hardware:
   gimbal: null
   sensor: potentiometer

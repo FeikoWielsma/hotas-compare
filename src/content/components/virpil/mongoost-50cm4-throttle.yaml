@@ -6,35 +6,80 @@ release_year: 2026
 handedness: n/a
 mount: null
 controls:
-  - type: lever
-    kind: throttle_dual
-    analog: true
-    count: 2
-  - type: lever
-    kind: other
-    analog: true
-    count: 1
-    label: Auxiliary axis
-  - type: hat
-    ways: 4
-    push: true
-    count: 3
-  - type: rotary
-    count: 2
-    push: true
-    label: Grip rotary dials
-  - type: analog_ministick
-    push: true
-  - type: encoder
-    count: 2
-    push: true
-  - type: toggle
-    count: 2
-    ways: 3
-    momentary: true
-  - type: button
-    count: 11
-    label: Momentary buttons
+- type: lever
+  kind: throttle_dual
+  analog: true
+  count: 2
+  location: handle
+  label: Throttle axes
+  source: https://virpil-controls.eu/mongoost-50cm4-throttle.html
+- type: lever
+  kind: other
+  analog: true
+  count: 1
+  location: other
+  label: Auxiliary axis
+  source: https://virpil-controls.eu/mongoost-50cm4-throttle.html
+- type: detent
+  count: 2
+  customizable: true
+  location: handle
+  label: Throttle detents
+  notes: 'Configurable mechanical detent plates on throttle axes.'
+  source: https://virpil-controls.eu/mongoost-50cm4-throttle.html
+- type: hat
+  ways: 4
+  push: true
+  count: 3
+  location: handle
+  source: https://virpil-controls.eu/mongoost-50cm4-throttle.html
+- type: analog_ministick
+  push: true
+  count: 1
+  location: handle
+  source: https://virpil-controls.eu/mongoost-50cm4-throttle.html
+- type: rotary
+  mode: analog
+  count: 2
+  push: true
+  location: handle
+  label: Rotary dials with center push
+  source: https://virpil-controls.eu/mongoost-50cm4-throttle.html
+- type: encoder
+  count: 2
+  push: true
+  location: panel
+  label: Base panel encoder dials
+  source: https://virpil-controls.eu/mongoost-50cm4-throttle.html
+- type: button
+  count: 6
+  backlit: true
+  location: panel
+  label: RGB momentary buttons B1-B6
+  source: https://virpil-controls.eu/mongoost-50cm4-throttle.html
+- type: button
+  count: 1
+  location: panel
+  label: Base panel momentary push button
+  source: https://virpil-controls.eu/mongoost-50cm4-throttle.html
+- type: button
+  count: 4
+  location: handle
+  label: Grip momentary buttons
+  source: https://virpil-controls.eu/mongoost-50cm4-throttle.html
+- type: toggle
+  count: 2
+  ways: 3
+  momentary: true
+  location: panel
+  label: ON-OFF-ON momentary toggles
+  source: https://virpil-controls.eu/mongoost-50cm4-throttle.html
+controls_evidence:
+  coverage: complete
+  source: https://virpil-controls.eu/mongoost-50cm4-throttle.html
+  checked: '2026-10-19'
+  notes: "Inventory separates base panel from grip. Page prose includes a generic 5-way mode-dial paragraph copied from CM3, but CM4's explicit BASE PANEL INPUTS list omits such a dial; not counted. Axial rotary versus selector behavior is described as rotary dial with center push but axis mode is not explicit, so mode remains unknown."
+
 hardware:
   gimbal: null
   sensor: contactless

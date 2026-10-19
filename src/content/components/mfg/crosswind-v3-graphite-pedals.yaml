@@ -5,11 +5,23 @@ status: current
 handedness: n/a
 mount: null
 controls:
-- type: lever
-  kind: brake
-  analog: true
+- type: axis
+  kind: toe_brake
   count: 2
-  label: Toe brakes
+  label: Independent left and right toe-brake axes
+  source: https://mfg-sim.com/rudders/mfg-crosswind-v3-base.html
+  location: other
+- type: axis
+  kind: rudder
+  count: 1
+  location: other
+  label: Rudder pedal axis
+  source: https://mfg-sim.com/rudders/mfg-crosswind-v3-base.html
+controls_evidence:
+  coverage: complete
+  source: https://mfg-sim.com/rudders/mfg-crosswind-v3-base.html
+  checked: '2026-10-19'
+  notes: 'Three physical analog axes: rudder plus independent left/right toe brakes. Controls schema has no generic axis item for the rudder axis, so controls lists only the two brake pedals; no standalone buttons or switches are specified. Footrest geometry varies by selected model; this record is Graphite/Bf109. Pedal movements are represented explicitly as axes; they are not hand-operated levers or rocker switches.'
 hardware:
   gimbal: cam
   sensor: contactless_magnetic

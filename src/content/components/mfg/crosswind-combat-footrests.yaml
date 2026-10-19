@@ -4,7 +4,12 @@ category: module
 status: current
 handedness: n/a
 mount: null
-controls: [] # no published input list
+controls: []
+controls_evidence:
+  coverage: complete
+  source: https://mfg-sim.com/rudder-acessories/footrest-kit-for-mfg-rudder-pedals.html
+  checked: '2026-10-19'
+  notes: 'Mechanical Combat/Universal footrest pair only; no switches, buttons, levers, or electrical inputs are part of this accessory. Its parent Crosswind base supplies the rudder and toe-brake axes.'
 hardware:
   gimbal: null
   sensor: contactless_magnetic

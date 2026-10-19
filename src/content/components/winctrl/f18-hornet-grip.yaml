@@ -9,6 +9,7 @@ mount:
 controls:
   - type: trigger
     stages: 2
+    source: https://eu.winctrl.com/view/goods-details.html?id=314
   - type: hat
     ways: 4
     push: true
@@ -19,11 +20,19 @@ controls:
     count: 1
   - type: button
     count: 2
+    label: Physical press switches
+    source: https://eu.winctrl.com/view/goods-details.html?id=314
   - type: lever
     kind: brake
     analog: false
     count: 1
     label: Brake/trigger switch
+controls_evidence:
+  coverage: partial
+  source: https://eu.winctrl.com/view/goods-details.html?id=314
+  checked: '2026-10-19'
+  notes: >-
+    Official F-18/NavyAce product text reports three pressable 4-direction switches, one pressable 8-direction switch, two press switches, one on/off brake/trigger switch and one two-stage trigger. Page describes NavyAce metal grip in an older HOTAS bundle; check exact current FA-18 replica SKU before treating as exhaustive.
 hardware:
   axes: []
 connectivity:

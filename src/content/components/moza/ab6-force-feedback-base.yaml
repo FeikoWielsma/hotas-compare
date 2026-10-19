@@ -8,7 +8,24 @@ mount:
   provides: null
   accepts:
   - moza-flight-qr
-controls: []
+controls:
+  - type: button
+    location: base
+    count: 8
+    label: RGB-backlit customizable buttons
+    backlit: true
+    source: https://support.mozaracing.com/en/support/solutions/articles/70000684201-ab6-force-feedback-base
+  - type: slider
+    location: base
+    count: 2
+    analog: true
+    label: Axis sliders
+    source: https://support.mozaracing.com/en/support/solutions/articles/70000684201-ab6-force-feedback-base
+controls_evidence:
+  coverage: partial
+  source: https://support.mozaracing.com/en/support/solutions/articles/70000684201-ab6-force-feedback-base
+  checked: '2026-10-19'
+  notes: Eight illuminated buttons and two axis sliders are explicitly documented. Separate power control is excluded as a device input; no evidence found for other onboard input types.
 hardware:
   gimbal: force_feedback
   sensor: encoder_20bit

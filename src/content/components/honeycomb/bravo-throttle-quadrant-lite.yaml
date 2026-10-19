@@ -10,20 +10,39 @@ controls:
   kind: throttle_dual
   analog: true
   count: 4
-  label: Interchangeable throttle levers
-- type: slider
+  label: Interchangeable throttle levers; included lever caps are alternatives
+  location: handle
+  source: https://flyhoneycomb.com/products/bravo-throttle-quadrant-lite
+- type: encoder
   count: 1
-  label: Trim wheel
+  label: Low-profile trim wheel
+  location: panel
+  source: https://flyhoneycomb.com/products/bravo-throttle-quadrant-lite
 - type: lever
   kind: other
   analog: false
   count: 1
-  label: Parking brake
+  label: Spring-loaded parking-brake control
+  location: panel
+  source: https://flyhoneycomb.com/products/bravo-throttle-quadrant-lite
 - type: lever
   kind: other
   analog: false
   count: 1
-  label: Landing gear
+  label: Landing-gear lever with LED indicator
+  location: panel
+  source: https://flyhoneycomb.com/products/bravo-throttle-quadrant-lite
+- type: detent
+  count: 4
+  customizable: true
+  label: Exchangeable flap-detent inlays on throttle levers
+  location: handle
+  source: https://flyhoneycomb.com/products/bravo-throttle-quadrant-lite
+controls_evidence:
+  coverage: partial
+  source: https://flyhoneycomb.com/products/bravo-throttle-quadrant-lite
+  checked: '2026-10-19'
+  notes: Corrected prior trim-wheel slider to encoder; wheel function implies incremental digital adjustment but its electronic implementation is undocumented. Four lever bodies are installed; alternate caps/inlays are not extra controls. Spring-loaded parking brake behavior is stated, but switch electrical behavior and detent count are not. No button/hat/encoder counts are specified.
 hardware:
   gimbal: null
   sensor: null

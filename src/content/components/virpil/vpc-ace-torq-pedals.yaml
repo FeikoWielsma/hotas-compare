@@ -5,7 +5,18 @@ status: current
 release_year: 2022
 handedness: n/a
 mount: null
-controls: []
+controls:
+- type: axis
+  kind: rudder
+  count: 1
+  location: other
+  label: Rudder pedal axis
+  source: https://virpil-controls.eu/vpc-ace-torq-rudder-pedals.html
+controls_evidence:
+  coverage: complete
+  source: https://virpil-controls.eu/vpc-ace-torq-rudder-pedals.html
+  checked: '2026-10-19'
+  notes: Single rudder axis only; no toe-brake axes and no standalone switches/buttons are described for this pedal set. SKU VPC-304-001. Pedal movements are represented explicitly as axes; they are not hand-operated levers or rocker switches.
 hardware:
   gimbal: null
   sensor: contactless_magnetic

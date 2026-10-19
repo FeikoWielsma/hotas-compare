@@ -4,7 +4,12 @@ category: module
 status: current
 handedness: n/a
 mount: null
-controls: [] # no published input list
+controls: []
+controls_evidence:
+  coverage: complete
+  source: https://mfg-sim.com/rudder-acessories/hydraulic-damper-universal-kit-for-v1-3-pedals.html
+  checked: '2026-10-19'
+  notes: 'Standalone adjustable hydraulic damping accessory, compatible with Crosswind V1–V3; it adds resistance to the parent rudder axis and no discrete electrical inputs.'
 hardware:
   gimbal: null
   sensor: contactless_magnetic

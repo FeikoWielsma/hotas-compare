@@ -8,27 +8,50 @@ controls:
 - type: hat
   ways: 8
   count: 1
-  label: Digital POV hat
+  label: Digital 8-way POV
+  source: https://cdn.turtlebeach.com/device/qig/velocityone--flightstick/velocityone--flightstick_367-6703-v1.pdf
+- type: analog_ministick
+  push: true
+  count: 1
+  label: Analog POV with click press
+  source: https://cdn.turtlebeach.com/device/qig/velocityone--flightstick/velocityone--flightstick_367-6703-v1.pdf
 - type: trigger
   count: 1
-  label: Rapid-fire trigger
+  label: Trigger
+  source: https://cdn.turtlebeach.com/device/qig/velocityone--flightstick/velocityone--flightstick_367-6703-v1.pdf
 - type: lever
-  kind: throttle_single
+  kind: other
   analog: true
   count: 2
-  label: Throttle and flap levers
+  label: Multifunction levers
+  source: https://cdn.turtlebeach.com/device/qig/velocityone--flightstick/velocityone--flightstick_367-6703-v1.pdf
+  push: true
+  notes: Each lever activates an additional contact in its lower detent. This is not a separately actuated standalone push button.
 - type: button
-  count: 27
-  label: Programmable buttons
+  count: 8
+  label: Button groups B1-B8
+  source: https://cdn.turtlebeach.com/device/qig/velocityone--flightstick/velocityone--flightstick_367-6703-v1.pdf
+- type: button
+  count: 2
+  label: Microswitch buttons B16-B17
+  source: https://cdn.turtlebeach.com/device/qig/velocityone--flightstick/velocityone--flightstick_367-6703-v1.pdf
+- type: button
+  count: 1
+  label: Touchpad click press
+  source: https://cdn.turtlebeach.com/device/qig/velocityone--flightstick/velocityone--flightstick_367-6703-v1.pdf
 - type: encoder
   count: 1
-  label: Flight configuration wheel
-- type: encoder
-  count: 1
-  label: Nano trim wheel
-- type: button
-  count: 1
-  label: Touchpad press
+  push: true
+  label: FMD configurator wheel (right-select/left-back clicks)
+  source: https://cdn.turtlebeach.com/device/qig/velocityone--flightstick/velocityone--flightstick_367-6703-v1.pdf
+- type: rotary
+  label: Trim wheel (configurable analog or directional digital input)
+  source: https://cdn.turtlebeach.com/device/qig/velocityone--flightstick/velocityone--flightstick_367-6703-v1.pdf
+controls_evidence:
+  coverage: partial
+  source: https://cdn.turtlebeach.com/device/qig/velocityone--flightstick/velocityone--flightstick_367-6703-v1.pdf
+  checked: '2026-10-19'
+  notes: Lists controls explicitly called out in the handbook. Xbox navigation controls are integrated but their physical button count is not clear in the source. Trigger stages and multifunction-lever axis/digital modes are unspecified. Trim wheel can be configured as an analog axis or directional digital inputs; schema has no dual-mode control type. Marketing programmable-button total was not treated as a count of standalone physical buttons.
 hardware:
   gimbal: null
   sensor: contactless_magnetic

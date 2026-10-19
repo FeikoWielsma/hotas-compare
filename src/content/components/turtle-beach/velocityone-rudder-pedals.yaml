@@ -5,11 +5,23 @@ status: current
 handedness: n/a
 mount: null
 controls:
-- type: lever
-  kind: brake
-  analog: true
+- type: axis
+  kind: toe_brake
   count: 2
-  label: Toe brakes
+  label: Independent left and right toe-brake axes
+  source: https://www.turtlebeach.com/products/velocity-one-rudder
+  location: other
+- type: axis
+  kind: rudder
+  count: 1
+  location: other
+  label: Rudder pedal axis
+  source: https://www.turtlebeach.com/products/velocity-one-rudder
+controls_evidence:
+  coverage: complete
+  source: https://www.turtlebeach.com/products/velocity-one-rudder
+  checked: '2026-10-19'
+  notes: 'Three 10-bit Hall-effect axes: one return-to-center rudder axis and two independent spring-loaded brake axes. Pedal geometry swaps between included styles but does not add controls. The rudder axis is not representable in the controls schema; no discrete buttons or switches are documented. Pedal movements are represented explicitly as axes; they are not hand-operated levers or rocker switches.'
 hardware:
   gimbal: cam
   sensor: contactless_magnetic

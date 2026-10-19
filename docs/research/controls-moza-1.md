@@ -1,0 +1,20 @@
+# MOZA control inventory research
+
+> Research trail: consult [the integration review](controls-integration-review.md) and [current catalog audit](../control-data-audit.md) for subsequent corrections and current schema capabilities.
+
+Checked 2026-10-19. Counts below describe physical controls supported by product-specific MOZA sources. MOZA's programmable input/signal totals are logical outputs and are not used as standalone button counts. All inventories remain `partial` where switch mechanics, installation variants, or complete absence could not be established.
+
+| Product | Inventory recorded | Caveats / unresolved |
+|---|---|---|
+| AB6 Force Feedback Base | 8 backlit programmable push buttons; 2 analog axis sliders. [AB6 guide](https://support.mozaracing.com/en/support/solutions/articles/70000684201-ab6-force-feedback-base) | The separate power control is not counted as a flight input. Other inputs are not specified. |
+| AB9 Force Feedback Base | No controls recorded. [AB9 support](https://support.mozaracing.com/en/support/solutions/articles/70000668982-moza-ab9-base-support) | No onboard control inventory is specified in its support page; optional shifter and installed grips are excluded. Physical absence is not proven. |
+| AY210 Yoke Base | 13 programmable panel switches represented as push inputs. [AY210 support](https://support.mozaracing.com/en/support/solutions/articles/70000679586-moza-ay210-yoke-base-support) | MOZA calls them switches and documents RGB, telemetry sync and long-press behavior, but does not specify their physical switching mechanism. Partial for that reason. |
+| AY90 Yoke Base | 1 five-way hat; 4 digital rocker switches; 2 digital slider switches. [AY90 specs](https://us.mozaracing.com/pages/ay90-yoke-base) | Hat pressability, rocker latching/momentary action and slider positions are not specified. MFY handle controls are separate. |
+| J04 Yoke | MFY inventory: 2 eight-way switches; 2 Hall-effect joysticks; 2 LB/RB buttons; 2 multifunction triggers. [AY210 manual](https://back.mozaracing.com/wordpress/wp-content/uploads/2025/manual/AY210-FFB-Yoke-Base-Manual-EN.pdf), [MFY support](https://support.mozaracing.com/en/support/solutions/articles/70000679589-moza-mfy-yoke-support) | J04 appears as the MFY device identifier in the MOZA Cockpit manual screenshot; it is not documented as a distinct retail variant. Ministick push and trigger stages are unknown. The "up to 34" signal total is not a physical control count. |
+| MA3X Side Stick | 1 trigger; 1 eight-way ALPS hat; 1 toggle. [MA3X support](https://support.mozaracing.com/en/support/solutions/articles/70000679588-moza-ma3x-side-stick-support) | Trigger stages and toggle positions/action are unspecified. Hat push is undocumented, therefore unknown. 12 programmable inputs are not treated as 12 buttons. |
+| MFY Pro Yoke | 2 eight-way hats; 2 Hall-effect thumbsticks; 2 bumpers; 2 triggers. [MFY Pro specs](https://us.mozaracing.com/pages/mfy-pro-yoke) | Thumbstick push and trigger stages are unspecified. Its 4.3-inch touchscreen is outside the current physical control schema, so it is not represented as buttons. 26 total output signals are not used as button count. |
+| MH16 Flightstick | 1 two-stage trigger; 1 eight-way ALPS hat; 1 binary paddle lever. [MH16 support](https://support.mozaracing.com/en/support/solutions/articles/70000679587-moza-mh16-flightstick-support) | The source also describes a detachable expansion with a five-way hat and three-position selector, but does not establish that it is installed in this standalone SKU; these are excluded. Hat push is undocumented. 30 programmable inputs are not a physical button count. |
+
+## Schema limitations
+
+The schema has no generic physical switch type for mechanisms MOZA calls only "switches"; AY210 panel controls are consequently represented as push buttons, with that inference disclosed in evidence notes. The schema also has no touchscreen control category. Trigger input mapping modes and hat/ministick software modes describe configuration, not additional physical hardware. The MH16 side expansion's exact bundled/installed status remains uncertain.

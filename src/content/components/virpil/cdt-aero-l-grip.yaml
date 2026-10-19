@@ -11,30 +11,60 @@ controls:
 - type: trigger
   stages: 2
   count: 1
+  location: grip
+  label: Dual-stage trigger
+  source: https://virpil-controls.eu/cdt-aero-l-grip.html
 - type: trigger
   stages: 1
   flip: true
   count: 1
+  location: grip
+  action: flip
+  label: Flip trigger
+  source: https://virpil-controls.eu/cdt-aero-l-grip.html
 - type: hat
   ways: 4
   push: true
   count: 3
+  location: grip
+  label: 4-way hats
+  source: https://virpil-controls.eu/cdt-aero-l-grip.html
 - type: lever
   analog: false
   count: 1
+  location: grip
   label: Grip paddle switch
+  source: https://virpil-controls.eu/cdt-aero-l-grip.html
 - type: button
   count: 3
+  location: grip
+  label: Push buttons
+  source: https://virpil-controls.eu/cdt-aero-l-grip.html
 - type: analog_ministick
   push: true
   count: 1
+  location: grip
+  label: Analogue ministick
+  source: https://virpil-controls.eu/cdt-aero-l-grip.html
 - type: lever
   kind: brake
   analog: true
   count: 1
+  location: grip
+  label: Brake lever axis
+  source: https://virpil-controls.eu/cdt-aero-l-grip.html
 - type: slider
+  analog: true
   count: 1
-  label: 2-way mode slider
+  location: grip
+  label: Mode slider
+  notes: Mapping template depicts a continuous SLDR axis (0–100); product page calls it a 2-way mode slider.
+  source: https://support.virpil.com/en/support/solutions/articles/47001285225-vpc-cdt-aero-l-grip
+controls_evidence:
+  coverage: complete
+  source: https://virpil-controls.eu/cdt-aero-l-grip.html
+  checked: '2026-10-19'
+  notes: Exact L SKU VPC-017-L. Manufacturer input list and its L mapping template checked. The physical 2-way mode slider is represented as an analog axis by the mapping sheet; twist axis is in hardware.axes, not an extra button control.
 hardware:
   gimbal: null
   sensor: null
@@ -42,6 +72,7 @@ hardware:
   - name: Ministick X
   - name: Ministick Y
   - name: Brake
+  - name: Mode slider
   - name: Twist
   force_adjustable: null
   cams_swappable: null

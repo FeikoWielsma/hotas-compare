@@ -7,14 +7,33 @@ handedness: n/a
 mount: null
 controls:
 - type: button
-  count: 25
-- type: toggle
-  count: 8
-  ways: 2
+  count: 4
+  location: panel
+  label: Square push buttons
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/Viper/Viper_Mission_Pack_User_Manual.pdf
+- type: rotary
+  mode: analog
+  count: 1
+  location: panel
+  label: Trim wheel axis
+  source: https://www.thrustmaster.com/products/viper-panel/
+- type: rotary
+  mode: selector
+  count: 2
+  location: panel
+  label: MODE and PGRM selectors
+  source: https://www.thrustmaster.com/products/viper-panel/
+controls_evidence:
+  coverage: partial
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/Viper/Viper_Mission_Pack_User_Manual.pdf
+  checked: '2026-10-19'
+  notes: 'Manual mapping distinguishes 32 physical button inputs and one axis in mode A from 11 extra virtual button events; marketing total of 43 is not 43 standalone pushbuttons. The sheet shows numerous rotary and switch controls but does not provide reliable type, position, or momentary/latching detail for each; four square pushbuttons and the named selectors are concrete controls represented. Other switches including weapon-launch and landing gear remain unclassified because position and momentary/latching details are not established.'
 hardware:
   gimbal: null
   sensor: null
-  axes: []
+  axes:
+  - name: Trim wheel
+
   force_adjustable: false
   cams_swappable: false
   damping: null

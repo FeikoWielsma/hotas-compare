@@ -9,11 +9,52 @@ controls:
 - type: lever
   kind: throttle_dual
   analog: true
+  count: 2
+  location: handle
+  label: Thrust levers
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant/TCA_Quadrant_Airbus_Edition_user_manual.pdf
 - type: detent
-  count: 4
-  customizable: true
-- type: button
   count: 8
+  customizable: true
+  location: base
+  label: Four detents per thrust axis
+  notes: Four per axis; virtual button events at detents/reverser are not standalone pushbuttons.
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant/TCA_Quadrant_Airbus_Edition_user_manual.pdf
+- type: button
+  count: 2
+  location: handle
+  label: Thrust-lever push buttons
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant/TCA_Quadrant_Airbus_Edition_user_manual.pdf
+- type: button
+  count: 2
+  location: base
+  label: Base push buttons
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant/TCA_Quadrant_Airbus_Edition_user_manual.pdf
+- type: toggle
+  count: 2
+  ways: 2
+  location: base
+  label: Engine master switches
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant/TCA_Quadrant_Airbus_Edition_user_manual.pdf
+- type: rotary
+  mode: selector
+  count: 1
+  positions: 3
+  location: base
+  label: Engine mode selector
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant/TCA_Quadrant_Airbus_Edition_user_manual.pdf
+- type: rotary
+  mode: selector
+  count: 1
+  positions: 2
+  location: base
+  label: Engine-pair configuration selector (1/2 or 3/4)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant/TCA_Quadrant_Airbus_Edition_user_manual.pdf
+controls_evidence:
+  coverage: complete
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant/TCA_Quadrant_Airbus_Edition_user_manual.pdf
+  checked: '2026-10-19'
+  notes: Standard quadrant without add-ons. Manual pages 1-4 visually distinguish two grip push buttons, two base push buttons, two engine master switches, a three-position engine-mode knob and rear engine-pair configuration selector. Eight advertised physical button events include switch contacts and are not eight standalone pushbuttons. Eight additional axis-region events are virtual. Reverse-thrust latches unlock axis travel rather than adding independent buttons.
 hardware:
   gimbal: null
   sensor: hall

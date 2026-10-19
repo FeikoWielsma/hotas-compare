@@ -7,26 +7,49 @@ handedness: n/a
 mount: null
 controls:
   - type: button
+    location: panel
     count: 12
     backlit: true
+    label: RGB momentary buttons
+    source: https://virpil-controls.eu/vpc-control-panel-1.html
   - type: toggle
+    location: panel
     count: 6
     ways: 3
     momentary: true
+    label: ON-OFF-ON momentary toggles
+    source: https://virpil-controls.eu/vpc-control-panel-1.html
   - type: toggle
+    location: panel
     count: 2
     ways: 2
     momentary: false
+    label: ON-ON latched toggles
+    source: https://virpil-controls.eu/vpc-control-panel-1.html
   - type: toggle
+    location: panel
     count: 2
     ways: 3
     momentary: false
     label: Flip-cover toggles
+    source: https://virpil-controls.eu/vpc-control-panel-1.html
   - type: encoder
+    location: panel
     count: 3
     push: true
+    label: Encoder dials
+    source: https://virpil-controls.eu/vpc-control-panel-1.html
   - type: rotary
+    location: panel
     count: 2
+    mode: analog
+    label: Axis dials
+    source: https://virpil-controls.eu/vpc-control-panel-1.html
+controls_evidence:
+  coverage: complete
+  source: https://virpil-controls.eu/vpc-control-panel-1.html
+  checked: '2026-10-19'
+  notes: 'Exact panel input list: 12 RGB pushbuttons; 6 momentary ON-OFF-ON toggles; 2 latched ON-ON toggles; 2 flip-cover toggles; 3 pushable encoder dials; 2 axis dials. Manufacturer does not specify flip-cover toggle electrical behavior or axis dial position counts.'
 hardware:
   gimbal: null
   sensor: contactless_magnetic

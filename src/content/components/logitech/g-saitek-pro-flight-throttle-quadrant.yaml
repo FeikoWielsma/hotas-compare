@@ -5,13 +5,29 @@ status: current
 handedness: n/a
 mount: null
 controls:
-- type: lever
-  kind: throttle_single
-  analog: true
-  count: 3
-- type: toggle
-  count: 6
-  ways: 2
+  - type: lever
+    kind: throttle_single
+    analog: true
+    push: true
+    count: 3
+    label: Detachable-knob levers
+    notes: Each lever has a bottom-travel detent that produces a button input; represented by push on each lever and also described by the detent group.
+    source: https://origin-saitek2.logitech.com/uk/blog/wp-content/uploads/2014/08/07-14.pdf
+  - type: detent
+    count: 3
+    label: Lever bottom detents
+    notes: Each lever detent actuates a button at full-down position.
+    source: https://origin-saitek2.logitech.com/uk/blog/wp-content/uploads/2014/08/07-14.pdf
+  - type: button
+    location: base
+    count: 6
+    label: Base programmable buttons
+    source: https://origin-saitek2.logitech.com/uk/blog/wp-content/uploads/2014/08/07-14.pdf
+controls_evidence:
+  coverage: complete
+  source: https://origin-saitek2.logitech.com/uk/blog/wp-content/uploads/2014/08/07-14.pdf
+  checked: '2026-10-19'
+  notes: Primary product/manual evidence checked; coverage applies to the physical inventory described by this exact component.
 hardware:
   gimbal: null
   sensor: potentiometer

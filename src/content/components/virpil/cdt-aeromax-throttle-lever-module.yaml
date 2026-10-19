@@ -11,6 +11,13 @@ controls:
     analog: true
     count: 1
     label: Throttle axis
+    location: handle
+    source: https://virpil-controls.eu/cdt-aeromax-throttle-module.html
+controls_evidence:
+  coverage: complete
+  source: https://virpil-controls.eu/cdt-aeromax-throttle-module.html
+  checked: '2026-10-19'
+  notes: Exact module SKU VPC-632 is a non-standalone add-on. The manufacturer's page describes one adjustable-tension contactless throttle lever; no additional switches or buttons are shown or listed.
 hardware:
   gimbal: null
   sensor: contactless_magnetic

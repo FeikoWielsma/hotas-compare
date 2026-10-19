@@ -3,6 +3,19 @@ name: MOZA TQA Throttle Module
 category: module
 status: current
 handedness: n/a
+controls:
+- type: lever
+  location: handle
+  kind: throttle_dual
+  analog: true
+  count: 2
+  label: Airbus-style throttle grips (alternative MTQ modules)
+  source: https://eu.mozaracing.com/products/tqa-mod
+controls_evidence:
+  coverage: partial
+  source: https://eu.mozaracing.com/products/tqa-mod
+  checked: '2026-10-19'
+  notes: 'Standalone replacement grip module with Airbus detent and reverse-thrust behavior. Two grips assumed from MTQ TQA configuration imagery/product family; official text does not enumerate inputs or confirm any discrete switches/buttons on the module. TQA replaces installed TQF grips; it is not simultaneous with them.'
 verification: draft
 sources:
 - https://mozaracing.com

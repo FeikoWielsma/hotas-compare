@@ -3,6 +3,33 @@ name: MOZA J04 Yoke
 category: yoke
 status: current
 handedness: n/a
+controls:
+  - type: hat
+    location: handle
+    ways: 8
+    count: 2
+    label: 8-way switches
+    source: https://support.mozaracing.com/en/support/solutions/articles/70000679589-moza-mfy-yoke-support
+  - type: analog_ministick
+    location: handle
+    count: 2
+    label: Hall Effect joysticks
+    source: https://support.mozaracing.com/en/support/solutions/articles/70000679589-moza-mfy-yoke-support
+  - type: button
+    location: handle
+    count: 2
+    label: LB/RB buttons
+    source: https://support.mozaracing.com/en/support/solutions/articles/70000679589-moza-mfy-yoke-support
+  - type: trigger
+    location: handle
+    count: 2
+    label: Multifunction triggers
+    source: https://support.mozaracing.com/en/support/solutions/articles/70000679589-moza-mfy-yoke-support
+controls_evidence:
+  coverage: partial
+  source: https://back.mozaracing.com/wordpress/wp-content/uploads/2025/manual/AY210-FFB-Yoke-Base-Manual-EN.pdf
+  checked: '2026-10-19'
+  notes: The name "J04" is not used in the official MFY product page/manual; MOZA identifies the physical yoke handle as MFY. This record appears to be an alias/device identifier rather than a separately evidenced retail variant, so controls mirror the MFY inventory only provisionally. The source identifies two eight-way switches, two Hall Effect joysticks, two LB/RB buttons, and two triggers; joystick push-click and trigger stages are unspecified. Up-to-34 signals are not physical button count.
 verification: draft
 sources:
 - https://mozaracing.com

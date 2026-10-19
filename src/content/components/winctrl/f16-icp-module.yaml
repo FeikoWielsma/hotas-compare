@@ -7,13 +7,41 @@ mount:
   provides: null
   accepts: []
 controls:
-  - type: button
-    count: 16
-  - type: rotary
-    count: 4
-  - type: toggle
-    count: 1
-    ways: 2
+- type: button
+  count: 23
+  location: panel
+  label: Silicone backlight pushbuttons
+  source: https://eu.winctrl.com/view/goods-details.html?id=544
+- type: toggle
+  count: 1
+  momentary: false
+  location: panel
+  label: Non-self-centering toggle
+  source: https://eu.winctrl.com/view/goods-details.html?id=544
+  ways: 3
+- type: toggle
+  count: 1
+  location: panel
+  label: WARN RESET single-side self-centering toggle
+  source: https://eu.winctrl.com/view/goods-details.html?id=544
+  ways: 3
+- type: hat
+  count: 1
+  location: panel
+  label: Five-way hat
+  source: https://eu.winctrl.com/view/goods-details.html?id=544
+  notes: Manufacturer calls this a five-way control; direction count versus center-push interpretation is not confirmed. Neither five directional contacts nor center push is assumed.
+- type: rotary
+  mode: analog
+  count: 4
+  location: panel
+  label: Damped thumbwheels (four physical axes)
+  source: https://eu.winctrl.com/view/goods-details.html?id=544
+controls_evidence:
+  coverage: complete
+  source: https://eu.winctrl.com/view/goods-details.html?id=544
+  checked: '2026-10-19'
+  notes: Rendered exact ViperAce ICP product detail specifies 23 silicone buttons, two 3-position toggles (one non-self-centering and WARN RESET single-side self-centering), one 5-way hat, four damped thumbwheels/four axes, and adjustable backlighting. Five-way hat pressability is not specified. No separate press function is asserted for thumbwheels. Five-way marketing terminology is preserved without guessing the split between directional contacts and center press.
 hardware:
   axes: []
 connectivity:

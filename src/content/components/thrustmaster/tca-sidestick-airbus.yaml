@@ -7,12 +7,24 @@ handedness: ambi
 mount: null
 controls:
 - type: trigger
+  count: 1
+  location: grip
   stages: 1
-- type: hat
-  ways: 8
-  push: true
-- type: button
-  count: 12
+  label: Digital trigger
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Sidestick/TCA_Sidestick_AE_User_Manual.pdf
+- type: lever
+  kind: throttle_single
+  analog: true
+  count: 1
+  location: base
+  label: Built-in throttle with reverser region
+  notes: Reverser is a virtual event at the start of throttle travel, not an extra physical button.
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Sidestick/TCA_Sidestick_AE_User_Manual.pdf
+controls_evidence:
+  coverage: partial
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Sidestick/TCA_Sidestick_AE_User_Manual.pdf
+  checked: '2026-10-19'
+  notes: Manual identifies digital trigger, PoV hat, rudder twist and built-in throttle; its diagram says 15 action buttons and one virtual throttle button. Product page says 17 action buttons and four swappable head modules, counting mapped/virtual events differently. Exact standalone button count and hat push behavior remain unresolved; modules are interchangeable, not four simultaneous controls.
 hardware:
   gimbal: ball_joint
   sensor: hall

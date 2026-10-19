@@ -9,14 +9,45 @@ controls:
 - type: lever
   kind: throttle_single
   analog: true
+  location: handle
+  label: Main throttle
+  source: https://www.thrustmaster.com/en-us/products/viper-tqs/
 - type: detent
-  count: 3
-  customizable: true
-- type: toggle
-  count: 5
-  ways: 2
-- type: button
-  count: 20
+  count: 2
+  customizable: false
+  location: handle
+  label: Cut Off and Afterburner stops (Afterburner stop removable)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/Viper/Viper_Mission_Pack_User_Manual.pdf
+- type: trigger
+  count: 1
+  stages: 1
+  action: flip
+  location: handle
+  label: Engine cut-off unlocking trigger
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/Viper/Viper_Mission_Pack_User_Manual.pdf
+- type: hat
+  ways: 4
+  push: true
+  location: handle
+  label: Hat 1 (mapping button 5)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/Viper/Viper_Mission_Pack_User_Manual.pdf
+- type: rotary
+  mode: analog
+  count: 2
+  location: handle
+  label: Analog rotary axes (knobs 6 and 11)
+  source: https://support.thrustmaster.com/en/kb/1803-en/
+- type: analog_ministick
+  push: false
+  count: 1
+  location: handle
+  label: XY slew control (mapping axis 12)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/Viper/Viper_Mission_Pack_User_Manual.pdf
+controls_evidence:
+  coverage: partial
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/Viper/Viper_Mission_Pack_User_Manual.pdf
+  checked: '2026-10-19'
+  notes: Handle only; do not include separately sold Viper Panel. Mode A mapping enumerates physical button events but does not reliably establish which remaining numbered inputs are standalone pushbuttons versus switch contacts; unsupported generic button count omitted. Marketing's 21 includes two virtual buttons. Two mechanical stop regions and cut-off trigger are distinct. Calibration support identifies two analog rotary axes with center detents; intermediate stop count unknown.
 hardware:
   gimbal: null
   sensor: hall

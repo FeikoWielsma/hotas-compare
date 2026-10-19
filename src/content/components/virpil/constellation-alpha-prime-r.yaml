@@ -9,32 +9,64 @@ mount:
   accepts: []
 controls:
 - type: trigger
+  count: 1
   stages: 2
-  count: 1
+  action: sequential
+  label: Main trigger
+  location: grip
+  source: https://virpil-controls.eu/vpc-constellation-alpha-prime-r.html
 - type: trigger
-  stages: 1
-  flip: true
   count: 1
+  stages: 2
+  action: flip
+  flip: true
+  label: Flip trigger
+  location: grip
+  notes: 'Two physical positions: raised position switch plus tactile trigger. Combined use with main trigger creates additional logical stages; not an extra trigger.'
+  source: https://virpil-controls.eu/vpc-constellation-alpha-prime-r.html
 - type: hat
   ways: 4
   push: true
   count: 3
+  location: grip
+  source: https://virpil-controls.eu/vpc-constellation-alpha-prime-r.html
 - type: hat
   ways: 2
   push: true
   count: 1
+  location: grip
+  source: https://virpil-controls.eu/vpc-constellation-alpha-prime-r.html
 - type: analog_ministick
   push: true
   count: 1
+  location: grip
+  source: https://virpil-controls.eu/vpc-constellation-alpha-prime-r.html
 - type: button
-  count: 4
+  count: 3
+  location: grip
+  label: Momentary buttons
+  source: https://virpil-controls.eu/vpc-constellation-alpha-prime-r.html
 - type: lever
   kind: brake
   analog: true
   count: 1
-- type: encoder
+  push: true
+  location: grip
+  notes: 'Brake lever includes a separate momentary button.'
+  source: https://virpil-controls.eu/vpc-constellation-alpha-prime-r.html
+- type: scroll_wheel
   count: 1
   push: true
+  location: grip
+  label: Scroll encoder
+  notes: 'Manufacturer calls this a Scroll encoder with dual push; the two push inputs are not documented as sequential stages.'
+  source: https://virpil-controls.eu/vpc-constellation-alpha-prime-r.html
+controls_evidence:
+  coverage: complete
+  source: https://virpil-controls.eu/vpc-constellation-alpha-prime-r.html
+  checked: '2026-10-19'
+  notes: "Left and right Prime grips have the same listed control inventory. The manufacturer distinguishes flip-trigger position and brake-lever button from the three standalone momentary buttons; do not double count those controls."
+
 hardware:
   gimbal: null
   sensor: null
