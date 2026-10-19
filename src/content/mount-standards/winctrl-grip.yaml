@@ -1,0 +1,5 @@
+name: WinCtrl / WinWing Grip Mount
+description: Threaded mini-DIN collar mount mechanically compatible with Thrustmaster DIN-5 bases, with WinCtrl electrical protocol.
+physical_type: thread_collar
+compatible_with:
+  - tm-din5

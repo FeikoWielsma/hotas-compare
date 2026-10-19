@@ -1,0 +1,64 @@
+brand: thrustmaster
+name: T.16000M FCS HOTAS
+category: hotas_bundle
+status: current
+components:
+  - thrustmaster/t16000m-fcs-stick
+  - thrustmaster/twcs-throttle
+prices:
+  - region: EU
+    currency: EUR
+    amount: 149
+    incl_vat: true
+    store: amazon.de
+    verified: '2026-10-01'
+    source: manual
+  - region: UK
+    currency: GBP
+    amount: 129
+    incl_vat: true
+    store: amazon.co.uk
+    verified: '2026-10-01'
+    source: manual
+  - region: US
+    currency: USD
+    amount: 149
+    incl_vat: false
+    store: amazon.com
+    verified: '2026-10-01'
+    source: manual
+verdict:
+  author: feiko
+  hands_on: true
+  owned_hours: 800
+  take: "The quintessential starter HOTAS for DCS, MSFS, and Elite. Outstanding control density on the throttle paired with accurate hall sensors on the stick."
+  pros:
+    - "Most complete starter package for under €150"
+    - "Abundant controls on throttle grip (ministick, rocker, hats)"
+    - "Magnetic hall sensors on primary X/Y stick axes"
+  cons:
+    - "Twist potentiometer failure risk on stick"
+    - "Throttle slide stiction needs Nyogel 767A lube"
+  great_for:
+    - modern_jet
+    - space_hotas
+  skip_if:
+    - "You can stretch budget to VKB Gladiator EVO"
+  scores:
+    build: 3
+    feel: 3
+    value: 4
+    software: 2
+    qc_support: 3
+external_reviews:
+  - reviewer: mysh
+    url: https://youtube.com/watch?v=sample-t16000m-hotas
+    summary: "The starter kit that launched thousands of sim pilots. Great first step into HOTAS."
+    tag: recommended
+    date: '2023-11-20'
+verification: verified
+sources:
+  - https://www.thrustmaster.com/en-us/products/t-16000m-fcs-hotas/
+images:
+  - file: tm-t16000m-hotas.webp
+    source: https://thrustmaster.com

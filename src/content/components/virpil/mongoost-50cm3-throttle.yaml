@@ -1,0 +1,132 @@
+brand: virpil
+name: VPC MongoosT-50CM3 Throttle
+category: throttle
+status: current
+release_year: 2021
+handedness: n/a
+mount: null
+controls:
+  - type: lever
+    kind: throttle_dual
+    analog: true
+    count: 2
+  - type: detent
+    count: 4
+    customizable: true
+  - type: hat
+    ways: 8
+    push: true
+    count: 2
+  - type: hat
+    ways: 4
+    push: true
+    count: 1
+  - type: analog_ministick
+    push: true
+    count: 1
+  - type: encoder
+    count: 3
+    push: true
+  - type: toggle
+    count: 6
+    ways: 3
+    momentary: true
+  - type: button
+    count: 7
+    backlit: true
+hardware:
+  gimbal: null
+  sensor: contactless_magnetic
+  axes:
+    - name: Throttle_Left
+      resolution_bits: 16
+      sensor: contactless_magnetic
+    - name: Throttle_Right
+      resolution_bits: 16
+      sensor: contactless_magnetic
+    - name: Flaps_Lever
+      resolution_bits: 12
+      sensor: contactless_magnetic
+  force_adjustable: true
+  cams_swappable: false
+  damping: dry_clutch
+  extension_support: false
+  throw_deg: 50
+connectivity:
+  usb: c
+  standalone_usb: true
+software: VPC Configuration Tool
+physical:
+  weight_g: 2800
+  materials:
+    - aluminium
+    - steel
+    - abs
+use_case_fit:
+  modern_jet: 5
+  heli: 4
+  ww2: 5
+  ga: 4
+  airliner: 4
+  space_hotas: 4
+  space_hosas: 2
+prices:
+  - region: EU
+    currency: EUR
+    amount: 399
+    incl_vat: true
+    store: virpil-controls.eu
+    verified: '2026-10-01'
+    source: manual
+  - region: UK
+    currency: GBP
+    amount: 349
+    incl_vat: true
+    store: virpil-controls.eu
+    verified: '2026-10-01'
+    source: manual
+  - region: US
+    currency: USD
+    amount: 419
+    incl_vat: false
+    store: virpil-controls.us
+    verified: '2026-10-01'
+    source: manual
+verdict:
+  author: feiko
+  hands_on: true
+  owned_hours: 500
+  take: "The benchmark standalone flight sim throttle. Modular physical detent system, dual split throttle with physical finger-lift lock, and generous tactile switches on the heavy metal control panel."
+  pros:
+    - "Modular physical detents with 4 interchangeable plates included"
+    - "Finger-lift locks for afterburner and idle cut-off"
+    - "Massive all-metal base with backlit buttons and heavy duty 3-way toggles"
+    - "Independent analog flaps lever and ministick on the throttle grip"
+  cons:
+    - "Large footprint requires dedicated desk space or sturdy mount"
+    - "Higher price tier"
+  great_for:
+    - modern_jet
+    - ww2
+    - space_hotas
+  skip_if:
+    - "You fly purely dual-stick (HOSAS) in space sims"
+    - "Small, crowded desk with no mounting option"
+  scores:
+    build: 5
+    feel: 5
+    value: 4
+    software: 4
+    qc_support: 5
+external_reviews:
+  - reviewer: mysh
+    url: https://youtube.com/watch?v=sample-cm3-throttle
+    summary: "The benchmark high-end throttle. Finger-lifts and swappable detent system are masterclass engineering."
+    tag: recommended
+    date: '2024-11-10'
+verification: verified
+sources:
+  - https://virpil-controls.eu/vpc-mongoost-50cm3-throttle.html
+images:
+  - file: virpil-cm3-throttle.webp
+    source: https://virpil-controls.eu

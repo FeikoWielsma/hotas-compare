@@ -1,0 +1,117 @@
+brand: winctrl
+name: F-16EX Viper Grip
+category: grip
+status: current
+release_year: 2022
+handedness: right
+mount:
+  provides: winctrl-grip
+  accepts: []
+controls:
+  - type: trigger
+    stages: 2
+  - type: hat
+    ways: 8
+    push: true
+    count: 3
+  - type: hat
+    ways: 4
+    push: true
+    count: 2
+  - type: analog_ministick
+    push: true
+    count: 1
+  - type: button
+    count: 4
+  - type: lever
+    kind: brake
+    analog: true
+    count: 1
+  - type: trigger
+    stages: 1
+    flip: false
+    label: Pinky Lever switch
+hardware:
+  gimbal: null
+  sensor: null
+  axes: []
+  force_adjustable: null
+  cams_swappable: null
+  damping: null
+  extension_support: null
+  throw_deg: null
+connectivity:
+  usb: null
+  standalone_usb: false
+software: SimApp Pro
+physical:
+  weight_g: 480
+  materials:
+    - abs
+    - aluminium
+use_case_fit:
+  modern_jet: 5
+  heli: 3
+  ww2: 3
+  ga: 2
+  airliner: 1
+  space_hotas: 4
+  space_hosas: 3
+prices:
+  - region: EU
+    currency: EUR
+    amount: 145
+    incl_vat: true
+    store: winwing.cn
+    verified: '2026-10-01'
+    source: manual
+  - region: UK
+    currency: GBP
+    amount: 129
+    incl_vat: true
+    store: winwing.cn
+    verified: '2026-10-01'
+    source: manual
+  - region: US
+    currency: USD
+    amount: 139
+    incl_vat: false
+    store: winwing.cn
+    verified: '2026-10-01'
+    source: manual
+verdict:
+  author: feiko
+  hands_on: true
+  owned_hours: 250
+  take: "An authentic replica of the F-16 Viper flight stick, enhanced with WinCtrl's 'EX' expansion module providing extra hats and an analog ministick for modern DCS multi-role fighters."
+  pros:
+    - "Authentic F-16 / A-10C ergonomics with 1:1 scale feel"
+    - "EX expansion module adds a ministick and extra 5-way hat"
+    - "Stepped dual-stage trigger"
+  cons:
+    - "No twist (Z) axis — requires rudder pedals"
+    - "Right-hand only"
+  great_for:
+    - modern_jet
+    - space_hotas
+  skip_if:
+    - "You don't own rudder pedals or twist stick"
+    - "You need a left-hand stick for HOSAS"
+  scores:
+    build: 4
+    feel: 5
+    value: 4
+    software: 3
+    qc_support: 4
+external_reviews:
+  - reviewer: mysh
+    url: https://youtube.com/watch?v=sample-viper-grip
+    summary: "The go-to grip for DCS F-16 pilots. EX head expansion makes it versatile across other jets."
+    tag: recommended
+    date: '2024-03-25'
+verification: verified
+sources:
+  - https://winwing.cn/en/JOYSTICK-GRIP
+images:
+  - file: winctrl-f16ex-grip.webp
+    source: https://winwing.cn

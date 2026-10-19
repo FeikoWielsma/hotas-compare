@@ -1,0 +1,5 @@
+name: VIRPIL Grip Mount
+description: Threaded collar with internal multi-pin connector used on MongoosT-50 and WarBRD series bases. Supports Thrustmaster grips via DIN-5 wiring compatibility.
+physical_type: thread_collar
+compatible_with:
+  - tm-din5

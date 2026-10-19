@@ -1,0 +1,119 @@
+brand: virpil
+name: Constellation Alpha Prime (Right)
+category: grip
+status: current
+release_year: 2022
+handedness: right
+mount:
+  provides: virpil-grip
+  accepts: []
+controls:
+  - type: trigger
+    stages: 2
+    flip: true
+  - type: hat
+    ways: 8
+    push: true
+    count: 2
+  - type: hat
+    ways: 4
+    push: true
+    count: 1
+  - type: analog_ministick
+    push: true
+    count: 1
+  - type: button
+    count: 4
+  - type: lever
+    kind: brake
+    analog: true
+    count: 1
+  - type: encoder
+    count: 2
+    push: true
+hardware:
+  gimbal: null
+  sensor: null
+  axes: []
+  force_adjustable: null
+  cams_swappable: null
+  damping: null
+  extension_support: null
+  throw_deg: null
+connectivity:
+  usb: null
+  standalone_usb: false
+software: VPC Configuration Tool
+physical:
+  weight_g: 540
+  materials:
+    - aluminium
+    - abs
+use_case_fit:
+  modern_jet: 5
+  heli: 4
+  ww2: 4
+  ga: 2
+  airliner: 1
+  space_hotas: 5
+  space_hosas: 5
+prices:
+  - region: EU
+    currency: EUR
+    amount: 289
+    incl_vat: true
+    store: virpil-controls.eu
+    verified: '2026-10-01'
+    source: manual
+  - region: UK
+    currency: GBP
+    amount: 255
+    incl_vat: true
+    store: virpil-controls.eu
+    verified: '2026-10-01'
+    source: manual
+  - region: US
+    currency: USD
+    amount: 299
+    incl_vat: false
+    store: virpil-controls.us
+    verified: '2026-10-01'
+    source: manual
+verdict:
+  author: feiko
+  hands_on: true
+  owned_hours: 400
+  take: "The undisputed gold standard for space sims and multi-role flight. The metal casing, flip trigger, and analog brake axis provide unmatched tactile feedback."
+  pros:
+    - "Full metal casing with cold-to-the-touch premium feel"
+    - "Analog brake lever doubles as an extra flight or strafe axis"
+    - "Dual-stage flip trigger with tactile microswitches"
+    - "Available in dedicated left and right versions for HOSAS"
+  cons:
+    - "Tall grip height requires desk mount or low profile base"
+    - "VPC software configuration has a steep learning curve"
+  great_for:
+    - space_hosas
+    - space_hotas
+    - modern_jet
+  skip_if:
+    - "You want a compact, desktop-only stick without mounting"
+    - "Budget is under €200 for a complete setup"
+  scores:
+    build: 5
+    feel: 5
+    value: 4
+    software: 4
+    qc_support: 5
+external_reviews:
+  - reviewer: mysh
+    url: https://youtube.com/watch?v=sample-alpha-prime
+    summary: "Superb build quality upgrade over the original Alpha. Metal shell adds welcome rigidity and weight."
+    tag: recommended
+    date: '2025-03-01'
+verification: verified
+sources:
+  - https://virpil-controls.eu/vpc-constellation-alpha-prime-r.html
+images:
+  - file: virpil-alpha-prime-r.webp
+    source: https://virpil-controls.eu

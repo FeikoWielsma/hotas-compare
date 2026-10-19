@@ -1,0 +1,65 @@
+brand: vkb
+name: Gladiator NXT EVO 'Space Combat Edition' (Right)
+category: stick_combo
+status: current
+components:
+  - vkb/gladiator-nxt-evo-base
+  - vkb/scg-space-combat-grip-r
+prices:
+  - region: EU
+    currency: EUR
+    amount: 195
+    incl_vat: true
+    store: flightsimcontrols.com
+    verified: '2026-10-01'
+    source: manual
+  - region: UK
+    currency: GBP
+    amount: 172
+    incl_vat: true
+    store: flightsimcontrols.com
+    verified: '2026-10-01'
+    source: manual
+  - region: US
+    currency: USD
+    amount: 165
+    incl_vat: false
+    store: vkbcontrollers.com
+    verified: '2026-10-01'
+    source: manual
+verdict:
+  author: feiko
+  hands_on: true
+  owned_hours: 600
+  take: "The single best value joystick bundle in flight simulation history. Combining the EVO base dry clutches with the SCG Premium grip provides desktop comfort, contactless twist, and unmatched precision below €200."
+  pros:
+    - "Unbeatable quality-to-price ratio"
+    - "Ball bearings and dry clutches for smooth, zero-stiction motion"
+    - "Contactless twist Z-axis on grip"
+    - "Integrated base throttle and encoders"
+  cons:
+    - "Requires simple 10-minute assembly out of the box (connecting grip ribbon cable)"
+  great_for:
+    - space_hosas
+    - modern_jet
+    - space_hotas
+  skip_if:
+    - "You already own a high-end metal cam base like WarBRD or Gunfighter"
+  scores:
+    build: 4
+    feel: 5
+    value: 5
+    software: 4
+    qc_support: 5
+external_reviews:
+  - reviewer: mysh
+    url: https://youtube.com/watch?v=sample-gladiator-sce
+    summary: "The default flight stick recommendation for 90% of sim pilots."
+    tag: recommended
+    date: '2024-07-01'
+verification: verified
+sources:
+  - https://vkbcontrollers.com/products/gladiator-nxt-evo-space-combat-edition
+images:
+  - file: vkb-gladiator-evo-sce.webp
+    source: https://vkbcontrollers.com

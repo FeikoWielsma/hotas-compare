@@ -1,0 +1,5 @@
+name: Thrustmaster Warthog / Cougar (DIN-5)
+description: The industry standard 5-pin mini-DIN connector with threaded metal locking ring first introduced on the Cougar and Warthog bases. Interoperable with VIRPIL bases.
+physical_type: thread_collar
+compatible_with:
+  - virpil-grip

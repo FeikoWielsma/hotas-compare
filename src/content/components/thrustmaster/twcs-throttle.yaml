@@ -1,0 +1,125 @@
+brand: thrustmaster
+name: TWCS Throttle
+category: throttle
+status: current
+release_year: 2016
+handedness: n/a
+mount: null
+controls:
+  - type: lever
+    kind: throttle_single
+    analog: true
+    count: 1
+  - type: hat
+    ways: 8
+    push: false
+    count: 1
+  - type: hat
+    ways: 4
+    push: false
+    count: 2
+  - type: analog_ministick
+    push: true
+    count: 1
+  - type: button
+    count: 5
+  - type: rocker
+    count: 1
+    push: false
+    label: Rudder Rocker Axis
+  - type: rotary
+    count: 1
+    label: Antenna Dial
+hardware:
+  gimbal: null
+  sensor: potentiometer
+  axes:
+    - name: Throttle_Main
+      resolution_bits: 14
+      sensor: hall
+    - name: Rudder_Rocker
+      resolution_bits: 10
+      sensor: potentiometer
+    - name: Rotary_Dial
+      resolution_bits: 10
+      sensor: potentiometer
+  force_adjustable: true
+  cams_swappable: false
+  damping: friction
+  extension_support: false
+  throw_deg: 80
+connectivity:
+  usb: a_cable
+  standalone_usb: true
+software: T.A.R.G.E.T
+physical:
+  weight_g: 850
+  materials:
+    - abs
+use_case_fit:
+  modern_jet: 4
+  heli: 3
+  ww2: 4
+  ga: 3
+  airliner: 2
+  space_hotas: 4
+  space_hosas: 1
+prices:
+  - region: EU
+    currency: EUR
+    amount: 89
+    incl_vat: true
+    store: amazon.de
+    verified: '2026-10-01'
+    source: manual
+  - region: UK
+    currency: GBP
+    amount: 79
+    incl_vat: true
+    store: amazon.co.uk
+    verified: '2026-10-01'
+    source: manual
+  - region: US
+    currency: USD
+    amount: 89
+    incl_vat: false
+    store: amazon.com
+    verified: '2026-10-01'
+    source: manual
+verdict:
+  author: feiko
+  hands_on: true
+  owned_hours: 600
+  take: "The default budget throttle for flight sim and DCS entry. It gives you an analog ministick and rear rudder rocker, but the stock S.M.A.R.T sliding rails suffer from sticktion unless re-greased with Nyogel 767A or modified with polymer bearings."
+  pros:
+    - "Generous control layout with analog ministick and finger rudder paddle"
+    - "Hall sensor on main throttle sliding axis"
+    - "Accessible budget pricing for standalone throttle"
+  cons:
+    - "Stock rail sticktion causes stutters during fine carrier landings or formation flying"
+    - "Single throttle axis (not split for dual engine)"
+    - "Lightweight plastic body tends to slide on desks without sticky pads or clamping"
+  great_for:
+    - modern_jet
+    - space_hotas
+    - ww2
+  skip_if:
+    - "You want a dual-engine split throttle or heavy metal base"
+  scores:
+    build: 3
+    feel: 3
+    value: 4
+    software: 2
+    qc_support: 3
+external_reviews:
+  - reviewer: mysh
+    url: https://youtube.com/watch?v=sample-twcs
+    summary: "Great button count for the money. Highly recommended to do the bearing mod or Nyogel grease."
+    tag: recommended
+    date: '2023-08-14'
+verification: verified
+sources:
+  - https://www.thrustmaster.com/en-us/products/twcs-throttle/
+images:
+  - file: tm-twcs-throttle.webp
+    source: https://thrustmaster.com

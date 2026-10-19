@@ -1,0 +1,13 @@
+title: Mid-Range Space HOSAS Rig
+use_case: space_hosas
+budget_tier: mid
+description: Dual VKB Gladiator NXT EVO setup (Space Combat Edition Right + Left OTA Omni-Throttle). The community favorite for 6DOF space simulation in Star Citizen and Elite Dangerous.
+reasoning: Dual sticks provide complete 6DOF translational and rotational control without requiring pedal mounts. The VKB dry clutches allow smooth strafe control, while contactless twist axes handle yaw and roll seamlessly.
+items:
+  - item_type: bundle
+    id: vkb/gladiator-nxt-evo-sce-r
+    role: Right Primary Flight Stick (Pitch / Yaw / Roll)
+  - item_type: component
+    id: vkb/gladiator-nxt-evo-base
+    role: Left Strafe Base (Forward / Back / Lateral / Vertical)
+notes: Pair with an angled Omni-Throttle adapter for the left stick to simulate a motorcycle-style throttle grip.

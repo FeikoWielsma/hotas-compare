@@ -1,0 +1,95 @@
+brand: vkb
+name: T-Rudder Mk.V Pedals
+category: pedals
+status: current
+release_year: 2022
+handedness: n/a
+mount: null
+controls: []
+hardware:
+  gimbal: cam
+  sensor: contactless_magnetic
+  axes:
+    - name: Rudder
+      resolution_bits: 14
+      sensor: contactless_magnetic
+  force_adjustable: true
+  cams_swappable: true
+  damping: null
+  extension_support: null
+  throw_deg: 35
+connectivity:
+  usb: c
+  standalone_usb: true
+software: VKBDevCfg
+physical:
+  weight_g: 2100
+  materials:
+    - steel
+    - aluminium
+use_case_fit:
+  modern_jet: 4
+  heli: 5
+  ww2: 4
+  ga: 3
+  airliner: 3
+  space_hotas: 4
+  space_hosas: 4
+prices:
+  - region: EU
+    currency: EUR
+    amount: 215
+    incl_vat: true
+    store: flightsimcontrols.com
+    verified: '2026-10-01'
+    source: manual
+  - region: UK
+    currency: GBP
+    amount: 189
+    incl_vat: true
+    store: flightsimcontrols.com
+    verified: '2026-10-01'
+    source: manual
+  - region: US
+    currency: USD
+    amount: 215
+    incl_vat: false
+    store: vkbcontrollers.com
+    verified: '2026-10-01'
+    source: manual
+verdict:
+  author: feiko
+  hands_on: true
+  owned_hours: 500
+  take: "The best pedal choice if you fly from an office chair on wheels. Up-and-down heel push motion prevents your chair from rolling backwards, built entirely from solid steel and aluminum."
+  pros:
+    - "Heel-press vertical axis prevents office chairs on castors from pushing back"
+    - "Indestructible all-metal construction"
+    - "Compact footprint fits easily under any standard computer desk"
+    - "Reversible cam profile for hard or soft center detent"
+  cons:
+    - "Single rudder axis only — no physical toe brakes (relies on virtual differential braking in software)"
+  great_for:
+    - heli
+    - space_hotas
+    - modern_jet
+  skip_if:
+    - "You fly warbirds or GA and insist on physical toe brakes on both pedals"
+  scores:
+    build: 5
+    feel: 5
+    value: 5
+    software: 4
+    qc_support: 5
+external_reviews:
+  - reviewer: mysh
+    url: https://youtube.com/watch?v=sample-vkb-t-rudder
+    summary: "The ultimate solution for anyone using an office chair without a cockpit rig."
+    tag: recommended
+    date: '2024-05-18'
+verification: verified
+sources:
+  - https://vkbcontrollers.com/products/t-rudder-mk-v-rudder-pedals
+images:
+  - file: vkb-t-rudder-mk5.webp
+    source: https://vkbcontrollers.com

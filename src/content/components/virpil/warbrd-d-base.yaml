@@ -1,0 +1,102 @@
+brand: virpil
+name: VPC WarBRD-D Base
+category: base
+status: current
+release_year: 2023
+handedness: n/a
+mount:
+  provides: null
+  accepts:
+    - virpil-grip
+    - tm-din5
+controls: []
+hardware:
+  gimbal: dual_spring
+  sensor: contactless_magnetic
+  axes:
+    - name: X
+      resolution_bits: 16
+      sensor: contactless_magnetic
+    - name: Y
+      resolution_bits: 16
+      sensor: contactless_magnetic
+  force_adjustable: true
+  cams_swappable: true
+  damping: dry_clutch
+  extension_support: false
+  throw_deg: 44
+connectivity:
+  usb: c
+  standalone_usb: true
+software: VPC Configuration Tool
+physical:
+  weight_g: 1450
+  materials:
+    - aluminium
+    - duralumin
+use_case_fit:
+  modern_jet: 5
+  heli: 4
+  ww2: 5
+  ga: 4
+  airliner: 3
+  space_hotas: 5
+  space_hosas: 5
+prices:
+  - region: EU
+    currency: EUR
+    amount: 239
+    incl_vat: true
+    store: virpil-controls.eu
+    verified: '2026-10-01'
+    source: manual
+  - region: UK
+    currency: GBP
+    amount: 210
+    incl_vat: true
+    store: virpil-controls.eu
+    verified: '2026-10-01'
+    source: manual
+  - region: US
+    currency: USD
+    amount: 249
+    incl_vat: false
+    store: virpil-controls.us
+    verified: '2026-10-01'
+    source: manual
+verdict:
+  author: feiko
+  hands_on: true
+  owned_hours: 300
+  take: "The best desktop-friendly cam base on the market. The addition of adjustable dry clutches in the 'D' revision makes it exceptionally versatile across helicopters, space, and jets."
+  pros:
+    - "Dual-cam metal gimbal with interchangeable cams and springs"
+    - "Independently adjustable dry clutch dampers for smooth resistance or dead-stick heli flying"
+    - "Large deflection angle (44 degrees total throw) gives great precision without an extension"
+    - "Heavy metal desktop baseplate included"
+  cons:
+    - "Not designed for long extensions (use MongoosT-50CM3 for cockpit center mounts)"
+  great_for:
+    - space_hosas
+    - modern_jet
+    - heli
+  skip_if:
+    - "You need a long 200mm floor/center extension"
+  scores:
+    build: 5
+    feel: 5
+    value: 5
+    software: 4
+    qc_support: 5
+external_reviews:
+  - reviewer: mysh
+    url: https://youtube.com/watch?v=sample-warbrd-d
+    summary: "Clutches add tremendous damping control. Perfect desktop form factor."
+    tag: recommended
+    date: '2025-02-15'
+verification: verified
+sources:
+  - https://virpil-controls.eu/vpc-warbrd-d-base.html
+images:
+  - file: virpil-warbrd-d.webp
+    source: https://virpil-controls.eu

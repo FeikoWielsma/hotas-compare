@@ -1,0 +1,114 @@
+brand: vkb
+name: Gladiator NXT EVO Base
+category: base
+status: current
+release_year: 2022
+handedness: n/a
+mount:
+  provides: null
+  accepts:
+    - vkb-rev-b
+controls:
+  - type: encoder
+    count: 2
+    push: false
+  - type: lever
+    kind: throttle_single
+    analog: true
+    count: 1
+  - type: button
+    count: 3
+hardware:
+  gimbal: gimbal_ring
+  sensor: contactless_magnetic
+  axes:
+    - name: X
+      resolution_bits: 14
+      sensor: contactless_magnetic
+    - name: Y
+      resolution_bits: 14
+      sensor: contactless_magnetic
+    - name: Base_Throttle
+      resolution_bits: 10
+      sensor: contactless_magnetic
+  force_adjustable: true
+  cams_swappable: false
+  damping: dry_clutch
+  extension_support: false
+  throw_deg: 40
+connectivity:
+  usb: c
+  standalone_usb: true
+software: VKBDevCfg
+physical:
+  weight_g: 950
+  materials:
+    - abs
+    - steel_plate
+use_case_fit:
+  modern_jet: 4
+  heli: 4
+  ww2: 4
+  ga: 4
+  airliner: 3
+  space_hotas: 5
+  space_hosas: 5
+prices:
+  - region: EU
+    currency: EUR
+    amount: 115
+    incl_vat: true
+    store: flightsimcontrols.com
+    verified: '2026-10-01'
+    source: manual
+  - region: UK
+    currency: GBP
+    amount: 99
+    incl_vat: true
+    store: flightsimcontrols.com
+    verified: '2026-10-01'
+    source: manual
+  - region: US
+    currency: USD
+    amount: 105
+    incl_vat: false
+    store: vkbcontrollers.com
+    verified: '2026-10-01'
+    source: manual
+verdict:
+  author: feiko
+  hands_on: true
+  owned_hours: 600
+  take: "The undisputed bang-for-the-buck king of flight simulation. Ball bearings on all axes, adjustable dry clutches, and an integrated base plate with encoders and throttle slider."
+  pros:
+    - "Unmatched price-to-performance ratio in the entry-to-mid market"
+    - "Dry clutches allow smooth resistance without grease damping decay"
+    - "Built-in throttle axis, 2 encoders, and 3 buttons right on the desktop base"
+    - "Sturdy steel weighted baseplate sits securely on any desk"
+  cons:
+    - "Plastic gimbal ring (though reinforced glass-fiber ABS)"
+    - "VKB DevCfg software is functional but looks like industrial engineering software"
+  great_for:
+    - space_hosas
+    - modern_jet
+    - ww2
+  skip_if:
+    - "You require an all-metal dual-cam gimbal mechanism"
+  scores:
+    build: 4
+    feel: 4
+    value: 5
+    software: 4
+    qc_support: 5
+external_reviews:
+  - reviewer: mysh
+    url: https://youtube.com/watch?v=sample-gladiator-evo
+    summary: "The single best entry-to-mid range joystick base. EVO ball bearings and clutches make it punch way above its weight."
+    tag: recommended
+    date: '2024-08-20'
+verification: verified
+sources:
+  - https://vkbcontrollers.com/products/gladiator-nxt-evo-base
+images:
+  - file: vkb-gladiator-evo-base.webp
+    source: https://vkbcontrollers.com

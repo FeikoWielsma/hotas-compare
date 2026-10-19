@@ -1,0 +1,10 @@
+title: Entry-Level DCS Modern Jet HOTAS
+use_case: modern_jet
+budget_tier: budget
+description: Thrustmaster T.16000M FCS HOTAS bundle paired with desktop layout. An affordable all-in-one pack to get airborne in DCS World, BMS, and MSFS.
+reasoning: Delivers a full HOTAS layout with plenty of hats and an analog ministick for TDC radar slewing at minimal initial cost.
+items:
+  - item_type: bundle
+    id: thrustmaster/t16000m-fcs-hotas
+    role: Primary Stick and Throttle Suite
+notes: We recommend applying Nyogel 767A damping grease to the throttle rails for buttery smooth carrier traps.

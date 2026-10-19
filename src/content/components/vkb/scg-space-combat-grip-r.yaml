@@ -1,0 +1,116 @@
+brand: vkb
+name: Space Combat Grip (SCG) Premium (Right)
+category: grip
+status: current
+release_year: 2020
+handedness: right
+mount:
+  provides: vkb-rev-b
+  accepts: []
+controls:
+  - type: trigger
+    stages: 2
+    flip: true
+  - type: hat
+    ways: 8
+    push: true
+    count: 2
+  - type: hat
+    ways: 4
+    push: true
+    count: 1
+  - type: analog_ministick
+    push: true
+    count: 1
+  - type: button
+    count: 4
+  - type: trigger
+    stages: 1
+    flip: false
+    label: Rapid-fire secondary trigger
+hardware:
+  gimbal: null
+  sensor: null
+  axes:
+    - name: Twist_Z
+      resolution_bits: 12
+      sensor: contactless_magnetic
+  force_adjustable: null
+  cams_swappable: null
+  damping: null
+  extension_support: null
+  throw_deg: null
+connectivity:
+  usb: null
+  standalone_usb: false
+software: VKBDevCfg
+physical:
+  weight_g: 380
+  materials:
+    - abs
+use_case_fit:
+  modern_jet: 4
+  heli: 3
+  ww2: 3
+  ga: 2
+  airliner: 1
+  space_hotas: 5
+  space_hosas: 5
+prices:
+  - region: EU
+    currency: EUR
+    amount: 110
+    incl_vat: true
+    store: flightsimcontrols.com
+    verified: '2026-10-01'
+    source: manual
+  - region: UK
+    currency: GBP
+    amount: 95
+    incl_vat: true
+    store: flightsimcontrols.com
+    verified: '2026-10-01'
+    source: manual
+  - region: US
+    currency: USD
+    amount: 90
+    incl_vat: false
+    store: vkbcontrollers.com
+    verified: '2026-10-01'
+    source: manual
+verdict:
+  author: feiko
+  hands_on: true
+  owned_hours: 600
+  take: "Ergonomic perfection for medium and large hands. The secondary bidirectional trigger and analog ministick make this the default recommendation for Elite Dangerous and Star Citizen pilots."
+  pros:
+    - "Superb ergonomics with adjustable palm rest plate"
+    - "Bidirectional secondary rapid-fire trigger"
+    - "Lockable contactless twist (Z) rudder axis included"
+    - "Modular hat / ministick swap components included in Premium box"
+  cons:
+    - "Polymer shell rather than cast metal"
+  great_for:
+    - space_hosas
+    - space_hotas
+    - modern_jet
+  skip_if:
+    - "You want a strict 1:1 replica of an F-16 or F/A-18 stick"
+  scores:
+    build: 4
+    feel: 5
+    value: 5
+    software: 4
+    qc_support: 5
+external_reviews:
+  - reviewer: mysh
+    url: https://youtube.com/watch?v=sample-vkb-scg
+    summary: "The benchmark ergonomic space sim grip. Fast actuation and intuitive button placements."
+    tag: recommended
+    date: '2024-06-12'
+verification: verified
+sources:
+  - https://vkbcontrollers.com/products/scg-space-combat-grip
+images:
+  - file: vkb-scg-r.webp
+    source: https://vkbcontrollers.com

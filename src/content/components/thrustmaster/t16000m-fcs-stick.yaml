@@ -1,0 +1,118 @@
+brand: thrustmaster
+name: T.16000M FCS Flight Stick
+category: stick_fixed
+status: current
+release_year: 2016
+handedness: ambi
+mount: null
+controls:
+  - type: trigger
+    stages: 1
+  - type: hat
+    ways: 8
+    push: false
+    count: 1
+  - type: button
+    count: 3
+    label: Grip Buttons
+  - type: button
+    count: 12
+    label: Base Buttons (6 left / 6 right)
+  - type: slider
+    count: 1
+    label: Base Throttle Slider
+hardware:
+  gimbal: ball_joint
+  sensor: hall
+  axes:
+    - name: X
+      resolution_bits: 16
+      sensor: hall
+    - name: Y
+      resolution_bits: 16
+      sensor: hall
+    - name: Twist_Z
+      resolution_bits: 8
+      sensor: potentiometer
+    - name: Slider
+      resolution_bits: 8
+      sensor: potentiometer
+  force_adjustable: false
+  cams_swappable: false
+  damping: null
+  extension_support: false
+  throw_deg: 32
+connectivity:
+  usb: a_cable
+  standalone_usb: true
+software: T.A.R.G.E.T
+physical:
+  weight_g: 820
+  materials:
+    - abs
+use_case_fit:
+  modern_jet: 3
+  heli: 3
+  ww2: 3
+  ga: 3
+  airliner: 3
+  space_hotas: 4
+  space_hosas: 4
+prices:
+  - region: EU
+    currency: EUR
+    amount: 69
+    incl_vat: true
+    store: amazon.de
+    verified: '2026-10-01'
+    source: manual
+  - region: UK
+    currency: GBP
+    amount: 59
+    incl_vat: true
+    store: amazon.co.uk
+    verified: '2026-10-01'
+    source: manual
+  - region: US
+    currency: USD
+    amount: 69
+    incl_vat: false
+    store: amazon.com
+    verified: '2026-10-01'
+    source: manual
+verdict:
+  author: feiko
+  hands_on: true
+  owned_hours: 800
+  take: "The universal budget entry point. Accurate H.E.A.R.T hall sensor on the main X/Y axes and true ambidextrous modular grips make it cheap to start HOSAS, but the twist potentiometer is notorious for early failure."
+  pros:
+    - "16-bit Hall effect magnetic sensors on primary X/Y axes"
+    - "Fully ambidextrous with swappable left/right thumb rests"
+    - "Very affordable and widely available in stores worldwide"
+  cons:
+    - "Single-spring ball-and-cup gimbal has a distinct center clunk and noticeable breakout force"
+    - "Twist (Z) axis uses a cheap potentiometer prone to jitter and failure after 6-12 months"
+    - "Only one hat and three buttons on the stick grip itself"
+  great_for:
+    - space_hosas
+    - modern_jet
+  skip_if:
+    - "You have a budget over €150 and want durable contactless twist or modular cams"
+  scores:
+    build: 3
+    feel: 3
+    value: 4
+    software: 2
+    qc_support: 3
+external_reviews:
+  - reviewer: mysh
+    url: https://youtube.com/watch?v=sample-t16000m
+    summary: "Solid starter stick on main axes, let down by weak twist potentiometer longevity."
+    tag: mixed
+    date: '2023-10-05'
+verification: verified
+sources:
+  - https://www.thrustmaster.com/en-us/products/t-16000m-fcs/
+images:
+  - file: tm-t16000m-stick.webp
+    source: https://thrustmaster.com
