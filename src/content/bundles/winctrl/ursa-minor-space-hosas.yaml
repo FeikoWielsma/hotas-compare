@@ -1,0 +1,11 @@
+brand: winctrl
+name: Ursa Minor Space HOSAS
+category: hosas_bundle
+status: current
+components:
+  - winctrl/ursa-minor-fighter-joystick-r
+  - winctrl/ursa-minor-airline-joystick-l
+prices: []
+verification: draft
+sources:
+  - https://en.winwing.cn/en/

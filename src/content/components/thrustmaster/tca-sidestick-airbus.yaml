@@ -1,0 +1,70 @@
+brand: thrustmaster
+name: TCA Sidestick Airbus Edition
+category: stick_fixed
+status: current
+release_year: 2020
+handedness: ambi
+mount: null
+controls:
+- type: trigger
+  stages: 1
+- type: hat
+  ways: 8
+  push: true
+- type: button
+  count: 12
+hardware:
+  gimbal: ball_joint
+  sensor: hall
+  axes:
+  - name: X
+    sensor: hall
+  - name: Y
+    sensor: hall
+  - name: Twist_Z
+    sensor: hall
+  force_adjustable: false
+  cams_swappable: false
+  damping: null
+  extension_support: false
+  throw_deg: null
+connectivity:
+  usb: a_cable
+  standalone_usb: true
+software: T.A.R.G.E.T
+physical:
+  materials:
+  - abs
+use_case_fit:
+  modern_jet: 4
+  heli: 3
+  ww2: 3
+  ga: 3
+  airliner: 3
+  space_hotas: 4
+  space_hosas: 3
+prices:
+- region: EU
+  currency: EUR
+  amount: 80
+  incl_vat: true
+  store: amazon.de
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 69
+  incl_vat: true
+  store: amazon.co.uk
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 86
+  incl_vat: false
+  store: amazon.com
+  verified: '2026-10-01'
+  source: manual
+verification: draft
+sources:
+- https://www.thrustmaster.com/en-us/products/tca-sidestick-airbus-edition/

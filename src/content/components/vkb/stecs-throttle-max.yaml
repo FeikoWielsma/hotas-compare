@@ -1,0 +1,111 @@
+brand: vkb
+name: STECS Max Throttle
+category: throttle
+status: current
+release_year: 2023
+handedness: ambi
+mount: null
+controls:
+- type: lever
+  kind: throttle_dual
+  analog: true
+  count: 2
+- type: hat
+  ways: 8
+  push: true
+  count: 3
+- type: analog_ministick
+  push: true
+  count: 2
+- type: button
+  count: 12
+- type: encoder
+  count: 4
+  push: true
+- type: detent
+  count: 6
+  customizable: true
+- type: toggle
+  count: 4
+  ways: 3
+hardware:
+  gimbal: null
+  sensor: contactless_magnetic
+  axes:
+  - name: Throttle_Left
+    resolution_bits: 16
+    sensor: contactless_magnetic
+  - name: Throttle_Right
+    resolution_bits: 16
+    sensor: contactless_magnetic
+  force_adjustable: false
+  cams_swappable: false
+  damping: null
+  extension_support: false
+  throw_deg: null
+connectivity:
+  usb: c
+  standalone_usb: true
+software: VKBDevCfg
+physical:
+  weight_g: 2400
+  materials:
+  - polymer
+  - steel
+use_case_fit:
+  modern_jet: 5
+  heli: 4
+  ww2: 4
+  ga: 4
+  airliner: 4
+  space_hotas: 5
+  space_hosas: 2
+prices:
+- region: EU
+  currency: EUR
+  amount: 400
+  incl_vat: true
+  store: flightsimcontrols.com
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 344
+  incl_vat: true
+  store: flightsimcontrols.com
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 380
+  incl_vat: false
+  store: vkbcontrollers.com
+  verified: '2026-10-01'
+  source: manual
+verdict:
+  author: feiko
+  hands_on: false
+  take: 'Draft assessment: STECS Max Throttle is a purpose-built throttle for sim
+    pilots who value precise inputs and configurable controls. Confirm regional configuration
+    and included accessories before purchase.'
+  pros:
+  - Largest modular STECS package with ATRAX and STEM modules
+  - Extensive controls and configurable detents
+  - Dual throttle axes for aircraft and space use
+  cons:
+  - Largest footprint and highest price in STECS range
+  - Requires time to configure modules
+  great_for:
+  - modern_jet
+  - space_hotas
+  skip_if:
+  - Largest footprint and highest price in STECS range
+  scores:
+    build: 4
+    feel: 4
+    value: 4
+    software: 4
+    qc_support: 4
+verification: draft
+sources:
+- https://vkbcontrollers.com/products/stecs-throttle-max

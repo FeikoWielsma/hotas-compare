@@ -1,0 +1,37 @@
+brand: winctrl
+name: Orion 2 FA-18 Dual Throttle Handles
+category: throttle
+status: current
+handedness: n/a
+mount:
+  provides: null
+  accepts: []
+controls:
+  - type: lever
+    kind: throttle_dual
+    analog: true
+    count: 2
+  - type: detent
+    count: 2
+    customizable: true
+    label: Finger lifts and afterburner detents
+  - type: trigger
+    count: 2
+hardware:
+  axes: []
+connectivity:
+  standalone_usb: true
+physical:
+  materials: []
+use_case_fit:
+  modern_jet: 4
+  heli: 3
+  ww2: 3
+  ga: 3
+  airliner: 3
+  space_hotas: 4
+  space_hosas: 3
+prices: []
+verification: draft
+sources:
+  - https://en.winwing.cn/en/download

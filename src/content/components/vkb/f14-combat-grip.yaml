@@ -1,0 +1,101 @@
+brand: vkb
+name: F-14 Combat Grip
+category: grip
+status: current
+release_year: 2020
+handedness: right
+mount:
+  provides: vkb-rev-b
+  accepts: []
+controls:
+- type: trigger
+  stages: 2
+- type: hat
+  ways: 8
+  push: true
+- type: lever
+  kind: other
+  analog: true
+  label: DLC wheel
+- type: rotary
+  count: 1
+  label: Four-position weapon selector
+- type: button
+  count: 4
+hardware:
+  gimbal: null
+  sensor: contactless_magnetic
+  axes:
+  - name: Twist_Z
+    resolution_bits: 12
+    sensor: contactless_magnetic
+  force_adjustable: false
+  cams_swappable: false
+  damping: null
+  extension_support: false
+  throw_deg: null
+connectivity:
+  usb: null
+  standalone_usb: false
+software: VKBDevCfg
+physical:
+  weight_g: 440
+  materials:
+  - abs
+  - rubber
+use_case_fit:
+  modern_jet: 5
+  heli: 3
+  ww2: 4
+  ga: 2
+  airliner: 1
+  space_hotas: 3
+  space_hosas: 2
+prices:
+- region: EU
+  currency: EUR
+  amount: 105
+  incl_vat: true
+  store: flightsimcontrols.com
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 90
+  incl_vat: true
+  store: flightsimcontrols.com
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 100
+  incl_vat: false
+  store: vkbcontrollers.com
+  verified: '2026-10-01'
+  source: manual
+verdict:
+  author: feiko
+  hands_on: false
+  take: 'Draft assessment: F-14 Combat Grip is a purpose-built grip for sim pilots
+    who value precise inputs and configurable controls. Confirm regional configuration
+    and included accessories before purchase.'
+  pros:
+  - Tomcat-inspired weapon selector and DLC axis
+  - Lockable contactless twist axis
+  - Tactile dual-stage trigger and programmable buttons
+  cons:
+  - Specialist layout has fewer general-purpose hats
+  - Grip is an add-on; verify base compatibility
+  great_for:
+  - modern_jet
+  skip_if:
+  - Specialist layout has fewer general-purpose hats
+  scores:
+    build: 4
+    feel: 4
+    value: 4
+    software: 4
+    qc_support: 4
+verification: draft
+sources:
+- https://vkbcontrollers.com/products/f-14-gnx-combat-grip-add-on

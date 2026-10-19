@@ -1,0 +1,54 @@
+brand: honeycomb
+name: Alpha Flight Controls XPC
+category: yoke
+status: current
+handedness: n/a
+mount: null
+controls:
+- type: button
+  count: 4
+  label: Panel buttons
+- type: toggle
+  count: 6
+  ways: 2
+  label: Switches
+hardware:
+  gimbal: null
+  sensor: contactless_magnetic
+  axes: []
+  force_adjustable: null
+  cams_swappable: null
+  damping: null
+  extension_support: null
+  throw_deg: null
+connectivity:
+  usb: c
+  standalone_usb: true
+physical:
+  materials: []
+use_case_fit: {}
+prices:
+- region: EU
+  currency: EUR
+  amount: 399
+  incl_vat: true
+  store: honeycomb.com
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 349
+  incl_vat: true
+  store: honeycomb.com
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 399
+  incl_vat: false
+  store: honeycomb.com
+  verified: '2026-10-01'
+  source: manual
+verification: draft
+sources:
+- https://honeycomb.com

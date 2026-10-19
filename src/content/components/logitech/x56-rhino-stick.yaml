@@ -1,0 +1,59 @@
+brand: logitech
+name: X56 Rhino Stick
+category: stick_fixed
+status: current
+handedness: right
+mount: null
+controls:
+- type: trigger
+  stages: 2
+- type: hat
+  ways: 8
+  push: true
+  count: 4
+- type: analog_ministick
+  push: true
+- type: button
+  count: 8
+hardware:
+  gimbal: ball_joint
+  sensor: hall
+  axes:
+  - name: X
+    sensor: hall
+  - name: Y
+    sensor: hall
+  - name: Twist_Z
+    sensor: potentiometer
+connectivity:
+  usb: a_cable
+  standalone_usb: true
+software: Logitech G HUB
+physical:
+  materials:
+  - abs
+prices:
+- region: EU
+  currency: EUR
+  amount: 150
+  incl_vat: true
+  store: amazon.de
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 129
+  incl_vat: true
+  store: amazon.co.uk
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 158
+  incl_vat: false
+  store: amazon.com
+  verified: '2026-10-01'
+  source: manual
+verification: draft
+sources:
+- https://www.logitechg.com/en-us/products/flight.html

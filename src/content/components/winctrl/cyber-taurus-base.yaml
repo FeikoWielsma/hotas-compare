@@ -1,0 +1,29 @@
+brand: winctrl
+name: Cyber Taurus Force Feedback Flight Stick Base
+category: base
+status: current
+handedness: n/a
+mount:
+  provides: null
+  accepts:
+    - winctrl-grip
+controls:
+  []
+hardware:
+  axes: []
+connectivity:
+  standalone_usb: true
+physical:
+  materials: []
+use_case_fit:
+  modern_jet: 4
+  heli: 3
+  ww2: 3
+  ga: 3
+  airliner: 3
+  space_hotas: 4
+  space_hosas: 3
+prices: []
+verification: draft
+sources:
+  - https://en.winwing.cn/en/

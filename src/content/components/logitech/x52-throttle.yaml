@@ -1,0 +1,58 @@
+brand: logitech
+name: X52 Throttle
+category: throttle
+status: current
+handedness: n/a
+mount: null
+controls:
+- type: lever
+  kind: throttle_single
+  analog: true
+- type: hat
+  ways: 8
+  push: true
+- type: hat
+  ways: 4
+  push: true
+- type: button
+  count: 12
+- type: rotary
+  count: 2
+hardware:
+  gimbal: null
+  sensor: potentiometer
+  axes:
+  - name: Throttle
+    sensor: potentiometer
+connectivity:
+  usb: a_cable
+  standalone_usb: true
+software: Logitech G HUB
+physical:
+  materials:
+  - abs
+prices:
+- region: EU
+  currency: EUR
+  amount: 100
+  incl_vat: true
+  store: amazon.de
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 86
+  incl_vat: true
+  store: amazon.co.uk
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 105
+  incl_vat: false
+  store: amazon.com
+  verified: '2026-10-01'
+  source: manual
+verification: draft
+sources:
+- https://www.logitechg.com/en-us/products/flight.html

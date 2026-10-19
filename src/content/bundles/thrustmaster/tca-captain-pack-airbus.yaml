@@ -1,0 +1,32 @@
+brand: thrustmaster
+name: TCA Captain Pack Airbus Edition
+category: hotas_bundle
+status: current
+components:
+- thrustmaster/tca-sidestick-airbus
+- thrustmaster/tca-quadrant-airbus
+prices:
+- region: EU
+  currency: EUR
+  amount: 180
+  incl_vat: true
+  store: amazon.de
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 155
+  incl_vat: true
+  store: amazon.co.uk
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 189
+  incl_vat: false
+  store: amazon.com
+  verified: '2026-10-01'
+  source: manual
+verification: draft
+sources:
+- https://www.thrustmaster.com/en-us/products/

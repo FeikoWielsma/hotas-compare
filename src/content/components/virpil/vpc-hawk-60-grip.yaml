@@ -1,0 +1,95 @@
+brand: virpil
+name: VPC Hawk-60 Collective Grip
+category: grip
+status: current
+release_year: 2021
+handedness: ambi
+mount:
+  provides: virpil-rotor-grip
+  accepts: []
+controls:
+- type: trigger
+  stages: 1
+- type: hat
+  ways: 8
+  push: true
+  count: 2
+- type: button
+  count: 4
+- type: rocker
+  count: 1
+hardware:
+  gimbal: null
+  sensor: contactless_magnetic
+  axes: []
+  force_adjustable: false
+  cams_swappable: false
+  damping: null
+  extension_support: false
+  throw_deg: null
+connectivity:
+  usb: null
+  standalone_usb: false
+software: VPC Configuration Tool
+physical:
+  weight_g: 520
+  materials:
+  - aluminium
+  - polymer
+use_case_fit:
+  modern_jet: 2
+  heli: 5
+  ww2: 3
+  ga: 5
+  airliner: 2
+  space_hotas: 2
+  space_hosas: 2
+prices:
+- region: EU
+  currency: EUR
+  amount: 190
+  incl_vat: true
+  store: virpil-controls.eu
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 167
+  incl_vat: true
+  store: virpil-controls.eu
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 205
+  incl_vat: false
+  store: virpil-controls.us
+  verified: '2026-10-01'
+  source: manual
+verdict:
+  author: feiko
+  hands_on: false
+  take: 'Draft assessment: VPC Hawk-60 Collective Grip is a purpose-built grip for
+    sim pilots who value precise inputs and configurable controls. Confirm regional
+    configuration and included accessories before purchase.'
+  pros:
+  - Collective-style grip controls for helicopter simulation
+  - Multiple hats and buttons reachable without releasing grip
+  - Pairs with Rotor TCS base
+  cons:
+  - Helicopter-specific use limits versatility
+  - Requires separately purchased collective base
+  great_for:
+  - heli
+  - ga
+  skip_if:
+  - Helicopter-specific use limits versatility
+  scores:
+    build: 4
+    feel: 4
+    value: 4
+    software: 4
+    qc_support: 4
+verification: draft
+sources:
+- https://virpil-controls.eu/products/vpc-hawk-60-grip

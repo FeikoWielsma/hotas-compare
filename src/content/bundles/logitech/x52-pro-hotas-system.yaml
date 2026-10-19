@@ -1,0 +1,32 @@
+brand: logitech
+name: X52 Pro HOTAS System
+category: hotas_bundle
+status: current
+components:
+- logitech/x52-pro-flight-stick
+- logitech/x52-pro-throttle
+prices:
+- region: EU
+  currency: EUR
+  amount: 260
+  incl_vat: true
+  store: amazon.de
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 224
+  incl_vat: true
+  store: amazon.co.uk
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 273
+  incl_vat: false
+  store: amazon.com
+  verified: '2026-10-01'
+  source: manual
+verification: draft
+sources:
+- https://www.logitechg.com/en-us/products/flight.html

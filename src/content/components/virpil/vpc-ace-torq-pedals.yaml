@@ -1,0 +1,86 @@
+brand: virpil
+name: VPC ACE-TORQ Pedals
+category: pedals
+status: current
+release_year: 2022
+handedness: n/a
+mount: null
+controls: []
+hardware:
+  gimbal: null
+  sensor: contactless_magnetic
+  axes:
+  - name: Rudder
+    resolution_bits: 16
+    sensor: contactless_magnetic
+  force_adjustable: false
+  cams_swappable: false
+  damping: null
+  extension_support: false
+  throw_deg: null
+connectivity:
+  usb: c
+  standalone_usb: true
+software: VPC Configuration Tool
+physical:
+  weight_g: 3300
+  materials:
+  - aluminium
+  - steel
+use_case_fit:
+  modern_jet: 4
+  heli: 5
+  ww2: 4
+  ga: 5
+  airliner: 4
+  space_hotas: 4
+  space_hosas: 4
+prices:
+- region: EU
+  currency: EUR
+  amount: 280
+  incl_vat: true
+  store: virpil-controls.eu
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 246
+  incl_vat: true
+  store: virpil-controls.eu
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 302
+  incl_vat: false
+  store: virpil-controls.us
+  verified: '2026-10-01'
+  source: manual
+verdict:
+  author: feiko
+  hands_on: false
+  take: 'Draft assessment: VPC ACE-TORQ Pedals is a purpose-built pedals for sim pilots
+    who value precise inputs and configurable controls. Confirm regional configuration
+    and included accessories before purchase.'
+  pros:
+  - Compact single-axis rudder pedal design
+  - Adjustable clutch dampers tune resistance
+  - No toe-brake axes to complicate bindings
+  cons:
+  - No differential toe brakes
+  - Less suited to aircraft requiring brake pedals
+  great_for:
+  - heli
+  - ga
+  skip_if:
+  - No differential toe brakes
+  scores:
+    build: 4
+    feel: 4
+    value: 4
+    software: 4
+    qc_support: 4
+verification: draft
+sources:
+- https://virpil-controls.eu/products/vpc-ace-torq-pedals

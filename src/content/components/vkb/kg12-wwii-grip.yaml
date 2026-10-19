@@ -1,0 +1,90 @@
+brand: vkb
+name: KG12 WWII Grip
+category: grip
+status: current
+release_year: 2016
+handedness: right
+mount:
+  provides: vkb-rev-b
+  accepts: []
+controls:
+- type: trigger
+  stages: 2
+- type: button
+  count: 1
+hardware:
+  gimbal: null
+  sensor: contactless_magnetic
+  axes:
+  - name: Twist_Z
+    resolution_bits: 12
+    sensor: contactless_magnetic
+  force_adjustable: false
+  cams_swappable: false
+  damping: null
+  extension_support: false
+  throw_deg: null
+connectivity:
+  usb: null
+  standalone_usb: false
+software: VKBDevCfg
+physical:
+  weight_g: 250
+  materials:
+  - abs
+use_case_fit:
+  modern_jet: 3
+  heli: 3
+  ww2: 5
+  ga: 4
+  airliner: 1
+  space_hotas: 2
+  space_hosas: 2
+prices:
+- region: EU
+  currency: EUR
+  amount: 75
+  incl_vat: true
+  store: flightsimcontrols.com
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 64
+  incl_vat: true
+  store: flightsimcontrols.com
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 71
+  incl_vat: false
+  store: vkbcontrollers.com
+  verified: '2026-10-01'
+  source: manual
+verdict:
+  author: feiko
+  hands_on: false
+  take: 'Draft assessment: KG12 WWII Grip is a purpose-built grip for sim pilots who
+    value precise inputs and configurable controls. Confirm regional configuration
+    and included accessories before purchase.'
+  pros:
+  - Simple vintage WWII control layout
+  - Lightweight grip pairs well with compatible VKB bases
+  - Good match for period aircraft
+  cons:
+  - Very few controls compared with modern grips
+  - Limited appeal outside WWII flying
+  great_for:
+  - ww2
+  skip_if:
+  - Very few controls compared with modern grips
+  scores:
+    build: 4
+    feel: 4
+    value: 4
+    software: 4
+    qc_support: 4
+verification: draft
+sources:
+- https://vkbcontrollers.com/products/kg12-grip

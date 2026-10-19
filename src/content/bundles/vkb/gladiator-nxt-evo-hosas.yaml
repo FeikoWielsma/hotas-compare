@@ -1,0 +1,57 @@
+brand: vkb
+name: Gladiator NXT EVO HOSAS Bundle
+category: hosas_bundle
+status: current
+components:
+  - vkb/gladiator-nxt-evo-base
+  - vkb/scg-space-combat-grip-r
+  - vkb/gladiator-nxt-evo-omni-throttle-l
+prices:
+  - region: EU
+    currency: EUR
+    amount: 380
+    incl_vat: true
+    store: flightsimcontrols.com
+    verified: '2026-10-01'
+    source: manual
+  - region: UK
+    currency: GBP
+    amount: 327
+    incl_vat: true
+    store: flightsimcontrols.com
+    verified: '2026-10-01'
+    source: manual
+  - region: US
+    currency: USD
+    amount: 361
+    incl_vat: false
+    store: vkbcontrollers.com
+    verified: '2026-10-01'
+    source: manual
+verdict:
+  author: feiko
+  hands_on: false
+  take: 'Draft assessment: Right-hand SCE paired with a left Omni-Throttle creates a versatile space control arrangement.'
+  pros:
+    - Complete coordinated control set with well-matched components
+    - Components remain independently configurable and replaceable
+    - Useful combination for the stated simulation role
+  cons:
+    - Check exact connector and included grip/base configuration before ordering
+    - Bundle pricing and regional stock can change
+  great_for:
+    - space_hosas
+    - space_hotas
+  skip_if:
+    - You already own one or more of the included components
+  scores:
+    build: 4
+    feel: 4
+    value: 4
+    software: 4
+    qc_support: 4
+verification: draft
+sources:
+  - https://vkbcontrollers.com/products/gladiator-nxt-evo-space-combat-edition
+  - https://vkbcontrollers.com/products/gladiator-nxt-evo-omni-throttle
+images: []

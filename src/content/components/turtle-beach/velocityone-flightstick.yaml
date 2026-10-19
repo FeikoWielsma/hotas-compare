@@ -1,0 +1,60 @@
+brand: turtle-beach
+name: VelocityOne Flightstick
+category: stick_fixed
+status: current
+handedness: n/a
+mount: null
+controls:
+- type: hat
+  ways: 8
+  push: true
+  count: 1
+  label: Hat switch
+- type: trigger
+  count: 1
+  label: Trigger
+- type: lever
+  kind: throttle_single
+  analog: true
+  count: 1
+  label: Throttle
+hardware:
+  gimbal: null
+  sensor: contactless_magnetic
+  axes: []
+  force_adjustable: null
+  cams_swappable: null
+  damping: null
+  extension_support: null
+  throw_deg: null
+connectivity:
+  usb: c
+  standalone_usb: true
+physical:
+  materials: []
+use_case_fit: {}
+prices:
+- region: EU
+  currency: EUR
+  amount: 129
+  incl_vat: true
+  store: turtle-beach.com
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 119
+  incl_vat: true
+  store: turtle-beach.com
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 129
+  incl_vat: false
+  store: turtle-beach.com
+  verified: '2026-10-01'
+  source: manual
+verification: draft
+sources:
+- https://turtlebeach.com

@@ -1,0 +1,32 @@
+brand: thrustmaster
+name: TCA Yoke Pack Boeing Edition
+category: yoke_bundle
+status: current
+components:
+- thrustmaster/tca-yoke-boeing
+- thrustmaster/tca-quadrant-boeing
+prices:
+- region: EU
+  currency: EUR
+  amount: 500
+  incl_vat: true
+  store: amazon.de
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 430
+  incl_vat: true
+  store: amazon.co.uk
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 525
+  incl_vat: false
+  store: amazon.com
+  verified: '2026-10-01'
+  source: manual
+verification: draft
+sources:
+- https://www.thrustmaster.com/en-us/products/

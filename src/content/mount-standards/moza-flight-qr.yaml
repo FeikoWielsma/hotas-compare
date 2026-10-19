@@ -1,0 +1,4 @@
+name: MOZA Flight QR
+description: Quick-release motorized slip-ring collar standard used on Moza AB9 force feedback base and flight sticks.
+physical_type: quick_release
+compatible_with: []

@@ -1,0 +1,32 @@
+brand: logitech
+name: X56 Rhino HOTAS System
+category: hotas_bundle
+status: current
+components:
+- logitech/x56-rhino-stick
+- logitech/x56-rhino-throttle
+prices:
+- region: EU
+  currency: EUR
+  amount: 300
+  incl_vat: true
+  store: amazon.de
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 258
+  incl_vat: true
+  store: amazon.co.uk
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 315
+  incl_vat: false
+  store: amazon.com
+  verified: '2026-10-01'
+  source: manual
+verification: draft
+sources:
+- https://www.logitechg.com/en-us/products/flight.html

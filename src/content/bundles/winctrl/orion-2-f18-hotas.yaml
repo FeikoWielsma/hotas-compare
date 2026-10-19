@@ -1,0 +1,12 @@
+brand: winctrl
+name: Orion 2 F/A-18 HOTAS
+category: hotas_bundle
+status: current
+components:
+  - winctrl/orion-2-base
+  - winctrl/f18-hornet-grip
+  - winctrl/orion-2-f18-throttle
+prices: []
+verification: draft
+sources:
+  - https://en.winwing.cn/en/

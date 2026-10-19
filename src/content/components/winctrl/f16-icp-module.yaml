@@ -1,0 +1,32 @@
+brand: winctrl
+name: F-16 Integrated Control Panel Module
+category: module
+status: current
+handedness: n/a
+mount:
+  provides: null
+  accepts: []
+controls:
+  - type: button
+    count: 20
+  - type: toggle
+    count: 3
+    ways: 2
+hardware:
+  axes: []
+connectivity:
+  standalone_usb: true
+physical:
+  materials: []
+use_case_fit:
+  modern_jet: 4
+  heli: 3
+  ww2: 3
+  ga: 3
+  airliner: 3
+  space_hotas: 4
+  space_hosas: 3
+prices: []
+verification: draft
+sources:
+  - https://en.winwing.cn/en/download

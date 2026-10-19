@@ -1,0 +1,64 @@
+brand: thrustmaster
+name: AVA - Advanced Versatile Aviation Base
+category: base
+status: current
+release_year: 2024
+handedness: n/a
+mount:
+  provides: tm-din5
+controls:
+- type: button
+  count: 2
+hardware:
+  gimbal: modular_cam_gimbal
+  sensor: hall
+  axes:
+  - name: X
+    sensor: hall
+  - name: Y
+    sensor: hall
+  force_adjustable: false
+  cams_swappable: true
+  damping: adjustable
+  extension_support: true
+  throw_deg: null
+connectivity:
+  usb: a_cable
+  standalone_usb: true
+software: T.A.R.G.E.T
+physical:
+  materials:
+  - metal
+use_case_fit:
+  modern_jet: 4
+  heli: 3
+  ww2: 3
+  ga: 3
+  airliner: 3
+  space_hotas: 4
+  space_hosas: 3
+prices:
+- region: EU
+  currency: EUR
+  amount: 280
+  incl_vat: true
+  store: amazon.de
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 241
+  incl_vat: true
+  store: amazon.co.uk
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 302
+  incl_vat: false
+  store: amazon.com
+  verified: '2026-10-01'
+  source: manual
+verification: draft
+sources:
+- https://www.thrustmaster.com/en-us/products/ava-base/

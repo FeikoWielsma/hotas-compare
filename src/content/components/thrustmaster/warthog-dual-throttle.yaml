@@ -1,0 +1,77 @@
+brand: thrustmaster
+name: HOTAS Warthog Dual Throttle
+category: throttle
+status: current
+release_year: 2010
+handedness: n/a
+mount: null
+controls:
+- type: lever
+  kind: throttle_dual
+  analog: true
+- type: detent
+  count: 2
+  customizable: false
+  label: Idle and afterburner detents
+- type: toggle
+  count: 5
+  ways: 2
+- type: hat
+  ways: 4
+  push: true
+- type: button
+  count: 18
+hardware:
+  gimbal: null
+  sensor: hall
+  axes:
+  - name: Throttle_Left
+    sensor: hall
+  - name: Throttle_Right
+    sensor: hall
+  force_adjustable: true
+  cams_swappable: false
+  damping: null
+  extension_support: false
+  throw_deg: null
+connectivity:
+  usb: a_cable
+  standalone_usb: true
+software: T.A.R.G.E.T
+physical:
+  materials:
+  - metal
+  - abs
+use_case_fit:
+  modern_jet: 4
+  heli: 3
+  ww2: 3
+  ga: 3
+  airliner: 3
+  space_hotas: 4
+  space_hosas: 3
+prices:
+- region: EU
+  currency: EUR
+  amount: 250
+  incl_vat: true
+  store: amazon.de
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 215
+  incl_vat: true
+  store: amazon.co.uk
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 270
+  incl_vat: false
+  store: amazon.com
+  verified: '2026-10-01'
+  source: manual
+verification: draft
+sources:
+- https://www.thrustmaster.com/en-us/products/hotas-warthog-dual-throttle/

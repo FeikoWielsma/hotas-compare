@@ -1,0 +1,32 @@
+brand: thrustmaster
+name: T.16000M FCS Space Sim Duo
+category: hosas_bundle
+status: current
+components:
+- thrustmaster/t16000m-fcs-stick
+- thrustmaster/t16000m-fcs-stick
+prices:
+- region: EU
+  currency: EUR
+  amount: 130
+  incl_vat: true
+  store: amazon.de
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 112
+  incl_vat: true
+  store: amazon.co.uk
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 136
+  incl_vat: false
+  store: amazon.com
+  verified: '2026-10-01'
+  source: manual
+verification: draft
+sources:
+- https://www.thrustmaster.com/en-us/products/

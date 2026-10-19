@@ -1,0 +1,37 @@
+brand: winctrl
+name: Skywalker Rudder Pedals
+category: pedals
+status: current
+handedness: ambi
+mount:
+  provides: null
+  accepts: []
+controls:
+  - type: lever
+    kind: other
+    analog: true
+    count: 2
+    label: Rudder pedals
+  - type: lever
+    kind: brake
+    analog: true
+    count: 2
+    label: Toe brakes
+hardware:
+  axes: []
+connectivity:
+  standalone_usb: true
+physical:
+  materials: []
+use_case_fit:
+  modern_jet: 4
+  heli: 3
+  ww2: 3
+  ga: 3
+  airliner: 3
+  space_hotas: 4
+  space_hosas: 3
+prices: []
+verification: draft
+sources:
+  - https://en.winwing.cn/en/

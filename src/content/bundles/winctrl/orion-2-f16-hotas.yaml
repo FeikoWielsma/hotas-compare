@@ -1,0 +1,12 @@
+brand: winctrl
+name: Orion 2 F-16 HOTAS
+category: hotas_bundle
+status: current
+components:
+  - winctrl/orion-2-base
+  - winctrl/f16-ex-viper-grip
+  - winctrl/orion-2-f16-throttle
+prices: []
+verification: draft
+sources:
+  - https://en.winwing.cn/en/

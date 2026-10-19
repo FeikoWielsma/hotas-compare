@@ -1,0 +1,89 @@
+brand: virpil
+name: VPC Rotor TCS Plus Base
+category: base
+status: current
+release_year: 2021
+handedness: n/a
+mount: null
+controls:
+- type: lever
+  kind: other
+  analog: true
+hardware:
+  gimbal: dual_cam
+  sensor: contactless_magnetic
+  axes:
+  - name: Collective
+    resolution_bits: 16
+    sensor: contactless_magnetic
+  force_adjustable: true
+  cams_swappable: true
+  damping: adjustable_dry_clutch
+  extension_support: false
+  throw_deg: 40
+connectivity:
+  usb: c
+  standalone_usb: true
+software: VPC Configuration Tool
+physical:
+  weight_g: 2800
+  materials:
+  - aluminium
+  - steel
+use_case_fit:
+  modern_jet: 3
+  heli: 5
+  ww2: 4
+  ga: 5
+  airliner: 2
+  space_hotas: 3
+  space_hosas: 3
+prices:
+- region: EU
+  currency: EUR
+  amount: 300
+  incl_vat: true
+  store: virpil-controls.eu
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 264
+  incl_vat: true
+  store: virpil-controls.eu
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 324
+  incl_vat: false
+  store: virpil-controls.us
+  verified: '2026-10-01'
+  source: manual
+verdict:
+  author: feiko
+  hands_on: false
+  take: 'Draft assessment: VPC Rotor TCS Plus Base is a purpose-built base for sim
+    pilots who value precise inputs and configurable controls. Confirm regional configuration
+    and included accessories before purchase.'
+  pros:
+  - Collective-specific long travel and adjustable friction
+  - Designed for compatible VIRPIL rotor grips
+  - Standalone USB connection
+  cons:
+  - Grip sold separately
+  - Large helicopter-oriented control takes dedicated mounting
+  great_for:
+  - heli
+  - ga
+  skip_if:
+  - Grip sold separately
+  scores:
+    build: 4
+    feel: 4
+    value: 4
+    software: 4
+    qc_support: 4
+verification: draft
+sources:
+- https://virpil-controls.eu/products/vpc-rotor-tcs-plus-base

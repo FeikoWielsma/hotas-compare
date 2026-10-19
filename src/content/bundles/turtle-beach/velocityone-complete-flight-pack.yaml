@@ -1,0 +1,32 @@
+brand: turtle-beach
+name: VelocityOne Complete Flight Pack
+category: system
+status: current
+components:
+- turtle-beach/velocityone-flight-yoke-system
+- turtle-beach/velocityone-rudder-pedals
+prices:
+- region: EU
+  currency: EUR
+  amount: 600
+  incl_vat: true
+  store: turtle-beach.com
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 520
+  incl_vat: true
+  store: turtle-beach.com
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 600
+  incl_vat: false
+  store: turtle-beach.com
+  verified: '2026-10-01'
+  source: manual
+verification: draft
+sources:
+- https://turtlebeach.com

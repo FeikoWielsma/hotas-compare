@@ -1,0 +1,32 @@
+brand: honeycomb
+name: Alpha + Bravo Flight Bundle
+category: yoke_bundle
+status: current
+components:
+- honeycomb/alpha-flight-controls-yoke
+- honeycomb/bravo-throttle-quadrant
+prices:
+- region: EU
+  currency: EUR
+  amount: 600
+  incl_vat: true
+  store: honeycomb.com
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 530
+  incl_vat: true
+  store: honeycomb.com
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 600
+  incl_vat: false
+  store: honeycomb.com
+  verified: '2026-10-01'
+  source: manual
+verification: draft
+sources:
+- https://honeycomb.com

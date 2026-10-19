@@ -1,0 +1,55 @@
+brand: vkb
+name: Gunfighter Mk.IV with MCG Ultimate
+category: stick_combo
+status: current
+components:
+- vkb/gunfighter-iv-base
+- vkb/mcg-ultimate-grip
+prices:
+- region: EU
+  currency: EUR
+  amount: 560
+  incl_vat: true
+  store: flightsimcontrols.com
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 482
+  incl_vat: true
+  store: flightsimcontrols.com
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 532
+  incl_vat: false
+  store: vkbcontrollers.com
+  verified: '2026-10-01'
+  source: manual
+verdict:
+  author: feiko
+  hands_on: false
+  take: 'Draft assessment: A high-end metal gimbal and configurable combat grip for
+    demanding modern aircraft and center-stick setups.'
+  pros:
+  - Complete coordinated control set with well-matched components
+  - Components remain independently configurable and replaceable
+  - Useful combination for the stated simulation role
+  cons:
+  - Check exact connector and included grip/base configuration before ordering
+  - Bundle pricing and regional stock can change
+  great_for:
+  - modern_jet
+  - space_hotas
+  skip_if:
+  - You already own one or more of the included components
+  scores:
+    build: 4
+    feel: 4
+    value: 4
+    software: 4
+    qc_support: 4
+verification: draft
+sources:
+- https://vkbcontrollers.com/products/gunfighter-iv-mcg-ultimate

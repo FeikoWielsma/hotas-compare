@@ -1,0 +1,32 @@
+brand: logitech
+name: Logitech G Flight Yoke System
+category: yoke_bundle
+status: current
+components:
+- logitech/g-saitek-pro-flight-yoke
+- logitech/g-saitek-pro-flight-throttle-quadrant
+prices:
+- region: EU
+  currency: EUR
+  amount: 240
+  incl_vat: true
+  store: amazon.de
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 206
+  incl_vat: true
+  store: amazon.co.uk
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 252
+  incl_vat: false
+  store: amazon.com
+  verified: '2026-10-01'
+  source: manual
+verification: draft
+sources:
+- https://www.logitechg.com/en-us/products/flight.html

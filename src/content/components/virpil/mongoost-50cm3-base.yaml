@@ -1,0 +1,92 @@
+brand: virpil
+name: VPC MongoosT-50CM3 Base
+category: base
+status: current
+release_year: 2021
+handedness: n/a
+mount: null
+controls: []
+hardware:
+  gimbal: dual_cam
+  sensor: contactless_magnetic
+  axes:
+  - name: X
+    resolution_bits: 16
+    sensor: contactless_magnetic
+  - name: Y
+    resolution_bits: 16
+    sensor: contactless_magnetic
+  force_adjustable: true
+  cams_swappable: true
+  damping: adjustable_dry_clutch
+  extension_support: true
+  throw_deg: 32
+connectivity:
+  usb: c
+  standalone_usb: true
+software: VPC Configuration Tool
+physical:
+  weight_g: 2600
+  materials:
+  - aluminium
+  - steel
+use_case_fit:
+  modern_jet: 5
+  heli: 5
+  ww2: 5
+  ga: 4
+  airliner: 3
+  space_hotas: 5
+  space_hosas: 5
+prices:
+- region: EU
+  currency: EUR
+  amount: 320
+  incl_vat: true
+  store: virpil-controls.eu
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 282
+  incl_vat: true
+  store: virpil-controls.eu
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 346
+  incl_vat: false
+  store: virpil-controls.us
+  verified: '2026-10-01'
+  source: manual
+verdict:
+  author: feiko
+  hands_on: false
+  take: 'Draft assessment: VPC MongoosT-50CM3 Base is a purpose-built base for sim
+    pilots who value precise inputs and configurable controls. Confirm regional configuration
+    and included accessories before purchase.'
+  pros:
+  - Interchangeable cams and springs with adjustable clutches
+  - Long-extension cockpit base with compact 32-degree throw
+  - Robust metal gimbal for center-stick installations
+  cons:
+  - Cockpit mount is strongly recommended
+  - Grip sold separately
+  great_for:
+  - modern_jet
+  - heli
+  - ww2
+  - space_hotas
+  - space_hosas
+  skip_if:
+  - Cockpit mount is strongly recommended
+  scores:
+    build: 4
+    feel: 4
+    value: 4
+    software: 4
+    qc_support: 4
+verification: draft
+sources:
+- https://virpil-controls.eu/products/vpc-mongoost-50cm3-base

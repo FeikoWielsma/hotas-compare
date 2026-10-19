@@ -1,0 +1,61 @@
+brand: logitech
+name: X56 Rhino Throttle
+category: throttle
+status: current
+handedness: n/a
+mount: null
+controls:
+- type: lever
+  kind: throttle_dual
+  analog: true
+- type: hat
+  ways: 8
+  push: true
+  count: 2
+- type: analog_ministick
+  push: true
+- type: rotary
+  count: 3
+- type: toggle
+  count: 2
+  ways: 2
+hardware:
+  gimbal: null
+  sensor: hall
+  axes:
+  - name: Throttle_Left
+    sensor: hall
+  - name: Throttle_Right
+    sensor: hall
+connectivity:
+  usb: a_cable
+  standalone_usb: true
+software: Logitech G HUB
+physical:
+  materials:
+  - abs
+prices:
+- region: EU
+  currency: EUR
+  amount: 150
+  incl_vat: true
+  store: amazon.de
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 129
+  incl_vat: true
+  store: amazon.co.uk
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 158
+  incl_vat: false
+  store: amazon.com
+  verified: '2026-10-01'
+  source: manual
+verification: draft
+sources:
+- https://www.logitechg.com/en-us/products/flight.html

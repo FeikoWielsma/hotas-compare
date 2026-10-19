@@ -1,0 +1,116 @@
+brand: virpil
+name: VPC VMAX Prime Throttle
+category: throttle
+status: current
+release_year: 2025
+handedness: n/a
+mount: null
+controls:
+- type: lever
+  kind: throttle_dual
+  analog: true
+  count: 2
+- type: detent
+  count: 4
+  customizable: true
+- type: hat
+  ways: 8
+  push: true
+  count: 2
+- type: hat
+  ways: 4
+  push: true
+- type: analog_ministick
+  push: true
+- type: encoder
+  count: 3
+  push: true
+- type: toggle
+  count: 6
+  ways: 3
+  momentary: true
+- type: button
+  count: 7
+  backlit: true
+hardware:
+  gimbal: null
+  sensor: contactless_magnetic
+  axes:
+  - name: Throttle_Left
+    resolution_bits: 16
+    sensor: contactless_magnetic
+  - name: Throttle_Right
+    resolution_bits: 16
+    sensor: contactless_magnetic
+  force_adjustable: false
+  cams_swappable: false
+  damping: null
+  extension_support: false
+  throw_deg: null
+connectivity:
+  usb: c
+  standalone_usb: true
+software: VPC Configuration Tool
+physical:
+  weight_g: 2800
+  materials:
+  - aluminium
+  - steel
+  - abs
+use_case_fit:
+  modern_jet: 5
+  heli: 4
+  ww2: 5
+  ga: 4
+  airliner: 3
+  space_hotas: 4
+  space_hosas: 2
+prices:
+- region: EU
+  currency: EUR
+  amount: 430
+  incl_vat: true
+  store: virpil-controls.eu
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 378
+  incl_vat: true
+  store: virpil-controls.eu
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 464
+  incl_vat: false
+  store: virpil-controls.us
+  verified: '2026-10-01'
+  source: manual
+verdict:
+  author: feiko
+  hands_on: false
+  take: 'Draft assessment: VPC VMAX Prime Throttle is a purpose-built throttle for
+    sim pilots who value precise inputs and configurable controls. Confirm regional
+    configuration and included accessories before purchase.'
+  pros:
+  - Split throttle with tactile detent and switch-rich panel
+  - Independent controls support modern jets and space
+  - Standalone USB controller
+  cons:
+  - Large footprint and premium pricing
+  - Detent setup and software mapping need attention
+  great_for:
+  - modern_jet
+  - ww2
+  skip_if:
+  - Large footprint and premium pricing
+  scores:
+    build: 4
+    feel: 4
+    value: 4
+    software: 4
+    qc_support: 4
+verification: draft
+sources:
+- https://virpil-controls.eu/products/vpc-vmax-prime-throttle

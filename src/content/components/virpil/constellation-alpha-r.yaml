@@ -1,0 +1,106 @@
+brand: virpil
+name: Constellation Alpha (Right)
+category: grip
+status: current
+release_year: 2019
+handedness: right
+mount:
+  provides: virpil-grip
+  accepts: []
+controls:
+- type: trigger
+  stages: 2
+  flip: true
+- type: hat
+  ways: 8
+  push: true
+  count: 2
+- type: hat
+  ways: 4
+  push: true
+- type: analog_ministick
+  push: true
+- type: button
+  count: 4
+- type: lever
+  kind: brake
+  analog: true
+- type: encoder
+  count: 2
+  push: true
+hardware:
+  gimbal: null
+  sensor: contactless_magnetic
+  axes: []
+  force_adjustable: false
+  cams_swappable: false
+  damping: null
+  extension_support: false
+  throw_deg: null
+connectivity:
+  usb: null
+  standalone_usb: false
+software: VPC Configuration Tool
+physical:
+  weight_g: 500
+  materials:
+  - aluminium
+  - abs
+use_case_fit:
+  modern_jet: 5
+  heli: 4
+  ww2: 4
+  ga: 2
+  airliner: 1
+  space_hotas: 5
+  space_hosas: 5
+prices:
+- region: EU
+  currency: EUR
+  amount: 259
+  incl_vat: true
+  store: virpil-controls.eu
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 228
+  incl_vat: true
+  store: virpil-controls.eu
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 280
+  incl_vat: false
+  store: virpil-controls.us
+  verified: '2026-10-01'
+  source: manual
+verdict:
+  author: feiko
+  hands_on: false
+  take: 'Draft assessment: Constellation Alpha (Right) is a purpose-built grip for
+    sim pilots who value precise inputs and configurable controls. Confirm regional
+    configuration and included accessories before purchase.'
+  pros:
+  - Extensive hats, buttons, ministick and analog brake
+  - Lockable twist axis via compatible base/grip configuration
+  - Strong fit for space and multi-role sims
+  cons:
+  - Large grip may not suit small hands
+  - Requires compatible VIRPIL base
+  great_for:
+  - modern_jet
+  - space_hotas
+  - space_hosas
+  skip_if:
+  - Large grip may not suit small hands
+  scores:
+    build: 4
+    feel: 4
+    value: 4
+    software: 4
+    qc_support: 4
+verification: draft
+sources:
+- https://virpil-controls.eu/products/vpc-constellation-alpha-r

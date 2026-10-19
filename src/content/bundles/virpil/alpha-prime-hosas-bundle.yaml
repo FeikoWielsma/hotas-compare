@@ -1,0 +1,57 @@
+brand: virpil
+name: Constellation Alpha Prime HOSAS Bundle
+category: hosas_bundle
+status: current
+components:
+- virpil/constellation-alpha-prime-r
+- virpil/constellation-alpha-prime-l
+- virpil/warbrd-d-base
+- virpil/warbrd-d-base
+prices:
+- region: EU
+  currency: EUR
+  amount: 1150
+  incl_vat: true
+  store: virpil-controls.eu
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 1012
+  incl_vat: true
+  store: virpil-controls.eu
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 1242
+  incl_vat: false
+  store: virpil-controls.us
+  verified: '2026-10-01'
+  source: manual
+verdict:
+  author: feiko
+  hands_on: false
+  take: 'Draft assessment: Matched left and right Alpha Prime grips with dual WarBRD-D
+    bases provide a high-control dual-stick space configuration.'
+  pros:
+  - Complete coordinated control set with well-matched components
+  - Components remain independently configurable and replaceable
+  - Useful combination for the stated simulation role
+  cons:
+  - Check exact connector and included grip/base configuration before ordering
+  - Bundle pricing and regional stock can change
+  great_for:
+  - space_hosas
+  - space_hotas
+  skip_if:
+  - You already own one or more of the included components
+  scores:
+    build: 4
+    feel: 4
+    value: 4
+    software: 4
+    qc_support: 4
+verification: draft
+sources:
+- https://virpil-controls.eu/products/alpha-prime-hosas-bundle

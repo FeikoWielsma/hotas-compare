@@ -1,0 +1,56 @@
+brand: logitech
+name: Logitech G Pro Flight Throttle Quadrant
+category: quadrant
+status: current
+handedness: n/a
+mount: null
+controls:
+- type: lever
+  kind: throttle_single
+  analog: true
+  count: 3
+- type: toggle
+  count: 6
+  ways: 2
+hardware:
+  gimbal: null
+  sensor: potentiometer
+  axes:
+  - name: Throttle_1
+    sensor: potentiometer
+  - name: Throttle_2
+    sensor: potentiometer
+  - name: Throttle_3
+    sensor: potentiometer
+connectivity:
+  usb: a_cable
+  standalone_usb: true
+software: Logitech G HUB
+physical:
+  materials:
+  - abs
+prices:
+- region: EU
+  currency: EUR
+  amount: 70
+  incl_vat: true
+  store: amazon.de
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 60
+  incl_vat: true
+  store: amazon.co.uk
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 74
+  incl_vat: false
+  store: amazon.com
+  verified: '2026-10-01'
+  source: manual
+verification: draft
+sources:
+- https://www.logitechg.com/en-us/products/flight.html

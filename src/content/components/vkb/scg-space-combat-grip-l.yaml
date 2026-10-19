@@ -1,0 +1,104 @@
+brand: vkb
+name: Space Combat Grip (SCG) Premium (Left)
+category: grip
+status: current
+release_year: 2020
+handedness: left
+mount:
+  provides: vkb-rev-b
+  accepts: []
+controls:
+- type: trigger
+  stages: 2
+  flip: true
+- type: hat
+  ways: 8
+  push: true
+  count: 2
+- type: hat
+  ways: 4
+  push: true
+- type: analog_ministick
+  push: true
+- type: button
+  count: 4
+- type: trigger
+  stages: 1
+  label: Rapid-fire secondary trigger
+hardware:
+  gimbal: null
+  sensor: contactless_magnetic
+  axes:
+  - name: Twist_Z
+    resolution_bits: 12
+    sensor: contactless_magnetic
+  force_adjustable: false
+  cams_swappable: false
+  damping: null
+  extension_support: false
+  throw_deg: null
+connectivity:
+  usb: null
+  standalone_usb: false
+software: VKBDevCfg
+physical:
+  weight_g: 380
+  materials:
+  - abs
+use_case_fit:
+  modern_jet: 4
+  heli: 3
+  ww2: 3
+  ga: 2
+  airliner: 1
+  space_hotas: 5
+  space_hosas: 5
+prices:
+- region: EU
+  currency: EUR
+  amount: 110
+  incl_vat: true
+  store: flightsimcontrols.com
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 95
+  incl_vat: true
+  store: flightsimcontrols.com
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 104
+  incl_vat: false
+  store: vkbcontrollers.com
+  verified: '2026-10-01'
+  source: manual
+verdict:
+  author: feiko
+  hands_on: false
+  take: 'Draft assessment: Space Combat Grip (SCG) Premium (Left) is a purpose-built
+    grip for sim pilots who value precise inputs and configurable controls. Confirm
+    regional configuration and included accessories before purchase.'
+  pros:
+  - Ambidextrous product family with dedicated left grip
+  - Twist rudder axis and rich space-sim controls
+  - Premium kit offers swappable hat/ministick parts
+  cons:
+  - Polymer shell
+  - Small control spacing may not suit every hand
+  great_for:
+  - space_hotas
+  - space_hosas
+  skip_if:
+  - Polymer shell
+  scores:
+    build: 4
+    feel: 4
+    value: 4
+    software: 4
+    qc_support: 4
+verification: draft
+sources:
+- https://vkbcontrollers.com/products/scg-space-combat-grip

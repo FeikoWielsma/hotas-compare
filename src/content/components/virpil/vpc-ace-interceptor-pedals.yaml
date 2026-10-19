@@ -1,0 +1,97 @@
+brand: virpil
+name: VPC ACE Interceptor Pedals
+category: pedals
+status: current
+release_year: 2020
+handedness: n/a
+mount: null
+controls:
+- type: lever
+  kind: brake
+  analog: true
+  count: 2
+hardware:
+  gimbal: null
+  sensor: contactless_magnetic
+  axes:
+  - name: Rudder
+    resolution_bits: 16
+    sensor: contactless_magnetic
+  - name: Left_Brake
+    resolution_bits: 12
+    sensor: contactless_magnetic
+  - name: Right_Brake
+    resolution_bits: 12
+    sensor: contactless_magnetic
+  force_adjustable: false
+  cams_swappable: false
+  damping: null
+  extension_support: false
+  throw_deg: null
+connectivity:
+  usb: c
+  standalone_usb: true
+software: VPC Configuration Tool
+physical:
+  weight_g: 4300
+  materials:
+  - aluminium
+  - steel
+use_case_fit:
+  modern_jet: 5
+  heli: 4
+  ww2: 5
+  ga: 5
+  airliner: 4
+  space_hotas: 3
+  space_hosas: 3
+prices:
+- region: EU
+  currency: EUR
+  amount: 380
+  incl_vat: true
+  store: virpil-controls.eu
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 334
+  incl_vat: true
+  store: virpil-controls.eu
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 410
+  incl_vat: false
+  store: virpil-controls.us
+  verified: '2026-10-01'
+  source: manual
+verdict:
+  author: feiko
+  hands_on: false
+  take: 'Draft assessment: VPC ACE Interceptor Pedals is a purpose-built pedals for
+    sim pilots who value precise inputs and configurable controls. Confirm regional
+    configuration and included accessories before purchase.'
+  pros:
+  - Rudder axis plus independent differential toe brakes
+  - Wide stable metal pedal construction
+  - Adjustable pedal geometry for different seating positions
+  cons:
+  - Requires floor space and a suitable chair or cockpit
+  - More controls than space-only pilots may need
+  great_for:
+  - modern_jet
+  - ww2
+  - ga
+  skip_if:
+  - Requires floor space and a suitable chair or cockpit
+  scores:
+    build: 4
+    feel: 4
+    value: 4
+    software: 4
+    qc_support: 4
+verification: draft
+sources:
+- https://virpil-controls.eu/products/vpc-ace-interceptor-pedals

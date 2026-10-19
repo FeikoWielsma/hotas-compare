@@ -1,0 +1,33 @@
+brand: thrustmaster
+name: HOTAS Warthog System
+category: hotas_bundle
+status: current
+components:
+- thrustmaster/warthog-base
+- thrustmaster/warthog-stick-grip
+- thrustmaster/warthog-dual-throttle
+prices:
+- region: EU
+  currency: EUR
+  amount: 550
+  incl_vat: true
+  store: amazon.de
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 473
+  incl_vat: true
+  store: amazon.co.uk
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 578
+  incl_vat: false
+  store: amazon.com
+  verified: '2026-10-01'
+  source: manual
+verification: draft
+sources:
+- https://www.thrustmaster.com/en-us/products/
