@@ -1,16 +1,25 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CatalogFilter from '../components/CatalogFilter.svelte';
+import { getCatalogItems } from '../lib/catalog';
+const items = await getCatalogItems();
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Flight sim hardware, compared">
+  <section class="hero" aria-labelledby="catalog-title">
+    <div class="signal"><span>● SYSTEM ONLINE</span><span>HARDWARE INTELLIGENCE / 001</span></div>
+    <p class="eyebrow">BUILD YOUR NEXT COCKPIT</p>
+    <h1 id="catalog-title">HOTAS <span>//</span> COMPARE</h1>
+    <p class="intro">An opinionated, community-oriented compare site &amp; buyer's guide for flight sim &amp; space hardware.</p>
+    <div class="stats" aria-label="Catalog statistics"><div><strong>10</strong><span>Brands</span></div><div><strong>84</strong><span>Components</span></div><div><strong>23</strong><span>Bundles</span></div><div class="community"><strong>◎</strong><span>Community Verified</span></div></div>
+  </section>
+  <CatalogFilter client:load initialItems={items} />
+</BaseLayout>
+
+<style>
+  .hero { position: relative; overflow: hidden; padding: 1.5rem 2rem 0; margin-bottom: 2.5rem; border: 1px solid var(--border-cockpit); border-top: 2px solid var(--accent-amber); background: radial-gradient(ellipse at top right, var(--accent-amber-glow), transparent 55%), repeating-linear-gradient(0deg, transparent, transparent 39px, var(--border-cockpit) 40px), var(--bg-panel); }
+  .signal { display: flex; justify-content: space-between; gap: 1rem; font: .6rem var(--font-mono); color: var(--text-secondary); letter-spacing: .12em; } .signal span:first-child { color: var(--hud-green); }
+  .eyebrow { margin: 2.5rem 0 .75rem; font: .7rem var(--font-mono); letter-spacing: .2em; color: var(--text-secondary); } h1 { font-size: clamp(2rem, 5vw, 4.5rem); font-weight: 700; letter-spacing: -.06em; } h1 span { color: var(--accent-amber); } .intro { max-width: 650px; color: var(--text-secondary); font-size: 1rem; line-height: 1.8; margin-bottom: 2.5rem; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--border-cockpit); } .stats div { display: flex; align-items: center; gap: .85rem; padding: 1.25rem 0; } .stats strong { font: 1.8rem var(--font-mono); font-variant-numeric: tabular-nums; } .stats span { font: .65rem var(--font-mono); text-transform: uppercase; color: var(--text-secondary); } .community strong { color: var(--hud-green); }
+  @media (max-width: 640px) { .hero { padding: 1rem 1rem 0; } .signal span:last-child { display: none; } .stats { grid-template-columns: 1fr 1fr; } .stats strong { font-size: 1.4rem; } .stats span { font-size: .55rem; } }
+</style>

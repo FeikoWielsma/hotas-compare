@@ -2,6 +2,9 @@
 
 @layer base {
   :root {
+    color-scheme: dark;
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
     --bg-cockpit: #0b0e14;
     --bg-panel: #121721;
     --bg-panel-elevated: #18202d;
@@ -22,6 +25,7 @@
   }
 
   :root.light {
+    color-scheme: light;
     --bg-cockpit: #f8fafc;
     --bg-panel: #ffffff;
     --bg-panel-elevated: #f1f5f9;
@@ -42,12 +46,32 @@
   }
 
   body {
+    margin: 0;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-sans);
+    line-height: 1.5;
     background-color: var(--bg-cockpit);
     color: var(--text-primary);
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
   .font-mono-numbers {
+    font-family: var(--font-mono);
     font-variant-numeric: tabular-nums;
   }
+
+  * { box-sizing: border-box; }
+  a { color: inherit; }
+  h1 { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 600; line-height: 1.1; letter-spacing: -.04em; margin-block: .75rem 1.25rem; }
+  h2 { font-size: 1.5rem; font-weight: 600; line-height: 1.25; margin-block: 1.5rem .75rem; }
+  button, a, input, select { -webkit-tap-highlight-color: transparent; }
+  :focus-visible { outline: 2px solid var(--accent-amber); outline-offset: 4px; }
+  main { flex: 1; width: min(100%, 1440px); margin-inline: auto; padding: 2.5rem 2rem; }
+  body:has(.compare-tray) { padding-bottom: 220px; }
+  .skip-link { position: fixed; top: -100px; left: 1rem; z-index: 100; padding: .75rem 1rem; background: var(--accent-amber); color: #0b0e14; }
+  .skip-link:focus { top: 1rem; }
+  ::selection { color: var(--text-primary); background: var(--accent-amber-glow); }
+  @media (max-width: 640px) { main { padding: 1.5rem 1rem; } body:has(.compare-tray) { padding-bottom: 280px; } }
 }
