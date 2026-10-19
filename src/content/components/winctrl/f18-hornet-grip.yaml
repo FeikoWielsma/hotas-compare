@@ -10,15 +10,20 @@ controls:
   - type: trigger
     stages: 2
   - type: hat
-    ways: 8
-    push: true
-    count: 2
-  - type: hat
     ways: 4
     push: true
-    count: 2
+    count: 3
+  - type: hat
+    ways: 8
+    push: true
+    count: 1
   - type: button
-    count: 4
+    count: 2
+  - type: lever
+    kind: brake
+    analog: false
+    count: 1
+    label: Brake/trigger switch
 hardware:
   axes: []
 connectivity:
@@ -36,4 +41,8 @@ use_case_fit:
 prices: []
 verification: draft
 sources:
-  - https://en.winwing.cn/en/
+  - https://eu.winctrl.com/view/goods-details.html?id=314
+images:
+  - file: /images/winctrl/f18-hornet-grip.jpg
+    source: https://eu.winctrl.com/view/goods-details.html?id=314
+    caption: WinCtrl FA-18 Hornet Replica Grip

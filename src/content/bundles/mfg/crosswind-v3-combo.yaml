@@ -28,5 +28,7 @@ prices:
   verified: '2026-10-01'
   source: manual
 verification: draft
+images: []
 sources:
-- https://mfg.com
+- https://mfg-sim.com/rudders/mfg-crosswind-v3-me109-rudder-pedals.html
+- https://mfg-sim.com/rudder-acessories/hydraulic-damper-universal-kit-for-v1-3-pedals.html

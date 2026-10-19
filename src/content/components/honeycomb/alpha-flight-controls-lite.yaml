@@ -1,0 +1,61 @@
+brand: honeycomb
+name: Alpha Flight Controls Lite
+category: yoke
+status: current
+release_year: 2025
+handedness: n/a
+mount: null
+controls:
+- type: hat
+  ways: 8
+  label: POV switch
+- type: rocker
+  count: 2
+  ways: 2
+  label: 2-way rocker switches
+- type: button
+  count: 4
+  label: Programmable buttons
+hardware:
+  gimbal: null
+  sensor: null
+  axes:
+  - name: Aileron
+  - name: Elevator
+  force_adjustable: null
+  cams_swappable: null
+  damping: null
+  extension_support: null
+  throw_deg: 180
+connectivity:
+  usb: c
+  standalone_usb: true
+physical:
+  weight_g: 4377
+  dimensions_mm: [273, 410, 208]
+  materials: []
+use_case_fit: {}
+prices:
+- region: EU
+  currency: EUR
+  amount: 199.99
+  incl_vat: true
+  store: eu.flyhoneycomb.com
+  url: https://eu.flyhoneycomb.com/products/alpha-flight-controls-lite
+  verified: '2026-10-19'
+  source: manual
+- region: US
+  currency: USD
+  amount: 199.99
+  incl_vat: false
+  store: flyhoneycomb.com
+  url: https://flyhoneycomb.com/products/alpha-flight-controls-lite
+  verified: '2026-10-19'
+  source: manual
+verification: draft
+images:
+- file: /images/honeycomb/alpha-flight-controls-lite.webp
+  source: https://eu.flyhoneycomb.com/products/alpha-flight-controls-lite
+  caption: Alpha Flight Controls Lite
+sources:
+- https://eu.flyhoneycomb.com/products/alpha-flight-controls-lite

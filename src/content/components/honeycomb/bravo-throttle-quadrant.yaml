@@ -9,10 +9,19 @@ controls:
   kind: throttle_dual
   analog: true
   count: 6
-  label: Throttle levers
+  label: Throttle, flap, spoiler, and thrust-reverser levers
+- type: toggle
+  count: 7
+  ways: 2
+  label: Assignable switches
 - type: button
-  count: 6
-  label: Panel buttons
+  count: 1
+  label: TOGA button
+- type: lever
+  kind: other
+  analog: false
+  count: 1
+  label: Landing gear lever
 - type: rotary
   count: 1
   label: Trim wheel
@@ -34,10 +43,11 @@ use_case_fit: {}
 prices:
 - region: EU
   currency: EUR
-  amount: 279
+  amount: 299.99
   incl_vat: true
-  store: honeycomb.com
-  verified: '2026-10-01'
+  store: eu.flyhoneycomb.com
+  url: https://eu.flyhoneycomb.com/products/bravo-throttle-quadrant
+  verified: '2026-10-19'
   source: manual
 - region: UK
   currency: GBP
@@ -48,11 +58,16 @@ prices:
   source: manual
 - region: US
   currency: USD
-  amount: 279
+  amount: 299.99
   incl_vat: false
-  store: honeycomb.com
-  verified: '2026-10-01'
+  store: flyhoneycomb.com
+  url: https://flyhoneycomb.com/products/bravo-throttle-quadrant
+  verified: '2026-10-19'
   source: manual
 verification: draft
+images:
+  - file: /images/honeycomb/bravo-throttle-quadrant.jpg
+    source: https://flyhoneycomb.com/products/bravo-throttle-quadrant
+    caption: Bravo Throttle Quadrant
 sources:
 - https://honeycomb.com

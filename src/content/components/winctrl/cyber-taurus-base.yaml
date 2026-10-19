@@ -10,7 +10,9 @@ mount:
 controls:
   []
 hardware:
-  axes: []
+  axes:
+    - name: X
+    - name: Y
 connectivity:
   standalone_usb: true
 physical:
@@ -26,4 +28,7 @@ use_case_fit:
 prices: []
 verification: draft
 sources:
-  - https://en.winwing.cn/en/
+  - https://eu.winctrl.com/view/shopping.html
+  - https://eu.winctrl.com/static/download/QmPeEHsVbPU2BfDBwXPwzQwoVGrafx6ZsvGdxBVS5WGF8b?filename=WINCTRL+Cyber+Taurus+Joystick+Base+User+Manual+20260430.pdf
+
+images: []

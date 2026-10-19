@@ -81,11 +81,12 @@ prices:
     source: manual
   - region: US
     currency: USD
-    amount: 89
+    amount: 129.99
     incl_vat: false
-    store: amazon.com
-    verified: '2026-10-01'
+    store: eshop.thrustmaster.com
+    verified: '2026-10-19'
     source: manual
+    url: https://eshop.thrustmaster.com/en_us/twcs-throttle.html
 verdict:
   author: feiko
   hands_on: true
@@ -121,5 +122,6 @@ verification: verified
 sources:
   - https://www.thrustmaster.com/en-us/products/twcs-throttle/
 images:
-  - file: tm-twcs-throttle.webp
-    source: https://thrustmaster.com
+  - file: /images/thrustmaster/twcs-throttle.webp
+    source: https://www.thrustmaster.com/en-us/products/twcs-throttle/
+    caption: TWCS Throttle

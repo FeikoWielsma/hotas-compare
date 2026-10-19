@@ -1,0 +1,23 @@
+brand: moza
+name: MOZA AY210 Yoke Bundle
+category: yoke_bundle
+status: current
+components:
+- moza/ay210-yoke-base
+- moza/j04-yoke
+verification: draft
+sources:
+- https://mozaracing.com
+images:
+- file: /images/moza/ay210-yoke-bundle.webp
+  source: https://eu.mozaracing.com/products/ay210-ffb-yoke-bundle
+  caption: MOZA AY210 Yoke Bundle
+prices:
+- region: EU
+  currency: EUR
+  amount: 928
+  incl_vat: true
+  store: eu.mozaracing.com
+  url: https://eu.mozaracing.com/products/ay210-ffb-yoke-bundle
+  verified: '2026-10-19'
+  source: manual

@@ -5,13 +5,25 @@ status: current
 handedness: n/a
 mount: null
 controls:
-- type: button
+- type: hat
+  count: 2
+  ways: 8
+  label: Handle POV switches
+- type: rocker
   count: 4
-  label: Panel buttons
-- type: toggle
-  count: 6
   ways: 2
-  label: Switches
+  label: Handle rocker switches
+- type: button
+  count: 8
+  label: Handle buttons including push-to-talk
+- type: toggle
+  count: 4
+  ways: 2
+  label: Main, alternator, avionics, and light switches
+- type: lever
+  analog: false
+  count: 1
+  label: 5-position ignition switch
 hardware:
   gimbal: null
   sensor: contactless_magnetic
@@ -30,10 +42,11 @@ use_case_fit: {}
 prices:
 - region: EU
   currency: EUR
-  amount: 339
+  amount: 299.99
   incl_vat: true
-  store: honeycomb.com
-  verified: '2026-10-01'
+  store: eu.flyhoneycomb.com
+  url: https://eu.flyhoneycomb.com/products/alpha-flight-controls
+  verified: '2026-10-19'
   source: manual
 - region: UK
   currency: GBP
@@ -44,10 +57,11 @@ prices:
   source: manual
 - region: US
   currency: USD
-  amount: 299
+  amount: 299.99
   incl_vat: false
-  store: honeycomb.com
-  verified: '2026-10-01'
+  store: flyhoneycomb.com
+  url: https://flyhoneycomb.com/products/alpha-flight-controls
+  verified: '2026-10-19'
   source: manual
 verdict:
   author: feiko
@@ -74,5 +88,9 @@ verdict:
     software: 4
     qc_support: 3
 verification: verified
+images:
+  - file: /images/honeycomb/alpha-flight-controls-yoke.jpg
+    source: https://flyhoneycomb.com/products/alpha-flight-controls
+    caption: Alpha Flight Controls Yoke
 sources:
 - https://honeycomb.com

@@ -7,14 +7,12 @@ mount:
   provides: moza-flight-qr
   accepts: []
 controls:
-  - type: trigger
-    stages: 2
-  - type: hat
-    ways: 8
-    push: true
-    count: 3
-  - type: button
-    count: 4
+- type: trigger
+  stages: 2
+- type: hat
+  ways: 8
+  push: false
+  count: 1
 hardware:
   axes: []
 connectivity:
@@ -29,7 +27,19 @@ use_case_fit:
   airliner: 3
   space_hotas: 4
   space_hosas: 3
-prices: []
+prices:
+- region: EU
+  currency: EUR
+  amount: 159
+  incl_vat: true
+  store: eu.mozaracing.com
+  url: https://eu.mozaracing.com/products/mh16-flightstick
+  verified: '2026-10-19'
+  source: manual
 verification: draft
 sources:
-  - https://mozaracing.com/collections/flight-series
+- https://mozaracing.com/collections/flight-series
+images:
+- file: /images/moza/mh16-flight-grip.webp
+  source: https://eu.mozaracing.com/products/mh16-flightstick
+  caption: MOZA MH16 Flightstick Grip

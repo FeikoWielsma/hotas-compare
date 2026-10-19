@@ -1,0 +1,72 @@
+brand: virpil
+name: CDT-VMAX Throttle
+category: throttle
+status: current
+release_year: 2026
+handedness: n/a
+mount: null
+controls:
+  - type: lever
+    kind: throttle_dual
+    analog: true
+    count: 2
+  - type: lever
+    kind: other
+    analog: true
+    count: 1
+    label: Auxiliary axis
+  - type: hat
+    ways: 4
+    push: true
+    count: 3
+  - type: analog_ministick
+    push: true
+  - type: rotary
+    count: 2
+    push: true
+    label: Axis dials
+  - type: button
+    count: 4
+hardware:
+  gimbal: null
+  sensor: contactless
+  axes:
+    - name: Throttle_Left
+      sensor: contactless_magnetic
+    - name: Throttle_Right
+      sensor: contactless_magnetic
+    - name: Auxiliary
+      sensor: contactless_magnetic
+    - name: Axis_Dial_1
+      sensor: contactless_magnetic
+    - name: Axis_Dial_2
+      sensor: contactless_magnetic
+  force_adjustable: true
+  cams_swappable: null
+  damping: null
+  extension_support: null
+  throw_deg: null
+connectivity:
+  usb: null
+  standalone_usb: true
+software: VPC Configuration Tool
+physical:
+  materials:
+  - metal
+use_case_fit: {}
+prices:
+  - region: EU
+    currency: EUR
+    amount: 229.95
+    incl_vat: true
+    store: virpil-controls.eu
+    url: https://virpil-controls.eu/vpc-cdt-vmax-throttle.html
+    verified: '2026-10-19'
+    source: manual
+verification: draft
+sources:
+- https://virpil-controls.eu/vpc-cdt-vmax-throttle.html
+images:
+- file: /images/virpil/cdt-vmax-throttle.jpg
+  source: https://virpil-controls.eu/vpc-cdt-vmax-throttle.html
+  caption: CDT-VMAX Throttle

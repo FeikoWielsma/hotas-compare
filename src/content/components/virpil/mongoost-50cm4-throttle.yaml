@@ -1,0 +1,76 @@
+brand: virpil
+name: MongoosT-50CM4 Throttle
+category: throttle
+status: current
+release_year: 2026
+handedness: n/a
+mount: null
+controls:
+  - type: lever
+    kind: throttle_dual
+    analog: true
+    count: 2
+  - type: lever
+    kind: other
+    analog: true
+    count: 1
+    label: Auxiliary axis
+  - type: hat
+    ways: 4
+    push: true
+    count: 3
+  - type: rotary
+    count: 2
+    push: true
+    label: Grip rotary dials
+  - type: analog_ministick
+    push: true
+  - type: encoder
+    count: 2
+    push: true
+  - type: toggle
+    count: 2
+    ways: 3
+    momentary: true
+  - type: button
+    count: 11
+    label: Momentary buttons
+hardware:
+  gimbal: null
+  sensor: contactless
+  axes:
+    - name: Throttle_Left
+      sensor: contactless
+    - name: Throttle_Right
+      sensor: contactless
+    - name: Auxiliary
+      sensor: contactless
+  force_adjustable: true
+  cams_swappable: null
+  damping: null
+  extension_support: null
+  throw_deg: null
+connectivity:
+  usb: null
+  standalone_usb: true
+software: VPC Configuration Tool
+physical:
+  materials:
+  - duralumin
+use_case_fit: {}
+prices:
+  - region: EU
+    currency: EUR
+    amount: 314.95
+    incl_vat: true
+    store: virpil-controls.eu
+    url: https://virpil-controls.eu/mongoost-50cm4-throttle.html
+    verified: '2026-10-19'
+    source: manual
+verification: draft
+sources:
+- https://virpil-controls.eu/mongoost-50cm4-throttle.html
+images:
+- file: /images/virpil/mongoost-50cm4-throttle.jpg
+  source: https://virpil-controls.eu/mongoost-50cm4-throttle.html
+  caption: MongoosT-50CM4 Throttle

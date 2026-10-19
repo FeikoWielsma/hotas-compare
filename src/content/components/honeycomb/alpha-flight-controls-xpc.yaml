@@ -5,13 +5,25 @@ status: current
 handedness: n/a
 mount: null
 controls:
-- type: button
+- type: hat
+  count: 2
+  ways: 8
+  label: Handle POV switches
+- type: rocker
   count: 4
-  label: Panel buttons
-- type: toggle
-  count: 6
   ways: 2
-  label: Switches
+  label: Handle rocker switches
+- type: button
+  count: 8
+  label: Handle buttons including push-to-talk
+- type: toggle
+  count: 4
+  ways: 2
+  label: Main, alternator, avionics, and light switches
+- type: lever
+  analog: false
+  count: 1
+  label: 5-position ignition switch
 hardware:
   gimbal: null
   sensor: contactless_magnetic
@@ -30,10 +42,11 @@ use_case_fit: {}
 prices:
 - region: EU
   currency: EUR
-  amount: 399
+  amount: 349.99
   incl_vat: true
-  store: honeycomb.com
-  verified: '2026-10-01'
+  store: eu.flyhoneycomb.com
+  url: https://eu.flyhoneycomb.com/products/alpha-flight-controls-xpc
+  verified: '2026-10-19'
   source: manual
 - region: UK
   currency: GBP
@@ -44,11 +57,16 @@ prices:
   source: manual
 - region: US
   currency: USD
-  amount: 399
+  amount: 349.99
   incl_vat: false
-  store: honeycomb.com
-  verified: '2026-10-01'
+  store: flyhoneycomb.com
+  url: https://flyhoneycomb.com/products/alpha-flight-controls-xpc
+  verified: '2026-10-19'
   source: manual
 verification: draft
+images:
+  - file: /images/honeycomb/alpha-flight-controls-xpc.jpg
+    source: https://flyhoneycomb.com/products/alpha-flight-controls-xpc
+    caption: Alpha Flight Controls XPC
 sources:
 - https://honeycomb.com

@@ -45,10 +45,11 @@ use_case_fit:
 prices:
   - region: EU
     currency: EUR
-    amount: 198
+    amount: 213.53
     incl_vat: true
-    store: winwing.cn
-    verified: '2026-10-01'
+    store: eu.winctrl.com
+    url: https://eu.winctrl.com/view/goods-details.html?id=333
+    verified: '2026-10-19'
     source: manual
   - region: UK
     currency: GBP
@@ -97,7 +98,9 @@ external_reviews:
     date: '2024-04-10'
 verification: verified
 sources:
-  - https://winwing.cn/en/JOYSTICK-BASE
+  - https://eu.winctrl.com/view/goods-details.html?id=333
+  - https://eu.winctrl.com/h5/Orion2_Joystick_Base/en/
 images:
-  - file: winctrl-orion2-base.webp
-    source: https://winwing.cn
+  - file: /images/winctrl/orion-2-base.jpg
+    source: https://eu.winctrl.com/view/goods-details.html?id=333
+    caption: Orion 2 Joystick Base

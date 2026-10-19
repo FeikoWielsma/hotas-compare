@@ -6,7 +6,20 @@ components:
   - winctrl/orion-2-base
   - winctrl/f16-ex-viper-grip
   - winctrl/orion-2-f16-throttle
-prices: []
+prices:
+  - region: EU
+    currency: EUR
+    amount: 517.96
+    incl_vat: true
+    store: eu.winctrl.com
+    url: https://eu.winctrl.com/view/goods-details.html?id=340
+    verified: '2026-10-19'
+    source: manual
 verification: draft
 sources:
-  - https://en.winwing.cn/en/
+  - https://eu.winctrl.com/view/goods-details.html?id=340
+
+images:
+  - file: /images/winctrl/orion-2-f16-hotas.jpg
+    source: https://eu.winctrl.com/view/goods-details.html?id=340
+    caption: Orion 2 F-16 HOTAS

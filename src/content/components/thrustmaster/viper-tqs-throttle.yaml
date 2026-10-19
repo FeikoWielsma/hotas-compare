@@ -60,11 +60,16 @@ prices:
   source: manual
 - region: US
   currency: USD
-  amount: 356
+  amount: 399.99
   incl_vat: false
-  store: amazon.com
-  verified: '2026-10-01'
+  store: eshop.thrustmaster.com
+  verified: '2026-10-19'
   source: manual
+  url: https://eshop.thrustmaster.com/en_us/viper-tqs.html
 verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/viper-tqs/
+images:
+  - file: /images/thrustmaster/viper-tqs-throttle.webp
+    source: https://www.thrustmaster.com/en-us/products/viper-tqs/
+    caption: Viper TQS

@@ -6,28 +6,7 @@ components:
 - virpil/constellation-alpha-prime-r
 - virpil/warbrd-d-base
 - virpil/mongoost-50cm3-throttle
-prices:
-- region: EU
-  currency: EUR
-  amount: 900
-  incl_vat: true
-  store: virpil-controls.eu
-  verified: '2026-10-01'
-  source: manual
-- region: UK
-  currency: GBP
-  amount: 792
-  incl_vat: true
-  store: virpil-controls.eu
-  verified: '2026-10-01'
-  source: manual
-- region: US
-  currency: USD
-  amount: 972
-  incl_vat: false
-  store: virpil-controls.us
-  verified: '2026-10-01'
-  source: manual
+prices: []
 verdict:
   author: feiko
   hands_on: false
@@ -54,3 +33,4 @@ verdict:
 verification: draft
 sources:
 - https://virpil-controls.eu/products/alpha-prime-warbrd-d-hotas
+images: []

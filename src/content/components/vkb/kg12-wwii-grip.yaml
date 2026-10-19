@@ -16,8 +16,7 @@ hardware:
   gimbal: null
   sensor: contactless_magnetic
   axes:
-  - name: Twist_Z
-    resolution_bits: 12
+  - name: Twist
     sensor: contactless_magnetic
   force_adjustable: false
   cams_swappable: false
@@ -88,3 +87,7 @@ verdict:
 verification: draft
 sources:
 - https://vkbcontrollers.com/products/kg12-grip
+images:
+  - file: /images/vkb/kg12-wwii-grip.jpg
+    source: https://vkbsimcontrollers.com/products/gnx-kg12-add-on-grip-us
+    caption: KG12 WWII Grip

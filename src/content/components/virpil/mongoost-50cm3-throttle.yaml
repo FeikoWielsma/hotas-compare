@@ -1,7 +1,7 @@
 brand: virpil
 name: VPC MongoosT-50CM3 Throttle
 category: throttle
-status: current
+status: discontinued
 release_year: 2021
 handedness: n/a
 mount: null
@@ -70,28 +70,7 @@ use_case_fit:
   airliner: 4
   space_hotas: 4
   space_hosas: 2
-prices:
-  - region: EU
-    currency: EUR
-    amount: 399
-    incl_vat: true
-    store: virpil-controls.eu
-    verified: '2026-10-01'
-    source: manual
-  - region: UK
-    currency: GBP
-    amount: 349
-    incl_vat: true
-    store: virpil-controls.eu
-    verified: '2026-10-01'
-    source: manual
-  - region: US
-    currency: USD
-    amount: 419
-    incl_vat: false
-    store: virpil-controls.us
-    verified: '2026-10-01'
-    source: manual
+prices: []
 verdict:
   author: feiko
   hands_on: true
@@ -127,6 +106,4 @@ external_reviews:
 verification: verified
 sources:
   - https://virpil-controls.eu/vpc-mongoost-50cm3-throttle.html
-images:
-  - file: virpil-cm3-throttle.webp
-    source: https://virpil-controls.eu
+images: []

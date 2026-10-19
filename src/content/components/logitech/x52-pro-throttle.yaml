@@ -57,3 +57,7 @@ prices:
 verification: draft
 sources:
 - https://www.logitechg.com/en-us/products/flight.html
+images:
+  - file: /images/logitech/x52-pro-throttle.webp
+    source: https://www.logitechg.com/en-us/shop/p/x52-pro-space-flight-simulator-controller.945-000022
+    caption: X52 Pro Throttle

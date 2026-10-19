@@ -1,0 +1,21 @@
+brand: moza
+name: MOZA MHG Flight Grip
+category: grip
+status: current
+handedness: right
+verification: draft
+sources:
+- https://mozaracing.com
+images:
+- file: /images/moza/mhg-flight-grip.webp
+  source: https://eu.mozaracing.com/products/mhg-flightstick
+  caption: MOZA MHG Flight Grip
+prices:
+- region: EU
+  currency: EUR
+  amount: 109
+  incl_vat: true
+  store: eu.mozaracing.com
+  url: https://eu.mozaracing.com/products/mhg-flightstick
+  verified: '2026-10-19'
+  source: manual

@@ -1,0 +1,67 @@
+brand: honeycomb
+name: Bravo Throttle Quadrant Lite
+category: quadrant
+status: current
+release_year: 2025
+handedness: n/a
+mount: null
+controls:
+- type: lever
+  kind: throttle_dual
+  analog: true
+  count: 4
+  label: Interchangeable throttle levers
+- type: slider
+  count: 1
+  label: Trim wheel
+- type: lever
+  kind: other
+  analog: false
+  count: 1
+  label: Parking brake
+- type: lever
+  kind: other
+  analog: false
+  count: 1
+  label: Landing gear
+hardware:
+  gimbal: null
+  sensor: null
+  axes: []
+  force_adjustable: true
+  cams_swappable: null
+  damping: null
+  extension_support: null
+  throw_deg: null
+connectivity:
+  usb: c
+  standalone_usb: true
+physical:
+  weight_g: 3220
+  dimensions_mm: [273, 330, 123]
+  materials: []
+use_case_fit: {}
+prices:
+- region: EU
+  currency: EUR
+  amount: 199.99
+  incl_vat: true
+  store: eu.flyhoneycomb.com
+  url: https://eu.flyhoneycomb.com/products/bravo-throttle-quadrant-lite
+  verified: '2026-10-19'
+  source: manual
+- region: US
+  currency: USD
+  amount: 199.99
+  incl_vat: false
+  store: flyhoneycomb.com
+  url: https://flyhoneycomb.com/products/bravo-throttle-quadrant-lite
+  verified: '2026-10-19'
+  source: manual
+verification: draft
+images:
+- file: /images/honeycomb/bravo-throttle-quadrant-lite.webp
+  source: https://eu.flyhoneycomb.com/products/bravo-throttle-quadrant-lite
+  caption: Bravo Throttle Quadrant Lite
+sources:
+- https://eu.flyhoneycomb.com/products/bravo-throttle-quadrant-lite

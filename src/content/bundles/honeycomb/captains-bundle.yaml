@@ -1,0 +1,24 @@
+brand: honeycomb
+name: Captain's Bundle
+category: system
+status: current
+components:
+- honeycomb/alpha-flight-controls-yoke
+- honeycomb/bravo-throttle-quadrant
+- honeycomb/charlie-rudder-pedals
+prices:
+- region: EU
+  currency: EUR
+  amount: 799.99
+  incl_vat: true
+  store: eu.flyhoneycomb.com
+  url: https://eu.flyhoneycomb.com/products/captains-bundle
+  verified: '2026-10-19'
+  source: manual
+verification: draft
+images:
+- file: /images/honeycomb/captains-bundle.webp
+  source: https://eu.flyhoneycomb.com/products/captains-bundle
+  caption: Captain's Bundle
+sources:
+- https://eu.flyhoneycomb.com/products/captains-bundle

@@ -22,10 +22,11 @@ prices:
     source: manual
   - region: US
     currency: USD
-    amount: 165
+    amount: 139
     incl_vat: false
-    store: vkbcontrollers.com
-    verified: '2026-10-01'
+    store: vkbsimcontrollers.com
+    url: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-space-combat-edition-right-hand-us
+    verified: '2026-10-19'
     source: manual
 verdict:
   author: feiko
@@ -61,5 +62,6 @@ verification: verified
 sources:
   - https://vkbcontrollers.com/products/gladiator-nxt-evo-space-combat-edition
 images:
-  - file: vkb-gladiator-evo-sce.webp
-    source: https://vkbcontrollers.com
+  - file: /images/vkb/gladiator-nxt-evo-sce-r.jpg
+    source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-space-combat-edition-right-hand-us
+    caption: Gladiator NXT EVO 'Space Combat Edition' (Right)

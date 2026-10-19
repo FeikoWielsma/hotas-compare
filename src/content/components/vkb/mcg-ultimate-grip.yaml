@@ -30,8 +30,7 @@ hardware:
   gimbal: null
   sensor: contactless_magnetic
   axes:
-  - name: Twist_Z
-    resolution_bits: 12
+  - name: Twist
     sensor: contactless_magnetic
   force_adjustable: false
   cams_swappable: false
@@ -104,3 +103,7 @@ verdict:
 verification: draft
 sources:
 - https://vkbcontrollers.com/products/mcg-ultimate-grip
+images:
+  - file: /images/vkb/mcg-ultimate-grip.jpg
+    source: https://vkbsimcontrollers.com/products/mcg-ultimate-add-on-grip-for-gunfighter-mk-iv-us
+    caption: Modern Combat Grip Ultimate

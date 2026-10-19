@@ -1,17 +1,19 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import type { CatalogItem } from '../lib/catalog';
-  import { categoryLabels, detailHref, formatAmount, resolveItemRegion } from '../lib/catalog-ui';
+  import { categoryLabels, detailHref, formatAmount, productImageSrc, resolveItemRegion } from '../lib/catalog-ui';
   import { regionStore } from '../lib/stores/region.svelte';
   import { compareStore, MAX_COMPARE_ITEMS } from '../lib/stores/compare.svelte';
   let { item }: { item: CatalogItem } = $props();
   const active = $derived(resolveItemRegion(item, regionStore.region));
   const selected = $derived(compareStore.hasItem(item.id));
   const full = $derived(!selected && compareStore.items.length >= MAX_COMPARE_ITEMS);
+  const photo = $derived(productImageSrc(item.images[0]?.file));
   onMount(() => { regionStore.init(); compareStore.init(); });
 </script>
 
 <article class:selected>
+  <a class="photo" href={detailHref(item)}>{#if photo}<img src={photo} alt={item.name} />{:else}<span>No photo</span>{/if}</a>
   <div class="badges"><span class="category">{categoryLabels[item.category]}</span><span class:verified={item.verification === 'verified'}>{item.verification === 'verified' ? '● Verified' : '○ Draft'}</span></div>
   <p class="brand">{item.brandName}</p>
   <h3><a href={detailHref(item)}>{item.name}</a></h3>
@@ -26,6 +28,9 @@
 <style>
   article { display: flex; flex-direction: column; min-width: 0; padding: 1.3rem; background: linear-gradient(145deg, var(--bg-panel-elevated), var(--bg-panel) 60%); border: 1px solid var(--border-cockpit); border-radius: 4px; transition: border-color .2s, box-shadow .2s; }
   article:hover, article.selected { border-color: var(--border-cockpit-glow); box-shadow: 0 0 24px var(--accent-amber-glow); }
+  .photo { display: grid; place-items: center; aspect-ratio: 4 / 3; margin: -1.3rem -1.3rem 1.1rem; background: #f4f1ea; border-bottom: 1px solid var(--border-cockpit); overflow: hidden; text-decoration: none; }
+  .photo img { width: 100%; height: 100%; object-fit: contain; }
+  .photo span { color: #6b675e; font: .7rem var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
   .badges, .actions, .price { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
   .badges, .brand, .hand, dt, .features, .price span, .stale, .actions { font-size: .7rem; }
   .badges, .brand, dd, .price strong, .actions { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }

@@ -60,11 +60,16 @@ prices:
   source: manual
 - region: US
   currency: USD
-  amount: 162
+  amount: 169.99
   incl_vat: false
-  store: amazon.com
-  verified: '2026-10-01'
+  store: eshop.thrustmaster.com
+  verified: '2026-10-19'
   source: manual
+  url: https://eshop.thrustmaster.com/en_us/tca-quadrant-boeing-edition.html
 verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/tca-quadrant-boeing-edition/
+images:
+  - file: /images/thrustmaster/tca-quadrant-boeing.webp
+    source: https://www.thrustmaster.com/en-us/products/tca-quadrant-boeing-edition/
+    caption: TCA Quadrant Boeing Edition

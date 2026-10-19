@@ -6,42 +6,67 @@ release_year: 2025
 handedness: n/a
 mount: null
 controls:
-- type: lever
-  kind: throttle_dual
-  analog: true
-  count: 2
-- type: detent
-  count: 4
-  customizable: true
-- type: hat
-  ways: 8
-  push: true
-  count: 2
-- type: hat
-  ways: 4
-  push: true
-- type: analog_ministick
-  push: true
-- type: encoder
-  count: 3
-  push: true
-- type: toggle
-  count: 6
-  ways: 3
-  momentary: true
-- type: button
-  count: 7
-  backlit: true
+  - type: lever
+    kind: throttle_dual
+    analog: true
+    count: 2
+  - type: lever
+    kind: other
+    analog: true
+    count: 1
+    label: Auxiliary axis
+  - type: detent
+    count: 4
+    customizable: true
+  - type: hat
+    ways: 4
+    push: true
+    count: 2
+  - type: hat
+    ways: 2
+    push: true
+    count: 1
+  - type: analog_ministick
+    push: true
+  - type: rotary
+    count: 1
+    push: true
+    label: Contactless dial axis
+  - type: encoder
+    count: 1
+    push: true
+    label: Digital axis dial
+  - type: encoder
+    count: 2
+    push: true
+    label: Encoder dials
+  - type: toggle
+    count: 5
+    ways: 3
+    momentary: true
+  - type: rotary
+    count: 1
+    label: Mode switch dial
+  - type: button
+    count: 12
 hardware:
   gimbal: null
   sensor: contactless_magnetic
   axes:
-  - name: Throttle_Left
-    resolution_bits: 16
-    sensor: contactless_magnetic
-  - name: Throttle_Right
-    resolution_bits: 16
-    sensor: contactless_magnetic
+    - name: Throttle_Left
+      sensor: contactless_magnetic
+    - name: Throttle_Right
+      sensor: contactless_magnetic
+    - name: Auxiliary
+      sensor: contactless_magnetic
+    - name: Ministick_X
+      sensor: contactless_magnetic
+    - name: Ministick_Y
+      sensor: contactless_magnetic
+    - name: Axis_Dial
+      sensor: contactless_magnetic
+    - name: Digital_Dial
+      sensor: contactless_magnetic
   force_adjustable: false
   cams_swappable: false
   damping: null
@@ -66,27 +91,28 @@ use_case_fit:
   space_hotas: 4
   space_hosas: 2
 prices:
-- region: EU
-  currency: EUR
-  amount: 430
-  incl_vat: true
-  store: virpil-controls.eu
-  verified: '2026-10-01'
-  source: manual
-- region: UK
-  currency: GBP
-  amount: 378
-  incl_vat: true
-  store: virpil-controls.eu
-  verified: '2026-10-01'
-  source: manual
-- region: US
-  currency: USD
-  amount: 464
-  incl_vat: false
-  store: virpil-controls.us
-  verified: '2026-10-01'
-  source: manual
+  - region: EU
+    currency: EUR
+    amount: 429.95
+    incl_vat: true
+    store: virpil-controls.eu
+    url: https://virpil-controls.eu/vpc-vmax-prime-throttle.html
+    verified: '2026-10-19'
+    source: manual
+  - region: UK
+    currency: GBP
+    amount: 378
+    incl_vat: true
+    store: virpil-controls.eu
+    verified: '2026-10-01'
+    source: manual
+  - region: US
+    currency: USD
+    amount: 464
+    incl_vat: false
+    store: virpil-controls.us
+    verified: '2026-10-01'
+    source: manual
 verdict:
   author: feiko
   hands_on: false
@@ -114,3 +140,7 @@ verdict:
 verification: draft
 sources:
 - https://virpil-controls.eu/products/vpc-vmax-prime-throttle
+images:
+  - file: /images/virpil/vpc-vmax-prime-throttle.png
+    source: https://virpil-controls.eu/vpc-vmax-prime-throttle.html
+    caption: VPC VMAX Prime Throttle

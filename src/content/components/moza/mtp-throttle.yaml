@@ -7,17 +7,17 @@ mount:
   provides: null
   accepts: []
 controls:
-  - type: lever
-    kind: throttle_dual
-    analog: true
-    count: 2
-  - type: detent
-    count: 2
-    customizable: true
-  - type: hat
-    ways: 8
-    push: true
-    count: 2
+- type: lever
+  kind: throttle_dual
+  analog: true
+  count: 2
+- type: detent
+  count: 2
+  customizable: true
+- type: hat
+  ways: 8
+  push: true
+  count: 2
 hardware:
   axes: []
 connectivity:
@@ -32,7 +32,19 @@ use_case_fit:
   airliner: 3
   space_hotas: 4
   space_hosas: 3
-prices: []
+prices:
+- region: EU
+  currency: EUR
+  amount: 319
+  incl_vat: true
+  store: eu.mozaracing.com
+  url: https://eu.mozaracing.com/products/mtp-throttle
+  verified: '2026-10-19'
+  source: manual
 verification: draft
 sources:
-  - https://us.mozaracing.com/products/mtp-throttle
+- https://us.mozaracing.com/products/mtp-throttle
+images:
+- file: /images/moza/mtp-throttle.webp
+  source: https://eu.mozaracing.com/products/mtp-throttle
+  caption: MOZA MTP Flight Throttle

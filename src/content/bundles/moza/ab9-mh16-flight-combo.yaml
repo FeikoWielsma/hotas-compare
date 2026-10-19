@@ -3,9 +3,13 @@ name: AB9 + MH16 Flight Combo
 category: stick_combo
 status: current
 components:
-  - moza/ab9-force-feedback-base
-  - moza/mh16-flight-grip
+- moza/ab9-force-feedback-base
+- moza/mh16-flight-grip
 prices: []
 verification: draft
 sources:
-  - https://mozaracing.com/collections/flight-series
+- https://mozaracing.com/collections/flight-series
+images:
+- file: /images/moza/ab9-mh16-flight-combo.jpg
+  source: https://mozaracing.com/collections/flight-series
+  caption: AB9 + MH16 Flight Combo

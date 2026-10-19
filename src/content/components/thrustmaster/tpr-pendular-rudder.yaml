@@ -60,11 +60,16 @@ prices:
   source: manual
 - region: US
   currency: USD
-  amount: 594
+  amount: 599.99
   incl_vat: false
-  store: amazon.com
-  verified: '2026-10-01'
+  store: eshop.thrustmaster.com
+  verified: '2026-10-19'
   source: manual
+  url: https://eshop.thrustmaster.com/en_us/tpr-thrustmaster-pendular-rudder.html
 verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/tpr-pendular-rudder/
+images:
+  - file: /images/thrustmaster/tpr-pendular-rudder.webp
+    source: https://www.thrustmaster.com/products/tpr-thrustmaster-pendular-rudder/
+    caption: TPR PENDUL_R Rudder Pedals

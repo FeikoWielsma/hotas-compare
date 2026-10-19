@@ -1,0 +1,21 @@
+brand: moza
+name: MOZA MTQ Throttle
+category: throttle
+status: current
+handedness: n/a
+verification: draft
+sources:
+- https://mozaracing.com
+images:
+- file: /images/moza/mtq-throttle.webp
+  source: https://eu.mozaracing.com/products/mtq-throttle
+  caption: MOZA MTQ Throttle
+prices:
+- region: EU
+  currency: EUR
+  amount: 219
+  incl_vat: true
+  store: eu.mozaracing.com
+  url: https://eu.mozaracing.com/products/mtq-throttle
+  verified: '2026-10-19'
+  source: manual

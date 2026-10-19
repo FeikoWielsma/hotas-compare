@@ -6,15 +6,18 @@ handedness: n/a
 mount:
   provides: null
   accepts:
-    - moza-flight-qr
+  - moza-flight-qr
 controls:
-  - type: lever
-    kind: other
-    analog: true
-    count: 1
-    label: Z-axis twist
+- type: lever
+  kind: other
+  analog: true
+  count: 1
+  label: Z-axis twist
 hardware:
-  axes: []
+  axes:
+  - name: Twist
+    resolution_bits: 15
+    sensor: hall_effect
 connectivity:
   standalone_usb: true
 physical:
@@ -27,7 +30,15 @@ use_case_fit:
   airliner: 3
   space_hotas: 4
   space_hosas: 3
-prices: []
+prices:
+- region: EU
+  currency: EUR
+  amount: 99
+  incl_vat: true
+  store: eu.mozaracing.com
+  url: https://eu.mozaracing.com/products/z-axis-module
+  verified: '2026-10-19'
+  source: manual
 verification: draft
 sources:
-  - https://mozaracing.com/products/z-axis-module
+- https://mozaracing.com/products/z-axis-module

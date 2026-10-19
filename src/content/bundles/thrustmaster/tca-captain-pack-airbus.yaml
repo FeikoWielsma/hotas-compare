@@ -30,3 +30,7 @@ prices:
 verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/
+images:
+  - file: /images/thrustmaster/tca-captain-pack-airbus.webp
+    source: https://www.thrustmaster.com/en-us/products/tca-officer-pack-airbus-edition/
+    caption: TCA Captain Pack Airbus Edition

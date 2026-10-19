@@ -1,0 +1,10 @@
+title: Civil Aviation & Airliner Flight Deck
+use_case: airliner
+budget_tier: high_end
+description: Honeycomb Captain's Bundle with the Alpha yoke, Bravo throttle quadrant, and Charlie rudder pedals.
+reasoning: The benchmark civil aviation setup for MSFS and X-Plane, providing 180-degree yoke rotation, swappable commercial/GA levers, annunciator panel, and autopilot controls.
+items:
+  - item_type: bundle
+    id: honeycomb/captains-bundle
+    role: Yoke, multi-engine throttle quadrant, and rudder pedals
+notes: Perfect for Cessna 172 through Airbus A320 and Boeing 737 operations.

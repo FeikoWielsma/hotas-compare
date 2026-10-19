@@ -4,11 +4,11 @@ category: module
 status: current
 handedness: n/a
 mount: null
-controls: []
+controls: [] # no published input list
 hardware:
   gimbal: null
   sensor: contactless_magnetic
-  axes: []
+  axes: [] # no published input list
   force_adjustable: null
   cams_swappable: null
   damping: hydraulic
@@ -23,25 +23,32 @@ use_case_fit: {}
 prices:
 - region: EU
   currency: EUR
-  amount: 75
-  incl_vat: true
-  store: mfg.com
-  verified: '2026-10-01'
+  amount: 45.60
+  incl_vat: false
+  store: mfg-sim.com
+  url: https://mfg-sim.com/rudder-acessories/hydraulic-damper-universal-kit-for-v1-3-pedals.html
+  verified: '2026-10-19'
   source: manual
 - region: UK
   currency: GBP
-  amount: 65
-  incl_vat: true
-  store: mfg.com
-  verified: '2026-10-01'
+  amount: 39.40
+  incl_vat: false
+  store: mfg-sim.com
+  url: https://mfg-sim.com/rudder-acessories/hydraulic-damper-universal-kit-for-v1-3-pedals.html
+  verified: '2026-10-19'
   source: manual
 - region: US
   currency: USD
-  amount: 75
+  amount: 54.56
   incl_vat: false
-  store: mfg.com
-  verified: '2026-10-01'
+  store: mfg-sim.com
+  url: https://mfg-sim.com/rudder-acessories/hydraulic-damper-universal-kit-for-v1-3-pedals.html
+  verified: '2026-10-19'
   source: manual
 verification: draft
+images:
+  - file: /images/mfg/crosswind-hydraulic-damper.jpg
+    source: https://mfg-sim.com/rudder-acessories/hydraulic-damper-universal-kit-for-v1-3-pedals.html
+    caption: Crosswind Hydraulic Damper
 sources:
-- https://mfg.com
+- https://mfg-sim.com/rudder-acessories/hydraulic-damper-universal-kit-for-v1-3-pedals.html

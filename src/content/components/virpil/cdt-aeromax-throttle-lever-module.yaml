@@ -10,13 +10,12 @@ controls:
     kind: throttle_single
     analog: true
     count: 1
-    label: Add-on Throttle Lever
+    label: Throttle axis
 hardware:
   gimbal: null
   sensor: contactless_magnetic
   axes:
     - name: Throttle_Lever
-      resolution_bits: 12
       sensor: contactless_magnetic
   force_adjustable: false
   cams_swappable: false
@@ -43,10 +42,11 @@ use_case_fit:
 prices:
   - region: EU
     currency: EUR
-    amount: 18
+    amount: 14.95
     incl_vat: true
     store: virpil-controls.eu
-    verified: '2026-10-01'
+    url: https://virpil-controls.eu/cdt-aeromax-throttle-module.html
+    verified: '2026-10-19'
     source: manual
   - region: UK
     currency: GBP
@@ -89,4 +89,7 @@ external_reviews: []
 verification: draft
 sources:
   - https://virpil-controls.eu/cdt-aeromax-r-flightstick.html
-images: []
+images:
+  - file: /images/virpil/cdt-aeromax-throttle-lever-module.jpg
+    source: https://virpil-controls.eu/cdt-aeromax-throttle-module.html
+    caption: VPC CDT-Aeromax Throttle Lever Module

@@ -1,0 +1,21 @@
+brand: moza
+name: MOZA MFY Yoke Pro
+category: yoke
+status: current
+handedness: n/a
+verification: draft
+sources:
+- https://mozaracing.com
+images:
+- file: /images/moza/mfy-yoke-pro.webp
+  source: https://eu.mozaracing.com/products/mfy-pro-yoke
+  caption: MOZA MFY Yoke Pro
+prices:
+- region: EU
+  currency: EUR
+  amount: 309
+  incl_vat: true
+  store: eu.mozaracing.com
+  url: https://eu.mozaracing.com/products/mfy-pro-yoke
+  verified: '2026-10-19'
+  source: manual

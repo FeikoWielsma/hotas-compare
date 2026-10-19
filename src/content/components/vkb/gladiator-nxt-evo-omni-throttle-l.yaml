@@ -31,13 +31,10 @@ hardware:
   sensor: contactless_magnetic
   axes:
   - name: X
-    resolution_bits: 14
     sensor: contactless_magnetic
   - name: Y
-    resolution_bits: 14
     sensor: contactless_magnetic
-  - name: Twist_Z
-    resolution_bits: 12
+  - name: Twist
     sensor: contactless_magnetic
   force_adjustable: false
   cams_swappable: false
@@ -78,10 +75,11 @@ prices:
   source: manual
 - region: US
   currency: USD
-  amount: 176
+  amount: 149
   incl_vat: false
-  store: vkbcontrollers.com
-  verified: '2026-10-01'
+  store: vkbsimcontrollers.com
+  url: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-omni-throttle-left-hand-us
+  verified: '2026-10-19'
   source: manual
 verdict:
   author: feiko
@@ -111,3 +109,7 @@ verdict:
 verification: draft
 sources:
 - https://vkbcontrollers.com/products/gladiator-nxt-evo-omni-throttle
+images:
+  - file: /images/vkb/gladiator-nxt-evo-omni-throttle-l.jpg
+    source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-omni-throttle-left-hand-us
+    caption: Gladiator NXT EVO Omni-Throttle (Left)

@@ -10,13 +10,19 @@ mount:
 controls:
 - type: trigger
   stages: 1
+  count: 1
 - type: hat
   ways: 8
   push: true
-  count: 2
-- type: button
   count: 4
-- type: rocker
+- type: hat
+  ways: 2
+  push: true
+  count: 1
+- type: toggle
+  ways: 3
+  count: 1
+- type: button
   count: 1
 hardware:
   gimbal: null
@@ -47,24 +53,27 @@ use_case_fit:
 prices:
 - region: EU
   currency: EUR
-  amount: 190
+  amount: 189.95
   incl_vat: true
   store: virpil-controls.eu
-  verified: '2026-10-01'
+  url: https://virpil-controls.eu/vpc-hawk-60-collective-grip.html
+  verified: '2026-10-19'
   source: manual
 - region: UK
   currency: GBP
-  amount: 167
+  amount: 209.95
   incl_vat: true
-  store: virpil-controls.eu
-  verified: '2026-10-01'
+  store: virpil-controls.co.uk
+  url: https://virpil-controls.co.uk/vpc-hawk-60-collective-grip.html
+  verified: '2026-10-19'
   source: manual
 - region: US
   currency: USD
-  amount: 205
+  amount: 219.95
   incl_vat: false
-  store: virpil-controls.us
-  verified: '2026-10-01'
+  store: virpil-controls.us.com
+  url: https://virpil-controls.us.com/vpc-hawk-60-collective-grip.html
+  verified: '2026-10-19'
   source: manual
 verdict:
   author: feiko
@@ -93,3 +102,7 @@ verdict:
 verification: draft
 sources:
 - https://virpil-controls.eu/products/vpc-hawk-60-grip
+images:
+  - file: /images/virpil/vpc-hawk-60-grip.jpg
+    source: https://virpil-controls.eu/vpc-hawk-60-collective-grip.html
+    caption: VPC Hawk-60 Collective Grip

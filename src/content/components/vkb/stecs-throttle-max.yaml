@@ -33,10 +33,8 @@ hardware:
   sensor: contactless_magnetic
   axes:
   - name: Throttle_Left
-    resolution_bits: 16
     sensor: contactless_magnetic
   - name: Throttle_Right
-    resolution_bits: 16
     sensor: contactless_magnetic
   force_adjustable: false
   cams_swappable: false
@@ -77,10 +75,11 @@ prices:
   source: manual
 - region: US
   currency: USD
-  amount: 380
+  amount: 329
   incl_vat: false
-  store: vkbcontrollers.com
-  verified: '2026-10-01'
+  store: vkbsimcontrollers.com
+  url: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-max-us
+  verified: '2026-10-19'
   source: manual
 verdict:
   author: feiko
@@ -109,3 +108,7 @@ verdict:
 verification: draft
 sources:
 - https://vkbcontrollers.com/products/stecs-throttle-max
+images:
+  - file: /images/vkb/stecs-throttle-max.jpg
+    source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-max-us
+    caption: STECS Max Throttle

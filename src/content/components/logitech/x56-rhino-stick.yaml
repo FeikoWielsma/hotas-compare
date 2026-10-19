@@ -21,8 +21,10 @@ hardware:
   axes:
   - name: X
     sensor: hall
+    resolution_bits: 16
   - name: Y
     sensor: hall
+    resolution_bits: 16
   - name: Twist_Z
     sensor: potentiometer
 connectivity:
@@ -57,3 +59,7 @@ prices:
 verification: draft
 sources:
 - https://www.logitechg.com/en-us/products/flight.html
+images:
+  - file: /images/logitech/x56-rhino-stick.webp
+    source: https://www.logitechg.com/en-us/shop/p/x56-space-flight-vr-simulator-controller
+    caption: X56 Rhino Stick

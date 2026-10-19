@@ -22,7 +22,7 @@ controls:
     push: true
     count: 1
   - type: button
-    count: 4
+    count: 14
   - type: slider
     count: 1
     label: Base Throttle Slider
@@ -31,14 +31,14 @@ hardware:
   sensor: contactless_magnetic
   axes:
     - name: X
-      resolution_bits: 16
-      sensor: contactless_magnetic
+      sensor: hall
     - name: Y
-      resolution_bits: 16
-      sensor: contactless_magnetic
-    - name: Twist_Z
-      resolution_bits: 14
-      sensor: contactless_magnetic
+      sensor: hall
+    - name: Twist
+      sensor: hall
+    - name: Rx
+    - name: Ry
+    - name: Throttle
   force_adjustable: false
   cams_swappable: false
   damping: integrated_clutches
@@ -64,10 +64,11 @@ use_case_fit:
 prices:
   - region: EU
     currency: EUR
-    amount: 85
+    amount: 108.77
     incl_vat: true
-    store: winwing.cn
-    verified: '2026-10-01'
+    store: eu.winctrl.com
+    url: https://eu.winctrl.com/view/goods-details.html?id=551
+    verified: '2026-10-19'
     source: manual
   - region: UK
     currency: GBP
@@ -114,5 +115,8 @@ external_reviews:
     date: '2026-09-15'
 verification: verified
 sources:
-  - https://winwing.cn
-images: []
+  - https://eu.winctrl.com/view/goods-details.html?id=551
+images:
+  - file: /images/winctrl/ursa-minor-fighter-joystick-r.jpg
+    source: https://eu.winctrl.com/view/goods-details.html?id=551
+    caption: Ursa Minor Fighter Joystick Right

@@ -52,11 +52,16 @@ prices:
   source: manual
 - region: US
   currency: USD
-  amount: 130
+  amount: 159.99
   incl_vat: false
-  store: amazon.com
-  verified: '2026-10-01'
+  store: eshop.thrustmaster.com
+  verified: '2026-10-19'
   source: manual
+  url: https://eshop.thrustmaster.com/en_us/hotas-magnetic-base.html
 verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/hotas-warthog-mk-ii-base/
+images:
+  - file: /images/thrustmaster/warthog-base.webp
+    source: https://eshop.thrustmaster.com/en_us/hotas-magnetic-base.html
+    caption: HOTAS Warthog Magnetic Flight Base

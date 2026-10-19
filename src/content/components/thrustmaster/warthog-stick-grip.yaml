@@ -62,11 +62,16 @@ prices:
   source: manual
 - region: US
   currency: USD
-  amount: 194
+  amount: 299.99
   incl_vat: false
-  store: amazon.com
-  verified: '2026-10-01'
+  store: eshop.thrustmaster.com
+  verified: '2026-10-19'
   source: manual
+  url: https://eshop.thrustmaster.com/en_us/hotas-warthog-flight-stick.html
 verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/hotas-warthog-mk-ii/
+images:
+  - file: /images/thrustmaster/warthog-stick-grip.webp
+    source: https://eshop.thrustmaster.com/en_us/hotas-warthog-flight-stick.html
+    caption: HOTAS Warthog A-10C Flight Stick Grip

@@ -9,17 +9,40 @@ controls:
   kind: throttle_dual
   analog: true
   count: 4
-  label: Throttle quadrant
+  label: Throttle quadrant levers
+- type: hat
+  ways: 8
+  count: 2
+  label: POV switches
+- type: hat
+  ways: 4
+  count: 2
+  label: HAT switches
 - type: button
-  count: 10
-  label: Panel buttons
-- type: rotary
+  count: 18
+  label: Front, rear, and quadrant buttons
+- type: encoder
   count: 1
   label: Trim wheel
 hardware:
   gimbal: null
   sensor: contactless_magnetic
-  axes: []
+  axes:
+  - name: Pitch
+    sensor: contactless_magnetic
+  - name: Roll
+    sensor: contactless_magnetic
+  - name: Twist
+  - name: Left Toe Brake
+  - name: Right Toe Brake
+  - name: Throttle 1
+    sensor: variable_resistor
+  - name: Throttle 2
+    sensor: variable_resistor
+  - name: Throttle 3
+    sensor: variable_resistor
+  - name: Throttle 4
+    sensor: variable_resistor
   force_adjustable: null
   cams_swappable: null
   damping: null
@@ -34,25 +57,32 @@ use_case_fit: {}
 prices:
 - region: EU
   currency: EUR
-  amount: 379
+  amount: 379.99
   incl_vat: true
-  store: turtle-beach.com
-  verified: '2026-10-01'
+  store: turtlebeach.com
+  url: https://de.turtlebeach.com/products/velocity-one-flight
+  verified: '2026-10-19'
   source: manual
 - region: UK
   currency: GBP
-  amount: 329
+  amount: 349.99
   incl_vat: true
-  store: turtle-beach.com
-  verified: '2026-10-01'
+  store: turtlebeach.com
+  url: https://uk.turtlebeach.com/products/velocity-one-flight
+  verified: '2026-10-19'
   source: manual
 - region: US
   currency: USD
-  amount: 379
+  amount: 329.99
   incl_vat: false
-  store: turtle-beach.com
-  verified: '2026-10-01'
+  store: turtlebeach.com
+  url: https://www.turtlebeach.com/products/velocity-one-flight
+  verified: '2026-10-19'
   source: manual
 verification: draft
+images:
+  - file: /images/turtle-beach/velocityone-flight-yoke-system.png
+    source: https://au.turtlebeach.com/products/velocity-one-flight
+    caption: VelocityOne Flight Yoke System
 sources:
 - https://turtlebeach.com

@@ -1,0 +1,21 @@
+brand: moza
+name: MOZA TQA Throttle Module
+category: module
+status: current
+handedness: n/a
+verification: draft
+sources:
+- https://mozaracing.com
+images:
+- file: /images/moza/tqa-throttle-module.webp
+  source: https://eu.mozaracing.com/products/tqa-mod
+  caption: MOZA TQA Throttle Module
+prices:
+- region: EU
+  currency: EUR
+  amount: 45
+  incl_vat: true
+  store: eu.mozaracing.com
+  url: https://eu.mozaracing.com/products/tqa-mod
+  verified: '2026-10-19'
+  source: manual

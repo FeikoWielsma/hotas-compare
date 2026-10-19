@@ -3,6 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import CatalogFilter from '../components/CatalogFilter.svelte';
 import { getCatalogItems } from '../lib/catalog';
 const items = await getCatalogItems();
+const componentCount = items.filter((item) => item.item_type === 'component').length;
+const bundleCount = items.length - componentCount;
+const brandCount = new Set(items.map((item) => item.brand)).size;
 ---
 
 <BaseLayout title="Flight sim hardware, compared">
@@ -11,7 +14,7 @@ const items = await getCatalogItems();
     <p class="eyebrow">BUILD YOUR NEXT COCKPIT</p>
     <h1 id="catalog-title">HOTAS <span>//</span> COMPARE</h1>
     <p class="intro">An opinionated, community-oriented compare site &amp; buyer's guide for flight sim &amp; space hardware.</p>
-    <div class="stats" aria-label="Catalog statistics"><div><strong>10</strong><span>Brands</span></div><div><strong>84</strong><span>Components</span></div><div><strong>23</strong><span>Bundles</span></div><div class="community"><strong>◎</strong><span>Community Verified</span></div></div>
+    <div class="stats" aria-label="Catalog statistics"><div><strong>{brandCount}</strong><span>Brands</span></div><div><strong>{componentCount}</strong><span>Components</span></div><div><strong>{bundleCount}</strong><span>Bundles</span></div><div class="community"><strong>◎</strong><span>Community Verified</span></div></div>
   </section>
   <CatalogFilter client:load initialItems={items} />
 </BaseLayout>

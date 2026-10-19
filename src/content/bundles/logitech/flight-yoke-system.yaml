@@ -22,11 +22,16 @@ prices:
   source: manual
 - region: US
   currency: USD
-  amount: 252
+  amount: 159.99
   incl_vat: false
-  store: amazon.com
-  verified: '2026-10-01'
+  store: logitechg.com
+  url: https://www.logitechg.com/en-us/shop/p/flight-simulator-yoke-system.945-000023
+  verified: '2026-10-19'
   source: manual
 verification: draft
 sources:
 - https://www.logitechg.com/en-us/products/flight.html
+images:
+  - file: /images/logitech/flight-yoke-system.webp
+    source: https://www.logitechg.com/en-us/shop/p/flight-simulator-yoke-system.945-000023
+    caption: Logitech G Flight Yoke System

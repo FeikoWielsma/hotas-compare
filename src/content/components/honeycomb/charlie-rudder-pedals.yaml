@@ -14,9 +14,9 @@ hardware:
   gimbal: cam
   sensor: contactless_magnetic
   axes:
-  - name: Primary
-    resolution_bits: 16
-    sensor: contactless_magnetic
+  - name: Rudder
+  - name: Left brake
+  - name: Right brake
   force_adjustable: null
   cams_swappable: null
   damping: null
@@ -33,10 +33,11 @@ use_case_fit: {}
 prices:
 - region: EU
   currency: EUR
-  amount: 349
+  amount: 349.99
   incl_vat: true
-  store: honeycomb.com
-  verified: '2026-10-01'
+  store: eu.flyhoneycomb.com
+  url: https://eu.flyhoneycomb.com/products/charlie-rudder-pedals
+  verified: '2026-10-19'
   source: manual
 - region: UK
   currency: GBP
@@ -47,11 +48,16 @@ prices:
   source: manual
 - region: US
   currency: USD
-  amount: 349
+  amount: 349.99
   incl_vat: false
-  store: honeycomb.com
-  verified: '2026-10-01'
+  store: flyhoneycomb.com
+  url: https://flyhoneycomb.com/products/charlie-rudder-pedals
+  verified: '2026-10-19'
   source: manual
 verification: draft
+images:
+  - file: /images/honeycomb/charlie-rudder-pedals.jpg
+    source: https://flyhoneycomb.com/products/charlie-rudder-pedals
+    caption: Charlie Rudder Pedals
 sources:
 - https://honeycomb.com

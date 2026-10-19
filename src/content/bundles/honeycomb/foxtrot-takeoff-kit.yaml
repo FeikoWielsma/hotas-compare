@@ -1,0 +1,31 @@
+brand: honeycomb
+name: Foxtrot Takeoff Kit
+category: hotas_bundle
+status: current
+components:
+- honeycomb/foxtrot-aviation-stick
+- honeycomb/foxtrot-throttle-box
+prices:
+- region: EU
+  currency: EUR
+  amount: 179.99
+  incl_vat: true
+  store: eu.flyhoneycomb.com
+  url: https://eu.flyhoneycomb.com/products/foxtrot-takeoff-kit
+  verified: '2026-10-19'
+  source: manual
+- region: US
+  currency: USD
+  amount: 179.99
+  incl_vat: false
+  store: flyhoneycomb.com
+  url: https://flyhoneycomb.com/products/foxtrot-takeoff-kit
+  verified: '2026-10-19'
+  source: manual
+verification: draft
+images:
+- file: /images/honeycomb/foxtrot-takeoff-kit.webp
+  source: https://eu.flyhoneycomb.com/products/foxtrot-takeoff-kit
+  caption: Foxtrot Takeoff Kit
+sources:
+- https://eu.flyhoneycomb.com/products/foxtrot-takeoff-kit

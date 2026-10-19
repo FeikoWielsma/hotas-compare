@@ -20,6 +20,11 @@ export const useCases: { key: UseCase; label: string }[] = [
 export function detailHref(item: CatalogItem) {
   return `/${item.item_type === 'component' ? 'components' : 'bundles'}/${item.id}`;
 }
+/** Public URL for a stored product photo. Bare filenames live under /images/. */
+export function productImageSrc(file?: string | null): string | null {
+  if (!file) return null;
+  return file.startsWith('/') ? file : `/images/${file}`;
+}
 export function formatAmount(item: CatalogItem) {
   const price = item.resolvedPrice.price;
   return price ? new Intl.NumberFormat('en', { style: 'currency', currency: price.currency }).format(price.amount) : 'Price unavailable';

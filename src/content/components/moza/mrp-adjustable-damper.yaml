@@ -1,0 +1,21 @@
+brand: moza
+name: MOZA MRP Adjustable Damper
+category: module
+status: current
+handedness: n/a
+verification: draft
+sources:
+- https://mozaracing.com
+images:
+- file: /images/moza/mrp-adjustable-damper.webp
+  source: https://eu.mozaracing.com/products/mrp-damper
+  caption: MOZA MRP Adjustable Damper
+prices:
+- region: EU
+  currency: EUR
+  amount: 69
+  incl_vat: true
+  store: eu.mozaracing.com
+  url: https://eu.mozaracing.com/products/mrp-damper
+  verified: '2026-10-19'
+  source: manual

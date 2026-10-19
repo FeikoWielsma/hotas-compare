@@ -71,3 +71,7 @@ prices:
 verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/sol-r-1/
+images:
+  - file: /images/thrustmaster/sol-r-stick.webp
+    source: https://www.thrustmaster.com/en-us/products/sol-r-1/
+    caption: Sol-R Space Flight Stick

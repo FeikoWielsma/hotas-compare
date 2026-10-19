@@ -22,11 +22,16 @@ prices:
   source: manual
 - region: US
   currency: USD
-  amount: 315
+  amount: 229.99
   incl_vat: false
-  store: amazon.com
-  verified: '2026-10-01'
+  store: logitechg.com
+  url: https://www.logitechg.com/en-us/shop/p/x56-space-flight-vr-simulator-controller.945-000058
+  verified: '2026-10-19'
   source: manual
 verification: draft
 sources:
 - https://www.logitechg.com/en-us/products/flight.html
+images:
+  - file: /images/logitech/x56-hotas-system.png
+    source: https://www.logitechg.com/en-us/shop/p/x56-space-flight-vr-simulator-controller.945-000058
+    caption: X56 Rhino HOTAS System

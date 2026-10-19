@@ -17,10 +17,8 @@ hardware:
   sensor: contactless_magnetic
   axes:
   - name: X
-    resolution_bits: 16
     sensor: contactless_magnetic
   - name: Y
-    resolution_bits: 16
     sensor: contactless_magnetic
   force_adjustable: true
   cams_swappable: true
@@ -61,10 +59,11 @@ prices:
   source: manual
 - region: US
   currency: USD
-  amount: 247
+  amount: 223.2
   incl_vat: false
-  store: vkbcontrollers.com
-  verified: '2026-10-01'
+  store: vkbsimcontrollers.com
+  url: https://vkbsimcontrollers.com/products/gunfighter-mk-iv-base-only-us
+  verified: '2026-10-19'
   source: manual
 verdict:
   author: feiko
@@ -96,3 +95,7 @@ verdict:
 verification: draft
 sources:
 - https://vkbcontrollers.com/products/gunfighter-iv-base
+images:
+  - file: /images/vkb/gunfighter-iv-base.jpg
+    source: https://vkbsimcontrollers.com/products/gunfighter-mk-iv-base-only-us
+    caption: Gunfighter Mk.IV Base

@@ -28,18 +28,10 @@ hardware:
   gimbal: cam_and_spring
   sensor: contactless_magnetic
   axes:
-    - name: X
-      resolution_bits: 16
-      sensor: contactless_magnetic
-    - name: Y
-      resolution_bits: 16
-      sensor: contactless_magnetic
-    - name: Twist_Z
-      resolution_bits: 14
-      sensor: contactless_magnetic
-    - name: Brake
-      resolution_bits: 12
-      sensor: contactless_magnetic
+  - name: X
+  - name: Y
+  - name: Brake
+  - name: Twist
   force_adjustable: true
   cams_swappable: true
   damping: dry_clutch
@@ -64,27 +56,30 @@ use_case_fit:
   space_hotas: 5
   space_hosas: 5
 prices:
-  - region: EU
-    currency: EUR
-    amount: 254
-    incl_vat: true
-    store: virpil-controls.eu
-    verified: '2026-10-01'
-    source: manual
-  - region: UK
-    currency: GBP
-    amount: 220
-    incl_vat: true
-    store: virpil-controls.eu
-    verified: '2026-10-01'
-    source: manual
-  - region: US
-    currency: USD
-    amount: 229
-    incl_vat: false
-    store: virpil-controls.us
-    verified: '2026-10-01'
-    source: manual
+- region: EU
+  currency: EUR
+  amount: 219.95
+  incl_vat: true
+  store: virpil-controls.eu
+  url: https://virpil-controls.eu/cdt-aeromax-rz-flightstick-omnithrottle.html
+  verified: '2026-10-19'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 219.95
+  incl_vat: true
+  store: virpil-controls.co.uk
+  url: https://virpil-controls.co.uk/cdt-aeromax-rz-flightstick-omnithrottle.html
+  verified: '2026-10-19'
+  source: manual
+- region: US
+  currency: USD
+  amount: 249.95
+  incl_vat: false
+  store: virpil-controls.us.com
+  url: https://virpil-controls.us.com/cdt-aeromax-rz-flightstick-omnithrottle.html
+  verified: '2026-10-19'
+  source: manual
 verdict:
   author: feiko
   hands_on: false
@@ -117,4 +112,7 @@ external_reviews:
 verification: draft
 sources:
   - https://virpil-controls.eu/cdt-aeromax-r-flightstick.html
-images: []
+images:
+  - file: /images/virpil/cdt-aeromax-rz-flightstick.jpg
+    source: https://virpil-controls.eu/cdt-aeromax-rz-flightstick-omnithrottle.html
+    caption: VPC CDT-Aeromax [RZ] Flightstick

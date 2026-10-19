@@ -45,10 +45,11 @@ use_case_fit:
 prices:
   - region: EU
     currency: EUR
-    amount: 239
+    amount: 219.95
     incl_vat: true
     store: virpil-controls.eu
-    verified: '2026-10-01'
+    url: https://virpil-controls.eu/vpc-warbrd-d-base.html
+    verified: '2026-10-19'
     source: manual
   - region: UK
     currency: GBP
@@ -98,5 +99,6 @@ verification: verified
 sources:
   - https://virpil-controls.eu/vpc-warbrd-d-base.html
 images:
-  - file: virpil-warbrd-d.webp
-    source: https://virpil-controls.eu
+  - file: /images/virpil/warbrd-d-base.jpg
+    source: https://virpil-controls.eu/vpc-warbrd-d-base.html
+    caption: VPC WarBRD-D Base

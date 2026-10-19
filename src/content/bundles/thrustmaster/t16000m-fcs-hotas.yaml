@@ -22,11 +22,12 @@ prices:
     source: manual
   - region: US
     currency: USD
-    amount: 149
+    amount: 169.99
     incl_vat: false
-    store: amazon.com
-    verified: '2026-10-01'
+    store: eshop.thrustmaster.com
+    verified: '2026-10-19'
     source: manual
+    url: https://eshop.thrustmaster.com/en_us/t-16000m-fcs-hotas.html
 verdict:
   author: feiko
   hands_on: true
@@ -60,5 +61,6 @@ verification: verified
 sources:
   - https://www.thrustmaster.com/en-us/products/t-16000m-fcs-hotas/
 images:
-  - file: tm-t16000m-hotas.webp
-    source: https://thrustmaster.com
+  - file: /images/thrustmaster/t16000m-fcs-hotas.webp
+    source: https://www.thrustmaster.com/en-us/products/t-16000m-fcs-hotas/
+    caption: T.16000M FCS HOTAS

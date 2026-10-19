@@ -34,4 +34,11 @@ use_case_fit:
 prices: []
 verification: draft
 sources:
-  - https://en.winwing.cn/en/download
+  - https://eu.winctrl.com/h5/Orion2_Throttle_Base/en/
+  - https://eu.winctrl.com/view/goods-details.html?id=375
+images:
+  - file: /images/winctrl/orion-2-f18-throttle.jpg
+    source: https://eu.winctrl.com/view/goods-details.html?id=375
+    caption: Orion 2 FA-18 Dual Throttle Handles
+
+images: []

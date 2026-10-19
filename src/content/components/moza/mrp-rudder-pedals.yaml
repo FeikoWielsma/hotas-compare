@@ -7,18 +7,24 @@ mount:
   provides: null
   accepts: []
 controls:
-  - type: lever
-    kind: other
-    analog: true
-    count: 2
-    label: Rudder pedals
-  - type: lever
-    kind: brake
-    analog: true
-    count: 2
-    label: Toe brakes
+- type: lever
+  kind: other
+  analog: true
+  count: 1
+  label: Rudder pedals
+- type: lever
+  kind: brake
+  analog: true
+  count: 2
+  label: Toe brakes
 hardware:
-  axes: []
+  axes:
+  - name: Yaw
+    sensor: hall_effect
+  - name: Left brake
+    sensor: hall_effect
+  - name: Right brake
+    sensor: hall_effect
 connectivity:
   standalone_usb: true
 physical:
@@ -31,7 +37,19 @@ use_case_fit:
   airliner: 3
   space_hotas: 4
   space_hosas: 3
-prices: []
+prices:
+- region: EU
+  currency: EUR
+  amount: 369
+  incl_vat: true
+  store: eu.mozaracing.com
+  url: https://eu.mozaracing.com/products/mrp-rudder-pedals
+  verified: '2026-10-19'
+  source: manual
 verification: draft
 sources:
-  - https://eu.mozaracing.com/collections/shop
+- https://eu.mozaracing.com/collections/shop
+images:
+- file: /images/moza/mrp-rudder-pedals.webp
+  source: https://eu.mozaracing.com/products/mrp-rudder-pedals
+  caption: MOZA MRP Flight Rudder Pedals

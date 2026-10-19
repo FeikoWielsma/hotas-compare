@@ -4,11 +4,11 @@ category: module
 status: current
 handedness: n/a
 mount: null
-controls: []
+controls: [] # no published input list
 hardware:
   gimbal: null
   sensor: contactless_magnetic
-  axes: []
+  axes: [] # no published input list
   force_adjustable: null
   cams_swappable: null
   damping: hydraulic
@@ -20,28 +20,8 @@ connectivity:
 physical:
   materials: []
 use_case_fit: {}
-prices:
-- region: EU
-  currency: EUR
-  amount: 65
-  incl_vat: true
-  store: slaw.com
-  verified: '2026-10-01'
-  source: manual
-- region: UK
-  currency: GBP
-  amount: 56
-  incl_vat: true
-  store: slaw.com
-  verified: '2026-10-01'
-  source: manual
-- region: US
-  currency: USD
-  amount: 65
-  incl_vat: false
-  store: slaw.com
-  verified: '2026-10-01'
-  source: manual
+prices: []
 verification: draft
+images: []
 sources:
-- https://slaw.com
+- https://slawdevice.com/en/rudder-pedals/48-pre-order-rh-rotor-v2-rudder-pedals.html

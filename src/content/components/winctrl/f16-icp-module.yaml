@@ -8,9 +8,11 @@ mount:
   accepts: []
 controls:
   - type: button
-    count: 20
+    count: 16
+  - type: rotary
+    count: 4
   - type: toggle
-    count: 3
+    count: 1
     ways: 2
 hardware:
   axes: []
@@ -26,7 +28,20 @@ use_case_fit:
   airliner: 3
   space_hotas: 4
   space_hosas: 3
-prices: []
+prices:
+  - region: EU
+    currency: EUR
+    amount: 193.75
+    incl_vat: true
+    store: eu.winctrl.com
+    url: https://eu.winctrl.com/view/goods-details.html?id=544
+    verified: '2026-10-19'
+    source: manual
 verification: draft
 sources:
-  - https://en.winwing.cn/en/download
+  - https://eu.winctrl.com/view/goods-details.html?id=544
+
+images:
+  - file: /images/winctrl/f16-icp-module.jpg
+    source: https://eu.winctrl.com/view/goods-details.html?id=544
+    caption: F-16 Integrated Control Panel Module

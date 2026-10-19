@@ -10,16 +10,13 @@ mount:
 controls:
 - type: trigger
   stages: 2
-  flip: true
-- type: hat
-  ways: 8
-  push: true
-  count: 2
 - type: hat
   ways: 4
   push: true
+  count: 3
 - type: analog_ministick
   push: true
+  count: 1
 - type: button
   count: 4
 - type: trigger
@@ -29,8 +26,7 @@ hardware:
   gimbal: null
   sensor: contactless_magnetic
   axes:
-  - name: Twist_Z
-    resolution_bits: 12
+  - name: Twist
     sensor: contactless_magnetic
   force_adjustable: false
   cams_swappable: false
@@ -102,3 +98,7 @@ verdict:
 verification: draft
 sources:
 - https://vkbcontrollers.com/products/scg-space-combat-grip
+images:
+  - file: /images/vkb/scg-space-combat-grip-l.jpg
+    source: https://vkbsimcontrollers.com/products/gnx-scg-add-on-grip-us
+    caption: Space Combat Grip (SCG) Premium (Left)

@@ -11,22 +11,22 @@ controls:
   - type: trigger
     stages: 2
   - type: hat
-    ways: 8
-    push: true
-    count: 3
-  - type: hat
     ways: 4
     push: true
-    count: 2
+    count: 5
+  - type: hat
+    ways: 8
+    push: true
+    count: 1
   - type: analog_ministick
     push: true
     count: 1
-  - type: button
-    count: 4
   - type: lever
     kind: brake
     analog: true
     count: 1
+  - type: button
+    count: 2
   - type: trigger
     stages: 1
     flip: false
@@ -111,7 +111,10 @@ external_reviews:
     date: '2024-03-25'
 verification: verified
 sources:
-  - https://winwing.cn/en/JOYSTICK-GRIP
+  - https://eu.winctrl.com/view/goods-details.html?id=314
+  - https://eu.winctrl.com/view/goods-details.html?id=340
+  - https://eu.winctrl.com/view/goods-details.html?id=341
 images:
-  - file: winctrl-f16ex-grip.webp
-    source: https://winwing.cn
+  - file: /images/winctrl/f16-ex-viper-grip.jpg
+    source: https://eu.winctrl.com/view/goods-details.html?id=341
+    caption: F-16EX Viper Grip

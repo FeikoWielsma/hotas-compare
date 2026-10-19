@@ -1,0 +1,27 @@
+brand: moza
+name: MOZA MA3X Side Stick
+category: grip
+status: current
+handedness: right
+verification: draft
+sources:
+- https://mozaracing.com
+images:
+- file: /images/moza/ma3x-side-stick.webp
+  source: https://eu.mozaracing.com/products/ma3x-sidestick
+  caption: MOZA MA3X Side Stick
+prices:
+- region: EU
+  currency: EUR
+  amount: 89
+  incl_vat: true
+  store: eu.mozaracing.com
+  url: https://eu.mozaracing.com/products/ma3x-sidestick
+  verified: '2026-10-19'
+  source: manual
+controls:
+- type: trigger
+- type: hat
+  ways: 8
+  push: false
+  count: 1

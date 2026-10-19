@@ -54,11 +54,16 @@ prices:
   source: manual
 - region: US
   currency: USD
-  amount: 302
+  amount: 299.99
   incl_vat: false
-  store: amazon.com
-  verified: '2026-10-01'
+  store: eshop.thrustmaster.com
+  verified: '2026-10-19'
   source: manual
+  url: https://eshop.thrustmaster.com/en_us/ava-base.html
 verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/ava-base/
+images:
+  - file: /images/thrustmaster/ava-base.webp
+    source: https://www.thrustmaster.com/en-us/products/ava-base/
+    caption: AVA - Advanced Versatile Aviation Base

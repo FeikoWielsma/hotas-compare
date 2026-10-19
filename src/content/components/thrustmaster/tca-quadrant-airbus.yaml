@@ -59,11 +59,16 @@ prices:
   source: manual
 - region: US
   currency: USD
-  amount: 108
+  amount: 129.99
   incl_vat: false
-  store: amazon.com
-  verified: '2026-10-01'
+  store: eshop.thrustmaster.com
+  verified: '2026-10-19'
   source: manual
+  url: https://eshop.thrustmaster.com/en_us/tca-quadrant-airbus-edition.html
 verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/tca-quadrant-airbus-edition/
+images:
+  - file: /images/thrustmaster/tca-quadrant-airbus.webp
+    source: https://www.thrustmaster.com/en-us/products/tca-quadrant-airbus-edition/
+    caption: TCA Quadrant Airbus Edition

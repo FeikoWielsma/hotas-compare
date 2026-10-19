@@ -1,0 +1,18 @@
+brand: moza
+name: MOZA AY210 Yoke Base
+category: base
+status: current
+handedness: n/a
+verification: draft
+sources:
+- https://mozaracing.com
+images: []
+prices:
+- region: EU
+  currency: EUR
+  amount: 769
+  incl_vat: true
+  store: eu.mozaracing.com
+  url: https://eu.mozaracing.com/products/ay210-yoke-base
+  verified: '2026-10-19'
+  source: manual

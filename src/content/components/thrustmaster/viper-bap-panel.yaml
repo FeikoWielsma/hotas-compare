@@ -53,11 +53,16 @@ prices:
   source: manual
 - region: US
   currency: USD
-  amount: 248
+  amount: 299.99
   incl_vat: false
-  store: amazon.com
-  verified: '2026-10-01'
+  store: eshop.thrustmaster.com
+  verified: '2026-10-19'
   source: manual
+  url: https://eshop.thrustmaster.com/en_us/viper-panel.html
 verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/viper-panel/
+images:
+  - file: /images/thrustmaster/viper-bap-panel.webp
+    source: https://www.thrustmaster.com/en-us/products/viper-panel/
+    caption: Viper Mission Pack BAP Panel

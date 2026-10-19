@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import { productImageSrc } from '../lib/catalog-ui';
   import { compareStore } from '../lib/stores/compare.svelte';
   import type { CatalogItem } from '../lib/catalog';
   let { items = [] }: { items?: CatalogItem[] } = $props();
@@ -24,8 +25,9 @@
     <div class="tray-content">
       <ul>
         {#each selected as item (item.id)}
+          {@const photo = productImageSrc(item.images[0]?.file)}
           <li>
-            {#if item.images[0]}<img src={item.images[0].file.startsWith('/') ? item.images[0].file : `/images/${item.images[0].file}`} alt="" onerror={(event) => { event.currentTarget.hidden = true; }} />{/if}
+            {#if photo}<img src={photo} alt="" onerror={(event) => { event.currentTarget.hidden = true; }} />{/if}
             <div><span class="item-name">{item.name}</span><span class="badge">{item.category.replaceAll('_', ' ')}</span></div>
             <button type="button" class="remove" aria-label={`Remove ${item.name} from comparison`} onclick={() => compareStore.removeItem(item.id)}>×</button>
           </li>
@@ -44,7 +46,7 @@
   .tray-content { display: flex; align-items: center; gap: 1rem; }
   ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); flex: 1; gap: .5rem; list-style: none; margin: 0; padding: 0; min-width: 0; }
   li { display: flex; align-items: center; gap: .5rem; min-width: 0; padding: .6rem; background: var(--bg-cockpit); border: 1px solid var(--border-cockpit); }
-  li div { flex: 1; min-width: 0; } img { width: 32px; height: 40px; object-fit: contain; }
+  li div { flex: 1; min-width: 0; } img { width: 40px; height: 40px; object-fit: contain; background: #f4f1ea; border-radius: 3px; }
   .item-name { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: .75rem; }
   .badge { display: block; margin-top: .25rem; color: var(--text-secondary); font: .6rem var(--font-mono); text-transform: uppercase; }
   button { background: none; border: 0; color: var(--text-secondary); cursor: pointer; padding: .5rem; font: .75rem var(--font-mono); }

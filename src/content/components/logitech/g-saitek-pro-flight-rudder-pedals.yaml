@@ -5,8 +5,6 @@ status: current
 handedness: n/a
 mount: null
 controls:
-- type: rocker
-  count: 1
 - type: lever
   kind: brake
   analog: true
@@ -17,7 +15,9 @@ hardware:
   axes:
   - name: Rudder
     sensor: potentiometer
-  - name: Brakes
+  - name: Brake_Left
+    sensor: potentiometer
+  - name: Brake_Right
     sensor: potentiometer
 connectivity:
   usb: a_cable
@@ -43,11 +43,16 @@ prices:
   source: manual
 - region: US
   currency: USD
-  amount: 178
+  amount: 159.99
   incl_vat: false
-  store: amazon.com
-  verified: '2026-10-01'
+  store: logitechg.com
+  url: https://www.logitechg.com/en-us/shop/p/flight-simulator-rudder-pedals.945-000024
+  verified: '2026-10-19'
   source: manual
 verification: draft
 sources:
 - https://www.logitechg.com/en-us/products/flight.html
+images:
+  - file: /images/logitech/g-saitek-pro-flight-rudder-pedals.png
+    source: https://www.logitechg.com/en-us/shop/p/flight-simulator-rudder-pedals.945-000024
+    caption: Logitech G Pro Flight Rudder Pedals

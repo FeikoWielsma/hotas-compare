@@ -1,0 +1,13 @@
+brand: moza
+name: MOZA J04 Yoke
+category: yoke
+status: current
+handedness: n/a
+verification: draft
+sources:
+- https://mozaracing.com
+images:
+- file: /images/moza/j04-yoke.webp
+  source: https://mozaracing.com
+  caption: MOZA J04 Yoke
+prices: []

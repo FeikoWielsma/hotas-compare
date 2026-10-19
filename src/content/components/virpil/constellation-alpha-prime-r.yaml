@@ -8,33 +8,41 @@ mount:
   provides: virpil-grip
   accepts: []
 controls:
-  - type: trigger
-    stages: 2
-    flip: true
-  - type: hat
-    ways: 8
-    push: true
-    count: 2
-  - type: hat
-    ways: 4
-    push: true
-    count: 1
-  - type: analog_ministick
-    push: true
-    count: 1
-  - type: button
-    count: 4
-  - type: lever
-    kind: brake
-    analog: true
-    count: 1
-  - type: encoder
-    count: 2
-    push: true
+- type: trigger
+  stages: 2
+  count: 1
+- type: trigger
+  stages: 1
+  flip: true
+  count: 1
+- type: hat
+  ways: 4
+  push: true
+  count: 3
+- type: hat
+  ways: 2
+  push: true
+  count: 1
+- type: analog_ministick
+  push: true
+  count: 1
+- type: button
+  count: 4
+- type: lever
+  kind: brake
+  analog: true
+  count: 1
+- type: encoder
+  count: 1
+  push: true
 hardware:
   gimbal: null
   sensor: null
-  axes: []
+  axes:
+  - name: Ministick X
+  - name: Ministick Y
+  - name: Brake
+  - name: Twist
   force_adjustable: null
   cams_swappable: null
   damping: null
@@ -58,27 +66,30 @@ use_case_fit:
   space_hotas: 5
   space_hosas: 5
 prices:
-  - region: EU
-    currency: EUR
-    amount: 289
-    incl_vat: true
-    store: virpil-controls.eu
-    verified: '2026-10-01'
-    source: manual
-  - region: UK
-    currency: GBP
-    amount: 255
-    incl_vat: true
-    store: virpil-controls.eu
-    verified: '2026-10-01'
-    source: manual
-  - region: US
-    currency: USD
-    amount: 299
-    incl_vat: false
-    store: virpil-controls.us
-    verified: '2026-10-01'
-    source: manual
+- region: EU
+  currency: EUR
+  amount: 249.95
+  incl_vat: true
+  store: virpil-controls.eu
+  url: https://virpil-controls.eu/vpc-constellation-alpha-prime-r.html
+  verified: '2026-10-19'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 279.95
+  incl_vat: true
+  store: virpil-controls.co.uk
+  url: https://virpil-controls.co.uk/vpc-constellation-alpha-prime-r.html
+  verified: '2026-10-19'
+  source: manual
+- region: US
+  currency: USD
+  amount: 289.95
+  incl_vat: false
+  store: virpil-controls.us.com
+  url: https://virpil-controls.us.com/vpc-constellation-alpha-prime-r.html
+  verified: '2026-10-19'
+  source: manual
 verdict:
   author: feiko
   hands_on: true
@@ -115,5 +126,6 @@ verification: verified
 sources:
   - https://virpil-controls.eu/vpc-constellation-alpha-prime-r.html
 images:
-  - file: virpil-alpha-prime-r.webp
-    source: https://virpil-controls.eu
+  - file: /images/virpil/constellation-alpha-prime-r.jpg
+    source: https://virpil-controls.eu/vpc-constellation-alpha-prime-r.html
+    caption: Constellation Alpha Prime (Right)

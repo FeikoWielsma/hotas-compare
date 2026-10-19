@@ -8,27 +8,28 @@ components:
 - virpil/warbrd-d-base
 - virpil/warbrd-d-base
 prices:
-- region: EU
-  currency: EUR
-  amount: 1150
-  incl_vat: true
-  store: virpil-controls.eu
-  verified: '2026-10-01'
-  source: manual
-- region: UK
-  currency: GBP
-  amount: 1012
-  incl_vat: true
-  store: virpil-controls.eu
-  verified: '2026-10-01'
-  source: manual
-- region: US
-  currency: USD
-  amount: 1242
-  incl_vat: false
-  store: virpil-controls.us
-  verified: '2026-10-01'
-  source: manual
+  - region: EU
+    currency: EUR
+    amount: 934.66
+    incl_vat: true
+    store: virpil-controls.eu
+    url: https://virpil-controls.eu/warbrd-d-hosas-bundle-alpha-prime-edition.html
+    verified: '2026-10-19'
+    source: manual
+  - region: UK
+    currency: GBP
+    amount: 1012
+    incl_vat: true
+    store: virpil-controls.eu
+    verified: '2026-10-01'
+    source: manual
+  - region: US
+    currency: USD
+    amount: 1242
+    incl_vat: false
+    store: virpil-controls.us
+    verified: '2026-10-01'
+    source: manual
 verdict:
   author: feiko
   hands_on: false
@@ -55,3 +56,7 @@ verdict:
 verification: draft
 sources:
 - https://virpil-controls.eu/products/alpha-prime-hosas-bundle
+images:
+  - file: /images/virpil/alpha-prime-hosas-bundle.jpg
+    source: https://virpil-controls.eu/warbrd-d-hosas-bundle-alpha-prime-edition.html
+    caption: WarBRD-D H.O.S.A.S Bundle - ALPHA Prime Edition

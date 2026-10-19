@@ -71,3 +71,7 @@ prices:
 verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/t-flight-hotas-one/
+images:
+  - file: /images/thrustmaster/t-flight-hotas-one-x.webp
+    source: https://www.thrustmaster.com/en-us/products/t-flight-hotas-one/
+    caption: T.Flight HOTAS One / 4 / X

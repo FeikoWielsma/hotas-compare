@@ -6,18 +6,30 @@ release_year: 2020
 handedness: n/a
 mount: null
 controls:
-- type: button
-  count: 12
-  backlit: true
-- type: toggle
-  count: 4
-  ways: 3
-  momentary: true
-- type: encoder
-  count: 4
-  push: true
-- type: rotary
-  count: 2
+  - type: button
+    count: 10
+    backlit: true
+  - type: toggle
+    count: 6
+    ways: 3
+    momentary: true
+  - type: toggle
+    count: 2
+    ways: 2
+    momentary: false
+  - type: toggle
+    count: 2
+    ways: 3
+    momentary: false
+    label: Flip-cover toggles
+  - type: encoder
+    count: 3
+    push: true
+  - type: lever
+    kind: other
+    analog: false
+    count: 1
+    label: Landing gear switch
 hardware:
   gimbal: null
   sensor: contactless_magnetic
@@ -45,27 +57,28 @@ use_case_fit:
   space_hotas: 2
   space_hosas: 2
 prices:
-- region: EU
-  currency: EUR
-  amount: 240
-  incl_vat: true
-  store: virpil-controls.eu
-  verified: '2026-10-01'
-  source: manual
-- region: UK
-  currency: GBP
-  amount: 211
-  incl_vat: true
-  store: virpil-controls.eu
-  verified: '2026-10-01'
-  source: manual
-- region: US
-  currency: USD
-  amount: 259
-  incl_vat: false
-  store: virpil-controls.us
-  verified: '2026-10-01'
-  source: manual
+  - region: EU
+    currency: EUR
+    amount: 239.95
+    incl_vat: true
+    store: virpil-controls.eu
+    url: https://virpil-controls.eu/vpc-control-panel-2.html
+    verified: '2026-10-19'
+    source: manual
+  - region: UK
+    currency: GBP
+    amount: 211
+    incl_vat: true
+    store: virpil-controls.eu
+    verified: '2026-10-01'
+    source: manual
+  - region: US
+    currency: USD
+    amount: 259
+    incl_vat: false
+    store: virpil-controls.us
+    verified: '2026-10-01'
+    source: manual
 verdict:
   author: feiko
   hands_on: false
@@ -91,3 +104,7 @@ verdict:
 verification: draft
 sources:
 - https://virpil-controls.eu/products/vpc-universal-control-panel-2
+images:
+  - file: /images/virpil/vpc-control-panel-2.jpg
+    source: https://virpil-controls.eu/vpc-control-panel-2.html
+    caption: VPC Universal Control Panel #2

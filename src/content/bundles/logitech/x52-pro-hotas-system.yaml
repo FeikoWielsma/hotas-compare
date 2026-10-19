@@ -22,11 +22,16 @@ prices:
   source: manual
 - region: US
   currency: USD
-  amount: 273
+  amount: 199.99
   incl_vat: false
-  store: amazon.com
-  verified: '2026-10-01'
+  store: logitechg.com
+  url: https://www.logitechg.com/en-us/shop/p/x52-pro-space-flight-simulator-controller.945-000022
+  verified: '2026-10-19'
   source: manual
 verification: draft
 sources:
 - https://www.logitechg.com/en-us/products/flight.html
+images:
+  - file: /images/logitech/x52-pro-hotas-system.png
+    source: https://www.logitechg.com/en-us/shop/p/x52-pro-space-flight-simulator-controller.945-000022
+    caption: X52 Pro HOTAS System

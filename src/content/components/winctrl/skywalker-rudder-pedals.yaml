@@ -10,15 +10,19 @@ controls:
   - type: lever
     kind: other
     analog: true
-    count: 2
-    label: Rudder pedals
+    count: 1
+    label: Main rudder axis
   - type: lever
-    kind: brake
+    kind: other
     analog: true
-    count: 2
-    label: Toe brakes
+    count: 1
+    label: Pedal axis
 hardware:
-  axes: []
+  axes:
+    - name: Main
+      sensor: hall
+    - name: Pedal
+      sensor: hall
 connectivity:
   standalone_usb: true
 physical:
@@ -31,7 +35,20 @@ use_case_fit:
   airliner: 3
   space_hotas: 4
   space_hosas: 3
-prices: []
+prices:
+  - region: EU
+    currency: EUR
+    amount: 286.61
+    incl_vat: true
+    store: eu.winctrl.com
+    url: https://eu.winctrl.com/view/goods-details.html?id=543
+    verified: '2026-10-19'
+    source: manual
 verification: draft
 sources:
-  - https://en.winwing.cn/en/
+  - https://eu.winctrl.com/view/goods-details.html?id=543
+
+images:
+  - file: /images/winctrl/skywalker-rudder-pedals.jpg
+    source: https://eu.winctrl.com/view/goods-details.html?id=543
+    caption: Skywalker Rudder Pedals

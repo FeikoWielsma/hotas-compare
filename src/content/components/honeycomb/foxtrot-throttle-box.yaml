@@ -1,0 +1,44 @@
+brand: honeycomb
+name: Foxtrot Throttle Box
+category: quadrant
+status: current
+release_year: 2025
+handedness: n/a
+mount: null
+controls:
+- type: lever
+  kind: throttle_dual
+  analog: true
+  count: 4
+  label: Throttle levers
+- type: lever
+  kind: other
+  analog: false
+  count: 1
+  label: Parking brake
+- type: lever
+  kind: other
+  analog: false
+  count: 1
+  label: Landing gear
+hardware:
+  gimbal: null
+  sensor: null
+  axes: []
+  force_adjustable: null
+  cams_swappable: null
+  damping: null
+  extension_support: null
+  throw_deg: null
+connectivity:
+  usb: c
+  standalone_usb: true
+physical:
+  dimensions_mm: [136, 173, 83]
+  materials: []
+use_case_fit: {}
+prices: []
+verification: draft
+images: []
+sources:
+- https://eu.flyhoneycomb.com/products/foxtrot-takeoff-kit

@@ -5,11 +5,16 @@ status: current
 handedness: n/a
 mount: null
 controls:
-- type: button
-  count: 14
 - type: hat
   ways: 8
-  push: true
+  push: false
+- type: rocker
+  count: 6
+- type: button
+  count: 2
+- type: toggle
+  ways: 3
+  count: 1
 hardware:
   gimbal: shaft
   sensor: potentiometer
@@ -51,3 +56,7 @@ prices:
 verification: draft
 sources:
 - https://www.logitechg.com/en-us/products/flight.html
+images:
+  - file: /images/logitech/g-saitek-pro-flight-yoke.webp
+    source: https://www.logitechg.com/en-us/shop/p/flight-simulator-yoke-system.945-000023
+    caption: Logitech G Flight Yoke System - Yoke

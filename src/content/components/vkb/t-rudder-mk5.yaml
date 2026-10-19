@@ -11,7 +11,6 @@ hardware:
   sensor: contactless_magnetic
   axes:
     - name: Rudder
-      resolution_bits: 14
       sensor: contactless_magnetic
   force_adjustable: true
   cams_swappable: true
@@ -52,10 +51,11 @@ prices:
     source: manual
   - region: US
     currency: USD
-    amount: 215
+    amount: 199
     incl_vat: false
-    store: vkbcontrollers.com
-    verified: '2026-10-01'
+    store: vkbsimcontrollers.com
+    url: https://vkbsimcontrollers.com/products/t-rudders-mk-v-rudder-pedals-us
+    verified: '2026-10-19'
     source: manual
 verdict:
   author: feiko
@@ -91,5 +91,6 @@ verification: verified
 sources:
   - https://vkbcontrollers.com/products/t-rudder-mk-v-rudder-pedals
 images:
-  - file: vkb-t-rudder-mk5.webp
-    source: https://vkbcontrollers.com
+  - file: /images/vkb/t-rudder-mk5.jpg
+    source: https://vkbsimcontrollers.com/products/t-rudders-mk-v-rudder-pedals-us
+    caption: T-Rudder Mk.V Pedals

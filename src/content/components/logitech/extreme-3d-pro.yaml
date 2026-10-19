@@ -1,7 +1,7 @@
 brand: logitech
 name: Logitech Extreme 3D Pro
 category: stick_fixed
-status: current
+status: discontinued
 release_year: 2003
 handedness: right
 mount: null
@@ -24,7 +24,7 @@ hardware:
       sensor: potentiometer
     - name: Y
       sensor: potentiometer
-    - name: Twist_Z
+    - name: Twist
       sensor: potentiometer
 connectivity:
   usb: a_cable
@@ -42,28 +42,7 @@ use_case_fit:
   airliner: 2
   space_hotas: 2
   space_hosas: 2
-prices:
-  - region: EU
-    currency: EUR
-    amount: 40
-    incl_vat: true
-    store: amazon.de
-    verified: '2026-10-01'
-    source: manual
-  - region: UK
-    currency: GBP
-    amount: 34
-    incl_vat: true
-    store: amazon.co.uk
-    verified: '2026-10-01'
-    source: manual
-  - region: US
-    currency: USD
-    amount: 42
-    incl_vat: false
-    store: amazon.com
-    verified: '2026-10-01'
-    source: manual
+prices: []
 verdict:
   author: feiko
   hands_on: true
@@ -96,5 +75,8 @@ external_reviews:
 verification: verified
 sources:
   - https://www.logitechg.com/en-us/products/flight.html
-images: []
+images:
+  - file: /images/logitech/extreme-3d-pro.webp
+    source: https://www.logitechg.com/en-us/shop/p/extreme-3d-pro-joystick
+    caption: Logitech Extreme 3D Pro
 

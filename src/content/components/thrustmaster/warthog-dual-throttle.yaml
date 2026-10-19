@@ -67,11 +67,16 @@ prices:
   source: manual
 - region: US
   currency: USD
-  amount: 270
+  amount: 349.99
   incl_vat: false
-  store: amazon.com
-  verified: '2026-10-01'
+  store: eshop.thrustmaster.com
+  verified: '2026-10-19'
   source: manual
+  url: https://eshop.thrustmaster.com/en_us/hotas-warthog-dual-throttle.html
 verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/hotas-warthog-dual-throttle/
+images:
+  - file: /images/thrustmaster/warthog-dual-throttle.webp
+    source: https://www.thrustmaster.com/en-us/products/hotas-warthog-dual-throttle/
+    caption: HOTAS Warthog Dual Throttle

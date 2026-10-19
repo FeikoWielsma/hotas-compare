@@ -1,0 +1,21 @@
+brand: moza
+name: MOZA TQB Throttle Module
+category: module
+status: current
+handedness: n/a
+verification: draft
+sources:
+- https://mozaracing.com
+images:
+- file: /images/moza/tqb-throttle-module.webp
+  source: https://eu.mozaracing.com/products/tqb-mod
+  caption: MOZA TQB Throttle Module
+prices:
+- region: EU
+  currency: EUR
+  amount: 45
+  incl_vat: true
+  store: eu.mozaracing.com
+  url: https://eu.mozaracing.com/products/tqb-mod
+  verified: '2026-10-19'
+  source: manual

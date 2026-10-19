@@ -23,7 +23,7 @@ hardware:
     sensor: hall
   - name: Y
     sensor: hall
-  - name: Twist_Z
+  - name: Twist
     sensor: potentiometer
 connectivity:
   usb: a_cable
@@ -58,3 +58,7 @@ prices:
 verification: draft
 sources:
 - https://www.logitechg.com/en-us/products/flight.html
+images:
+  - file: /images/logitech/x52-pro-flight-stick.webp
+    source: https://www.logitechg.com/en-us/shop/p/x52-pro-space-flight-simulator-controller.945-000022
+    caption: X52 Pro Flight Stick

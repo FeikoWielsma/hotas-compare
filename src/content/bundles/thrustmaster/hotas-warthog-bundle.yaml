@@ -23,11 +23,16 @@ prices:
   source: manual
 - region: US
   currency: USD
-  amount: 578
+  amount: 599.99
   incl_vat: false
-  store: amazon.com
-  verified: '2026-10-01'
+  store: eshop.thrustmaster.com
+  verified: '2026-10-19'
   source: manual
+  url: https://eshop.thrustmaster.com/en_us/hotas-warthog.html
 verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/
+images:
+  - file: /images/thrustmaster/hotas-warthog-bundle.webp
+    source: https://www.thrustmaster.com/products/hotas-warthog/
+    caption: HOTAS Warthog System

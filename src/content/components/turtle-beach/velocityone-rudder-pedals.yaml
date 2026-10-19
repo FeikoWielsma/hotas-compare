@@ -14,8 +14,14 @@ hardware:
   gimbal: cam
   sensor: contactless_magnetic
   axes:
-  - name: Primary
-    resolution_bits: 16
+  - name: Twist
+    resolution_bits: 10
+    sensor: contactless_magnetic
+  - name: Left Toe Brake
+    resolution_bits: 10
+    sensor: contactless_magnetic
+  - name: Right Toe Brake
+    resolution_bits: 10
     sensor: contactless_magnetic
   force_adjustable: null
   cams_swappable: null
@@ -33,25 +39,32 @@ use_case_fit: {}
 prices:
 - region: EU
   currency: EUR
-  amount: 299
+  amount: 299.99
   incl_vat: true
-  store: turtle-beach.com
-  verified: '2026-10-01'
+  store: turtlebeach.com
+  url: https://de.turtlebeach.com/products/velocity-one-rudder
+  verified: '2026-10-19'
   source: manual
 - region: UK
   currency: GBP
-  amount: 249
+  amount: 249.99
   incl_vat: true
-  store: turtle-beach.com
-  verified: '2026-10-01'
+  store: turtlebeach.com
+  url: https://uk.turtlebeach.com/products/velocity-one-rudder
+  verified: '2026-10-19'
   source: manual
 - region: US
   currency: USD
-  amount: 299
+  amount: 319.99
   incl_vat: false
-  store: turtle-beach.com
-  verified: '2026-10-01'
+  store: turtlebeach.com
+  url: https://www.turtlebeach.com/products/velocity-one-rudder
+  verified: '2026-10-19'
   source: manual
 verification: draft
+images:
+  - file: /images/turtle-beach/velocityone-rudder-pedals.png
+    source: https://uk.turtlebeach.com/products/velocity-one-rudder
+    caption: VelocityOne Rudder Pedals
 sources:
 - https://turtlebeach.com

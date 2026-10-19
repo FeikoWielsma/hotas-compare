@@ -1,0 +1,79 @@
+brand: virpil
+name: Archer-SF Cyclic Grip
+category: grip
+status: announced
+release_year: 2026
+handedness: right
+mount:
+  provides: virpil-grip
+  accepts: []
+controls:
+- type: trigger
+  stages: 2
+  count: 1
+- type: button
+  count: 1
+  label: Safety guard
+- type: button
+  count: 3
+  label: Momentary buttons
+- type: hat
+  ways: 4
+  push: true
+  count: 5
+  label: Gated hats
+hardware:
+  gimbal: null
+  sensor: null
+  axes: []
+  force_adjustable: null
+  cams_swappable: null
+  damping: null
+  extension_support: null
+  throw_deg: null
+connectivity:
+  usb: null
+  standalone_usb: false
+software: VPC Configuration Tool
+physical:
+  materials: []
+use_case_fit:
+  modern_jet: 2
+  heli: 5
+  ww2: 2
+  ga: 2
+  airliner: 1
+  space_hotas: 2
+  space_hosas: 2
+prices:
+- region: EU
+  currency: EUR
+  amount: 119.96
+  incl_vat: true
+  store: virpil-controls.eu
+  url: https://virpil-controls.eu/archer-sf-cyclic-grip.html
+  verified: '2026-10-19'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 127.96
+  incl_vat: true
+  store: virpil-controls.co.uk
+  url: https://virpil-controls.co.uk/archer-sf-cyclic-grip.html
+  verified: '2026-10-19'
+  source: manual
+- region: US
+  currency: USD
+  amount: 143.96
+  incl_vat: false
+  store: virpil-controls.us.com
+  url: https://virpil-controls.us.com/archer-sf-cyclic-grip.html
+  verified: '2026-10-19'
+  source: manual
+verification: draft
+sources:
+- https://virpil-controls.eu/archer-sf-cyclic-grip.html
+images:
+- file: /images/virpil/archer-sf-cyclic-grip.jpg
+  source: https://virpil-controls.eu/archer-sf-cyclic-grip.html
+  caption: Archer-SF Cyclic Grip

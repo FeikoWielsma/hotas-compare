@@ -26,8 +26,7 @@ hardware:
   gimbal: null
   sensor: contactless_magnetic
   axes:
-  - name: Twist_Z
-    resolution_bits: 12
+  - name: Twist
     sensor: contactless_magnetic
   force_adjustable: false
   cams_swappable: false
@@ -68,10 +67,11 @@ prices:
   source: manual
 - region: US
   currency: USD
-  amount: 100
+  amount: 102
   incl_vat: false
-  store: vkbcontrollers.com
-  verified: '2026-10-01'
+  store: vkbsimcontrollers.com
+  url: https://vkbsimcontrollers.com/products/gnx-f-14-add-on-grip-us
+  verified: '2026-10-19'
   source: manual
 verdict:
   author: feiko
@@ -99,3 +99,7 @@ verdict:
 verification: draft
 sources:
 - https://vkbcontrollers.com/products/f-14-gnx-combat-grip-add-on
+images:
+  - file: /images/vkb/f14-combat-grip.jpg
+    source: https://vkbsimcontrollers.com/products/gnx-f-14-add-on-grip-us
+    caption: F-14 Combat Grip
