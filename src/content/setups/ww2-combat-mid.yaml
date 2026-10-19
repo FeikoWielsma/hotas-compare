@@ -1,0 +1,17 @@
+title: Warbird Ace Fighter Pack
+use_case: ww2
+budget_tier: mid
+description: VKB Gunfighter Mk.IV with authentic KG12 German WWII grip, STECS throttle, and Milan Flight Gear Crosswind V3 pedals.
+reasoning: Authentic vintage control feel with modern metal cam precision and toe-brake authority required for taildragger takeoff and landings.
+items:
+  - item_type: component
+    id: vkb/gunfighter-iv-base
+    role: Metal Cam Flight Base
+  - item_type: component
+    id: vkb/kg12-wwii-grip
+    role: Vintage WWII Replica Grip
+  - item_type: bundle
+    id: mfg/crosswind-v3-combo
+    role: Rudder Pedals for Taildragger Ground Handling
+notes: "Unrivaled immersion in IL-2 Sturmovik: Great Battles and DCS WWII warbirds."
+

@@ -1,0 +1,10 @@
+title: Deep Space Long-Haul HOTAS
+use_case: space_hotas
+budget_tier: mid
+description: VKB STECS Standard throttle system combined with a Gladiator NXT EVO Space Combat Edition right stick.
+reasoning: For pilots who prefer traditional throttle control for long supercruise hauls while retaining analog thumbsticks on both throttle and stick for 6DOF strafing.
+items:
+  - item_type: bundle
+    id: vkb/stecs-standard-gladiator-hotas
+    role: Modular Throttle and Right-Hand Flight Stick
+notes: Customizable physical detents on STECS allow forward/reverse center detent setups.

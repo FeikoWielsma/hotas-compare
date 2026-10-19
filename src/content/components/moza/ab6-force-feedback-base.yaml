@@ -1,0 +1,95 @@
+brand: moza
+name: MOZA AB6 Force Feedback Base
+category: base
+status: current
+release_year: 2024
+handedness: n/a
+mount:
+  provides: null
+  accepts:
+    - moza-flight-qr
+controls: []
+hardware:
+  gimbal: force_feedback
+  sensor: encoder_20bit
+  axes:
+    - name: X
+      resolution_bits: 20
+      sensor: direct_drive_servo
+    - name: Y
+      resolution_bits: 20
+      sensor: direct_drive_servo
+  force_adjustable: true
+  cams_swappable: false
+  damping: active_motor
+  extension_support: false
+  throw_deg: 32
+connectivity:
+  usb: c
+  standalone_usb: true
+software: MOZA Cockpit
+physical:
+  weight_g: 2900
+  materials:
+    - aviation_aluminum
+use_case_fit:
+  modern_jet: 3
+  heli: 4
+  ww2: 4
+  ga: 3
+  airliner: 2
+  space_hotas: 3
+  space_hosas: 2
+prices:
+  - region: EU
+    currency: EUR
+    amount: 399
+    incl_vat: true
+    store: mozaracing.com
+    verified: '2026-10-01'
+    source: manual
+  - region: UK
+    currency: GBP
+    amount: 349
+    incl_vat: true
+    store: mozaracing.com
+    verified: '2026-10-01'
+    source: manual
+  - region: US
+    currency: USD
+    amount: 399
+    incl_vat: false
+    store: mozaracing.com
+    verified: '2026-10-01'
+    source: manual
+verdict:
+  author: feiko
+  hands_on: false
+  take: "MOZA's entry-level 6Nm direct drive force feedback flight base. While more accessible in price than the AB9, the lower torque headroom limits fidelity in high-G maneuvers and aerodynamic force saturation."
+  pros:
+    - "Direct drive active force feedback at lower price point"
+    - "Aviation-grade aluminum housing"
+  cons:
+    - "Noticeably less dynamic headroom and torque authority than the AB9"
+    - "Requires dedicated desk or cockpit mounting due to motor weight"
+  great_for:
+    - heli
+    - ww2
+  skip_if:
+    - "You can stretch the budget to the AB9, which provides vastly superior dynamic range and headroom"
+  scores:
+    build: 4
+    feel: 3
+    value: 3
+    software: 4
+    qc_support: 4
+external_reviews:
+  - reviewer: mysh
+    url: https://www.youtube.com/watch?v=2z54NHzy_Gc
+    summary: "Skip the MOZA AB6. The MOZA AB9 is far better and well worth the step up for force feedback fidelity."
+    tag: avoid
+    date: '2026-09-15'
+verification: draft
+sources:
+  - https://mozaracing.com
+images: []

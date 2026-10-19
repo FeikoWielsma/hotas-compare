@@ -1,0 +1,19 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Wizard from '../components/Wizard.svelte';
+import { getCatalogItems } from '../lib/catalog';
+const [items, entries] = await Promise.all([getCatalogItems(), getCollection('setups')]);
+const setups = entries.map(({ id, data }) => ({ id, data }));
+---
+<BaseLayout title="Cockpit Setup Wizard" description="Build your flight simulator cockpit with curated reference setups, regional budgets and transparent hardware recommendations.">
+  <p class="eyebrow">COCKPIT / MISSION CONFIGURATOR</p>
+  <h1>Your mission. <span>Your controls.</span></h1>
+  <p class="intro">Five steps from a blank desk to a flight plan. Find the hardware that fits the way you fly.</p>
+  <Wizard client:load {items} {setups} />
+  <noscript>Enable JavaScript to configure your cockpit. You can also <a href="/">browse the hardware catalog</a>.</noscript>
+</BaseLayout>
+<style>
+  .eyebrow { font: .7rem var(--font-mono); color: var(--hud-cyan); letter-spacing: .15em; }
+  h1 span { color: var(--accent-amber); } .intro { color: var(--text-secondary); max-width: 65ch; }
+</style>

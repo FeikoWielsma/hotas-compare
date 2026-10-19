@@ -1,0 +1,13 @@
+title: Top-Tier DCS Naval Aviator Rig
+use_case: modern_jet
+budget_tier: enthusiast
+description: WinCtrl Orion 2 F/A-18 HOTAS with finger-lift dual throttles, paired with Milan Flight Gear Crosswind V3 graphite rudder pedals and hydraulic damper.
+reasoning: True dual-engine carrier landing throttle with physical finger-lift detents and ultra-smooth cam-centered rudder pedals.
+items:
+  - item_type: bundle
+    id: winctrl/orion-2-f18-hotas
+    role: Hornet Dual Throttle and Flight Stick
+  - item_type: bundle
+    id: mfg/crosswind-v3-combo
+    role: High-Precision Composite Rudder Pedals with Damper
+notes: Ideal for DCS F/A-18C Hornet carrier ops.

@@ -1,0 +1,10 @@
+title: Mid-Range Strike Fighter HOTAS
+use_case: modern_jet
+budget_tier: mid
+description: WinCtrl Orion 2 F-16 HOTAS suite featuring an F-16EX grip with extensive hat switches and an authentic single-engine throttle with radar controls.
+reasoning: High button density, full metal construction, and dedicated avionics switches give genuine modern fighter ergonomics without high boutique custom prices.
+items:
+  - item_type: bundle
+    id: winctrl/orion-2-f16-hotas
+    role: Viper HOTAS Flight Suite
+notes: Ready for DCS F-16C Viper and Falcon BMS.

@@ -3,7 +3,7 @@ import RegionSwitcher from './RegionSwitcher.svelte';
 import type { Region } from '../lib/schema';
 interface Props { initialRegion?: Region }
 const { initialRegion } = Astro.props;
-const links = [{ href: '/', label: 'Catalog' }, { href: '/compare', label: 'Compare' }, { href: '/brands', label: 'Brands' }];
+const links = [{ href: '/', label: 'Catalog' }, { href: '/compare', label: 'Compare' }, { href: '/brands', label: 'Brands' }, { href: '/wizard', label: 'Wizard' }];
 ---
 
 <header class="navbar">
@@ -11,7 +11,6 @@ const links = [{ href: '/', label: 'Catalog' }, { href: '/compare', label: 'Comp
     <a class="brand" href="/" aria-label="HOTAS Compare home"><span class="reticle" aria-hidden="true">⊕</span> HOTAS <span class="slashes">//</span> COMPARE</a>
     <nav aria-label="Main navigation">
       {links.map(({ href, label }) => <a href={href} aria-current={Astro.url.pathname === href || Astro.url.pathname.startsWith(`${href}/`) ? 'page' : undefined}>{label}</a>)}
-      <span class="coming-soon" aria-disabled="true" title="Setup wizard coming in Phase 4">Wizard <small>Phase 4</small></span>
       <a href="https://github.com/FeikoWielsma/hotas-compare">GitHub <span aria-hidden="true">↗</span></a>
     </nav>
     <div class="tools">
@@ -49,10 +48,9 @@ const links = [{ href: '/', label: 'Catalog' }, { href: '/compare', label: 'Comp
   .brand { display: flex; align-items: center; gap: .5rem; font: 700 1rem var(--font-mono); letter-spacing: -.03em; text-decoration: none; white-space: nowrap; text-shadow: 0 0 20px var(--accent-amber-glow); }
   .reticle { color: var(--accent-amber); font-size: 1.8rem; margin-right: .25rem; } .slashes { color: var(--accent-amber); }
   nav { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; flex: 1; }
-  nav a, .coming-soon { color: var(--text-secondary); font-size: .8rem; text-decoration: none; white-space: nowrap; }
+  nav a { color: var(--text-secondary); font-size: .8rem; text-decoration: none; white-space: nowrap; }
   nav a:hover, nav a[aria-current='page'] { color: var(--accent-amber-light); }
   nav a[aria-current='page'] { text-decoration: underline; text-underline-offset: .5rem; }
-  .coming-soon { opacity: .7; } small { font: .55rem var(--font-mono); border: 1px solid var(--border-cockpit); padding: .15rem .25rem; }
   .tools { display: flex; align-items: center; gap: .75rem; }
   button { color: var(--text-secondary); border: 1px solid var(--border-cockpit); border-radius: 3px; background: transparent; padding: .65rem; font: .7rem var(--font-mono); cursor: pointer; }
   button:hover { color: var(--accent-amber); }

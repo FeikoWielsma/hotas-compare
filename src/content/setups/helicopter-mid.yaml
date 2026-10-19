@@ -1,0 +1,13 @@
+title: Rotorcraft Specialist Desktop Setup
+use_case: heli
+budget_tier: mid
+description: VKB Gladiator NXT EVO stick with dry clutches tightened for zero-center dead-stick cyclic control, paired with VKB T-Rudder Mk.V anti-torque pedals.
+reasoning: Helicopters have no centering spring in real flight; the EVO dry clutches allow the stick to stay where placed without springing back, while the vertical-push T-Rudder pedals simulate anti-torque pedals cleanly under a desk.
+items:
+  - item_type: bundle
+    id: vkb/gladiator-nxt-evo-sce-r
+    role: Damped Cyclic Stick
+  - item_type: component
+    id: vkb/t-rudder-mk5
+    role: Anti-Torque Pedals
+notes: Remove the centering springs on the EVO base and tighten the dry clutches for authentic cyclic trim.

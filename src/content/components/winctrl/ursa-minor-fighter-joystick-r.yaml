@@ -2,6 +2,7 @@ brand: winctrl
 name: Ursa Minor Fighter Joystick Right
 category: stick_fixed
 status: current
+release_year: 2024
 handedness: right
 mount:
   provides: null
@@ -13,26 +14,105 @@ controls:
     ways: 8
     push: true
     count: 2
+  - type: hat
+    ways: 4
+    push: true
+    count: 1
   - type: analog_ministick
     push: true
     count: 1
   - type: button
     count: 4
+  - type: slider
+    count: 1
+    label: Base Throttle Slider
 hardware:
-  axes: []
+  gimbal: pincer
+  sensor: contactless_magnetic
+  axes:
+    - name: X
+      resolution_bits: 16
+      sensor: contactless_magnetic
+    - name: Y
+      resolution_bits: 16
+      sensor: contactless_magnetic
+    - name: Twist_Z
+      resolution_bits: 14
+      sensor: contactless_magnetic
+  force_adjustable: false
+  cams_swappable: false
+  damping: integrated_clutches
+  extension_support: false
+  throw_deg: 36
 connectivity:
+  usb: c
   standalone_usb: true
+software: SimApp Pro
 physical:
-  materials: []
+  weight_g: 1100
+  materials:
+    - glass_fiber_nylon
+    - abs
 use_case_fit:
-  modern_jet: 4
-  heli: 3
-  ww2: 3
+  modern_jet: 5
+  heli: 4
+  ww2: 4
   ga: 3
-  airliner: 3
+  airliner: 2
   space_hotas: 4
-  space_hosas: 3
-prices: []
+  space_hosas: 4
+prices:
+  - region: EU
+    currency: EUR
+    amount: 85
+    incl_vat: true
+    store: winwing.cn
+    verified: '2026-10-01'
+    source: manual
+  - region: UK
+    currency: GBP
+    amount: 75
+    incl_vat: true
+    store: winwing.cn
+    verified: '2026-10-01'
+    source: manual
+  - region: US
+    currency: USD
+    amount: 95
+    incl_vat: false
+    store: winwing.cn
+    verified: '2026-10-01'
+    source: manual
+verdict:
+  author: feiko
+  hands_on: false
+  take: "The best budget desktop flight stick in the EU. Offers a glass-fiber pincer gimbal, contactless magnetic sensors, and lockable twist with integrated dampers for under €100."
+  pros:
+    - "Glass fiber reinforced pincer gimbal is far smoother and more durable than ball-and-cup"
+    - "Contactless magnetic sensors on primary axes and twist Z-axis"
+    - "Integrated dampers prevent oscillating bounce-back"
+    - "Outstanding price-to-performance ratio in Europe"
+  cons:
+    - "Hat switches are the known weak point and prone to wear under heavy abuse"
+    - "Software requires account login"
+  great_for:
+    - modern_jet
+    - space_hotas
+  skip_if:
+    - "You live in the US, where VKB Gladiator EVO pricing offers superior component longevity"
+  scores:
+    build: 4
+    feel: 4
+    value: 5
+    software: 3
+    qc_support: 4
+external_reviews:
+  - reviewer: mysh
+    url: https://www.youtube.com/watch?v=2z54NHzy_Gc
+    summary: "Best budget stick in EU. Glass fiber pincer gimbal, contactless sensors, lockable twist, integrated dampers. Everything else is decent; the hats are the weak spot."
+    tag: recommended
+    date: '2026-09-15'
 verification: draft
 sources:
-  - https://en.winwing.cn/en/
+  - https://winwing.cn
+images: []

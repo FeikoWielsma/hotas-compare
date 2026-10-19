@@ -32,6 +32,9 @@ export interface CatalogItem {
   handedness: string[];
   mechanics: { forceAdjustable: string; cams: string; damping: string };
   leverCount: number;
+  /** Evidence used by the wizard; absent values remain unknown. */
+  axes?: { name: string; sensor?: string }[];
+  mount?: Component['mount'];
 }
 
 /** Resolve a serialized item without requiring another content query. */
@@ -87,6 +90,8 @@ export async function loadCatalog(region: Region = 'EU', now = new Date()) {
       handedness: [...new Set(members.map((member) => member.handedness).filter((hand) => hand !== 'n/a'))],
       mechanics: { forceAdjustable: mechanical('force_adjustable'), cams: mechanical('cams_swappable'), damping: mechanical('damping') },
       leverCount: members.flatMap((member) => member.controls).reduce((sum, control) => sum + (control.type === 'lever' ? control.count : 0), 0),
+      axes: members.flatMap((member) => member.hardware?.axes ?? []),
+      mount: 'components' in data ? null : data.mount ?? null,
     };
   }
   const items = [

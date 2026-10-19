@@ -1,0 +1,10 @@
+title: Budget Space Sim Duo HOSAS
+use_case: space_hosas
+budget_tier: budget
+description: Dual Thrustmaster T.16000M FCS flight sticks providing 6DOF translational and rotational control on a tight entry budget.
+reasoning: The ambidextrous modular grip design of the T.16000M makes it the cheapest route to dual-stick space flight with 16-bit Hall effect magnetic precision on main axes.
+items:
+  - item_type: bundle
+    id: thrustmaster/t16000m-fcs-space-sim-duo
+    role: Dual 6DOF Space Flight Sticks
+notes: Great entry into Star Citizen or Elite Dangerous without breaking the bank.

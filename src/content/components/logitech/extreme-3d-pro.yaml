@@ -2,58 +2,98 @@ brand: logitech
 name: Logitech Extreme 3D Pro
 category: stick_fixed
 status: current
+release_year: 2003
 handedness: right
 mount: null
 controls:
-- type: trigger
-  stages: 1
-- type: hat
-  ways: 8
-  push: false
-- type: button
-  count: 12
-- type: lever
-  kind: throttle_single
-  analog: true
+  - type: trigger
+    stages: 1
+  - type: hat
+    ways: 8
+    push: false
+  - type: button
+    count: 12
+  - type: lever
+    kind: throttle_single
+    analog: true
 hardware:
   gimbal: ball_joint
   sensor: potentiometer
   axes:
-  - name: X
-    sensor: potentiometer
-  - name: Y
-    sensor: potentiometer
-  - name: Twist_Z
-    sensor: potentiometer
+    - name: X
+      sensor: potentiometer
+    - name: Y
+      sensor: potentiometer
+    - name: Twist_Z
+      sensor: potentiometer
 connectivity:
   usb: a_cable
   standalone_usb: true
 software: Logitech G HUB
 physical:
+  weight_g: 800
   materials:
-  - abs
+    - abs
+use_case_fit:
+  modern_jet: 2
+  heli: 2
+  ww2: 2
+  ga: 3
+  airliner: 2
+  space_hotas: 2
+  space_hosas: 2
 prices:
-- region: EU
-  currency: EUR
-  amount: 40
-  incl_vat: true
-  store: amazon.de
-  verified: '2026-10-01'
-  source: manual
-- region: UK
-  currency: GBP
-  amount: 34
-  incl_vat: true
-  store: amazon.co.uk
-  verified: '2026-10-01'
-  source: manual
-- region: US
-  currency: USD
-  amount: 42
-  incl_vat: false
-  store: amazon.com
-  verified: '2026-10-01'
-  source: manual
+  - region: EU
+    currency: EUR
+    amount: 40
+    incl_vat: true
+    store: amazon.de
+    verified: '2026-10-01'
+    source: manual
+  - region: UK
+    currency: GBP
+    amount: 34
+    incl_vat: true
+    store: amazon.co.uk
+    verified: '2026-10-01'
+    source: manual
+  - region: US
+    currency: USD
+    amount: 42
+    incl_vat: false
+    store: amazon.com
+    verified: '2026-10-01'
+    source: manual
+verdict:
+  author: feiko
+  hands_on: true
+  owned_hours: 500
+  take: "The legendary $40 entry stick. It's ancient and runs on potentiometers that will eventually wear out, but it's cheap enough to test the flight sim waters."
+  pros:
+    - "Extremely affordable and globally available"
+    - "Stable weighted base"
+    - "Built-in twist rudder and mini throttle lever"
+  cons:
+    - "Potentiometers prone to jitter and drift over time"
+    - "Stiff ball-and-cup center detent"
+    - "Phasing out from retail channels"
+  great_for:
+    - ga
+  skip_if:
+    - "You know you love flight sims and can invest $90-$160 for contactless pincer gimbals (Ursa Minor or Gladiator)"
+  scores:
+    build: 2
+    feel: 2
+    value: 4
+    software: 2
+    qc_support: 3
+external_reviews:
+  - reviewer: mysh
+    url: https://www.youtube.com/watch?v=2z54NHzy_Gc
+    summary: "Testing the waters budget tier. It's ancient, runs on potentiometers and will develop drift eventually. But it flies, and if you're not sure the hobby sticks, don't spend more than that. Being phased out."
+    tag: neutral
+    date: '2026-09-15'
 verification: draft
 sources:
-- https://www.logitechg.com/en-us/products/flight.html
+  - https://www.logitechg.com/en-us/products/flight.html
+images: []

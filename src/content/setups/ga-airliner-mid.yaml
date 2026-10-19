@@ -1,0 +1,13 @@
+title: Civil Aviation & Airliner Flight Deck
+use_case: airliner
+budget_tier: mid
+description: Honeycomb Aeronautical Alpha Yoke and Bravo Throttle Quadrant bundle paired with Charlie Rudder Pedals.
+reasoning: The benchmark civil aviation setup for MSFS and X-Plane, providing 180-degree yoke rotation, swappable commercial/GA levers, annunciator panel, and autopilot controls.
+items:
+  - item_type: bundle
+    id: honeycomb/alpha-bravo-flight-bundle
+    role: Complete Yoke and Multi-Engine Throttle Quadrant
+  - item_type: component
+    id: honeycomb/charlie-rudder-pedals
+    role: Belt-Driven Rudder Pedals with Toe Brakes
+notes: Perfect for Cessna 172 through Airbus A320 and Boeing 737 operations.

@@ -1,0 +1,100 @@
+brand: virpil
+name: VPC CDT-Aeromax Base
+category: base
+status: current
+release_year: 2026
+handedness: n/a
+mount:
+  provides: null
+  accepts:
+    - virpil-grip
+    - tm-din5
+controls: []
+hardware:
+  gimbal: cam_and_spring
+  sensor: contactless_magnetic
+  axes:
+    - name: X
+      resolution_bits: 16
+      sensor: contactless_magnetic
+    - name: Y
+      resolution_bits: 16
+      sensor: contactless_magnetic
+  force_adjustable: true
+  cams_swappable: true
+  damping: dry_clutch
+  extension_support: false
+  throw_deg: 36
+connectivity:
+  usb: c
+  standalone_usb: true
+software: VPC Configuration Tool
+physical:
+  weight_g: 1150
+  materials:
+    - aluminium
+    - steel
+use_case_fit:
+  modern_jet: 5
+  heli: 4
+  ww2: 5
+  ga: 4
+  airliner: 3
+  space_hotas: 5
+  space_hosas: 5
+prices:
+  - region: EU
+    currency: EUR
+    amount: 199
+    incl_vat: true
+    store: virpil-controls.eu
+    verified: '2026-10-01'
+    source: manual
+  - region: UK
+    currency: GBP
+    amount: 175
+    incl_vat: true
+    store: virpil-controls.eu
+    verified: '2026-10-01'
+    source: manual
+  - region: US
+    currency: USD
+    amount: 219
+    incl_vat: false
+    store: virpil-controls.us
+    verified: '2026-10-01'
+    source: manual
+verdict:
+  author: feiko
+  hands_on: false
+  take: "VIRPIL's compact all-metal cam and spring base. Bridges the gap between midrange pincer gimbals and full-size desktop cam bases with adjustable grip offset and integrated dry clutches."
+  pros:
+    - "First truly compact all-metal cam and spring gimbal"
+    - "Integrated dampers and adjustable grip offset"
+    - "Contactless digital sensors throughout"
+    - "Particularly attractive value in the EU market"
+  cons:
+    - "Check batch availability and shipping lead times"
+    - "Not intended for long stick extensions"
+  great_for:
+    - modern_jet
+    - space_hosas
+    - ww2
+  skip_if:
+    - "You need a floor/center mount with 200mm extensions (use MongoosT-50CM3)"
+  scores:
+    build: 5
+    feel: 5
+    value: 5
+    software: 4
+    qc_support: 5
+external_reviews:
+  - reviewer: mysh
+    url: https://www.youtube.com/watch?v=2z54NHzy_Gc
+    summary: "First really compact all-metal cam and spring gimbal. Sits between the Gladiators and full size bases in smoothness. Contactless everything, integrated dampers, adjustable grip offset. Especially viable in EU."
+    tag: recommended
+    date: '2026-09-15'
+verification: draft
+sources:
+  - https://virpil-controls.eu
+images: []
