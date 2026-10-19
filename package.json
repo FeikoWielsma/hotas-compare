@@ -10,6 +10,7 @@
     "dev": "astro dev",
     "build": "astro build && pnpm run index:search",
     "index:search": "pagefind --site dist/client --output-path dist/client/pagefind --glob \"**/index.html\"",
+    "deploy": "wrangler deploy",
     "preview": "astro preview",
     "astro": "astro",
     "test": "vitest run",
@@ -32,6 +33,7 @@
     "pagefind": "^1.5.2",
     "tailwindcss": "^4.3.3",
     "typescript": "^5.9.3",
-    "vitest": "^5.0.5"
+    "vitest": "^5.0.5",
+    "wrangler": "^4.151.2"
   }
 }
