@@ -14,8 +14,8 @@
 </div>
 
 <style>
-  .region-switcher { display: inline-flex; padding: 3px; gap: 2px; border: 1px solid var(--border-cockpit); background: var(--bg-cockpit); border-radius: 4px; }
-  button { border: 0; border-radius: 2px; padding: .5rem .6rem; background: transparent; color: var(--text-secondary); font: 600 .75rem var(--font-mono); cursor: pointer; white-space: nowrap; }
-  button:hover { color: var(--text-primary); background: var(--bg-panel-elevated); }
-  button[aria-pressed='true'] { color: var(--accent-amber-light); background: var(--accent-amber-glow); box-shadow: inset 0 -2px var(--accent-amber); }
+  .region-switcher { display: inline-flex; padding: 3px; gap: 2px; border: 1px solid var(--color-rule); background: var(--color-paper); border-radius: 2px; }
+  button { border: 0; border-radius: 2px; padding: .5rem .6rem; background: transparent; color: var(--color-muted); font: 600 .75rem var(--font-sans); cursor: pointer; white-space: nowrap; }
+  button:hover { color: var(--color-ink); background: var(--color-surface); }
+  button[aria-pressed='true'] { color: var(--color-accent); background: var(--color-accent-soft); box-shadow: inset 0 -2px var(--color-accent); }
 </style>

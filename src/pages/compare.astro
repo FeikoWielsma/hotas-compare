@@ -1,13 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import JournalHeader from '../components/JournalHeader.astro';
+import HardwareIcon from '../components/HardwareIcon.svelte';
 import CompareView from '../components/CompareView.svelte';
 import { getCatalogItems } from '../lib/catalog';
 const items = await getCatalogItems();
 ---
 <BaseLayout title="Compare hardware" noindex>
-  <p class="eyebrow">COCKPIT / COMPARISON MATRIX</p>
-  <h1>Compare your <span>loadout.</span></h1>
-  <p class="intro">Up to four pieces of hardware. Every axis, every input, side by side.</p>
+  <JournalHeader eyebrow="Hardware, side by side" title="The details matter." emphasis="Find your fit." description="Up to four pieces of hardware. Every axis, every input, side by side."><div class="compare-art" slot="art" aria-hidden="true"><HardwareIcon name="stick" size={60} /><span>↔</span><HardwareIcon name="throttle" size={60} /></div></JournalHeader>
   <CompareView client:load initialItems={items} />
 </BaseLayout>
-<style>.eyebrow { font: .7rem var(--font-mono); color: var(--hud-cyan); letter-spacing: .15em; } h1 span { color: var(--accent-amber); } .intro { color: var(--text-secondary); margin-bottom: 2rem; }</style>
+<style>.compare-art { display: flex; gap: 1.2rem; align-items: center; padding: 1.2rem; border: 1px solid #768896; transform: rotate(-5deg); color: #f69b70; } .compare-art span { font-size: 1.75rem; color: #c1cbd3; }</style>

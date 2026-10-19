@@ -1,7 +1,36 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-const [brands,components,bundles]=await Promise.all([getCollection('brands'),getCollection('components'),getCollection('bundles')]);
+import BrandMark from '../../components/BrandMark.svelte';
+import JournalHeader from '../../components/JournalHeader.astro';
+import { categoryLabels } from '../../lib/catalog-ui';
+const [brands, components, bundles] = await Promise.all([getCollection('brands'), getCollection('components'), getCollection('bundles')]);
+const countries: Record<string, string> = { US: 'United States', CH: 'Switzerland', HR: 'Croatia', CN: 'China', PL: 'Poland', FR: 'France', BY: 'Belarus' };
+const sorted = brands.toSorted((a, b) => a.data.name.localeCompare(b.data.name));
+const categories = (id: string) => [...new Set(components.filter(x => x.data.brand === id).map(x => categoryLabels[x.data.category]))].slice(0, 4).join(' · ');
 ---
-<BaseLayout title="Flight sim brands"><div class="wrap"><p class="eyebrow">MANUFACTURERS</p><h1>Flight sim brands</h1><div class="grid">{brands.map(({id,data:b})=><a class="card" href={`/brands/${id}`}><div class="top"><h2>{b.name}</h2>{b.former_names.map(name=><span class="pill">Formerly {name}</span>)}</div><p>{b.country ?? 'Country not listed'}{b.website && <> · <span class="site">Official website ↗</span></>}</p><p class="counts"><b>{components.filter(x=>x.data.brand===id).length}</b> components <b>{bundles.filter(x=>x.data.brand===id).length}</b> bundles</p></a>)}</div></div></BaseLayout>
-<style>.wrap{max-width:1100px;margin:auto}.eyebrow{font:.7rem var(--font-mono);letter-spacing:.12em;color:var(--accent-amber)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1rem}.card{display:block;padding:1.3rem;border:1px solid var(--border-cockpit);background:var(--bg-panel);text-decoration:none;border-radius:4px}.card:hover{border-color:var(--accent-amber)}.top{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}.top h2{margin:0}.pill{padding:.2rem .45rem;border:1px solid var(--border-cockpit);border-radius:20px;color:var(--text-secondary);font-size:.7rem}.card p{color:var(--text-secondary)}.site{color:var(--accent-amber)}.counts{display:flex;gap:.4rem;align-items:center;font-size:.8rem}.counts b{color:var(--text-primary);margin-left:.5rem}</style>
+<BaseLayout title="Flight sim brands" description="Meet the makers behind your next flight sim setup. Explore brands, flight controls and regional buying information.">
+  <JournalHeader eyebrow="Meet the makers" title="The names behind" emphasis="the feel." description="From your first flight stick to a setup built around you. Get to know the makers, explore their hardware, and find your next favorite.">
+    <div class="brand-collage" slot="art" aria-hidden="true">{['vkb','honeycomb','thrustmaster','turtle-beach'].map(brand => <BrandMark brand={brand} size={65} />)}</div>
+  </JournalHeader>
+  <div class="directory-heading"><h2>Find your kind of hardware.</h2><span>{brands.length} specialist brands</span></div>
+  <div class="brand-grid">{sorted.map(({id,data:b}) => {
+    const componentCount = components.filter(x => x.data.brand === id).length;
+    const bundleCount = bundles.filter(x => x.data.brand === id).length;
+    return <a class="brand-card" href={`/brands/${id}`}><div class="brand-top"><BrandMark brand={id} name={b.name} size={64} /><div><h2>{b.name}</h2><p class="country">{b.country ? countries[b.country] ?? b.country : 'Flight sim hardware'}</p></div></div><p class="hardware-types">{categories(id) || 'Flight sim controls and accessories'}</p><div class="card-footer"><span>{componentCount + bundleCount} products</span><strong>Explore hardware ↗</strong></div></a>;
+  })}</div>
+</BaseLayout>
+<style>
+  .brand-collage { display: grid; grid-template-columns: repeat(2,1fr); gap: .8rem; transform: rotate(-5deg); padding: .5rem; }
+  .directory-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin: 0 0 1.4rem; }
+  .directory-heading h2 { font-size: clamp(1.8rem,3vw,2.5rem); text-transform: uppercase; margin: 0; } .directory-heading > span { color: var(--color-muted); font-size: .8rem; flex: none; }
+  .brand-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1.2rem; }
+  .brand-card { display: flex; flex-direction: column; min-width: 0; border: 1px solid var(--color-rule); background: var(--color-surface); padding: 1.5rem; text-decoration: none; transition: border-color .15s; }
+  .brand-card:hover { border-color: var(--color-accent); } .brand-top { display: flex; gap: 1rem; align-items: center; }
+  .brand-top h2 { font: 600 1.15rem/1.4 var(--font-sans); margin: 0; letter-spacing: -.02em; } .country { font-size: .8rem; color: var(--color-muted); margin: .35rem 0 0; }
+  .hardware-types { font-size: .875rem; color: var(--color-muted); line-height: 1.8; margin: 1.2rem 0; }
+  .card-footer { display: flex; gap: 1rem; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid var(--color-rule); margin-top: auto; font-size: .8rem; }
+  .card-footer span { color: var(--color-muted); } .card-footer strong { color: var(--color-accent); font-weight: 500; }
+  @media(max-width:1050px) { .brand-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+  @media(max-width:600px) { .brand-grid { grid-template-columns: 1fr; } .directory-heading { align-items: start; } .brand-collage { display: flex; gap: .75rem; padding: 0; transform: none; } .brand-card { padding: 1.25rem; } .directory-heading > span { font-size: .75rem; } }
+</style>

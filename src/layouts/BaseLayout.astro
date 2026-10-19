@@ -19,7 +19,7 @@ const {
   description = 'Compare flight sticks, throttles, yokes and rudder pedals. Independent specs, regional prices and community verdicts for your next cockpit.',
   image = '/social-card.png', canonical, canonicalUrl: suppliedCanonical, jsonLd, noindex = false,
 } = Astro.props;
-const pageTitle = `${title} | HOTAS // COMPARE`;
+const pageTitle = `${title} | HOTAS Compare`;
 const canonicalUrl = new URL(suppliedCanonical ?? canonical ?? Astro.url.pathname, Astro.site ?? 'https://hotas.razortek.nl');
 // Escape HTML-sensitive characters so catalog text cannot terminate the script element.
 const structuredData = jsonLd == null ? undefined : JSON.stringify(typeof jsonLd === 'string' ? JSON.parse(jsonLd) : jsonLd).replace(/</g, '\\u003c');
@@ -28,7 +28,7 @@ const initialRegion = isRegion(cookieRegion) ? cookieRegion : regionFromCountry(
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -38,7 +38,7 @@ const initialRegion = isRegion(cookieRegion) ? cookieRegion : regionFromCountry(
     <link rel="canonical" href={canonicalUrl} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="HOTAS // COMPARE" />
+    <meta property="og:site_name" content="HOTAS Compare" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
@@ -51,9 +51,9 @@ const initialRegion = isRegion(cookieRegion) ? cookieRegion : regionFromCountry(
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <script is:inline>
-      try { document.documentElement.classList.toggle('light', localStorage.getItem('hotas_theme') === 'light'); } catch {}
+      try { document.documentElement.classList.toggle('light', localStorage.getItem('hotas_theme') !== 'dark'); } catch {}
     </script>
     <slot name="head" />
   </head>

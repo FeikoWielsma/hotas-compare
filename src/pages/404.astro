@@ -1,16 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="404 — Radar contact lost" description="Navigation drift detected. Reacquire the HOTAS hardware catalog, compare flight controls or find your next setup." noindex>
+<BaseLayout title="404 — Page not found" description="This page could not be found. Return to the hardware catalog, compare flight controls or find your next setup." noindex>
   <section class="lost">
-    <p class="telemetry">404 // RADAR CONTACT LOST — NAVIGATION DRIFT</p>
-    <div class="radar" aria-hidden="true"><span>404</span></div>
-    <h1>Contact lost.<br />Reacquire your heading.</h1>
-    <p class="message">This coordinate has no active signal. Return to the catalog or plot a new route to your next cockpit.</p>
-    <nav aria-label="Recovery navigation"><a class="primary" href="/">↗ Catalog</a><a href="/compare">Compare hardware</a><a href="/wizard">Setup wizard</a><a href="/brands">Browse brands</a></nav>
-    <p class="telemetry muted">SYSTEM STATUS: OPERATIONAL // AWAITING NEW COORDINATES</p>
+    <p class="eyebrow">404 · PAGE NOT FOUND</p>
+    <div class="number" aria-hidden="true">404</div>
+    <h1>This page isn’t in the catalog.</h1>
+    <p class="message">The address may have changed, or the page may no longer be available. Pick up where you left off.</p>
+    <nav aria-label="Helpful pages"><a class="primary" href="/">Browse the catalog <span aria-hidden="true">↗</span></a><a href="/compare">Compare hardware</a><a href="/wizard">Find a setup</a><a href="/brands">Browse brands</a></nav>
   </section>
 </BaseLayout>
 <style>
-  .lost{max-width:900px;margin:2rem auto;text-align:center}.telemetry{font:.7rem var(--font-mono);letter-spacing:.12em;color:var(--accent-amber)}.radar{height:180px;width:180px;border:1px solid var(--border-cockpit);border-radius:50%;margin:2.5rem auto;display:grid;place-items:center;background:repeating-radial-gradient(circle,transparent 0 28px,var(--border-cockpit) 29px 30px),linear-gradient(90deg,transparent 49.5%,var(--border-cockpit) 50%,transparent 50.5%),linear-gradient(transparent 49.5%,var(--border-cockpit) 50%,transparent 50.5%);box-shadow:0 0 45px var(--accent-amber-glow)}.radar span{font:700 2.8rem var(--font-mono);color:var(--accent-amber);background:var(--bg-cockpit);padding:.25rem}.message{color:var(--text-secondary);max-width:540px;margin:1.5rem auto}nav{display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem;margin:2rem 0 3rem}nav a{padding:.8rem 1.2rem;border:1px solid var(--border-cockpit);border-radius:3px;text-decoration:none;font:.8rem var(--font-mono)}nav a:hover{border-color:var(--accent-amber)}nav .primary{background:var(--accent-amber);color:var(--bg-cockpit);border-color:var(--accent-amber)}.muted{color:var(--text-secondary);font-size:.6rem}
+  .lost{max-width:760px;margin:clamp(2rem,8vw,6rem) auto;text-align:center;padding:clamp(1.5rem,5vw,3rem);border:1px solid var(--color-rule,var(--border-cockpit));background:var(--color-surface,var(--bg-panel))}.eyebrow{font-size:.875rem;color:var(--color-muted,var(--text-secondary))}.number{font:700 clamp(5rem,18vw,10rem)/.9 var(--font-display,'Barlow Condensed',sans-serif);color:var(--color-accent,var(--accent-amber));margin:1rem 0}.lost h1{font:700 clamp(2.5rem,7vw,4rem)/.98 var(--font-display,'Barlow Condensed',sans-serif);color:var(--color-ink,var(--text-primary));margin:0}.message{color:var(--color-muted,var(--text-secondary));max-width:540px;margin:1.25rem auto;line-height:1.7}nav{display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem;margin:2rem 0 0}nav a{padding:.8rem 1.2rem;border:1px solid var(--color-rule,var(--border-cockpit));text-decoration:none;font-size:.9rem;color:var(--color-ink,var(--text-primary))}nav a:hover{border-color:var(--color-accent,var(--accent-amber))}nav .primary{background:var(--color-accent,var(--accent-amber));color:var(--color-surface);border-color:var(--color-accent,var(--accent-amber))}
 </style>

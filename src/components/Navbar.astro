@@ -7,15 +7,14 @@ import type { Region } from '../lib/schema';
 interface Props { initialRegion?: Region }
 const { initialRegion } = Astro.props;
 const searchItems = (await getCatalogItems()).map(item => ({ name: item.name, brandName: item.brandName, category: item.category, prices: item.prices, formerBrandNames: item.formerBrandNames, image: item.images[0]?.file, url: detailHref(item) }));
-const links = [{ href: '/', label: 'Catalog' }, { href: '/compare', label: 'Compare' }, { href: '/brands', label: 'Brands' }, { href: '/wizard', label: 'Wizard' }];
+const links = [{ href: '/', label: 'Catalog' }, { href: '/compare', label: 'Compare' }, { href: '/brands', label: 'Brands' }, { href: '/wizard', label: 'Setup guide' }];
 ---
 
 <header class="navbar">
   <div class="nav-inner">
-    <a class="brand" href="/" aria-label="HOTAS Compare home"><span class="reticle" aria-hidden="true">⊕</span> HOTAS <span class="slashes">//</span> COMPARE</a>
+    <a class="brand" href="/" aria-label="HOTAS Compare home"><span class="wordmark">HOTAS<span>COMPARE</span></span><span class="brand-note">The independent sim hardware guide</span></a>
     <nav aria-label="Main navigation">
       {links.map(({ href, label }) => <a href={href} aria-current={Astro.url.pathname === href || Astro.url.pathname.startsWith(`${href}/`) ? 'page' : undefined}>{label}</a>)}
-      <a href="https://github.com/FeikoWielsma/hotas-compare">GitHub <span aria-hidden="true">↗</span></a>
     </nav>
     <div class="tools">
       <SearchModal initialItems={searchItems} initialRegion={initialRegion} client:load />
@@ -23,7 +22,7 @@ const links = [{ href: '/', label: 'Catalog' }, { href: '/compare', label: 'Comp
       <button type="button" id="theme-toggle" aria-label="Switch to light mode" aria-pressed="false">Light mode</button>
     </div>
   </div>
-  <div class="status-line"><span><i aria-hidden="true"></i> FLIGHT CONTROL DATABASE</span><span>COMMUNITY INTELLIGENCE <span aria-hidden="true">//</span> EU · UK · US</span></div>
+
 </header>
 
 <script>
@@ -32,8 +31,8 @@ const links = [{ href: '/', label: 'Catalog' }, { href: '/compare', label: 'Comp
     if (!button) return;
     const update = () => {
       const light = document.documentElement.classList.contains('light');
-      button.textContent = light ? 'Cockpit dark' : 'Light mode';
-      button.setAttribute('aria-label', light ? 'Switch to cockpit dark mode' : 'Switch to light mode');
+      button.textContent = light ? 'Dark mode' : 'Light mode';
+      button.setAttribute('aria-label', light ? 'Switch to dark mode' : 'Switch to light mode');
       button.setAttribute('aria-pressed', String(light));
     };
     update();
@@ -48,19 +47,21 @@ const links = [{ href: '/', label: 'Catalog' }, { href: '/compare', label: 'Comp
 </script>
 
 <style>
-  .navbar { background: var(--bg-panel); border-bottom: 1px solid var(--border-cockpit); }
-  .nav-inner { max-width: 1440px; margin: auto; padding: 1.2rem 2rem; display: flex; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
-  .brand { display: flex; align-items: center; gap: .5rem; font: 700 1rem var(--font-mono); letter-spacing: -.03em; text-decoration: none; white-space: nowrap; text-shadow: 0 0 20px var(--accent-amber-glow); }
-  .reticle { color: var(--accent-amber); font-size: 1.8rem; margin-right: .25rem; } .slashes { color: var(--accent-amber); }
-  nav { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; flex: 1; }
-  nav a { color: var(--text-secondary); font-size: .8rem; text-decoration: none; white-space: nowrap; }
-  nav a:hover, nav a[aria-current='page'] { color: var(--accent-amber-light); }
-  nav a[aria-current='page'] { text-decoration: underline; text-underline-offset: .5rem; }
-  .tools { display: flex; align-items: center; gap: .75rem; }
-  button { color: var(--text-secondary); border: 1px solid var(--border-cockpit); border-radius: 3px; background: transparent; padding: .65rem; font: .7rem var(--font-mono); cursor: pointer; }
-  button:hover { color: var(--accent-amber); }
-  .status-line { border-top: 1px solid var(--border-cockpit); display: flex; justify-content: space-between; gap: 1rem; padding: .45rem max(2rem, calc((100% - 1376px) / 2)); font: .58rem var(--font-mono); color: var(--text-secondary); letter-spacing: .12em; }
-  i { display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--accent-amber); margin-right: .5rem; box-shadow: 0 0 8px var(--accent-amber-glow); }
-  @media (max-width: 800px) { .nav-inner { padding: 1rem; gap: 1rem; } nav { order: 3; flex-basis: 100%; gap: 1rem; } .tools { margin-left: auto; } .status-line { padding: .45rem 1rem; } .status-line > span:last-child { display: none; } }
-  @media (max-width: 480px) { .tools { margin-left: 0; } .brand { flex-basis: 100%; } }
+  .navbar { background: var(--color-paper); }
+  .nav-inner { max-width: 1240px; margin: auto; padding: 1.5rem 0; display: flex; align-items: center; flex-wrap: wrap; gap: 1.5rem; border-bottom: 1px solid var(--color-ink); }
+  .brand { display: flex; flex-direction: column; gap: .35rem; text-decoration: none; flex: none; }
+  .wordmark { font: 700 2rem/.95 var(--font-display); letter-spacing: -.01em; }
+  .wordmark > span { color: var(--color-accent); }
+  .brand-note { font-size: .65rem; letter-spacing: .09em; text-transform: uppercase; color: var(--color-muted); }
+  nav { display: flex; gap: 1.3rem; flex-wrap: wrap; align-items: center; margin-left: auto; }
+  nav a { font-size: .875rem; text-decoration: none; color: var(--color-muted); white-space: nowrap; }
+  nav a:hover, nav a[aria-current='page'] { color: var(--color-accent); }
+  nav a[aria-current='page'] { text-decoration: underline; text-underline-offset: .5rem; font-weight: 600; }
+  .tools { display: flex; align-items: center; gap: .65rem; flex-wrap: wrap; }
+  button { padding: .6rem .7rem; border: 1px solid var(--color-rule); background: transparent; color: var(--color-muted); font-size: .75rem; border-radius: 2px; }
+  button:hover { color: var(--color-accent); border-color: var(--color-accent); }
+  @media (max-width: 1319px) { .nav-inner { margin-inline: 2.5rem; } }
+  @media (max-width: 1100px) { nav { order: 3; flex-basis: 100%; margin: 0; } .tools { margin-left: auto; } }
+  @media (max-width: 640px) { .nav-inner { margin-inline: 1rem; padding: 1.1rem 0; gap: 1rem; } .wordmark { font-size: 1.8rem; } nav { gap: 1.25rem; } .brand-note { font-size: .6rem; } }
+  @media (max-width: 480px) { .brand { width: 100%; } .tools { margin-left: 0; gap: .5rem; } nav { order: 2; } .tools { order: 3; } }
 </style>
