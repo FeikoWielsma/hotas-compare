@@ -89,23 +89,23 @@ controls:
   source: https://vkbsimcontrollers.com/products/stecs-space-throttle-system-max-us
 - type: button
   count: 8
-  location: panel
-  label: STEM standalone push buttons
-  source: https://vkbsimcontrollers.com/products/stecs-space-throttle-system-max-us
   backlit: false
+  location: panel
+  label: STEM push buttons A1, A2, B1-B5, C1
+  source: https://vkbsimcontrollers.com/products/stecs-space-throttle-system-max-us
 - type: toggle
   count: 2
   ways: 3
   momentary: true
   push: true
   location: panel
-  label: STEM K-switches with central push (SW1, SW2)
+  label: STEM K-switches SW1 and SW2 with central push
   source: https://vkbsimcontrollers.com/products/stecs-space-throttle-system-max-us
 - type: encoder
   count: 2
   push: true
   location: panel
-  label: STEM encoders with central push
+  label: STEM encoders EN1 and EN2 with central push
   source: https://vkbsimcontrollers.com/products/stecs-space-throttle-system-max-us
 - type: toggle
   count: 1
@@ -127,11 +127,11 @@ controls_evidence:
   coverage: complete
   source: https://vkbsimcontrollers.com/products/stecs-space-throttle-system-max-us
   checked: '2026-10-20'
-  notes: Left-hand configuration verified against product page, STG-LH template, STEM template,
-    and ATEM template. Dual throttle main axes with contactless MaRS sensors, single-stage sequential
+  notes: Left-hand configuration verified against product page, STG-LH template, ATEM template,
+    and STEM template. Dual throttle main axes with contactless MaRS sensors, single-stage sequential
     trigger, two 5-way center-push hats, two 3-way center-push hats, built-in X/Y gimbal, two non-backlit
     grip buttons, encoder wheel with push, two base buttons, 5-position rotary switch, ATEM module,
-    and STEM module. Right-hand build cataloged separately.
+    and STEM module on GNX MFH. Right-hand build cataloged separately.
 hardware:
   axis_count: 4
   gimbal: built_in_xy
@@ -146,7 +146,9 @@ hardware:
   - name: STG(y)
     sensor: contactless_magnetic
   force_adjustable: true
+  cams_swappable: false
   damping: friction
+  extension_support: false
   throw_deg: null
 connectivity:
   usb: c
@@ -160,6 +162,22 @@ prices:
   store: vkbsimcontrollers.com
   url: https://vkbsimcontrollers.com/products/stecs-space-throttle-system-max-us
   verified: '2026-10-19'
+  source: manual
+- region: EU
+  currency: EUR
+  amount: 339.0
+  incl_vat: true
+  store: flightsimcontrols.com
+  url: https://flightsimcontrols.com/product/stecs-space-throttle-system-max-left-hand/
+  verified: '2026-10-21'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 320.0
+  incl_vat: true
+  store: flightsimcontrols.co.uk
+  url: https://flightsimcontrols.co.uk/product/stecs-space-throttle-system-max-left-handed/
+  verified: '2026-10-21'
   source: manual
 verification: draft
 sources:

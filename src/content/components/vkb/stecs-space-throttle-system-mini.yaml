@@ -98,7 +98,9 @@ hardware:
   - name: STG(y)
     sensor: contactless_magnetic
   force_adjustable: true
+  cams_swappable: false
   damping: friction
+  extension_support: false
   throw_deg: null
 connectivity:
   usb: c
@@ -112,6 +114,22 @@ prices:
   store: vkbsimcontrollers.com
   url: https://vkbsimcontrollers.com/products/stecs-space-throttle-system-mini-us
   verified: '2026-10-19'
+  source: manual
+- region: EU
+  currency: EUR
+  amount: 237.0
+  incl_vat: true
+  store: flightsimcontrols.com
+  url: https://flightsimcontrols.com/product/stecs-space-throttle-system-mini-left-hand/
+  verified: '2026-10-21'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 235.0
+  incl_vat: true
+  store: flightsimcontrols.co.uk
+  url: https://flightsimcontrols.co.uk/product/stecs-space-throttle-system-mini-left-hand/
+  verified: '2026-10-21'
   source: manual
 verification: draft
 sources:

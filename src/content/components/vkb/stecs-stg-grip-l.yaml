@@ -71,6 +71,11 @@ hardware:
     sensor: contactless_magnetic
   - name: STG(y)
     sensor: contactless_magnetic
+  force_adjustable: false
+  cams_swappable: false
+  damping: null
+  extension_support: false
+  throw_deg: null
 connectivity:
   usb: none as supplied; connects through the STECS base
   standalone_usb: false
@@ -82,6 +87,22 @@ prices:
   store: vkbsimcontrollers.com
   url: https://vkbsimcontrollers.com/products/stecs-space-throttle-add-on-grip-stg-left-hand-us
   verified: '2026-10-19'
+  source: manual
+- region: EU
+  currency: EUR
+  amount: 108.0
+  incl_vat: true
+  store: flightsimcontrols.com
+  url: https://flightsimcontrols.com/product/stecs-space-throttle-add-on-grip-stg-left-hand/
+  verified: '2026-10-21'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 108.0
+  incl_vat: true
+  store: flightsimcontrols.co.uk
+  url: https://flightsimcontrols.co.uk/product/stecs-space-throttle-add-on-grip-stg-left-hand/
+  verified: '2026-10-21'
   source: manual
 verification: draft
 sources:

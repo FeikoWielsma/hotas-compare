@@ -77,23 +77,23 @@ controls:
   source: https://vkbsimcontrollers.com/products/stecs-space-throttle-system-standard-us
 - type: button
   count: 8
-  location: panel
-  label: STEM standalone push buttons
-  source: https://vkbsimcontrollers.com/products/stecs-space-throttle-system-standard-us
   backlit: false
+  location: panel
+  label: STEM push buttons A1, A2, B1-B5, C1
+  source: https://vkbsimcontrollers.com/products/stecs-space-throttle-system-standard-us
 - type: toggle
   count: 2
   ways: 3
   momentary: true
   push: true
   location: panel
-  label: STEM K-switches with central push (SW1, SW2)
+  label: STEM K-switches SW1 and SW2 with central push
   source: https://vkbsimcontrollers.com/products/stecs-space-throttle-system-standard-us
 - type: encoder
   count: 2
   push: true
   location: panel
-  label: STEM encoders with central push
+  label: STEM encoders EN1 and EN2 with central push
   source: https://vkbsimcontrollers.com/products/stecs-space-throttle-system-standard-us
 - type: toggle
   count: 1
@@ -135,7 +135,9 @@ hardware:
   - name: STG(y)
     sensor: contactless_magnetic
   force_adjustable: true
+  cams_swappable: false
   damping: friction
+  extension_support: false
   throw_deg: null
 connectivity:
   usb: c
@@ -149,6 +151,22 @@ prices:
   store: vkbsimcontrollers.com
   url: https://vkbsimcontrollers.com/products/stecs-space-throttle-system-standard-us
   verified: '2026-10-19'
+  source: manual
+- region: EU
+  currency: EUR
+  amount: 297.0
+  incl_vat: true
+  store: flightsimcontrols.com
+  url: https://flightsimcontrols.com/product/stecs-space-throttle-system-standard-left-hand/
+  verified: '2026-10-21'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 285.0
+  incl_vat: true
+  store: flightsimcontrols.co.uk
+  url: https://flightsimcontrols.co.uk/product/stecs-space-throttle-system-standard-left-handed/
+  verified: '2026-10-21'
   source: manual
 verification: draft
 sources:

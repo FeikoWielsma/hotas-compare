@@ -80,6 +80,11 @@ hardware:
     sensor: contactless_magnetic
   - name: Ministick Y
     sensor: contactless_magnetic
+  force_adjustable: false
+  cams_swappable: false
+  damping: null
+  extension_support: false
+  throw_deg: null
 connectivity:
   usb: none as supplied; connects through the STECS left-hand base
   standalone_usb: false
@@ -91,6 +96,14 @@ prices:
   store: vkbsimcontrollers.com
   url: https://vkbsimcontrollers.com/products/stecs-modern-throttle-grip-premium-combo-us
   verified: '2026-10-19'
+  source: manual
+- region: EU
+  currency: EUR
+  amount: 158.0
+  incl_vat: true
+  store: flightsimcontrols.com
+  url: https://flightsimcontrols.com/product/stecs-modern-throttle-grip-premium-combo/
+  verified: '2026-10-21'
   source: manual
 verification: draft
 sources:

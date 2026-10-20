@@ -16,6 +16,7 @@ controls:
 - type: lever
   kind: other
   analog: true
+  push: false
   button_contacts: 1
   count: 2
   location: grip
@@ -45,6 +46,7 @@ controls:
   source: https://virpil-controls.eu/constellation-vega-yoke-handle.html
 - type: button
   count: 2
+  backlit: false
   location: grip
   label: Push buttons
   source: https://virpil-controls.eu/constellation-vega-yoke-handle.html
