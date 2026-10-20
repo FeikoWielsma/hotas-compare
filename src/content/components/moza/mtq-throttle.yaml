@@ -53,11 +53,13 @@ controls_evidence:
   coverage: partial
   source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtq_throttle_panel_manual.pdf?v=1779862954
   checked: '2026-10-20'
-  notes: Verified against official MTQ manual and support article (70000679590). Ships with default TQF fighter grips
+  notes: >-
+    Verified against official MTQ manual and support article (70000679590). Ships with default TQF fighter grips
     (two throttle axes) plus independent flap and speedbrake levers (4 independent continuous axes total). Front panel
     houses 1 dedicated landing gear lever, 10 multifunction pushbuttons (6 of which are 16.7M RGB backlit), 3 rotary
-    knobs, and 17 toggle switch inputs. The "23 physical controls" marketing summary refers to grouped physical control
-    stations rather than the full itemized electrical switch total (31 total discrete inputs).
+    knobs, and 17 toggle switch inputs (EU spec table, Physical Toggle Switches 17). Itemized discrete total: 31 (10 + 3 + 17 + 1 gear lever).
+    The EU product copy says 23 physical controls and breaks it down as 10 buttons, 3 rotaries, 3 toggles and 1 gear lever (17), so
+    the 23 figure does not reconcile with its own breakdown or with the 17-toggle spec. Left unreconciled; the 31 total is the itemized count.
 verification: draft
 sources:
 - https://mozaracing.com
@@ -97,9 +99,10 @@ platform_compatibility:
   pc: supported
   xbox: unsupported
   ps5: unsupported
-  notes: 'Official product overview: "PC only". Xbox and PS5 are not named; the "PC only" line is the explicit
-    platform statement.'
+  notes: 'MOZA support article spec line "Dimensions: 216 × 166 × 198 mm | PC only | RJ11 base connection + USB". The "PC only"
+    wording is the explicit exclusion for Xbox and PS5.'
   sources:
+  - https://support.mozaracing.com/en/support/solutions/articles/70000679590-mtq-throttle-quadrant-support
   - https://mozaracing.com/products/mtq-throttle
   - https://support.mozaracing.com/en/support/solutions/articles/70000679590-mtq-throttle-quadrant-support
 hardware:

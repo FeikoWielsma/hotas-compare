@@ -22,6 +22,22 @@ prices:
   url: https://eu.mozaracing.com/products/ay210-ffb-yoke-bundle
   verified: '2026-10-20'
   source: manual
+- region: UK
+  currency: GBP
+  amount: 828
+  incl_vat: true
+  store: uk.mozaracing.com
+  url: https://uk.mozaracing.com/products/ay210-ffb-yoke-bundle
+  verified: '2026-10-21'
+  source: manual
+- region: US
+  currency: USD
+  amount: 828
+  incl_vat: false
+  store: us.mozaracing.com
+  url: https://us.mozaracing.com/products/ay210-ffb-yoke-bundle
+  verified: '2026-10-21'
+  source: manual
 platform_compatibility:
   pc: supported
   xbox: unsupported

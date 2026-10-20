@@ -24,17 +24,17 @@ controls_evidence:
   notes: 'RX Viper V3 has three analog sensed axes: rudder plus two separate toe brakes. All three axes use contactless digital sensors (13-bit) and cam loading mechanisms. No discrete buttons, hats or switches exist on the pedals.'
 hardware:
   gimbal: cam
-  sensor: contactless_magnetic
+  sensor: contactless
   axes:
   - name: Rudder
     resolution_bits: 13
-    sensor: contactless_magnetic
+    sensor: contactless
   - name: Left brake
     resolution_bits: 13
-    sensor: contactless_magnetic
+    sensor: contactless
   - name: Right brake
     resolution_bits: 13
-    sensor: contactless_magnetic
+    sensor: contactless
   force_adjustable: true
   cams_swappable: false
   damping: optional hydraulic damper (not included; mounting hardware included)
