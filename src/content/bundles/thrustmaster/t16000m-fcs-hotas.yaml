@@ -8,17 +8,19 @@ components:
 prices:
 - region: EU
   currency: EUR
-  amount: 149
+  amount: 149.99
   incl_vat: true
-  store: amazon.de
-  verified: '2026-10-01'
+  store: Thrustmaster EU eshop
+  url: https://shop.thrustmaster.com/en_eu/t-16000m-fcs-hotas.html
+  verified: '2026-10-21'
   source: manual
 - region: UK
   currency: GBP
-  amount: 129
+  amount: 99.99
   incl_vat: true
-  store: amazon.co.uk
-  verified: '2026-10-01'
+  store: Thrustmaster UK eshop
+  url: https://shop.thrustmaster.com/en_gb/t-16000m-fcs-hotas.html
+  verified: '2026-10-21'
   source: manual
 - region: US
   currency: USD

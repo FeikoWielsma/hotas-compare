@@ -19,12 +19,14 @@ mount:
   accepts: []
 controls:
 - type: trigger
+  count: 1
   location: grip
   stages: 2
   action: sequential
   label: Dual-action trigger
   source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-omni-throttle-left-hand-us
 - type: trigger
+  count: 1
   location: grip
   label: Rapid-fire trigger
   notes: Bidirectional 2-stage push/pull secondary trigger confirmed by official VKB template.
@@ -39,6 +41,7 @@ controls:
   label: Four-way hats
   source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-omni-throttle-left-hand-us
 - type: analog_ministick
+  count: 1
   location: grip
   push: true
   label: Eight-way analog ministick
@@ -60,6 +63,7 @@ controls:
   source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-omni-throttle-left-hand-us
   backlit: false
 - type: toggle
+  count: 1
   location: base
   ways: 3
   momentary: true
@@ -67,12 +71,14 @@ controls:
   source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-base-only-us
   push: false
 - type: rotary
+  count: 1
   location: base
   mode: analog
   label: Throttle wheel
   source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-base-only-us
   push: false
 - type: encoder
+  count: 1
   location: base
   label: Rotary encoder
   notes: Center push not specified by manufacturer.

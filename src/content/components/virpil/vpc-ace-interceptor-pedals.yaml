@@ -78,10 +78,11 @@ prices:
   source: manual
 - region: UK
   currency: GBP
-  amount: 334
+  amount: 339.95
   incl_vat: true
-  store: virpil-controls.eu
-  verified: '2026-10-01'
+  store: virpil-controls.co.uk
+  url: https://virpil-controls.co.uk/vpc-ace-interceptor-pedals.html
+  verified: '2026-10-21'
   source: manual
 - region: US
   currency: USD

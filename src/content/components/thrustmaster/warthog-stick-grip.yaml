@@ -73,17 +73,19 @@ use_case_fit:
 prices:
 - region: EU
   currency: EUR
-  amount: 180
+  amount: 329.99
   incl_vat: true
-  store: amazon.de
-  verified: '2026-10-01'
+  store: Thrustmaster EU eshop
+  url: https://shop.thrustmaster.com/en_eu/hotas-warthog-flight-stick.html
+  verified: '2026-10-21'
   source: manual
 - region: UK
   currency: GBP
-  amount: 155
+  amount: 269.99
   incl_vat: true
-  store: amazon.co.uk
-  verified: '2026-10-01'
+  store: Thrustmaster UK eshop
+  url: https://shop.thrustmaster.com/en_gb/hotas-warthog-flight-stick.html
+  verified: '2026-10-21'
   source: manual
 - region: US
   currency: USD

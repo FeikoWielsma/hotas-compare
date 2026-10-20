@@ -20,6 +20,7 @@ mount:
   - vkb-rev-b
 controls:
 - type: toggle
+  count: 1
   location: base
   ways: 3
   momentary: true
@@ -27,12 +28,14 @@ controls:
   source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-base-only-us
   push: false
 - type: rotary
+  count: 1
   location: base
   mode: analog
   label: Throttle wheel
   source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-base-only-us
   push: false
 - type: encoder
+  count: 1
   location: base
   label: Rotary encoder
   notes: Center push not specified by manufacturer.

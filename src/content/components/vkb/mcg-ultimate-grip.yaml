@@ -19,12 +19,14 @@ mount:
   accepts: []
 controls:
 - type: trigger
+  count: 1
   location: grip
   stages: 2
   action: sequential
   label: Main trigger
   source: https://vkbsimcontrollers.com/products/mcg-ultimate-add-on-grip-for-gunfighter-mk-iv-us
 - type: trigger
+  count: 1
   location: grip
   stages: 2
   action: flip
@@ -32,6 +34,7 @@ controls:
   notes: Two-position sensor reports flipped up/down; model as two-position flip trigger.
   source: https://vkbsimcontrollers.com/products/mcg-ultimate-add-on-grip-for-gunfighter-mk-iv-us
 - type: lever
+  count: 1
   location: grip
   kind: brake
   analog: true

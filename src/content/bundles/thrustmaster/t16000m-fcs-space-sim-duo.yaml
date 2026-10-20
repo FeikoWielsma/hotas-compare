@@ -8,17 +8,19 @@ components:
 prices:
 - region: EU
   currency: EUR
-  amount: 130
+  amount: 114.99
   incl_vat: true
-  store: amazon.de
-  verified: '2026-10-01'
+  store: Thrustmaster EU eshop
+  url: https://shop.thrustmaster.com/en_eu/t-16000m-fcs-space-sim-duo.html
+  verified: '2026-10-21'
   source: manual
 - region: UK
   currency: GBP
-  amount: 112
+  amount: 109.99
   incl_vat: true
-  store: amazon.co.uk
-  verified: '2026-10-01'
+  store: Thrustmaster UK eshop
+  url: https://shop.thrustmaster.com/en_gb/t-16000m-fcs-space-sim-duo.html
+  verified: '2026-10-21'
   source: manual
 - region: US
   currency: USD

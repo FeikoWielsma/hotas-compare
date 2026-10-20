@@ -19,6 +19,7 @@ mount:
   accepts: []
 controls:
 - type: trigger
+  count: 1
   location: grip
   label: Folding metal trigger
   notes: Historical and replica KG12 mechanism is a folding/flip single-stage trigger.
@@ -26,6 +27,7 @@ controls:
   stages: 1
   action: flip
 - type: lever
+  count: 1
   location: grip
   kind: other
   analog: false
@@ -34,17 +36,20 @@ controls:
   source: https://vkbsimcontrollers.com/products/gnx-kg12-add-on-grip-us
   push: true
 - type: hat
+  count: 1
   location: grip
   ways: 8
   label: 8-way hat switch
   source: https://vkbsimcontrollers.com/products/gnx-kg12-add-on-grip-us
   push: false
 - type: button
+  count: 1
   location: grip
   label: Bomb release button
   source: https://vkbsimcontrollers.com/products/gnx-kg12-add-on-grip-us
   backlit: false
 - type: button
+  count: 1
   location: grip
   label: Side button
   source: https://vkbsimcontrollers.com/products/gnx-kg12-add-on-grip-us

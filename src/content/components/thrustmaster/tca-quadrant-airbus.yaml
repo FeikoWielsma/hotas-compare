@@ -92,17 +92,19 @@ use_case_fit:
 prices:
 - region: EU
   currency: EUR
-  amount: 100
+  amount: 109.99
   incl_vat: true
-  store: amazon.de
-  verified: '2026-10-01'
+  store: Thrustmaster EU eshop
+  url: https://shop.thrustmaster.com/en_eu/tca-quadrant-airbus-edition.html
+  verified: '2026-10-21'
   source: manual
 - region: UK
   currency: GBP
-  amount: 86
+  amount: 99.99
   incl_vat: true
-  store: amazon.co.uk
-  verified: '2026-10-01'
+  store: Thrustmaster UK eshop
+  url: https://shop.thrustmaster.com/en_gb/tca-quadrant-airbus-edition.html
+  verified: '2026-10-21'
   source: manual
 - region: US
   currency: USD

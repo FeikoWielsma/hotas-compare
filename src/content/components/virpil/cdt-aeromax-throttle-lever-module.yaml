@@ -64,17 +64,19 @@ prices:
     source: manual
   - region: UK
     currency: GBP
-    amount: 16
+    amount: 14.95
     incl_vat: true
-    store: virpil-controls.eu
-    verified: '2026-10-01'
+    store: virpil-controls.co.uk
+    url: https://virpil-controls.co.uk/cdt-aeromax-throttle-module.html
+    verified: '2026-10-21'
     source: manual
   - region: US
     currency: USD
-    amount: 15
+    amount: 19.95
     incl_vat: false
-    store: virpil-controls.us
-    verified: '2026-10-01'
+    store: virpil-controls.us.com
+    url: https://virpil-controls.us.com/cdt-aeromax-throttle-module.html
+    verified: '2026-10-21'
     source: manual
 verdict:
   author: feiko

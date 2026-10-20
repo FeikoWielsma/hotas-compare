@@ -114,11 +114,11 @@ use_case_fit:
 prices:
   - region: EU
     currency: EUR
-    amount: 399.95
+    amount: 429.95
     incl_vat: true
     store: virpil-controls.eu
     url: https://virpil-controls.eu/vpc-vmax-prime-throttle.html
-    verified: '2026-10-19'
+    verified: '2026-10-21'
     source: manual
   - region: UK
     currency: GBP

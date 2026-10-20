@@ -61,17 +61,19 @@ prices:
     source: manual
   - region: UK
     currency: GBP
-    amount: 282
+    amount: 349.95
     incl_vat: true
-    store: virpil-controls.eu
-    verified: '2026-10-01'
+    store: virpil-controls.co.uk
+    url: https://virpil-controls.co.uk/vpc-mongoost-50cm3-base.html
+    verified: '2026-10-21'
     source: manual
   - region: US
     currency: USD
-    amount: 346
+    amount: 369.95
     incl_vat: false
-    store: virpil-controls.us
-    verified: '2026-10-01'
+    store: virpil-controls.us.com
+    url: https://virpil-controls.us.com/vpc-mongoost-50cm3-base.html
+    verified: '2026-10-21'
     source: manual
 verdict:
   author: feiko

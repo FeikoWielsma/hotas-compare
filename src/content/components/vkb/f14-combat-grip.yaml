@@ -26,12 +26,14 @@ controls:
   source: https://vkbsimcontrollers.com/products/gnx-f-14-add-on-grip-us
   ways: 4
 - type: trigger
+  count: 1
   location: grip
   stages: 2
   action: sequential
   label: Dual-stage trigger
   source: https://vkbsimcontrollers.com/products/gnx-f-14-add-on-grip-us
 - type: trigger
+  count: 1
   location: grip
   label: Emergency Autopilot Disable trigger
   notes: Manufacturer names it separately but does not specify its actuation stages.
@@ -39,6 +41,7 @@ controls:
   stages: 1
   action: sequential
 - type: lever
+  count: 1
   location: grip
   kind: other
   analog: true
@@ -46,6 +49,7 @@ controls:
   source: https://vkbsimcontrollers.com/products/gnx-f-14-add-on-grip-us
   push: false
 - type: rotary
+  count: 1
   location: grip
   mode: selector
   positions: 4

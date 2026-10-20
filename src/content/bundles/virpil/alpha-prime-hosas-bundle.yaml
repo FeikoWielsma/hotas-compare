@@ -25,17 +25,19 @@ prices:
     source: manual
   - region: UK
     currency: GBP
-    amount: 1012
+    amount: 1062.16
     incl_vat: true
-    store: virpil-controls.eu
-    verified: '2026-10-01'
+    store: virpil-controls.co.uk
+    url: https://virpil-controls.co.uk/warbrd-d-hosas-bundle-alpha-prime-edition.html
+    verified: '2026-10-21'
     source: manual
   - region: US
     currency: USD
-    amount: 1242
+    amount: 1096.16
     incl_vat: false
-    store: virpil-controls.us
-    verified: '2026-10-01'
+    store: virpil-controls.us.com
+    url: https://virpil-controls.us.com/warbrd-d-hosas-bundle-alpha-prime-edition.html
+    verified: '2026-10-21'
     source: manual
 verdict:
   author: feiko

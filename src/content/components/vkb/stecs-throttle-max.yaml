@@ -32,6 +32,7 @@ controls:
   label: MTG-R center-push hats
   source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-max-us
 - type: analog_ministick
+  count: 1
   push: true
   location: grip
   label: MTG-R 2-axis analog ministick

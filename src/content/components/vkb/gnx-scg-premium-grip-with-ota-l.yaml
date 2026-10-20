@@ -18,12 +18,14 @@ mount:
   accepts: []
 controls:
 - type: trigger
+  count: 1
   location: grip
   stages: 2
   action: sequential
   label: Main dual-action trigger
   source: https://vkbsimcontrollers.com/products/gnx-scg-premium-grip-with-ota-preinstalled-us
 - type: trigger
+  count: 1
   location: grip
   label: Rapid-fire trigger
   stages: 2
@@ -38,6 +40,7 @@ controls:
   label: Center-push hats
   source: https://vkbsimcontrollers.com/products/gnx-scg-premium-grip-with-ota-preinstalled-us
 - type: analog_ministick
+  count: 1
   push: true
   location: grip
   label: A1 analog ministick with push

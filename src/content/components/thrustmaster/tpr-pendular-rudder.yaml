@@ -67,10 +67,11 @@ prices:
   source: manual
 - region: UK
   currency: GBP
-  amount: 473
+  amount: 399.99
   incl_vat: true
-  store: amazon.co.uk
-  verified: '2026-10-01'
+  store: Thrustmaster UK eshop
+  url: https://shop.thrustmaster.com/en_gb/tpr-thrustmaster-pendular-rudder.html
+  verified: '2026-10-21'
   source: manual
 - region: US
   currency: USD

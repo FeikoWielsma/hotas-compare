@@ -8,26 +8,28 @@ components:
 prices:
 - region: EU
   currency: EUR
-  amount: 500
+  amount: 499.99
   incl_vat: true
-  store: amazon.de
-  verified: '2026-10-01'
+  store: Thrustmaster EU eshop
+  url: https://shop.thrustmaster.com/en_eu/tca-yoke-pack-boeing-edition.html
+  verified: '2026-10-21'
   source: manual
 - region: UK
   currency: GBP
-  amount: 430
+  amount: 429.99
   incl_vat: true
-  store: amazon.co.uk
-  verified: '2026-10-01'
+  store: Thrustmaster UK eshop
+  url: https://shop.thrustmaster.com/en_gb/tca-yoke-pack-boeing-edition.html
+  verified: '2026-10-21'
   source: manual
 - region: US
   currency: USD
   amount: 499.99
   incl_vat: false
   store: eshop.thrustmaster.com
-  verified: '2026-10-19'
+  verified: '2026-10-21'
   source: manual
-  url: https://eshop.thrustmaster.com/en_us/products-joysticks/yoke-pack-boeing-edition.html
+  url: https://eshop.thrustmaster.com/en_us/tca-yoke-pack-boeing-edition.html
 verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/

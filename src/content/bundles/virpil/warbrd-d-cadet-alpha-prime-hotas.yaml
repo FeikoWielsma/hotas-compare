@@ -16,7 +16,7 @@ components:
 prices:
 - region: EU
   currency: EUR
-  amount: 699.85
+  amount: 594.87
   incl_vat: true
   store: virpil-controls.eu
   url: https://virpil-controls.eu/warbrd-d-cadet-hotas-bundle-alpha-prime-edition.html
@@ -24,7 +24,7 @@ prices:
   source: manual
 - region: UK
   currency: GBP
-  amount: 759.85
+  amount: 645.87
   incl_vat: true
   store: virpil-controls.co.uk
   url: https://virpil-controls.co.uk/warbrd-d-cadet-hotas-bundle-alpha-prime-edition.html
@@ -32,7 +32,7 @@ prices:
   source: manual
 - region: US
   currency: USD
-  amount: 799.85
+  amount: 679.87
   incl_vat: false
   store: virpil-controls.us.com
   url: https://virpil-controls.us.com/warbrd-d-cadet-hotas-bundle-alpha-prime-edition.html

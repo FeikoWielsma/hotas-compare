@@ -19,12 +19,14 @@ mount:
   accepts: []
 controls:
 - type: trigger
+  count: 1
   location: grip
   stages: 2
   action: sequential
   label: Main dual-action trigger
   source: https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/
 - type: trigger
+  count: 1
   location: grip
   label: Rapid-fire trigger
   notes: Bidirectional 2-stage push/pull secondary trigger confirmed by official VKB template.
@@ -39,6 +41,7 @@ controls:
   label: Center-push hats
   source: https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/
 - type: analog_ministick
+  count: 1
   push: true
   location: grip
   label: A1 analog ministick

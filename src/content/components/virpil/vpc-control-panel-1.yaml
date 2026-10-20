@@ -101,17 +101,19 @@ prices:
   source: manual
 - region: UK
   currency: GBP
-  amount: 202
+  amount: 259.95
   incl_vat: true
-  store: virpil-controls.eu
-  verified: '2026-10-01'
+  store: virpil-controls.co.uk
+  url: https://virpil-controls.co.uk/vpc-control-panel-1.html
+  verified: '2026-10-21'
   source: manual
 - region: US
   currency: USD
-  amount: 248
+  amount: 269.95
   incl_vat: false
-  store: virpil-controls.us
-  verified: '2026-10-01'
+  store: virpil-controls.us.com
+  url: https://virpil-controls.us.com/vpc-control-panel-1.html
+  verified: '2026-10-21'
   source: manual
 verdict:
   author: feiko
