@@ -186,27 +186,27 @@ use_case_fit:
 prices:
 - region: EU
   currency: EUR
-  amount: 396
+  amount: 396.0
   incl_vat: true
   store: flightsimcontrols.com
   url: https://flightsimcontrols.com/product/stecs-throttle-system-max-mk-ii/
-  verified: '2026-10-20'
+  verified: '2026-10-21'
   source: manual
 - region: UK
   currency: GBP
-  amount: 369
+  amount: 369.0
   incl_vat: true
   store: flightsimcontrols.co.uk
-  url: https://flightsimcontrols.co.uk/product-category/controllers/page/3/
-  verified: '2026-10-20'
+  url: https://flightsimcontrols.co.uk/product/stecs-throttle-system-max-mk-ii/
+  verified: '2026-10-21'
   source: manual
 - region: US
   currency: USD
-  amount: 329
+  amount: 329.0
   incl_vat: false
   store: vkbsimcontrollers.com
   url: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-max-us
-  verified: '2026-10-19'
+  verified: '2026-10-21'
   source: manual
 verdict:
   author: feiko

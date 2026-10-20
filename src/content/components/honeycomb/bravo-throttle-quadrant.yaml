@@ -108,7 +108,7 @@ prices:
   incl_vat: true
   store: eu.flyhoneycomb.com
   url: https://eu.flyhoneycomb.com/products/bravo-throttle-quadrant
-  verified: '2026-10-19'
+  verified: '2026-10-21'
   source: manual
 - region: UK
   currency: GBP
@@ -123,7 +123,7 @@ prices:
   incl_vat: false
   store: flyhoneycomb.com
   url: https://flyhoneycomb.com/products/bravo-throttle-quadrant
-  verified: '2026-10-19'
+  verified: '2026-10-21'
   source: manual
 verification: draft
 images:

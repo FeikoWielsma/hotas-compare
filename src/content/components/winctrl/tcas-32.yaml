@@ -77,7 +77,7 @@ prices:
   incl_vat: true
   store: eu.winctrl.com
   url: https://eu.winctrl.com/view/goods-details.html?id=1865
-  verified: '2026-10-20'
+  verified: '2026-10-21'
   source: manual
 - region: US
   currency: USD
@@ -85,7 +85,7 @@ prices:
   incl_vat: false
   store: us.winwingsim.com
   url: https://us.winwingsim.com/view/goods-details.html?id=1865
-  verified: '2026-10-20'
+  verified: '2026-10-21'
   source: manual
 verification: draft
 sources: *id001

@@ -111,11 +111,11 @@ use_case_fit:
 prices:
 - region: EU
   currency: EUR
-  amount: 106
+  amount: 106.0
   incl_vat: true
   store: flightsimcontrols.com
   url: https://flightsimcontrols.com/product/f-14-stand-alone-grip-for-gladiator/
-  verified: '2026-10-20'
+  verified: '2026-10-21'
   source: manual
 - region: UK
   currency: GBP
@@ -126,11 +126,11 @@ prices:
   source: manual
 - region: US
   currency: USD
-  amount: 102
+  amount: 102.0
   incl_vat: false
   store: vkbsimcontrollers.com
   url: https://vkbsimcontrollers.com/products/gnx-f-14-add-on-grip-us
-  verified: '2026-10-19'
+  verified: '2026-10-21'
   source: manual
 verdict:
   author: feiko

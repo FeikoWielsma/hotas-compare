@@ -82,11 +82,11 @@ physical:
 prices:
 - region: US
   currency: USD
-  amount: 136
+  amount: 136.0
   incl_vat: false
   store: vkbsimcontrollers.com
   url: https://vkbsimcontrollers.com/products/mcg-pro-add-on-grip-for-gunfighter-mk-iii
-  verified: '2026-10-19'
+  verified: '2026-10-21'
   source: manual
 verification: draft
 sources:

@@ -68,7 +68,7 @@ prices:
   source: manual
 - region: UK
   currency: GBP
-  amount: 229.10
+  amount: 229.1
   incl_vat: true
   store: uk.winctrl.com
   url: https://uk.winctrl.com/p/334.html

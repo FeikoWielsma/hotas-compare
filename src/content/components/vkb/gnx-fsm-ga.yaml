@@ -47,11 +47,11 @@ software: VKBDevCfg
 prices:
 - region: US
   currency: USD
-  amount: 106
+  amount: 106.0
   incl_vat: false
   store: vkbsimcontrollers.com
   url: https://vkbsimcontrollers.com/products/gnx-fsm-ga-front-switchboard-module-general-aviation-us
-  verified: '2026-10-19'
+  verified: '2026-10-21'
   source: manual
 - region: EU
   currency: EUR

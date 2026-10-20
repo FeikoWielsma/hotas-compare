@@ -43,25 +43,27 @@ physical:
 prices:
 - region: EU
   currency: EUR
-  amount: 170
+  amount: 119.99
   incl_vat: true
-  store: amazon.de
-  verified: '2026-10-01'
+  store: logitechg.com
+  verified: '2026-10-21'
   source: manual
+  url: https://www.logitechg.com/de-de/shop/p/flight-simulator-rudder-pedals.945-000024
 - region: UK
   currency: GBP
-  amount: 146
+  amount: 99.99
   incl_vat: true
-  store: amazon.co.uk
-  verified: '2026-10-01'
+  store: logitechg.com
+  verified: '2026-10-21'
   source: manual
+  url: https://www.logitechg.com/en-gb/shop/p/flight-simulator-rudder-pedals.945-000024
 - region: US
   currency: USD
   amount: 159.99
   incl_vat: false
   store: logitechg.com
   url: https://www.logitechg.com/en-us/shop/p/flight-simulator-rudder-pedals.945-000024
-  verified: '2026-10-19'
+  verified: '2026-10-21'
   source: manual
 verification: draft
 sources:

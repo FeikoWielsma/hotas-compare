@@ -97,7 +97,7 @@ use_case_fit:
 prices:
 - region: US
   currency: USD
-  amount: 62.40
+  amount: 62.4
   incl_vat: false
   store: us.winwingsim.com
   url: https://us.winwingsim.com/p/556.html
@@ -109,7 +109,7 @@ prices:
   incl_vat: true
   store: eu.winctrl.com
   url: https://eu.winctrl.com/view/goods-details.html?id=559
-  verified: '2026-10-19'
+  verified: '2026-10-21'
   source: manual
 - region: UK
   currency: GBP

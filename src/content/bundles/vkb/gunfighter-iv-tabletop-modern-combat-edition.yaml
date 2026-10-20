@@ -18,11 +18,11 @@ components:
 prices:
 - region: US
   currency: USD
-  amount: 349.0
+  amount: 369.0
   incl_vat: false
   store: vkbsimcontrollers.com
   url: https://vkbsimcontrollers.com/products/gunfighter-iv-modern-combat-edition-tabletop-us
-  verified: '2026-10-19'
+  verified: '2026-10-21'
   source: manual
 - region: EU
   currency: EUR

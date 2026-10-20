@@ -16,11 +16,11 @@ components:
 prices:
 - region: US
   currency: USD
-  amount: 135.0
+  amount: 109.0
   incl_vat: false
   store: vkbsimcontrollers.com
   url: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-wwii-combat-edition-us
-  verified: '2026-10-19'
+  verified: '2026-10-21'
   source: manual
 - region: EU
   currency: EUR

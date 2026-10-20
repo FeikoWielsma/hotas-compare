@@ -201,7 +201,7 @@ prices:
   incl_vat: false
   store: turtlebeach.com
   url: https://www.turtlebeach.com/products/velocity-one-flight-deck
-  verified: '2026-10-20'
+  verified: '2026-10-21'
   source: manual
 - region: EU
   currency: EUR
@@ -209,7 +209,7 @@ prices:
   incl_vat: true
   store: turtlebeach.com
   url: https://de.turtlebeach.com/products/velocity-one-flight-deck
-  verified: '2026-10-20'
+  verified: '2026-10-21'
   source: manual
 - region: UK
   currency: GBP
@@ -217,7 +217,7 @@ prices:
   incl_vat: true
   store: turtlebeach.com
   url: https://uk.turtlebeach.com/products/velocity-one-flight-deck
-  verified: '2026-10-20'
+  verified: '2026-10-21'
   source: manual
 platform_compatibility:
   pc: supported

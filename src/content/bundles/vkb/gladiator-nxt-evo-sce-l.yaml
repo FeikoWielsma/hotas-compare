@@ -27,15 +27,15 @@ prices:
   incl_vat: true
   store: flightsimcontrols.co.uk
   url: https://flightsimcontrols.co.uk/product/gladiator-nxt-evo-space-combat-edition-premium-left/
-  verified: '2026-10-20'
+  verified: '2026-10-21'
   source: manual
 - region: US
   currency: USD
-  amount: 139
+  amount: 139.0
   incl_vat: false
   store: vkbsimcontrollers.com
   url: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-space-combat-edition-left-hand-us
-  verified: '2026-10-19'
+  verified: '2026-10-21'
   source: manual
 verdict:
   author: feiko

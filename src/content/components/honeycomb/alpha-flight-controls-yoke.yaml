@@ -86,7 +86,7 @@ prices:
   incl_vat: true
   store: eu.flyhoneycomb.com
   url: https://eu.flyhoneycomb.com/products/alpha-flight-controls
-  verified: '2026-10-19'
+  verified: '2026-10-21'
   source: manual
 - region: UK
   currency: GBP
@@ -101,7 +101,7 @@ prices:
   incl_vat: false
   store: flyhoneycomb.com
   url: https://flyhoneycomb.com/products/alpha-flight-controls
-  verified: '2026-10-19'
+  verified: '2026-10-21'
   source: manual
 verdict:
   author: feiko

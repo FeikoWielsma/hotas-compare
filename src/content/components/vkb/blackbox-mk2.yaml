@@ -28,7 +28,7 @@ software: VKBDevCfg
 prices:
 - region: US
   currency: USD
-  amount: 55
+  amount: 55.0
   incl_vat: false
   store: vkbsimcontrollers.com
   url: https://vkbsimcontrollers.com/products/blackbox-mk2

@@ -8,25 +8,27 @@ components:
 prices:
 - region: EU
   currency: EUR
-  amount: 240
+  amount: 139.99
   incl_vat: true
-  store: amazon.de
-  verified: '2026-10-01'
+  store: logitechg.com
+  verified: '2026-10-21'
   source: manual
+  url: https://www.logitechg.com/de-de/shop/p/flight-simulator-yoke-system.945-000023
 - region: UK
   currency: GBP
-  amount: 206
+  amount: 119.99
   incl_vat: true
-  store: amazon.co.uk
-  verified: '2026-10-01'
+  store: logitechg.com
+  verified: '2026-10-21'
   source: manual
+  url: https://www.logitechg.com/en-gb/shop/p/flight-simulator-yoke-system.945-000023
 - region: US
   currency: USD
   amount: 159.99
   incl_vat: false
   store: logitechg.com
   url: https://www.logitechg.com/en-us/shop/p/flight-simulator-yoke-system.945-000023
-  verified: '2026-10-19'
+  verified: '2026-10-21'
   source: manual
 verification: draft
 sources:

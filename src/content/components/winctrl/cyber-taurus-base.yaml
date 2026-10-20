@@ -62,7 +62,7 @@ prices:
   source: manual
 - region: US
   currency: USD
-  amount: 493.00
+  amount: 493.0
   incl_vat: false
   store: us.winwingsim.com
   url: https://us.winwingsim.com/p/5885.html

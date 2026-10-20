@@ -93,27 +93,27 @@ use_case_fit:
 prices:
 - region: EU
   currency: EUR
-  amount: 98
+  amount: 98.0
   incl_vat: true
   store: flightsimcontrols.com
   url: https://flightsimcontrols.com/product/gnx-sem-side-extension-module/
-  verified: '2026-10-20'
+  verified: '2026-10-21'
   source: manual
 - region: UK
   currency: GBP
-  amount: 99
+  amount: 99.0
   incl_vat: true
   store: flightsimcontrols.co.uk
   url: https://flightsimcontrols.co.uk/product/gnx-sem-side-extension-module/
-  verified: '2026-10-20'
+  verified: '2026-10-21'
   source: manual
 - region: US
   currency: USD
-  amount: 79
+  amount: 79.0
   incl_vat: false
   store: vkbsimcontrollers.com
   url: https://vkbsimcontrollers.com/products/gnx-sem-side-extension-module-us
-  verified: '2026-10-19'
+  verified: '2026-10-21'
   source: manual
 verdict:
   author: feiko

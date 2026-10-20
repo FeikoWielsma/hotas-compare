@@ -107,7 +107,7 @@ prices:
   incl_vat: true
   store: eu.flyhoneycomb.com
   url: https://eu.flyhoneycomb.com/products/foxtrot-aviation-stick
-  verified: '2026-10-19'
+  verified: '2026-10-21'
   source: manual
 - region: US
   currency: USD
@@ -115,7 +115,7 @@ prices:
   incl_vat: false
   store: flyhoneycomb.com
   url: https://flyhoneycomb.com/products/foxtrot-aviation-stick
-  verified: '2026-10-19'
+  verified: '2026-10-21'
   source: manual
 verification: draft
 images:

@@ -45,7 +45,7 @@ prices:
   incl_vat: false
   store: vkbsimcontrollers.com
   url: https://vkbsimcontrollers.com/products/stecs-atem-auxiliary-throttle-extension-module-us
-  verified: '2026-10-19'
+  verified: '2026-10-21'
   source: manual
 - region: EU
   currency: EUR
@@ -57,7 +57,7 @@ prices:
   source: manual
 - region: UK
   currency: GBP
-  amount: 39
+  amount: 39.0
   incl_vat: true
   store: flightsimcontrols.co.uk
   url: https://flightsimcontrols.co.uk/product/stecs-atem-auxiliary-throttle-extension-module/

@@ -19,15 +19,15 @@ components:
 prices:
 - region: US
   currency: USD
-  amount: 115.0
+  amount: 173.0
   incl_vat: false
   store: vkbsimcontrollers.com
   url: https://vkbsimcontrollers.com/products/gnx-wwii-throttle-combo-us
-  verified: '2026-10-19'
+  verified: '2026-10-21'
   source: manual
 - region: EU
   currency: EUR
-  amount: 205
+  amount: 205.0
   incl_vat: true
   store: flightsimcontrols.com
   url: https://flightsimcontrols.com/product/gnx-wwii-throttle/
@@ -35,7 +35,7 @@ prices:
   source: manual
 - region: UK
   currency: GBP
-  amount: 219
+  amount: 219.0
   incl_vat: true
   store: flightsimcontrols.co.uk
   url: https://flightsimcontrols.co.uk/product/gnx-wwii-throttle/

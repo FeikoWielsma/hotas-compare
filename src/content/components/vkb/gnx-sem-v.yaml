@@ -75,11 +75,11 @@ software: VKBDevCfg
 prices:
 - region: US
   currency: USD
-  amount: 83
+  amount: 83.0
   incl_vat: false
   store: vkbsimcontrollers.com
   url: https://vkbsimcontrollers.com/products/gnx-sem-v-side-extension-module-vertical-us
-  verified: '2026-10-19'
+  verified: '2026-10-21'
   source: manual
 - region: EU
   currency: EUR

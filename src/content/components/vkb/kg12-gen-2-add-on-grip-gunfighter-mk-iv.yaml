@@ -75,11 +75,11 @@ prices:
   incl_vat: false
   store: vkbsimcontrollers.com
   url: https://vkbsimcontrollers.com/products/kg12-gf-gen-2-add-on-grip-for-gunfighter-iv-us
-  verified: '2026-10-19'
+  verified: '2026-10-21'
   source: manual
 - region: EU
   currency: EUR
-  amount: 89
+  amount: 89.0
   incl_vat: true
   store: flightsimcontrols.com
   url: https://flightsimcontrols.com/product/kg12-gf-gen-2-grip/

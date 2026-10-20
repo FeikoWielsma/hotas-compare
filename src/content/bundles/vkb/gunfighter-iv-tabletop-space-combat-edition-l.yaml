@@ -18,15 +18,15 @@ components:
 prices:
 - region: US
   currency: USD
-  amount: 319.0
+  amount: 339.0
   incl_vat: false
   store: vkbsimcontrollers.com
   url: https://vkbsimcontrollers.com/products/gunfighter-iv-space-combat-edition-tabletop-left-hand-us
-  verified: '2026-10-19'
+  verified: '2026-10-21'
   source: manual
 - region: EU
   currency: EUR
-  amount: 427
+  amount: 427.0
   incl_vat: true
   store: flightsimcontrols.com
   url: https://flightsimcontrols.com/product/gunfighter-iv-space-combat-edition-premium/

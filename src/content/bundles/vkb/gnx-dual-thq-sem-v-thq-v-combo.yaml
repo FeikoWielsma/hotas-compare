@@ -20,15 +20,15 @@ components:
 prices:
 - region: US
   currency: USD
-  amount: 324.0
+  amount: 310.0
   incl_vat: false
   store: vkbsimcontrollers.com
   url: https://vkbsimcontrollers.com/products/gnx-dual-thq-sem-v-thq-v-combo-us
-  verified: '2026-10-19'
+  verified: '2026-10-21'
   source: manual
 - region: EU
   currency: EUR
-  amount: 469
+  amount: 469.0
   incl_vat: true
   store: flightsimcontrols.com
   url: https://flightsimcontrols.com/product/gnx-dual-thq-thq-v-sem-combo/

@@ -128,27 +128,27 @@ use_case_fit:
 prices:
 - region: EU
   currency: EUR
-  amount: 243
+  amount: 243.0
   incl_vat: true
   store: flightsimcontrols.com
   url: https://flightsimcontrols.com/product/stecs-throttle-system-mini-mk-ii/
-  verified: '2026-10-20'
+  verified: '2026-10-21'
   source: manual
 - region: UK
   currency: GBP
-  amount: 235
+  amount: 235.0
   incl_vat: true
   store: flightsimcontrols.co.uk
   url: https://flightsimcontrols.co.uk/product/stecs-throttle-system-mini-mk-ii/
-  verified: '2026-10-20'
+  verified: '2026-10-21'
   source: manual
 - region: US
   currency: USD
-  amount: 209
+  amount: 209.0
   incl_vat: false
   store: vkbsimcontrollers.com
   url: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-mini-us
-  verified: '2026-10-19'
+  verified: '2026-10-21'
   source: manual
 verdict:
   author: feiko

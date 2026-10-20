@@ -91,11 +91,11 @@ use_case_fit:
 prices:
 - region: EU
   currency: EUR
-  amount: 103
+  amount: 103.0
   incl_vat: true
   store: flightsimcontrols.com
   url: https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/
-  verified: '2026-10-20'
+  verified: '2026-10-21'
   source: manual
 - region: UK
   currency: GBP

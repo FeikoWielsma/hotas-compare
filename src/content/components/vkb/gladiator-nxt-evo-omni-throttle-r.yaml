@@ -138,27 +138,27 @@ use_case_fit:
 prices:
 - region: EU
   currency: EUR
-  amount: 209
+  amount: 209.0
   incl_vat: true
   store: flightsimcontrols.com
   url: https://flightsimcontrols.com/product/gladiator-nxt-evo-omni-throttle/
-  verified: '2026-10-20'
+  verified: '2026-10-21'
   source: manual
 - region: UK
   currency: GBP
-  amount: 207
+  amount: 207.0
   incl_vat: true
   store: flightsimcontrols.co.uk
   url: https://flightsimcontrols.co.uk/product/gladiator-nxt-evo-omni-throttle-left/
-  verified: '2026-10-20'
+  verified: '2026-10-21'
   source: manual
 - region: US
   currency: USD
-  amount: 149
+  amount: 149.0
   incl_vat: false
   store: vkbsimcontrollers.com
   url: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-omni-throttle-left-hand-us
-  verified: '2026-10-19'
+  verified: '2026-10-21'
   source: manual
 verdict:
   author: feiko

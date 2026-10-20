@@ -54,11 +54,11 @@ use_case_fit:
 prices:
 - region: EU
   currency: EUR
-  amount: 319
+  amount: 319.0
   incl_vat: true
   store: flightsimcontrols.com
   url: https://flightsimcontrols.com/product/gunfighter-iv-base-only/
-  verified: '2026-10-20'
+  verified: '2026-10-21'
   source: manual
 - region: UK
   currency: GBP
@@ -73,7 +73,7 @@ prices:
   incl_vat: false
   store: vkbsimcontrollers.com
   url: https://vkbsimcontrollers.com/products/gunfighter-mk-iv-base-only-us
-  verified: '2026-10-19'
+  verified: '2026-10-21'
   source: manual
 verdict:
   author: feiko

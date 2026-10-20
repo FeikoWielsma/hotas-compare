@@ -12,7 +12,7 @@ prices:
   incl_vat: false
   store: turtlebeach.com
   url: https://www.turtlebeach.com/products/velocity-one-hotas?Platform=Xbox
-  verified: '2026-10-20'
+  verified: '2026-10-21'
   source: manual
 - region: EU
   currency: EUR
