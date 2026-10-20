@@ -10,26 +10,39 @@ controls:
 - type: trigger
   location: grip
   count: 1
-  label: Trigger (stage count not stated)
+  stages: 2
+  label: Two-stage trigger
+  source: https://support.mozaracing.com/en/support/solutions/articles/70000679587-moza-mh16-flightstick-support
+- type: button
+  location: grip
+  count: 3
+  label: Weapon release, NWS and FOV buttons
   source: https://support.mozaracing.com/en/support/solutions/articles/70000679587-moza-mh16-flightstick-support
 - type: hat
   location: grip
-  ways: 8
-  count: 1
-  label: ALPS 8-way hat
+  count: 2
+  label: Trim switch and DMS cross switch
+  source: https://support.mozaracing.com/en/support/solutions/articles/70000679587-moza-mh16-flightstick-support
+- type: switch
+  location: grip
+  count: 2
+  label: TMS and CMS switches (mechanism not identified in diagram)
   source: https://support.mozaracing.com/en/support/solutions/articles/70000679587-moza-mh16-flightstick-support
 - type: lever
   location: grip
   kind: other
   analog: false
   count: 1
-  label: Paddle lever (binary input)
+  label: Paddle switch (binary input)
   source: https://support.mozaracing.com/en/support/solutions/articles/70000679587-moza-mh16-flightstick-support
 controls_evidence:
   coverage: partial
   source: https://support.mozaracing.com/en/support/solutions/articles/70000679587-moza-mh16-flightstick-support
   checked: '2026-10-19'
-  notes: Core grip has a trigger (stage count not stated on the official page), 8-way ALPS hat, and binary paddle.
+  notes: >-
+    Counted from the MH16 user manual diagram (page 2, 170 dpi and 400 dpi crops) and the Chinese page 7 list
+    (two-stage trigger). Core grip has nine labelled controls: weapon release, NWS and FOV buttons, trigger, trim
+    switch and DMS (hats), TMS and CMS (type not identified), paddle.
     MOZA describes a detachable side expansion (5-way hat + 3-position selector) that is not in the box list and is
     not stated as included or sold separately, so those controls are excluded. The official page gives 30 programmable
     inputs on the product page and 27 in the overview; neither is treated as a physical-control count.
@@ -69,6 +82,14 @@ prices:
   incl_vat: false
   store: us.mozaracing.com
   url: https://us.mozaracing.com/products/mh16-flightstick
+  verified: '2026-10-20'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 139
+  incl_vat: true
+  store: uk.mozaracing.com
+  url: https://uk.mozaracing.com/products/mh16-flightstick
   verified: '2026-10-20'
   source: manual
 verification: draft

@@ -1,0 +1,84 @@
+brand: winctrl
+name: Ursa Minor Space Joystick Right
+category: stick_fixed
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official listing or manual establishes computer USB or SimAppPro use. No exact product source
+    reviewed here establishes Xbox or PS5 support or incompatibility.
+  sources: &id001
+  - https://eu.winctrl.com/static/download/QmRCiq3fVwnXeQQu4re2geG4oPFSPxYYCbjtFGE9WR1CXJ?filename=URSA-MINOR-Space-Joystick-R-User-Manual-V1.3.pdf
+  - https://eu.winctrl.com/view/goods-details.html?id=552
+status: current
+handedness: right
+mount:
+  provides: null
+  accepts: []
+controls:
+- type: button
+  count: 14
+  location: base
+  label: Button switches
+  source: https://eu.winctrl.com/static/download/QmRCiq3fVwnXeQQu4re2geG4oPFSPxYYCbjtFGE9WR1CXJ?filename=URSA-MINOR-Space-Joystick-R-User-Manual-V1.3.pdf
+- type: hat
+  count: 1
+  location: grip
+  label: HAT
+  source: https://eu.winctrl.com/static/download/QmRCiq3fVwnXeQQu4re2geG4oPFSPxYYCbjtFGE9WR1CXJ?filename=URSA-MINOR-Space-Joystick-R-User-Manual-V1.3.pdf
+- type: analog_ministick
+  count: 1
+  location: grip
+  label: Mini joystick
+  source: https://eu.winctrl.com/static/download/QmRCiq3fVwnXeQQu4re2geG4oPFSPxYYCbjtFGE9WR1CXJ?filename=URSA-MINOR-Space-Joystick-R-User-Manual-V1.3.pdf
+- type: slider
+  count: 1
+  analog: true
+  location: base
+  label: 38 mm potentiometer slider
+  source: https://eu.winctrl.com/static/download/QmRCiq3fVwnXeQQu4re2geG4oPFSPxYYCbjtFGE9WR1CXJ?filename=URSA-MINOR-Space-Joystick-R-User-Manual-V1.3.pdf
+controls_evidence:
+  coverage: partial
+  source: https://eu.winctrl.com/static/download/QmRCiq3fVwnXeQQu4re2geG4oPFSPxYYCbjtFGE9WR1CXJ?filename=URSA-MINOR-Space-Joystick-R-User-Manual-V1.3.pdf
+  checked: '2026-10-20'
+  notes: V1.3 space-right manual states 14 button switches, a HAT and a 38 mm slider. Mini-joystick calibration
+    is in the same manual family. Published mass is 0.98 kg.
+hardware:
+  throw_deg: 30
+  axes:
+  - name: X
+  - name: Y
+  - name: Twist
+  - name: Throttle
+connectivity:
+  standalone_usb: true
+prices:
+- region: EU
+  currency: EUR
+  amount: 118.6
+  incl_vat: true
+  store: eu.winctrl.com
+  url: https://eu.winctrl.com/view/goods-details.html?id=552
+  verified: '2026-10-20'
+  source: manual
+- region: US
+  currency: USD
+  amount: 123.55
+  incl_vat: false
+  store: us.winwingsim.com
+  url: https://us.winwingsim.com/view/goods-details.html?id=552
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources: *id001
+images:
+- file: /images/winctrl/ursa-minor-space-joystick-r.jpg
+  source: https://eu.winctrl.com/view/goods-details.html?id=552
+  caption: Ursa Minor Space Joystick Right
+software: SimApp Pro
+physical:
+  weight_g: 980
+  dimensions_mm:
+  - 227
+  - 217
+  - 228

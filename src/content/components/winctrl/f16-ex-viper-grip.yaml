@@ -36,6 +36,7 @@ controls:
     source: https://eu.winctrl.com/view/goods-details.html?id=314
   - type: button
     count: 2
+    backlit: false
     label: Physical switches
     source: https://eu.winctrl.com/view/goods-details.html?id=341
 controls_evidence:
@@ -58,7 +59,8 @@ connectivity:
   standalone_usb: false
 software: SimApp Pro
 physical:
-  weight_g: 480
+  weight_g: 700
+  dimensions_mm: [106, 133, 191]
   materials:
     - abs
     - aluminium
@@ -118,7 +120,7 @@ verdict:
     qc_support: 4
 external_reviews:
   - reviewer: mysh
-    url: https://youtube.com/watch?v=sample-viper-grip
+    url: https://youtube.com/watch?sample-viper-grip
     summary: "The go-to grip for DCS F-16 pilots. EX head expansion makes it versatile across other jets."
     tag: recommended
     date: '2024-03-25'

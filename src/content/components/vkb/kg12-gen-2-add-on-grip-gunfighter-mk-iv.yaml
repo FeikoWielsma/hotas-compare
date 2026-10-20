@@ -1,0 +1,86 @@
+brand: vkb
+name: KG12 GF (Gen.2) Add-On Grip for Gunfighter IV
+category: grip
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs
+    and not compatible with Xbox, PS5, Apple or other platforms. Requires a compatible
+    Gunfighter Mk.IV base on Windows PC.
+  sources:
+  - https://vkbsimcontrollers.com/products/kg12-gf-gen-2-add-on-grip-for-gunfighter-iv-us
+  - https://vkb-sim.com.au/collections/all-controllers
+status: current
+handedness: right
+mount:
+  provides: vkb-rev-c
+  accepts: []
+controls:
+- type: trigger
+  count: 1
+  action: flip
+  stages: 1
+  location: grip
+  label: Folding metal trigger
+  source: https://vkbsimcontrollers.com/products/kg12-gf-gen-2-add-on-grip-for-gunfighter-iv-us
+- type: button
+  count: 1
+  backlit: false
+  location: grip
+  label: Pinky metal lever button
+  source: https://vkbsimcontrollers.com/products/kg12-gf-gen-2-add-on-grip-for-gunfighter-iv-us
+- type: button
+  count: 1
+  backlit: false
+  location: grip
+  label: Bomb release button
+  source: https://vkbsimcontrollers.com/products/kg12-gf-gen-2-add-on-grip-for-gunfighter-iv-us
+- type: hat
+  count: 1
+  ways: 8
+  push: false
+  location: grip
+  label: 8-way HAT switch without push
+  source: https://vkbsimcontrollers.com/products/kg12-gf-gen-2-add-on-grip-for-gunfighter-iv-us
+- type: button
+  count: 1
+  backlit: false
+  location: grip
+  label: Side button
+  source: https://vkbsimcontrollers.com/products/kg12-gf-gen-2-add-on-grip-for-gunfighter-iv-us
+controls_evidence:
+  coverage: complete
+  source: https://vkbsimcontrollers.com/products/kg12-gf-gen-2-add-on-grip-for-gunfighter-iv-us
+  checked: '2026-10-20'
+  notes: Inventory verified against official VKB product page (folding metal trigger,
+    pinky metal lever button, bomb release button, 8-way hat switch without push,
+    side button, lockable twist adapter with MaRS sensor). Gunfighter Mk.IV connector
+    (Rev.C).
+hardware:
+  axis_count: 1
+  gimbal: null
+  sensor: contactless_magnetic
+  axes:
+  - name: Twist (Z)
+    sensor: contactless_magnetic
+connectivity:
+  usb: none as supplied; connects through the Gunfighter Mk.IV base
+  standalone_usb: false
+software: VKBDevCfg
+prices:
+- region: US
+  currency: USD
+  amount: 59.5
+  incl_vat: false
+  store: vkbsimcontrollers.com
+  url: https://vkbsimcontrollers.com/products/kg12-gf-gen-2-add-on-grip-for-gunfighter-iv-us
+  verified: '2026-10-19'
+  source: manual
+verification: draft
+sources:
+- https://vkbsimcontrollers.com/products/kg12-gf-gen-2-add-on-grip-for-gunfighter-iv-us
+images:
+- file: /images/vkb/kg12-gen-2-add-on-grip-gunfighter-mk-iv.jpg
+  source: https://vkbsimcontrollers.com/products/kg12-gf-gen-2-add-on-grip-for-gunfighter-iv-us
+  caption: KG12 GF (Gen.2) Add-On Grip for Gunfighter IV

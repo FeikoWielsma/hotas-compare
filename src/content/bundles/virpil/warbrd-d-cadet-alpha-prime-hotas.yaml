@@ -1,0 +1,20 @@
+brand: virpil
+name: WarBRD-D CADET HOTAS Bundle – Alpha Prime Edition
+category: hotas_bundle
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: The official bundle listing identifies PC as the platform.
+  sources:
+    - https://virpil-controls.eu/warbrd-d-cadet-hotas-bundle-alpha-prime-edition.html
+status: current
+components:
+  - virpil/warbrd-d-base
+  - virpil/constellation-alpha-prime-r
+  - virpil/cdt-vmax-throttle
+prices: []
+verification: draft
+sources:
+  - https://virpil-controls.eu/warbrd-d-cadet-hotas-bundle-alpha-prime-edition.html
+images: []

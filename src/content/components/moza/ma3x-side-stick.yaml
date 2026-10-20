@@ -12,6 +12,7 @@ controls_evidence:
     spec identifies an 8-way ALPS hat but does not establish center push; omitted as unknown.
 connectivity:
   standalone_usb: false
+software: MOZA Cockpit
 physical:
   weight_g: 220
   materials:
@@ -34,11 +35,31 @@ prices:
   url: https://eu.mozaracing.com/products/ma3x-sidestick
   verified: '2026-10-19'
   source: manual
+- region: UK
+  currency: GBP
+  amount: 79
+  incl_vat: true
+  store: uk.mozaracing.com
+  url: https://uk.mozaracing.com/products/ma3x-sidestick
+  verified: '2026-10-20'
+  source: manual
+- region: US
+  currency: USD
+  amount: 79
+  incl_vat: false
+  store: us.mozaracing.com
+  url: https://us.mozaracing.com/products/ma3x-sidestick
+  verified: '2026-10-20'
+  source: manual
 controls:
+- type: button
+  location: grip
+  count: 1
+  label: A/P button
 - type: trigger
   location: grip
   count: 1
-  label: Trigger
+  label: Trigger (MIC push-to-talk)
   source: https://support.mozaracing.com/en/support/solutions/articles/70000679588-moza-ma3x-side-stick-support
 - type: hat
   location: grip

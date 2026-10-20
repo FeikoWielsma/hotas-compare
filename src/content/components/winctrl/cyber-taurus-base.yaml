@@ -1,51 +1,68 @@
 brand: winctrl
-name: Cyber Taurus Force Feedback Flight Stick Base
+name: Cyber Taurus Joystick Base E.B.29
 category: base
 platform_compatibility:
   pc: supported
   xbox: unknown
   ps5: unknown
-  notes: Official listing/manual establishes computer USB use; no exact product source establishes Xbox or PS5 support or incompatibility.
-  sources:
-    - https://eu.winctrl.com/static/download/QmPeEHsVbPU2BfDBwXPwzQwoVGrafx6ZsvGdxBVS5WGF8b?filename=WINCTRL+Cyber+Taurus+Joystick+Base+User+Manual+20260430.pdf
+  notes: Official listing or manual establishes computer USB or SimAppPro use. No exact product source
+    reviewed here establishes Xbox or PS5 support or incompatibility.
+  sources: &id001
+  - https://eu.winctrl.com/static/download/QmPeEHsVbPU2BfDBwXPwzQwoVGrafx6ZsvGdxBVS5WGF8b?filename=WINCTRL-Cyber-Taurus-Joystick-Base-User-Manual-20260430.pdf
+  - https://eu.winctrl.com/view/goods-details.html?id=5205
 status: current
 handedness: n/a
 mount:
   provides: null
   accepts:
-    - winctrl-grip
+  - winctrl-grip
 controls:
-  - type: button
-    location: base
-    count: 1
-    label: Power button
-    source: https://eu.winctrl.com/static/download/QmPeEHsVbPU2BfDBwXPwzQwoVGrafx6ZsvGdxBVS5WGF8b?filename=WINCTRL+Cyber+Taurus+Joystick+Base+User+Manual+20260430.pdf
+- type: button
+  count: 1
+  location: base
+  backlit: false
+  label: Power button
+  source: https://eu.winctrl.com/static/download/QmPeEHsVbPU2BfDBwXPwzQwoVGrafx6ZsvGdxBVS5WGF8b?filename=WINCTRL-Cyber-Taurus-Joystick-Base-User-Manual-20260430.pdf
 controls_evidence:
   coverage: complete
-  source: https://eu.winctrl.com/static/download/QmPeEHsVbPU2BfDBwXPwzQwoVGrafx6ZsvGdxBVS5WGF8b?filename=WINCTRL+Cyber+Taurus+Joystick+Base+User+Manual+20260430.pdf
-  checked: '2026-10-19'
-  notes: >-
-    Manual lists one power button on the base, plus a second power button only on the slave interface marked for applicable configurations. The base axes are not buttons; emergency-stop RJ4P4C ports are connectors, not physical switches. Treat this inventory as one installed base power button; exact motor variant affects interfaces, not this control.
+  source: https://eu.winctrl.com/static/download/QmPeEHsVbPU2BfDBwXPwzQwoVGrafx6ZsvGdxBVS5WGF8b?filename=WINCTRL-Cyber-Taurus-Joystick-Base-User-Manual-20260430.pdf
+  checked: '2026-10-20'
+  notes: This record is chassis CT.JB.E.B.29.MET.1 (EU goods 5205). Pitch and roll are ±15°. Peak torque
+    is 29 N·m in direction A. E.B.82 and E.D.16 are separate records. The GB listing uses the same goods
+    code and is not a second chassis.
 hardware:
+  gimbal: force_feedback
   axes:
-    - name: X
-    - name: Y
+  - name: X
+  - name: Y
+  force_adjustable: true
+  cams_swappable: false
+  extension_support: true
+  throw_deg: 30
 connectivity:
+  usb: b
   standalone_usb: true
+software: SimApp Pro
 physical:
-  materials: []
-use_case_fit:
-  modern_jet: 4
-  heli: 3
-  ww2: 3
-  ga: 3
-  airliner: 3
-  space_hotas: 4
-  space_hosas: 3
-prices: []
+  weight_g: 11500
+  dimensions_mm:
+  - 267
+  - 166
+  - 342
+  materials:
+  - metal
+prices:
+- region: EU
+  currency: EUR
+  amount: 473.27
+  incl_vat: true
+  store: eu.winctrl.com
+  url: https://eu.winctrl.com/view/goods-details.html?id=5205
+  verified: '2026-10-20'
+  source: manual
 verification: draft
-sources:
-  - https://eu.winctrl.com/view/shopping.html
-  - https://eu.winctrl.com/static/download/QmPeEHsVbPU2BfDBwXPwzQwoVGrafx6ZsvGdxBVS5WGF8b?filename=WINCTRL+Cyber+Taurus+Joystick+Base+User+Manual+20260430.pdf
-
-images: []
+sources: *id001
+images:
+- file: /images/winctrl/cyber-taurus-base.jpg
+  source: https://eu.winctrl.com/view/goods-details.html?id=5205
+  caption: Cyber Taurus Joystick Base E.B.29

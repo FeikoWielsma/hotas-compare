@@ -10,11 +10,14 @@ controls:
     analog: true
     push: true
     count: 3
+    location: panel
     label: Detachable-knob levers
     notes: Each lever has a bottom-travel detent that produces a button input; represented by push on each lever and also described by the detent group.
     source: https://www.logitech.com/assets/65155/2/flight-throttle-quadrant.pdf
   - type: detent
     count: 3
+    customizable: false
+    location: panel
     label: Lever bottom detents
     notes: Each lever detent actuates a button at full-down position.
     source: https://www.logitech.com/assets/65155/2/flight-throttle-quadrant.pdf
@@ -22,6 +25,7 @@ controls:
     location: base
     count: 3
     analog: false
+    push: false
     label: Three 2-way base rocker switches
     notes: Each rocker has two digital directions; six commands are not six separate pushbuttons.
     source: https://www.logitech.com/assets/65155/2/flight-throttle-quadrant.pdf
@@ -40,11 +44,16 @@ hardware:
     sensor: potentiometer
   - name: Throttle_3
     sensor: potentiometer
+  force_adjustable: false
+  cams_swappable: false
+  extension_support: false
 connectivity:
   usb: a_cable
   standalone_usb: true
 software: Logitech G HUB
 physical:
+  weight_g: 501
+  dimensions_mm: [175, 175, 90]
   materials:
   - abs
 prices:
@@ -73,6 +82,7 @@ prices:
 verification: draft
 sources:
 - https://www.logitechg.com/en-us/products/flight.html
+- https://www.logitechg.com/en-us/shop/p/flight-simulator-throttle-quadrant.945-000032
 images:
   - file: /images/logitech/g-saitek-pro-flight-throttle-quadrant.png
     source: https://www.logitechg.com/en-us/shop/p/flight-simulator-throttle-quadrant.945-000032

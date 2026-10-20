@@ -20,12 +20,13 @@ physical:
   - 50
   - 120
   - 89
+hardware:
+  axis_count: 0
 controls_evidence:
-  coverage: partial
+  coverage: complete
   source: https://www.thrustmaster.com/nl-nl/products/omni-extension/
   checked: '2026-10-20'
-  notes: Mechanical extension for an omnidirectional left-stick configuration. Adds no electronic axes or controls;
-    6-DoF describes the connected controller system.
+  notes: "Mechanical extension only: zero standalone buttons, hats, or electronic axes. 6-DoF describes the connected controller system."
 prices:
 - region: EU
   currency: EUR
@@ -41,6 +42,14 @@ prices:
   incl_vat: true
   store: Thrustmaster UK eshop
   url: https://shop.thrustmaster.com/en_gb/omni-extension.html
+  verified: '2026-10-20'
+  source: manual
+- region: US
+  currency: USD
+  amount: 44.99
+  incl_vat: false
+  store: Thrustmaster US eshop
+  url: https://eshop.thrustmaster.com/en_us/omni-extension.html
   verified: '2026-10-20'
   source: manual
 verification: draft

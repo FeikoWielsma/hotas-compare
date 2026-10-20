@@ -1,0 +1,69 @@
+brand: winctrl
+name: Cyber Taurus Joystick Base E.D.16
+category: base
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official listing or manual establishes computer USB or SimAppPro use. No exact product source
+    reviewed here establishes Xbox or PS5 support or incompatibility.
+  sources: &id001
+  - https://eu.winctrl.com/static/download/QmPeEHsVbPU2BfDBwXPwzQwoVGrafx6ZsvGdxBVS5WGF8b?filename=WINCTRL-Cyber-Taurus-Joystick-Base-User-Manual-20260430.pdf
+  - https://eu.winctrl.com/view/goods-details.html?id=5765
+status: current
+handedness: n/a
+mount:
+  provides: null
+  accepts:
+  - winctrl-grip
+controls:
+- type: button
+  count: 1
+  location: base
+  backlit: false
+  label: Power button
+  source: https://eu.winctrl.com/static/download/QmPeEHsVbPU2BfDBwXPwzQwoVGrafx6ZsvGdxBVS5WGF8b?filename=WINCTRL-Cyber-Taurus-Joystick-Base-User-Manual-20260430.pdf
+controls_evidence:
+  coverage: complete
+  source: https://eu.winctrl.com/static/download/QmPeEHsVbPU2BfDBwXPwzQwoVGrafx6ZsvGdxBVS5WGF8b?filename=WINCTRL-Cyber-Taurus-Joystick-Base-User-Manual-20260430.pdf
+  checked: '2026-10-20'
+  notes: 'Manual model CT.JB.E.D.16.MET.1. Pitch and roll are each ±15°. Published peak torque: 16 N·m
+    in each listed direction. Dimensions are length × width × height from the manual table. The illustrated
+    unit on that page is the 267 mm E.B.29 chassis. GB and duplicate EU listing IDs of the same goods
+    code are the same chassis.'
+hardware:
+  gimbal: force_feedback
+  axes:
+  - name: X
+  - name: Y
+  force_adjustable: true
+  cams_swappable: false
+  extension_support: true
+  throw_deg: 30
+connectivity:
+  usb: b
+  standalone_usb: true
+software: SimApp Pro
+physical:
+  weight_g: 17500
+  dimensions_mm:
+  - 320
+  - 166
+  - 342
+  materials:
+  - metal
+prices:
+- region: EU
+  currency: EUR
+  amount: 822.72
+  incl_vat: true
+  store: eu.winctrl.com
+  url: https://eu.winctrl.com/view/goods-details.html?id=5765
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources: *id001
+images:
+- file: /images/winctrl/cyber-taurus-base-ed16.jpg
+  source: https://eu.winctrl.com/view/goods-details.html?id=5765
+  caption: Cyber Taurus Joystick Base E.D.16

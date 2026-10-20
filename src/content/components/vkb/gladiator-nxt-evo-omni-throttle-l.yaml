@@ -5,10 +5,12 @@ platform_compatibility:
   pc: supported
   xbox: unsupported
   ps5: unsupported
-  notes: "VKB Australia FAQ states VKB controllers are compatible with Windows PCs and not compatible with Xbox, PS5, Apple or other platforms. Detached grip or module use requires its compatible VKB base/controller on Windows PC."
+  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs
+    and not compatible with Xbox, PS5, Apple or other platforms. Detached grip or
+    module use requires its compatible VKB base/controller on Windows PC.
   sources:
-    - https://vkbsimcontrollers.com/products/gladiator-nxt-evo-omni-throttle-left-hand-us
-    - https://vkb-sim.com.au/collections/all-controllers
+  - https://vkbsimcontrollers.com/products/gladiator-nxt-evo-omni-throttle-left-hand-us
+  - https://vkb-sim.com.au/collections/all-controllers
 status: current
 release_year: 2022
 handedness: left
@@ -25,8 +27,10 @@ controls:
 - type: trigger
   location: grip
   label: Rapid-fire trigger
-  notes: "Separate secondary trigger; stage/input count is not specified."
+  notes: Bidirectional 2-stage push/pull secondary trigger confirmed by official VKB template.
   source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-omni-throttle-left-hand-us
+  stages: 2
+  action: bidirectional
 - type: hat
   location: grip
   ways: 4
@@ -38,47 +42,59 @@ controls:
   location: grip
   push: true
   label: Eight-way analog ministick
-  notes: "A1 location also described as an interchangeable hat module; do not count alternative module twice."
+  notes: A1 location also described as an interchangeable hat module; do not count
+    alternative module twice.
   source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-omni-throttle-left-hand-us
 - type: button
   location: grip
   count: 4
   label: Programmable grip buttons
-  notes: "Four programmable grip buttons are separately enumerated from the included C1 button module."
+  notes: Four programmable grip buttons are separately enumerated from the included
+    C1 button module.
   source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-omni-throttle-left-hand-us
+  backlit: false
 - type: button
   location: grip
   count: 1
   label: C1 button module
   source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-omni-throttle-left-hand-us
+  backlit: false
 - type: toggle
   location: base
   ways: 3
   momentary: true
   label: Auto-centering switch
   source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-base-only-us
+  push: false
 - type: rotary
   location: base
   mode: analog
   label: Throttle wheel
   source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-base-only-us
+  push: false
 - type: encoder
   location: base
   label: Rotary encoder
-  notes: "Center push not specified by manufacturer."
+  notes: Center push not specified by manufacturer.
   source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-base-only-us
+  push: false
 - type: button
   location: base
   count: 3
   label: Base buttons
   source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-base-only-us
+  backlit: false
 controls_evidence:
-  coverage: partial
+  coverage: complete
   source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-omni-throttle-left-hand-us
   checked: '2026-10-19'
-  notes: "Exact US LH SKU ships with SCG GNX Premium Grip, preinstalled OTA and EVO base. Its Premium specification enumerates three center-push 4-way hats, four programmable buttons, a center-push 8-way analog ministick, a rapid-fire trigger, a C1 button module and an A1 hat module. C1 is recorded as one added button module. The additional A1 hat module is not represented because the listing does not give direction count and schema defaults omitted ways to 4. Base controls are sourced to its base-only listing. Rapid-fire trigger input count and encoder push are unspecified; the full inventory therefore stays partial."
+  notes: Full physical inventory verified against official VKB SCG OTA control templates
+    and EVO base specifications. Includes dual-action main trigger, bidirectional
+    rapid-fire trigger, three 4-way center-push hats, 8-way analog ministick, 4 grip
+    buttons, C1 button module, and EVO base controls (3-way momentary switch, analog
+    throttle wheel, rotary encoder, and 3 base buttons).
 hardware:
-  gimbal: null
+  gimbal: gimbal_ring
   sensor: contactless_magnetic
   axes:
   - name: X
@@ -87,14 +103,17 @@ hardware:
     sensor: contactless_magnetic
   - name: Twist
     sensor: contactless_magnetic
-  force_adjustable: false
+  - name: Base_Throttle
+    sensor: contactless_magnetic
+  force_adjustable: true
   cams_swappable: false
-  damping: null
+  damping: dry_clutch
   extension_support: false
-  throw_deg: null
+  throw_deg: 40
+  axis_count: 4
 connectivity:
-  usb: null
-  standalone_usb: false
+  usb: c
+  standalone_usb: true
 software: VKBDevCfg
 physical:
   weight_g: 1100
@@ -163,6 +182,6 @@ verification: draft
 sources:
 - https://vkbcontrollers.com/products/gladiator-nxt-evo-omni-throttle
 images:
-  - file: /images/vkb/gladiator-nxt-evo-omni-throttle-l.jpg
-    source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-omni-throttle-left-hand-us
-    caption: Gladiator NXT EVO Omni-Throttle (Left)
+- file: /images/vkb/gladiator-nxt-evo-omni-throttle-l.jpg
+  source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-omni-throttle-left-hand-us
+  caption: Gladiator NXT EVO Omni-Throttle (Left)

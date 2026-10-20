@@ -1,0 +1,32 @@
+brand: thrustmaster
+name: TCA Captain Pack X Airbus Edition
+category: hotas_bundle
+status: current
+components:
+- thrustmaster/tca-sidestick-x-airbus
+- thrustmaster/tca-quadrant-airbus
+- thrustmaster/tca-quadrant-add-on-airbus
+platform_compatibility:
+  pc: supported
+  xbox: supported
+  ps5: unsupported
+  notes: Product page lists PC and Xbox. Box contents are one TCA Sidestick X, one TCA Quadrant Airbus Edition, and
+    two add-on modules (flaps and speed brake), which are the single Quadrant Add-On SKU. PS5 is not listed.
+  sources:
+  - https://www.thrustmaster.com/en-us/products/tca-captain-pack-x-airbus-edition/
+prices:
+- region: US
+  currency: USD
+  amount: 329.99
+  incl_vat: false
+  store: Thrustmaster
+  url: https://www.thrustmaster.com/en-us/products/tca-captain-pack-x-airbus-edition/
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources:
+- https://www.thrustmaster.com/en-us/products/tca-captain-pack-x-airbus-edition/
+images:
+- file: /images/thrustmaster/tca-captain-pack-x-airbus.jpg
+  source: https://www.thrustmaster.com/wp-content/uploads/2022/10/CaptainpackX-website-1920x1080-product.jpg
+  caption: TCA Captain Pack X Airbus Edition

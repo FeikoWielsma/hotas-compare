@@ -1,0 +1,82 @@
+brand: winctrl
+name: ViperAce Metal Joystick Grip
+category: grip
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official listing or manual establishes computer USB or SimAppPro use. No exact product source
+    reviewed here establishes Xbox or PS5 support or incompatibility.
+  sources: &id001
+  - https://eu.winctrl.com/view/goods-details.html?id=377
+  - https://eu.winctrl.com/static/download/Qmbw11j3CZkVhfaFXFNx3aYRU2fJMKRLJj8eC7DtNyghMm?filename=JOYSTICK-GRIP-OF-16-HOTAS-User-MANUAL-EN-V-2.1.pdf
+status: current
+handedness: right
+mount:
+  provides: winctrl-grip
+  accepts: []
+controls:
+- type: hat
+  count: 4
+  ways: 4
+  push: true
+  location: grip
+  label: Four-direction switches with press
+  source: https://eu.winctrl.com/view/goods-details.html?id=377
+- type: hat
+  count: 1
+  ways: 8
+  push: true
+  location: grip
+  label: Eight-direction switch with press
+  source: https://eu.winctrl.com/view/goods-details.html?id=377
+- type: button
+  count: 11
+  location: grip
+  label: Press switches
+  source: https://eu.winctrl.com/view/goods-details.html?id=377
+- type: trigger
+  count: 1
+  stages: 2
+  location: grip
+  label: Long-travel two-stage metal trigger
+  source: https://eu.winctrl.com/view/goods-details.html?id=377
+- type: trigger
+  count: 1
+  location: grip
+  label: Hall sensor trigger
+  source: https://eu.winctrl.com/view/goods-details.html?id=377
+controls_evidence:
+  coverage: partial
+  source: https://eu.winctrl.com/view/goods-details.html?id=377
+  checked: '2026-10-20'
+  notes: This is goods JGRIP-16X1, the grip without the shaker kit. The page says vibration needs an additional
+    EX kit. The shared F-16 grip manual also covers the EX grip and does not isolate a second control
+    map. Whether the 11 press switches include the triggers is not stated, so both are kept as published.
+hardware:
+  sensor: hall
+connectivity:
+  standalone_usb: false
+prices:
+- region: EU
+  currency: EUR
+  amount: 79.1
+  incl_vat: true
+  store: eu.winctrl.com
+  url: https://eu.winctrl.com/view/goods-details.html?id=377
+  verified: '2026-10-20'
+  source: manual
+- region: US
+  currency: USD
+  amount: 82.4
+  incl_vat: false
+  store: us.winwingsim.com
+  url: https://us.winwingsim.com/view/goods-details.html?id=377
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources: *id001
+images:
+- file: /images/winctrl/viperace-joystick-grip.jpg
+  source: https://eu.winctrl.com/view/goods-details.html?id=377
+  caption: ViperAce Metal Joystick Grip

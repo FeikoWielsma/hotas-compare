@@ -1,0 +1,30 @@
+brand: winctrl
+name: Orion 2 Black Shark Collective Combo
+category: system
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official listing identifies PC compatible hardware; no exact source establishes console compatibility.
+  sources:
+  - https://eu.winctrl.com/mobileview/goods-details.html?id=344
+status: current
+components:
+- winctrl/gemini-throttle-collective-base
+- winctrl/ka-50-collective-grip
+prices:
+- region: EU
+  currency: EUR
+  amount: 386.78
+  incl_vat: true
+  store: eu.winctrl.com
+  url: https://eu.winctrl.com/mobileview/goods-details.html?id=344
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources:
+- https://eu.winctrl.com/mobileview/goods-details.html?id=344
+images:
+- file: /images/winctrl/gemini-ka50-combo.jpg
+  source: https://eu.winctrl.com/mobileview/goods-details.html?id=344
+  caption: Orion 2 Black Shark Collective Combo

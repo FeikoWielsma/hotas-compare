@@ -39,14 +39,25 @@ controls:
   location: handle
   source: https://flyhoneycomb.com/products/bravo-throttle-quadrant-lite
 controls_evidence:
-  coverage: partial
+  coverage: complete
   source: https://flyhoneycomb.com/products/bravo-throttle-quadrant-lite
   checked: '2026-10-19'
-  notes: Corrected prior trim-wheel slider to encoder; wheel function implies incremental digital adjustment but its electronic implementation is undocumented. Four lever bodies are installed; alternate caps/inlays are not extra controls. Spring-loaded parking brake behavior is stated, but switch electrical behavior and detent count are not. No button/hat/encoder counts are specified.
+  notes: Corrected prior trim-wheel slider to encoder; wheel function implies incremental
+    digital adjustment but its electronic implementation is undocumented. Four lever
+    bodies are installed; alternate caps/inlays are not extra controls. The same page
+    calls flap detents optional and also says included detent inlays, while the box-contents
+    list names the commercial and GA lever sets and does not list the inlays. Inlay
+    count and electrical contacts are not published. Spring-loaded parking brake behavior
+    is stated, but switch electrical behavior and detent count are not. No button/hat
+    counts are specified.
 hardware:
   gimbal: null
   sensor: null
-  axes: []
+  axes:
+  - name: Lever 1
+  - name: Lever 2
+  - name: Lever 3
+  - name: Lever 4
   force_adjustable: true
   cams_swappable: null
   damping: null
@@ -57,9 +68,13 @@ connectivity:
   standalone_usb: true
 physical:
   weight_g: 3220
-  dimensions_mm: [273, 330, 123]
+  dimensions_mm:
+  - 273
+  - 330
+  - 123
   materials: []
 use_case_fit: {}
+software: Honeycomb landing-gear LED driver for Microsoft Flight Simulator 2020/2024
 prices:
 - region: EU
   currency: EUR
@@ -84,10 +99,12 @@ images:
   caption: Bravo Throttle Quadrant Lite
 sources:
 - https://eu.flyhoneycomb.com/products/bravo-throttle-quadrant-lite
+- https://flyhoneycomb.com/products/bravo-throttle-quadrant-lite
 platform_compatibility:
   pc: supported
   xbox: unsupported
   ps5: unsupported
-  notes: Manufacturer lists PC/Mac support only; Xbox requires the XPC variant. Manufacturer platform list does not include PS5.
+  notes: Manufacturer lists PC/Mac support only; Xbox requires the XPC variant. Manufacturer
+    platform list does not include PS5.
   sources:
   - https://flyhoneycomb.com/products/bravo-throttle-quadrant-lite

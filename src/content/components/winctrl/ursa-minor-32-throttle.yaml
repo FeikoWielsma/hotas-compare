@@ -1,0 +1,106 @@
+brand: winctrl
+name: URSA MINOR 32 Throttle Metal
+category: throttle
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official listing or manual establishes computer USB or SimAppPro use. No exact product source reviewed
+    here establishes Xbox or PS5 support or incompatibility.
+  sources: &id001
+  - https://eu.winctrl.com/static/download/QmQewYduBVWvwYSvVxzH9GAseJyDfFVeUspknKwbzpeuZo?filename=WINCTRL-URSA-MINOR-32-Throttle-Metal-1.0-User-manual-20260310.pdf
+  - https://eu.winctrl.com/view/goods-details.html?id=1385
+status: current
+handedness: n/a
+mount:
+  provides: null
+  accepts: []
+controls:
+- type: lever
+  kind: throttle_dual
+  analog: true
+  count: 2
+  location: base
+  label: Left and right throttle axes, each 65°
+  source: https://eu.winctrl.com/static/download/QmQewYduBVWvwYSvVxzH9GAseJyDfFVeUspknKwbzpeuZo?filename=WINCTRL-URSA-MINOR-32-Throttle-Metal-1.0-User-manual-20260310.pdf
+- type: trigger
+  count: 2
+  location: handle
+  label: One trigger per throttle handle, 78° travel
+  source: https://eu.winctrl.com/static/download/QmQewYduBVWvwYSvVxzH9GAseJyDfFVeUspknKwbzpeuZo?filename=WINCTRL-URSA-MINOR-32-Throttle-Metal-1.0-User-manual-20260310.pdf
+- type: button
+  count: 2
+  location: handle
+  label: One grip button per throttle handle, 3 mm travel
+  source: https://eu.winctrl.com/static/download/QmQewYduBVWvwYSvVxzH9GAseJyDfFVeUspknKwbzpeuZo?filename=WINCTRL-URSA-MINOR-32-Throttle-Metal-1.0-User-manual-20260310.pdf
+- type: button
+  count: 2
+  location: base
+  label: FIRE/FAULT pushbuttons, 0.3 mm travel
+  source: https://eu.winctrl.com/static/download/QmQewYduBVWvwYSvVxzH9GAseJyDfFVeUspknKwbzpeuZo?filename=WINCTRL-URSA-MINOR-32-Throttle-Metal-1.0-User-manual-20260310.pdf
+- type: button
+  count: 1
+  location: base
+  label: Scale cancellation key
+  source: https://eu.winctrl.com/static/download/QmQewYduBVWvwYSvVxzH9GAseJyDfFVeUspknKwbzpeuZo?filename=WINCTRL-URSA-MINOR-32-Throttle-Metal-1.0-User-manual-20260310.pdf
+- type: rotary
+  count: 1
+  mode: selector
+  positions: 3
+  location: base
+  label: Three-position switch, 90°
+  source: https://eu.winctrl.com/static/download/QmQewYduBVWvwYSvVxzH9GAseJyDfFVeUspknKwbzpeuZo?filename=WINCTRL-URSA-MINOR-32-Throttle-Metal-1.0-User-manual-20260310.pdf
+- type: toggle
+  count: 1
+  ways: 2
+  location: base
+  label: Two-position switch
+  source: https://eu.winctrl.com/static/download/QmQewYduBVWvwYSvVxzH9GAseJyDfFVeUspknKwbzpeuZo?filename=WINCTRL-URSA-MINOR-32-Throttle-Metal-1.0-User-manual-20260310.pdf
+controls_evidence:
+  coverage: partial
+  source: https://eu.winctrl.com/static/download/QmQewYduBVWvwYSvVxzH9GAseJyDfFVeUspknKwbzpeuZo?filename=WINCTRL-URSA-MINOR-32-Throttle-Metal-1.0-User-manual-20260310.pdf
+  checked: '2026-10-20'
+  notes: The V1.0 manual diagram shows separate RX and RY axes and two throttle handles; both are represented. Its
+    key-position drawing visually identifies two base FIRE/FAULT pushbuttons, which are counted. Any additional
+    short-travel button group without identifiable physical keys is left unset. Published weight is inconsistent
+    (1.3 kg and 1.1 lb); weight is unset. USB-C.
+hardware:
+  axis_count: 2
+  axes:
+  - name: RX
+  - name: RY
+  throw_deg: 65
+connectivity:
+  usb: c
+  standalone_usb: true
+prices:
+- region: EU
+  currency: EUR
+  amount: 126.51
+  incl_vat: true
+  store: eu.winctrl.com
+  url: https://eu.winctrl.com/view/goods-details.html?id=1385
+  verified: '2026-10-20'
+  source: manual
+- region: US
+  currency: USD
+  amount: 131.79
+  incl_vat: false
+  store: us.winwingsim.com
+  url: https://us.winwingsim.com/view/goods-details.html?id=1385
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources: *id001
+images:
+- file: /images/winctrl/ursa-minor-32-throttle.jpg
+  source: https://eu.winctrl.com/view/goods-details.html?id=1385
+  caption: URSA MINOR 32 Throttle Metal
+software: SimApp Pro
+physical:
+  dimensions_mm:
+  - 250
+  - 125
+  - 160
+  materials:
+  - aluminium

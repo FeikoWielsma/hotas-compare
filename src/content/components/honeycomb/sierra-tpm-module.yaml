@@ -40,14 +40,21 @@ controls:
   location: panel
   source: https://flyhoneycomb.com/products/sierra-tpm-module
 controls_evidence:
-  coverage: partial
+  coverage: complete
   source: https://flyhoneycomb.com/products/sierra-tpm-module
   checked: '2026-10-19'
-  notes: Verified three vernier axes and the trim wheel, parking brake, flap, and gear controls. Trim wheel classified as encoder, consistent with incremental digital trim adjustment; electronic implementation is undocumented. Manufacturer product page does not document its digital input behavior, detents, button groups, or switch counts; no physical switches inferred from indicator LEDs.
+  notes: Verified three vernier axes and the trim wheel, parking brake, flap, and
+    gear controls. Trim wheel classified as encoder, consistent with incremental digital
+    trim adjustment; electronic implementation is undocumented. Manufacturer product
+    page does not document its digital input behavior, detents, button groups, or
+    switch counts; no physical switches inferred from indicator LEDs.
 hardware:
   gimbal: null
   sensor: null
-  axes: []
+  axes:
+  - name: Throttle
+  - name: Propeller
+  - name: Mixture
   force_adjustable: null
   cams_swappable: null
   damping: null
@@ -58,10 +65,14 @@ connectivity:
   standalone_usb: true
 physical:
   weight_g: 3800
-  dimensions_mm: [298, 303, 123]
+  dimensions_mm:
+  - 298
+  - 303
+  - 123
   materials:
   - metal
 use_case_fit: {}
+software: Honeycomb landing-gear LED driver for Microsoft Flight Simulator 2020/2024
 prices:
 - region: EU
   currency: EUR
@@ -86,10 +97,12 @@ images:
   caption: Sierra TPM Module
 sources:
 - https://eu.flyhoneycomb.com/products/sierra-tpm-module
+- https://flyhoneycomb.com/products/sierra-tpm-module
 platform_compatibility:
   pc: supported
   xbox: unsupported
   ps5: unknown
-  notes: Official system compatibility lists PC and Mac only; Xbox is not listed. PS5 is not mentioned.
+  notes: Official system compatibility lists PC and Mac only; Xbox is not listed.
+    PS5 is not mentioned.
   sources:
   - https://flyhoneycomb.com/products/sierra-tpm-module

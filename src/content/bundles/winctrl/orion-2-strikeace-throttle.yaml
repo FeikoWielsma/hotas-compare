@@ -1,0 +1,38 @@
+brand: winctrl
+name: Orion 2 StrikeAce E Throttle
+category: system
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official listing or manual establishes computer USB or SimAppPro use. No exact product source
+    reviewed here establishes Xbox or PS5 support or incompatibility.
+  sources: &id001
+  - https://eu.winctrl.com/view/goods-details.html?id=385
+status: current
+components:
+- winctrl/orion-2-throttle-base
+- winctrl/strikeace-e-throttle-grip
+prices:
+- region: EU
+  currency: EUR
+  amount: 204.33
+  incl_vat: true
+  store: eu.winctrl.com
+  url: https://eu.winctrl.com/view/goods-details.html?id=385
+  verified: '2026-10-20'
+  source: manual
+- region: US
+  currency: USD
+  amount: 242.99
+  incl_vat: false
+  store: us.winwingsim.com
+  url: https://us.winwingsim.com/view/goods-details.html?id=385
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources: *id001
+images:
+- file: /images/winctrl/orion-2-strikeace-throttle.jpg
+  source: https://eu.winctrl.com/view/goods-details.html?id=385
+  caption: Orion 2 StrikeAce E Throttle

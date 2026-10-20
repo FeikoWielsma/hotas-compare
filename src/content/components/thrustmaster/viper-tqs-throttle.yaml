@@ -31,12 +31,18 @@ controls:
   location: handle
   label: Hat 1 (mapping button 5)
   source: https://ts.thrustmaster.com/download/accessories/Manuals/Viper/Viper_Mission_Pack_User_Manual.pdf
+- type: button
+  count: 7
+  location: handle
+  label: Mapped handle buttons 7, 8, 13-17 (Mode A; 17 is the top button)
+  notes: Mapped 18 (cut-off) and 19 (afterburner) are the stop-switch inputs covered by the detent and trigger entries.
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/Viper/Viper_Mission_Pack_User_Manual.pdf
 - type: rotary
   mode: analog
-  count: 2
+  count: 3
   location: handle
-  label: Analog rotary axes (knobs 6 and 11)
-  source: https://support.thrustmaster.com/en/kb/1803-en/
+  label: Analog rotary axes (mapped 6 Rx, 9-10 Ry, 11)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/Viper/Viper_Mission_Pack_User_Manual.pdf
 - type: analog_ministick
   push: false
   count: 1
@@ -47,12 +53,13 @@ controls_evidence:
   coverage: partial
   source: https://ts.thrustmaster.com/download/accessories/Manuals/Viper/Viper_Mission_Pack_User_Manual.pdf
   checked: '2026-10-19'
-  notes: Handle only; do not include separately sold Viper Panel. Mode A mapping enumerates physical button events
-    but does not reliably establish which remaining numbered inputs are standalone pushbuttons versus switch contacts;
-    unsupported generic button count omitted. Marketing's 21 includes two virtual buttons. Two mechanical stop regions
-    and cut-off trigger are distinct. Calibration support identifies two analog rotary axes with center detents;
-    intermediate stop count unknown.
+  notes: Handle only; do not include separately sold Viper Panel. Counts from the Mode A map (manual page 8, "19
+    buttons and 5 axes without virtual buttons"), hat 1-4 with push 5, buttons 7, 8, 13-17, stops 18-19, axes 6, 9-10,
+    11 (rotary, three knobs) and 12 (XY slew, two axes). Marketing's 21 includes virtual buttons. Button 17 is taken
+    as a standalone button because it is a separate top-mounted input; this is the least certain count. Detent
+    intermediate stop counts are unknown.
 hardware:
+  axis_count: 5
   gimbal: null
   sensor: hall
   axes:

@@ -29,7 +29,7 @@ hardware:
   - name: Rudder
   - name: Left brake
   - name: Right brake
-  force_adjustable: null
+  force_adjustable: true
   cams_swappable: null
   damping: null
   extension_support: null

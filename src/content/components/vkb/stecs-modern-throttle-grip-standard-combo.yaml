@@ -1,0 +1,94 @@
+brand: vkb
+name: STECS Modern Throttle Grip - Standard Combo (Left-Hand)
+category: grip
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs
+    and not compatible with Xbox, PS5, Apple or other platforms. Detached grip use
+    requires its compatible STECS base on Windows PC.
+  sources:
+  - https://vkbsimcontrollers.com/products/stecs-modern-throttle-grip-standard-combo
+  - https://vkb-sim.com.au/collections/all-controllers
+status: current
+handedness: left
+mount: null
+controls:
+- type: trigger
+  count: 4
+  location: grip
+  stages: 1
+  action: sequential
+  label: Two triggers on each MTG-L and MTG-R grip (single-stage sequential)
+  source: https://vkbsimcontrollers.com/products/stecs-modern-throttle-grip-standard-combo
+- type: encoder
+  count: 2
+  location: grip
+  push: false
+  label: MTG-L wheel encoders without push
+  source: https://vkbsimcontrollers.com/products/stecs-modern-throttle-grip-standard-combo
+- type: button
+  count: 6
+  location: grip
+  label: MTG-L and MTG-R push buttons (2 + 4)
+  source: https://vkbsimcontrollers.com/products/stecs-modern-throttle-grip-standard-combo
+  backlit: false
+- type: hat
+  ways: 4
+  count: 2
+  push: true
+  location: grip
+  label: MTG-R 4-way hats with center push
+  source: https://vkbsimcontrollers.com/products/stecs-modern-throttle-grip-standard-combo
+- type: analog_ministick
+  count: 1
+  push: true
+  location: grip
+  label: MTG-R 2-axis ministick with center push
+  source: https://vkbsimcontrollers.com/products/stecs-modern-throttle-grip-standard-combo
+- type: rotary
+  mode: analog
+  count: 1
+  location: grip
+  label: MTG-R analog wheel axis
+  push: false
+  source: https://vkbsimcontrollers.com/products/stecs-modern-throttle-grip-standard-combo
+controls_evidence:
+  coverage: complete
+  source: https://vkbsimcontrollers.com/products/stecs-modern-throttle-grip-standard-combo
+  checked: '2026-10-20'
+  notes: Counts and control actions verified against official STECS template (VKB-STECS-v1.1.pdf)
+    and product specifications. MTG-L has 2 buttons, 2 triggers, and 2 wheel encoders without push.
+    MTG-R has 2 triggers, 4 buttons, 2 4-way hats with center push, 2-axis analog ministick with
+    center push, and an analog wheel axis. Contactless MaRS sensors on all analog axes.
+hardware:
+  axis_count: 3
+  gimbal: null
+  sensor: contactless_magnetic
+  axes:
+  - name: MTG-R Wheel Axis
+    sensor: contactless_magnetic
+  - name: Ministick X
+    sensor: contactless_magnetic
+  - name: Ministick Y
+    sensor: contactless_magnetic
+connectivity:
+  usb: none as supplied; connects through the STECS left-hand base
+  standalone_usb: false
+prices:
+- region: US
+  currency: USD
+  amount: 99
+  incl_vat: false
+  store: vkbsimcontrollers.com
+  url: https://vkbsimcontrollers.com/products/stecs-modern-throttle-grip-standard-combo
+  verified: '2026-10-19'
+  source: manual
+verification: draft
+sources:
+- https://vkbsimcontrollers.com/products/stecs-modern-throttle-grip-standard-combo
+images:
+- file: /images/vkb/stecs-modern-throttle-grip-standard-combo.jpg
+  source: https://vkbsimcontrollers.com/products/stecs-modern-throttle-grip-standard-combo
+  caption: STECS Modern Throttle Grip - Standard Combo

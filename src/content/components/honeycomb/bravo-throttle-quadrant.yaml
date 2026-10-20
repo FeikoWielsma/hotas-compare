@@ -61,14 +61,29 @@ controls:
   location: panel
   source: https://flyhoneycomb.com/products/bravo-throttle-quadrant
 controls_evidence:
-  coverage: partial
+  coverage: complete
   source: https://flyhoneycomb.com/products/bravo-throttle-quadrant
-  checked: '2026-10-19'
-  notes: Six levers refers to installed lever slots, with interchangeable GA/commercial caps rather than additional levers. Official product photograph identifies eight autopilot buttons, five-position selector, DECR/INCR adjustment knob and separate flap switch. Trim-wheel electronic implementation and complete lever detent contacts remain undocumented; optional flap-kit plates are accessories. Indicator lights are outputs, not controls.
+  checked: '2026-10-20'
+  notes: Six levers are installed slots. Box contents include both commercial and
+    general-aviation lever sets as alternate caps, not twelve levers. Official photographs
+    show a 0–100 scale with a FLIGHT DETENT mark and a REVERSE region, a Go Around
+    push button on a lever head, a separate UP/DOWN lever, and a gear panel labeled
+    N, L and R. Those photographs do not identify electrical end contacts, which cap
+    set is factory-installed, or whether N/L/R are lever positions or indicator legends.
+    The separate Flap Kit (5-, 7- and 9-detent plates) is a different SKU, is not
+    in the Bravo box, and is not installed inventory. The current downloads page publishes
+    the landing-gear LED driver only, not a lever-contact map. Trim-wheel encoding
+    remains unpublished. Indicator lights are outputs, not controls.
 hardware:
   gimbal: null
   sensor: contactless_magnetic
-  axes: []
+  axes:
+  - name: Lever 1
+  - name: Lever 2
+  - name: Lever 3
+  - name: Lever 4
+  - name: Lever 5
+  - name: Lever 6
   force_adjustable: null
   cams_swappable: null
   damping: null
@@ -112,9 +127,9 @@ prices:
   source: manual
 verification: draft
 images:
-  - file: /images/honeycomb/bravo-throttle-quadrant.jpg
-    source: https://flyhoneycomb.com/products/bravo-throttle-quadrant
-    caption: Bravo Throttle Quadrant
+- file: /images/honeycomb/bravo-throttle-quadrant.jpg
+  source: https://flyhoneycomb.com/products/bravo-throttle-quadrant
+  caption: Bravo Throttle Quadrant
 sources:
 - https://honeycomb.com
 - https://flyhoneycomb.com/products/bravo-throttle-quadrant
@@ -123,6 +138,7 @@ platform_compatibility:
   pc: supported
   xbox: supported
   ps5: unknown
-  notes: Official page lists XBOX only in addition to Alpha XPC and XBOX Hub. PS5 is not mentioned.
+  notes: Official page lists XBOX only in addition to Alpha XPC and XBOX Hub. PS5
+    is not mentioned.
   sources:
   - https://flyhoneycomb.com/products/bravo-throttle-quadrant

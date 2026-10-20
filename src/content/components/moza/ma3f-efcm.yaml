@@ -1,0 +1,68 @@
+brand: moza
+name: MOZA MA3F EFCM Main Module
+category: module
+status: current
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official spec lists "Supported Platform PC" only; the spec sheet names no specific simulator.
+  sources:
+  - https://us.mozaracing.com/products/ma3f-efcm
+controls:
+- type: button
+  location: panel
+  count: 6
+  backlit: true
+  label: Illuminated pushbuttons (AP1, AP2, A/THR, LOC, EXPED, APPR)
+  source: https://us.mozaracing.com/products/ma3f-efcm
+- type: button
+  location: panel
+  count: 3
+  backlit: false
+  label: Round pushbuttons (SPD MACH, HDG TRK/V/S FPA, METRIC ALT)
+  source: https://us.mozaracing.com/products/ma3f-efcm
+- type: rotary
+  location: panel
+  count: 3
+  label: Rotary knobs (SPD MACH, HDG TRK, ALT)
+  source: https://us.mozaracing.com/products/ma3f-efcm
+- type: rotary
+  location: panel
+  count: 1
+  push: true
+  label: V/S FPA knob (push to level off)
+  source: https://us.mozaracing.com/products/ma3f-efcm
+controls_evidence:
+  coverage: partial
+  source: https://us.mozaracing.com/products/ma3f-efcm
+  checked: '2026-10-20'
+  notes: Counted from the cover photo of the MA3F user manual (EFCM main panel) and the product page. The page's
+    push-pull wording is not confirmed per knob, so only the V/S knob is marked push. Displays are not counted.
+    Verify on a physical unit if the push state of the SPD MACH, HDG and ALT knobs matters. The EFCM L and R EFIS
+    modules are separate SKUs at USD 99 each and are not part of this record.
+connectivity:
+  usb: Type-C USB 3.0 and RJ11
+  standalone_usb: true
+physical:
+  weight_g: 542
+  materials:
+  - ABS
+  - PC
+verification: draft
+prices:
+- region: US
+  currency: USD
+  amount: 149
+  incl_vat: false
+  store: MOZA US store
+  url: https://us.mozaracing.com/products/ma3f-efcm
+  verified: '2026-10-20'
+  source: manual
+sources:
+- https://us.mozaracing.com/products/ma3f-efcm
+
+images:
+- file: /images/moza/ma3f-efcm.webp
+  source: https://us.mozaracing.com/products/ma3f-efcm
+  caption: MOZA MA3F EFCM Main Module

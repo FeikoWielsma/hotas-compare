@@ -25,12 +25,15 @@ controls:
   location: base
   label: Tilting rudder control
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TFHOne/T-Flight_HO_Manual.pdf
+- type: button
+  count: 14
+  label: Officially stated action-button total; mechanism breakdown not published
+  source: https://eshop.thrustmaster.com/en_us/t-flight-hotas-one.html
 controls_evidence:
   coverage: partial
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TFHOne/T-Flight_HO_Manual.pdf
   checked: '2026-10-19'
-  notes: Exact T.Flight HOTAS One SKU only. Manufacturer lists 14 action buttons as an aggregate; they are not expanded
-    into invented physical button types. The manual diagrams a multidirectional hat, throttle, twist rudder, and
+  notes: Exact T.Flight HOTAS One SKU only. Manufacturer lists 14 action buttons, five axes, a trigger and a multidirectional hat. The 14-button aggregate is recorded as a physical count, but its push/switch breakdown is not published. The manual diagrams a multidirectional hat, throttle, twist rudder, and
     tilting rudder alternative; hat directions and push behavior remain unconfirmed. Coverage remains partial.
 hardware:
   gimbal: ball_joint
@@ -53,6 +56,11 @@ connectivity:
   standalone_usb: true
 software: T.A.R.G.E.T
 physical:
+  weight_g: 2060
+  dimensions_mm:
+  - 264
+  - 265
+  - 242
   materials:
   - abs
 use_case_fit:

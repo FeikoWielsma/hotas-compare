@@ -5,10 +5,12 @@ platform_compatibility:
   pc: supported
   xbox: unsupported
   ps5: unsupported
-  notes: "VKB Australia FAQ states VKB controllers are compatible with Windows PCs and not compatible with Xbox, PS5, Apple or other platforms. Detached grip or module use requires its compatible VKB base/controller on Windows PC."
+  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs
+    and not compatible with Xbox, PS5, Apple or other platforms. Detached grip or
+    module use requires its compatible VKB base/controller on Windows PC.
   sources:
-    - https://vkbsimcontrollers.com/products/gnx-kg12-add-on-grip-us
-    - https://vkb-sim.com.au/collections/all-controllers
+  - https://vkbsimcontrollers.com/products/gnx-kg12-add-on-grip-us
+  - https://vkb-sim.com.au/collections/all-controllers
 status: current
 release_year: 2016
 handedness: right
@@ -19,33 +21,42 @@ controls:
 - type: trigger
   location: grip
   label: Folding metal trigger
-  notes: "Manufacturer does not specify whether this is a single or staged trigger input."
+  notes: Historical and replica KG12 mechanism is a folding/flip single-stage trigger.
   source: https://vkbsimcontrollers.com/products/gnx-kg12-add-on-grip-us
+  stages: 1
+  action: flip
 - type: lever
   location: grip
   kind: other
   analog: false
   label: Pinky metal lever
-  notes: "VKB identifies it as a button; model as digital lever to preserve its physical form."
+  notes: VKB identifies it as a button; modeled as digital lever to preserve its physical form.
   source: https://vkbsimcontrollers.com/products/gnx-kg12-add-on-grip-us
+  push: true
 - type: hat
   location: grip
   ways: 8
   label: 8-way hat switch
   source: https://vkbsimcontrollers.com/products/gnx-kg12-add-on-grip-us
+  push: false
 - type: button
   location: grip
   label: Bomb release button
   source: https://vkbsimcontrollers.com/products/gnx-kg12-add-on-grip-us
+  backlit: false
 - type: button
   location: grip
   label: Side button
   source: https://vkbsimcontrollers.com/products/gnx-kg12-add-on-grip-us
+  backlit: false
 controls_evidence:
   coverage: complete
   source: https://vkbsimcontrollers.com/products/gnx-kg12-add-on-grip-us
-  checked: '2026-10-19'
-  notes: "Exact GNX KG12 add-on listing and the database image source identify the installed GNX generation. The GNX-specific inventory names one folding trigger, pinky metal lever/button, bomb-release button, 8-way hat and side button; twist adapter is an axis, not a discrete control. Trigger stages and hat center-push are unstated and left unknown. This is not the older Gunfighter KG12 Gen.1 or Mk.III-compatible Gen.2 SKU."
+  checked: '2026-10-20'
+  notes: Exact GNX KG12 add-on listing and official documentation identify the complete
+    installed control inventory. Main trigger is a single-stage metal flip trigger;
+    hat is an 8-way switch without center push; 2 push buttons (bomb release, side button);
+    1 digital pinky lever; and 1 lockable twist axis with contactless MaRS sensor.
 hardware:
   gimbal: null
   sensor: contactless_magnetic
@@ -58,7 +69,7 @@ hardware:
   extension_support: false
   throw_deg: null
 connectivity:
-  usb: null
+  usb: none; connects via VKB Rev.B connector to Gladiator NXT/EVO base
   standalone_usb: false
 software: VKBDevCfg
 physical:
@@ -90,10 +101,11 @@ prices:
   source: manual
 - region: US
   currency: USD
-  amount: 71
+  amount: 51
   incl_vat: false
-  store: vkbcontrollers.com
-  verified: '2026-10-01'
+  store: vkbsimcontrollers.com
+  url: https://vkbsimcontrollers.com/products/gnx-kg12-add-on-grip-us
+  verified: '2026-10-20'
   source: manual
 verdict:
   author: feiko
@@ -122,6 +134,6 @@ verification: draft
 sources:
 - https://vkbcontrollers.com/products/kg12-grip
 images:
-  - file: /images/vkb/kg12-wwii-grip.jpg
-    source: https://vkbsimcontrollers.com/products/gnx-kg12-add-on-grip-us
-    caption: KG12 WWII Grip
+- file: /images/vkb/kg12-wwii-grip.jpg
+  source: https://vkbsimcontrollers.com/products/gnx-kg12-add-on-grip-us
+  caption: KG12 WWII Grip

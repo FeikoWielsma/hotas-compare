@@ -1,0 +1,60 @@
+brand: virpil
+name: VPC PRM-HES Module
+category: module
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product listing presents the module as a PC yoke accessory and does not list Xbox or PS5 support.
+  sources:
+    - https://virpil-controls.eu/prm-hes-module.html
+status: announced
+release_year: 2026
+handedness: n/a
+mount: null
+controls:
+  - type: analog_ministick
+    count: 1
+    location: grip
+    label: Contactless analogue ministick
+    notes: The page does not state a center push.
+    source: https://virpil-controls.eu/prm-hes-module.html
+controls_evidence:
+  coverage: complete
+  source: https://virpil-controls.eu/prm-hes-module.html
+  checked: '2026-10-20'
+  notes: 'SKU VPC-633-04. One contactless analogue ministick for the B-JET or Constellation VEGA yoke handle. The page also names a P-JET yoke handle that is not a separate listing in the current yoke shop. The page still says pre-order with ETA late Q2 2026.'
+hardware:
+  gimbal: null
+  sensor: hall_effect
+  axes:
+    - name: Ministick X
+      sensor: hall_effect
+    - name: Ministick Y
+      sensor: hall_effect
+  force_adjustable: false
+  cams_swappable: false
+  damping: null
+  extension_support: false
+  throw_deg: null
+connectivity:
+  usb: none; installs in a compatible yoke handle
+  standalone_usb: false
+physical:
+  materials: []
+prices:
+  - region: EU
+    currency: EUR
+    amount: 12.95
+    incl_vat: true
+    store: virpil-controls.eu
+    url: https://virpil-controls.eu/prm-hes-module.html
+    verified: '2026-10-20'
+    source: manual
+verification: draft
+sources:
+  - https://virpil-controls.eu/prm-hes-module.html
+images:
+  - file: /images/virpil/prm-hes-module.jpg
+    source: https://virpil-controls.eu/prm-hes-module.html
+    caption: VPC PRM-HES Module

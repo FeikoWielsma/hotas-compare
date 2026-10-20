@@ -5,62 +5,83 @@ status: current
 handedness: right
 mount: null
 controls:
-  - type: trigger
-    location: grip
-    stages: 2
-    label: Two-stage metal trigger
-    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
-  - type: button
-    location: grip
-    label: Backlit fire buttons
-    count: 3
-    backlit: true
-    notes: The standard X52 manual product-tour diagram labels three buttons on the joystick head.
-    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
-  - type: button
-    location: grip
-    label: Missile launcher button
-    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
-  - type: hat
-    location: grip
-    ways: 8
-    count: 2
-    label: Hat switches
-    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
-  - type: toggle
-    location: grip
-    ways: 3
-    label: Mode selector
-    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
-  - type: toggle
-    location: base
-    count: 3
-    ways: 2
-    momentary: true
-    label: Spring-loaded base switches
-    notes: Three spring-loaded switches provide six programmed commands (each switch has two directions).
-    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
-  - type: switch
-    location: grip
-    label: Metal pinkie switch
-    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
+- type: trigger
+  location: grip
+  stages: 2
+  count: 1
+  action: sequential
+  label: Two-stage metal trigger
+  source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
+- type: button
+  location: grip
+  label: Backlit fire buttons
+  count: 3
+  backlit: true
+  notes: The standard X52 manual product-tour diagram labels three buttons on the
+    joystick head.
+  source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
+- type: button
+  location: grip
+  backlit: false
+  count: 1
+  label: Missile launcher button
+  source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
+- type: hat
+  location: grip
+  ways: 8
+  push: false
+  count: 2
+  label: Hat switches
+  source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
+- type: toggle
+  location: grip
+  ways: 3
+  momentary: false
+  label: Mode selector
+  source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
+- type: toggle
+  location: base
+  count: 3
+  ways: 2
+  momentary: true
+  label: Spring-loaded base switches
+  notes: Three spring-loaded switches provide six programmed commands (each switch
+    has two directions).
+  source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
+- type: switch
+  location: grip
+  positions: 2
+  momentary: false
+  label: Metal pinkie switch
+  source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
 controls_evidence:
-  coverage: partial
+  coverage: complete
   source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
   checked: '2026-10-20'
-  notes: Standard X52 manual product-tour pages 3-4 visually label the two-stage trigger, three backlit stick-head fire buttons, two 8-way hats, pinkie switch, missile-launcher button, mode selector and three spring-loaded base switches. Programmable command totals are not treated as physical button counts.
+  notes: Standard X52 manual product-tour pages 3-4 visually label the two-stage trigger,
+    three backlit stick-head fire buttons, two 8-way hats, pinkie switch, missile-launcher
+    button, mode selector and three spring-loaded base switches. Programmable command
+    totals are not treated as physical button counts.
 hardware:
-  gimbal: null
+  gimbal: ball_joint
   sensor: null
   axes:
   - name: X
   - name: Y
   - name: Twist
+  force_adjustable: false
+  cams_swappable: false
+  extension_support: false
 connectivity:
   usb: a_cable
   standalone_usb: true
 software: Logitech G HUB
 physical:
+  weight_g: 1033
+  dimensions_mm:
+  - 170
+  - 170
+  - 278
   materials:
   - abs
 prices:
@@ -89,13 +110,14 @@ verification: draft
 sources:
 - https://www.logitechg.com/en-us/products/flight.html
 images:
-  - file: /images/logitech/x52-space-flight-stick.webp
-    source: https://www.logitechg.com/en-us/shop/p/x52-space-flight-simulator-controller.945-000025
-    caption: X52 Space Flight Stick
+- file: /images/logitech/x52-space-flight-stick.webp
+  source: https://www.logitechg.com/en-us/shop/p/x52-space-flight-simulator-controller.945-000025
+  caption: X52 Space Flight Stick
 platform_compatibility:
   pc: supported
   xbox: unknown
   ps5: unknown
-  notes: The official X52 HOTAS user guide documents Windows setup and use. The guide does not specify Xbox or PS5 support.
+  notes: The official X52 HOTAS user guide documents Windows setup and use. The guide
+    does not specify Xbox or PS5 support.
   sources:
   - https://www.logitech.com/assets/65328/2/x52-hotas.pdf

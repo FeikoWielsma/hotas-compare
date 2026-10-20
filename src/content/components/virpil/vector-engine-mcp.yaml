@@ -1,0 +1,65 @@
+brand: virpil
+name: VPC Vector Engine MCP
+category: module
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product listing presents the panel as a PC Vector yoke module and does not list Xbox or PS5 support.
+  sources:
+    - https://virpil-controls.eu/vector-emc-panel.html
+status: announced
+release_year: 2026
+handedness: n/a
+mount: null
+controls:
+  - type: rotary
+    mode: selector
+    positions: 5
+    count: 1
+    location: panel
+    label: Starter dial
+    notes: The page says the START position is spring-loaded. It does not say the other four positions are momentary.
+    source: https://virpil-controls.eu/vector-emc-panel.html
+  - type: toggle
+    ways: 3
+    momentary: false
+    count: 3
+    location: panel
+    label: 3-way latched toggles
+    source: https://virpil-controls.eu/vector-emc-panel.html
+controls_evidence:
+  coverage: complete
+  source: https://virpil-controls.eu/vector-emc-panel.html
+  checked: '2026-10-20'
+  notes: 'SKU VPC-414-003. Pre-order, webstore ETA late Q4 2026. Listed inputs are one 5-way starter dial and three 3-way latched toggles. Programmable RGB lighting is not an input. The plate is not included with the Vector yoke base.'
+hardware:
+  gimbal: null
+  sensor: null
+  axes: []
+  force_adjustable: false
+  cams_swappable: false
+  damping: null
+  extension_support: false
+  throw_deg: null
+connectivity:
+  usb: none; mounts on the Vector yoke base
+  standalone_usb: false
+physical:
+  materials: []
+prices:
+  - region: EU
+    currency: EUR
+    amount: 49.95
+    incl_vat: true
+    store: virpil-controls.eu
+    url: https://virpil-controls.eu/vector-emc-panel.html
+    verified: '2026-10-20'
+    source: manual
+verification: draft
+sources:
+  - https://virpil-controls.eu/vector-emc-panel.html
+images:
+  - file: /images/virpil/vector-engine-mcp.jpg
+    source: https://virpil-controls.eu/vector-emc-panel.html
+    caption: VPC Vector Engine MCP

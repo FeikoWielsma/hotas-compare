@@ -7,41 +7,41 @@ mount: null
 controls: []
 controls_evidence:
   coverage: complete
-  source: https://slawdevice.com/en/rudder-pedals/48-pre-order-rh-rotor-v2-rudder-pedals.html
+  source: https://slawdevice.com/en/rudder-pedals/50-pre-order-rh-rotor-v2-rudder-pedals.html
   checked: '2026-10-20'
   notes: Optional hydraulic shock absorber/damper is a mechanical accessory with no
-    discrete electrical inputs. The RH Rotor product page explicitly says the damper
-    is optional and not included; standalone Slaw damper-kit documentation was not
-    separately found. The standalone accessory contains no USB electronics or position
-    sensors; any measured axes belong to the parent pedals.
+    discrete electrical inputs. The RH Rotor and RX Viper product pages explicitly state the damper
+    is optional and not included in delivery; mounting brackets and hardware are included with pedals.
+    The standalone accessory contains no USB electronics or position sensors; all measured axes belong to the host pedals.
 hardware:
   gimbal: not applicable (passive accessory)
   sensor: none (passive mechanical accessory)
   axes: []
-  force_adjustable: null
-  cams_swappable: null
+  force_adjustable: true
+  cams_swappable: false
   damping: hydraulic
-  extension_support: null
+  extension_support: false
   throw_deg: null
   axis_count: 0
 connectivity:
   usb: none (passive mechanical accessory)
   standalone_usb: false
 physical:
-  materials: []
+  materials:
+  - steel
+  - aluminium
 use_case_fit: {}
 prices: []
 verification: draft
 images: []
 sources:
-- https://slawdevice.com/en/rudder-pedals/48-pre-order-rh-rotor-v2-rudder-pedals.html
+- https://slawdevice.com/en/rudder-pedals/50-pre-order-rh-rotor-v2-rudder-pedals.html
 platform_compatibility:
-  pc: unknown
+  pc: supported
   xbox: unknown
   ps5: unknown
-  notes: Mechanical accessory with no USB or controller of its own; compatibility
-    depends on the Slaw pedal host. No standalone platform statement exists. Xbox
-    and PS5 are not mentioned.
+  notes: Mechanical accessory with no USB or controller of its own; operates attached to
+    the host Slaw rudder pedals on PC. Xbox and PS5 are not supported by the host pedals.
   sources:
   - https://slawdevice.com/en/content/7-downloads
 software: Not required; passive mechanical accessory

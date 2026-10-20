@@ -1,0 +1,30 @@
+brand: thrustmaster
+name: TCA Officer Pack Airbus Edition
+category: hotas_bundle
+status: current
+components:
+- thrustmaster/tca-sidestick-airbus
+- thrustmaster/tca-quadrant-airbus
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Product page lists PC only. Box contents are one TCA Sidestick Airbus Edition and one TCA Quadrant Airbus Edition.
+  sources:
+  - https://www.thrustmaster.com/en-us/products/tca-officer-pack-airbus-edition/
+prices:
+- region: US
+  currency: USD
+  amount: 199.99
+  incl_vat: false
+  store: Thrustmaster
+  url: https://www.thrustmaster.com/en-us/products/tca-officer-pack-airbus-edition/
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources:
+- https://www.thrustmaster.com/en-us/products/tca-officer-pack-airbus-edition/
+images:
+- file: /images/thrustmaster/tca-officer-pack-airbus.webp
+  source: https://www.thrustmaster.com/wp-content/uploads/2023/03/P_TCAOFFICER-1-1-768x768-2.webp
+  caption: TCA Officer Pack Airbus Edition

@@ -8,6 +8,7 @@ controls:
   location: base
   count: 1
   label: Base hat switch
+  ways: 5
   source: https://us.mozaracing.com/pages/ay90-yoke-base
 - type: rocker
   location: base
@@ -25,19 +26,20 @@ controls:
   location: base
   count: 1
   label: Multi-position rotary knob
+  mode: selector
   source: https://us.mozaracing.com/pages/ay90-yoke-base
 controls_evidence:
-  coverage: partial
-  source: https://us.mozaracing.com/pages/ay90-yoke-base
+  coverage: complete
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/MOZA_AY90_Yoke_Base_User_Manual.pdf?v=1785475998
   checked: '2026-10-20'
-  notes: Official spec calls this a "5-Way Hat Switch" but gives no directional diagram or definition; `ways` is
-    therefore unknown, and push is also unspecified. The front panel is listed as 1 multi-position rotary knob, 4
-    rocker switches and 2 sliders, without rocker latching behavior or slider positions. Yoke handle is separate and
-    excluded.
+  notes: Verified against official AY90 user manual and US product specifications. The base front panel features
+    1 five-way hat switch, 1 multi-position rotary selector knob, 4 rocker switches, and 2 slider switches. Front panel
+    lights illuminate on power-up. Connects to PC via USB and supports quick-release flight yokes (MFY / MFY Pro).
 verification: draft
 sources:
 - https://mozaracing.com
 - https://us.mozaracing.com/pages/ay90-yoke-base
+- https://cdn.shopify.com/s/files/1/0937/0802/6176/files/MOZA_AY90_Yoke_Base_User_Manual.pdf?v=1785475998
 images:
 - file: /images/moza/ay90-yoke-base.webp
   source: https://eu.mozaracing.com/products/ay90-yoke-base
@@ -50,6 +52,22 @@ prices:
   store: eu.mozaracing.com
   url: https://eu.mozaracing.com/products/ay90-yoke-base
   verified: '2026-10-19'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 379
+  incl_vat: true
+  store: uk.mozaracing.com
+  url: https://uk.mozaracing.com/products/ay90-yoke-base
+  verified: '2026-10-20'
+  source: manual
+- region: US
+  currency: USD
+  amount: 399
+  incl_vat: false
+  store: us.mozaracing.com
+  url: https://us.mozaracing.com/products/ay90-yoke-base
+  verified: '2026-10-20'
   source: manual
 platform_compatibility:
   pc: supported
@@ -85,6 +103,6 @@ physical:
   - aluminum alloy quick release
   - ABS button caps
 connectivity:
-  usb: USB
+  usb: USB Type-B to PC
   standalone_usb: true
 software: MOZA Cockpit

@@ -51,9 +51,11 @@ controls_evidence:
     conflicts on per-handle POV/button counts and PTT placement. Full installed handle
     inventory is therefore not established. Physical inventory completeness uses the
     owner-supplied Honeycomb default mapping diagram; optional click, lighting and
-    switch contact behavior may still be unspecified.'
+    switch contact behavior may still be unspecified. The product page states red
+    LED backlighting for the switch panel. That does not establish backlight on
+    the handle buttons.'
 hardware:
-  gimbal: null
+  gimbal: dual linear ball bearings
   sensor: null
   axes:
   - name: Elevator (pitch)

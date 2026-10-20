@@ -1,0 +1,69 @@
+brand: virpil
+name: VPC Vector Flight Yoke Base
+category: yoke
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product listing presents the yoke base as a PC USB device and does not list Xbox or PS5 support.
+  sources:
+    - https://virpil-controls.eu/vector-flight-yoke-base.html
+status: announced
+release_year: 2026
+handedness: n/a
+mount: null
+controls:
+  - type: axis
+    kind: pitch
+    count: 1
+    location: base
+    label: Pitch axis
+    source: https://virpil-controls.eu/vector-flight-yoke-base.html
+  - type: axis
+    kind: roll
+    count: 1
+    location: base
+    label: Roll axis
+    source: https://virpil-controls.eu/vector-flight-yoke-base.html
+controls_evidence:
+  coverage: complete
+  source: https://virpil-controls.eu/vector-flight-yoke-base.html
+  checked: '2026-10-20'
+  notes: 'SKU VPC-114. Pre-order, webstore ETA late Q4 2026. The bare base has pitch and roll axes only. Handles and control-panel plates are sold separately and are not included. Pitch travel is stated as 160 mm. Roll is selectable between 90 and 180 degrees, so a single throw_deg is not set. A magnetic detent is mentioned without a position count.'
+hardware:
+  gimbal: spring
+  sensor: contactless_magnetic
+  axes:
+    - name: Pitch
+      resolution_bits: 14
+      sensor: contactless_magnetic
+    - name: Roll
+      resolution_bits: 14
+      sensor: contactless_magnetic
+  force_adjustable: true
+  cams_swappable: null
+  damping: clutch dampers
+  extension_support: false
+  throw_deg: null
+connectivity:
+  usb: null
+  standalone_usb: true
+software: VPC Configuration Tool
+physical:
+  materials: []
+prices:
+  - region: EU
+    currency: EUR
+    amount: 349.95
+    incl_vat: true
+    store: virpil-controls.eu
+    url: https://virpil-controls.eu/vector-flight-yoke-base.html
+    verified: '2026-10-20'
+    source: manual
+verification: draft
+sources:
+  - https://virpil-controls.eu/vector-flight-yoke-base.html
+images:
+  - file: /images/virpil/vector-flight-yoke-base.jpg
+    source: https://virpil-controls.eu/vector-flight-yoke-base.html
+    caption: VPC Vector Flight Yoke Base

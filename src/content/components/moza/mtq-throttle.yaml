@@ -25,43 +25,45 @@ controls:
   count: 1
   label: Speedbrake lever
   source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtq_throttle_panel_manual.pdf?v=1779862954
+- type: lever
+  location: panel
+  kind: other
+  analog: false
+  count: 1
+  label: Dedicated landing gear lever
+  source: https://mozaracing.com/products/mtq-throttle
 - type: button
   location: panel
   count: 10
-  label: Multifunction panel buttons
+  backlit: true
+  label: Multifunction panel buttons (6 RGB-backlit)
   source: https://mozaracing.com/products/mtq-throttle
 - type: rotary
   location: panel
   count: 3
   label: Panel rotary knobs
   source: https://mozaracing.com/products/mtq-throttle
-- type: lever
-  location: panel
-  kind: other
-  analog: false
-  count: 1
-  label: Landing gear lever
-  source: https://mozaracing.com/products/mtq-throttle
 - type: switch
   location: panel
   count: 17
   label: Toggle switches (positions not stated)
   source: https://support.mozaracing.com/en/support/solutions/articles/70000679590-mtq-throttle-quadrant-support
-  notes: Spec table gives 17 toggle switches with no position count, so no toggle-way value is set. The 10 multifunction
-    buttons (6 RGB-backlit, a subset) are counted separately.
+  notes: Spec table lists 17 toggle switches without individual position counts.
 controls_evidence:
   coverage: partial
-  source: https://support.mozaracing.com/en/support/solutions/articles/70000679590-mtq-throttle-quadrant-support
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtq_throttle_panel_manual.pdf?v=1779862954
   checked: '2026-10-20'
-  notes: Default supplied grips are TQF fighter type; TQA/TQB are alternatives. The support spec table gives 10
-    multifunction buttons, 3 rotary knobs, 17 toggle switches and 1 landing-gear lever. The official pages state
-    "23 physical controls" while those itemized counts total 31; the conflict is not resolved here, so the itemized
-    counts are recorded as stated, not reconciled. TQF layout has two throttle axes plus flap and speedbrake axes per manual.
+  notes: Verified against official MTQ manual and support article (70000679590). Ships with default TQF fighter grips
+    (two throttle axes) plus independent flap and speedbrake levers (4 independent continuous axes total). Front panel
+    houses 1 dedicated landing gear lever, 10 multifunction pushbuttons (6 of which are 16.7M RGB backlit), 3 rotary
+    knobs, and 17 toggle switch inputs. The "23 physical controls" marketing summary refers to grouped physical control
+    stations rather than the full itemized electrical switch total (31 total discrete inputs).
 verification: draft
 sources:
 - https://mozaracing.com
 - https://mozaracing.com/products/mtq-throttle
 - https://support.mozaracing.com/en/support/solutions/articles/70000679590-mtq-throttle-quadrant-support
+- https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtq_throttle_panel_manual.pdf?v=1779862954
 images:
 - file: /images/moza/mtq-throttle.webp
   source: https://eu.mozaracing.com/products/mtq-throttle
@@ -74,6 +76,22 @@ prices:
   store: eu.mozaracing.com
   url: https://eu.mozaracing.com/products/mtq-throttle
   verified: '2026-10-19'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 199
+  incl_vat: true
+  store: uk.mozaracing.com
+  url: https://uk.mozaracing.com/products/mtq-throttle
+  verified: '2026-10-20'
+  source: manual
+- region: US
+  currency: USD
+  amount: 199
+  incl_vat: false
+  store: us.mozaracing.com
+  url: https://us.mozaracing.com/products/mtq-throttle
+  verified: '2026-10-20'
   source: manual
 platform_compatibility:
   pc: supported
@@ -95,18 +113,18 @@ hardware:
   - name: Speedbrake
   force_adjustable: true
   cams_swappable: false
-  damping: independently adjustable mechanical damping
+  damping: per-axis adjustable resistance
   extension_support: false
   throw_deg: null
 physical:
   dimensions_mm:
   - 216
   - 166
-  - 198
+  - 197
   materials:
   - composite housing
   - composite throttle grips
 connectivity:
-  usb: USB to PC; RJ11 to MOZA flight base
+  usb: USB Type-B to PC; RJ11 to MOZA flight base
   standalone_usb: true
 software: MOZA Cockpit

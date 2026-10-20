@@ -1,0 +1,31 @@
+brand: winctrl
+name: Super Libra NavyAce Joystick Combo
+category: stick_combo
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official listing identifies PC compatible hardware; no exact source establishes console compatibility.
+  sources:
+  - https://eu.winctrl.com/mobileview/goods-details.html?id=317
+status: discontinued
+components:
+- winctrl/super-libra-joystick-base
+- winctrl/f18-hornet-grip
+prices:
+- region: EU
+  currency: EUR
+  amount: 164.09
+  incl_vat: true
+  store: eu.winctrl.com
+  url: https://eu.winctrl.com/mobileview/goods-details.html?id=317
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources:
+- https://eu.winctrl.com/mobileview/goods-details.html?id=317
+- https://eu.winctrl.com/view/goods-details.html?id=314
+images:
+- file: /images/winctrl/super-libra-navyace-combo.jpg
+  source: https://eu.winctrl.com/mobileview/goods-details.html?id=317
+  caption: Super Libra NavyAce Joystick Combo

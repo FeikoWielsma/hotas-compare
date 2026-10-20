@@ -1,0 +1,48 @@
+brand: moza
+name: MOZA AB6 Flight Simulator Bundle
+category: stick_combo
+status: current
+components:
+- moza/ab6-force-feedback-base
+- moza/mhg-flight-grip
+prices:
+- region: EU
+  currency: EUR
+  amount: 449
+  incl_vat: true
+  store: eu.mozaracing.com
+  url: https://eu.mozaracing.com/products/ab6-bundle
+  verified: '2026-10-20'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 399
+  incl_vat: true
+  store: uk.mozaracing.com
+  url: https://uk.mozaracing.com/products/ab6-bundle
+  verified: '2026-10-20'
+  source: manual
+- region: US
+  currency: USD
+  amount: 399
+  incl_vat: false
+  store: us.mozaracing.com
+  url: https://us.mozaracing.com/products/ab6-bundle
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources:
+- https://mozaracing.com/products/ab6-bundle
+- https://us.mozaracing.com/products/ab6-bundle
+- https://eu.mozaracing.com/products/ab6-bundle
+images:
+- file: /images/moza/ab6-flight-simulator-bundle.webp
+  source: https://us.mozaracing.com/products/ab6-bundle
+  caption: MOZA AB6 Flight Simulator Bundle
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Complete bundle combines the PC-compatible AB6 force feedback base and MHG grip.
+  sources:
+  - https://support.mozaracing.com/en/support/solutions/articles/70000684201-ab6-force-feedback-base

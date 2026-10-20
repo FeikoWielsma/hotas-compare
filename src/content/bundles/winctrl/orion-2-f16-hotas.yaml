@@ -12,6 +12,7 @@ status: current
 components:
   - winctrl/orion-2-base
   - winctrl/f16-ex-viper-grip
+  - winctrl/orion-2-throttle-base
   - winctrl/orion-2-f16-throttle
 prices:
   - region: EU

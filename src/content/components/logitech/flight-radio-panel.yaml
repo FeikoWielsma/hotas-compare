@@ -1,0 +1,42 @@
+brand: logitech
+name: Logitech G Flight Radio Panel
+category: module
+status: current
+handedness: n/a
+mount: null
+controls:
+- type: rotary
+  count: 2
+  location: panel
+  label: COM/NAV/ADF/DME radio mode selectors
+  source: https://www.logitech.com/assets/65157/flight-radio-panel.pdf
+- type: encoder
+  count: 2
+  location: panel
+  label: Outer and inner frequency adjustment knobs
+  source: https://www.logitech.com/assets/65157/flight-radio-panel.pdf
+- type: button
+  count: 2
+  location: panel
+  label: ACT/STBY frequency transfer buttons
+  source: https://www.logitech.com/assets/65157/flight-radio-panel.pdf
+controls_evidence:
+  coverage: complete
+  source: https://www.logitech.com/assets/65157/flight-radio-panel.pdf
+  checked: '2026-10-20'
+  notes: Official manual labels the mode selector, outer and inner rotary controls,
+    and ACT/STBY switches for each of two radio rows.
+hardware:
+  axes: []
+connectivity:
+  usb: a_cable
+  standalone_usb: true
+software: Logitech G HUB
+verification: draft
+sources:
+- https://www.logitechg.com/en-us/shop/p/flight-simulator-cockpit-radio-panel.945-000029
+- https://www.logitech.com/assets/65157/flight-radio-panel.pdf
+images:
+- file: /images/logitech/flight-radio-panel.png
+  source: https://www.logitechg.com/en-us/shop/p/flight-simulator-cockpit-radio-panel.945-000029
+  caption: Flight Radio Panel

@@ -1,0 +1,62 @@
+brand: winctrl
+name: Gemini Throttle/Collective Base
+category: base
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official manual/store record identifies PC-compatible use; no exact source establishes console support
+    or incompatibility.
+  sources:
+  - https://eu.winctrl.com/mobileview/goods-details.html?id=326
+  - https://eu.winctrl.com/static/download/QmNZhTmbj8UTnsyfy8YSoJ5we9XLV7RcjdJRjrZTyBMhii?filename=GEMINI-THROTTLE-COLLECTIVE-BASE-MANUAL-EN-V1.0.pdf
+status: current
+handedness: n/a
+mount:
+  provides: winctrl-gemini-base
+  accepts:
+  - winctrl-grip
+controls:
+- type: lever
+  kind: throttle_dual
+  analog: true
+  count: 2
+  location: base
+  label: Left and right throttle/collective grip pivots, 80° total travel
+  source: https://eu.winctrl.com/static/download/QmNZhTmbj8UTnsyfy8YSoJ5we9XLV7RcjdJRjrZTyBMhii?filename=GEMINI-THROTTLE-COLLECTIVE-BASE-MANUAL-EN-V1.0.pdf
+controls_evidence:
+  coverage: partial
+  source: https://eu.winctrl.com/static/download/QmNZhTmbj8UTnsyfy8YSoJ5we9XLV7RcjdJRjrZTyBMhii?filename=GEMINI-THROTTLE-COLLECTIVE-BASE-MANUAL-EN-V1.0.pdf
+  checked: '2026-10-20'
+  notes: Manual specifies independent left/right grip travel but provides no explicit axis count or base control
+    inventory; the two levers represent the two separately articulated grips.
+connectivity:
+  standalone_usb: true
+hardware:
+  axes:
+  - name: Left throttle/collective
+  - name: Right throttle/collective
+  axis_count: 2
+physical:
+  weight_g: 1000
+  dimensions_mm:
+  - 170
+  - 107
+  - 95
+prices:
+- region: EU
+  currency: EUR
+  amount: 128.49
+  incl_vat: true
+  store: eu.winctrl.com
+  url: https://eu.winctrl.com/mobileview/goods-details.html?id=326
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources:
+- https://eu.winctrl.com/static/download/QmNZhTmbj8UTnsyfy8YSoJ5we9XLV7RcjdJRjrZTyBMhii?filename=GEMINI-THROTTLE-COLLECTIVE-BASE-MANUAL-EN-V1.0.pdf
+- https://eu.winctrl.com/mobileview/goods-details.html?id=326
+images:
+- file: /images/winctrl/gemini-throttle-collective-base.jpg
+  source: https://eu.winctrl.com/mobileview/goods-details.html?id=326
+  caption: Gemini Throttle/Collective Base

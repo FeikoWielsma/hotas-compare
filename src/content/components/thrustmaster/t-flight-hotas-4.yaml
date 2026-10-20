@@ -29,6 +29,10 @@ controls:
   label: Multidirectional POV hat-switch
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TFH4/T-Flight_Hotas_4_Manual.pdf
 - type: button
+  count: 12
+  label: Action buttons (official product total; push/switch breakdown not published)
+  source: https://www.thrustmaster.com/pt-br/products/t-flight-hotas-4/
+- type: button
   count: 1
   location: base
   label: PS button with LED
@@ -37,11 +41,7 @@ controls_evidence:
   coverage: partial
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TFH4/T-Flight_Hotas_4_Manual.pdf
   checked: '2026-10-20'
-  notes: Inventory from the official T.Flight Hotas 4 user manual technical-features list (callouts 1-11) and text.
-    The manual shows action buttons (callout 9, several leader lines on handle and throttle) but gives no count, so
-    they are not itemised; retailer listings quote 12 action buttons, which is not an official source. The handle
-    resistance dial (callout 7) and rudder locking screw (callout 5) are adjustments, not inputs, and the Allen key
-    is for throttle installation. The manual has no PC button-numbering diagram.
+  notes: The official product page specifies five axes, 12 buttons, one trigger and one hat. The manual confirms the physical control groups but does not break down the action-button total by push versus switch or state hat ways. The handle resistance dial and rudder locking screw are adjustments, not inputs; the Allen key is for throttle installation.
 platform_compatibility:
   pc: supported
   xbox: unsupported
@@ -57,8 +57,10 @@ sources:
 - https://www.thrustmaster.com/en-us/universe/flying/
 - https://shop.thrustmaster.com/en_eu/t-flight-hotas-4.html
 - https://shop.thrustmaster.com/en_gb/t-flight-hotas-4.html
+- https://eshop.thrustmaster.com/en_us/t-flight-hotas-4.html
 verification: draft
 hardware:
+  axis_count: 5
   force_adjustable: true
 connectivity:
   standalone_usb: true
@@ -78,6 +80,14 @@ prices:
   incl_vat: true
   store: Thrustmaster UK eshop
   url: https://shop.thrustmaster.com/en_gb/t-flight-hotas-4.html
+  verified: '2026-10-20'
+  source: manual
+- region: US
+  currency: USD
+  amount: 99.99
+  incl_vat: false
+  store: Thrustmaster US eshop
+  url: https://eshop.thrustmaster.com/en_us/t-flight-hotas-4.html
   verified: '2026-10-20'
   source: manual
 images:

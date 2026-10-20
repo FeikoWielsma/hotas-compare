@@ -1,0 +1,142 @@
+brand: vkb
+name: MCG Ultimate Add-On Grip for Gunfighter Mk.III
+category: grip
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs
+    and not compatible with Xbox, PS5, Apple or other platforms. Requires a compatible
+    Gunfighter Mk.II/III base on Windows PC.
+  sources:
+  - https://vkbsimcontrollers.com/products/mcg-ultimate-add-on-grip-for-gunfighter-mk-iii
+  - https://vkb-sim.com.au/collections/all-controllers
+status: current
+release_year: 2021
+handedness: right
+mount:
+  provides: vkb-rev-b
+  accepts: []
+controls:
+- type: trigger
+  location: grip
+  stages: 2
+  action: sequential
+  label: Main trigger
+  source: https://vkbsimcontrollers.com/products/mcg-ultimate-add-on-grip-for-gunfighter-mk-iv-us
+- type: trigger
+  location: grip
+  stages: 2
+  action: flip
+  label: Metal folding trigger
+  notes: Two-position sensor reports flipped up/down; model as two-position flip trigger.
+  source: https://vkbsimcontrollers.com/products/mcg-ultimate-add-on-grip-for-gunfighter-mk-iv-us
+- type: lever
+  location: grip
+  kind: brake
+  analog: true
+  label: Brake lever
+  source: https://vkbsimcontrollers.com/products/mcg-ultimate-add-on-grip-for-gunfighter-mk-iv-us
+  push: false
+- type: analog_ministick
+  location: grip
+  count: 2
+  label: Slew and trimmer ministick axes
+  notes: Manufacturer specifies two slew axes and two trimmer axes with push function.
+  source: https://vkbsimcontrollers.com/products/mcg-ultimate-add-on-grip-for-gunfighter-mk-iv-us
+  push: true
+- type: hat
+  location: grip
+  ways: 4
+  push: true
+  count: 3
+  label: MANVR, RESET, and DC 4-way hats with center push
+  source: https://vkbsimcontrollers.com/products/mcg-ultimate-add-on-grip-for-gunfighter-mk-iv-us
+- type: button
+  location: grip
+  count: 4
+  backlit: false
+  label: AP OFF, LVLNG, GUN, and Ring Finger push buttons
+  source: https://vkbsimcontrollers.com/products/mcg-ultimate-add-on-grip-for-gunfighter-mk-iv-us
+controls_evidence:
+  coverage: complete
+  source: https://vkbsimcontrollers.com/products/mcg-ultimate-add-on-grip-for-gunfighter-mk-iii
+  checked: '2026-10-20'
+  notes: Full physical inventory verified against official VKB Gunfighter MCGU control
+    template (v1.2) and product specifications. Rev.B connector for Gunfighter Mk.II/III
+    bases.
+hardware:
+  gimbal: null
+  sensor: contactless_magnetic
+  axes:
+  - name: Slew X
+    sensor: contactless_magnetic
+  - name: Slew Y
+    sensor: contactless_magnetic
+  - name: Trimmer X
+    sensor: contactless_magnetic
+  - name: Trimmer Y
+    sensor: contactless_magnetic
+  - name: Brake
+    sensor: contactless_magnetic
+  force_adjustable: false
+  cams_swappable: false
+  damping: null
+  extension_support: false
+  throw_deg: null
+  axis_count: 5
+connectivity:
+  usb: none; connects via VKB Rev.B connector to Gunfighter base
+  standalone_usb: false
+software: VKBDevCfg
+physical:
+  materials:
+  - aluminium
+use_case_fit:
+  modern_jet: 5
+  heli: 5
+  ww2: 3
+  ga: 2
+  airliner: 1
+  space_hotas: 3
+  space_hosas: 2
+prices:
+- region: US
+  currency: USD
+  amount: 212.5
+  incl_vat: false
+  store: vkbsimcontrollers.com
+  url: https://vkbsimcontrollers.com/products/mcg-ultimate-add-on-grip-for-gunfighter-mk-iii
+  verified: '2026-10-19'
+  source: manual
+verdict:
+  author: feiko
+  hands_on: false
+  take: 'Draft assessment: Modern Combat Grip Ultimate is a purpose-built grip for
+    sim pilots who value precise inputs and configurable controls. Confirm regional
+    configuration and included accessories before purchase.'
+  pros:
+  - Metal construction with modular hats and ministick
+  - Extensive controls for modern combat aircraft
+  - Configurable grip modules and twist adapter
+  cons:
+  - Heavy grip is best paired with Gunfighter base
+  - Premium price
+  great_for:
+  - modern_jet
+  - heli
+  skip_if:
+  - Heavy grip is best paired with Gunfighter base
+  scores:
+    build: 4
+    feel: 4
+    value: 4
+    software: 4
+    qc_support: 4
+verification: draft
+sources:
+- https://vkbsimcontrollers.com/products/mcg-ultimate-add-on-grip-for-gunfighter-mk-iii
+images:
+- file: /images/vkb/mcg-ultimate-add-on-grip-gunfighter-mk-iii.jpg
+  source: https://vkbsimcontrollers.com/products/mcg-ultimate-add-on-grip-for-gunfighter-mk-iii
+  caption: MCG Ultimate Add-On Grip for Gunfighter Mk.III

@@ -1,0 +1,118 @@
+brand: moza
+name: MOZA MTLP Panel
+category: module
+status: current
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official spec lists "Supported Platform PC"; no console or Mac/Linux wording either way.
+  sources:
+  - https://us.mozaracing.com/products/mtlp-panel
+controls:
+- type: rotary
+  location: panel
+  count: 1
+  mode: selector
+  positions: 5
+  label: Selective Jettison rotary selector
+  source: https://us.mozaracing.com/products/mtlp-panel
+- type: button
+  location: panel
+  count: 1
+  label: Center JETT pushbutton
+  source: https://us.mozaracing.com/products/mtlp-panel
+- type: toggle
+  location: panel
+  count: 1
+  ways: 3
+  label: Flap toggle switch (AUTO / HALF / FULL)
+  source: https://us.mozaracing.com/products/mtlp-panel
+- type: toggle
+  location: panel
+  count: 1
+  ways: 2
+  label: Launch bar toggle switch (EXTEND / RETRACT)
+  source: https://us.mozaracing.com/products/mtlp-panel
+- type: toggle
+  location: panel
+  count: 1
+  ways: 2
+  label: Anti-skid toggle switch (ON / OFF)
+  source: https://us.mozaracing.com/products/mtlp-panel
+- type: toggle
+  location: panel
+  count: 1
+  ways: 2
+  label: Landing and taxi light switch (ON / OFF)
+  source: https://us.mozaracing.com/products/mtlp-panel
+- type: toggle
+  location: panel
+  count: 1
+  ways: 2
+  label: Hook bypass switch (FIELD / CARRIER)
+  source: https://us.mozaracing.com/products/mtlp-panel
+- type: lever
+  location: panel
+  count: 1
+  kind: other
+  analog: false
+  positions: 2
+  label: Landing gear lever (UP / DOWN with illuminated transit indicator)
+  source: https://us.mozaracing.com/products/mtlp-panel
+- type: lever
+  location: panel
+  count: 1
+  kind: other
+  analog: true
+  positions: 2
+  label: Tailhook lever (Hall sensor)
+  source: https://us.mozaracing.com/products/mtlp-panel
+- type: lever
+  location: panel
+  count: 1
+  kind: brake
+  analog: true
+  label: Parking and emergency brake lever (pull-and-turn mechanism, Hall sensor)
+  source: https://us.mozaracing.com/products/mtlp-panel
+controls_evidence:
+  coverage: complete
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtlp_panel_manual.pdf?v=1779862892
+  checked: '2026-10-20'
+  notes: >-
+    Reconciled official marketing specification of "25 switch signals" with physical panel controls. The 25 count
+    is a logical DirectInput signal total across all multi-position switches and levers (e.g. 5 JETT positions, JETT push,
+    3 flap positions, landing gear up/down, hook positions, parking brake pull/turn signals, and 2-way toggles). The
+    actual hardware houses 10 physical controls: 1 multi-position rotary selector with center push button, 5 toggle
+    switches (one 3-way flap, four 2-way), and 3 levers (landing gear lever, Hall-effect tailhook lever, and Hall-effect
+    pull-and-turn parking brake lever). There are no gun triggers; previous reference to 2 triggers was a machine translation artifact.
+connectivity:
+  usb: USB Type-B to PC; RJ11 to MOZA flight base
+  standalone_usb: true
+physical:
+  weight_g: 680
+  dimensions_mm:
+  - 197
+  - 135
+  - 149
+  materials:
+  - composite body
+  - aluminum alloy levers
+verification: draft
+prices:
+- region: US
+  currency: USD
+  amount: 149
+  incl_vat: false
+  store: MOZA US store
+  url: https://us.mozaracing.com/products/mtlp-panel
+  verified: '2026-10-20'
+  source: manual
+sources:
+- https://us.mozaracing.com/products/mtlp-panel
+- https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtlp_panel_manual.pdf?v=1779862892
+images:
+- file: /images/moza/mtlp-panel.webp
+  source: https://us.mozaracing.com/products/mtlp-panel
+  caption: MOZA MTLP Panel
+software: MOZA Cockpit

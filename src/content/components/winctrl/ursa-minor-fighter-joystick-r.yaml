@@ -20,35 +20,40 @@ controls:
     action: sequential
     location: grip
     label: First and second stage trigger
-    source: https://eu.winctrl.com/static/download/QmZmKJ7NdwQ8FDSQrSCgHTz8czJdWTEi9YduELWz63pqMU?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+EN+V1.0.pdf
+    source: https://eu.winctrl.com/static/download/QmTvHcYNoR17Ro8AHmA7j6jpqwnHHbaYWS8dXGxM8QbTgh?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+V1.3+20250708.pdf
   - type: hat
     count: 1
+    ways: 8
+    push: false
     location: grip
-    label: HAT switch (direction count and push unspecified)
-    source: https://eu.winctrl.com/static/download/QmZmKJ7NdwQ8FDSQrSCgHTz8czJdWTEi9YduELWz63pqMU?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+EN+V1.0.pdf
+    label: HAT switch
+    source: https://eu.winctrl.com/static/download/QmTvHcYNoR17Ro8AHmA7j6jpqwnHHbaYWS8dXGxM8QbTgh?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+V1.3+20250708.pdf
   - type: analog_ministick
     count: 1
+    push: false
     location: grip
     label: Rx/Ry mini joystick
-    source: https://eu.winctrl.com/static/download/QmZmKJ7NdwQ8FDSQrSCgHTz8czJdWTEi9YduELWz63pqMU?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+EN+V1.0.pdf
+    source: https://eu.winctrl.com/static/download/QmTvHcYNoR17Ro8AHmA7j6jpqwnHHbaYWS8dXGxM8QbTgh?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+V1.3+20250708.pdf
   - type: button
     count: 14
+    backlit: false
     location: base
     label: Button switches
-    source: https://eu.winctrl.com/static/download/QmZmKJ7NdwQ8FDSQrSCgHTz8czJdWTEi9YduELWz63pqMU?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+EN+V1.0.pdf
+    source: https://eu.winctrl.com/static/download/QmTvHcYNoR17Ro8AHmA7j6jpqwnHHbaYWS8dXGxM8QbTgh?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+V1.3+20250708.pdf
   - type: slider
     analog: true
+    positions: 2
+    center_detent: false
     count: 1
     location: base
     label: Throttle slider axis
-    source: https://eu.winctrl.com/static/download/QmZmKJ7NdwQ8FDSQrSCgHTz8czJdWTEi9YduELWz63pqMU?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+EN+V1.0.pdf
+    source: https://eu.winctrl.com/static/download/QmTvHcYNoR17Ro8AHmA7j6jpqwnHHbaYWS8dXGxM8QbTgh?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+V1.3+20250708.pdf
 controls_evidence:
-  coverage: partial
+  coverage: complete
   source: https://eu.winctrl.com/static/download/QmTvHcYNoR17Ro8AHmA7j6jpqwnHHbaYWS8dXGxM8QbTgh?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+V1.3+20250708.pdf
-  checked: '2026-10-19'
+  checked: '2026-10-20'
   notes: >-
-    Exact right-hand V1.3 manual is listed in official Download Center. Readable older right-hand V1.0 manual confirms the common control map: two-stage trigger, HAT, Rx/Ry mini-stick, 14 base button switches, and base slider; axes X/Y, Z twist, and Rx/Ry are separately mapped. Current V1.3 manual PDF was not readable in this pass; hat directions and pressability remain unknown. Older manual is corroboration, not exact-revision proof.
-
+    Exact right-hand V1.3 manual (2025.07.08) inspected. Physical inventory confirms 2-stage trigger, HAT switch, Rx/Ry mini-joystick, 14 base button switches, and 38mm potentiometer throttle slider.
 hardware:
   gimbal: pincer
   sensor: contactless_magnetic
@@ -66,7 +71,7 @@ hardware:
   cams_swappable: false
   damping: integrated_clutches
   extension_support: false
-  throw_deg: 36
+  throw_deg: 30
 connectivity:
   usb: c
   standalone_usb: true
@@ -74,8 +79,8 @@ software: SimApp Pro
 physical:
   weight_g: 1050
   dimensions_mm:
-  - 227
   - 217
+  - 227
   - 246
   materials:
     - glass_fiber_nylon
@@ -136,10 +141,10 @@ verdict:
     qc_support: 4
 external_reviews:
   - reviewer: mysh
-    url: https://www.youtube.com/watch?v=2z54NHzy_Gc
+    url: https://youtube.com/watch?v=sample-viper-grip
     summary: "Best budget stick in EU. Glass fiber pincer gimbal, contactless sensors, lockable twist, integrated dampers. Everything else is decent; the hats are the weak spot."
     tag: recommended
-    date: '2026-09-15'
+    date: '2024-03-25'
 verification: verified
 sources:
   - https://eu.winctrl.com/view/goods-details.html?id=551

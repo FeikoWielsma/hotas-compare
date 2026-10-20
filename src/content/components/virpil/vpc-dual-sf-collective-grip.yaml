@@ -1,0 +1,93 @@
+brand: virpil
+name: VPC Dual-SF Collective Grip
+category: grip
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: The product page device table lists the platform as PC and does not list Xbox or PS5 support.
+  sources:
+    - https://virpil-controls.eu/vpc-dual-sf-collective-grip.html
+status: current
+handedness: n/a
+mount:
+  provides: virpil-rotor-grip
+  accepts: []
+controls:
+  - type: trigger
+    stages: 1
+    count: 2
+    location: grip
+    label: Single-stage triggers
+    source: https://virpil-controls.eu/vpc-dual-sf-collective-grip.html
+  - type: analog_ministick
+    push: true
+    count: 1
+    location: grip
+    label: Analogue stick
+    source: https://virpil-controls.eu/vpc-dual-sf-collective-grip.html
+  - type: hat
+    ways: 4
+    push: true
+    count: 4
+    location: grip
+    label: 4-way hats
+    source: https://virpil-controls.eu/vpc-dual-sf-collective-grip.html
+  - type: hat
+    ways: 2
+    push: true
+    count: 4
+    location: grip
+    label: 2-way hats
+    source: https://virpil-controls.eu/vpc-dual-sf-collective-grip.html
+  - type: button
+    count: 6
+    location: grip
+    label: Momentary push buttons
+    source: https://virpil-controls.eu/vpc-dual-sf-collective-grip.html
+  - type: toggle
+    ways: 3
+    momentary: true
+    count: 1
+    location: grip
+    label: "[ON]-OFF-[ON] toggle"
+    source: https://virpil-controls.eu/vpc-dual-sf-collective-grip.html
+controls_evidence:
+  coverage: complete
+  source: https://virpil-controls.eu/vpc-dual-sf-collective-grip.html
+  checked: '2026-10-20'
+  notes: 'SKU VPC-014. Counts are the Dual-SF column of the product-page comparison table, not the real helicopter column and not the MongoosT-50CM3 throttle text reused further down the page. The support article title mentions an engine idle button; that input is not listed separately from the six momentary buttons, so it is not added again. Programmable RGB backlighting is stated for the grip, with eight zones, without assigning lighting to each control.'
+hardware:
+  gimbal: null
+  sensor: null
+  axes:
+    - name: Ministick X
+    - name: Ministick Y
+  force_adjustable: false
+  cams_swappable: false
+  damping: null
+  extension_support: false
+  throw_deg: null
+connectivity:
+  usb: none; connects through a compatible Rotor TCS base
+  standalone_usb: false
+software: VPC Configuration Tool
+physical:
+  materials: []
+prices:
+  - region: EU
+    currency: EUR
+    amount: 269.95
+    incl_vat: true
+    store: virpil-controls.eu
+    url: https://virpil-controls.eu/vpc-dual-sf-collective-grip.html
+    verified: '2026-10-20'
+    source: manual
+verification: draft
+sources:
+  - https://virpil-controls.eu/vpc-dual-sf-collective-grip.html
+  - https://support.virpil.com/en/support/solutions/articles/47001257030-vpc-apache-64-collective-grip
+images:
+  - file: /images/virpil/vpc-dual-sf-collective-grip.jpg
+    source: https://virpil-controls.eu/vpc-dual-sf-collective-grip.html
+    caption: VPC Dual-SF Collective Grip

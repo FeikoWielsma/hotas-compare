@@ -6,22 +6,22 @@ handedness: n/a
 mount: null
 controls:
 - type: axis
-  kind: toe_brake
-  count: 2
-  label: Independent left and right toe-brake axes
-  source: https://slawdevice.com/en/rudder-pedals/48-pre-order-rh-rotor-v2-rudder-pedals.html
-  location: other
-- type: axis
   kind: rudder
   count: 1
   location: other
   label: Rudder pedal axis
-  source: https://slawdevice.com/en/rudder-pedals/48-pre-order-rh-rotor-v2-rudder-pedals.html
+  source: https://slawdevice.com/en/rudder-pedals/50-pre-order-rh-rotor-v2-rudder-pedals.html
+- type: axis
+  kind: toe_brake
+  count: 2
+  label: Independent left and right toe-brake axes
+  source: https://slawdevice.com/en/rudder-pedals/50-pre-order-rh-rotor-v2-rudder-pedals.html
+  location: other
 controls_evidence:
   coverage: complete
-  source: https://slawdevice.com/en/rudder-pedals/48-pre-order-rh-rotor-v2-rudder-pedals.html
-  checked: '2026-10-19'
-  notes: 'RH Rotor V2 has three analog sensed axes: rudder plus two separate toe brakes. The controls schema has no generic axis item for rudder, so controls lists only the two brake pedals. Optional hydraulic damper is not installed/included and is not an input. Pedal movements are represented explicitly as axes; they are not hand-operated levers or rocker switches.'
+  source: https://slawdevice.com/en/rudder-pedals/50-pre-order-rh-rotor-v2-rudder-pedals.html
+  checked: '2026-10-20'
+  notes: 'RH Rotor V2 has three analog sensed axes: rudder plus two separate toe brakes. All three axes use contactless digital sensors and cam loading mechanisms. No discrete buttons, hats or hand-operated switches exist on the pedals.'
 hardware:
   gimbal: cam
   sensor: contactless_magnetic
@@ -35,15 +35,17 @@ hardware:
   - name: Right brake
     resolution_bits: 13
     sensor: contactless_magnetic
-  force_adjustable: null
-  cams_swappable: null
-  damping: null
-  extension_support: null
+  force_adjustable: true
+  cams_swappable: false
+  damping: optional hydraulic damper (not included; mounting hardware included)
+  extension_support: false
   throw_deg: null
 connectivity:
   usb: c
   standalone_usb: true
+software: Slaw Device Rudder calibration software
 physical:
+  weight_g: 8000
   materials:
   - steel
   - aluminium
@@ -54,16 +56,16 @@ prices:
   amount: 535
   incl_vat: false
   store: slawdevice.com
-  url: https://slawdevice.com/en/rudder-pedals/48-pre-order-rh-rotor-v2-rudder-pedals.html
-  verified: '2026-10-19'
+  url: https://slawdevice.com/en/rudder-pedals/50-pre-order-rh-rotor-v2-rudder-pedals.html
+  verified: '2026-10-20'
   source: manual
 verification: draft
 images:
   - file: /images/slaw/rotor-pedals.jpg
-    source: https://slawdevice.com/en/rudder-pedals/48-pre-order-rh-rotor-v2-rudder-pedals.html
+    source: https://slawdevice.com/en/rudder-pedals/50-pre-order-rh-rotor-v2-rudder-pedals.html
     caption: RH Rotor Pedals
 sources:
-- https://slawdevice.com/en/rudder-pedals/48-pre-order-rh-rotor-v2-rudder-pedals.html
+- https://slawdevice.com/en/rudder-pedals/50-pre-order-rh-rotor-v2-rudder-pedals.html
 platform_compatibility:
   pc: supported
   xbox: unknown

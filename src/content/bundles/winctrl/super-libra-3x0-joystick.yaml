@@ -1,0 +1,30 @@
+brand: winctrl
+name: Super Libra 3X0 Joystick Combo
+category: stick_combo
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official listing identifies PC compatible hardware; no exact source establishes console compatibility.
+  sources:
+  - https://eu.winctrl.com/mobileview/goods-details.html?id=336
+status: current
+components:
+- winctrl/super-libra-joystick-base
+- winctrl/3x0-joystick-grip
+prices:
+- region: EU
+  currency: EUR
+  amount: 508.7
+  incl_vat: true
+  store: eu.winctrl.com
+  url: https://eu.winctrl.com/mobileview/goods-details.html?id=336
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources:
+- https://eu.winctrl.com/mobileview/goods-details.html?id=336
+images:
+- file: /images/winctrl/super-libra-3x0-combo.jpg
+  source: https://eu.winctrl.com/mobileview/goods-details.html?id=336
+  caption: Super Libra 3X0 Joystick Combo

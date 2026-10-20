@@ -1,0 +1,38 @@
+brand: winctrl
+name: Cyber Taurus E.B.82 ViperAce Joystick
+category: stick_combo
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official listing or manual establishes computer USB or SimAppPro use. No exact product source
+    reviewed here establishes Xbox or PS5 support or incompatibility.
+  sources: &id001
+  - https://eu.winctrl.com/view/goods-details.html?id=3205
+status: current
+components:
+- winctrl/cyber-taurus-base-eb82
+- winctrl/f16-ex-viper-grip
+prices:
+- region: EU
+  currency: EUR
+  amount: 951.21
+  incl_vat: true
+  store: eu.winctrl.com
+  url: https://eu.winctrl.com/view/goods-details.html?id=3205
+  verified: '2026-10-20'
+  source: manual
+- region: US
+  currency: USD
+  amount: 939.4
+  incl_vat: false
+  store: us.winwingsim.com
+  url: https://us.winwingsim.com/view/goods-details.html?id=3205
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources: *id001
+images:
+- file: /images/winctrl/cyber-taurus-eb82-viperace-joystick.jpg
+  source: https://eu.winctrl.com/view/goods-details.html?id=3205
+  caption: Cyber Taurus E.B.82 ViperAce Joystick

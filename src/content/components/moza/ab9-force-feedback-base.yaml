@@ -8,24 +8,34 @@ mount:
   accepts: []
 controls: []
 controls_evidence:
-  coverage: partial
-  source: https://support.mozaracing.com/en/support/solutions/articles/70000668982-moza-ab9-base-support
-  checked: '2026-10-19'
-  notes: No onboard flight controls are specified in the AB9 support inventory; optional Active Shifter Knob and
-    attached grips are excluded. Absence of every possible physical base control was not fully established.
+  coverage: complete
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_ab9_force_feedback_base_manual.pdf
+  checked: '2026-10-20'
+  notes: Verified against official AB9 user manual (moza_ab9_force_feedback_base_manual.pdf). The base provides
+    connection ports (USB Type-B, Throttle RJ11, Rudder RJ11, Dash Display RJ11, Control Panel RJ11, Flight Stick top
+    aviation connector) and power switch, but houses no onboard flight controls.
 hardware:
+  axis_count: 2
   gimbal: force_feedback
   sensor: encoder
+  axes:
+  - name: Pitch
+  - name: Roll
   force_adjustable: true
   cams_swappable: false
   damping: active_motor
   extension_support: null
 connectivity:
   standalone_usb: true
-  usb: USB
+  usb: USB Type-B to PC; RJ11 ports (throttle, rudder pedal, dash display, control panel); flight stick connector
 physical:
   materials:
   - aviation-grade aluminum alloy
+  dimensions_mm:
+  - 157
+  - 228
+  - 184
+  weight_g: 5500
 use_case_fit:
   modern_jet: 4
   heli: 3
@@ -89,6 +99,7 @@ sources:
 - https://mozaracing.com/collections/flight-series
 - https://eu.mozaracing.com/products/ab9-base
 - https://support.mozaracing.com/en/support/solutions/articles/70000668982-moza-ab9-base-support
+- https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_ab9_force_feedback_base_manual.pdf
 images:
 - file: /images/moza/ab9-force-feedback-base.webp
   source: https://eu.mozaracing.com/products/ab9-base

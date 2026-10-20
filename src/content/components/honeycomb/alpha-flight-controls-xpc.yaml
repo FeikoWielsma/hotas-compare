@@ -60,7 +60,9 @@ controls_evidence:
     and per-handle count therefore remain unresolved. XPC additionally has four Xbox/navigation
     buttons. The original Alpha has no Xbox navigation group. Physical inventory completeness
     uses the owner-supplied Honeycomb default mapping diagram; optional click, lighting
-    and switch contact behavior may still be unspecified.'
+    and switch contact behavior may still be unspecified. The product page states
+    red LED backlighting for the switch panel. That does not establish backlight
+    on the handle buttons.'
 hardware:
   sensor: hall_effect
   axes:

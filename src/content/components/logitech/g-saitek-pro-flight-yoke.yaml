@@ -8,6 +8,7 @@ controls:
   - type: hat
     location: grip
     ways: 8
+    count: 1
     label: Left-handle POV hat
     source: https://www.logitech.com/assets/65128/flight-yoke-system.pdf
   - type: rocker
@@ -49,11 +50,16 @@ hardware:
     sensor: potentiometer
   - name: Roll
     sensor: potentiometer
+  force_adjustable: false
+  cams_swappable: false
+  extension_support: false
 connectivity:
   usb: a_cable
   standalone_usb: true
 software: Logitech G HUB
 physical:
+  weight_g: 1775
+  dimensions_mm: [310, 464, 185]
   materials:
   - metal
   - abs
@@ -82,6 +88,7 @@ prices:
 verification: draft
 sources:
 - https://www.logitechg.com/en-us/products/flight.html
+- https://www.logitechg.com/en-us/shop/p/flight-simulator-yoke-system.945-000023
 images:
   - file: /images/logitech/g-saitek-pro-flight-yoke.webp
     source: https://www.logitechg.com/en-us/shop/p/flight-simulator-yoke-system.945-000023

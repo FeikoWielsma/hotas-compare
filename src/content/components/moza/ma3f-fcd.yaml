@@ -1,0 +1,65 @@
+brand: moza
+name: MOZA MA3F Flight Computer Display
+category: module
+status: current
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official spec lists "Supported Platform PC" only; it says it supports leading flight simulators and Airbus add-ons without naming them.
+  sources:
+  - https://us.mozaracing.com/products/ma3f-fcd
+controls:
+- type: button
+  location: panel
+  count: 12
+  label: Bezel line-select keys (6 left, 6 right)
+  source: https://us.mozaracing.com/products/ma3f-fcd
+- type: button
+  location: panel
+  count: 14
+  label: Function keys (DIR, PROG, PERF, INIT, DATA, blank, BRT, F-PLN, RAD NAV, FUEL PRED, SEC F-PLN, ATC COMM, MCDU MENU, DIM)
+  source: https://us.mozaracing.com/products/ma3f-fcd
+- type: button
+  location: panel
+  count: 6
+  label: Airport key, blank key and four arrow keys
+  source: https://us.mozaracing.com/products/ma3f-fcd
+- type: button
+  location: panel
+  count: 42
+  label: Alphanumeric keys (A-Z, 0-9, ., +/-, /, SP, DVRT, CLR)
+  source: https://us.mozaracing.com/products/ma3f-fcd
+controls_evidence:
+  coverage: partial
+  source: https://us.mozaracing.com/products/ma3f-fcd
+  checked: '2026-10-20'
+  notes: Counted from the user manual cover photo (MA3F FCD, 300 dpi crop). The top row of five small lamps is not
+    counted as buttons (indicators, no separate key cap visible). Two blank keys are counted as keys. The 5.1-inch
+    display is an output. Total 74 keys. The manual has no further diagrams.
+connectivity:
+  usb: Type-C USB 2.0
+  standalone_usb: true
+physical:
+  weight_g: 588
+  materials:
+  - die-cast aluminium alloy
+  - ABS
+  - PC
+verification: draft
+prices:
+- region: US
+  currency: USD
+  amount: 249
+  incl_vat: false
+  store: MOZA US store
+  url: https://us.mozaracing.com/products/ma3f-fcd
+  verified: '2026-10-20'
+  source: manual
+sources:
+- https://us.mozaracing.com/products/ma3f-fcd
+
+images:
+- file: /images/moza/ma3f-fcd.webp
+  source: https://us.mozaracing.com/products/ma3f-fcd
+  caption: MOZA MA3F Flight Computer Display

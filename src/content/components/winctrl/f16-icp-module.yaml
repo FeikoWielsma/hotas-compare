@@ -8,6 +8,7 @@ platform_compatibility:
   notes: Official listing/manual establishes computer USB use; no exact product source establishes Xbox or PS5 support or incompatibility.
   sources:
     - https://eu.winctrl.com/view/goods-details.html?id=544
+    - https://eu.winctrl.com/static/download/QmVUekeGd37nnGiFxhEufKT7Mjtw5zkySFZPLSTgVmFYHN?filename=ICP-User+Manual+EN+V1.0.pdf
 status: current
 handedness: n/a
 mount:
@@ -29,6 +30,7 @@ controls:
   ways: 3
 - type: toggle
   count: 1
+  momentary: true
   location: panel
   label: WARN RESET single-side self-centering toggle
   source: https://eu.winctrl.com/view/goods-details.html?id=544
@@ -52,10 +54,21 @@ controls_evidence:
   checked: '2026-10-19'
   notes: Rendered exact ViperAce ICP product detail specifies 23 silicone buttons, two 3-position toggles (one non-self-centering and WARN RESET single-side self-centering), one 5-way hat, four damped thumbwheels/four axes, and adjustable backlighting. Five-way hat pressability is not specified. No separate press function is asserted for thumbwheels. Five-way marketing terminology is preserved without guessing the split between directional contacts and center press.
 hardware:
-  axes: []
+  axes:
+    - name: X
+      resolution_bits: 12
+    - name: Y
+      resolution_bits: 12
+    - name: Rx
+      resolution_bits: 12
+    - name: Ry
+      resolution_bits: 12
 connectivity:
   standalone_usb: true
+software: SimApp Pro
 physical:
+  weight_g: 500
+  dimensions_mm: [145, 60, 167]
   materials: []
 use_case_fit:
   modern_jet: 4
@@ -77,6 +90,7 @@ prices:
 verification: draft
 sources:
   - https://eu.winctrl.com/view/goods-details.html?id=544
+  - https://eu.winctrl.com/static/download/QmVUekeGd37nnGiFxhEufKT7Mjtw5zkySFZPLSTgVmFYHN?filename=ICP-User+Manual+EN+V1.0.pdf
 
 images:
   - file: /images/winctrl/f16-icp-module.jpg

@@ -4,39 +4,49 @@ category: yoke
 status: current
 handedness: n/a
 controls:
+- type: analog_ministick
+  location: handle
+  count: 2
+  label: Hall Effect thumbsticks (Auxiliary Axis / POV Control Axis)
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/MOZA_MFY_Pro_Yoke_Handle_User_Manual.pdf
 - type: hat
   location: handle
   ways: 8
   count: 2
-  label: 8-way hat switches
-  source: https://us.mozaracing.com/pages/mfy-pro-yoke
-- type: analog_ministick
-  location: handle
-  count: 2
-  label: Hall Effect thumbsticks
-  source: https://us.mozaracing.com/pages/mfy-pro-yoke
+  label: 5-way / 8-way hat switches (Trim switch / View switch)
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/MOZA_MFY_Pro_Yoke_Handle_User_Manual.pdf
 - type: button
   location: handle
   count: 2
-  label: Bumpers (LB/RB)
-  source: https://us.mozaracing.com/pages/mfy-pro-yoke
+  label: AP Disconnect buttons
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/MOZA_MFY_Pro_Yoke_Handle_User_Manual.pdf
+- type: button
+  location: handle
+  count: 2
+  label: Push-to-talk buttons (PTT 1, PTT 2)
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/MOZA_MFY_Pro_Yoke_Handle_User_Manual.pdf
 - type: trigger
   location: handle
   count: 2
-  label: Triggers
-  source: https://us.mozaracing.com/pages/mfy-pro-yoke
+  label: Hall-effect analog triggers (Z-axis / Slider axis)
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/MOZA_MFY_Pro_Yoke_Handle_User_Manual.pdf
 controls_evidence:
-  coverage: partial
-  source: https://us.mozaracing.com/pages/mfy-pro-yoke
-  checked: '2026-10-19'
-  notes: Official specs enumerate two hats, two Hall Effect thumbsticks, two bumpers and two triggers. No touchscreen
-    interaction is represented by the current controls schema; it is not counted as physical buttons. Thumbstick
-    push and trigger stages remain unspecified.
+  coverage: complete
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/MOZA_MFY_Pro_Yoke_Handle_User_Manual.pdf
+  checked: '2026-10-20'
+  notes: Verified against official MFY Pro user manual (pages 3-5). Physical handle controls comprise 2 Hall-effect thumbsticks
+    (Auxiliary Axis, POV Control Axis; software configurable to Axis, Button, or Mixed modes), 2 hat switches (Trim switch,
+    View switch; configurable as 5 independent buttons or 8-way D-pad), 2 AP Disconnect pushbuttons, 2 Push-to-talk pushbuttons,
+    and 2 Hall-effect analog triggers on the back (configurable as combined Z-axis or separate Z-axis and Slider axis).
+    The center module features a full-color touchscreen display providing timer, axis display, button test, checklist,
+    and flight instruments; touchscreen interface contains no discrete physical buttons. Unlike the standard MFY Handle,
+    there are no physical center-panel pushbuttons.
 verification: draft
 sources:
 - https://mozaracing.com
 - https://us.mozaracing.com/pages/mfy-pro-yoke
 - https://support.mozaracing.com/en/support/solutions/articles/70000679589-moza-mfy-yoke-support
+- https://cdn.shopify.com/s/files/1/0937/0802/6176/files/MOZA_MFY_Pro_Yoke_Handle_User_Manual.pdf
 images:
 - file: /images/moza/mfy-yoke-pro.webp
   source: https://eu.mozaracing.com/products/mfy-pro-yoke
@@ -50,6 +60,22 @@ prices:
   url: https://eu.mozaracing.com/products/mfy-pro-yoke
   verified: '2026-10-19'
   source: manual
+- region: UK
+  currency: GBP
+  amount: 279
+  incl_vat: true
+  store: uk.mozaracing.com
+  url: https://uk.mozaracing.com/products/mfy-pro-yoke
+  verified: '2026-10-20'
+  source: manual
+- region: US
+  currency: USD
+  amount: 299
+  incl_vat: false
+  store: us.mozaracing.com
+  url: https://us.mozaracing.com/products/mfy-pro-yoke
+  verified: '2026-10-20'
+  source: manual
 platform_compatibility:
   pc: supported
   xbox: unknown
@@ -58,12 +84,13 @@ platform_compatibility:
     explicitly stated, so console compatibility remains unknown.
   sources:
   - https://support.mozaracing.com/en/support/solutions/articles/70000679589-moza-mfy-yoke-support
+connectivity:
+  standalone_usb: false
 physical:
-  weight_g: 1300
   dimensions_mm:
-  - 142.5
+  - 304
+  - 142
   - 202
-  - 313
   materials:
   - fiberglass-reinforced PA66 composite
   - aluminum alloy quick release

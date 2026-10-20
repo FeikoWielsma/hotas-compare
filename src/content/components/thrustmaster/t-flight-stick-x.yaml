@@ -1,0 +1,92 @@
+brand: thrustmaster
+name: T.Flight Stick X
+category: stick_fixed
+status: current
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official eshop product table lists PC and PS3. PS3 has no schema field; PS5 and Xbox are not stated.
+  sources:
+  - https://eshop.thrustmaster.com/en_us/t-flight-stick-x.html
+controls:
+- type: hat
+  count: 1
+  location: grip
+  label: Multidirectional point-of-view hat (preset diagram D-pad)
+  source: https://ts.thrustmaster.com/download/accessories/pc/joysticks/manuals/tflightstickx/tfsx_user_manual.pdf
+- type: button
+  count: 12
+  label: Numbered action buttons 1-12
+  notes: The product page's fire trigger is one of these twelve. The manual does not identify which number is the trigger, so it is not recorded again as a separate trigger.
+  source: https://ts.thrustmaster.com/download/accessories/pc/joysticks/manuals/tflightstickx/tfsx_user_manual.pdf
+- type: button
+  count: 1
+  location: base
+  label: PRESET button
+  source: https://ts.thrustmaster.com/download/accessories/pc/joysticks/manuals/tflightstickx/tfsx_user_manual.pdf
+- type: button
+  count: 1
+  location: base
+  label: MAPPING button
+  source: https://ts.thrustmaster.com/download/accessories/pc/joysticks/manuals/tflightstickx/tfsx_user_manual.pdf
+- type: slider
+  analog: true
+  count: 1
+  location: base
+  label: Sliding thumb throttle (Slider 0)
+  source: https://ts.thrustmaster.com/download/accessories/pc/joysticks/manuals/tflightstickx/tfsx_user_manual.pdf
+- type: axis
+  kind: twist
+  count: 1
+  location: handle
+  label: Twist rudder (RZ)
+  source: https://ts.thrustmaster.com/download/accessories/pc/joysticks/manuals/tflightstickx/tfsx_user_manual.pdf
+- type: switch
+  count: 1
+  positions: 2
+  location: base
+  label: USB selector (PC / PS3)
+  source: https://ts.thrustmaster.com/download/accessories/pc/joysticks/manuals/tflightstickx/tfsx_user_manual.pdf
+controls_evidence:
+  coverage: complete
+  source: https://ts.thrustmaster.com/download/accessories/pc/joysticks/manuals/tflightstickx/tfsx_user_manual.pdf
+  checked: '2026-10-20'
+  notes: Technical features and the PC automatic-preset diagram number twelve action buttons, then show PRESET and
+    MAPPING as separate buttons, a D-pad hat, Slider 0, and X, Y, and RZ. "3 axes plus integrated throttle" on the
+    product page is those same four axes. Hat direction count is not stated. The resistance dial and LED are not inputs.
+hardware:
+  axis_count: 4
+  axes:
+  - name: X
+  - name: Y
+  - name: RZ (twist rudder)
+  - name: Slider 0 (thumb throttle)
+connectivity:
+  usb: USB
+  standalone_usb: true
+physical:
+  weight_g: 1303
+  dimensions_mm:
+  - 257
+  - 220
+  - 240
+  materials: []
+verification: draft
+prices:
+- region: US
+  currency: USD
+  amount: 49.99
+  incl_vat: false
+  store: Thrustmaster US eshop
+  url: https://eshop.thrustmaster.com/en_us/t-flight-stick-x.html
+  verified: '2026-10-20'
+  source: manual
+sources:
+- https://www.thrustmaster.com/en-us/products/t-flight-stick-x/
+- https://eshop.thrustmaster.com/en_us/t-flight-stick-x.html
+- https://ts.thrustmaster.com/download/accessories/pc/joysticks/manuals/tflightstickx/tfsx_user_manual.pdf
+images:
+- file: /images/thrustmaster/t-flight-stick-x.jpg
+  source: https://support.thrustmaster.com/wp-content/uploads/TflightStickX.jpg
+  caption: T.Flight Stick X

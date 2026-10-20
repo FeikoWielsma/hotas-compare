@@ -1,0 +1,92 @@
+brand: vkb
+name: STECS Space Throttle Add-On Grip (STG) Left-Hand
+category: grip
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs
+    and not compatible with Xbox, PS5, Apple or other platforms. Detached grip use
+    requires its compatible STECS base on Windows PC.
+  sources:
+  - https://vkbsimcontrollers.com/products/stecs-space-throttle-add-on-grip-stg-left-hand-us
+  - https://vkb-sim.com.au/collections/all-controllers
+status: current
+handedness: left
+mount: null
+controls:
+- type: analog_ministick
+  count: 1
+  location: grip
+  label: Built-in X/Y gimbal (STG x and y axes)
+  source: https://vkbsimcontrollers.com/products/stecs-space-throttle-add-on-grip-stg-left-hand-us
+  push: false
+- type: hat
+  ways: 5
+  count: 2
+  push: true
+  location: grip
+  label: Pointer hat and HAT1 (5-way, center push)
+  source: https://vkbsimcontrollers.com/products/stecs-space-throttle-add-on-grip-stg-left-hand-us
+- type: hat
+  ways: 3
+  count: 2
+  push: true
+  location: grip
+  label: H1 and H2 (3-way, center push)
+  source: https://vkbsimcontrollers.com/products/stecs-space-throttle-add-on-grip-stg-left-hand-us
+- type: button
+  count: 2
+  backlit: false
+  location: grip
+  label: B1 and B2 push buttons
+  source: https://vkbsimcontrollers.com/products/stecs-space-throttle-add-on-grip-stg-left-hand-us
+- type: trigger
+  count: 1
+  stages: 1
+  action: sequential
+  location: grip
+  label: Main trigger (single-stage sequential)
+  source: https://vkbsimcontrollers.com/products/stecs-space-throttle-add-on-grip-stg-left-hand-us
+- type: encoder
+  count: 1
+  push: true
+  location: grip
+  label: Encoder wheel with push button
+  source: https://vkbsimcontrollers.com/products/stecs-space-throttle-add-on-grip-stg-left-hand-us
+controls_evidence:
+  coverage: complete
+  source: https://vkbsimcontrollers.com/products/stecs-space-throttle-add-on-grip-stg-left-hand-us
+  checked: '2026-10-20'
+  notes: Counts and control actions verified against product specifications and official VKB STG-LH
+    template (VKB-STECS-SpaceThrottleGrip-LH-v1.0.pdf). Features built-in X/Y gimbal with contactless
+    MaRS sensors, two 5-way center-push hats (Pointer Hat, HAT1), two 3-way center-push hats (H1, H2),
+    two non-backlit push buttons (B1, B2), one single-stage main trigger, and one encoder wheel with push.
+hardware:
+  axis_count: 2
+  gimbal: built_in_xy
+  sensor: contactless_magnetic
+  axes:
+  - name: STG(x)
+    sensor: contactless_magnetic
+  - name: STG(y)
+    sensor: contactless_magnetic
+connectivity:
+  usb: none as supplied; connects through the STECS base
+  standalone_usb: false
+prices:
+- region: US
+  currency: USD
+  amount: 94.05
+  incl_vat: false
+  store: vkbsimcontrollers.com
+  url: https://vkbsimcontrollers.com/products/stecs-space-throttle-add-on-grip-stg-left-hand-us
+  verified: '2026-10-19'
+  source: manual
+verification: draft
+sources:
+- https://vkbsimcontrollers.com/products/stecs-space-throttle-add-on-grip-stg-left-hand-us
+images:
+- file: /images/vkb/stecs-stg-grip-l.jpg
+  source: https://vkbsimcontrollers.com/products/stecs-space-throttle-add-on-grip-stg-left-hand-us
+  caption: STECS Space Throttle Add-On Grip (STG) Left-Hand

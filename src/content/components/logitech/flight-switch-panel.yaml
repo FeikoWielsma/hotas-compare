@@ -1,0 +1,44 @@
+brand: logitech
+name: Logitech G Flight Switch Panel
+category: module
+status: current
+handedness: n/a
+mount: null
+controls:
+- type: toggle
+  ways: 2
+  count: 13
+  location: panel
+  label: On/off aircraft system rocker switches
+  source: https://www.logitech.com/assets/65158/flight-switch-panel.pdf
+- type: rotary
+  positions: 5
+  count: 1
+  location: panel
+  label: Five-position magneto/ignition selector
+  source: https://www.logitech.com/en-us/shop/p/flight-simulator-switch-panel.945-000030
+- type: lever
+  count: 1
+  location: panel
+  label: Landing gear up/down control
+  source: https://www.logitech.com/assets/65158/flight-switch-panel.pdf
+controls_evidence:
+  coverage: complete
+  source: https://www.logitech.com/assets/65158/flight-switch-panel.pdf
+  checked: '2026-10-20'
+  notes: Official product guide diagram and labeled functions show thirteen ON/OFF
+    rocker switches, the five-setting ignition selector and landing gear control.
+hardware:
+  axes: []
+connectivity:
+  usb: a_cable
+  standalone_usb: true
+software: Logitech G HUB
+verification: draft
+sources:
+- https://www.logitechg.com/en-us/shop/p/flight-simulator-switch-panel.945-000030
+- https://www.logitech.com/assets/65158/flight-switch-panel.pdf
+images:
+- file: /images/logitech/flight-switch-panel.png
+  source: https://www.logitechg.com/en-us/shop/p/flight-simulator-switch-panel.945-000030
+  caption: Flight Switch Panel

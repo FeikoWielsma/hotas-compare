@@ -1,0 +1,87 @@
+brand: winctrl
+name: Cyber Taurus Combat Rudder Pedals E.B.192
+category: pedals
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official listing or manual establishes computer USB or SimAppPro use. No exact product source
+    reviewed here establishes Xbox or PS5 support or incompatibility.
+  sources: &id001
+  - https://eu.winctrl.com/static/download/QmNu2Koz6sDJ5YGgUVWx1fKTm4f85RW7kMBTQS9jdkFkwt?filename=WINCTRL-Cyber-Taurus-32-Rudder-Pedals-20260430.pdf
+  - https://eu.winctrl.com/view/goods-details.html?id=2585
+status: current
+handedness: ambi
+mount:
+  provides: null
+  accepts: []
+controls:
+- type: axis
+  kind: rudder
+  count: 1
+  location: other
+  label: Main spindle, ±38°
+  source: https://eu.winctrl.com/static/download/QmNu2Koz6sDJ5YGgUVWx1fKTm4f85RW7kMBTQS9jdkFkwt?filename=WINCTRL-Cyber-Taurus-32-Rudder-Pedals-20260430.pdf
+- type: axis
+  kind: toe_brake
+  count: 2
+  location: other
+  label: Left and right pedal brakes, 15° each
+  source: https://eu.winctrl.com/static/download/QmNu2Koz6sDJ5YGgUVWx1fKTm4f85RW7kMBTQS9jdkFkwt?filename=WINCTRL-Cyber-Taurus-32-Rudder-Pedals-20260430.pdf
+- type: button
+  count: 1
+  location: base
+  label: Power button
+  source: https://eu.winctrl.com/static/download/QmNu2Koz6sDJ5YGgUVWx1fKTm4f85RW7kMBTQS9jdkFkwt?filename=WINCTRL-Cyber-Taurus-32-Rudder-Pedals-20260430.pdf
+controls_evidence:
+  coverage: complete
+  source: https://eu.winctrl.com/static/download/QmNu2Koz6sDJ5YGgUVWx1fKTm4f85RW7kMBTQS9jdkFkwt?filename=WINCTRL-Cyber-Taurus-32-Rudder-Pedals-20260430.pdf
+  checked: '2026-10-20'
+  notes: Store goods code CT.F.R.E.B.192.MET.E.1. The shared manual labels this geometry CT.F.R.E.B.192.MET.1. Manual performance drawing shows ±38° spindle travel each side of
+    center and a 15° brake arc on each pedal. The specification table prints spindle stroke as 38 mm,
+    which conflicts with the degree callouts on the same page; the degree drawing is used. 192 and 530
+    differ in published main-shaft force and mass. The 32-series height is 320 mm and the Combat (CT.F.R)
+    height is 227 mm. USB-B and a 48 V supply are required. One power button is on the interface panel.
+hardware:
+  gimbal: force_feedback
+  axes:
+  - name: Rudder
+  - name: Left brake
+  - name: Right brake
+  throw_deg: 76
+  extension_support: false
+connectivity:
+  usb: b
+  standalone_usb: true
+software: SimApp Pro
+physical:
+  weight_g: 12000
+  dimensions_mm:
+  - 438
+  - 544
+  - 227
+  materials:
+  - metal
+prices:
+- region: EU
+  currency: EUR
+  amount: 521.09
+  incl_vat: true
+  store: eu.winctrl.com
+  url: https://eu.winctrl.com/view/goods-details.html?id=2585
+  verified: '2026-10-20'
+  source: manual
+- region: US
+  currency: USD
+  amount: 542.8
+  incl_vat: false
+  store: us.winwingsim.com
+  url: https://us.winwingsim.com/view/goods-details.html?id=2585
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources: *id001
+images:
+- file: /images/winctrl/cyber-taurus-combat-rudder-pedals-eb192.jpg
+  source: https://eu.winctrl.com/view/goods-details.html?id=2585
+  caption: Cyber Taurus Combat Rudder Pedals E.B.192

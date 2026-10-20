@@ -32,11 +32,16 @@ hardware:
     sensor: potentiometer
   - name: Brake_Right
     sensor: potentiometer
+  force_adjustable: true
+  cams_swappable: false
+  extension_support: false
 connectivity:
   usb: a_cable
   standalone_usb: true
 software: Logitech G HUB
 physical:
+  weight_g: 2350
+  dimensions_mm: [403, 310, 168]
   materials:
   - abs
 prices:
@@ -65,6 +70,7 @@ prices:
 verification: draft
 sources:
 - https://www.logitechg.com/en-us/products/flight.html
+- https://www.logitechg.com/en-us/shop/p/flight-simulator-rudder-pedals.945-000024
 images:
   - file: /images/logitech/g-saitek-pro-flight-rudder-pedals.png
     source: https://www.logitechg.com/en-us/shop/p/flight-simulator-rudder-pedals.945-000024

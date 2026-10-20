@@ -1,0 +1,83 @@
+brand: winctrl
+name: MFD Unit
+category: module
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official listing or manual establishes computer USB or SimAppPro use. No exact product source reviewed
+    here establishes Xbox or PS5 support or incompatibility.
+  sources: &id001
+  - https://eu.winctrl.com/static/download/QmPM5B75RK5UGNrmuc9CWAb2DtE4Gygtqu4aPGzVX4qUNv?filename=MFD1-User-Manual-EN-V1.4.pdf
+  - https://eu.winctrl.com/view/goods-details.html?id=402
+status: current
+handedness: n/a
+mount:
+  provides: null
+  accepts: []
+controls:
+- type: button
+  count: 4
+  location: panel
+  label: Backlit silicone seesaw buttons
+  source: https://eu.winctrl.com/mobileview/goods-details.html?id=549
+- type: button
+  count: 20
+  location: panel
+  label: Backlit square silicone buttons
+  source: https://eu.winctrl.com/mobileview/goods-details.html?id=549
+- type: button
+  count: 16
+  location: panel
+  label: Rectangular silicone buttons
+  source: https://eu.winctrl.com/mobileview/goods-details.html?id=549
+- type: slider
+  count: 1
+  positions: 3
+  location: panel
+  label: Three-position slide knob
+  source: https://eu.winctrl.com/mobileview/goods-details.html?id=549
+- type: encoder
+  count: 1
+  location: panel
+  label: Encoder
+  source: https://eu.winctrl.com/mobileview/goods-details.html?id=549
+controls_evidence:
+  coverage: partial
+  source: https://eu.winctrl.com/mobileview/goods-details.html?id=549
+  checked: '2026-10-20'
+  notes: 'The official Legend MIP product listing describes the MFD1 control layout: 4 seesaw, 20 square, and 16
+    rectangular buttons, plus a three-position slide knob and encoder. It does not state MFD axis totals or encoder
+    push behavior.'
+connectivity:
+  standalone_usb: true
+prices:
+- region: EU
+  currency: EUR
+  amount: 54.28
+  incl_vat: true
+  store: eu.winctrl.com
+  url: https://eu.winctrl.com/view/goods-details.html?id=402
+  verified: '2026-10-20'
+  source: manual
+- region: US
+  currency: USD
+  amount: 56.55
+  incl_vat: false
+  store: us.winwingsim.com
+  url: https://us.winwingsim.com/view/goods-details.html?id=402
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources: *id001
+images:
+- file: /images/winctrl/mfd-unit.jpg
+  source: https://eu.winctrl.com/view/goods-details.html?id=402
+  caption: MFD Unit
+software: SimApp Pro
+physical:
+  weight_g: 970
+  dimensions_mm:
+  - 170
+  - 107
+  - 95

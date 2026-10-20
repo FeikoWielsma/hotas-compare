@@ -1,0 +1,82 @@
+brand: slaw
+name: RX Viper V3 Rudder Pedals
+category: pedals
+status: current
+handedness: n/a
+mount: null
+controls:
+- type: axis
+  kind: rudder
+  count: 1
+  location: other
+  label: Rudder pedal axis
+  source: https://slawdevice.com/en/glowna/45-pre-order-rx-viper-v3-rudder-pedals-dark-metalic.html
+- type: axis
+  kind: toe_brake
+  count: 2
+  label: Independent left and right toe-brake axes
+  source: https://slawdevice.com/en/glowna/45-pre-order-rx-viper-v3-rudder-pedals-dark-metalic.html
+  location: other
+controls_evidence:
+  coverage: complete
+  source: https://slawdevice.com/en/glowna/45-pre-order-rx-viper-v3-rudder-pedals-dark-metalic.html
+  checked: '2026-10-20'
+  notes: 'RX Viper V3 has three analog sensed axes: rudder plus two separate toe brakes. All three axes use contactless digital sensors (13-bit) and cam loading mechanisms. No discrete buttons, hats or switches exist on the pedals.'
+hardware:
+  gimbal: cam
+  sensor: contactless_magnetic
+  axes:
+  - name: Rudder
+    resolution_bits: 13
+    sensor: contactless_magnetic
+  - name: Left brake
+    resolution_bits: 13
+    sensor: contactless_magnetic
+  - name: Right brake
+    resolution_bits: 13
+    sensor: contactless_magnetic
+  force_adjustable: true
+  cams_swappable: false
+  damping: optional hydraulic damper (not included; mounting hardware included)
+  extension_support: false
+  throw_deg: null
+  axis_count: 3
+connectivity:
+  usb: c
+  standalone_usb: true
+software: Slaw Device Rudder calibration software
+physical:
+  materials:
+  - steel
+  - aluminium
+use_case_fit:
+  modern_jet: 5
+  heli: 4
+  ww2: 4
+  ga: 4
+  airliner: 4
+  space_hotas: 4
+  space_hosas: 4
+prices:
+- region: EU
+  currency: EUR
+  amount: 535
+  incl_vat: false
+  store: slawdevice.com
+  url: https://slawdevice.com/en/glowna/45-pre-order-rx-viper-v3-rudder-pedals-dark-metalic.html
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+images:
+  - file: /images/slaw/rx-viper-v3-rudder-pedals.jpg
+    source: https://slawdevice.com/en/glowna/45-pre-order-rx-viper-v3-rudder-pedals-dark-metalic.html
+    caption: RX Viper V3 Rudder Pedals
+sources:
+- https://slawdevice.com/en/glowna/45-pre-order-rx-viper-v3-rudder-pedals-dark-metalic.html
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Manufacturer provides dedicated rudder calibration software (Slaw Device Rudder calibration software) for these pedals; the downloads page does not state an operating system. No Xbox or PS5 statement appears.
+  sources:
+  - https://slawdevice.com/en/content/7-downloads

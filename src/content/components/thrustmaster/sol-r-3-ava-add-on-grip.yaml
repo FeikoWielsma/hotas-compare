@@ -27,6 +27,14 @@ prices:
   url: https://shop.thrustmaster.com/en_gb/sol-r-3-ava-add-on-grip.html
   verified: '2026-10-20'
   source: manual
+- region: US
+  currency: USD
+  amount: 109.99
+  incl_vat: false
+  store: Thrustmaster US eshop
+  url: https://eshop.thrustmaster.com/en_us/sol-r-3-ava-add-on-grip.html
+  verified: '2026-10-20'
+  source: manual
 verification: draft
 sources:
 - https://www.thrustmaster.com/nl-nl/products/sol-r-3-ava-add-on-grip/

@@ -99,6 +99,7 @@ controls_evidence:
     Panel has one actual trim-wheel axis. Mixed momentary/latching sets are grouped because exact individual switch
     identity is not clear from the text list.
 hardware:
+  axis_count: 5
   gimbal: null
   sensor: hall
   axes:

@@ -18,57 +18,57 @@ controls:
     action: sequential
     location: grip
     label: Dual-stage trigger
-    source: https://virpil-controls.eu/cdt-aero-l-grip.html
+    source: https://virpil-controls.eu/cdt-aeromax-lz-flightstick-omnithrottle.html
   - type: trigger
     stages: 1
     action: flip
     flip: true
     location: grip
     label: Flip trigger
-    source: https://virpil-controls.eu/cdt-aero-l-grip.html
+    source: https://virpil-controls.eu/cdt-aeromax-lz-flightstick-omnithrottle.html
   - type: hat
     ways: 4
     push: true
     count: 3
     location: grip
     label: 4-way hats
-    source: https://virpil-controls.eu/cdt-aero-l-grip.html
+    source: https://virpil-controls.eu/cdt-aeromax-lz-flightstick-omnithrottle.html
   - type: analog_ministick
     push: true
     count: 1
     location: grip
     label: Analogue ministick
-    source: https://virpil-controls.eu/cdt-aero-l-grip.html
+    source: https://virpil-controls.eu/cdt-aeromax-lz-flightstick-omnithrottle.html
   - type: button
     count: 3
     location: grip
     label: Push buttons
-    source: https://virpil-controls.eu/cdt-aero-l-grip.html
+    source: https://virpil-controls.eu/cdt-aeromax-lz-flightstick-omnithrottle.html
   - type: lever
     analog: false
     count: 1
     location: grip
     label: Grip paddle switch
-    source: https://virpil-controls.eu/cdt-aero-l-grip.html
+    source: https://virpil-controls.eu/cdt-aeromax-lz-flightstick-omnithrottle.html
   - type: lever
     kind: brake
     analog: true
     count: 1
     location: grip
     label: Brake lever axis
-    source: https://virpil-controls.eu/cdt-aero-l-grip.html
+    source: https://virpil-controls.eu/cdt-aeromax-lz-flightstick-omnithrottle.html
   - type: slider
     analog: true
     count: 1
     location: grip
     label: Mode slider
-    notes: AEROMAX uses the AEROMAX grip design; the CDT-AERO mapping template depicts this as a continuous SLDR axis (0–100).
-    source: https://support.virpil.com/en/support/solutions/articles/47001285225-vpc-cdt-aero-l-grip
+    notes: Official AEROMAX mapping sheet labels this control as analog axis SL. The product diagram calls the same control a 2-way slider.
+    source: https://support.virpil.com/en/support/solutions/articles/47001275883-cdt-aeromax-r-flightstick
 controls_evidence:
-  coverage: partial
+  coverage: complete
   source: https://virpil-controls.eu/cdt-aeromax-lz-flightstick-omnithrottle.html
-  checked: '2026-10-19'
-  notes: Exact SKU VPC-120-LZ. The product listing describes the AEROMAX grip design but does not enumerate its physical inputs. The CDT-AERO L listing says its grip uses the same design introduced with AEROMAX and enumerates a control set; its official mapping sheet shows button outputs and rX/rY/rZ/SLDR axes. The mapping sheet has blank profile/revision fields and does not identify this fixed-stick SKU, so retain partial coverage pending a revision-matched AEROMAX control list. Optional throttle modules are not included in this inventory.
+  checked: '2026-10-20'
+  notes: Exact-SKU product page embeds a labeled grip diagram (dual-stage trigger, flip trigger, three 4-way hats with push, three push buttons, analogue ministick, 2-way slider, paddle switch, brake lever axis, lockable twist). The AEROMAX mapping sheet linked from these listings names X/Y, twist Z, brake RZ, ministick RX/RY with a center push, and slider axis SL. Two side levers drawn on that sheet, one marked DL, are the optional throttle modules sold separately and are not part of this bare stick. Programmable LEDs on the diagram are indicators, not inputs.
 hardware:
   gimbal: cam_and_spring
   sensor: contactless_magnetic
@@ -131,7 +131,7 @@ prices:
 verdict:
   author: feiko
   hands_on: false
-  take: "The left-handed twist version of the CDT-Aeromax. Offers 4 full analog axes in one hand on an all-metal cam-and-spring gimbal with dry clutches, making it one of the most capable space HOSAS strafe sticks on the market."
+  take: "The left-handed omnithrottle version of the CDT-Aeromax, with the built-in Z-extension. Lockable twist is also on the straight L stick. All-metal cam-and-spring gimbal with dry clutches for space HOSAS strafe."
   pros:
     - "Left-hand ergonomic flight stick with integrated contactless twist Z-axis"
     - "All-metal compact cam and spring gimbal"

@@ -1,0 +1,95 @@
+brand: vkb
+name: GNX SEM-V Side Extension Module (Vertical)
+category: module
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs
+    and not compatible with Xbox, PS5, Apple or other platforms. GNX modules work
+    through Gladiator NXT/EVO bases or a standalone GNX USB Controller (HID-Main) on Windows PC.
+  sources:
+  - https://vkbsimcontrollers.com/products/gnx-sem-v-side-extension-module-vertical-us
+  - https://vkb-sim.com.au/collections/all-controllers
+status: current
+handedness: n/a
+mount: null
+controls:
+- type: lever
+  kind: flap
+  analog: true
+  count: 1
+  location: panel
+  label: Multi-function Flaps lever (positions 1-4)
+  positions: 4
+  push: false
+  source: https://vkbsimcontrollers.com/products/gnx-sem-v-side-extension-module-vertical-us
+- type: lever
+  kind: other
+  analog: true
+  count: 1
+  location: panel
+  label: Multi-function Landing Gear lever (UP, -, DN)
+  positions: 3
+  push: false
+  source: https://vkbsimcontrollers.com/products/gnx-sem-v-side-extension-module-vertical-us
+- type: rotary
+  mode: selector
+  positions: 4
+  count: 1
+  location: panel
+  label: Mode rotary switch (positions 1-4)
+  push: false
+  source: https://vkbsimcontrollers.com/products/gnx-sem-v-side-extension-module-vertical-us
+- type: toggle
+  count: 2
+  ways: 3
+  momentary: true
+  push: true
+  location: panel
+  label: K-switches SW1 and SW2 with central push
+  source: https://vkbsimcontrollers.com/products/gnx-sem-v-side-extension-module-vertical-us
+- type: button
+  count: 7
+  backlit: false
+  location: panel
+  label: Standalone push buttons (Start, A1, A2, B1, B2, B3, C1)
+  source: https://vkbsimcontrollers.com/products/gnx-sem-v-side-extension-module-vertical-us
+controls_evidence:
+  coverage: complete
+  source: https://vkbsimcontrollers.com/products/gnx-sem-v-side-extension-module-vertical-us
+  checked: '2026-10-20'
+  notes: Counts and control actions verified against official VKB SEM-V template (VKB-SEM-V-v1.0.pdf)
+    and product page. Features two multi-function analog levers with contactless MaRS sensors
+    (Flaps with 4 marked detent positions, Gear with 3 positions UP/-/DN), 4-position Mode rotary
+    switch, two 3-way momentary K-switches with center push, and seven non-backlit push buttons.
+hardware:
+  axis_count: 2
+  gimbal: null
+  sensor: contactless_magnetic
+  axes:
+  - name: Flaps
+    sensor: contactless_magnetic
+  - name: Gear
+    sensor: contactless_magnetic
+  throw_deg: null
+connectivity:
+  usb: none as supplied; GNX BUS, optional GNX USB Controller (HID-Main) for standalone USB
+  standalone_usb: false
+software: VKBDevCfg
+prices:
+- region: US
+  currency: USD
+  amount: 83
+  incl_vat: false
+  store: vkbsimcontrollers.com
+  url: https://vkbsimcontrollers.com/products/gnx-sem-v-side-extension-module-vertical-us
+  verified: '2026-10-19'
+  source: manual
+verification: draft
+sources:
+- https://vkbsimcontrollers.com/products/gnx-sem-v-side-extension-module-vertical-us
+images:
+- file: /images/vkb/gnx-sem-v.jpg
+  source: https://vkbsimcontrollers.com/products/gnx-sem-v-side-extension-module-vertical-us
+  caption: GNX SEM-V Side Extension Module (Vertical)

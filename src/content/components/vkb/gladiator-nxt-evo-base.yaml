@@ -5,17 +5,19 @@ platform_compatibility:
   pc: supported
   xbox: unsupported
   ps5: unsupported
-  notes: "VKB Australia FAQ states VKB controllers are compatible with Windows PCs and not compatible with Xbox, PS5, Apple or other platforms. Detached grip or module use requires its compatible VKB base/controller on Windows PC."
+  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs
+    and not compatible with Xbox, PS5, Apple or other platforms. Detached grip or
+    module use requires its compatible VKB base/controller on Windows PC.
   sources:
-    - https://vkbsimcontrollers.com/products/gladiator-nxt-evo-base-only-us
-    - https://vkb-sim.com.au/collections/all-controllers
+  - https://vkbsimcontrollers.com/products/gladiator-nxt-evo-base-only-us
+  - https://vkb-sim.com.au/collections/all-controllers
 status: current
 release_year: 2022
 handedness: n/a
 mount:
   provides: null
   accepts:
-    - vkb-rev-b
+  - vkb-rev-b
 controls:
 - type: toggle
   location: base
@@ -23,36 +25,42 @@ controls:
   momentary: true
   label: Auto-centering switch
   source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-base-only-us
+  push: false
 - type: rotary
   location: base
   mode: analog
   label: Throttle wheel
   source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-base-only-us
+  push: false
 - type: encoder
   location: base
   label: Rotary encoder
-  notes: "Center push not specified by manufacturer."
+  notes: Center push not specified by manufacturer.
   source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-base-only-us
+  push: false
 - type: button
   location: base
   count: 3
   label: Base buttons
   source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-base-only-us
+  backlit: false
 controls_evidence:
   coverage: complete
   source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-base-only-us
   checked: '2026-10-19'
-  notes: "Base-only EVO physical controls verified. The page specifies one rotary encoder (older NXT base layouts differ); encoder center-click behavior is unstated. LEDs are indicators, not controls."
+  notes: Base-only EVO physical controls verified. The page specifies one rotary encoder
+    (older NXT base layouts differ); encoder center-click behavior is unstated. LEDs
+    are indicators, not controls.
 hardware:
   gimbal: gimbal_ring
   sensor: contactless_magnetic
   axes:
-    - name: X
-      sensor: contactless_magnetic
-    - name: Y
-      sensor: contactless_magnetic
-    - name: Base_Throttle
-      sensor: contactless_magnetic
+  - name: X
+    sensor: contactless_magnetic
+  - name: Y
+    sensor: contactless_magnetic
+  - name: Base_Throttle
+    sensor: contactless_magnetic
   force_adjustable: true
   cams_swappable: false
   damping: dry_clutch
@@ -65,9 +73,9 @@ software: VKBDevCfg
 physical:
   weight_g: 1100
   materials:
-    - abs
-    - glass_fiber_pa
-    - steel
+  - abs
+  - glass_fiber_pa
+  - steel
 use_case_fit:
   modern_jet: 4
   heli: 4
@@ -77,49 +85,51 @@ use_case_fit:
   space_hotas: 5
   space_hosas: 5
 prices:
-  - region: EU
-    currency: EUR
-    amount: 103
-    incl_vat: true
-    store: flightsimcontrols.com
-    url: https://flightsimcontrols.com/product/gladiator-nxt-evo-base-only/
-    verified: '2026-10-20'
-    source: manual
-  - region: UK
-    currency: GBP
-    amount: 105
-    incl_vat: true
-    store: flightsimcontrols.co.uk
-    url: https://flightsimcontrols.co.uk/product-category/controllers/
-    verified: '2026-10-20'
-    source: manual
-  - region: US
-    currency: USD
-    amount: 60
-    incl_vat: false
-    store: vkbsimcontrollers.com
-    url: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-base-only-us
-    verified: '2026-10-19'
-    source: manual
+- region: EU
+  currency: EUR
+  amount: 103
+  incl_vat: true
+  store: flightsimcontrols.com
+  url: https://flightsimcontrols.com/product/gladiator-nxt-evo-base-only/
+  verified: '2026-10-20'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 105
+  incl_vat: true
+  store: flightsimcontrols.co.uk
+  url: https://flightsimcontrols.co.uk/product-category/controllers/
+  verified: '2026-10-20'
+  source: manual
+- region: US
+  currency: USD
+  amount: 60
+  incl_vat: false
+  store: vkbsimcontrollers.com
+  url: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-base-only-us
+  verified: '2026-10-19'
+  source: manual
 verdict:
   author: feiko
   hands_on: true
   owned_hours: 600
-  take: "The undisputed bang-for-the-buck king of flight simulation. Ball bearings on all axes, adjustable dry clutches, and an integrated base plate with encoders and throttle slider."
+  take: The undisputed bang-for-the-buck king of flight simulation. Ball bearings
+    on all axes, adjustable dry clutches, and an integrated base plate with encoders
+    and throttle slider.
   pros:
-    - "Unmatched price-to-performance ratio in the entry-to-mid market"
-    - "Dry clutches allow smooth resistance without grease damping decay"
-    - "Built-in throttle axis, 2 encoders, and 3 buttons right on the desktop base"
-    - "Sturdy steel weighted baseplate sits securely on any desk"
+  - Unmatched price-to-performance ratio in the entry-to-mid market
+  - Dry clutches allow smooth resistance without grease damping decay
+  - Built-in throttle axis, 2 encoders, and 3 buttons right on the desktop base
+  - Sturdy steel weighted baseplate sits securely on any desk
   cons:
-    - "Plastic gimbal ring (though reinforced glass-fiber ABS)"
-    - "VKB DevCfg software is functional but looks like industrial engineering software"
+  - Plastic gimbal ring (though reinforced glass-fiber ABS)
+  - VKB DevCfg software is functional but looks like industrial engineering software
   great_for:
-    - space_hosas
-    - modern_jet
-    - ww2
+  - space_hosas
+  - modern_jet
+  - ww2
   skip_if:
-    - "You require an all-metal dual-cam gimbal mechanism"
+  - You require an all-metal dual-cam gimbal mechanism
   scores:
     build: 4
     feel: 4
@@ -127,15 +137,16 @@ verdict:
     software: 4
     qc_support: 5
 external_reviews:
-  - reviewer: mysh
-    url: https://youtube.com/watch?v=sample-gladiator-evo
-    summary: "The single best entry-to-mid range joystick base. EVO ball bearings and clutches make it punch way above its weight."
-    tag: recommended
-    date: '2024-08-20'
+- reviewer: mysh
+  url: https://youtube.com/watch?v=sample-gladiator-evo
+  summary: The single best entry-to-mid range joystick base. EVO ball bearings and
+    clutches make it punch way above its weight.
+  tag: recommended
+  date: '2024-08-20'
 verification: verified
 sources:
-  - https://vkbcontrollers.com/products/gladiator-nxt-evo-base
+- https://vkbcontrollers.com/products/gladiator-nxt-evo-base
 images:
-  - file: /images/vkb/gladiator-nxt-evo-base.jpg
-    source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-base-only-us
-    caption: Gladiator NXT EVO Base
+- file: /images/vkb/gladiator-nxt-evo-base.jpg
+  source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-base-only-us
+  caption: Gladiator NXT EVO Base

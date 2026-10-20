@@ -1,0 +1,51 @@
+brand: honeycomb
+name: Echo Aviation Controller
+category: stick_fixed
+status: current
+handedness: right
+mount: null
+controls:
+- type: analog_ministick
+  count: 1
+  location: grip
+  label: Hall-effect thumbstick for pitch and roll
+  source: https://flyhoneycomb.com/products/echo-aviation-controller
+- type: button
+  count: 3
+  location: panel
+  label: Three central cockpit control buttons visible in official product image
+  source: https://flyhoneycomb.com/cdn/shop/files/HC003981_EchoAviationController_1.webp?v=1774814963&width=1920
+- type: lever
+  count: 4
+  location: panel
+  label: Configurable throttle, speed brake, and flap levers
+  source: https://flyhoneycomb.com/products/echo-aviation-controller
+- type: rotary
+  count: 1
+  location: panel
+  label: Trim wheel
+  source: https://flyhoneycomb.com/products/echo-aviation-controller
+controls_evidence:
+  coverage: partial
+  source: https://flyhoneycomb.com/products/echo-aviation-controller
+  checked: '2026-10-20'
+  notes: Official product page identifies a 16-bit Hall-effect thumbstick for pitch
+    and roll, four levers and trim wheel. Main product image visibly shows three central
+    buttons. The left four-button cluster is not described in available text and is
+    not classified without an official diagram.
+hardware:
+  sensor: hall
+  axes:
+  - name: X
+  - name: Y
+connectivity:
+  usb: c
+  standalone_usb: true
+verification: draft
+sources:
+- https://flyhoneycomb.com/products/echo-aviation-controller
+- https://flyhoneycomb.com/collections/hardware
+images:
+- file: /images/honeycomb/echo-aviation-controller.jpg
+  source: https://flyhoneycomb.com/products/echo-aviation-controller
+  caption: Echo Aviation Controller

@@ -1,0 +1,60 @@
+brand: logitech
+name: Logitech G Flight Multi Panel
+category: module
+status: current
+handedness: n/a
+mount: null
+controls:
+- type: button
+  count: 8
+  location: panel
+  label: Autopilot function buttons (AP, HDG, NAV, APR, REV, ALT, CRS, IAS)
+  source: https://www.logitech.com/assets/65126/2/flight-multi-panel.pdf
+- type: toggle
+  ways: 3
+  count: 1
+  location: panel
+  label: Autothrottle OFF/ARM/ON selector
+  source: https://www.logitech.com/assets/65126/2/flight-multi-panel.pdf
+- type: rocker
+  ways: 2
+  count: 1
+  location: panel
+  label: Flaps up/down rocker
+  source: https://www.logitech.com/assets/65126/2/flight-multi-panel.pdf
+- type: rotary
+  count: 1
+  location: panel
+  label: Autopilot function selector
+  source: https://www.logitech.com/assets/65126/2/flight-multi-panel.pdf
+- type: encoder
+  count: 1
+  location: panel
+  label: Value adjustment knob
+  source: https://www.logitech.com/assets/65126/2/flight-multi-panel.pdf
+- type: rotary
+  count: 1
+  location: panel
+  label: Pitch trim wheel
+  source: https://www.logitech.com/assets/65126/2/flight-multi-panel.pdf
+controls_evidence:
+  coverage: complete
+  source: https://www.logitech.com/assets/65126/2/flight-multi-panel.pdf
+  checked: '2026-10-20'
+  notes: Manual product-tour diagram and controls section identify eight push buttons,
+    one three-position selector, one two-way rocker, function selector, value adjustment
+    knob and pitch trim wheel.
+hardware:
+  axes: []
+connectivity:
+  usb: a_cable
+  standalone_usb: true
+software: Logitech G HUB
+verification: draft
+sources:
+- https://www.logitechg.com/en-us/shop/p/flight-simulator-autopilot-multipanel.945-000028
+- https://www.logitech.com/assets/65126/2/flight-multi-panel.pdf
+images:
+- file: /images/logitech/flight-multi-panel.png
+  source: https://www.logitechg.com/en-us/shop/p/flight-simulator-autopilot-multipanel.945-000028
+  caption: Flight Multi Panel

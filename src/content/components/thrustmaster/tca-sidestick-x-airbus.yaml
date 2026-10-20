@@ -1,0 +1,104 @@
+brand: thrustmaster
+name: TCA Sidestick X Airbus Edition
+category: stick_fixed
+status: current
+handedness: ambi
+mount: null
+platform_compatibility:
+  pc: supported
+  xbox: supported
+  ps5: unsupported
+  notes: Product page and manual list PC and Xbox Series X|S / Xbox One. PS5 is not listed. Xbox One and Series X|S
+    both use the Xbox selector position.
+  sources:
+  - https://www.thrustmaster.com/en-us/products/tca-sidestick-x-airbus-edition/
+  - https://ts.thrustmaster.com/download/accessories/Manuals/TCA_sidestick_X/TCA_Sidestick_X_AE_User_manual.pdf
+controls:
+- type: trigger
+  count: 1
+  location: grip
+  label: Digital trigger (PC mapping button 1)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_sidestick_X/TCA_Sidestick_X_AE_User_manual.pdf
+- type: hat
+  count: 1
+  location: grip
+  label: Multidirectional point-of-view hat
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_sidestick_X/TCA_Sidestick_X_AE_User_manual.pdf
+- type: button
+  count: 20
+  location: grip
+  label: Numbered buttons 2-16 and 18-22
+  notes: PC mapping numbers 1-22. Button 1 is the trigger. Button 17 is a PC-only virtual throttle event and is not a
+    physical button. Buttons 5-16 are the two installed head modules; the box includes two spare modules, which are
+    not extra installed controls. Buttons 20-22 are the rear cluster, including the Xbox button.
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_sidestick_X/TCA_Sidestick_X_AE_User_manual.pdf
+- type: lever
+  kind: throttle_single
+  analog: true
+  count: 1
+  location: base
+  label: Built-in throttle
+  notes: On PC only, mapping button 17 is a virtual event on the first 20 percent of throttle travel.
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_sidestick_X/TCA_Sidestick_X_AE_User_manual.pdf
+- type: axis
+  kind: twist
+  count: 1
+  location: handle
+  label: Lockable rudder twist (ZR)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_sidestick_X/TCA_Sidestick_X_AE_User_manual.pdf
+- type: switch
+  count: 1
+  positions: 2
+  location: base
+  label: Left-handed pilot / right-handed copilot selector
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_sidestick_X/TCA_Sidestick_X_AE_User_manual.pdf
+- type: switch
+  count: 1
+  positions: 2
+  location: base
+  label: Xbox / PC selector
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_sidestick_X/TCA_Sidestick_X_AE_User_manual.pdf
+controls_evidence:
+  coverage: complete
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_sidestick_X/TCA_Sidestick_X_AE_User_manual.pdf
+  checked: '2026-10-20'
+  notes: English technical features and PC mapping page 17. Twenty-one numbered physical positions are the trigger
+    plus buttons 2-16 and 18-22. The manual's "21 action buttons on Xbox, 22 on PC" counts the PC-only virtual
+    throttle button 17 as the extra event. Hat direction count is not stated. Four axes are stick X, stick Y, twist,
+    and the throttle.
+hardware:
+  axis_count: 4
+  sensor: hall
+  axes:
+  - name: X (roll)
+    sensor: hall
+  - name: Y (pitch)
+    sensor: hall
+  - name: ZR (twist rudder)
+    sensor: hall
+connectivity:
+  usb: USB-C, with USB-A ports for a TCA Quadrant or TPR
+  standalone_usb: true
+physical:
+  weight_g: 787
+  dimensions_mm:
+  - 195
+  - 195
+  - 225
+prices:
+- region: US
+  currency: USD
+  amount: 149.99
+  incl_vat: false
+  store: Thrustmaster
+  url: https://www.thrustmaster.com/en-us/products/tca-sidestick-x-airbus-edition/
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources:
+- https://www.thrustmaster.com/en-us/products/tca-sidestick-x-airbus-edition/
+- https://ts.thrustmaster.com/download/accessories/Manuals/TCA_sidestick_X/TCA_Sidestick_X_AE_User_manual.pdf
+images:
+- file: /images/thrustmaster/tca-sidestick-x-airbus.webp
+  source: https://www.thrustmaster.com/wp-content/uploads/2023/03/SidestickX-website-800x800-listing-1-768x768-1.webp
+  caption: TCA Sidestick X Airbus Edition

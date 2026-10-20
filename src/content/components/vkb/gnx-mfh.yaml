@@ -1,0 +1,38 @@
+brand: vkb
+name: GNX MFH Multi-Functional Holder
+category: module
+platform_compatibility:
+  pc: unknown
+  xbox: unknown
+  ps5: unknown
+  notes: Passive mechanical bracket with no electronics, so host platform does not apply.
+    Attached GNX modules follow their own platform rules.
+  sources:
+  - https://vkbsimcontrollers.com/products/gnx-mfh-multi-functional-holder-us
+status: current
+handedness: n/a
+mount: null
+controls: []
+controls_evidence:
+  coverage: complete
+  source: https://vkbsimcontrollers.com/products/gnx-mfh-multi-functional-holder-us
+  checked: '2026-10-20'
+  notes: Passive holder for vertical GNX modules (THQ-V, SEM-V, FSM-GA) or STECS
+    Mini Plus/Standard fixtures. Product page lists no controls, electronics or axes.
+    Also usable as a desk holder for a phone, tablet or keyboard.
+prices:
+- region: US
+  currency: USD
+  amount: 18
+  incl_vat: false
+  store: vkbsimcontrollers.com
+  url: https://vkbsimcontrollers.com/products/gnx-mfh-multi-functional-holder-us
+  verified: '2026-10-19'
+  source: manual
+verification: draft
+sources:
+- https://vkbsimcontrollers.com/products/gnx-mfh-multi-functional-holder-us
+images:
+- file: /images/vkb/gnx-mfh.jpg
+  source: https://vkbsimcontrollers.com/products/gnx-mfh-multi-functional-holder-us
+  caption: GNX MFH Multi-Functional Holder

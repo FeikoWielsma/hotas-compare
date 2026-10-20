@@ -34,6 +34,11 @@ connectivity:
   standalone_usb: true
 software: T.A.R.G.E.T
 physical:
+  weight_g: 1069
+  dimensions_mm:
+  - 108
+  - 170
+  - 72
   materials:
   - metal
 use_case_fit:

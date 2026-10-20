@@ -1,0 +1,150 @@
+brand: winctrl
+name: URSA MINOR Combat Throttle Metal
+category: throttle
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official listing or manual establishes computer USB or SimAppPro use. No exact product source
+    reviewed here establishes Xbox or PS5 support or incompatibility.
+  sources: &id001
+  - https://eu.winctrl.com/static/download/QmVLFu6k2SkWsQfRgw9o6iryfTg9WQYgD1GHKRRm9Sjvkk?filename=WINCTRL-URSA-MINOR-Combat-Throttle-Metal-1.0.pdf
+  - https://eu.winctrl.com/view/goods-details.html?id=1965
+status: current
+handedness: n/a
+mount:
+  provides: null
+  accepts: []
+controls:
+- type: lever
+  kind: throttle_dual
+  analog: true
+  count: 1
+  location: base
+  label: Two throttle axes, 65°
+  source: https://eu.winctrl.com/static/download/QmVLFu6k2SkWsQfRgw9o6iryfTg9WQYgD1GHKRRm9Sjvkk?filename=WINCTRL-URSA-MINOR-Combat-Throttle-Metal-1.0.pdf
+- type: button
+  count: 8
+  location: base
+  label: Base push buttons
+  source: https://eu.winctrl.com/static/download/QmVLFu6k2SkWsQfRgw9o6iryfTg9WQYgD1GHKRRm9Sjvkk?filename=WINCTRL-URSA-MINOR-Combat-Throttle-Metal-1.0.pdf
+- type: button
+  count: 3
+  location: handle
+  label: Grip push buttons
+  source: https://eu.winctrl.com/static/download/QmVLFu6k2SkWsQfRgw9o6iryfTg9WQYgD1GHKRRm9Sjvkk?filename=WINCTRL-URSA-MINOR-Combat-Throttle-Metal-1.0.pdf
+- type: hat
+  count: 3
+  ways: 5
+  push: true
+  location: handle
+  label: Five-way switches with center press
+  source: https://eu.winctrl.com/static/download/QmVLFu6k2SkWsQfRgw9o6iryfTg9WQYgD1GHKRRm9Sjvkk?filename=WINCTRL-URSA-MINOR-Combat-Throttle-Metal-1.0.pdf
+- type: rotary
+  count: 1
+  mode: selector
+  positions: 3
+  push: false
+  location: base
+  label: Three-position rotary switch
+  source: https://eu.winctrl.com/static/download/QmVLFu6k2SkWsQfRgw9o6iryfTg9WQYgD1GHKRRm9Sjvkk?filename=WINCTRL-URSA-MINOR-Combat-Throttle-Metal-1.0.pdf
+- type: encoder
+  count: 2
+  push: false
+  location: base
+  label: Single-axis encoders, 30 detents
+  source: https://eu.winctrl.com/static/download/QmVLFu6k2SkWsQfRgw9o6iryfTg9WQYgD1GHKRRm9Sjvkk?filename=WINCTRL-URSA-MINOR-Combat-Throttle-Metal-1.0.pdf
+- type: toggle
+  count: 1
+  ways: 3
+  location: handle
+  label: Three-position toggle
+  source: https://eu.winctrl.com/static/download/QmVLFu6k2SkWsQfRgw9o6iryfTg9WQYgD1GHKRRm9Sjvkk?filename=WINCTRL-URSA-MINOR-Combat-Throttle-Metal-1.0.pdf
+- type: toggle
+  count: 1
+  location: handle
+  label: Slide switch, 2.5 mm each side
+  source: https://eu.winctrl.com/static/download/QmVLFu6k2SkWsQfRgw9o6iryfTg9WQYgD1GHKRRm9Sjvkk?filename=WINCTRL-URSA-MINOR-Combat-Throttle-Metal-1.0.pdf
+- type: toggle
+  count: 1
+  location: base
+  label: Synchronization lock
+  source: https://eu.winctrl.com/static/download/QmVLFu6k2SkWsQfRgw9o6iryfTg9WQYgD1GHKRRm9Sjvkk?filename=WINCTRL-URSA-MINOR-Combat-Throttle-Metal-1.0.pdf
+- type: rotary
+  count: 1
+  mode: analog
+  push: false
+  location: handle
+  label: Potentiometer thumbwheel, 300°
+  source: https://eu.winctrl.com/static/download/QmVLFu6k2SkWsQfRgw9o6iryfTg9WQYgD1GHKRRm9Sjvkk?filename=WINCTRL-URSA-MINOR-Combat-Throttle-Metal-1.0.pdf
+- type: rotary
+  count: 1
+  mode: analog
+  location: handle
+  label: Self-centering thumbwheel, 50°
+  source: https://eu.winctrl.com/static/download/QmVLFu6k2SkWsQfRgw9o6iryfTg9WQYgD1GHKRRm9Sjvkk?filename=WINCTRL-URSA-MINOR-Combat-Throttle-Metal-1.0.pdf
+- type: analog_ministick
+  count: 1
+  push: false
+  location: handle
+  label: Mini joystick, 20°
+  source: https://eu.winctrl.com/static/download/QmVLFu6k2SkWsQfRgw9o6iryfTg9WQYgD1GHKRRm9Sjvkk?filename=WINCTRL-URSA-MINOR-Combat-Throttle-Metal-1.0.pdf
+- type: detent
+  count: 5
+  customizable: false
+  location: base
+  label: Detents present when the detent switch is on
+  source: https://eu.winctrl.com/static/download/QmVLFu6k2SkWsQfRgw9o6iryfTg9WQYgD1GHKRRm9Sjvkk?filename=WINCTRL-URSA-MINOR-Combat-Throttle-Metal-1.0.pdf
+controls_evidence:
+  coverage: complete
+  source: https://eu.winctrl.com/static/download/QmVLFu6k2SkWsQfRgw9o6iryfTg9WQYgD1GHKRRm9Sjvkk?filename=WINCTRL-URSA-MINOR-Combat-Throttle-Metal-1.0.pdf
+  checked: '2026-10-20'
+  notes: Counts are the Combat Throttle Metal manual sections 1.2.2 through 1.2.12 and do not include
+    the separate EX panel. The product page states two Hall-sensed throttle axes. Finger lifts are mechanical
+    parts in that manual and are not counted as switches. The slide switch travel is given per side; position
+    count is not numbered.
+hardware:
+  sensor: hall
+  axes:
+  - name: Left throttle
+    sensor: hall
+  - name: Right throttle
+    sensor: hall
+  throw_deg: 65
+  force_adjustable: true
+connectivity:
+  usb: c
+  standalone_usb: true
+prices:
+- region: EU
+  currency: EUR
+  amount: 153.21
+  incl_vat: true
+  store: eu.winctrl.com
+  url: https://eu.winctrl.com/view/goods-details.html?id=1965
+  verified: '2026-10-20'
+  source: manual
+- region: US
+  currency: USD
+  amount: 159.6
+  incl_vat: false
+  store: us.winwingsim.com
+  url: https://us.winwingsim.com/view/goods-details.html?id=1965
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources: *id001
+images:
+- file: /images/winctrl/ursa-minor-combat-throttle.jpg
+  source: https://eu.winctrl.com/view/goods-details.html?id=1965
+  caption: URSA MINOR Combat Throttle Metal
+software: SimApp Pro
+physical:
+  weight_g: 1460
+  dimensions_mm:
+  - 300
+  - 174
+  - 190
+  materials:
+  - aluminium
+  - plastic

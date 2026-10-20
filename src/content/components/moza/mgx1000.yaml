@@ -1,0 +1,77 @@
+brand: moza
+name: MOZA MGX1000 Instrument Panel
+category: module
+status: current
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official spec lists "Supported Platform PC" only; no specific simulator is named in the spec.
+  sources:
+  - https://us.mozaracing.com/products/mgx1000
+controls:
+- type: rotary
+  location: panel
+  count: 8
+  push: true
+  label: Rotary knobs with push (VOL/ID, NAV, HDG, VOL/SQ, COM, CRS/BARO, RANGE/PAN, FMS/CRSR)
+  source: https://us.mozaracing.com/products/mgx1000
+- type: rotary
+  location: panel
+  count: 1
+  label: ALT knob (bottom left)
+  source: https://us.mozaracing.com/products/mgx1000
+- type: button
+  location: panel
+  count: 12
+  label: Left button grid (AP, FD, HDG, ALT, NAV, VNV, APR, BC, VS, NOSE UP, FLC, NOSE DN)
+  source: https://us.mozaracing.com/products/mgx1000
+- type: button
+  location: panel
+  count: 6
+  label: Right button grid (D-arrow, MENU, FPL, PROC, CLR, ENT)
+  source: https://us.mozaracing.com/products/mgx1000
+- type: button
+  location: panel
+  count: 12
+  label: Bottom softkeys
+  source: https://us.mozaracing.com/products/mgx1000
+- type: button
+  location: panel
+  count: 2
+  label: Transfer buttons beside VOL/ID and VOL/SQ knobs
+  source: https://us.mozaracing.com/products/mgx1000
+controls_evidence:
+  coverage: partial
+  source: https://us.mozaracing.com/products/mgx1000
+  checked: '2026-10-20'
+  notes: Counted from the MOZA product hero image (2000 px render, MGX1000InstrumentPanel-1) and the MOZA Cockpit
+    Button Number diagram. Total 32 buttons and 9 rotary knobs. Not counted - a small triangle marker on the left bezel
+    (not clearly a button) and the 7-way ALPS joystick named on the product page, which is not identifiable in the hero
+    image or the Cockpit diagram, so it is omitted. The 10.4-inch IPS display is an output. Whether the ALT knob has a
+    push action is not stated.
+connectivity:
+  usb: USB-A (1.5 m USB 3.0 cable included); DisplayLink video
+  standalone_usb: true
+physical:
+  weight_g: 1170
+  materials:
+  - ABS
+  - PC
+verification: draft
+prices:
+- region: US
+  currency: USD
+  amount: 449
+  incl_vat: false
+  store: MOZA US store
+  url: https://us.mozaracing.com/products/mgx1000
+  verified: '2026-10-20'
+  source: manual
+sources:
+- https://us.mozaracing.com/products/mgx1000
+
+images:
+- file: /images/moza/mgx1000.webp
+  source: https://us.mozaracing.com/products/mgx1000
+  caption: MOZA MGX1000 Instrument Panel

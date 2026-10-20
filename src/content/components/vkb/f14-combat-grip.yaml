@@ -5,10 +5,12 @@ platform_compatibility:
   pc: supported
   xbox: unsupported
   ps5: unsupported
-  notes: "VKB Australia FAQ states VKB controllers are compatible with Windows PCs and not compatible with Xbox, PS5, Apple or other platforms. Detached grip or module use requires its compatible VKB base/controller on Windows PC."
+  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs
+    and not compatible with Xbox, PS5, Apple or other platforms. Detached grip or
+    module use requires its compatible VKB base/controller on Windows PC.
   sources:
-    - https://vkbsimcontrollers.com/products/gnx-f-14-add-on-grip-us
-    - https://vkb-sim.com.au/collections/all-controllers
+  - https://vkbsimcontrollers.com/products/gnx-f-14-add-on-grip-us
+  - https://vkb-sim.com.au/collections/all-controllers
 status: current
 release_year: 2020
 handedness: right
@@ -20,8 +22,9 @@ controls:
   location: grip
   push: true
   count: 1
-  label: Center-push hat; direction count unspecified
+  label: 4-way trim hat with center push
   source: https://vkbsimcontrollers.com/products/gnx-f-14-add-on-grip-us
+  ways: 4
 - type: trigger
   location: grip
   stages: 2
@@ -31,32 +34,42 @@ controls:
 - type: trigger
   location: grip
   label: Emergency Autopilot Disable trigger
-  notes: "Manufacturer names it separately but does not specify its actuation stages."
+  notes: Manufacturer names it separately but does not specify its actuation stages.
   source: https://vkbsimcontrollers.com/products/gnx-f-14-add-on-grip-us
+  stages: 1
+  action: sequential
 - type: lever
   location: grip
   kind: other
   analog: true
   label: DLC maneuver wheel
   source: https://vkbsimcontrollers.com/products/gnx-f-14-add-on-grip-us
+  push: false
 - type: rotary
   location: grip
   mode: selector
   positions: 4
   push: true
   label: Four-stage ammo selector with safety lock and push
-  notes: "The manufacturer calls it a four-stage selector; it does not specify whether the safety lock adds a distinct input."
+  notes: The manufacturer calls it a four-stage selector; it does not specify whether
+    the safety lock adds a distinct input.
   source: https://vkbsimcontrollers.com/products/gnx-f-14-add-on-grip-us
 - type: button
   location: grip
   count: 4
   label: Programmable buttons
   source: https://vkbsimcontrollers.com/products/gnx-f-14-add-on-grip-us
+  backlit: false
 controls_evidence:
   coverage: complete
   source: https://vkbsimcontrollers.com/products/gnx-f-14-add-on-grip-us
   checked: '2026-10-19'
-  notes: "Exact GNX F-14 and VKB FSC Europe Gladiator-grip listings enumerate the physical controls. The center-push hat's direction count remains unknown; this does not invalidate its physical count. The ammo selector is four-position with push; its safety lock is not counted as an extra input. Emergency Autopilot Disable trigger stages remain unspecified. Twist and DLC are documented analog axes. Do not transfer compatibility claims from the older Mk.III variant."
+  notes: Exact GNX F-14 and VKB FSC Europe Gladiator-grip listings enumerate the physical
+    controls. The center-push hat's direction count remains unknown; this does not
+    invalidate its physical count. The ammo selector is four-position with push; its
+    safety lock is not counted as an extra input. Emergency Autopilot Disable trigger
+    stages remain unspecified. Twist and DLC are documented analog axes. Do not transfer
+    compatibility claims from the older Mk.III variant.
 hardware:
   axis_count: 2
   gimbal: null
@@ -77,9 +90,9 @@ software: VKBDevCfg
 physical:
   weight_g: 400
   dimensions_mm:
-    - 240
-    - 130
-    - 100
+  - 240
+  - 130
+  - 100
   materials:
   - abs
   - rubber
@@ -142,6 +155,6 @@ verification: draft
 sources:
 - https://vkbcontrollers.com/products/f-14-gnx-combat-grip-add-on
 images:
-  - file: /images/vkb/f14-combat-grip.jpg
-    source: https://vkbsimcontrollers.com/products/gnx-f-14-add-on-grip-us
-    caption: F-14 Combat Grip
+- file: /images/vkb/f14-combat-grip.jpg
+  source: https://vkbsimcontrollers.com/products/gnx-f-14-add-on-grip-us
+  caption: F-14 Combat Grip

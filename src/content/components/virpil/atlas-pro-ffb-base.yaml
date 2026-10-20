@@ -1,0 +1,74 @@
+brand: virpil
+name: VPC ATLAS PRO FFB Base
+category: base
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product listing presents the base as a PC USB flightstick base and does not list Xbox or PS5 support.
+  sources:
+    - https://virpil-controls.eu/atlas-pro-ffb-base.html
+status: announced
+release_year: 2026
+handedness: n/a
+mount:
+  provides: null
+  accepts:
+    - virpil-grip
+controls:
+  - type: button
+    count: 1
+    location: other
+    label: Remote emergency stop
+    notes: Included remote button that disables motor force output. The page does not describe it as a simulator input.
+    source: https://virpil-controls.eu/atlas-pro-ffb-base.html
+  - type: axis
+    kind: other
+    count: 2
+    location: base
+    label: Pitch and roll axes
+    source: https://virpil-controls.eu/atlas-pro-ffb-base.html
+controls_evidence:
+  coverage: complete
+  source: https://virpil-controls.eu/atlas-pro-ffb-base.html
+  checked: '2026-10-20'
+  notes: 'SKU VPC-115-002. Pre-order base, shipping estimate late Q4 2026. Same cord-drive gimbal description as ATLAS, with the Pro motor rating of 45 nm, stated as over 22 kg at the stick. Bare base has two gimbal axes and the included remote emergency stop. No grip is installed. Axis range is stated as 18 degrees without a total-versus-per-side definition, so throw_deg is unset. Cart price is a 50 percent deposit of the stated €749.95 pre-order price.'
+hardware:
+  gimbal: cord_drive
+  sensor: contactless_magnetic
+  axes:
+    - name: X
+      resolution_bits: 14
+      sensor: contactless_magnetic
+    - name: Y
+      resolution_bits: 14
+      sensor: contactless_magnetic
+  force_adjustable: true
+  cams_swappable: null
+  damping: null
+  extension_support: true
+  throw_deg: null
+connectivity:
+  usb: null
+  standalone_usb: true
+software: ATLAS FFB Software
+physical:
+  materials:
+    - aluminium
+    - metal
+use_case_fit:
+  modern_jet: 5
+  heli: 4
+  ww2: 4
+  ga: 3
+  airliner: 3
+  space_hotas: 5
+  space_hosas: 5
+prices: []
+verification: draft
+sources:
+  - https://virpil-controls.eu/atlas-pro-ffb-base.html
+images:
+  - file: /images/virpil/atlas-pro-ffb-base.png
+    source: https://virpil-controls.eu/atlas-pro-ffb-base.html
+    caption: VPC ATLAS PRO FFB Base

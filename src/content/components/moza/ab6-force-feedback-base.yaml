@@ -14,20 +14,22 @@ controls:
   count: 8
   label: RGB-backlit customizable buttons
   backlit: true
-  source: https://support.mozaracing.com/en/support/solutions/articles/70000684201-ab6-force-feedback-base
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_ab6_flight_simulator_manual.pdf?v=1779862983
 - type: slider
   location: base
   count: 2
   analog: true
-  label: Axis sliders
-  source: https://support.mozaracing.com/en/support/solutions/articles/70000684201-ab6-force-feedback-base
+  label: Analog throttle sliders (support axis, button, or mixed mapping)
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_ab6_flight_simulator_manual.pdf?v=1779862983
 controls_evidence:
-  coverage: partial
-  source: https://support.mozaracing.com/en/support/solutions/articles/70000684201-ab6-force-feedback-base
-  checked: '2026-10-19'
-  notes: Eight illuminated buttons and two axis sliders are explicitly documented. Separate power control is excluded
-    as a device input; no evidence found for other onboard input types.
+  coverage: complete
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_ab6_flight_simulator_manual.pdf?v=1779862983
+  checked: '2026-10-20'
+  notes: Verified against official AB6 user manual (p. 4). The base features 8 RGB-backlit customizable buttons
+    and 2 analog throttle sliders with three signal mapping modes (button, axis, or mixed). Power switch is excluded
+    as a device flight input. No other onboard controls exist.
 hardware:
+  axis_count: 2
   gimbal: force_feedback
   sensor: magnetic_encoder
   axes:
@@ -40,10 +42,10 @@ hardware:
   force_adjustable: true
   cams_swappable: false
   damping: active_motor
-  extension_support: null
+  extension_support: true
   throw_deg: null
 connectivity:
-  usb: USB-C to PC; RJ11 accessory ports
+  usb: USB Type-B to PC; RJ11 ports (throttle, rudder pedal, dash display); flight stick connector
   standalone_usb: true
 software: MOZA Cockpit and MOZA Pit House
 physical:
@@ -95,6 +97,7 @@ verification: draft
 sources:
 - https://mozaracing.com
 - https://support.mozaracing.com/en/support/solutions/articles/70000684201-ab6-force-feedback-base
+- https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_ab6_flight_simulator_manual.pdf?v=1779862983
 images:
 - file: /images/moza/ab6-force-feedback-base.webp
   source: https://eu.mozaracing.com/products/ab6-bundle/

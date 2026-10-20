@@ -1,0 +1,91 @@
+brand: thrustmaster
+name: TCA Quadrant Add-On Airbus Edition
+category: module
+status: current
+handedness: n/a
+mount: null
+platform_compatibility:
+  pc: supported
+  xbox: supported
+  ps5: unsupported
+  notes: The add-on product page lists PC. The Sidestick X manual states this add-on is recognized on Xbox Series
+    X|S and Xbox One when connected through TCA Sidestick X. It has no standalone USB connection. PS5 is not listed.
+  sources:
+  - https://www.thrustmaster.com/en-us/products/tca-quadrant-add-on-airbus-edition/
+  - https://ts.thrustmaster.com/download/accessories/Manuals/TCA_sidestick_X/TCA_Sidestick_X_AE_User_manual.pdf
+controls:
+- type: lever
+  kind: speedbrake
+  analog: true
+  count: 1
+  location: panel
+  label: Speed brake axis
+  notes: Four detents on this axis are associated with five virtual buttons. Those virtual events are not physical buttons.
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant/TCA_Quadrant_Add-On_Airbus_Edition_user_manual.pdf
+- type: detent
+  count: 4
+  location: panel
+  label: Speed-brake axis detents
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant/TCA_Quadrant_Add-On_Airbus_Edition_user_manual.pdf
+- type: button
+  count: 6
+  location: panel
+  label: Speed-brake module action buttons
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant/TCA_Quadrant_Add-On_Airbus_Edition_user_manual.pdf
+- type: lever
+  kind: flap
+  analog: true
+  count: 1
+  location: panel
+  label: Flaps axis
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant/TCA_Quadrant_Add-On_Airbus_Edition_user_manual.pdf
+- type: detent
+  count: 4
+  location: panel
+  label: Flaps axis detents
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant/TCA_Quadrant_Add-On_Airbus_Edition_user_manual.pdf
+- type: button
+  count: 4
+  location: panel
+  label: Flaps module action buttons
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant/TCA_Quadrant_Add-On_Airbus_Edition_user_manual.pdf
+controls_evidence:
+  coverage: partial
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant/TCA_Quadrant_Add-On_Airbus_Edition_user_manual.pdf
+  checked: '2026-10-20'
+  notes: English features page calls out a speed-brake axis, four detents plus five virtual buttons, six action
+    buttons, a flaps axis, four detents, and four action buttons. Mapping page 6 titles 15 button numbers and two
+    axes (Z and ZR). Fifteen equals the ten action buttons plus the five virtual speed-brake events. The legend does
+    not say which of the ten are push buttons, paired switch contacts, or the wheel and knob shapes drawn inside the
+    flaps bracket, so those ten stay typed as the manual's action buttons. One published SKU contains both modules.
+hardware:
+  axis_count: 2
+  axes:
+  - name: ZR (speed brake)
+  - name: Z (flaps)
+connectivity:
+  usb: SATA connection to TCA Quadrant Airbus Edition
+  standalone_usb: false
+physical:
+  weight_g: 530
+  dimensions_mm:
+  - 50
+  - 235
+  - 130
+prices:
+- region: US
+  currency: USD
+  amount: 109.99
+  incl_vat: false
+  store: Thrustmaster
+  url: https://www.thrustmaster.com/en-us/products/tca-quadrant-add-on-airbus-edition/
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources:
+- https://www.thrustmaster.com/en-us/products/tca-quadrant-add-on-airbus-edition/
+- https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant/TCA_Quadrant_Add-On_Airbus_Edition_user_manual.pdf
+images:
+- file: /images/thrustmaster/tca-quadrant-add-on-airbus.webp
+  source: https://www.thrustmaster.com/wp-content/uploads/2023/03/tca-quadrant-add-on-airbus-edition-pc-768x768-2.webp
+  caption: TCA Quadrant Add-On Airbus Edition

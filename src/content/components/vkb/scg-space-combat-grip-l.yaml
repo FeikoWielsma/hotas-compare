@@ -5,10 +5,12 @@ platform_compatibility:
   pc: supported
   xbox: unsupported
   ps5: unsupported
-  notes: "VKB Australia FAQ states VKB controllers are compatible with Windows PCs and not compatible with Xbox, PS5, Apple or other platforms. Detached grip or module use requires its compatible VKB base/controller on Windows PC."
+  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs
+    and not compatible with Xbox, PS5, Apple or other platforms. Detached grip or
+    module use requires its compatible VKB base/controller on Windows PC.
   sources:
-    - https://vkbcontrollers.com/products/scg-space-combat-grip
-    - https://vkb-sim.com.au/collections/all-controllers
+  - https://vkbcontrollers.com/products/scg-space-combat-grip
+  - https://vkb-sim.com.au/collections/all-controllers
 status: current
 release_year: 2020
 handedness: left
@@ -16,38 +18,46 @@ mount:
   provides: vkb-rev-b
   accepts: []
 controls:
-  - type: trigger
-    location: "grip"
-    stages: 2
-    action: "sequential"
-    label: "Main dual-action trigger"
-    source: "https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/"
-  - type: trigger
-    location: "grip"
-    label: "Rapid-fire trigger; actuation stage unspecified"
-    source: "https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/"
-  - type: hat
-    ways: 4
-    push: true
-    count: 3
-    location: "grip"
-    label: "Center-push hats"
-    source: "https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/"
-  - type: analog_ministick
-    push: true
-    location: "grip"
-    label: "A1 analog ministick"
-    source: "https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/"
-  - type: button
-    count: 3
-    location: "grip"
-    label: "Installed buttons; C1 supplied module is a replacement"
-    source: "https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/"
+- type: trigger
+  location: grip
+  stages: 2
+  action: sequential
+  label: Main dual-action trigger
+  source: https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/
+- type: trigger
+  location: grip
+  label: Rapid-fire trigger
+  notes: Bidirectional 2-stage push/pull secondary trigger confirmed by official VKB template.
+  source: https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/
+  stages: 2
+  action: bidirectional
+- type: hat
+  ways: 4
+  push: true
+  count: 3
+  location: grip
+  label: Center-push hats
+  source: https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/
+- type: analog_ministick
+  push: true
+  location: grip
+  label: A1 analog ministick
+  source: https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/
+- type: button
+  count: 3
+  location: grip
+  label: Installed buttons; C1 supplied module is a replacement
+  source: https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/
+  backlit: false
 controls_evidence:
   coverage: complete
   source: https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/
   checked: '2026-10-19'
-  notes: "Exact Premium L/R; grip-only inventory. Europe listing specifies three installed buttons; its included C1 button and A1 hat modules are alternatives/replacements, not simultaneous installed controls. Some US marketing describes a different button configuration; this inventory follows the exact variant listing. Secondary trigger stage count unspecified."
+  notes: Exact Premium L/R; grip-only inventory verified against official VKB SCG template.
+    Europe listing specifies three installed buttons; its included C1 button and A1
+    hat modules are alternatives/replacements, not simultaneous installed controls.
+    Includes dual-action trigger, bidirectional rapid-fire trigger, three 4-way center-push
+    hats, A1 analog ministick with push, and 3 push buttons.
 hardware:
   gimbal: null
   sensor: contactless_magnetic
@@ -59,8 +69,9 @@ hardware:
   damping: null
   extension_support: false
   throw_deg: null
+  axis_count: 1
 connectivity:
-  usb: null
+  usb: none; connects via VKB Rev.B connector to Gladiator NXT/EVO base
   standalone_usb: false
 software: VKBDevCfg
 physical:
@@ -125,6 +136,6 @@ verification: draft
 sources:
 - https://vkbcontrollers.com/products/scg-space-combat-grip
 images:
-  - file: /images/vkb/scg-space-combat-grip-l.jpg
-    source: https://vkbsimcontrollers.com/products/gnx-scg-add-on-grip-us
-    caption: Space Combat Grip (SCG) Premium (Left)
+- file: /images/vkb/scg-space-combat-grip-l.jpg
+  source: https://vkbsimcontrollers.com/products/gnx-scg-add-on-grip-us
+  caption: Space Combat Grip (SCG) Premium (Left)

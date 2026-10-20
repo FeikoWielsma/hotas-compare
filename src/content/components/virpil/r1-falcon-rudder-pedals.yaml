@@ -1,0 +1,73 @@
+brand: virpil
+name: VPC R1-FALCON Rudder Pedals
+category: pedals
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product listing presents the pedals as a PC USB device and does not list Xbox or PS5 support.
+  sources:
+    - https://virpil-controls.eu/r1-falcon-rudder-pedals.html
+status: current
+handedness: n/a
+mount: null
+controls:
+  - type: axis
+    kind: rudder
+    count: 1
+    location: other
+    label: Rudder axis
+    source: https://virpil-controls.eu/r1-falcon-rudder-pedals.html
+  - type: axis
+    kind: toe_brake
+    count: 2
+    location: other
+    label: Toe brake axes
+    source: https://virpil-controls.eu/r1-falcon-rudder-pedals.html
+controls_evidence:
+  coverage: complete
+  source: https://virpil-controls.eu/r1-falcon-rudder-pedals.html
+  checked: '2026-10-20'
+  notes: 'SKU VPC-305-001. Overview states 3-axis input, yaw and toe brakes. No buttons or switches are listed. The damper kit is optional and not included. ACE Interceptor copy above the R1 section on the same page was not used for this record. Footplates are the half-foot Falcon plates; Legend plates are a separate product.'
+hardware:
+  gimbal: null
+  sensor: contactless_magnetic
+  axes:
+    - name: Rudder
+      resolution_bits: 14
+      sensor: contactless_magnetic
+    - name: Left_Brake
+      resolution_bits: 14
+      sensor: contactless_magnetic
+    - name: Right_Brake
+      resolution_bits: 14
+      sensor: contactless_magnetic
+  force_adjustable: true
+  cams_swappable: true
+  damping: null
+  extension_support: false
+  throw_deg: null
+connectivity:
+  usb: null
+  standalone_usb: true
+physical:
+  materials:
+    - aluminium
+    - metal
+prices:
+  - region: EU
+    currency: EUR
+    amount: 299.95
+    incl_vat: true
+    store: virpil-controls.eu
+    url: https://virpil-controls.eu/r1-falcon-rudder-pedals.html
+    verified: '2026-10-20'
+    source: manual
+verification: draft
+sources:
+  - https://virpil-controls.eu/r1-falcon-rudder-pedals.html
+  - https://support.virpil.com/en/support/solutions/articles/47001270299-r1-falcon-rudder-pedals-user-manual
+images:
+  - file: /images/virpil/r1-falcon-rudder-pedals.jpg
+    source: https://virpil-controls.eu/r1-falcon-rudder-pedals.html
+    caption: VPC R1-FALCON Rudder Pedals

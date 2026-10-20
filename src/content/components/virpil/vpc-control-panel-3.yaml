@@ -1,0 +1,108 @@
+brand: virpil
+name: 'VPC Universal Control Panel #3'
+category: module
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: The product page device table lists the platform as PC and does not list Xbox or PS5 support.
+  sources:
+    - https://virpil-controls.eu/vpc-universal-control-panel-3.html
+status: current
+handedness: n/a
+mount: null
+controls:
+  - type: lever
+    kind: other
+    analog: true
+    count: 4
+    location: panel
+    label: Axis levers
+    source: https://virpil-controls.eu/vpc-universal-control-panel-3.html
+  - type: button
+    count: 10
+    backlit: true
+    location: panel
+    label: RGB tactile switches
+    notes: The page lists these separately from the three momentary push buttons.
+    source: https://virpil-controls.eu/vpc-universal-control-panel-3.html
+  - type: button
+    count: 3
+    location: panel
+    label: Momentary push buttons
+    source: https://virpil-controls.eu/vpc-universal-control-panel-3.html
+  - type: toggle
+    ways: 3
+    count: 7
+    location: panel
+    label: ON-OFF-ON toggles
+    notes: The page does not say whether these ON-OFF-ON toggles are maintained or momentary.
+    source: https://virpil-controls.eu/vpc-universal-control-panel-3.html
+  - type: toggle
+    ways: 3
+    count: 3
+    location: panel
+    label: Latching toggles
+    notes: The page calls these both latching and "([ON]-OFF-[ON])". Maintained versus momentary is left unset because those words conflict.
+    source: https://virpil-controls.eu/vpc-universal-control-panel-3.html
+  - type: encoder
+    count: 2
+    push: true
+    location: panel
+    label: Infinite scroll encoders
+    source: https://virpil-controls.eu/vpc-universal-control-panel-3.html
+  - type: rotary
+    mode: selector
+    positions: 5
+    push: true
+    count: 1
+    location: panel
+    label: 5-way mode dial
+    notes: Center push is on the official button-mapping diagram. The product-page list names the dial without mentioning the push.
+    source: https://support.virpil.com/en/support/solutions/articles/47001264833-vpc-control-panel-3
+controls_evidence:
+  coverage: complete
+  source: https://virpil-controls.eu/vpc-universal-control-panel-3.html
+  checked: '2026-10-20'
+  notes: 'SKU VPC-403-001. Counts are the section titled "UNIVERSAL CONTROL PANEL #3 INPUTS". MongoosT-50CM3 throttle paragraphs elsewhere on the page were not used. The mapping diagram names the four lever axes X, Y, RX, and RY and shows a center push on the mode dial. Optional axis-handle cosmetics are a separate product and do not add inputs.'
+hardware:
+  gimbal: null
+  sensor: contactless_magnetic
+  axes:
+    - name: X
+      sensor: contactless_magnetic
+    - name: Y
+      sensor: contactless_magnetic
+    - name: RX
+      sensor: contactless_magnetic
+    - name: RY
+      sensor: contactless_magnetic
+  force_adjustable: false
+  cams_swappable: false
+  damping: null
+  extension_support: false
+  throw_deg: null
+connectivity:
+  usb: null
+  standalone_usb: true
+software: VPC Configuration Tool
+physical:
+  materials:
+    - duralumin
+prices:
+  - region: EU
+    currency: EUR
+    amount: 249.95
+    incl_vat: true
+    store: virpil-controls.eu
+    url: https://virpil-controls.eu/vpc-universal-control-panel-3.html
+    verified: '2026-10-20'
+    source: manual
+verification: draft
+sources:
+  - https://virpil-controls.eu/vpc-universal-control-panel-3.html
+  - https://support.virpil.com/en/support/solutions/articles/47001264833-vpc-control-panel-3
+images:
+  - file: /images/virpil/vpc-control-panel-3.jpg
+    source: https://virpil-controls.eu/vpc-universal-control-panel-3.html
+    caption: VPC Universal Control Panel #3

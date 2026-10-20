@@ -14,7 +14,7 @@ controls:
 controls_evidence:
   coverage: partial
   source: https://support.mozaracing.com/en/support/solutions/articles/70000679586-moza-ay210-yoke-base-support
-  checked: '2026-10-19'
+  checked: '2026-10-20'
   notes: MOZA documents 13 programmable front-panel switches with RGB lighting, telemetry sync, and long-press commands,
     but does not identify physical mechanisms or provide a clear control diagram. Recorded as generic switches because
     their exact mechanisms are not established; no standalone push-button count is inferred. Count refers to listed
@@ -23,7 +23,11 @@ verification: draft
 sources:
 - https://mozaracing.com
 - https://support.mozaracing.com/en/support/solutions/articles/70000679586-moza-ay210-yoke-base-support
-images: []
+- https://us.mozaracing.com/products/ay210-yoke-base
+images:
+- file: /images/moza/ay210-yoke-base.webp
+  source: https://us.mozaracing.com/products/ay210-yoke-base
+  caption: MOZA AY210 Yoke Base
 prices:
 - region: EU
   currency: EUR
@@ -32,6 +36,22 @@ prices:
   store: eu.mozaracing.com
   url: https://eu.mozaracing.com/products/ay210-yoke-base
   verified: '2026-10-19'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 699
+  incl_vat: true
+  store: uk.mozaracing.com
+  url: https://uk.mozaracing.com/products/ay210-yoke-base
+  verified: '2026-10-20'
+  source: manual
+- region: US
+  currency: USD
+  amount: 699
+  incl_vat: false
+  store: us.mozaracing.com
+  url: https://us.mozaracing.com/products/ay210-yoke-base
+  verified: '2026-10-20'
   source: manual
 platform_compatibility:
   pc: supported

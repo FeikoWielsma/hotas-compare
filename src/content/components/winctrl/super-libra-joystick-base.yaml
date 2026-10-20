@@ -1,0 +1,60 @@
+brand: winctrl
+name: Super Libra Joystick Base
+category: base
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official manual/store record identifies PC-compatible use; no exact source establishes console support
+    or incompatibility.
+  sources:
+  - https://eu.winctrl.com/mobileview/goods-details.html?id=307
+  - https://eu.winctrl.com/static/download/QmRTrd8xqZo8sNRZRLQv4dGq8ukc6bb37WuBBuESup4Yaq?filename=J1-SUPER-LIBRA-JOYSTICK-BASE-MANUAL-EN-V1.1.pdf
+status: current
+handedness: n/a
+mount:
+  provides: winctrl-super-libra-base
+  accepts:
+  - winctrl-grip
+controls:
+- type: axis
+  count: 1
+  kind: pitch
+  location: base
+  label: Pitch axis, ±20°
+  source: https://eu.winctrl.com/static/download/QmRTrd8xqZo8sNRZRLQv4dGq8ukc6bb37WuBBuESup4Yaq?filename=J1-SUPER-LIBRA-JOYSTICK-BASE-MANUAL-EN-V1.1.pdf
+- type: axis
+  count: 1
+  kind: roll
+  location: base
+  label: Roll axis, ±20°
+  source: https://eu.winctrl.com/static/download/QmRTrd8xqZo8sNRZRLQv4dGq8ukc6bb37WuBBuESup4Yaq?filename=J1-SUPER-LIBRA-JOYSTICK-BASE-MANUAL-EN-V1.1.pdf
+- type: axis
+  count: 1
+  kind: rudder
+  location: base
+  label: Yaw axis, ±15°
+  source: https://eu.winctrl.com/static/download/QmRTrd8xqZo8sNRZRLQv4dGq8ukc6bb37WuBBuESup4Yaq?filename=J1-SUPER-LIBRA-JOYSTICK-BASE-MANUAL-EN-V1.1.pdf
+controls_evidence:
+  coverage: partial
+  source: https://eu.winctrl.com/static/download/QmRTrd8xqZo8sNRZRLQv4dGq8ukc6bb37WuBBuESup4Yaq?filename=J1-SUPER-LIBRA-JOYSTICK-BASE-MANUAL-EN-V1.1.pdf
+  checked: '2026-10-20'
+  notes: Manual specifies pitch, roll and yaw axes, but does not inventory possible base-mounted switches; no absence
+    is inferred.
+connectivity:
+  standalone_usb: true
+hardware:
+  axes:
+  - name: Pitch
+  - name: Roll
+  - name: Yaw
+  axis_count: 3
+prices: []
+verification: draft
+sources:
+- https://eu.winctrl.com/static/download/QmRTrd8xqZo8sNRZRLQv4dGq8ukc6bb37WuBBuESup4Yaq?filename=J1-SUPER-LIBRA-JOYSTICK-BASE-MANUAL-EN-V1.1.pdf
+- https://eu.winctrl.com/mobileview/goods-details.html?id=307
+images:
+- file: /images/winctrl/super-libra-joystick-base.jpg
+  source: https://eu.winctrl.com/mobileview/goods-details.html?id=307
+  caption: Super Libra Joystick Base

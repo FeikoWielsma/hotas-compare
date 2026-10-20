@@ -13,27 +13,55 @@ controls:
 - type: trigger
   count: 1
   location: grip
-  source: https://www.thrustmaster.com/nl-nl/products/t-flight-hotas-5-microsoft-flight-simulator-edition/
+  label: Trigger (PC mapping button 1)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TFH5/T.Flight_Hotas_5_user_manual.pdf
 - type: hat
+  count: 1
   location: grip
-  label: Hat switch
-  source: https://www.thrustmaster.com/nl-nl/products/t-flight-hotas-5-microsoft-flight-simulator-edition/
+  label: Multidirectional point-of-view hat
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TFH5/T.Flight_Hotas_5_user_manual.pdf
+- type: button
+  count: 3
+  location: grip
+  label: Stick-head buttons 2, 3 and 4
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TFH5/T.Flight_Hotas_5_user_manual.pdf
+- type: button
+  count: 6
+  location: handle
+  label: Throttle buttons 5-10
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TFH5/T.Flight_Hotas_5_user_manual.pdf
+- type: button
+  count: 6
+  location: base
+  label: Base buttons 11-16
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TFH5/T.Flight_Hotas_5_user_manual.pdf
 - type: lever
   kind: throttle_single
   analog: true
+  count: 1
   location: base
-  label: Detachable throttle
-  source: https://www.thrustmaster.com/nl-nl/products/t-flight-hotas-5-microsoft-flight-simulator-edition/
-- type: lever
-  kind: other
+  label: Detachable throttle (Z axis)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TFH5/T.Flight_Hotas_5_user_manual.pdf
+- type: rocker
   analog: true
-  location: base
-  label: Rudder tilt lever
-  source: https://www.thrustmaster.com/nl-nl/products/t-flight-hotas-5-microsoft-flight-simulator-edition/
+  count: 1
+  location: handle
+  label: Rudder rocker (Slider 0 axis)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TFH5/T.Flight_Hotas_5_user_manual.pdf
+- type: axis
+  kind: twist
+  count: 1
+  location: handle
+  label: Lockable twist rudder (RZ axis)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TFH5/T.Flight_Hotas_5_user_manual.pdf
 hardware:
   axis_count: 5
   axes:
-  - name: Z (twist rudder)
+  - name: X
+  - name: Y
+  - name: RZ (twist rudder)
+  - name: Z (throttle)
+  - name: Slider 0 (rudder rocker)
 physical:
   weight_g: 2060
   dimensions_mm:
@@ -52,13 +80,23 @@ prices:
   url: https://www.thrustmaster.com/nl-nl/products/t-flight-hotas-5-microsoft-flight-simulator-edition/
   verified: '2026-10-20'
   source: manual
+- region: US
+  currency: USD
+  amount: 109.99
+  incl_vat: false
+  store: Thrustmaster US eshop
+  url: https://eshop.thrustmaster.com/en_us/t-flight-hotas-5-microsoft-flight-simulator-edition.html
+  verified: '2026-10-20'
+  source: manual
 controls_evidence:
-  coverage: partial
-  source: https://www.thrustmaster.com/nl-nl/products/t-flight-hotas-5-microsoft-flight-simulator-edition/
+  coverage: complete
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TFH5/T.Flight_Hotas_5_user_manual.pdf
   checked: '2026-10-20'
-  notes: Manufacturer states five axes, 14 buttons, one trigger and one hat switch, plus detachable throttle and
-    dual rudder controls via twist Z axis or throttle tilt lever. The 14-control button total is not treated as
-    a physical button count; unspecified buttons and axis names are omitted.
+  notes: Support page for this MSFS edition links the T.Flight Hotas 5 manual. PC mapping numbers buttons 1-16 on
+    the stick and throttle. Button 1 is the trigger; 2-4 are on the stick head; 5-10 are on the throttle; 11-16 are
+    on the base. The hat, throttle axis, twist axis, and rudder rocker are drawn separately. Pedal axes on the same
+    page belong to the optional TFRP and are not part of this device. The product page's "14 buttons" is a marketing
+    total and is not the numbered physical count. Hat direction count is not stated.
 verification: draft
 sources:
 - https://www.thrustmaster.com/nl-nl/products/t-flight-hotas-5-microsoft-flight-simulator-edition/

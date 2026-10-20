@@ -1,0 +1,85 @@
+brand: thrustmaster
+name: TCA SKY YOKE PlayStation / PC
+category: yoke
+status: current
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: supported
+  notes: Official product attributes list PC and PS5 only. Plug & Play on iOS and Android is also stated, but those
+    are not schema platforms. The Xbox / PC edition is a separate SKU with its own record.
+  sources:
+  - https://www.thrustmaster.com/products/tca-sky-yoke-playstation-pc/
+  - https://eshop.thrustmaster.com/en_us/tca-sky-yoke-ps.html
+controls:
+- type: hat
+  ways: 8
+  location: grip
+  label: POV hat switch
+  source: https://www.thrustmaster.com/products/tca-sky-yoke-playstation-pc/
+- type: analog_ministick
+  location: grip
+  source: https://www.thrustmaster.com/products/tca-sky-yoke-playstation-pc/
+- type: trigger
+  count: 2
+  location: grip
+  source: https://www.thrustmaster.com/products/tca-sky-yoke-playstation-pc/
+- type: lever
+  kind: throttle_single
+  analog: true
+  location: base
+  label: Integrated throttle
+  source: https://www.thrustmaster.com/products/tca-sky-yoke-playstation-pc/
+- type: rotary
+  mode: analog
+  location: base
+  label: Trim wheel
+  source: https://www.thrustmaster.com/products/tca-sky-yoke-playstation-pc/
+- type: button
+  count: 24
+  location: grip
+  label: Action buttons (official stated total; individual mechanisms not identified)
+  source: https://www.thrustmaster.com/products/tca-sky-yoke-playstation-pc/
+hardware:
+  axis_count: 7
+  sensor: 16-bit H.E.A.R.T.
+  axes:
+  - name: Yoke pitch
+    resolution_bits: 16
+    sensor: H.E.A.R.T. Hall effect
+  - name: Yoke roll
+    resolution_bits: 16
+    sensor: H.E.A.R.T. Hall effect
+  damping: Self-centering damped pitch, 9 cm travel; rotation up to 180 degrees
+  throw_deg: 180
+controls_evidence:
+  coverage: partial
+  source: https://www.thrustmaster.com/products/tca-sky-yoke-playstation-pc/
+  checked: '2026-10-20'
+  notes: Official page states 24 action buttons, an 8-way hat, mini-stick, two analog triggers, integrated throttle, trim wheel and seven axes. Button count is recorded; individual action-button mechanisms and remaining named axes are not broken down. Hat push and trim-wheel encoder type are unspecified. The eshop lists a later availability date; status remains current per product page.
+connectivity:
+  usb: USB (plug and play; dual-yoke connection supported)
+  standalone_usb: true
+physical:
+  weight_g: 2495
+  dimensions_mm:
+  - 344
+  - 440
+  - 180
+verification: draft
+prices:
+- region: US
+  currency: USD
+  amount: 199.99
+  incl_vat: false
+  store: Thrustmaster US eshop
+  url: https://eshop.thrustmaster.com/en_us/tca-sky-yoke-ps.html
+  verified: '2026-10-20'
+  source: manual
+sources:
+- https://www.thrustmaster.com/products/tca-sky-yoke-playstation-pc/
+- https://eshop.thrustmaster.com/en_us/tca-sky-yoke-ps.html
+images:
+- file: /images/thrustmaster/tca-sky-yoke-ps-pc.webp
+  source: https://eshop.thrustmaster.com/media/catalog/product/o/c/oc_whitebg-tcaskyyoke_sony-2_1000x1000.jpg
+  caption: TCA SKY YOKE (PlayStation / PC)

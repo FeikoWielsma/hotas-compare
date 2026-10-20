@@ -39,7 +39,7 @@ hardware:
   - name: Right Toe Brake
     resolution_bits: 10
     sensor: contactless_magnetic
-  force_adjustable: null
+  force_adjustable: true
   cams_swappable: null
   damping: null
   extension_support: null
@@ -83,6 +83,7 @@ platform_compatibility:
   notes: Official page lists Windows 10/11 PCs, XBOX Series X|S and XBOX One, but Xbox use requires the VelocityOne Flight Universal Control System (or Flightstick via pass-through cable). PS5 is not mentioned.
   sources:
   - https://www.turtlebeach.com/products/velocity-one-rudder
+  - https://uk.turtlebeach.com/products/velocity-one-rudder
 verification: draft
 images:
 - file: /images/turtle-beach/velocityone-rudder-pedals.png

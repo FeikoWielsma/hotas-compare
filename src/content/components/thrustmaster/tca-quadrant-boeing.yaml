@@ -23,24 +23,37 @@ controls:
     not four simultaneous axes.
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant_Boeing/TCA_Quadrant_Boeing_Edition_user_manual.pdf
 - type: button
-  count: 17
+  count: 6
+  location: handle
+  label: Thrust-lever buttons, one pair per lever (mapped 1-6, thrust-reverser mechanisms)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant_Boeing/TCA_Quadrant_Boeing_Edition_user_manual.pdf
+- type: button
+  count: 3
   location: base
-  label: Action buttons
-  source: https://shop.thrustmaster.com/en_eu/tca-quadrant-boeing-edition.html
+  label: Base push buttons (mapped 7-9)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant_Boeing/TCA_Quadrant_Boeing_Edition_user_manual.pdf
+- type: toggle
+  count: 2
+  ways: 2
+  location: base
+  label: Two base two-position switches (mapped 10-11)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant_Boeing/TCA_Quadrant_Boeing_Edition_user_manual.pdf
 - type: encoder
   count: 1
+  push: true
   location: base
-  label: Autopilot encoder
-  notes: Manufacturer identifies an encoder; exact push behavior and selector/encoder decomposition are unclear
-    in accessible official text.
-  source: https://www.thrustmaster.com/news/thrustmaster-teams-up-with-boeing-to-innovate-and-create-new-tca-peripherals-a-unique-experience-where-dreams-meet-reality/
+  label: Autopilot encoder with push (mapped 15-16 rotation, 17 press)
+  notes: Mode labels IAS/MACH, HDG/TRK and Altitude (mapped 12-14) are not classified as physical controls.
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant_Boeing/TCA_Quadrant_Boeing_Edition_user_manual.pdf
 controls_evidence:
   coverage: partial
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant_Boeing/TCA_Quadrant_Boeing_Edition_user_manual.pdf
   checked: '2026-10-19'
-  notes: Exact single quadrant. Three magnetic analog axes and 17 action buttons are confirmed; four supplied lever
-    types are swappable across three axes, so they are not four simultaneously installed levers. Manufacturer also
-    identifies an autopilot encoder, but accessible material does not resolve its push behavior and selector decomposition.
+  notes: Counts from the PC mapping for 17 buttons and 3 axes (manual page 5-6) and the numbered feature diagram
+    (page 2). The 17 mapped inputs are 9 buttons, 2 two-position switches and the encoder (rotation 15-16, press 17);
+    12-14 are autopilot mode labels. Three magnetic analog axes; four supplied lever types are swappable across three
+    axes, so they are not four simultaneously installed levers. Mode selector 12-14 and the encoder's physical body
+    type remain unclassified, so coverage stays partial.
 hardware:
   gimbal: null
   sensor: hall

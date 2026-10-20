@@ -1,0 +1,97 @@
+brand: vkb
+name: MCG Pro Add-On Grip for Gunfighter Mk.III
+category: grip
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs
+    and not compatible with Xbox, PS5, Apple or other platforms. Requires a compatible
+    Gunfighter Mk.II/III base on Windows PC.
+  sources:
+  - https://vkbsimcontrollers.com/products/mcg-pro-add-on-grip-for-gunfighter-mk-iii
+  - https://vkb-sim.com.au/collections/all-controllers
+status: current
+handedness: right
+mount:
+  provides: vkb-rev-b
+  accepts: []
+controls:
+- type: button
+  count: 24
+  backlit: false
+  location: grip
+  label: 24 programmable buttons (OMRON and ALPS precision switches)
+  source: https://vkbsimcontrollers.com/products/mcg-pro-add-on-grip-for-gunfighter-mk-iv-us
+- type: analog_ministick
+  count: 2
+  push: true
+  location: grip
+  label: Slew and trimmer mini-sticks with center push (two sticks, two axes each)
+  source: https://vkbsimcontrollers.com/products/mcg-pro-add-on-grip-for-gunfighter-mk-iv-us
+- type: lever
+  kind: brake
+  analog: true
+  count: 1
+  location: grip
+  label: Brake lever axis
+  push: false
+  source: https://vkbsimcontrollers.com/products/mcg-pro-add-on-grip-for-gunfighter-mk-iv-us
+- type: trigger
+  count: 1
+  stages: 2
+  action: sequential
+  location: grip
+  label: Dual-stage trigger
+  source: https://vkbsimcontrollers.com/products/mcg-pro-add-on-grip-for-gunfighter-mk-iv-us
+- type: trigger
+  count: 1
+  action: flip
+  stages: 2
+  flip: true
+  location: grip
+  label: Metal folding trigger with two-position sensor (flipped up/down)
+  source: https://vkbsimcontrollers.com/products/mcg-pro-add-on-grip-for-gunfighter-mk-iv-us
+controls_evidence:
+  coverage: complete
+  source: https://vkbsimcontrollers.com/products/mcg-pro-add-on-grip-for-gunfighter-mk-iii
+  checked: '2026-10-20'
+  notes: Controls verified from official product specifications and VKB configuration
+    documentation. Rev.B connector for Gunfighter Mk.II/III bases.
+hardware:
+  axis_count: 5
+  gimbal: null
+  sensor: contactless_magnetic
+  axes:
+  - name: Slew X
+    sensor: contactless_magnetic
+  - name: Slew Y
+    sensor: contactless_magnetic
+  - name: Trimmer X
+    sensor: contactless_magnetic
+  - name: Trimmer Y
+    sensor: contactless_magnetic
+  - name: Brake
+    sensor: contactless_magnetic
+connectivity:
+  usb: none as supplied; connects through the Gunfighter Mk.II/III base
+  standalone_usb: false
+physical:
+  materials:
+  - abs
+prices:
+- region: US
+  currency: USD
+  amount: 136
+  incl_vat: false
+  store: vkbsimcontrollers.com
+  url: https://vkbsimcontrollers.com/products/mcg-pro-add-on-grip-for-gunfighter-mk-iii
+  verified: '2026-10-19'
+  source: manual
+verification: draft
+sources:
+- https://vkbsimcontrollers.com/products/mcg-pro-add-on-grip-for-gunfighter-mk-iii
+images:
+- file: /images/vkb/mcg-pro-add-on-grip-gunfighter-mk-iii.jpg
+  source: https://vkbsimcontrollers.com/products/mcg-pro-add-on-grip-for-gunfighter-mk-iii
+  caption: MCG Pro Add-On Grip for Gunfighter Mk.III

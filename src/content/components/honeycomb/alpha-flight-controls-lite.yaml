@@ -9,6 +9,7 @@ mount:
   accepts: []
 controls:
   - type: hat
+    count: 1
     label: POV switch
     location: handle
     ways: 8

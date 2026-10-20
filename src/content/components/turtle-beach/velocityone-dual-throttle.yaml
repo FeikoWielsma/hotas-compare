@@ -102,6 +102,7 @@ hardware:
   sensor: contactless_magnetic
   axes: []
   axis_count: 7
+  force_adjustable: true
 connectivity:
   usb: c
   standalone_usb: true
@@ -122,6 +123,22 @@ prices:
   url: https://www.turtlebeach.com/products/velocity-one-dual-throttle
   verified: '2026-10-20'
   source: manual
+- region: EU
+  currency: EUR
+  amount: 139.99
+  incl_vat: true
+  store: turtlebeach.com
+  url: https://de.turtlebeach.com/products/velocity-one-dual-throttle
+  verified: '2026-10-20'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 129.99
+  incl_vat: true
+  store: turtlebeach.com
+  url: https://uk.turtlebeach.com/products/velocity-one-dual-throttle
+  verified: '2026-10-20'
+  source: manual
 platform_compatibility:
   pc: supported
   xbox: supported
@@ -137,5 +154,6 @@ images:
   caption: VelocityOne Dual Throttle Xbox variant
 sources:
 - https://www.turtlebeach.com/products/velocity-one-dual-throttle
+- https://uk.turtlebeach.com/products/velocity-one-dual-throttle
 - https://support.turtlebeach.com/s/article/velocityone-dual-throttle-quick-start-guide
 - https://acpv.prod.turtlebeach.com/support/v3/additional-files/en/45/VelocityOne-Dual-Throttle-en.pdf

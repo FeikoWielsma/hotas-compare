@@ -13,12 +13,12 @@ controls:
   analog: true
   count: 2
   label: Dual throttle grips
-  source: https://support.mozaracing.com/en/support/solutions/articles/70000679591-moza-mtp-throttle-support
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtp_throttle_panel_manual.pdf?v=1779863093
 - type: detent
   location: handle
   count: 2
   customizable: true
-  label: Adjustable throttle detents
+  label: Adjustable throttle detents (afterburner and middle detents)
   source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtp_throttle_panel_manual.pdf?v=1779863093
 - type: analog_ministick
   location: handle
@@ -27,20 +27,32 @@ controls:
   notes: In software it can switch between analog axes and 4-way button mode; this is one physical device and is
     not counted twice. Center push behavior is not stated.
   source: https://support.mozaracing.com/en/support/solutions/articles/70000679591-moza-mtp-throttle-support
+- type: switch
+  location: panel
+  count: 27
+  label: Panel switches and controls (27 physical switches total)
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtp_throttle_panel_manual.pdf?v=1779863093
 controls_evidence:
   coverage: partial
   source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtp_throttle_panel_manual.pdf?v=1779863093
-  checked: '2026-10-19'
-  notes: Official support describes one Hall-effect thumb joystick that operates as axes or 4-way buttons; it is
-    represented once as the physical analog ministick, not as an additional hat. Push behavior is unstated. The
-    official support and product pages both count 27 programmable physical switches but do not itemize the panel
-    controls, so standalone button/rotary/toggle totals remain unresolved. Detents are mechanical adjustments, not
-    separate inputs.
+  checked: '2026-10-20'
+  notes: Verified against official MTP Throttle Panel user manual (pages 2-6). Hardware features dual throttle levers with
+    aluminum grips and 15-bit magnetic encoders, 1 Hall-effect thumb joystick on grip, adjustable afterburner/middle detents,
+    telemetry vibration motor, and 27 physical panel switches. The 27 switches are documented as a manufacturer total without
+    itemized mechanism breakdown per switch, so coverage remains partial.
 hardware:
-  axes: []
+  sensor: 15-bit magnetic encoder
+  axis_count: 2
+  axes:
+  - name: Throttle 1
+    resolution_bits: 15
+    sensor: magnetic encoder
+  - name: Throttle 2
+    resolution_bits: 15
+    sensor: magnetic encoder
 connectivity:
   standalone_usb: true
-  usb: USB (connector type not stated)
+  usb: USB Type-B to PC; RJ11 to MOZA flight base
 physical:
   materials:
   - composite housing
@@ -66,6 +78,22 @@ prices:
   store: eu.mozaracing.com
   url: https://eu.mozaracing.com/products/mtp-throttle
   verified: '2026-10-19'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 289
+  incl_vat: true
+  store: uk.mozaracing.com
+  url: https://uk.mozaracing.com/products/mtp-throttle
+  verified: '2026-10-20'
+  source: manual
+- region: US
+  currency: USD
+  amount: 299
+  incl_vat: false
+  store: us.mozaracing.com
+  url: https://us.mozaracing.com/products/mtp-throttle
+  verified: '2026-10-20'
   source: manual
 verification: draft
 sources:

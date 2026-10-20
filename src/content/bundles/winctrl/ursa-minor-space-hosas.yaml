@@ -10,9 +10,17 @@ platform_compatibility:
     - https://eu.winctrl.com/view/goods-details.html?id=551
 status: current
 components:
+  - winctrl/ursa-minor-space-joystick-l
   - winctrl/ursa-minor-fighter-joystick-r
-  - winctrl/ursa-minor-airline-joystick-l
-prices: []
+prices:
+  - region: EU
+    currency: EUR
+    amount: 227.37
+    incl_vat: true
+    store: eu.winctrl.com
+    url: https://eu.winctrl.com/view/goods-details.html?id=725
+    verified: '2026-10-20'
+    source: manual
 verification: draft
 sources:
   - https://eu.winctrl.com/view/goods-details.html?id=551

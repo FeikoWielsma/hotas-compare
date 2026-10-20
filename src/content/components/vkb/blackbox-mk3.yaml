@@ -1,0 +1,43 @@
+brand: vkb
+name: BlackBox Mk3
+category: module
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs
+    and not compatible with Xbox, PS5, Apple or other platforms.
+  sources:
+  - https://vkbsimcontrollers.com/products/blackbox-mk3-us
+  - https://vkb-sim.com.au/collections/all-controllers
+status: current
+handedness: n/a
+mount: null
+controls: []
+controls_evidence:
+  coverage: complete
+  source: https://vkbsimcontrollers.com/products/blackbox-mk3-us
+  checked: '2026-10-20'
+  notes: USB controller box with no physical controls. Compatible with Gunfighter Mk.IV,
+    Gunfighter Mk.II/III and T-Rudder Mk.V. Incompatible with T-Rudder Mk.IV.
+hardware: null
+connectivity:
+  usb: Hi-Speed USB (32-bit ARM MCU controller)
+  standalone_usb: true
+software: VKBDevCfg
+prices:
+- region: US
+  currency: USD
+  amount: 55
+  incl_vat: false
+  store: vkbsimcontrollers.com
+  url: https://vkbsimcontrollers.com/products/blackbox-mk3-us
+  verified: '2026-10-19'
+  source: manual
+verification: draft
+sources:
+- https://vkbsimcontrollers.com/products/blackbox-mk3-us
+images:
+- file: /images/vkb/blackbox-mk3.jpg
+  source: https://vkbsimcontrollers.com/products/blackbox-mk3-us
+  caption: BlackBox Mk3

@@ -1,5 +1,5 @@
 brand: winctrl
-name: Skywalker Rudder Pedals
+name: Orion Metal Flight Rudder Pedals
 category: pedals
 platform_compatibility:
   pc: supported
@@ -31,9 +31,14 @@ controls_evidence:
   source: https://eu.winctrl.com/view/goods-details.html?id=543
   checked: '2026-10-19'
   notes: >-
-    Rendered official Orion/Skywalker pedal page explicitly gives a 38-degree main axis, independently pivoting left/right pedal footrests (30-degree pitch), and Hall sensors on main and pedal axes. Three selectable control modes are mechanical spring/return configurations, not extra electrical switches. Product badge may read Skywalker or Orion2; manufacturer says performance parameters are the same. Whether the pedal pitch axes serve as toe brakes is unspecified.
-
+    Current EU goods 543 is titled Orion Metal Flight Rudder Pedals (Standard Edition), goods code R1X1. The R1+DAMPER1 manual gives yaw 38°, pedal pitch 30°, 542×320×224 mm and 8.4 kg. That manual is also the damper-edition manual, so the mass is not split between bare and damper-equipped units. The damper-included listing is a separate record. Orion 32 (goods O.32.R.MET.1) is a different pedal. The file id remains skywalker-rudder-pedals.
 hardware:
+  gimbal: pendular
+  force_adjustable: true
+  cams_swappable: true
+  damping: optional_damper
+  extension_support: false
+  throw_deg: 38
   axes:
     - name: Rudder
       sensor: hall
@@ -42,9 +47,14 @@ hardware:
     - name: Right pedal pitch
       sensor: hall
 connectivity:
+  usb: c
   standalone_usb: true
+software: SimApp Pro
 physical:
-  materials: []
+  weight_g: 8400
+  dimensions_mm: [542, 320, 224]
+  materials:
+    - metal
 use_case_fit:
   modern_jet: 4
   heli: 3
@@ -65,8 +75,9 @@ prices:
 verification: draft
 sources:
   - https://eu.winctrl.com/view/goods-details.html?id=543
+  - https://eu.winctrl.com/static/download/Qmcuf2Z4sK1fhbBHysbeCX94yxL9HHS2QPERHpYXpW4hxR?filename=R1-Metal-Base-DAMPER1-User-Manual-EN-V2.1.pdf
 
 images:
   - file: /images/winctrl/skywalker-rudder-pedals.jpg
     source: https://eu.winctrl.com/view/goods-details.html?id=543
-    caption: Skywalker Rudder Pedals
+    caption: Orion Metal Flight Rudder Pedals

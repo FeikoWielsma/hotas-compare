@@ -1,0 +1,87 @@
+brand: winctrl
+name: Ursa Minor Airline Joystick Right
+category: stick_fixed
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official listing or manual establishes computer USB or SimAppPro use. No exact product source
+    reviewed here establishes Xbox or PS5 support or incompatibility.
+  sources: &id001
+  - https://eu.winctrl.com/static/download/QmRwKSeCfwDz515Bk8qVY5weZbPCGbgqE4dMHjxbQFgc4T?filename=URSA-MINOR-Airlines-Joystick-R-User-Manual-V1.3.pdf
+  - https://eu.winctrl.com/view/goods-details.html?id=555
+status: current
+handedness: right
+mount:
+  provides: null
+  accepts: []
+controls:
+- type: button
+  count: 14
+  location: base
+  label: Button switches
+  source: https://eu.winctrl.com/static/download/QmRwKSeCfwDz515Bk8qVY5weZbPCGbgqE4dMHjxbQFgc4T?filename=URSA-MINOR-Airlines-Joystick-R-User-Manual-V1.3.pdf
+- type: hat
+  count: 1
+  ways: 5
+  push: false
+  location: grip
+  label: Hidden five-way switch under magnetic cover
+  source: https://eu.winctrl.com/static/download/QmRwKSeCfwDz515Bk8qVY5weZbPCGbgqE4dMHjxbQFgc4T?filename=URSA-MINOR-Airlines-Joystick-R-User-Manual-V1.3.pdf
+  notes: The manual calls this a five-way switch. Direction count versus center press is not separated.
+- type: hat
+  count: 1
+  location: grip
+  label: HAT
+  source: https://eu.winctrl.com/static/download/QmRwKSeCfwDz515Bk8qVY5weZbPCGbgqE4dMHjxbQFgc4T?filename=URSA-MINOR-Airlines-Joystick-R-User-Manual-V1.3.pdf
+- type: slider
+  count: 1
+  analog: true
+  location: base
+  label: Potentiometer slider
+  source: https://eu.winctrl.com/static/download/QmRwKSeCfwDz515Bk8qVY5weZbPCGbgqE4dMHjxbQFgc4T?filename=URSA-MINOR-Airlines-Joystick-R-User-Manual-V1.3.pdf
+controls_evidence:
+  coverage: partial
+  source: https://eu.winctrl.com/static/download/QmRwKSeCfwDz515Bk8qVY5weZbPCGbgqE4dMHjxbQFgc4T?filename=URSA-MINOR-Airlines-Joystick-R-User-Manual-V1.3.pdf
+  checked: '2026-10-20'
+  notes: 'Right-hand airline V1.3 manual matches the left-hand control classes: 14 buttons, hidden five-way
+    switch, HAT and slider. HAT way count is not stated. Mass 0.98 kg. Dimensions 227×217×230 mm.'
+hardware:
+  throw_deg: 30
+  axes:
+  - name: X
+  - name: Y
+  - name: Twist
+  - name: Throttle
+connectivity:
+  standalone_usb: true
+prices:
+- region: EU
+  currency: EUR
+  amount: 59.9
+  incl_vat: true
+  store: eu.winctrl.com
+  url: https://eu.winctrl.com/view/goods-details.html?id=555
+  verified: '2026-10-20'
+  source: manual
+- region: US
+  currency: USD
+  amount: 62.4
+  incl_vat: false
+  store: us.winwingsim.com
+  url: https://us.winwingsim.com/view/goods-details.html?id=555
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources: *id001
+images:
+- file: /images/winctrl/ursa-minor-airline-joystick-r.jpg
+  source: https://eu.winctrl.com/view/goods-details.html?id=555
+  caption: Ursa Minor Airline Joystick Right
+software: SimApp Pro
+physical:
+  weight_g: 980
+  dimensions_mm:
+  - 227
+  - 217
+  - 230

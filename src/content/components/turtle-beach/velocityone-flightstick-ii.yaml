@@ -123,6 +123,22 @@ prices:
   url: https://www.turtlebeach.com/products/velocity-one-flight-stick-ii?Platform=Xbox
   verified: '2026-10-20'
   source: manual
+- region: EU
+  currency: EUR
+  amount: 139.99
+  incl_vat: true
+  store: turtlebeach.com
+  url: https://de.turtlebeach.com/products/velocity-one-flight-stick-ii
+  verified: '2026-10-20'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 129.99
+  incl_vat: true
+  store: turtlebeach.com
+  url: https://uk.turtlebeach.com/products/velocity-one-flight-stick-ii
+  verified: '2026-10-20'
+  source: manual
 platform_compatibility:
   pc: supported
   xbox: supported

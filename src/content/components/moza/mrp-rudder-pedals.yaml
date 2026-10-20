@@ -10,23 +10,23 @@ controls:
 - type: axis
   kind: rudder
   count: 1
-  label: Rudder pedals
-  source: https://support.mozaracing.com/en/support/solutions/articles/70000684204-mrp-rudder-pedals
+  label: Rudder pedals (yaw axis)
+  source: https://image.mozaracing.com/manuals/moza_mrp_rudder_pedals_manual.pdf
   location: other
 - type: axis
   kind: toe_brake
   count: 2
-  label: Toe brakes
-  source: https://support.mozaracing.com/en/support/solutions/articles/70000684204-mrp-rudder-pedals
+  label: Differential toe brakes (left and right)
+  source: https://image.mozaracing.com/manuals/moza_mrp_rudder_pedals_manual.pdf
   location: other
 controls_evidence:
-  coverage: partial
-  source: https://support.mozaracing.com/en/support/solutions/articles/70000684204-mrp-rudder-pedals
-  checked: '2026-10-19'
-  notes: Official guide confirms Hall-effect yaw plus differential toe-brake control. Physical lever groups represent
-    pedals, not added switches. I found no official confirmation whether this variant exposes toe-brake input as
-    two separate axes or one combined axis; no standalone switches are represented. Pedal movements are represented
-    explicitly as axes; they are not hand-operated levers or rocker switches.
+  coverage: complete
+  source: https://image.mozaracing.com/manuals/moza_mrp_rudder_pedals_manual.pdf
+  checked: '2026-10-20'
+  notes: >-
+    Verified against official MRP Rudder Pedals User Manual (p. 5). The manual explicitly documents independent
+    curve adjustments and calibration for three continuous axes: yaw axis (rudder) plus separate left brake pedal and
+    right brake pedal axes (differential toe braking).
 hardware:
   axes:
   - name: Rudder
@@ -45,7 +45,7 @@ hardware:
   throw_deg: null
 connectivity:
   standalone_usb: true
-  usb: USB standalone or RJ11 to MOZA flight bases
+  usb: USB Type-B to PC; RJ11 to MOZA flight base
 physical:
   materials:
   - aluminum alloy housing
@@ -74,10 +74,27 @@ prices:
   url: https://eu.mozaracing.com/products/mrp-rudder-pedals
   verified: '2026-10-19'
   source: manual
+- region: UK
+  currency: GBP
+  amount: 329
+  incl_vat: true
+  store: uk.mozaracing.com
+  url: https://uk.mozaracing.com/products/mrp-rudder-pedals
+  verified: '2026-10-20'
+  source: manual
+- region: US
+  currency: USD
+  amount: 349
+  incl_vat: false
+  store: us.mozaracing.com
+  url: https://us.mozaracing.com/products/mrp-rudder-pedals
+  verified: '2026-10-20'
+  source: manual
 verification: draft
 sources:
 - https://eu.mozaracing.com/collections/shop
 - https://support.mozaracing.com/en/support/solutions/articles/70000684204-mrp-rudder-pedals
+- https://image.mozaracing.com/manuals/moza_mrp_rudder_pedals_manual.pdf
 images:
 - file: /images/moza/mrp-rudder-pedals.webp
   source: https://eu.mozaracing.com/products/mrp-rudder-pedals

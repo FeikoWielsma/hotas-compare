@@ -1,0 +1,74 @@
+brand: winctrl
+name: 3M PDC
+category: module
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official listing or manual establishes computer USB or SimAppPro use. No exact product source
+    reviewed here establishes Xbox or PS5 support or incompatibility.
+  sources: &id001
+  - https://eu.winctrl.com/static/download/QmRZUBzvsURGGZ84ma9T4LRS5gEVekPFf3qjWmJeNmb82g?filename=WINCTRL-3M-PDC-1.0-User-Manual-EN-V1.1-20250711.pdf
+  - https://eu.winctrl.com/view/goods-details.html?id=1245
+status: current
+handedness: n/a
+mount:
+  provides: null
+  accepts: []
+controls:
+- type: button
+  count: 14
+  location: panel
+  label: Ten silicone buttons and four press buttons
+  source: https://eu.winctrl.com/static/download/QmRZUBzvsURGGZ84ma9T4LRS5gEVekPFf3qjWmJeNmb82g?filename=WINCTRL-3M-PDC-1.0-User-Manual-EN-V1.1-20250711.pdf
+- type: toggle
+  count: 2
+  ways: 3
+  location: panel
+  label: Three-position toggles
+  source: https://eu.winctrl.com/static/download/QmRZUBzvsURGGZ84ma9T4LRS5gEVekPFf3qjWmJeNmb82g?filename=WINCTRL-3M-PDC-1.0-User-Manual-EN-V1.1-20250711.pdf
+- type: encoder
+  count: 1
+  push: false
+  location: panel
+  label: Detent-free encoder
+  source: https://eu.winctrl.com/static/download/QmRZUBzvsURGGZ84ma9T4LRS5gEVekPFf3qjWmJeNmb82g?filename=WINCTRL-3M-PDC-1.0-User-Manual-EN-V1.1-20250711.pdf
+controls_evidence:
+  coverage: complete
+  source: https://eu.winctrl.com/static/download/QmRZUBzvsURGGZ84ma9T4LRS5gEVekPFf3qjWmJeNmb82g?filename=WINCTRL-3M-PDC-1.0-User-Manual-EN-V1.1-20250711.pdf
+  checked: '2026-10-20'
+  notes: 10 silicone buttons plus 4 press buttons. The manual says the center switch cannot be pressed
+    when the outer layer is at PLN; that is a mechanical interlock, not a separate control.
+connectivity:
+  usb: c
+  standalone_usb: true
+prices:
+- region: EU
+  currency: EUR
+  amount: 84.0
+  incl_vat: true
+  store: eu.winctrl.com
+  url: https://eu.winctrl.com/view/goods-details.html?id=1245
+  verified: '2026-10-20'
+  source: manual
+- region: US
+  currency: USD
+  amount: 87.5
+  incl_vat: false
+  store: us.winwingsim.com
+  url: https://us.winwingsim.com/view/goods-details.html?id=1245
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources: *id001
+images:
+- file: /images/winctrl/pdc-3m.jpg
+  source: https://eu.winctrl.com/view/goods-details.html?id=1245
+  caption: 3M PDC
+software: SimApp Pro
+physical:
+  weight_g: 260
+  dimensions_mm:
+  - 117
+  - 52
+  - 92

@@ -1,0 +1,83 @@
+brand: thrustmaster
+name: Viper HOTAS Add-On Grip
+category: grip
+status: current
+mount:
+  accepts:
+  - tm-din5
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Product page lists PC only. It mounts on a HOTAS Cougar, HOTAS Warthog, or HOTAS Magnetic Base.
+  sources:
+  - https://www.thrustmaster.com/en-us/products/f-16c-viper-hotas-add-on-grip/
+controls:
+- type: trigger
+  count: 1
+  stages: 2
+  location: grip
+  label: Metal two-step trigger
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/F16C/F-16C_Viper_Hotas_Add-On_Grip_user_manual.pdf
+- type: hat
+  count: 1
+  ways: 8
+  location: grip
+  label: Point-of-view hat
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/F16C/F-16C_Viper_Hotas_Add-On_Grip_user_manual.pdf
+- type: hat
+  count: 2
+  ways: 4
+  location: grip
+  label: Four-way hats
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/F16C/F-16C_Viper_Hotas_Add-On_Grip_user_manual.pdf
+- type: hat
+  count: 1
+  ways: 4
+  push: true
+  location: grip
+  label: Four-way hat with push button
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/F16C/F-16C_Viper_Hotas_Add-On_Grip_user_manual.pdf
+- type: button
+  count: 4
+  location: grip
+  label: Two push buttons and two pinkie push buttons
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/F16C/F-16C_Viper_Hotas_Add-On_Grip_user_manual.pdf
+controls_evidence:
+  coverage: complete
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/F16C/F-16C_Viper_Hotas_Add-On_Grip_user_manual.pdf
+  checked: '2026-10-20'
+  notes: Manual technical features list one 8-way point-of-view hat, two 4-way hats, one 4-way hat with push, one
+    metal two-step trigger, two push buttons, and two pinkie push buttons. The product page's "19 action buttons"
+    is the mapped-button total and is not used as the physical count. Push is set only on the hat the manual
+    describes as having a push button.
+hardware:
+  axes: []
+connectivity:
+  usb: Grip connector on a compatible Thrustmaster base
+  standalone_usb: false
+physical:
+  weight_g: 1000
+  dimensions_mm:
+  - 75
+  - 105
+  - 210
+  materials:
+  - metal
+prices:
+- region: US
+  currency: USD
+  amount: 249.99
+  incl_vat: false
+  store: Thrustmaster
+  url: https://www.thrustmaster.com/en-us/products/f-16c-viper-hotas-add-on-grip/
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources:
+- https://www.thrustmaster.com/en-us/products/f-16c-viper-hotas-add-on-grip/
+- https://ts.thrustmaster.com/download/accessories/Manuals/F16C/F-16C_Viper_Hotas_Add-On_Grip_user_manual.pdf
+images:
+- file: /images/thrustmaster/f-16c-viper-hotas-add-on-grip.webp
+  source: https://www.thrustmaster.com/wp-content/uploads/2023/03/F16CviperProduct-pichi-768x768-1.webp
+  caption: Viper HOTAS Add-On Grip

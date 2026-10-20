@@ -1,0 +1,63 @@
+brand: winctrl
+name: FCU Unit
+category: module
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official listing or manual establishes computer USB or SimAppPro use. No exact product source
+    reviewed here establishes Xbox or PS5 support or incompatibility.
+  sources: &id001
+  - https://eu.winctrl.com/static/download/QmaNia5yLCgSvvnhtU6n1k1bwDHfYV5K8CSdnLEk2K7MCx?filename=FCU-User-Manual-V2.1-2024.11.pdf
+  - https://eu.winctrl.com/view/goods-details.html?id=550
+status: current
+handedness: n/a
+mount:
+  provides: null
+  accepts: []
+controls:
+- type: rotary
+  count: 4
+  mode: analog
+  push: true
+  location: panel
+  label: Knobs, 360° and 2.5 mm push-pull
+  source: https://eu.winctrl.com/static/download/QmaNia5yLCgSvvnhtU6n1k1bwDHfYV5K8CSdnLEk2K7MCx?filename=FCU-User-Manual-V2.1-2024.11.pdf
+controls_evidence:
+  coverage: partial
+  source: https://eu.winctrl.com/static/download/QmaNia5yLCgSvvnhtU6n1k1bwDHfYV5K8CSdnLEk2K7MCx?filename=FCU-User-Manual-V2.1-2024.11.pdf
+  checked: '2026-10-20'
+  notes: Manual states four push/pull knobs. Additional FCU buttons are drawn but not counted in the text.
+    One knob is described as a two-position push-pull rotary; that split is not given its own count.
+connectivity:
+  standalone_usb: true
+prices:
+- region: EU
+  currency: EUR
+  amount: 124.46
+  incl_vat: true
+  store: eu.winctrl.com
+  url: https://eu.winctrl.com/view/goods-details.html?id=550
+  verified: '2026-10-20'
+  source: manual
+- region: US
+  currency: USD
+  amount: 129.64
+  incl_vat: false
+  store: us.winwingsim.com
+  url: https://us.winwingsim.com/view/goods-details.html?id=550
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources: *id001
+images:
+- file: /images/winctrl/fcu-unit.jpg
+  source: https://eu.winctrl.com/view/goods-details.html?id=550
+  caption: FCU Unit
+software: SimApp Pro
+physical:
+  weight_g: 500
+  dimensions_mm:
+  - 262
+  - 103
+  - 79

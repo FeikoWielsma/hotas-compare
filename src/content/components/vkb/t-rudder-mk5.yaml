@@ -5,10 +5,12 @@ platform_compatibility:
   pc: supported
   xbox: unsupported
   ps5: unsupported
-  notes: "VKB Australia FAQ states VKB controllers are compatible with Windows PCs and not compatible with Xbox, PS5, Apple or other platforms. Detached grip or module use requires its compatible VKB base/controller on Windows PC."
+  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs
+    and not compatible with Xbox, PS5, Apple or other platforms. Detached grip or
+    module use requires its compatible VKB base/controller on Windows PC.
   sources:
-    - https://vkbsimcontrollers.com/products/t-rudders-mk-v-rudder-pedals-us
-    - https://vkb-sim.com.au/collections/all-controllers
+  - https://vkbsimcontrollers.com/products/t-rudders-mk-v-rudder-pedals-us
+  - https://vkb-sim.com.au/collections/all-controllers
 status: current
 release_year: 2022
 handedness: n/a
@@ -24,18 +26,22 @@ controls_evidence:
   coverage: complete
   source: https://vkbsimcontrollers.com/products/t-rudders-mk-v-rudder-pedals-us
   checked: '2026-10-19'
-  notes: Exact Mk.V pedal pair. Manufacturer documents one analog Z axis and explicitly says there are no toe brakes; no separate switches or push controls are documented. Pedal movements are represented explicitly as axes; they are not hand-operated levers or rocker switches.
+  notes: Exact Mk.V pedal pair. Manufacturer documents one analog Z axis and explicitly
+    says there are no toe brakes; no separate switches or push controls are documented.
+    Pedal movements are represented explicitly as axes; they are not hand-operated
+    levers or rocker switches.
 hardware:
   gimbal: cam
   sensor: contactless_magnetic
   axes:
-    - name: Rudder
-      sensor: contactless_magnetic
+  - name: Rudder
+    sensor: contactless_magnetic
   force_adjustable: true
   cams_swappable: false
   damping: null
-  extension_support: null
+  extension_support: false
   throw_deg: 35
+  axis_count: 1
 connectivity:
   usb: c
   standalone_usb: true
@@ -43,8 +49,12 @@ software: VKBDevCfg
 physical:
   weight_g: 2700
   materials:
-    - steel
-    - aluminium
+  - steel
+  - aluminium
+  dimensions_mm:
+  - 380
+  - 211
+  - 88
 use_case_fit:
   modern_jet: 4
   heli: 5
@@ -54,48 +64,51 @@ use_case_fit:
   space_hotas: 4
   space_hosas: 4
 prices:
-  - region: EU
-    currency: EUR
-    amount: 224
-    incl_vat: true
-    store: flightsimcontrols.com
-    url: https://flightsimcontrols.com/product/vkb-sim-t-rudder-pedals-mk-v/
-    verified: '2026-10-20'
-    source: manual
-  - region: UK
-    currency: GBP
-    amount: 219
-    incl_vat: true
-    store: flightsimcontrols.co.uk
-    url: https://flightsimcontrols.co.uk/product/vkb-sim-t-rudder-pedals-mk-v/
-    verified: '2026-10-20'
-    source: manual
-  - region: US
-    currency: USD
-    amount: 199
-    incl_vat: false
-    store: vkbsimcontrollers.com
-    url: https://vkbsimcontrollers.com/products/t-rudders-mk-v-rudder-pedals-us
-    verified: '2026-10-19'
-    source: manual
+- region: EU
+  currency: EUR
+  amount: 224
+  incl_vat: true
+  store: flightsimcontrols.com
+  url: https://flightsimcontrols.com/product/vkb-sim-t-rudder-pedals-mk-v/
+  verified: '2026-10-20'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 219
+  incl_vat: true
+  store: flightsimcontrols.co.uk
+  url: https://flightsimcontrols.co.uk/product/vkb-sim-t-rudder-pedals-mk-v/
+  verified: '2026-10-20'
+  source: manual
+- region: US
+  currency: USD
+  amount: 199
+  incl_vat: false
+  store: vkbsimcontrollers.com
+  url: https://vkbsimcontrollers.com/products/t-rudders-mk-v-rudder-pedals-us
+  verified: '2026-10-19'
+  source: manual
 verdict:
   author: feiko
   hands_on: true
   owned_hours: 500
-  take: "The best pedal choice if you fly from an office chair on wheels. Up-and-down heel push motion prevents your chair from rolling backwards, built entirely from solid steel and aluminum."
+  take: The best pedal choice if you fly from an office chair on wheels. Up-and-down
+    heel push motion prevents your chair from rolling backwards, built entirely from
+    solid steel and aluminum.
   pros:
-    - "Heel-press vertical axis prevents office chairs on castors from pushing back"
-    - "Indestructible all-metal construction"
-    - "Compact footprint fits easily under any standard computer desk"
-    - "Reversible cam profile for hard or soft center detent"
+  - Heel-press vertical axis prevents office chairs on castors from pushing back
+  - Indestructible all-metal construction
+  - Compact footprint fits easily under any standard computer desk
+  - Reversible cam profile for hard or soft center detent
   cons:
-    - "Single rudder axis only — no physical toe brakes (relies on virtual differential braking in software)"
+  - Single rudder axis only — no physical toe brakes (relies on virtual differential
+    braking in software)
   great_for:
-    - heli
-    - space_hotas
-    - modern_jet
+  - heli
+  - space_hotas
+  - modern_jet
   skip_if:
-    - "You fly warbirds or GA and insist on physical toe brakes on both pedals"
+  - You fly warbirds or GA and insist on physical toe brakes on both pedals
   scores:
     build: 5
     feel: 5
@@ -103,15 +116,16 @@ verdict:
     software: 4
     qc_support: 5
 external_reviews:
-  - reviewer: mysh
-    url: https://youtube.com/watch?v=sample-vkb-t-rudder
-    summary: "The ultimate solution for anyone using an office chair without a cockpit rig."
-    tag: recommended
-    date: '2024-05-18'
+- reviewer: mysh
+  url: https://youtube.com/watch?v=sample-vkb-t-rudder
+  summary: The ultimate solution for anyone using an office chair without a cockpit
+    rig.
+  tag: recommended
+  date: '2024-05-18'
 verification: verified
 sources:
-  - https://vkbcontrollers.com/products/t-rudder-mk-v-rudder-pedals
+- https://vkbcontrollers.com/products/t-rudder-mk-v-rudder-pedals
 images:
-  - file: /images/vkb/t-rudder-mk5.jpg
-    source: https://vkbsimcontrollers.com/products/t-rudders-mk-v-rudder-pedals-us
-    caption: T-Rudder Mk.V Pedals
+- file: /images/vkb/t-rudder-mk5.jpg
+  source: https://vkbsimcontrollers.com/products/t-rudders-mk-v-rudder-pedals-us
+  caption: T-Rudder Mk.V Pedals

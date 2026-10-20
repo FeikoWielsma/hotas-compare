@@ -1,0 +1,94 @@
+brand: winctrl
+name: 32 TCAS
+category: module
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official listing or manual establishes computer USB or SimAppPro use. No exact product source
+    reviewed here establishes Xbox or PS5 support or incompatibility.
+  sources: &id001
+  - https://eu.winctrl.com/static/download/QmNVm4aVgsu3xrcCmACpPvMtgoiJn3rSdsBX9ohpYpmSw2?filename=WINCTRL-32-TCAS-1.0-User-Manual-EN-V1.1-20260105.pdf
+  - https://eu.winctrl.com/view/goods-details.html?id=1865
+status: current
+handedness: n/a
+mount:
+  provides: null
+  accepts: []
+controls:
+- type: button
+  count: 10
+  location: panel
+  label: Silicone push buttons
+  source: https://eu.winctrl.com/static/download/QmNVm4aVgsu3xrcCmACpPvMtgoiJn3rSdsBX9ohpYpmSw2?filename=WINCTRL-32-TCAS-1.0-User-Manual-EN-V1.1-20260105.pdf
+- type: rotary
+  count: 1
+  mode: selector
+  positions: 3
+  push: false
+  location: panel
+  label: Three-position rotary, 60°
+  source: https://eu.winctrl.com/static/download/QmNVm4aVgsu3xrcCmACpPvMtgoiJn3rSdsBX9ohpYpmSw2?filename=WINCTRL-32-TCAS-1.0-User-Manual-EN-V1.1-20260105.pdf
+- type: rotary
+  count: 2
+  mode: selector
+  positions: 2
+  push: false
+  location: panel
+  label: Two-position rotaries, 35°
+  source: https://eu.winctrl.com/static/download/QmNVm4aVgsu3xrcCmACpPvMtgoiJn3rSdsBX9ohpYpmSw2?filename=WINCTRL-32-TCAS-1.0-User-Manual-EN-V1.1-20260105.pdf
+- type: rotary
+  count: 1
+  mode: selector
+  positions: 4
+  push: false
+  location: panel
+  label: Four-position rotary, 90°
+  source: https://eu.winctrl.com/static/download/QmNVm4aVgsu3xrcCmACpPvMtgoiJn3rSdsBX9ohpYpmSw2?filename=WINCTRL-32-TCAS-1.0-User-Manual-EN-V1.1-20260105.pdf
+- type: rotary
+  count: 1
+  mode: selector
+  positions: 2
+  push: false
+  location: panel
+  label: Two-position rotary, 60°
+  source: https://eu.winctrl.com/static/download/QmNVm4aVgsu3xrcCmACpPvMtgoiJn3rSdsBX9ohpYpmSw2?filename=WINCTRL-32-TCAS-1.0-User-Manual-EN-V1.1-20260105.pdf
+controls_evidence:
+  coverage: complete
+  source: https://eu.winctrl.com/static/download/QmNVm4aVgsu3xrcCmACpPvMtgoiJn3rSdsBX9ohpYpmSw2?filename=WINCTRL-32-TCAS-1.0-User-Manual-EN-V1.1-20260105.pdf
+  checked: '2026-10-20'
+  notes: Specification section counts one 3-position rotary, two 2-position rotaries at 35°, one 4-position
+    rotary, one further 2-position rotary at 60°, and 10 buttons.
+connectivity:
+  usb: c
+  standalone_usb: true
+prices:
+- region: EU
+  currency: EUR
+  amount: 74.4
+  incl_vat: true
+  store: eu.winctrl.com
+  url: https://eu.winctrl.com/view/goods-details.html?id=1865
+  verified: '2026-10-20'
+  source: manual
+- region: US
+  currency: USD
+  amount: 77.5
+  incl_vat: false
+  store: us.winwingsim.com
+  url: https://us.winwingsim.com/view/goods-details.html?id=1865
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources: *id001
+images:
+- file: /images/winctrl/tcas-32.jpg
+  source: https://eu.winctrl.com/view/goods-details.html?id=1865
+  caption: 32 TCAS
+software: SimApp Pro
+physical:
+  weight_g: 140
+  dimensions_mm:
+  - 146
+  - 55
+  - 57

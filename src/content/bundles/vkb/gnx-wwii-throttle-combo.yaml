@@ -1,0 +1,55 @@
+brand: vkb
+name: GNX WWII Throttle Combo
+category: system
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs
+    and not compatible with Xbox, PS5, Apple or other platforms. Bundled VKB hardware
+    inherits the Windows PC-only restriction.
+  sources:
+  - https://vkbsimcontrollers.com/products/gnx-wwii-throttle-combo-us
+  - https://vkb-sim.com.au/collections/all-controllers
+status: current
+components:
+- vkb/gnx-thq
+- vkb/wwii-gnx-thq-add-on-grip
+- vkb/gnx-usb-controller-hid-main
+prices:
+- region: US
+  currency: USD
+  amount: 115.0
+  incl_vat: false
+  store: vkbsimcontrollers.com
+  url: https://vkbsimcontrollers.com/products/gnx-wwii-throttle-combo-us
+  verified: '2026-10-19'
+  source: manual
+verdict:
+  author: feiko
+  hands_on: false
+  take: 'Draft assessment: An official VKB coordinated combo for standalone dedicated
+    WWII fighter throttle with standalone USB controller.'
+  pros:
+  - Complete coordinated control set with well-matched components
+  - Components remain independently configurable and modular
+  cons:
+  - Requires compatible desk or mount space
+  - Bundle regional stock can vary
+  great_for:
+  - ww2
+  skip_if:
+  - You already own one or more of the included components
+  scores:
+    build: 4
+    feel: 4
+    value: 4
+    software: 4
+    qc_support: 4
+verification: draft
+sources:
+- https://vkbsimcontrollers.com/products/gnx-wwii-throttle-combo-us
+images:
+- file: /images/vkb/gnx-wwii-throttle-combo.jpg
+  source: https://vkbsimcontrollers.com/products/gnx-wwii-throttle-combo-us
+  caption: GNX WWII Throttle Combo

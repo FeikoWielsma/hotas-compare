@@ -64,6 +64,22 @@ prices:
   url: https://eu.mozaracing.com/products/z-axis-module
   verified: '2026-10-19'
   source: manual
+- region: UK
+  currency: GBP
+  amount: 89
+  incl_vat: true
+  store: uk.mozaracing.com
+  url: https://uk.mozaracing.com/products/z-axis-module
+  verified: '2026-10-20'
+  source: manual
+- region: US
+  currency: USD
+  amount: 89
+  incl_vat: false
+  store: us.mozaracing.com
+  url: https://us.mozaracing.com/products/z-axis-module
+  verified: '2026-10-20'
+  source: manual
 verification: draft
 sources:
 - https://mozaracing.com/products/z-axis-module
@@ -76,3 +92,8 @@ platform_compatibility:
     compatible bases either; the manual describes it as installed between grip and compatible base.
   sources:
   - https://mozaracing.com/products/z-axis-module
+
+images:
+- file: /images/moza/z-axis-twist-module.webp
+  source: https://mozaracing.com/products/z-axis-module
+  caption: MOZA Z-Axis Twist Module

@@ -1,0 +1,101 @@
+brand: vkb
+name: F-14 Add-On Grip for Gunfighter Mk.III
+category: grip
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs
+    and not compatible with Xbox, PS5, Apple or other platforms. Requires a compatible
+    Gunfighter Mk.IV base on Windows PC.
+  sources:
+  - https://vkbsimcontrollers.com/products/f-14-add-on-grip-for-gunfighter-mk-iii
+  - https://vkb-sim.com.au/collections/all-controllers
+status: current
+handedness: right
+mount:
+  provides: vkb-rev-b
+  accepts: []
+controls:
+- type: trigger
+  count: 1
+  stages: 2
+  action: sequential
+  location: grip
+  label: Dual-stage trigger with cam mechanism
+  source: https://vkbsimcontrollers.com/products/f-14-add-on-grip-for-gunfighter-mk-iv-us
+- type: trigger
+  count: 1
+  stages: 1
+  action: sequential
+  location: grip
+  label: Emergency Autopilot Disable trigger
+  source: https://vkbsimcontrollers.com/products/f-14-add-on-grip-for-gunfighter-mk-iv-us
+- type: hat
+  count: 1
+  ways: 4
+  push: true
+  location: grip
+  label: 4-way metal hat switch with center push
+  source: https://vkbsimcontrollers.com/products/f-14-add-on-grip-for-gunfighter-mk-iv-us
+- type: rotary
+  count: 1
+  mode: selector
+  positions: 4
+  push: true
+  location: grip
+  label: Four-stage ammo selector with safety lock and push button
+  source: https://vkbsimcontrollers.com/products/f-14-add-on-grip-for-gunfighter-mk-iv-us
+- type: lever
+  count: 1
+  kind: other
+  analog: true
+  push: false
+  location: grip
+  label: DLC (Direct Lift Control) maneuver wheel axis
+  source: https://vkbsimcontrollers.com/products/f-14-add-on-grip-for-gunfighter-mk-iv-us
+- type: button
+  count: 4
+  backlit: false
+  location: grip
+  label: Programmable soft-click buttons
+  source: https://vkbsimcontrollers.com/products/f-14-add-on-grip-for-gunfighter-mk-iv-us
+controls_evidence:
+  coverage: complete
+  source: https://vkbsimcontrollers.com/products/f-14-add-on-grip-for-gunfighter-mk-iii
+  checked: '2026-10-20'
+  notes: Inventory verified against official VKB product page and F-14 grip specifications.
+    Rev.B connector for Gunfighter Mk.II/III bases.
+hardware:
+  axis_count: 2
+  gimbal: null
+  sensor: contactless_magnetic
+  axes:
+  - name: DLC
+    sensor: contactless_magnetic
+  - name: Twist (Z)
+    sensor: contactless_magnetic
+connectivity:
+  usb: none as supplied; connects through the Gunfighter Mk.II/III base
+  standalone_usb: false
+software: VKBDevCfg
+physical:
+  materials:
+  - abs
+  - rubber
+prices:
+- region: US
+  currency: USD
+  amount: 114.75
+  incl_vat: false
+  store: vkbsimcontrollers.com
+  url: https://vkbsimcontrollers.com/products/f-14-add-on-grip-for-gunfighter-mk-iii
+  verified: '2026-10-19'
+  source: manual
+verification: draft
+sources:
+- https://vkbsimcontrollers.com/products/f-14-add-on-grip-for-gunfighter-mk-iii
+images:
+- file: /images/vkb/f14-add-on-grip-gunfighter-mk-iii.jpg
+  source: https://vkbsimcontrollers.com/products/f-14-add-on-grip-for-gunfighter-mk-iii
+  caption: F-14 Add-On Grip for Gunfighter Mk.III

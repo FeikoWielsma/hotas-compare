@@ -1,0 +1,78 @@
+brand: vkb
+name: KG12 GF (Gen.1) Add-On Grip for Gunfighter Mk.III
+category: grip
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs
+    and not compatible with Xbox, PS5, Apple or other platforms. Detached grip use
+    requires its compatible Gunfighter Mk.II/III base on Windows PC.
+  sources:
+  - https://vkbsimcontrollers.com/products/kg12-gf-gen-1-add-on-grip-for-gunfighter-mk-iii
+  - https://vkb-sim.com.au/collections/all-controllers
+status: current
+handedness: right
+mount:
+  provides: vkb-rev-b
+  accepts: []
+controls:
+- type: trigger
+  count: 1
+  action: flip
+  stages: 1
+  location: grip
+  label: Folding metal trigger
+  source: https://vkbsimcontrollers.com/products/kg12-gf-gen-1-add-on-grip-for-gunfighter-mk-iii
+- type: button
+  count: 1
+  location: grip
+  label: Bomb release button
+  backlit: false
+  source: https://vkbsimcontrollers.com/products/kg12-gf-gen-1-add-on-grip-for-gunfighter-mk-iii
+- type: hat
+  ways: 4
+  count: 1
+  push: false
+  location: grip
+  label: 4-way HAT switch
+  source: https://vkbsimcontrollers.com/products/kg12-gf-gen-1-add-on-grip-for-gunfighter-mk-iii
+- type: button
+  count: 1
+  location: grip
+  label: Profile shift pinky button
+  backlit: false
+  source: https://vkbsimcontrollers.com/products/kg12-gf-gen-1-add-on-grip-for-gunfighter-mk-iii
+controls_evidence:
+  coverage: complete
+  source: https://vkbsimcontrollers.com/products/kg12-gf-gen-1-add-on-grip-for-gunfighter-mk-iii
+  checked: '2026-10-20'
+  notes: Inventory from the product page contents list (folding metal trigger, bomb release button,
+    4-way HAT switch without push, profile shift pinky button, lockable twist adapter). Gen.1 differs
+    from Gen.2 KG12 (8-way hat, pinky lever, side button). Gunfighter Mk.II/III only (Rev.B).
+hardware:
+  axis_count: 1
+  gimbal: null
+  sensor: contactless_magnetic
+  axes:
+  - name: Twist (Z)
+    sensor: contactless_magnetic
+connectivity:
+  usb: none as supplied; connects through the Gunfighter Mk.II/III base
+  standalone_usb: false
+prices:
+- region: US
+  currency: USD
+  amount: 38.25
+  incl_vat: false
+  store: vkbsimcontrollers.com
+  url: https://vkbsimcontrollers.com/products/kg12-gf-gen-1-add-on-grip-for-gunfighter-mk-iii
+  verified: '2026-10-19'
+  source: manual
+verification: draft
+sources:
+- https://vkbsimcontrollers.com/products/kg12-gf-gen-1-add-on-grip-for-gunfighter-mk-iii
+images:
+- file: /images/vkb/kg12-gf-gen-1-add-on-grip-for-gunfighter-mk-iii.jpg
+  source: https://vkbsimcontrollers.com/products/kg12-gf-gen-1-add-on-grip-for-gunfighter-mk-iii
+  caption: KG12 GF (Gen.1) Add-On Grip for Gunfighter Mk.III

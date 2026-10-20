@@ -1,0 +1,57 @@
+brand: vkb
+name: WWII GNX THQ Add-On Grip
+category: grip
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs
+    and not compatible with Xbox, PS5, Apple or other platforms. Works through the GNX THQ/THQ-V module
+    on Gladiator NXT/EVO or a standalone GNX USB Controller (HID-Main) on Windows PC.
+  sources:
+  - https://vkbsimcontrollers.com/products/wwii-gnx-thq-add-on-grip-us
+  - https://vkb-sim.com.au/collections/all-controllers
+status: current
+handedness: n/a
+mount: null
+controls:
+- type: button
+  count: 4
+  backlit: false
+  location: grip
+  label: WWII grip push buttons - left/right (< >), black and red
+  source: https://vkbsimcontrollers.com/products/wwii-gnx-thq-add-on-grip-us
+- type: rocker
+  count: 1
+  analog: false
+  push: false
+  location: grip
+  label: Up/down K-switch rocker (2 buttons without push)
+  source: https://vkbsimcontrollers.com/products/wwii-gnx-thq-add-on-grip-us
+controls_evidence:
+  coverage: complete
+  source: https://vkbsimcontrollers.com/products/wwii-gnx-thq-add-on-grip-us
+  checked: '2026-10-20'
+  notes: Counts verified against official VKB WWII THQ template (VKB-THQ-WW2-v1.0.pdf, WWII Grip panel)
+    and product page (4 non-backlit push buttons, 1 up/down K-switch rocker without push). The grip
+    replaces the THQ throttle levers.
+hardware: null
+connectivity:
+  usb: none as supplied; connects through the GNX THQ/THQ-V module
+  standalone_usb: false
+prices:
+- region: US
+  currency: USD
+  amount: 22.5
+  incl_vat: false
+  store: vkbsimcontrollers.com
+  url: https://vkbsimcontrollers.com/products/wwii-gnx-thq-add-on-grip-us
+  verified: '2026-10-19'
+  source: manual
+verification: draft
+sources:
+- https://vkbsimcontrollers.com/products/wwii-gnx-thq-add-on-grip-us
+images:
+- file: /images/vkb/wwii-gnx-thq-add-on-grip.jpg
+  source: https://vkbsimcontrollers.com/products/wwii-gnx-thq-add-on-grip-us
+  caption: WWII GNX THQ Add-On Grip

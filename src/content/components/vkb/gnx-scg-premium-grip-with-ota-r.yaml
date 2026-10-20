@@ -1,0 +1,94 @@
+brand: vkb
+name: GNX SCG Premium Grip with OTA Preinstalled (Right)
+category: grip
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs
+    and not compatible with Xbox, PS5, Apple or other platforms. Requires a compatible
+    Gladiator NXT/EVO base on Windows PC.
+  sources:
+  - https://vkbsimcontrollers.com/products/gnx-scg-premium-grip-with-ota-preinstalled-us
+  - https://vkb-sim.com.au/collections/all-controllers
+status: current
+handedness: right
+mount:
+  provides: vkb-rev-b
+  accepts: []
+controls:
+- type: trigger
+  location: grip
+  stages: 2
+  action: sequential
+  label: Main dual-action trigger
+  source: https://vkbsimcontrollers.com/products/gnx-scg-premium-grip-with-ota-preinstalled-us
+- type: trigger
+  location: grip
+  label: Rapid-fire trigger
+  stages: 2
+  action: bidirectional
+  notes: Bidirectional 2-stage push/pull rapid-fire trigger.
+  source: https://vkbsimcontrollers.com/products/gnx-scg-premium-grip-with-ota-preinstalled-us
+- type: hat
+  ways: 4
+  push: true
+  count: 3
+  location: grip
+  label: Center-push hats
+  source: https://vkbsimcontrollers.com/products/gnx-scg-premium-grip-with-ota-preinstalled-us
+- type: analog_ministick
+  push: true
+  location: grip
+  label: A1 analog ministick with push
+  source: https://vkbsimcontrollers.com/products/gnx-scg-premium-grip-with-ota-preinstalled-us
+- type: button
+  count: 3
+  backlit: false
+  location: grip
+  label: Installed buttons
+  source: https://vkbsimcontrollers.com/products/gnx-scg-premium-grip-with-ota-preinstalled-us
+controls_evidence:
+  coverage: complete
+  source: https://vkbsimcontrollers.com/products/gnx-scg-premium-grip-with-ota-preinstalled-us
+  checked: '2026-10-20'
+  notes: GNX SCG Premium Right with pre-installed Omni Throttle Adapter (OTA). Full
+    physical inventory verified against official VKB SCG OTA template. Features main
+    dual-action trigger, bidirectional rapid-fire trigger, three 4-way hats with push,
+    A1 analog ministick with push, 3 non-backlit buttons, and twist axis with MaRS
+    sensor.
+hardware:
+  axis_count: 1
+  gimbal: null
+  sensor: contactless_magnetic
+  axes:
+  - name: Twist
+    sensor: contactless_magnetic
+  force_adjustable: false
+  cams_swappable: false
+  damping: null
+  extension_support: false
+  throw_deg: null
+connectivity:
+  usb: none; connects via VKB Rev.B connector to Gladiator NXT/EVO base
+  standalone_usb: false
+software: VKBDevCfg
+physical:
+  materials:
+  - abs
+prices:
+- region: US
+  currency: USD
+  amount: 89.25
+  incl_vat: false
+  store: vkbsimcontrollers.com
+  url: https://vkbsimcontrollers.com/products/gnx-scg-premium-grip-with-ota-preinstalled-us
+  verified: '2026-10-19'
+  source: manual
+verification: draft
+sources:
+- https://vkbsimcontrollers.com/products/gnx-scg-premium-grip-with-ota-preinstalled-us
+images:
+- file: /images/vkb/gnx-scg-premium-grip-with-ota-r.jpg
+  source: https://vkbsimcontrollers.com/products/gnx-scg-premium-grip-with-ota-preinstalled-us
+  caption: GNX SCG Premium Grip with OTA Preinstalled (Right)

@@ -5,10 +5,12 @@ platform_compatibility:
   pc: supported
   xbox: unsupported
   ps5: unsupported
-  notes: "VKB Australia FAQ states VKB controllers are compatible with Windows PCs and not compatible with Xbox, PS5, Apple or other platforms. Detached grip or module use requires its compatible VKB base/controller on Windows PC."
+  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs
+    and not compatible with Xbox, PS5, Apple or other platforms. Detached grip or
+    module use requires its compatible VKB base/controller on Windows PC.
   sources:
-    - https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-standard-us
-    - https://vkb-sim.com.au/collections/all-controllers
+  - https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-standard-us
+  - https://vkb-sim.com.au/collections/all-controllers
 status: current
 release_year: 2023
 handedness: ambi
@@ -21,6 +23,7 @@ controls:
   location: handle
   label: Dual main throttle axes
   source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-standard-us
+  push: false
 - type: hat
   ways: 4
   push: true
@@ -39,37 +42,45 @@ controls:
   location: grip
   label: MTG-R analog wheel axis
   source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-standard-us
+  push: false
 - type: encoder
   count: 2
   location: grip
   label: MTG-L wheel encoders; push unspecified
   source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-standard-us
+  push: false
 - type: rocker
   count: 1
   push: true
   location: grip
   label: MTG-R 2-way rocker with center push
   source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-standard-us
+  analog: false
 - type: button
   count: 5
   location: grip
   label: MTG-L/MTG-R push buttons (2 + 3)
   source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-standard-us
+  backlit: false
 - type: button
   count: 2
   location: base
   label: Base push buttons
   source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-standard-us
+  backlit: false
 - type: button
   count: 8
   location: panel
   label: STEM standalone push buttons
   source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-standard-us
+  backlit: false
 - type: trigger
   count: 4
   location: grip
   label: Two triggers on each MTG-L and MTG-R grip; stages unspecified
   source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-standard-us
+  stages: 1
+  action: sequential
 - type: rotary
   mode: selector
   positions: 5
@@ -77,6 +88,7 @@ controls:
   location: base
   label: Five-position base rotary switch
   source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-standard-us
+  push: false
 - type: encoder
   count: 2
   push: true
@@ -86,9 +98,11 @@ controls:
 - type: toggle
   count: 2
   location: panel
-  label: STEM K-switches with integrated central pushes; positions unspecified
+  label: STEM K-switches with integrated central pushes (SW1, SW2)
   source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-standard-us
   push: true
+  ways: 3
+  momentary: true
 - type: toggle
   count: 1
   ways: 3
@@ -96,17 +110,27 @@ controls:
   location: panel
   label: STEM self-centering 3-position flip switch
   source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-standard-us
+  push: false
 - type: toggle
   count: 1
   ways: 3
+  momentary: false
   location: panel
-  label: STEM 3-position flip switch; momentary behavior unspecified
+  label: STEM 3-position flip switch (latching)
   source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-standard-us
+  push: false
 controls_evidence:
   coverage: complete
   source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-standard-us
   checked: '2026-10-19'
-  notes: "Exact STECS Modern Throttle System Mk.II Standard (current product page/revision); Mk.I differs. The EU specification explicitly lists one 4-way center-push hat on MTG-R, three MTG-R buttons plus two MTG-L buttons, and two triggers on each grip. STEM has eight standalone buttons, two K-switches with integrated center pushes, two encoders with center pushes, one self-centering 3-position flip switch, and one other 3-position flip switch. The three included 5-position hat modules are replacements, not installed controls. Detent frame/inserts are configurable alternatives; installed detent count is not asserted. Schema cannot encode integrated K-switch pushes."
+  notes: Exact STECS Modern Throttle System Mk.II Standard (current product page/revision);
+    Mk.I differs. The EU specification explicitly lists one 4-way center-push hat
+    on MTG-R, three MTG-R buttons plus two MTG-L buttons, and two triggers on each
+    grip. STEM has eight standalone buttons, two K-switches with integrated center
+    pushes, two encoders with center pushes, one self-centering 3-position flip switch,
+    and one other 3-position flip switch. The three included 5-position hat modules
+    are replacements, not installed controls. Detent frame/inserts are configurable
+    alternatives; installed detent count is not asserted.
 hardware:
   gimbal: null
   sensor: contactless_magnetic
@@ -115,11 +139,15 @@ hardware:
     sensor: contactless_magnetic
   - name: Throttle_Right
     sensor: contactless_magnetic
-  force_adjustable: false
+  - name: MTG-R Wheel Axis
+  - name: Ministick X
+  - name: Ministick Y
+  force_adjustable: true
   cams_swappable: false
-  damping: null
+  damping: friction
   extension_support: false
   throw_deg: null
+  axis_count: 5
 connectivity:
   usb: c
   standalone_usb: true
@@ -127,9 +155,9 @@ software: VKBDevCfg
 physical:
   weight_g: 3500
   dimensions_mm:
-    - 305
-    - 192
-    - 194
+  - 305
+  - 192
+  - 194
   materials:
   - abs
   - glass_fiber_pa
@@ -196,6 +224,6 @@ verification: draft
 sources:
 - https://vkbcontrollers.com/products/stecs-throttle-standard
 images:
-  - file: /images/vkb/stecs-throttle-standard.jpg
-    source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-standard-us
-    caption: STECS Throttle Standard\n
+- file: /images/vkb/stecs-throttle-standard.jpg
+  source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-standard-us
+  caption: STECS Throttle Standard\n

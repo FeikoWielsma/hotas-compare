@@ -9,18 +9,26 @@ controls:
   kind: throttle_dual
   analog: true
   count: 2
-  label: Airbus-style throttle grips (alternative MTQ modules)
-  source: https://eu.mozaracing.com/products/tqa-mod
+  label: Airbus-style throttle levers (A3X detents)
+  source: https://us.mozaracing.com/products/tqa-mod
+- type: lever
+  location: handle
+  kind: other
+  analog: false
+  count: 2
+  label: Thrust reverse latches / levers
+  source: https://us.mozaracing.com/products/tqa-mod
 controls_evidence:
-  coverage: partial
-  source: https://eu.mozaracing.com/products/tqa-mod
-  checked: '2026-10-19'
-  notes: Standalone replacement grip module with Airbus detent and reverse-thrust behavior. Two grips assumed from
-    MTQ TQA configuration imagery/product family; official text does not enumerate inputs or confirm any discrete
-    switches/buttons on the module. TQA replaces installed TQF grips; it is not simultaneous with them.
+  coverage: complete
+  source: https://us.mozaracing.com/products/tqa-mod
+  checked: '2026-10-20'
+  notes: Replaces MTQ default TQF grips. Features dual A3X Airbus-style throttle levers with authentic detent structure
+    (IDLE, CL, FLX/MCT, TOGA) and dual physical reverse-thrust latches.
 verification: draft
 sources:
 - https://mozaracing.com
+- https://us.mozaracing.com/products/tqa-mod
+- https://eu.mozaracing.com/products/tqa-mod
 images:
 - file: /images/moza/tqa-throttle-module.webp
   source: https://eu.mozaracing.com/products/tqa-mod
@@ -34,11 +42,26 @@ prices:
   url: https://eu.mozaracing.com/products/tqa-mod
   verified: '2026-10-19'
   source: manual
+- region: UK
+  currency: GBP
+  amount: 39
+  incl_vat: true
+  store: uk.mozaracing.com
+  url: https://uk.mozaracing.com/products/tqa-mod
+  verified: '2026-10-20'
+  source: manual
+- region: US
+  currency: USD
+  amount: 39
+  incl_vat: false
+  store: us.mozaracing.com
+  url: https://us.mozaracing.com/products/tqa-mod
+  verified: '2026-10-20'
+  source: manual
 platform_compatibility:
-  pc: unknown
-  xbox: unknown
-  ps5: unknown
-  notes: The TQA product page names no platforms and no exclusions, so all platform fields are unknown. The "PC only"
-    wording on the MTQ pages is for the MTQ quadrant and is not applied to this module.
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Operates as an add-on lever module for the MOZA MTQ Throttle Quadrant, which is a PC-only device.
   sources:
   - https://eu.mozaracing.com/products/tqa-mod

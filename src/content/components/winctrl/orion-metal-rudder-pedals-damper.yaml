@@ -1,0 +1,80 @@
+brand: winctrl
+name: Orion Metal Flight Rudder Pedals with Damper
+category: pedals
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official listing or manual establishes computer USB or SimAppPro use. No exact product source
+    reviewed here establishes Xbox or PS5 support or incompatibility.
+  sources: &id001
+  - https://eu.winctrl.com/static/download/Qmcuf2Z4sK1fhbBHysbeCX94yxL9HHS2QPERHpYXpW4hxR?filename=R1-Metal-Base-DAMPER1-User-Manual-EN-V2.1.pdf
+  - https://eu.winctrl.com/view/goods-details.html?id=546
+status: current
+handedness: ambi
+mount:
+  provides: null
+  accepts: []
+controls:
+- type: axis
+  kind: rudder
+  count: 1
+  location: other
+  label: Yaw, 38°
+  source: https://eu.winctrl.com/static/download/Qmcuf2Z4sK1fhbBHysbeCX94yxL9HHS2QPERHpYXpW4hxR?filename=R1-Metal-Base-DAMPER1-User-Manual-EN-V2.1.pdf
+- type: axis
+  kind: toe_brake
+  count: 2
+  location: other
+  label: Pedal pitch, 30°
+  source: https://eu.winctrl.com/static/download/Qmcuf2Z4sK1fhbBHysbeCX94yxL9HHS2QPERHpYXpW4hxR?filename=R1-Metal-Base-DAMPER1-User-Manual-EN-V2.1.pdf
+controls_evidence:
+  coverage: complete
+  source: https://eu.winctrl.com/static/download/Qmcuf2Z4sK1fhbBHysbeCX94yxL9HHS2QPERHpYXpW4hxR?filename=R1-Metal-Base-DAMPER1-User-Manual-EN-V2.1.pdf
+  checked: '2026-10-20'
+  notes: 'R1 metal pedal plus damper. Manual table: pitch 30° at 7.5 kg and yaw 38°. The yaw force cell
+    says the printed force applies after the damper is installed. Published size 542×320×224 mm and 8.4 kg come
+    from that same R1+DAMPER1 manual. The standard edition without the damper in the box is the existing
+    skywalker-rudder-pedals record (goods 543).'
+hardware:
+  axes:
+  - name: Rudder
+  - name: Left pedal pitch
+  - name: Right pedal pitch
+  throw_deg: 38
+  damping: damper
+  extension_support: false
+connectivity:
+  standalone_usb: true
+software: SimApp Pro
+physical:
+  weight_g: 8400
+  dimensions_mm:
+  - 542
+  - 320
+  - 224
+  materials:
+  - metal
+prices:
+- region: EU
+  currency: EUR
+  amount: 325.02
+  incl_vat: true
+  store: eu.winctrl.com
+  url: https://eu.winctrl.com/view/goods-details.html?id=546
+  verified: '2026-10-20'
+  source: manual
+- region: US
+  currency: USD
+  amount: 341.85
+  incl_vat: false
+  store: us.winwingsim.com
+  url: https://us.winwingsim.com/view/goods-details.html?id=546
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources: *id001
+images:
+- file: /images/winctrl/orion-metal-rudder-pedals-damper.jpg
+  source: https://eu.winctrl.com/view/goods-details.html?id=546
+  caption: Orion Metal Flight Rudder Pedals with Damper

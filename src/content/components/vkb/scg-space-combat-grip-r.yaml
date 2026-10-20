@@ -5,10 +5,12 @@ platform_compatibility:
   pc: supported
   xbox: unsupported
   ps5: unsupported
-  notes: "VKB Australia FAQ states VKB controllers are compatible with Windows PCs and not compatible with Xbox, PS5, Apple or other platforms. Detached grip or module use requires its compatible VKB base/controller on Windows PC."
+  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs
+    and not compatible with Xbox, PS5, Apple or other platforms. Detached grip or
+    module use requires its compatible VKB base/controller on Windows PC.
   sources:
-    - https://vkbcontrollers.com/products/scg-space-combat-grip
-    - https://vkb-sim.com.au/collections/all-controllers
+  - https://vkbcontrollers.com/products/scg-space-combat-grip
+  - https://vkb-sim.com.au/collections/all-controllers
 status: current
 release_year: 2020
 handedness: right
@@ -16,56 +18,65 @@ mount:
   provides: vkb-rev-b
   accepts: []
 controls:
-  - type: trigger
-    location: "grip"
-    stages: 2
-    action: "sequential"
-    label: "Main dual-action trigger"
-    source: "https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/"
-  - type: trigger
-    location: "grip"
-    label: "Rapid-fire trigger; actuation stage unspecified"
-    source: "https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/"
-  - type: hat
-    ways: 4
-    push: true
-    count: 3
-    location: "grip"
-    label: "Center-push hats"
-    source: "https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/"
-  - type: analog_ministick
-    push: true
-    location: "grip"
-    label: "A1 analog ministick"
-    source: "https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/"
-  - type: button
-    count: 3
-    location: "grip"
-    label: "Installed buttons; C1 supplied module is a replacement"
-    source: "https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/"
+- type: trigger
+  location: grip
+  stages: 2
+  action: sequential
+  label: Main dual-action trigger
+  source: https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/
+- type: trigger
+  location: grip
+  label: Rapid-fire trigger
+  notes: Bidirectional 2-stage push/pull secondary trigger confirmed by official VKB template.
+  source: https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/
+  stages: 2
+  action: bidirectional
+- type: hat
+  ways: 4
+  push: true
+  count: 3
+  location: grip
+  label: Center-push hats
+  source: https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/
+- type: analog_ministick
+  push: true
+  location: grip
+  label: A1 analog ministick
+  source: https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/
+- type: button
+  count: 3
+  location: grip
+  label: Installed buttons; C1 supplied module is a replacement
+  source: https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/
+  backlit: false
 controls_evidence:
   coverage: complete
   source: https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/
   checked: '2026-10-19'
-  notes: "Exact Premium L/R; grip-only inventory. Europe listing specifies three installed buttons; its included C1 button and A1 hat modules are alternatives/replacements, not simultaneous installed controls. Some US marketing describes a different button configuration; this inventory follows the exact variant listing. Secondary trigger stage count unspecified."
+  notes: Exact Premium L/R; grip-only inventory verified against official VKB SCG template.
+    Europe listing specifies three installed buttons; its included C1 button and A1
+    hat modules are alternatives/replacements, not simultaneous installed controls.
+    Includes dual-action trigger, bidirectional rapid-fire trigger, three 4-way center-push
+    hats, A1 analog ministick with push, and 3 push buttons.
 hardware:
   gimbal: null
   sensor: contactless_magnetic
   axes:
   - name: Twist
     sensor: contactless_magnetic
-  force_adjustable: null
-  cams_swappable: null
+  force_adjustable: false
+  cams_swappable: false
   damping: null
-  extension_support: null
+  extension_support: false
   throw_deg: null
+  axis_count: 1
 connectivity:
-  usb: null
+  usb: none; connects via VKB Rev.B connector to Gladiator NXT/EVO base
   standalone_usb: false
 software: VKBDevCfg
 physical:
   materials:
-    - abs
+  - abs
 use_case_fit:
   modern_jet: 4
   heli: 3
@@ -75,46 +86,48 @@ use_case_fit:
   space_hotas: 5
   space_hosas: 5
 prices:
-  - region: EU
-    currency: EUR
-    amount: 103
-    incl_vat: true
-    store: flightsimcontrols.com
-    url: https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/
-    verified: '2026-10-20'
-    source: manual
-  - region: UK
-    currency: GBP
-    amount: 95
-    incl_vat: true
-    store: flightsimcontrols.com
-    verified: '2026-10-01'
-    source: manual
-  - region: US
-    currency: USD
-    amount: 90
-    incl_vat: false
-    store: vkbcontrollers.com
-    verified: '2026-10-01'
-    source: manual
+- region: EU
+  currency: EUR
+  amount: 103
+  incl_vat: true
+  store: flightsimcontrols.com
+  url: https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/
+  verified: '2026-10-20'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 95
+  incl_vat: true
+  store: flightsimcontrols.com
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 90
+  incl_vat: false
+  store: vkbcontrollers.com
+  verified: '2026-10-01'
+  source: manual
 verdict:
   author: feiko
   hands_on: true
   owned_hours: 600
-  take: "Ergonomic perfection for medium and large hands. The secondary bidirectional trigger and analog ministick make this the default recommendation for Elite Dangerous and Star Citizen pilots."
+  take: Ergonomic perfection for medium and large hands. The secondary bidirectional
+    trigger and analog ministick make this the default recommendation for Elite Dangerous
+    and Star Citizen pilots.
   pros:
-    - "Superb ergonomics with adjustable palm rest plate"
-    - "Bidirectional secondary rapid-fire trigger"
-    - "Lockable contactless twist (Z) rudder axis included"
-    - "Modular hat / ministick swap components included in Premium box"
+  - Superb ergonomics with adjustable palm rest plate
+  - Bidirectional secondary rapid-fire trigger
+  - Lockable contactless twist (Z) rudder axis included
+  - Modular hat / ministick swap components included in Premium box
   cons:
-    - "Polymer shell rather than cast metal"
+  - Polymer shell rather than cast metal
   great_for:
-    - space_hosas
-    - space_hotas
-    - modern_jet
+  - space_hosas
+  - space_hotas
+  - modern_jet
   skip_if:
-    - "You want a strict 1:1 replica of an F-16 or F/A-18 stick"
+  - You want a strict 1:1 replica of an F-16 or F/A-18 stick
   scores:
     build: 4
     feel: 5
@@ -122,15 +135,16 @@ verdict:
     software: 4
     qc_support: 5
 external_reviews:
-  - reviewer: mysh
-    url: https://youtube.com/watch?v=sample-vkb-scg
-    summary: "The benchmark ergonomic space sim grip. Fast actuation and intuitive button placements."
-    tag: recommended
-    date: '2024-06-12'
+- reviewer: mysh
+  url: https://youtube.com/watch?v=sample-vkb-scg
+  summary: The benchmark ergonomic space sim grip. Fast actuation and intuitive button
+    placements.
+  tag: recommended
+  date: '2024-06-12'
 verification: verified
 sources:
-  - https://vkbcontrollers.com/products/scg-space-combat-grip
+- https://vkbcontrollers.com/products/scg-space-combat-grip
 images:
-  - file: /images/vkb/scg-space-combat-grip-r.jpg
-    source: https://vkbsimcontrollers.com/products/gnx-scg-add-on-grip-us
-    caption: Space Combat Grip (SCG) Premium (Right)
+- file: /images/vkb/scg-space-combat-grip-r.jpg
+  source: https://vkbsimcontrollers.com/products/gnx-scg-add-on-grip-us
+  caption: Space Combat Grip (SCG) Premium (Right)

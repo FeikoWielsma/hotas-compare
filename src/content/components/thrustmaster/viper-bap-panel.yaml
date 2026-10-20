@@ -17,22 +17,44 @@ controls:
   location: panel
   label: Trim wheel axis
   source: https://www.thrustmaster.com/products/viper-panel/
+- type: button
+  count: 1
+  location: panel
+  label: Round push button (mapped 1)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/Viper/Viper_Mission_Pack_User_Manual.pdf
 - type: rotary
   mode: selector
-  count: 2
+  count: 1
+  positions: 5
   location: panel
-  label: MODE and PGRM selectors
-  source: https://www.thrustmaster.com/products/viper-panel/
+  label: Detent knob, 5 positions (mapped 4-8)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/Viper/Viper_Mission_Pack_User_Manual.pdf
+- type: rotary
+  mode: selector
+  count: 1
+  positions: 4
+  location: panel
+  label: Detent knob, 4 positions (mapped 9-12)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/Viper/Viper_Mission_Pack_User_Manual.pdf
+- type: rotary
+  mode: selector
+  count: 1
+  positions: 3
+  location: panel
+  label: Detent knob, 3 positions (mapped 18-20)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/Viper/Viper_Mission_Pack_User_Manual.pdf
 controls_evidence:
   coverage: partial
   source: https://ts.thrustmaster.com/download/accessories/Manuals/Viper/Viper_Mission_Pack_User_Manual.pdf
   checked: '2026-10-19'
-  notes: Manual mapping distinguishes 32 physical button inputs and one axis in mode A from 11 extra virtual button
-    events; marketing total of 43 is not 43 standalone pushbuttons. The sheet shows numerous rotary and switch controls
-    but does not provide reliable type, position, or momentary/latching detail for each; four square pushbuttons
-    and the named selectors are concrete controls represented. Other switches including weapon-launch and landing
-    gear remain unclassified because position and momentary/latching details are not established.
+  notes: Mode A map (manual page 8) lists 32 numbered button inputs and one axis, excluding 11 virtual events; the
+    marketing 43 is not a physical count. Represented from the numbered map (round push 1, four square pushbuttons
+    (13-16), and three detent knobs with 5 (4-8), 4 (9-12) and 3 (18-20) positions). Trim wheel is the analog axis.
+    The remaining numbered inputs (2-3 toggle, 17, 21-32 incl. the B1 rocker and knurled dial) are not classified as
+    push, switch or rotary, so they are not counted; the named MODE and PGRM selectors are not matched to a knob.
+    Coverage stays partial.
 hardware:
+  axis_count: 1
   gimbal: null
   sensor: null
   axes:

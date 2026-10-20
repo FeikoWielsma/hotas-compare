@@ -12,6 +12,27 @@ controls:
   stages: 1
   label: Digital trigger
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Sidestick/TCA_Sidestick_AE_User_Manual.pdf
+- type: hat
+  count: 1
+  location: grip
+  label: Multidirectional point-of-view hat switch (mapped as hat, ways not stated)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Sidestick/TCA_Sidestick_AE_User_Manual.pdf
+- type: button
+  count: 2
+  location: handle
+  label: Handle-side buttons (mapped 3 and 4)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Sidestick/TCA_Sidestick_AE_User_Manual.pdf
+- type: button
+  count: 12
+  location: base
+  label: Left and right button modules, six pads each (mapped 5-10 and 11-16)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Sidestick/TCA_Sidestick_AE_User_Manual.pdf
+- type: switch
+  count: 1
+  positions: 2
+  location: base
+  label: Left-handed / right-handed selector
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Sidestick/TCA_Sidestick_AE_User_Manual.pdf
 - type: lever
   kind: throttle_single
   analog: true
@@ -24,10 +45,11 @@ controls_evidence:
   coverage: partial
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Sidestick/TCA_Sidestick_AE_User_Manual.pdf
   checked: '2026-10-19'
-  notes: Manual identifies digital trigger, PoV hat, rudder twist and built-in throttle; its diagram says 15 action
-    buttons and one virtual throttle button. Product page says 17 action buttons and four swappable head modules,
-    counting mapped/virtual events differently. Exact standalone button count and hat push behavior remain unresolved;
-    modules are interchangeable, not four simultaneous controls.
+  notes: Counts from the numbered PC map (manual page 2) and feature diagram (page 4). Physical inputs 3-16 are 14
+    buttons (2 handle-side, 12 in the two base modules); the feature list's "15 action buttons" is one more than the
+    map numbers, so the map is used. Input 1 is the digital trigger and 2 the hat; 17 is a virtual throttle button and
+    is excluded. Hat ways and push are not stated. The two base modules are interchangeable, so only the 12 pads in
+    the two modules are counted once. Handedness selector is a two-position switch.
 hardware:
   gimbal: ball_joint
   sensor: hall

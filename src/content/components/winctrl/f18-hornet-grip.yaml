@@ -28,12 +28,14 @@ controls:
     count: 1
   - type: button
     count: 2
+    backlit: false
     label: Physical press switches
     source: https://eu.winctrl.com/view/goods-details.html?id=314
   - type: lever
     kind: brake
     analog: false
     count: 1
+    push: false
     label: Brake/trigger switch
 controls_evidence:
   coverage: partial
@@ -44,7 +46,8 @@ controls_evidence:
 hardware:
   axes: []
 connectivity:
-  standalone_usb: true
+  usb: null
+  standalone_usb: false
 physical:
   materials: []
 use_case_fit:

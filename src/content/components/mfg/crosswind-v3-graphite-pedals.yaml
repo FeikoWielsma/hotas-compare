@@ -21,7 +21,7 @@ controls_evidence:
   coverage: complete
   source: https://mfg-sim.com/rudders/mfg-crosswind-v3-base.html
   checked: '2026-10-19'
-  notes: 'Three physical analog axes: rudder plus independent left/right toe brakes. Controls schema has no generic axis item for the rudder axis, so controls lists only the two brake pedals; no standalone buttons or switches are specified. Footrest geometry varies by selected model; this record is Graphite/Bf109. Pedal movements are represented explicitly as axes; they are not hand-operated levers or rocker switches.'
+  notes: 'Three physical analog axes: rudder plus independent left/right toe brakes. Controls schema has no generic axis item for the rudder axis, so controls lists only the two brake pedals; no standalone buttons or switches are specified. Footrest geometry varies by selected model; this record is Graphite/Bf109. Pedal movements are represented explicitly as axes; they are not hand-operated levers or rocker switches. The V3 base page states a return-to-center tension knob and exchangeable CAM4 and CAM6 profiles. Hydraulic damping is a separate accessory. The linked specifications drawing is labeled V1.7 in part and is not used for V3 dimensions.'
 hardware:
   gimbal: cam
   sensor: contactless_magnetic
@@ -35,19 +35,20 @@ hardware:
   - name: Right brake
     resolution_bits: 13
     sensor: contactless_magnetic
-  force_adjustable: null
-  cams_swappable: null
+  force_adjustable: true
+  cams_swappable: true
   damping: null
   extension_support: null
   throw_deg: null
 connectivity:
-  usb: c
+  usb: b
   standalone_usb: true
 physical:
   materials:
   - steel
   - aluminium
 use_case_fit: {}
+software: MFG software package v2.17 for Crosswind V1–V3 rudder pedals
 prices:
 - region: EU
   currency: EUR
@@ -106,6 +107,8 @@ images:
     caption: Crosswind V3 Graphite Rudder Pedals
 sources:
 - https://mfg-sim.com/rudders/mfg-crosswind-v3-me109-rudder-pedals.html
+- https://mfg-sim.com/rudders/mfg-crosswind-v3-base.html
+- https://mfg-sim.com/downloads/
 platform_compatibility:
   pc: supported
   xbox: unknown

@@ -48,13 +48,28 @@ prices:
   url: https://www.thrustmaster.com/nl-nl/products/hotas-warthog-mkii-base/
   verified: '2026-10-20'
   source: manual
+- region: UK
+  currency: GBP
+  amount: 85.99
+  incl_vat: true
+  store: Thrustmaster UK eshop
+  url: https://shop.thrustmaster.com/en_gb/hotas-warthog-mkii-base.html
+  verified: '2026-10-20'
+  source: manual
+- region: US
+  currency: USD
+  amount: 119.99
+  incl_vat: false
+  store: Thrustmaster US eshop
+  url: https://eshop.thrustmaster.com/en_us/hotas-warthog-mkii-base.html
+  verified: '2026-10-20'
+  source: manual
 controls_evidence:
-  coverage: partial
+  coverage: complete
   source: https://www.thrustmaster.com/nl-nl/products/hotas-warthog-mkii-base/
   checked: '2026-10-20'
-  notes: Manufacturer specifies H.E.A.R.T. technology and a 6-pin grip connector supporting up to 128 buttons and
-    8 axes; this base itself exposes the two stick axes. Price is the Netherlands product page price, not an accessory
-    recommendation.
+  notes: This base has two physical axes and no standalone push-button or hat controls; the 6-pin connector
+    supports controls on a separately attached grip (up to 128 buttons and 8 axes), which are not counted here.
 verification: draft
 sources:
 - https://www.thrustmaster.com/nl-nl/products/hotas-warthog-mkii-base/

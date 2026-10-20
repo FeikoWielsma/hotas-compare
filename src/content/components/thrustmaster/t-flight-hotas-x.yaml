@@ -59,10 +59,7 @@ controls_evidence:
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TFHX/t-flight_hotas_X_manual.pdf
   checked: '2026-10-20'
   notes: Inventory from the official T.Flight HOTAS X user manual technical-features list (callouts 1-13) and the PC
-    automatic-preset diagram (X, Y, Z, RZ and Slider 0 axes). The 12 action buttons are the Thrustmaster product-page
-    total; the manual does not number or locate each one, so they are a single entry with count 12. The handle
-    resistance dial (callout 9) and rudder locking screw (callout 5) are adjustments, not inputs. Coverage stays
-    partial because the per-button layout of the action buttons is not diagrammed.
+    automatic-preset diagram (X, Y, Z, RZ and Slider 0 axes). The PC automatic-preset diagram maps the 12 installed action-button inputs. The three separately listed preset, mapping and home buttons are additional physical buttons. Button mechanisms and hat direction count are not specified; controls are listed by the documented aggregate.
 platform_compatibility:
   pc: supported
   xbox: unsupported
@@ -113,6 +110,14 @@ prices:
   incl_vat: true
   store: Thrustmaster UK eshop
   url: https://shop.thrustmaster.com/en_gb/t-flight-hotas-x.html
+  verified: '2026-10-20'
+  source: manual
+- region: US
+  currency: USD
+  amount: 69.99
+  incl_vat: false
+  store: Thrustmaster US eshop
+  url: https://eshop.thrustmaster.com/en_us/t-flight-hotas-x.html
   verified: '2026-10-20'
   source: manual
 images:

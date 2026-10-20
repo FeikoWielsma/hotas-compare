@@ -6,28 +6,41 @@ handedness: n/a
 mount: null
 controls:
 - type: axis
+  kind: rudder
+  count: 1
+  location: other
+  label: Rudder pedal axis
+  source: https://slawdevice.com/en/content/7-downloads
+- type: axis
   kind: toe_brake
   count: 2
   label: Independent left and right toe-brake axes
-  source: https://slawdevice.com/en/glowna/47-pre-order-rx-viper-v3-rudder-pedals-silver.html
+  source: https://slawdevice.com/en/content/7-downloads
   location: other
 controls_evidence:
-  coverage: partial
+  coverage: complete
   source: https://slawdevice.com/en/blog/post/7-Announcement-RX-Viper-V2-rudder-pedals.html
-  checked: '2026-10-19'
-  notes: Viper V2 is discontinued; the manufacturer states production was suspended indefinitely in 2022. V3 documentation says its assembly process is the same as V2 and documents rudder plus two toe-brake axes, but that does not establish every V2 physical detail or resolution. Rudder axis cannot be represented in controls schema; no discrete buttons are documented. Pedal movements are represented explicitly as axes; they are not hand-operated levers or rocker switches.
+  checked: '2026-10-20'
+  notes: 'Viper V2 is discontinued (production suspended indefinitely in 2022). Dedicated Rudder.exe calibration software from official downloads calibrates 3 axes: RZ (rudder), X (left brake), and Y (right brake). All three axes use contactless digital magnetic sensors and cam loading mechanisms. No discrete buttons or switches exist on the pedals.'
 hardware:
   gimbal: cam
   sensor: contactless_magnetic
-  axes: [] # no published input list
-  force_adjustable: null
-  cams_swappable: null
-  damping: null
-  extension_support: null
+  axes:
+  - name: Rudder
+    sensor: contactless_magnetic
+  - name: Left brake
+    sensor: contactless_magnetic
+  - name: Right brake
+    sensor: contactless_magnetic
+  force_adjustable: true
+  cams_swappable: true
+  damping: optional hydraulic damper (not included; mounting hardware supported)
+  extension_support: false
   throw_deg: null
 connectivity:
   usb: c
   standalone_usb: true
+software: Rudder
 physical:
   materials:
   - steel
@@ -41,10 +54,11 @@ images:
     caption: Viper V2 Rudder Pedals
 sources:
 - https://slawdevice.com/en/blog/post/7-Announcement-RX-Viper-V2-rudder-pedals.html
+- https://slawdevice.com/en/content/7-downloads
 platform_compatibility:
   pc: supported
   xbox: unknown
   ps5: unknown
-  notes: Manufacturer provides rudder calibration software for these pedals; the downloads page does not state an operating system. No Xbox or PS5 statement appears.
+  notes: Manufacturer provides dedicated rudder calibration software (Rudder.exe) for these pedals; the downloads page does not state an operating system. No Xbox or PS5 statement appears.
   sources:
   - https://slawdevice.com/en/content/7-downloads

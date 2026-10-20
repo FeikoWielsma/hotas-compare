@@ -1,0 +1,73 @@
+brand: thrustmaster
+name: T.Flight Hotas One Microsoft Flight Simulator Edition
+category: stick_fixed
+status: current
+handedness: ambi
+mount: null
+platform_compatibility:
+  pc: supported
+  xbox: supported
+  ps5: unsupported
+  notes: Product page lists PC and Xbox. PS5 is not listed. This is a separate product page from T.Flight HOTAS One.
+  sources:
+  - https://www.thrustmaster.com/en-us/products/t-flight-hotas-one-microsoft-flight-simulator-edition/
+controls:
+- type: trigger
+  count: 1
+  location: grip
+  source: https://www.thrustmaster.com/en-us/products/t-flight-hotas-one-microsoft-flight-simulator-edition/
+- type: hat
+  count: 1
+  location: grip
+  label: Hat switch
+  source: https://www.thrustmaster.com/en-us/products/t-flight-hotas-one-microsoft-flight-simulator-edition/
+- type: lever
+  kind: throttle_single
+  analog: true
+  location: base
+  label: Detachable throttle
+  source: https://www.thrustmaster.com/en-us/products/t-flight-hotas-one-microsoft-flight-simulator-edition/
+- type: lever
+  kind: other
+  analog: true
+  location: base
+  label: Rudder tilt lever
+  source: https://www.thrustmaster.com/en-us/products/t-flight-hotas-one-microsoft-flight-simulator-edition/
+- type: button
+  count: 14
+  label: Officially stated buttons; physical mechanism breakdown not published
+  source: https://www.thrustmaster.com/en-us/products/t-flight-hotas-one-microsoft-flight-simulator-edition/
+controls_evidence:
+  coverage: partial
+  source: https://www.thrustmaster.com/en-us/products/t-flight-hotas-one-microsoft-flight-simulator-edition/
+  checked: '2026-10-20'
+  notes: Product page names five axes, 14 buttons, one trigger, one hat switch, a detachable throttle, and dual rudder
+    control by a Z axis or a tilting lever. The official page specifies 14 buttons, one trigger, one hat, five axes, detachable throttle and dual rudder controls. The 14-button total is recorded; individual button mechanisms and hat ways are not identified. No edition-specific mapping diagram was found. The HOTAS 5 and original HOTAS One diagrams were not copied.
+hardware:
+  axis_count: 5
+  axes:
+  - name: Z (twist rudder)
+connectivity:
+  standalone_usb: true
+physical:
+  weight_g: 2060
+  dimensions_mm:
+  - 350
+  - 200
+  - 235
+prices:
+- region: US
+  currency: USD
+  amount: 109.99
+  incl_vat: false
+  store: Thrustmaster
+  url: https://www.thrustmaster.com/en-us/products/t-flight-hotas-one-microsoft-flight-simulator-edition/
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources:
+- https://www.thrustmaster.com/en-us/products/t-flight-hotas-one-microsoft-flight-simulator-edition/
+images:
+- file: /images/thrustmaster/t-flight-hotas-one-msfs.png
+  source: https://www.thrustmaster.com/wp-content/uploads/2024/10/Transparent-TFHO_MSFS_SpecialEdition_1-1000x1000-1.png
+  caption: T.Flight Hotas One Microsoft Flight Simulator Edition

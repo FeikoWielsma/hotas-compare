@@ -18,6 +18,11 @@ controls:
   count: 1
   label: Point-of-view hat
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Yoke_Boeing/TCA_Yoke_Boeing_Edition_user_manual.pdf
+- type: button
+  count: 18
+  location: handle
+  label: Mapped buttons on yoke grips and hub (Xbox mapping names Y, X, Prev, B01, B02, F1, A, B03, Next, B04, B, F2, B05, Menu, Share, View, B06, XBOX)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Yoke_Boeing/TCA_Yoke_Boeing_Edition_user_manual.pdf
 - type: analog_ministick
   push: true
   count: 1
@@ -27,10 +32,11 @@ controls_evidence:
   coverage: partial
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Yoke_Boeing/TCA_Yoke_Boeing_Edition_user_manual.pdf
   checked: '2026-10-19'
-  notes: Product 4460209 manual gives an aggregate 18 action-button total, but the diagram does not verify 18 standalone
-    pushbuttons; omitted from physical button count. Hat, pushable mini-stick and dual throttle axes are identified.
-    Landing gear and Xbox controls are not fully classified, so coverage is partial.
+  notes: The Xbox mapping (manual page 7) numbers 18 named buttons, which matches the 18-button aggregate; the names
+    are counted one by one, with D-pad (hat) and axes excluded. Physical push/switch type is not stated, so only the
+    count is recorded. PC mapping also shows numbered buttons 1–18 in the Windows Control Panel; the same count is present on PC and Xbox. Landing gear and TFRP/TPR rudder inputs are not classified, so coverage remains partial.
 hardware:
+  axis_count: 6
   gimbal: pendular
   sensor: hall
   axes:

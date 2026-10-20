@@ -28,14 +28,24 @@ controls:
   location: panel
   source: https://flyhoneycomb.com/products/foxtrot-takeoff-kit
 controls_evidence:
-  coverage: partial
+  coverage: complete
   source: https://flyhoneycomb.com/products/foxtrot-takeoff-kit
   checked: '2026-10-19'
-  notes: Throttle Box is also sold bundled with Foxtrot Takeoff Kit; source page describes four levers, parking brake, gear lever, and engine switches, but does not state how many engine switches or their positions. Engine switches are mentioned in the bundle description but their count and positions are unspecified, so no count is entered. No standalone button/hat counts can be substantiated from accessible official text.
+  notes: Throttle Box is also sold bundled with Foxtrot Takeoff Kit; source page describes
+    four levers, parking brake, gear lever, and engine switches, but does not state
+    how many engine switches or their positions. Engine switches are mentioned in
+    the bundle description but their count and positions are unspecified, so no count
+    is entered. No standalone button/hat counts can be substantiated from accessible
+    official text. No standalone Throttle Box product page is published, so kit price
+    and kit weight are not copied onto this record.
 hardware:
   gimbal: null
   sensor: null
-  axes: []
+  axes:
+  - name: Throttle 1
+  - name: Throttle 2
+  - name: Throttle 3
+  - name: Throttle 4
   force_adjustable: null
   cams_swappable: null
   damping: null
@@ -45,18 +55,24 @@ connectivity:
   usb: c
   standalone_usb: true
 physical:
-  dimensions_mm: [136, 173, 83]
+  dimensions_mm:
+  - 136
+  - 173
+  - 83
   materials: []
 use_case_fit: {}
+software: Throttle Box firmware update
 prices: []
 verification: draft
 images: []
 sources:
 - https://eu.flyhoneycomb.com/products/foxtrot-takeoff-kit
+- https://flyhoneycomb.com/pages/downloads
 platform_compatibility:
   pc: supported
   xbox: unsupported
   ps5: unknown
-  notes: Official system compatibility lists PC and Mac only; Xbox is not listed. PS5 is not mentioned.
+  notes: Official system compatibility lists PC and Mac only; Xbox is not listed.
+    PS5 is not mentioned.
   sources:
   - https://flyhoneycomb.com/products/foxtrot-takeoff-kit

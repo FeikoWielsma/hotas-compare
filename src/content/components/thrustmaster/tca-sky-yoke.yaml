@@ -34,6 +34,11 @@ controls:
   location: base
   label: Trim wheel
   source: https://www.thrustmaster.com/nl-nl/products/tca-sky-yoke-xbox-pc/
+- type: button
+  count: 24
+  location: grip
+  label: Action buttons (official stated total; individual mechanisms not identified)
+  source: https://www.thrustmaster.com/en-ie/products/tca-sky-yoke-xbox-pc/
 hardware:
   axis_count: 7
   sensor: 16-bit H.E.A.R.T.
@@ -50,15 +55,30 @@ controls_evidence:
   coverage: partial
   source: https://www.thrustmaster.com/nl-nl/products/tca-sky-yoke-xbox-pc/
   checked: '2026-10-20'
-  notes: Manufacturer states 24 action buttons, a mini-stick, 8-way hat, two analog triggers and seven 16-bit H.E.A.R.T.
-    axes. The 24 action-button marketing total is not treated as a count of physical buttons; unnamed controls are
-    omitted.
+  notes: Official page states 24 action buttons, an 8-way hat, mini-stick, two analog triggers, integrated throttle, trim wheel and seven axes. Button count is recorded; individual action-button mechanisms and remaining named axes are not broken down in official documentation.
 connectivity:
   usb: USB (plug and play; dual-yoke connection supported)
   standalone_usb: true
+physical:
+  weight_g: 2495
+  dimensions_mm:
+  - 344
+  - 440
+  - 180
+prices:
+- region: US
+  currency: USD
+  amount: 199.99
+  incl_vat: false
+  store: Thrustmaster US eshop
+  url: https://eshop.thrustmaster.com/en_us/tca-sky-yoke-xbox.html
+  verified: '2026-10-20'
+  source: manual
 verification: draft
 sources:
 - https://www.thrustmaster.com/nl-nl/products/tca-sky-yoke-xbox-pc/
+- https://www.thrustmaster.com/en-us/products/tca-sky-yoke-xbox-pc/
+- https://eshop.thrustmaster.com/en_us/tca-sky-yoke-xbox.html
 images:
 - file: /images/thrustmaster/tca-sky-yoke-xbox-pc.png
   source: https://www.thrustmaster.com/wp-content/uploads/2026/09/Website-TCASkyYoke_Xbox-PageProduitListing-800x800-1.png

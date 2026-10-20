@@ -1,0 +1,37 @@
+brand: logitech
+name: Logitech G Flight Instrument Panel
+category: module
+status: discontinued
+handedness: n/a
+mount: null
+controls:
+- type: button
+  count: 8
+  location: panel
+  label: Eight physical hotkeys on front panel
+  source: https://www.logitechg.com/en-us/shop/p/flight-simulator-instrument-panel
+- type: encoder
+  count: 2
+  location: panel
+  label: Twin display selection dials
+  source: https://www.logitechg.com/en-us/shop/p/flight-simulator-instrument-panel
+controls_evidence:
+  coverage: partial
+  source: https://www.logitechg.com/en-us/shop/p/flight-simulator-instrument-panel
+  checked: '2026-10-20'
+  notes: Official page documents twin dials and a set of hotkeys; the official photograph
+    shows six left-side keys and two arrow keys. The page currently says unavailable.
+    Axis reporting and exact dial click behavior are not documented.
+hardware:
+  axes: []
+connectivity:
+  usb: a_cable
+  standalone_usb: true
+software: Logitech G HUB
+verification: draft
+sources:
+- https://www.logitechg.com/en-us/shop/p/flight-simulator-instrument-panel
+images:
+- file: /images/logitech/flight-instrument-panel.png
+  source: https://www.logitechg.com/en-us/shop/p/flight-simulator-instrument-panel
+  caption: Flight Instrument Panel

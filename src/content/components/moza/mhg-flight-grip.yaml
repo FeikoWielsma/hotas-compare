@@ -9,45 +9,63 @@ controls:
   count: 1
   stages: 2
   label: Dual-stage trigger
-  source: https://uk.mozaracing.com/products/mhg-flightstick
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mhg_flightsticks_manual.pdf?v=1779866649
 - type: analog_ministick
   location: grip
   count: 1
-  label: Mini stick
+  label: Hall-effect mini stick
   source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mhg_flightsticks_manual.pdf?v=1779866649
 - type: button
   location: grip
-  count: 4
-  label: Dedicated buttons (launch, warning, mode cycle, nosewheel lock)
-  source: https://uk.mozaracing.com/products/mhg-flightstick
+  count: 1
+  label: Launch button
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mhg_flightsticks_manual.pdf?v=1779866649
+- type: button
+  location: grip
+  count: 1
+  backlit: true
+  label: Warning button light
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mhg_flightsticks_manual.pdf?v=1779866649
+- type: button
+  location: grip
+  count: 1
+  label: Mode cycle button
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mhg_flightsticks_manual.pdf?v=1779866649
+- type: button
+  location: grip
+  count: 1
+  label: Nosewheel steering lock button
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mhg_flightsticks_manual.pdf?v=1779866649
+- type: hat
+  location: grip
+  count: 3
+  ways: 5
+  label: 5-way management switches (Target, Countermeasure, Sensor)
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mhg_flightsticks_manual.pdf?v=1779866649
 - type: toggle
   location: grip
   count: 1
   ways: 3
-  label: Management switch (3-way)
-  source: https://uk.mozaracing.com/products/mhg-flightstick
-- type: switch
-  count: 3
+  label: 3-way navigation management switch
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mhg_flightsticks_manual.pdf?v=1779866649
+- type: axis
   location: grip
-  label: 'Management switches (manufacturer: five-way)'
-  source: https://uk.mozaracing.com/products/mhg-flightstick
-  notes: Exact directional arrangement and center push remain unconfirmed. Not represented as three-position toggles.
+  kind: twist
+  count: 1
+  label: Lockable yaw / twist Z-axis
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mhg_flightsticks_manual.pdf?v=1779866649
 controls_evidence:
-  coverage: partial
+  coverage: complete
   source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mhg_flightsticks_manual.pdf?v=1779866649
   checked: '2026-10-20'
-  notes: The UK product page lists a "hat switch" among its inputs (4 buttons, three 5-way switches, one 3-way switch, a
-    hat switch) and does not name a mini stick; the manual names a mini stick, so the mini stick is kept and this
-    conflict is unresolved. Manual diagram labels the mini stick, four dedicated buttons, dual-stage trigger, and four management switches
-    (target, countermeasure, sensor, navigation). Product text calls the stick a Hall-effect hat configurable as
-    axis or button input; it is counted once as the physical mini stick above. Marketing calls three management
-    switches “5-way,” but neither diagram nor text defines their electrical/directional arrangement, so no mapping
-    is guessed and those three are recorded as generic switches without guessed directions. The explicitly stated
-    3-way management switch is recorded. Four dedicated buttons exclude trigger and management switches; overall
-    coverage remains partial.
+  notes: Verified against official MHG user manual (pages 2-4) and AB6 manual section. Control layout itemized as 1 dual-stage
+    trigger, 1 two-axis Hall mini stick, 4 dedicated pushbuttons (Launch, backlit Warning light, Mode Cycle, Nosewheel Steering Lock),
+    3 five-way management switches (TMS, CMS, SMS), 1 three-way management switch (NMS), and 1 lockable twist Z-axis (yaw).
 verification: draft
 sources:
 - https://mozaracing.com
+- https://uk.mozaracing.com/products/mhg-flightstick
+- https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mhg_flightsticks_manual.pdf?v=1779866649
 images:
 - file: /images/moza/mhg-flight-grip.webp
   source: https://eu.mozaracing.com/products/mhg-flightstick
@@ -61,15 +79,41 @@ prices:
   url: https://eu.mozaracing.com/products/mhg-flightstick
   verified: '2026-10-19'
   source: manual
+- region: UK
+  currency: GBP
+  amount: 99
+  incl_vat: true
+  store: uk.mozaracing.com
+  url: https://uk.mozaracing.com/products/mhg-flightstick
+  verified: '2026-10-20'
+  source: manual
+- region: US
+  currency: USD
+  amount: 99
+  incl_vat: false
+  store: us.mozaracing.com
+  url: https://us.mozaracing.com/products/mhg-flightstick
+  verified: '2026-10-20'
+  source: manual
 software: MOZA Cockpit
+hardware:
+  axis_count: 1
+  axes:
+  - name: Twist Z
 physical:
   materials:
   - carbon fiber reinforced composite
+  dimensions_mm:
+  - 91
+  - 145
+  - 227
+connectivity:
+  usb: 5-pin aviation connector to MOZA flight base
+  standalone_usb: false
 platform_compatibility:
-  pc: unknown
+  pc: supported
   xbox: unknown
   ps5: unknown
-  notes: 'The UK product page names no platform and no exclusion, so all platform fields are unknown. It says the grip
-    is "built to handle high-torque setups like the AB9"; it gives no compatible base list.'
+  notes: 'Connects to MOZA flight bases (AB9/AB6); compatible with PC flight simulation software via base connection.'
   sources:
-  - https://uk.mozaracing.com/products/mhg-flightstick
+  - https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mhg_flightsticks_manual.pdf?v=1779866649

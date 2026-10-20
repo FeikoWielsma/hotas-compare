@@ -1,0 +1,61 @@
+brand: winctrl
+name: PFP 4
+category: module
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official listing or manual establishes computer USB or SimAppPro use. No exact product source reviewed
+    here establishes Xbox or PS5 support or incompatibility.
+  sources: &id001
+  - https://eu.winctrl.com/static/download/Qme9Ze3mTQd3T5DNiThEsTAJNWt1qHjAsV1QGFGWebH2Ep?filename=PFP-4-User-Manual-V1.0-20250124.pdf
+  - https://eu.winctrl.com/view/goods-details.html?id=1005
+status: current
+handedness: n/a
+mount:
+  provides: null
+  accepts: []
+controls:
+- type: button
+  count: 71
+  location: panel
+  label: Individually numbered physical keycaps, visually counted from the official button layout diagram
+  source: https://eu.winctrl.com/static/download/Qme9Ze3mTQd3T5DNiThEsTAJNWt1qHjAsV1QGFGWebH2Ep?filename=PFP-4-User-Manual-V1.0-20250124.pdf
+controls_evidence:
+  coverage: complete
+  source: https://eu.winctrl.com/static/download/Qme9Ze3mTQd3T5DNiThEsTAJNWt1qHjAsV1QGFGWebH2Ep?filename=PFP-4-User-Manual-V1.0-20250124.pdf
+  checked: '2026-10-20'
+  notes: Visually counted 71 physical pushbutton keycaps in the manual button-layout diagram, including the line-select
+    keys. Diagram numbers label control outputs and were not treated as counts.
+connectivity:
+  standalone_usb: true
+prices:
+- region: EU
+  currency: EUR
+  amount: 128.49
+  incl_vat: true
+  store: eu.winctrl.com
+  url: https://eu.winctrl.com/view/goods-details.html?id=1005
+  verified: '2026-10-20'
+  source: manual
+- region: US
+  currency: USD
+  amount: 133.85
+  incl_vat: false
+  store: us.winwingsim.com
+  url: https://us.winwingsim.com/view/goods-details.html?id=1005
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources: *id001
+images:
+- file: /images/winctrl/pfp-4.jpg
+  source: https://eu.winctrl.com/view/goods-details.html?id=1005
+  caption: PFP 4
+software: SimApp Pro
+physical:
+  weight_g: 470
+  dimensions_mm:
+  - 228
+  - 146
+  - 28.5

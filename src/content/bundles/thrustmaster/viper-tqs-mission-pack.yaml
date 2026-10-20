@@ -1,0 +1,22 @@
+brand: thrustmaster
+name: Viper TQS Mission Pack
+category: system
+status: current
+components:
+- thrustmaster/viper-tqs-throttle
+- thrustmaster/viper-bap-panel
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Product page lists PC only. Box contents are one Viper TQS and one Viper Panel. The catalog panel record is
+    that Viper Panel.
+  sources:
+  - https://www.thrustmaster.com/en-us/products/viper-tqs-mission-pack/
+verification: draft
+sources:
+- https://www.thrustmaster.com/en-us/products/viper-tqs-mission-pack/
+images:
+- file: /images/thrustmaster/viper-tqs-mission-pack.webp
+  source: https://www.thrustmaster.com/wp-content/uploads/2023/06/ProductListing-ViperTQSMissionPack-800x800-1-768x768-1.webp
+  caption: Viper TQS Mission Pack

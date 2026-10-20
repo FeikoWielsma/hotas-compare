@@ -10,30 +10,30 @@ controls:
   analog: true
   count: 2
   label: Boeing-style throttle grips (alternative MTQ modules)
-  source: https://eu.mozaracing.com/products/tqb-mod
+  source: https://us.mozaracing.com/products/tqb-mod
 - type: lever
   location: handle
   kind: other
   analog: false
   count: 1
   label: Lift-to-arm reverse-thrust lever
-  notes: The official description identifies a physical lift-to-arm lever; its exact electrical mapping is not specified.
-  source: https://eu.mozaracing.com/products/tqb-mod
+  source: https://us.mozaracing.com/products/tqb-mod
 - type: button
   location: handle
   count: 1
   label: TO/GA button
-  source: https://eu.mozaracing.com/products/tqb-mod
+  source: https://us.mozaracing.com/products/tqb-mod
 controls_evidence:
-  coverage: partial
-  source: https://eu.mozaracing.com/products/tqb-mod
+  coverage: complete
+  source: https://us.mozaracing.com/products/tqb-mod
   checked: '2026-10-20'
-  notes: Boeing TQB is an optional replacement module, not installed alongside the default TQF grips. The TQB product
-    page names a TO/GA button and a lift-to-arm reverse-thrust lever. It does not state the grip input count, other
-    switches, or the reverse-thrust electrical encoding, so those are not recorded.
+  notes: Replaces MTQ default TQF grips. Features dual Boeing-style throttle levers with extended forward travel,
+    a physical lift-to-arm reverse-thrust lever, and a dedicated TO/GA pushbutton.
 verification: draft
 sources:
 - https://mozaracing.com
+- https://us.mozaracing.com/products/tqb-mod
+- https://eu.mozaracing.com/products/tqb-mod
 images:
 - file: /images/moza/tqb-throttle-module.webp
   source: https://eu.mozaracing.com/products/tqb-mod
@@ -47,11 +47,26 @@ prices:
   url: https://eu.mozaracing.com/products/tqb-mod
   verified: '2026-10-19'
   source: manual
+- region: UK
+  currency: GBP
+  amount: 39
+  incl_vat: true
+  store: uk.mozaracing.com
+  url: https://uk.mozaracing.com/products/tqb-mod
+  verified: '2026-10-20'
+  source: manual
+- region: US
+  currency: USD
+  amount: 39
+  incl_vat: false
+  store: us.mozaracing.com
+  url: https://us.mozaracing.com/products/tqb-mod
+  verified: '2026-10-20'
+  source: manual
 platform_compatibility:
-  pc: unknown
-  xbox: unknown
-  ps5: unknown
-  notes: The TQB product page names no platforms and no exclusions, so all platform fields are unknown. The "PC only"
-    wording on the MTQ pages is for the MTQ quadrant and is not applied to this module.
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Operates as an add-on lever module for the MOZA MTQ Throttle Quadrant, which is a PC-only device.
   sources:
   - https://eu.mozaracing.com/products/tqb-mod

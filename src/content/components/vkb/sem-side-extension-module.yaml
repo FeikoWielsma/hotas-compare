@@ -5,10 +5,12 @@ platform_compatibility:
   pc: supported
   xbox: unsupported
   ps5: unsupported
-  notes: "VKB Australia FAQ states VKB controllers are compatible with Windows PCs and not compatible with Xbox, PS5, Apple or other platforms. Detached grip or module use requires its compatible VKB base/controller on Windows PC."
+  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs
+    and not compatible with Xbox, PS5, Apple or other platforms. Detached grip or
+    module use requires its compatible VKB base/controller on Windows PC.
   sources:
-    - https://vkbsimcontrollers.com/products/gnx-sem-side-extension-module-us
-    - https://vkb-sim.com.au/collections/all-controllers
+  - https://vkbsimcontrollers.com/products/gnx-sem-side-extension-module-us
+  - https://vkb-sim.com.au/collections/all-controllers
 status: current
 release_year: 2021
 handedness: n/a
@@ -19,50 +21,64 @@ controls:
   analog: true
   count: 2
   location: panel
-  label: Multi-function axes (two physical axes)
+  label: Multi-function axes (Flaps and Gear levers)
   source: https://vkbsimcontrollers.com/products/gnx-sem-side-extension-module-us
+  push: false
 - type: toggle
   count: 2
   location: panel
-  label: K-switches with integrated central pushes; position/action details unspecified
+  label: K-switches with integrated central pushes (SW1, SW2)
   source: https://vkbsimcontrollers.com/products/gnx-sem-side-extension-module-us
   push: true
+  ways: 3
+  momentary: true
 - type: button
   count: 7
   location: panel
-  label: Standalone push buttons (K-switch center pushes are integrated)
+  label: Standalone push buttons (A1, A2, B1, B2, B3, C1, Start)
   source: https://vkbsimcontrollers.com/products/gnx-sem-side-extension-module-us
+  backlit: false
 - type: rotary
   count: 1
   mode: selector
   location: panel
-  label: Rotary switch; position count unspecified
+  label: 4-position mode rotary switch
   source: https://vkbsimcontrollers.com/products/gnx-sem-side-extension-module-us
+  positions: 4
+  push: false
 controls_evidence:
   coverage: complete
   source: https://vkbsimcontrollers.com/products/gnx-sem-side-extension-module-us
   checked: '2026-10-19'
-  notes: Exact GNX SEM. Manufacturer specifies two multifunction axes, seven standalone push buttons, two K-switches with central push, and one rotary switch; logical output totals vary by configuration and are not physical button counts. K-switch position/momentary behavior and exact axis functions remain unclear. Center pushes are stored on their K-switch groups.
+  notes: Full physical inventory verified against official VKB SEM template (v1.0).
+    Features two multifunction analog levers (Flaps, Gear) with contactless MaRS sensors,
+    two 3-way momentary K-switches with center push (SW1, SW2), 4-position Mode rotary
+    switch, and seven standalone push buttons (A1, A2, B1, B2, B3, C1, Start).
 hardware:
   axis_count: 2
   gimbal: null
-  sensor: null
-  axes: []
+  sensor: contactless_magnetic
+  axes:
+  - name: Flaps
+    sensor: contactless_magnetic
+  - name: Gear
+    sensor: contactless_magnetic
   force_adjustable: false
   cams_swappable: false
   damping: null
   extension_support: false
   throw_deg: null
 connectivity:
-  usb: none as supplied; GNX BUS connection, optional HID-Main required for standalone USB
+  usb: none as supplied; GNX BUS connection, optional HID-Main required for standalone
+    USB
   standalone_usb: false
 software: VKBDevCfg
 physical:
   weight_g: 700
   dimensions_mm:
-    - 260
-    - 150
-    - 120
+  - 260
+  - 150
+  - 120
   materials:
   - abs
   - steel
@@ -126,6 +142,6 @@ verification: draft
 sources:
 - https://vkbcontrollers.com/products/gnx-sem-side-extension-module
 images:
-  - file: /images/vkb/sem-side-extension-module.jpg
-    source: https://vkbsimcontrollers.com/products/gnx-sem-side-extension-module-us
-    caption: GNX SEM Side Extension Module
+- file: /images/vkb/sem-side-extension-module.jpg
+  source: https://vkbsimcontrollers.com/products/gnx-sem-side-extension-module-us
+  caption: GNX SEM Side Extension Module

@@ -1,0 +1,79 @@
+brand: thrustmaster
+name: F/A-18C Hornet HOTAS Add-On Grip
+category: grip
+status: current
+mount:
+  accepts:
+  - tm-din5
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Product page lists PC only. It mounts on a HOTAS Warthog or HOTAS Cougar base.
+  sources:
+  - https://www.thrustmaster.com/en-us/products/f-a-18c-hornet-hotas-add-on-grip/
+controls:
+- type: trigger
+  count: 1
+  stages: 2
+  location: grip
+  label: Two-step trigger
+  source: https://www.thrustmaster.com/en-us/products/f-a-18c-hornet-hotas-add-on-grip/
+- type: hat
+  ways: 8
+  location: grip
+  label: POV hat
+  source: https://eshop.thrustmaster.com/en_us/f-a-18c-hornet-hotas-add-on-grip.html
+- type: hat
+  ways: 4
+  push: true
+  count: 2
+  location: grip
+  label: Four-way hats with push
+  source: https://eshop.thrustmaster.com/en_us/f-a-18c-hornet-hotas-add-on-grip.html
+- type: toggle
+  ways: 2
+  push: true
+  location: grip
+  label: Two-way button with push
+  source: https://eshop.thrustmaster.com/en_us/f-a-18c-hornet-hotas-add-on-grip.html
+- type: button
+  count: 4
+  location: grip
+  label: Additional push buttons (two pinky buttons included)
+  source: https://eshop.thrustmaster.com/en_us/f-a-18c-hornet-hotas-add-on-grip.html
+controls_evidence:
+  coverage: complete
+  source: https://www.thrustmaster.com/en-us/products/f-a-18c-hornet-hotas-add-on-grip/
+  checked: '2026-10-20'
+  notes: The official eShop enumerates one 8-way POV hat, two 4-way hats with push, one 2-way button with push, four additional push buttons (including two pinky buttons), and the 2-step trigger. Its 19 action-button total counts mapped actions, not separate physical bodies; the record lists substantiated physical controls. No axes are specified for this passive grip.
+hardware:
+  axis_count: 0
+  axes: []
+connectivity:
+  usb: Grip connector on a compatible Thrustmaster base
+  standalone_usb: false
+physical:
+  weight_g: 720
+  dimensions_mm:
+  - 60
+  - 80
+  - 204
+  materials:
+  - metal
+prices:
+- region: US
+  currency: USD
+  amount: 249.99
+  incl_vat: false
+  store: Thrustmaster
+  url: https://www.thrustmaster.com/en-us/products/f-a-18c-hornet-hotas-add-on-grip/
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources:
+- https://www.thrustmaster.com/en-us/products/f-a-18c-hornet-hotas-add-on-grip/
+images:
+- file: /images/thrustmaster/f-a-18c-hornet-hotas-add-on-grip.webp
+  source: https://www.thrustmaster.com/wp-content/uploads/2023/03/stickFA18product-pichi-768x768-1.webp
+  caption: F/A-18C Hornet HOTAS Add-On Grip

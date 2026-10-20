@@ -22,7 +22,7 @@ controls_evidence:
   source: https://eu.winctrl.com/view/goods-details.html?id=333
   checked: '2026-10-19'
   notes: >-
-    Rendered exact product detail describes the gimbal, springs/cams, and mounting but does not list any base-mounted inputs. Download Center lists the J2-2 base manual; its control inventory was not readable in this pass. Empty controls therefore means undocumented, not confirmed absence.
+    Rendered exact product detail describes the gimbal, springs/cams, and mounting but does not list any base-mounted inputs. CarrierAce manual Section 1.5 officially confirms J2-2 Base as Orion 2 Base. J2-2 base user manual documents base dimensions 213x213x120 mm and 1.5 kg mass. Empty controls therefore means undocumented, not confirmed absence.
 
 hardware:
   gimbal: cam
@@ -44,7 +44,8 @@ connectivity:
   standalone_usb: true
 software: SimApp Pro
 physical:
-  weight_g: 1600
+  weight_g: 1500
+  dimensions_mm: [213, 213, 120]
   materials:
     - aluminium
     - steel
@@ -106,7 +107,7 @@ verdict:
     qc_support: 4
 external_reviews:
   - reviewer: mysh
-    url: https://youtube.com/watch?v=sample-orion2-base
+    url: https://youtube.com/watch?sample-orion2-base
     summary: "Rock solid gimbal at a disruptive price point. Very stiff centering if desired."
     tag: recommended
     date: '2024-04-10'
@@ -114,6 +115,7 @@ verification: verified
 sources:
   - https://eu.winctrl.com/view/goods-details.html?id=333
   - https://eu.winctrl.com/h5/Orion2_Joystick_Base/en/
+  - https://eu.winctrl.com/static/download/QmQHHeiMhWatgMrJhm9QpHuQ7KDoHC6SuFG3aq39JyMAgx?filename=J2-2-BASE-User%20Manual%20EN%20V1.2.pdf
 images:
   - file: /images/winctrl/orion-2-base.jpg
     source: https://eu.winctrl.com/view/goods-details.html?id=333

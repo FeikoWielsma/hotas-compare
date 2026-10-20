@@ -1,0 +1,31 @@
+brand: thrustmaster
+name: T.16000M FCS Flight Pack
+category: system
+status: current
+components:
+- thrustmaster/t16000m-fcs-stick
+- thrustmaster/twcs-throttle
+- thrustmaster/t-flight-rudder-pedals-tfrp
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Product page lists PC only. Box contents are the T.16000M FCS joystick, TWCS throttle, and TFRP pedals.
+  sources:
+  - https://www.thrustmaster.com/en-us/products/t-16000m-fcs-flight-pack/
+prices:
+- region: US
+  currency: USD
+  amount: 269.99
+  incl_vat: false
+  store: Thrustmaster
+  url: https://www.thrustmaster.com/en-us/products/t-16000m-fcs-flight-pack/
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources:
+- https://www.thrustmaster.com/en-us/products/t-16000m-fcs-flight-pack/
+images:
+- file: /images/thrustmaster/t16000m-fcs-flight-pack.webp
+  source: https://www.thrustmaster.com/wp-content/uploads/2023/03/SF-list-t16000M-fcs-flight-pack-768x768-2.webp
+  caption: T.16000M FCS Flight Pack
