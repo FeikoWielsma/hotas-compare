@@ -92,6 +92,14 @@ prices:
   url: https://vkbsimcontrollers.com/products/f-14-add-on-grip-for-gunfighter-mk-iii
   verified: '2026-10-19'
   source: manual
+- region: EU
+  currency: EUR
+  amount: 136
+  incl_vat: true
+  store: flightsimcontrols.com
+  url: https://flightsimcontrols.com/product/f-14-combat-grip-stand-alone/
+  verified: '2026-10-21'
+  source: manual
 verification: draft
 sources:
 - https://vkbsimcontrollers.com/products/f-14-add-on-grip-for-gunfighter-mk-iii

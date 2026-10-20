@@ -85,6 +85,14 @@ prices:
   url: https://vkbsimcontrollers.com/products/gnx-scg-premium-grip-with-ota-preinstalled-us
   verified: '2026-10-19'
   source: manual
+- region: UK
+  currency: GBP
+  amount: 105
+  incl_vat: true
+  store: flightsimcontrols.co.uk
+  url: https://flightsimcontrols.co.uk/product/gnx-scg-premium-grip-with-ota-preinstalled-left/
+  verified: '2026-10-21'
+  source: manual
 verification: draft
 sources:
 - https://vkbsimcontrollers.com/products/gnx-scg-premium-grip-with-ota-preinstalled-us

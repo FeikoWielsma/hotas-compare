@@ -75,20 +75,14 @@ controls_evidence:
   notes: Left and right Prime grips have the same listed control inventory. The manufacturer distinguishes flip-trigger position and brake-lever button from the three standalone momentary buttons; do not double count those controls.
 hardware:
   gimbal: null
-  sensor: contactless_magnetic
   axes:
   - name: Ministick X
-    sensor: contactless_magnetic
   - name: Ministick Y
-    sensor: contactless_magnetic
   - name: Brake
-    sensor: contactless_magnetic
+    sensor: contactless
   - name: Twist
-    sensor: contactless_magnetic
-  force_adjustable: false
-  cams_swappable: false
+    sensor: contactless
   damping: null
-  extension_support: false
   throw_deg: null
 connectivity:
   usb: none; connects through a compatible flightstick or collective base

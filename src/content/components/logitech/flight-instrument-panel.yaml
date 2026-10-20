@@ -9,47 +9,29 @@ controls:
     count: 6
     location: panel
     label: Left side cockpit display hotkey buttons (Map, Main Panel, Radios, GPS, Panel 4, Panel 5)
-    backlit: false
     source: https://www.logitech.com/assets/65156/flight-instrument-panel.pdf
   - type: button
     count: 2
     location: panel
     label: Display page scroll cursor up/down buttons
-    backlit: false
     source: https://www.logitech.com/assets/65156/flight-instrument-panel.pdf
   - type: encoder
     count: 2
     location: panel
-    label: Dual continuous rotary adjustment dials
-    push: false
+    label: Twin display selection dials
     source: https://www.logitech.com/assets/65156/flight-instrument-panel.pdf
 controls_evidence:
-  coverage: complete
+  coverage: partial
   source: https://www.logitech.com/assets/65156/flight-instrument-panel.pdf
   checked: '2026-10-21'
   notes: >-
-    Official Logitech G Flight Instrument Panel user guide (pp. 4-7) documents the six left-hand cockpit display hotkey buttons, two bottom-center cursor up/down scroll buttons, and dual continuous rotary adjustment dials.
-hardware:
-  axes: []
-  sensor: null
-  gimbal: null
-  force_adjustable: null
-  cams_swappable: null
-  damping: null
-  extension_support: null
-  throw_deg: null
+    The Flight Instrument Panel user guide documents six left-side display hotkey buttons and two bottom-centre cursor up/down buttons. The official product page names twin dials but does not state their push function or behaviour, so dial details are unverified and coverage stays partial.
+hardware: null
 connectivity:
   usb: a_cable
   standalone_usb: true
 software: Logitech G HUB
-physical:
-  weight_g: 118
-  dimensions_mm:
-    - 94
-    - 26
-    - 84
-  materials:
-    - abs
+physical: null
 platform_compatibility:
   pc: supported
   xbox: unknown

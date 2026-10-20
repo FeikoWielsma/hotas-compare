@@ -25,6 +25,23 @@ connectivity:
   usb: Hi-Speed USB (32-bit ARM MCU controller)
   standalone_usb: true
 software: VKBDevCfg
+prices:
+- region: US
+  currency: USD
+  amount: 55
+  incl_vat: false
+  store: vkbsimcontrollers.com
+  url: https://vkbsimcontrollers.com/products/blackbox-mk2
+  verified: '2026-10-21'
+  source: manual
+- region: EU
+  currency: EUR
+  amount: 49
+  incl_vat: true
+  store: flightsimcontrols.com
+  url: https://flightsimcontrols.com/product/vkb-main-controller-blackbox-stand-alone/
+  verified: '2026-10-21'
+  source: manual
 verification: draft
 sources:
 - https://vkbsimcontrollers.com/products/blackbox-mk2

@@ -19,7 +19,6 @@ controls:
 - type: trigger
   location: grip
   stages: 1
-  action: sequential
   count: 1
   label: Primary trigger
   source: https://virpil-controls.eu/vpc-flnkr-grip.html
@@ -40,7 +39,6 @@ controls:
 - type: button
   location: grip
   count: 8
-  backlit: false
   label: Momentary push buttons, preinstalled layout
   source: https://virpil-controls.eu/vpc-flnkr-grip.html
 - type: hat
@@ -66,7 +64,6 @@ controls:
   location: grip
   kind: brake
   analog: true
-  push: false
   count: 1
   label: Brake lever axis
   source: https://virpil-controls.eu/vpc-flnkr-grip.html

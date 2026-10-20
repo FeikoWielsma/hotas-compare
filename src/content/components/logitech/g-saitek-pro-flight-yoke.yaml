@@ -8,7 +8,6 @@ controls:
   - type: hat
     location: grip
     ways: 8
-    push: false
     count: 1
     label: Left-handle POV hat
     source: https://www.logitech.com/assets/65128/flight-yoke-system.pdf
@@ -16,22 +15,18 @@ controls:
     location: grip
     count: 3
     analog: false
-    push: false
     label: Three handle rocker switches
     notes: The manual shows one 2-way rocker on the left handle and two 2-way rockers on the right handle.
     source: https://www.logitech.com/assets/65128/flight-yoke-system.pdf
   - type: button
     location: grip
     count: 2
-    backlit: false
     label: Single-function handle buttons
     notes: One is on the back of each handle.
     source: https://www.logitech.com/assets/65128/flight-yoke-system.pdf
   - type: toggle
     location: grip
     ways: 3
-    momentary: false
-    push: false
     count: 1
     label: Right-handle 3-position mode selector
     notes: Located on the back of the right handle.
@@ -39,7 +34,6 @@ controls:
   - type: button
     location: panel
     count: 3
-    backlit: false
     label: Chronograph function, start/stop, and reset buttons
     notes: Three physical buttons below the display, as shown on manual page 4.
     source: https://www.logitech.com/assets/65128/flight-yoke-system.pdf

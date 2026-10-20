@@ -25,7 +25,6 @@ controls:
   count: 6
   ways: 3
   momentary: true
-  push: false
   label: ON-OFF-ON momentary toggles
   source: https://virpil-controls.eu/vpc-control-panel-1.html
 - type: toggle
@@ -33,7 +32,6 @@ controls:
   count: 2
   ways: 2
   momentary: false
-  push: false
   label: ON-ON latched toggles
   source: https://virpil-controls.eu/vpc-control-panel-1.html
 - type: toggle
@@ -41,7 +39,6 @@ controls:
   count: 2
   ways: 3
   momentary: false
-  push: false
   label: Flip-cover toggles
   source: https://virpil-controls.eu/vpc-control-panel-1.html
 - type: encoder
@@ -54,7 +51,6 @@ controls:
   location: panel
   count: 2
   mode: analog
-  push: false
   label: Axis dials
   source: https://virpil-controls.eu/vpc-control-panel-1.html
 controls_evidence:
@@ -71,9 +67,7 @@ hardware:
   sensor: contactless_magnetic
   axes:
   - name: Dial 1
-    sensor: contactless_magnetic
   - name: Dial 2
-    sensor: contactless_magnetic
   force_adjustable: false
   cams_swappable: false
   damping: null

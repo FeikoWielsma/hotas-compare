@@ -19,35 +19,19 @@ controls:
     count: 2
     location: panel
     label: ACT/STBY frequency transfer buttons
-    backlit: false
     source: https://www.logitech.com/assets/65157/flight-radio-panel.pdf
 controls_evidence:
-  coverage: complete
+  coverage: partial
   source: https://www.logitech.com/assets/65157/flight-radio-panel.pdf
   checked: '2026-10-20'
   notes: >-
-    Official manual labels the mode selector, outer and inner rotary controls, and ACT/STBY switches for each of two radio rows.
-hardware:
-  axes: []
-  sensor: null
-  gimbal: null
-  force_adjustable: null
-  cams_swappable: null
-  damping: null
-  extension_support: null
-  throw_deg: null
+    The official manual labels the radio mode selector, outer and inner rotary controls, and ACT/STBY switch. The manual text does not state how many of each the panel has, so the counts are unverified and coverage stays partial.
+hardware: null
 connectivity:
   usb: a_cable
   standalone_usb: true
 software: Logitech G HUB
-physical:
-  weight_g: 419
-  dimensions_mm:
-    - 282
-    - 55
-    - 84
-  materials:
-    - abs
+physical: null
 platform_compatibility:
   pc: supported
   xbox: unknown
@@ -67,7 +51,7 @@ prices:
     source: manual
   - region: UK
     currency: GBP
-    amount: 94.99
+    amount: 79.99
     incl_vat: true
     store: logitechg.com
     url: https://www.logitechg.com/en-gb/shop/p/flight-simulator-cockpit-radio-panel
@@ -75,7 +59,7 @@ prices:
     source: manual
   - region: EU
     currency: EUR
-    amount: 109.99
+    amount: 89.99
     incl_vat: true
     store: logitechg.com
     url: https://www.logitechg.com/de-de/shop/p/flight-simulator-cockpit-radio-panel

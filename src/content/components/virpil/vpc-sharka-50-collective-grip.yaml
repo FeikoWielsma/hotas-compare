@@ -31,7 +31,6 @@ controls:
   source: https://virpil-controls.eu/vpc-sharka-50-collective-grip.html
 - type: toggle
   ways: 3
-  push: false
   count: 3
   location: grip
   label: ON-OFF-ON toggles
@@ -39,7 +38,6 @@ controls:
   source: https://virpil-controls.eu/vpc-sharka-50-collective-grip.html
 - type: button
   count: 3
-  backlit: false
   location: grip
   label: Push buttons
   source: https://virpil-controls.eu/vpc-sharka-50-collective-grip.html

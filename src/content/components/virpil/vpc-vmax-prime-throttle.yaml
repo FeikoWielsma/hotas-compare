@@ -16,14 +16,12 @@ controls:
   - type: lever
     kind: throttle_dual
     analog: true
-    push: false
     count: 2
     label: Split throttle axes
     source: https://virpil-controls.eu/vpc-vmax-prime-throttle.html
   - type: lever
     kind: other
     analog: true
-    push: false
     count: 1
     label: Auxiliary axis
     source: https://virpil-controls.eu/vpc-vmax-prime-throttle.html
@@ -68,14 +66,11 @@ controls:
     count: 5
     ways: 3
     momentary: true
-    push: false
     label: ON-OFF-ON momentary toggles
     source: https://virpil-controls.eu/vpc-vmax-prime-throttle.html
   - type: rotary
     count: 1
     mode: selector
-    positions: 5
-    push: false
     label: Mode switch dial
     source: https://virpil-controls.eu/vpc-vmax-prime-throttle.html
   - type: button
@@ -105,7 +100,6 @@ connectivity:
   standalone_usb: true
 software: VPC Configuration Tool
 physical:
-  weight_g: 3100
   materials:
     - aluminium
     - duralumin

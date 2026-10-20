@@ -33,12 +33,12 @@ controls_evidence:
   notes: SKU VPC-633-03. Optional module for the B-JET yoke handle. The page says it replaces one hat switch and lists the module itself as one 4-way hat with push plus one contactless analogue ministick. It is not included with the handle.
 hardware:
   gimbal: null
-  sensor: contactless_magnetic
+  sensor: contactless
   axes:
   - name: Ministick X
-    sensor: contactless_magnetic
+    sensor: contactless
   - name: Ministick Y
-    sensor: contactless_magnetic
+    sensor: contactless
   force_adjustable: false
   cams_swappable: false
   damping: null

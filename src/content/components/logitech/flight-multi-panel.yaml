@@ -9,7 +9,6 @@ controls:
     count: 8
     location: panel
     label: Autopilot function buttons (AP, HDG, NAV, APR, REV, ALT, CRS, IAS)
-    backlit: false
     source: https://www.logitech.com/assets/65126/2/flight-multi-panel.pdf
   - type: toggle
     ways: 3
@@ -43,28 +42,13 @@ controls_evidence:
   source: https://www.logitech.com/assets/65126/2/flight-multi-panel.pdf
   checked: '2026-10-20'
   notes: >-
-    Manual product-tour diagram and controls section identify eight push buttons, one three-position selector, one two-way rocker, function selector, value adjustment knob and pitch trim wheel.
-hardware:
-  axes: []
-  sensor: null
-  gimbal: null
-  force_adjustable: null
-  cams_swappable: null
-  damping: null
-  extension_support: null
-  throw_deg: null
+    Manual product-tour diagram and controls section identify eight buttons, one three-position selector, one two-way rocker, function selector, value adjustment knob and pitch trim wheel.
+hardware: null
 connectivity:
   usb: a_cable
   standalone_usb: true
 software: Logitech G HUB
-physical:
-  weight_g: 392
-  dimensions_mm:
-    - 282
-    - 57
-    - 84
-  materials:
-    - abs
+physical: null
 platform_compatibility:
   pc: supported
   xbox: unknown
@@ -84,7 +68,7 @@ prices:
     source: manual
   - region: UK
     currency: GBP
-    amount: 79.99
+    amount: 69.99
     incl_vat: true
     store: logitechg.com
     url: https://www.logitechg.com/en-gb/shop/p/flight-simulator-autopilot-multipanel
@@ -92,7 +76,7 @@ prices:
     source: manual
   - region: EU
     currency: EUR
-    amount: 89.99
+    amount: 84.99
     incl_vat: true
     store: logitechg.com
     url: https://www.logitechg.com/de-de/shop/p/flight-simulator-autopilot-multipanel

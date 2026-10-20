@@ -15,7 +15,6 @@ controls:
 - type: lever
   kind: collective
   analog: true
-  push: false
   count: 1
   location: base
   label: Collective axis
@@ -27,15 +26,11 @@ controls_evidence:
   notes: SKU VPC-111-200. This is the upgraded Rotor TCS base, not the Rotor TCS Plus base. The user manual describes one collective lever, a travel limiter, and an adjustable clutch. It does not list a twist throttle, engine-idle button, or twist-restrictor switch; those controls stay on the Plus record. Grip inputs belong to the separately sold collective grip. The store page repeats MongoosT-50CM3 throttle marketing text, which was not used.
 hardware:
   gimbal: null
-  sensor: contactless_magnetic
   axes:
   - name: Collective
-    sensor: contactless_magnetic
   force_adjustable: true
-  cams_swappable: true
   damping: adjustable clutch
   extension_support: false
-  throw_deg: 40
 connectivity:
   usb: VPC DUAL USB - XS9 cable
   standalone_usb: true

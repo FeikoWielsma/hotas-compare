@@ -91,6 +91,14 @@ prices:
   url: https://vkbsimcontrollers.com/products/mcg-pro-add-on-grip-for-gunfighter-mk-iv-us
   verified: '2026-10-19'
   source: manual
+- region: EU
+  currency: EUR
+  amount: 161
+  incl_vat: true
+  store: flightsimcontrols.com
+  url: https://flightsimcontrols.com/product/modern-combat-grip-mcg-socket-rev-b/
+  verified: '2026-10-21'
+  source: manual
 verification: draft
 sources:
 - https://vkbsimcontrollers.com/products/mcg-pro-add-on-grip-for-gunfighter-mk-iv-us

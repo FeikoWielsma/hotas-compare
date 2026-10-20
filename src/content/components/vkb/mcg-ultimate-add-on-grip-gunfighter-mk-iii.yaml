@@ -75,8 +75,6 @@ hardware:
     sensor: contactless_magnetic
   - name: Trimmer X
     sensor: contactless_magnetic
-  - name: Trimmer Y
-    sensor: contactless_magnetic
   - name: Brake
     sensor: contactless_magnetic
   force_adjustable: false
@@ -108,6 +106,14 @@ prices:
   store: vkbsimcontrollers.com
   url: https://vkbsimcontrollers.com/products/mcg-ultimate-add-on-grip-for-gunfighter-mk-iii
   verified: '2026-10-19'
+  source: manual
+- region: EU
+  currency: EUR
+  amount: 299
+  incl_vat: true
+  store: flightsimcontrols.com
+  url: https://flightsimcontrols.com/product/modern-combat-grip-ultimate-edition/
+  verified: '2026-10-21'
   source: manual
 verdict:
   author: feiko

@@ -37,18 +37,16 @@ controls:
   location: grip
   ways: 3
   momentary: false
-  push: false
   label: Mode selector
   source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
 - type: toggle
   location: base
   count: 3
-  ways: 3
+  ways: 2
   momentary: true
-  push: false
   label: Spring-loaded base switches
   notes: Three spring-loaded switches provide six programmed commands (each switch
-    has two momentary directions with center neutral).
+    has two directions).
   source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
 - type: button
   location: grip

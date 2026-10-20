@@ -59,7 +59,6 @@ controls:
   source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
 - type: slider
   analog: true
-  center_detent: false
   location: handle
   label: Thumb slider
   source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
@@ -81,10 +80,8 @@ controls_evidence:
     remains partial.
 hardware:
   gimbal: null
-  sensor: potentiometer
   axes:
   - name: Throttle
-    sensor: potentiometer
   force_adjustable: true
   cams_swappable: false
   extension_support: false

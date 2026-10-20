@@ -24,6 +24,14 @@ prices:
   url: https://vkbsimcontrollers.com/products/gunfighter-iv-modern-combat-edition-tabletop-us
   verified: '2026-10-19'
   source: manual
+- region: EU
+  currency: EUR
+  amount: 456
+  incl_vat: true
+  store: flightsimcontrols.com
+  url: https://flightsimcontrols.com/product/gunfighter-iv-modern-combat-edition/
+  verified: '2026-10-21'
+  source: manual
 verdict:
   author: feiko
   hands_on: false

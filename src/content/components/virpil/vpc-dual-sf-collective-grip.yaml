@@ -16,7 +16,6 @@ mount:
 controls:
 - type: trigger
   stages: 1
-  action: sequential
   count: 2
   location: grip
   label: Single-stage triggers
@@ -43,14 +42,11 @@ controls:
   source: https://virpil-controls.eu/vpc-dual-sf-collective-grip.html
 - type: button
   count: 6
-  backlit: false
   location: grip
   label: Momentary push buttons
   source: https://virpil-controls.eu/vpc-dual-sf-collective-grip.html
 - type: toggle
   ways: 3
-  momentary: true
-  push: false
   count: 1
   location: grip
   label: '[ON]-OFF-[ON] toggle'

@@ -24,6 +24,14 @@ prices:
   url: https://vkbsimcontrollers.com/products/gunfighter-iv-wwii-combat-edition-tabletop-us-copy
   verified: '2026-10-19'
   source: manual
+- region: EU
+  currency: EUR
+  amount: 446
+  incl_vat: true
+  store: flightsimcontrols.com
+  url: https://flightsimcontrols.com/product/gunfighter-iv-f-14-combat-edition/
+  verified: '2026-10-21'
+  source: manual
 verdict:
   author: feiko
   hands_on: false

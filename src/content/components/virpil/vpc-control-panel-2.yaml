@@ -25,7 +25,6 @@ controls:
   count: 6
   ways: 3
   momentary: true
-  push: false
   label: ON-OFF-ON momentary toggles
   source: https://virpil-controls.eu/vpc-control-panel-2.html
 - type: toggle
@@ -33,7 +32,6 @@ controls:
   count: 2
   ways: 2
   momentary: false
-  push: false
   label: ON-ON latched toggles
   source: https://virpil-controls.eu/vpc-control-panel-2.html
 - type: toggle
@@ -41,7 +39,6 @@ controls:
   count: 2
   ways: 3
   momentary: false
-  push: false
   label: Flip-cover toggles
   source: https://virpil-controls.eu/vpc-control-panel-2.html
 - type: encoder
@@ -54,11 +51,8 @@ controls:
   location: panel
   kind: other
   analog: false
-  positions: 3
-  momentary: false
-  push: false
   count: 1
-  label: Three-position landing-gear lever
+  label: Landing-gear lever (2- or 3-position detent plate)
   notes: ON-ON-ON with lift-and-return; swappable detent plate
   source: https://virpil-controls.eu/vpc-control-panel-2.html
 controls_evidence:

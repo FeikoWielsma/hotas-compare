@@ -17,24 +17,20 @@ controls:
     location: grip
     count: 1
     label: Thumb button (Button 2)
-    backlit: false
     source: https://www.logitechg.com/en-us/shop/p/extreme-3d-pro-joystick
   - type: button
     location: grip
     count: 4
     label: Grip head buttons (Buttons 3-6)
-    backlit: false
     source: https://www.logitechg.com/en-us/shop/p/extreme-3d-pro-joystick
   - type: button
     location: base
     count: 6
     label: Base buttons (Buttons 7-12)
-    backlit: false
     source: https://www.logitechg.com/en-us/shop/p/extreme-3d-pro-joystick
   - type: hat
     location: grip
     ways: 8
-    push: false
     count: 1
     label: 8-way POV hat switch
     source: https://www.logitechg.com/en-us/shop/p/extreme-3d-pro-joystick
@@ -47,11 +43,11 @@ controls:
     label: Throttle lever
     source: https://www.logitechg.com/en-us/shop/p/extreme-3d-pro-joystick
 controls_evidence:
-  coverage: complete
+  coverage: partial
   source: https://www.logitechg.com/en-us/shop/p/extreme-3d-pro-joystick
   checked: '2026-10-21'
   notes: >-
-    Official Logitech G product tour and physical device layout confirm 12 individually numbered programmable buttons (Trigger 1, Thumb 2, Head 3-6, Base 7-12), 8-way POV hat switch, and analog throttle slider lever.
+    Official Logitech G product page states 12 programmable buttons and an 8-way hat switch. It does not state button numbering, the trigger/thumb/head/base split, or a throttle lever, so coverage stays partial.
 hardware:
   gimbal: ball_joint
   sensor: potentiometer

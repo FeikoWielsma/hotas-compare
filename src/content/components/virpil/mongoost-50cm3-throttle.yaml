@@ -16,7 +16,6 @@ controls:
 - type: lever
   kind: throttle_dual
   analog: true
-  push: false
   count: 2
   location: handle
   label: Throttle axes
@@ -24,14 +23,12 @@ controls:
 - type: lever
   kind: other
   analog: true
-  push: false
   count: 1
   location: other
   label: Auxiliary axis
   source: https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
 - type: slider
   analog: true
-  center_detent: false
   count: 1
   location: handle
   label: Slider axis
@@ -68,7 +65,6 @@ controls:
   source: https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
 - type: encoder
   count: 1
-  push: false
   location: handle
   label: Encoder without push
   source: https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
@@ -92,7 +88,6 @@ controls:
   source: https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
 - type: button
   count: 4
-  backlit: false
   location: handle
   label: Handle momentary buttons
   source: https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
@@ -100,7 +95,6 @@ controls:
   count: 3
   ways: 3
   momentary: true
-  push: false
   location: panel
   label: ON-OFF-ON momentary toggles
   source: https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
@@ -108,7 +102,6 @@ controls:
   count: 4
   ways: 2
   momentary: false
-  push: false
   location: panel
   label: ON-ON latched toggles
   source: https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
@@ -116,7 +109,6 @@ controls:
   count: 1
   mode: selector
   positions: 5
-  push: false
   location: panel
   label: 5-way mode dial
   notes: 'May be configured as five button inputs or as a shift selector.'
@@ -129,16 +121,16 @@ controls_evidence:
 
 hardware:
   gimbal: null
-  sensor: contactless_magnetic
+  sensor: contactless
   axes:
     - name: Throttle_Left
-      sensor: contactless_magnetic
+      sensor: contactless
     - name: Throttle_Right
-      sensor: contactless_magnetic
+      sensor: contactless
     - name: Auxiliary
-      sensor: contactless_magnetic
+      sensor: contactless
     - name: Slider
-      sensor: contactless_magnetic
+      sensor: contactless
   force_adjustable: true
   cams_swappable: false
   extension_support: false
@@ -147,7 +139,6 @@ connectivity:
   standalone_usb: true
 software: VPC Configuration Tool
 physical:
-  weight_g: 3100
   materials:
     - aluminium
     - duralumin

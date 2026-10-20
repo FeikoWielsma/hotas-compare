@@ -29,6 +29,22 @@ prices:
   url: https://vkbsimcontrollers.com/products/gnx-mfh-multi-functional-holder-us
   verified: '2026-10-19'
   source: manual
+- region: EU
+  currency: EUR
+  amount: 36.5
+  incl_vat: true
+  store: flightsimcontrols.com
+  url: https://flightsimcontrols.com/product/gnx-mfh-multi-functional-holder/
+  verified: '2026-10-21'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 29
+  incl_vat: true
+  store: flightsimcontrols.co.uk
+  url: https://flightsimcontrols.co.uk/product/gnx-mfh-multi-functional-holder/
+  verified: '2026-10-21'
+  source: manual
 verification: draft
 sources:
 - https://vkbsimcontrollers.com/products/gnx-mfh-multi-functional-holder-us

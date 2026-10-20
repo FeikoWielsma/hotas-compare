@@ -48,6 +48,14 @@ prices:
   url: https://vkbsimcontrollers.com/products/wwii-gnx-thq-add-on-grip-us
   verified: '2026-10-19'
   source: manual
+- region: EU
+  currency: EUR
+  amount: 31
+  incl_vat: true
+  store: flightsimcontrols.com
+  url: https://flightsimcontrols.com/product/wwii-thq-grip-add-on/
+  verified: '2026-10-21'
+  source: manual
 verification: draft
 sources:
 - https://vkbsimcontrollers.com/products/wwii-gnx-thq-add-on-grip-us

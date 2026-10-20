@@ -59,15 +59,15 @@ hardware:
   sensor: contactless
   axes:
   - name: Throttle_Left
-    sensor: contactless_magnetic
+    sensor: contactless
   - name: Throttle_Right
-    sensor: contactless_magnetic
+    sensor: contactless
   - name: Auxiliary
-    sensor: contactless_magnetic
+    sensor: contactless
   - name: Axis_Dial_1
-    sensor: contactless_magnetic
+    sensor: contactless
   - name: Axis_Dial_2
-    sensor: contactless_magnetic
+    sensor: contactless
   force_adjustable: true
   cams_swappable: null
   damping: null

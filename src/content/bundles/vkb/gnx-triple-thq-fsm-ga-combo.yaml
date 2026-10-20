@@ -25,6 +25,14 @@ prices:
   url: https://vkbsimcontrollers.com/products/gnx-triple-thq-fsm-ga-combo
   verified: '2026-10-19'
   source: manual
+- region: EU
+  currency: EUR
+  amount: 468
+  incl_vat: true
+  store: flightsimcontrols.com
+  url: https://flightsimcontrols.com/product/gnx-triple-thq-fsm-ga-combo/
+  verified: '2026-10-21'
+  source: manual
 verdict:
   author: feiko
   hands_on: false

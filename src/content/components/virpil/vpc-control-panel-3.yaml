@@ -15,7 +15,6 @@ controls:
 - type: lever
   kind: other
   analog: true
-  push: false
   count: 4
   location: panel
   label: Axis levers
@@ -29,13 +28,11 @@ controls:
   source: https://virpil-controls.eu/vpc-universal-control-panel-3.html
 - type: button
   count: 3
-  backlit: false
   location: panel
   label: Momentary push buttons
   source: https://virpil-controls.eu/vpc-universal-control-panel-3.html
 - type: toggle
   ways: 3
-  push: false
   count: 7
   location: panel
   label: ON-OFF-ON toggles
@@ -43,7 +40,6 @@ controls:
   source: https://virpil-controls.eu/vpc-universal-control-panel-3.html
 - type: toggle
   ways: 3
-  push: false
   count: 3
   location: panel
   label: Latching toggles
@@ -58,11 +54,10 @@ controls:
 - type: rotary
   mode: selector
   positions: 5
-  push: true
   count: 1
   location: panel
   label: 5-way mode dial
-  notes: Center push is on the official button-mapping diagram. The product-page list names the dial without mentioning the push.
+  notes: The product page lists the 5-way mode dial without a push function. The button-mapping diagram cited earlier could not be checked, so push is left unset.
   source: https://support.virpil.com/en/support/solutions/articles/47001264833-vpc-control-panel-3
 controls_evidence:
   coverage: complete
@@ -71,16 +66,16 @@ controls_evidence:
   notes: 'SKU VPC-403-001. Counts are the section titled "UNIVERSAL CONTROL PANEL #3 INPUTS". MongoosT-50CM3 throttle paragraphs elsewhere on the page were not used. The mapping diagram names the four lever axes X, Y, RX, and RY and shows a center push on the mode dial. Optional axis-handle cosmetics are a separate product and do not add inputs.'
 hardware:
   gimbal: null
-  sensor: contactless_magnetic
+  sensor: contactless
   axes:
   - name: X
-    sensor: contactless_magnetic
+    sensor: contactless
   - name: Y
-    sensor: contactless_magnetic
+    sensor: contactless
   - name: RX
-    sensor: contactless_magnetic
+    sensor: contactless
   - name: RY
-    sensor: contactless_magnetic
+    sensor: contactless
   force_adjustable: false
   cams_swappable: false
   damping: null
