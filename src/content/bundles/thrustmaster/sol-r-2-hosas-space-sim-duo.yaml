@@ -18,6 +18,14 @@ prices:
   url: https://www.thrustmaster.com/nl-nl/products/sol-r-2-hosas-space-sim-duo/
   verified: '2026-10-20'
   source: manual
+- region: US
+  currency: USD
+  amount: 399.99
+  incl_vat: false
+  store: Thrustmaster US eshop
+  url: https://eshop.thrustmaster.com/en_us/sol-r-2-hosas.html
+  verified: '2026-10-21'
+  source: manual
 verification: draft
 sources:
 - https://www.thrustmaster.com/nl-nl/products/sol-r-2-hosas-space-sim-duo/

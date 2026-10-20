@@ -14,6 +14,22 @@ platform_compatibility:
   sources:
   - https://www.thrustmaster.com/en-us/products/t-16000m-fcs-flight-pack/
 prices:
+- region: EU
+  currency: EUR
+  amount: 239.99
+  incl_vat: true
+  store: Thrustmaster EU eshop
+  url: https://shop.thrustmaster.com/en_eu/t-16000m-fcs-flight-pack.html
+  verified: '2026-10-21'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 199.99
+  incl_vat: true
+  store: Thrustmaster UK eshop
+  url: https://shop.thrustmaster.com/en_gb/t-16000m-fcs-flight-pack.html
+  verified: '2026-10-21'
+  source: manual
 - region: US
   currency: USD
   amount: 269.99

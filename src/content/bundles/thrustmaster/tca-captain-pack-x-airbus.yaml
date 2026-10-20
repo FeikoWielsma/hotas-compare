@@ -15,6 +15,14 @@ platform_compatibility:
   sources:
   - https://www.thrustmaster.com/en-us/products/tca-captain-pack-x-airbus-edition/
 prices:
+- region: EU
+  currency: EUR
+  amount: 299.99
+  incl_vat: true
+  store: Thrustmaster EU eshop
+  url: https://shop.thrustmaster.com/en_eu/tca-captain-pack-x-airbus-edition.html
+  verified: '2026-10-21'
+  source: manual
 - region: US
   currency: USD
   amount: 329.99

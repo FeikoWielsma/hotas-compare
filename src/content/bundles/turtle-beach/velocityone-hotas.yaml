@@ -14,13 +14,35 @@ prices:
   url: https://www.turtlebeach.com/products/velocity-one-hotas?Platform=Xbox
   verified: '2026-10-20'
   source: manual
+- region: EU
+  currency: EUR
+  amount: 249.99
+  incl_vat: true
+  store: turtlebeach.com
+  url: https://eu.turtlebeach.com/products/velocity-one-hotas
+  verified: '2026-10-21'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 229.99
+  incl_vat: true
+  store: turtlebeach.com
+  url: https://uk.turtlebeach.com/products/velocity-one-hotas
+  verified: '2026-10-21'
+  source: manual
 platform_compatibility:
   pc: supported
   xbox: supported
   ps5: unknown
-  notes: Official H.O.T.A.S. page confirms Xbox and Windows PC support. Dual Throttle uses the Flightstick II pass-through on Xbox. Support guides establish Series X|S; Xbox One wording on the bundle page conflicts with those guides and is not confirmed. PS5 is not mentioned.
+  notes: >-
+    Official H.O.T.A.S. page confirms Xbox and Windows PC support. Dual Throttle uses the Flightstick II
+    pass-through on Xbox. Support guides establish Series X|S; Xbox One wording on the bundle page conflicts
+    with those guides and is not confirmed. The EU and UK product tags are Flight Sim, PC, Wired, and Xbox.
+    PlayStation on those pages is headset navigation, so PS5 stays unknown.
   sources:
   - https://www.turtlebeach.com/products/velocity-one-hotas?Platform=Xbox
+  - https://eu.turtlebeach.com/products/velocity-one-hotas
+  - https://uk.turtlebeach.com/products/velocity-one-hotas
 verification: draft
 images:
 - file: /images/turtle-beach/velocityone-hotas.png
@@ -28,3 +50,5 @@ images:
   caption: VelocityOne H.O.T.A.S.
 sources:
 - https://www.turtlebeach.com/products/velocity-one-hotas?Platform=Xbox
+- https://eu.turtlebeach.com/products/velocity-one-hotas
+- https://uk.turtlebeach.com/products/velocity-one-hotas

@@ -37,21 +37,24 @@ controls:
   location: grip
   ways: 3
   momentary: false
+  push: false
   label: Mode selector
   source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
 - type: toggle
   location: base
   count: 3
-  ways: 2
+  ways: 3
   momentary: true
+  push: false
   label: Spring-loaded base switches
   notes: Three spring-loaded switches provide six programmed commands (each switch
-    has two directions).
+    has two momentary directions with center neutral).
   source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
 - type: switch
   location: grip
   positions: 2
   momentary: false
+  push: false
   label: Metal pinkie switch
   source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
 controls_evidence:
@@ -64,11 +67,14 @@ controls_evidence:
     totals are not treated as physical button counts.
 hardware:
   gimbal: ball_joint
-  sensor: null
+  sensor: hall
   axes:
   - name: X
+    sensor: hall
   - name: Y
+    sensor: hall
   - name: Twist
+    sensor: potentiometer
   force_adjustable: false
   cams_swappable: false
   extension_support: false

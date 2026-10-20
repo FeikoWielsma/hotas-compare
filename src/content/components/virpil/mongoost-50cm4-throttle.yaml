@@ -16,6 +16,7 @@ controls:
 - type: lever
   kind: throttle_dual
   analog: true
+  push: false
   count: 2
   location: handle
   label: Throttle axes
@@ -23,6 +24,7 @@ controls:
 - type: lever
   kind: other
   analog: true
+  push: false
   count: 1
   location: other
   label: Auxiliary axis
@@ -66,11 +68,13 @@ controls:
   source: https://virpil-controls.eu/mongoost-50cm4-throttle.html
 - type: button
   count: 1
+  backlit: false
   location: panel
   label: Base panel momentary push button
   source: https://virpil-controls.eu/mongoost-50cm4-throttle.html
 - type: button
   count: 4
+  backlit: false
   location: handle
   label: Grip momentary buttons
   source: https://virpil-controls.eu/mongoost-50cm4-throttle.html
@@ -78,6 +82,7 @@ controls:
   count: 2
   ways: 3
   momentary: true
+  push: false
   location: panel
   label: ON-OFF-ON momentary toggles
   source: https://virpil-controls.eu/mongoost-50cm4-throttle.html

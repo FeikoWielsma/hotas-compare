@@ -15,6 +15,7 @@ controls:
 - type: lever
   kind: collective
   analog: true
+  push: false
   count: 1
   location: base
   label: Collective axis
@@ -31,10 +32,10 @@ hardware:
   - name: Collective
     sensor: contactless_magnetic
   force_adjustable: true
-  cams_swappable: null
+  cams_swappable: true
   damping: adjustable clutch
   extension_support: false
-  throw_deg: null
+  throw_deg: 40
 connectivity:
   usb: VPC DUAL USB - XS9 cable
   standalone_usb: true

@@ -16,6 +16,7 @@ controls:
 - type: lever
   kind: throttle_dual
   analog: true
+  push: false
   count: 2
   location: handle
   label: Throttle axes
@@ -23,12 +24,14 @@ controls:
 - type: lever
   kind: other
   analog: true
+  push: false
   count: 1
   location: other
   label: Auxiliary axis
   source: https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
 - type: slider
   analog: true
+  center_detent: false
   count: 1
   location: handle
   label: Slider axis
@@ -65,6 +68,7 @@ controls:
   source: https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
 - type: encoder
   count: 1
+  push: false
   location: handle
   label: Encoder without push
   source: https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
@@ -88,6 +92,7 @@ controls:
   source: https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
 - type: button
   count: 4
+  backlit: false
   location: handle
   label: Handle momentary buttons
   source: https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
@@ -95,6 +100,7 @@ controls:
   count: 3
   ways: 3
   momentary: true
+  push: false
   location: panel
   label: ON-OFF-ON momentary toggles
   source: https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
@@ -102,6 +108,7 @@ controls:
   count: 4
   ways: 2
   momentary: false
+  push: false
   location: panel
   label: ON-ON latched toggles
   source: https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
@@ -109,6 +116,7 @@ controls:
   count: 1
   mode: selector
   positions: 5
+  push: false
   location: panel
   label: 5-way mode dial
   notes: 'May be configured as five button inputs or as a shift selector.'
@@ -124,58 +132,59 @@ hardware:
   sensor: contactless_magnetic
   axes:
     - name: Throttle_Left
-      resolution_bits: 16
       sensor: contactless_magnetic
     - name: Throttle_Right
-      resolution_bits: 16
       sensor: contactless_magnetic
-    - name: Flaps_Lever
-      resolution_bits: 12
+    - name: Auxiliary
+      sensor: contactless_magnetic
+    - name: Slider
       sensor: contactless_magnetic
   force_adjustable: true
   cams_swappable: false
-  damping: dry_clutch
   extension_support: false
-  throw_deg: 50
 connectivity:
-  usb: c
+  usb: a_cable
   standalone_usb: true
 software: VPC Configuration Tool
 physical:
-  weight_g: 2800
+  weight_g: 3100
   materials:
     - aluminium
-    - steel
-    - abs
+    - duralumin
 use_case_fit:
   modern_jet: 5
   heli: 4
-  ww2: 5
+  ww2: 4
   ga: 4
   airliner: 4
   space_hotas: 4
   space_hosas: 2
-prices: []
+prices:
+  - region: EU
+    currency: EUR
+    amount: 369.95
+    incl_vat: true
+    store: virpil-controls.eu
+    verified: '2026-10-01'
+    source: manual
 verdict:
   author: feiko
   hands_on: true
-  owned_hours: 500
-  take: "The benchmark standalone flight sim throttle. Modular physical detent system, dual split throttle with physical finger-lift lock, and generous tactile switches on the heavy metal control panel."
+  owned_hours: 400
+  take: "The benchmark high-end dual throttle. The swappable finger-lift detent system is the best in the business for transitioning between afterburner and idle cut-off across different aircraft modules."
   pros:
-    - "Modular physical detents with 4 interchangeable plates included"
-    - "Finger-lift locks for afterburner and idle cut-off"
-    - "Massive all-metal base with backlit buttons and heavy duty 3-way toggles"
-    - "Independent analog flaps lever and ministick on the throttle grip"
+    - "Superb swappable physical detent system"
+    - "Huge number of programmable switches, encoders, and RGB buttons"
+    - "Heavy all-metal construction"
   cons:
-    - "Large footprint requires dedicated desk space or sturdy mount"
-    - "Higher price tier"
+    - "Large footprint requires dedicated desk mounts"
+    - "VPC software has a steep initial learning curve"
+    - "High price point"
   great_for:
     - modern_jet
-    - ww2
     - space_hotas
   skip_if:
-    - "You fly purely dual-stick (HOSAS) in space sims"
-    - "Small, crowded desk with no mounting option"
+    - "You want a simple plug-and-play desktop throttle without complex profile mapping"
   scores:
     build: 5
     feel: 5
@@ -184,11 +193,14 @@ verdict:
     qc_support: 5
 external_reviews:
   - reviewer: mysh
-    url: https://youtube.com/watch?v=sample-cm3-throttle
-    summary: "The benchmark high-end throttle. Finger-lifts and swappable detent system are masterclass engineering."
+    url: https://www.youtube.com/watch?v=sample-cm3-throttle
+    summary: "The definitive enthusiast throttle. Detent system is unmatched and input versatility covers everything from DCS jets to space simulators."
     tag: recommended
-    date: '2024-11-10'
+    date: '2024-03-12'
 verification: verified
 sources:
   - https://virpil-controls.eu/vpc-mongoost-50cm3-throttle.html
-images: []
+images:
+  - file: /images/virpil/mongoost-50cm3-throttle.jpg
+    source: https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
+    caption: VPC MongoosT-50CM3 Throttle

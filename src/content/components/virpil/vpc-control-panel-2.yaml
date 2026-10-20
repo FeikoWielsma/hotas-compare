@@ -25,6 +25,7 @@ controls:
   count: 6
   ways: 3
   momentary: true
+  push: false
   label: ON-OFF-ON momentary toggles
   source: https://virpil-controls.eu/vpc-control-panel-2.html
 - type: toggle
@@ -32,6 +33,7 @@ controls:
   count: 2
   ways: 2
   momentary: false
+  push: false
   label: ON-ON latched toggles
   source: https://virpil-controls.eu/vpc-control-panel-2.html
 - type: toggle
@@ -39,6 +41,7 @@ controls:
   count: 2
   ways: 3
   momentary: false
+  push: false
   label: Flip-cover toggles
   source: https://virpil-controls.eu/vpc-control-panel-2.html
 - type: encoder
@@ -51,6 +54,9 @@ controls:
   location: panel
   kind: other
   analog: false
+  positions: 3
+  momentary: false
+  push: false
   count: 1
   label: Three-position landing-gear lever
   notes: ON-ON-ON with lift-and-return; swappable detent plate
@@ -61,9 +67,8 @@ controls_evidence:
   checked: '2026-10-19'
   notes: Exact preinstalled panel layout per official product page/B-stock detailed
     input list. Gear lever is a spring-loaded three-position digital selector with
-    lift/return; schema cannot represent its three positions or spring-return action
-    on a lever. Current exact-SKU store Product Weight field checked 2026-10-20; manufacturer
-    does not label net versus packed basis.
+    lift/return. Current exact-SKU store Product Weight field checked 2026-10-20;
+    manufacturer does not label net versus packed basis.
 hardware:
   gimbal: null
   sensor: contactless_magnetic

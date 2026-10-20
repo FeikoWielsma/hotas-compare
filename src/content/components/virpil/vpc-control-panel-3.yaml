@@ -15,6 +15,7 @@ controls:
 - type: lever
   kind: other
   analog: true
+  push: false
   count: 4
   location: panel
   label: Axis levers
@@ -28,11 +29,13 @@ controls:
   source: https://virpil-controls.eu/vpc-universal-control-panel-3.html
 - type: button
   count: 3
+  backlit: false
   location: panel
   label: Momentary push buttons
   source: https://virpil-controls.eu/vpc-universal-control-panel-3.html
 - type: toggle
   ways: 3
+  push: false
   count: 7
   location: panel
   label: ON-OFF-ON toggles
@@ -40,6 +43,7 @@ controls:
   source: https://virpil-controls.eu/vpc-universal-control-panel-3.html
 - type: toggle
   ways: 3
+  push: false
   count: 3
   location: panel
   label: Latching toggles

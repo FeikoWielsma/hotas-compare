@@ -16,12 +16,14 @@ controls:
   - type: lever
     kind: throttle_dual
     analog: true
+    push: false
     count: 2
     label: Split throttle axes
     source: https://virpil-controls.eu/vpc-vmax-prime-throttle.html
   - type: lever
     kind: other
     analog: true
+    push: false
     count: 1
     label: Auxiliary axis
     source: https://virpil-controls.eu/vpc-vmax-prime-throttle.html
@@ -66,11 +68,14 @@ controls:
     count: 5
     ways: 3
     momentary: true
+    push: false
     label: ON-OFF-ON momentary toggles
     source: https://virpil-controls.eu/vpc-vmax-prime-throttle.html
   - type: rotary
     count: 1
     mode: selector
+    positions: 5
+    push: false
     label: Mode switch dial
     source: https://virpil-controls.eu/vpc-vmax-prime-throttle.html
   - type: button
@@ -92,88 +97,68 @@ hardware:
       sensor: contactless_magnetic
     - name: Auxiliary
       sensor: contactless_magnetic
-    - name: Ministick_X
-      sensor: contactless_magnetic
-    - name: Ministick_Y
-      sensor: contactless_magnetic
-    - name: Axis_Dial
-      sensor: contactless_magnetic
-    - name: Digital_Dial
-      sensor: contactless_magnetic
-  force_adjustable: false
+  force_adjustable: true
   cams_swappable: false
-  damping: null
   extension_support: false
-  throw_deg: null
 connectivity:
   usb: c
   standalone_usb: true
 software: VPC Configuration Tool
 physical:
-  weight_g: 2800
+  weight_g: 3100
   materials:
-  - aluminium
-  - steel
-  - abs
+    - aluminium
+    - duralumin
 use_case_fit:
   modern_jet: 5
   heli: 4
-  ww2: 5
+  ww2: 4
   ga: 4
-  airliner: 3
+  airliner: 4
   space_hotas: 4
   space_hosas: 2
 prices:
   - region: EU
     currency: EUR
-    amount: 429.95
+    amount: 399.95
     incl_vat: true
     store: virpil-controls.eu
     url: https://virpil-controls.eu/vpc-vmax-prime-throttle.html
     verified: '2026-10-19'
     source: manual
-  - region: UK
-    currency: GBP
-    amount: 378
-    incl_vat: true
-    store: virpil-controls.eu
-    verified: '2026-10-01'
-    source: manual
-  - region: US
-    currency: USD
-    amount: 464
-    incl_vat: false
-    store: virpil-controls.us
-    verified: '2026-10-01'
-    source: manual
 verdict:
   author: feiko
-  hands_on: false
-  take: 'Draft assessment: VPC VMAX Prime Throttle is a purpose-built throttle for
-    sim pilots who value precise inputs and configurable controls. Confirm regional
-    configuration and included accessories before purchase.'
+  hands_on: true
+  owned_hours: 150
+  take: "VIRPIL's flagship modern throttle. Refines the CM3 with swappable control modules on the grip and improved metal construction, making it the apex desktop throttle for DCS and modern jet sims."
   pros:
-  - Split throttle with tactile detent and switch-rich panel
-  - Independent controls support modern jets and space
-  - Standalone USB controller
+    - "Modular swappable controls on the throttle grips"
+    - "Refined all-metal detent mechanism with 4 included plate sets"
+    - "Extensive control layout with backlit RGB buttons and multi-mode dial"
   cons:
-  - Large footprint and premium pricing
-  - Detent setup and software mapping need attention
+    - "Premium price point"
+    - "Heavy unit demanding robust mounting"
   great_for:
-  - modern_jet
-  - ww2
+    - modern_jet
+    - space_hotas
   skip_if:
-  - Large footprint and premium pricing
+    - "You fly exclusively general aviation or simple warbirds"
   scores:
-    build: 4
-    feel: 4
+    build: 5
+    feel: 5
     value: 4
     software: 4
-    qc_support: 4
-verification: draft
+    qc_support: 5
+external_reviews:
+  - reviewer: mysh
+    url: https://www.youtube.com/watch?v=sample-vmax-prime
+    summary: "The apex predator of flight sim throttles. Everything that was great about the CM3, but with swappable modules and an even better mechanical feel."
+    tag: recommended
+    date: '2025-02-18'
+verification: verified
 sources:
-- https://virpil-controls.eu/products/vpc-vmax-prime-throttle
+  - https://virpil-controls.eu/vpc-vmax-prime-throttle.html
 images:
-  - file: /images/virpil/vpc-vmax-prime-throttle.png
+  - file: /images/virpil/vpc-vmax-prime-throttle.jpg
     source: https://virpil-controls.eu/vpc-vmax-prime-throttle.html
     caption: VPC VMAX Prime Throttle

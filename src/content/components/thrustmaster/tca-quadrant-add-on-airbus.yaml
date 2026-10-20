@@ -27,10 +27,19 @@ controls:
   location: panel
   label: Speed-brake axis detents
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant/TCA_Quadrant_Add-On_Airbus_Edition_user_manual.pdf
-- type: button
-  count: 6
+- type: rotary
+  count: 1
   location: panel
-  label: Speed-brake module action buttons
+  label: Speed-brake module thumbwheel (mapped 21)
+  notes: Mapping leader 21 ends on the thumbwheel. One button number is printed on it. Analog-versus-selector behavior is not stated.
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant/TCA_Quadrant_Add-On_Airbus_Edition_user_manual.pdf
+- type: switch
+  count: 1
+  location: panel
+  label: Speed-brake module switch (mapped 22-26)
+  notes: >-
+    Mapping leader 22-26 ends on one body, drawn as a small lever on a round base. Five button
+    numbers share that leader. The drawing does not show five detents, so the position count stays unset.
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant/TCA_Quadrant_Add-On_Airbus_Edition_user_manual.pdf
 - type: lever
   kind: flap
@@ -64,13 +73,13 @@ controls:
 controls_evidence:
   coverage: partial
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant/TCA_Quadrant_Add-On_Airbus_Edition_user_manual.pdf
-  checked: '2026-10-20'
+  checked: '2026-10-21'
   notes: >-
     Mapping page 6 (printed 6/14) numbers 17-31, which is 15 inputs, plus axes Z and ZR. 27-31 sit on the speed-brake
     lever travel and are the five virtual detent buttons. Flaps leaders hit three bodies: round button 17, toggle
-    18-19, and knob 20. Those replace the flaps "4 action buttons" aggregate. Speed-brake callout 3 still brackets a
-    thumbwheel and a toggle under action buttons 21 and 22-26; the leaders do not separate those six numbers onto
-    individual bodies, so that group stays an action-button aggregate. One published SKU contains both modules.
+    18-19, and knob 20. Speed-brake leader 21 ends on the thumbwheel and leader 22-26 ends on the adjacent lever.
+    Those two bodies replace the six-button aggregate. The five numbers on the lever do not show detents, so that
+    position count stays unset. One published SKU contains both modules.
 hardware:
   axis_count: 2
   axes:

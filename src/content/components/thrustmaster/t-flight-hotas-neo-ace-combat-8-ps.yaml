@@ -32,6 +32,12 @@ controls:
   location: base
   label: Detachable throttle
   source: https://www.thrustmaster.com/en-ie/products/t-flight-hotas-neo-ace-combat-8-wings-of-theve-edition-ps/
+- type: rocker
+  count: 1
+  analog: true
+  location: base
+  label: Rudder via rocking button (PC map Slider 0)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TFHNEO/T-Flight_Hotas_NEO_PS_user_manual.pdf
 - type: button
   count: 16
   label: Official action-button total; individual physical mechanisms/layout not mapped
@@ -79,10 +85,12 @@ prices:
   source: manual
 controls_evidence:
   coverage: partial
-  source: https://www.thrustmaster.com/en-ie/products/t-flight-hotas-neo-ace-combat-8-wings-of-theve-edition-ps/
-  checked: '2026-10-20'
-  notes: Manufacturer describes 16 action buttons, a mini-stick, rapid-fire trigger, hat switch, High-G Turns button,
-    seven axes and detachable throttle. Official page states 16 action buttons and seven axes. The aggregate is recorded as a count; the available guide diagrams do not map every action to a distinct body or mechanism, so unnamed push/switch/rotary distinctions and hat ways remain unresolved. USB-C cable included.
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TFHNEO/T-Flight_Hotas_NEO_PS_user_manual.pdf
+  checked: '2026-10-21'
+  notes: >-
+    Feature callout 17 is the rudder rocking button, and the PC map (printed page 23) draws it as Rocker Slider 0.
+    The same map draws the hat as a POV cross and the mini-stick as Rx and Ry, without a center-push number or a
+    4-way or 8-way label. Buttons 1-16 stay one aggregate. The pedal axes on that map belong to the optional TFRP.
 verification: draft
 sources:
 - https://www.thrustmaster.com/en-ie/products/t-flight-hotas-neo-ace-combat-8-wings-of-theve-edition-ps/

@@ -19,6 +19,7 @@ controls:
 - type: trigger
   location: grip
   stages: 1
+  action: sequential
   count: 1
   label: Single-stage trigger
   source: https://virpil-controls.eu/vpc-hawk-60-collective-grip.html
@@ -38,6 +39,7 @@ controls:
 - type: toggle
   location: grip
   ways: 3
+  push: false
   count: 1
   label: ON-OFF-ON toggle
   source: https://virpil-controls.eu/vpc-hawk-60-collective-grip.html

@@ -49,18 +49,31 @@ controls:
   location: panel
   label: Detent knob, 3 positions (mapped 39-41)
   source: https://ts.thrustmaster.com/download/accessories/Manuals/Viper/Viper_Mission_Pack_User_Manual.pdf
+- type: lever
+  kind: other
+  count: 1
+  location: panel
+  label: Landing gear lever with indicator light
+  notes: Named in the features list. The Mode A map does not keep one number on this lever across reads of the drawing.
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/Viper/Viper_Mission_Pack_User_Manual.pdf
+- type: button
+  count: 1
+  location: panel
+  label: Push button (mapped 44)
+  notes: The backlight procedure says to press buttons 37 and 44. The Mode A leader for 44 was not separated from the gear-shaped knob.
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/Viper/Viper_Mission_Pack_User_Manual.pdf
 controls_evidence:
   coverage: partial
   source: https://ts.thrustmaster.com/download/accessories/Manuals/Viper/Viper_Mission_Pack_User_Manual.pdf
-  checked: '2026-10-20'
+  checked: '2026-10-21'
   notes: >-
     Mode A panel map (manual printed page 10) is titled 32 buttons and 1 axis, numbered 22-53. Recorded from that
     drawing: round button 22, switches 23 and 24, selector arcs 25-28, 29-33 and 39-41, four square buttons, and the
-    Rz trim wheel. Number 38's leader meets the trim wheel, so it is not a second body. The features list also names
-    a landing-gear lever with an indicator light and a programmable LED display. The LED matrix is not a button.
-    Which map number is the landing-gear lever, and the bodies for 42-53 (including a two-arrow control and further
-    round controls), were not separated cleanly enough to type. Marketing's 43 includes virtual buttons. Coverage
-    stays partial.
+    Rz trim wheel. Number 38's leader meets the trim wheel, so it is not a second body. Features page names the
+    landing-gear lever. The backlight section says to press 37 and 44, so 44 is a push button. Numbers 42 and 43 are
+    drawn as a pair of curved arrows, and 46-47, 50-51 and 52-53 are drawn as bracketed pairs, but the leader ends
+    swapped between reads of the same raster, so those bodies are not typed. The LED matrix is not a button.
+    Marketing's 43 includes virtual buttons. Coverage stays partial.
 hardware:
   axis_count: 1
   gimbal: null
