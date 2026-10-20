@@ -38,9 +38,15 @@ connectivity:
   usb: c
   standalone_usb: true
 physical:
+  weight_g: 7300
+  dimensions_mm:
+  - 498
+  - 457
+  - 210
   materials:
-  - steel
   - aluminium
+  - metal
+  - rubber
 use_case_fit: {}
 prices:
 - region: EU
@@ -73,3 +79,10 @@ images:
     caption: Charlie Rudder Pedals
 sources:
 - https://honeycomb.com
+platform_compatibility:
+  pc: supported
+  xbox: supported
+  ps5: unknown
+  notes: Official page lists XBOX only in addition to Alpha XPC and XBOX Hub. PS5 is not mentioned.
+  sources:
+  - https://flyhoneycomb.com/products/charlie-rudder-pedals

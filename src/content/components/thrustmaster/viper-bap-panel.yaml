@@ -27,13 +27,16 @@ controls_evidence:
   coverage: partial
   source: https://ts.thrustmaster.com/download/accessories/Manuals/Viper/Viper_Mission_Pack_User_Manual.pdf
   checked: '2026-10-19'
-  notes: 'Manual mapping distinguishes 32 physical button inputs and one axis in mode A from 11 extra virtual button events; marketing total of 43 is not 43 standalone pushbuttons. The sheet shows numerous rotary and switch controls but does not provide reliable type, position, or momentary/latching detail for each; four square pushbuttons and the named selectors are concrete controls represented. Other switches including weapon-launch and landing gear remain unclassified because position and momentary/latching details are not established.'
+  notes: Manual mapping distinguishes 32 physical button inputs and one axis in mode A from 11 extra virtual button
+    events; marketing total of 43 is not 43 standalone pushbuttons. The sheet shows numerous rotary and switch controls
+    but does not provide reliable type, position, or momentary/latching detail for each; four square pushbuttons
+    and the named selectors are concrete controls represented. Other switches including weapon-launch and landing
+    gear remain unclassified because position and momentary/latching details are not established.
 hardware:
   gimbal: null
   sensor: null
   axes:
   - name: Trim wheel
-
   force_adjustable: false
   cams_swappable: false
   damping: null
@@ -82,6 +85,14 @@ verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/viper-panel/
 images:
-  - file: /images/thrustmaster/viper-bap-panel.webp
-    source: https://www.thrustmaster.com/en-us/products/viper-panel/
-    caption: Viper Mission Pack BAP Panel
+- file: /images/thrustmaster/viper-bap-panel.webp
+  source: https://www.thrustmaster.com/en-us/products/viper-panel/
+  caption: Viper Mission Pack BAP Panel
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product/support documentation lists PC compatibility; this exact component has no console host
+    support listed.
+  sources:
+  - https://www.thrustmaster.com/en-us/products/viper-panel/

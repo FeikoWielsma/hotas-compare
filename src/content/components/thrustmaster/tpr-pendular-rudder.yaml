@@ -22,7 +22,10 @@ controls_evidence:
   coverage: complete
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TPR/TPR_Rudder_User_Manual.pdf
   checked: '2026-10-19'
-  notes: Manual identifies one rudder axis and two differential brake axes operated by the pedals; its parts and adjustment diagrams show no separate buttons, hats, switches, wheels, or levers. Pedal axes are represented as rocker and brake levers because the schema has no pedal-axis subtype. Pedal movements are represented explicitly as axes; they are not hand-operated levers or rocker switches.
+  notes: Manual identifies one rudder axis and two differential brake axes operated by the pedals; its parts and
+    adjustment diagrams show no separate buttons, hats, switches, wheels, or levers. Pedal axes are represented
+    as rocker and brake levers because the schema has no pedal-axis subtype. Pedal movements are represented explicitly
+    as axes; they are not hand-operated levers or rocker switches.
 hardware:
   gimbal: pendular
   sensor: hall
@@ -33,7 +36,7 @@ hardware:
     sensor: hall
   - name: Brake_Right
     sensor: hall
-  force_adjustable: false
+  force_adjustable: true
   cams_swappable: false
   damping: null
   extension_support: false
@@ -45,6 +48,7 @@ software: T.A.R.G.E.T
 physical:
   materials:
   - metal
+  weight_g: 7300
 use_case_fit:
   modern_jet: 4
   heli: 3
@@ -80,6 +84,14 @@ verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/tpr-pendular-rudder/
 images:
-  - file: /images/thrustmaster/tpr-pendular-rudder.webp
-    source: https://www.thrustmaster.com/products/tpr-thrustmaster-pendular-rudder/
-    caption: TPR PENDUL_R Rudder Pedals
+- file: /images/thrustmaster/tpr-pendular-rudder.webp
+  source: https://www.thrustmaster.com/products/tpr-thrustmaster-pendular-rudder/
+  caption: TPR PENDUL_R Rudder Pedals
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product/support documentation lists PC compatibility; this exact component has no console host
+    support listed.
+  sources:
+  - https://www.thrustmaster.com/en-us/products/tpr-pendular-rudder/

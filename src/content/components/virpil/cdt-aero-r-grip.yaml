@@ -1,6 +1,14 @@
 brand: virpil
 name: CDT-AERO-R Grip
 category: grip
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product listing identifies the intended platform as PC; the listing
+    has no Xbox or PS5 platform support.
+  sources:
+  - https://virpil-controls.eu/cdt-aero-r-grip.html
 status: current
 release_year: 2026
 handedness: right
@@ -10,6 +18,7 @@ mount:
 controls:
 - type: trigger
   stages: 2
+  action: sequential
   count: 1
   location: grip
   label: Dual-stage trigger
@@ -58,13 +67,16 @@ controls:
   count: 1
   location: grip
   label: Mode slider
-  notes: Mapping template depicts a continuous SLDR axis (0–100); product page calls it a 2-way mode slider.
+  notes: Mapping template depicts a continuous SLDR axis (0–100); product page calls
+    it a 2-way mode slider.
   source: https://support.virpil.com/en/support/solutions/articles/47001285226-vpc-cdt-aero-r-grip
 controls_evidence:
   coverage: complete
   source: https://virpil-controls.eu/cdt-aero-r-grip.html
   checked: '2026-10-19'
-  notes: Exact R SKU VPC-017-R. Manufacturer input list and its R mapping template checked. The physical 2-way mode slider is represented as an analog axis by the mapping sheet; twist axis is in hardware.axes, not an extra button control.
+  notes: Exact R SKU VPC-017-R. Manufacturer input list and its R mapping template
+    checked. The physical 2-way mode slider is represented as an analog axis by the
+    mapping sheet; twist axis is in hardware.axes, not an extra button control.
 hardware:
   gimbal: null
   sensor: null
@@ -80,7 +92,7 @@ hardware:
   extension_support: true
   throw_deg: null
 connectivity:
-  usb: null
+  usb: none; connects through a compatible flightstick or collective base
   standalone_usb: false
 software: VPC Configuration Tool
 physical:

@@ -1,0 +1,65 @@
+brand: thrustmaster
+name: TCA SKY YOKE Xbox / PC
+category: yoke
+status: current
+platform_compatibility:
+  pc: supported
+  xbox: supported
+  ps5: unsupported
+  notes: Manufacturer lists Xbox, PC, iOS and Android. The 7 axes include yoke pitch and roll, throttle, trim and
+    rudder functions; exact named-axis breakdown is not published.
+  sources:
+  - https://www.thrustmaster.com/nl-nl/products/tca-sky-yoke-xbox-pc/
+controls:
+- type: hat
+  ways: 8
+  location: grip
+  label: POV hat switch
+  source: https://www.thrustmaster.com/nl-nl/products/tca-sky-yoke-xbox-pc/
+- type: analog_ministick
+  location: grip
+  source: https://www.thrustmaster.com/nl-nl/products/tca-sky-yoke-xbox-pc/
+- type: trigger
+  count: 2
+  location: grip
+  source: https://www.thrustmaster.com/nl-nl/products/tca-sky-yoke-xbox-pc/
+- type: lever
+  kind: throttle_single
+  analog: true
+  location: base
+  label: Integrated throttle
+  source: https://www.thrustmaster.com/nl-nl/products/tca-sky-yoke-xbox-pc/
+- type: rotary
+  mode: analog
+  location: base
+  label: Trim wheel
+  source: https://www.thrustmaster.com/nl-nl/products/tca-sky-yoke-xbox-pc/
+hardware:
+  axis_count: 7
+  sensor: 16-bit H.E.A.R.T.
+  axes:
+  - name: Yoke pitch
+    resolution_bits: 16
+    sensor: H.E.A.R.T. Hall effect
+  - name: Yoke roll
+    resolution_bits: 16
+    sensor: H.E.A.R.T. Hall effect
+  damping: Self-centering damped pitch, 9 cm travel; rotation up to 180 degrees
+  throw_deg: 180
+controls_evidence:
+  coverage: partial
+  source: https://www.thrustmaster.com/nl-nl/products/tca-sky-yoke-xbox-pc/
+  checked: '2026-10-20'
+  notes: Manufacturer states 24 action buttons, a mini-stick, 8-way hat, two analog triggers and seven 16-bit H.E.A.R.T.
+    axes. The 24 action-button marketing total is not treated as a count of physical buttons; unnamed controls are
+    omitted.
+connectivity:
+  usb: USB (plug and play; dual-yoke connection supported)
+  standalone_usb: true
+verification: draft
+sources:
+- https://www.thrustmaster.com/nl-nl/products/tca-sky-yoke-xbox-pc/
+images:
+- file: /images/thrustmaster/tca-sky-yoke-xbox-pc.png
+  source: https://www.thrustmaster.com/wp-content/uploads/2026/09/Website-TCASkyYoke_Xbox-PageProduitListing-800x800-1.png
+  caption: TCA SKY YOKE (Xbox / PC)

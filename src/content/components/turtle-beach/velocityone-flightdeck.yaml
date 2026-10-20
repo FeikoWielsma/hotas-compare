@@ -1,0 +1,223 @@
+brand: turtle-beach
+name: VelocityOne Flightdeck
+category: stick_fixed
+status: current
+handedness: n/a
+mount: null
+controls:
+- type: lever
+  kind: other
+  analog: false
+  positions: 2
+  momentary: false
+  count: 1
+  location: base
+  label: Stick module gear lever
+  source: https://www.turtlebeach.com/products/velocity-one-flight-deck
+- type: rotary
+  mode: selector
+  positions: 3
+  count: 1
+  location: base
+  label: Stick module 3-position rotary dial
+  source: https://www.turtlebeach.com/products/velocity-one-flight-deck
+- type: lever
+  kind: throttle_dual
+  analog: true
+  count: 2
+  location: handle
+  label: Lockable dual throttle levers
+  source: https://www.turtlebeach.com/products/velocity-one-flight-deck
+- type: hat
+  ways: 8
+  count: 2
+  location: grip
+  label: Stick HAT1 and HAT2
+  source: https://acpv.prod.turtlebeach.com/support/qig/en/33/velocityone-flightdeck.pdf
+- type: hat
+  ways: 4
+  count: 1
+  location: grip
+  label: Stick D-pad (B4-B7)
+  source: https://acpv.prod.turtlebeach.com/support/qig/en/33/velocityone-flightdeck.pdf
+- type: analog_ministick
+  push: true
+  count: 1
+  location: grip
+  label: Stick analog POV (Rx/Ry, B3 click)
+  source: https://acpv.prod.turtlebeach.com/support/qig/en/33/velocityone-flightdeck.pdf
+- type: trigger
+  stages: 2
+  action: sequential
+  count: 1
+  location: grip
+  label: Stick trigger (B28 first stage, B2 second stage)
+  source: https://acpv.prod.turtlebeach.com/support/qig/en/33/velocityone-flightdeck.pdf
+- type: lever
+  kind: brake
+  analog: true
+  push: true
+  count: 1
+  location: grip
+  label: Pinkie paddle axis with B10 end click
+  source: https://support.turtlebeach.com/s/article/VelocityOne-Flightdeck-Re-Calibration-Process-Stick-And-Throttle-Modules?language=en_US
+- type: scroll_wheel
+  push: true
+  count: 1
+  location: grip
+  label: Stick thumbwheel (B8 click, B29/B30 rotation; optional axis output)
+  source: https://acpv.prod.turtlebeach.com/support/qig/en/33/velocityone-flightdeck.pdf
+- type: button
+  count: 1
+  location: grip
+  label: FIRE B1 clickable touchpad
+  notes: One physical clickable touch surface, also outputs mouse X/Y; not an analog ministick.
+  source: https://acpv.prod.turtlebeach.com/support/qig/en/33/velocityone-flightdeck.pdf
+- type: button
+  count: 1
+  location: grip
+  label: Stick shaft button B9
+  source: https://acpv.prod.turtlebeach.com/support/qig/en/33/velocityone-flightdeck.pdf
+- type: button
+  count: 9
+  location: base
+  label: Stick base B11-B15, B22 and B31-B33
+  source: https://acpv.prod.turtlebeach.com/support/qig/en/33/velocityone-flightdeck.pdf
+- type: toggle
+  ways: 2
+  count: 3
+  location: base
+  label: Stick base forward/back switches B16-B21
+  source: https://acpv.prod.turtlebeach.com/support/qig/en/33/velocityone-flightdeck.pdf
+- type: switch
+  positions: 2
+  count: 1
+  location: grip
+  label: Mouse lock switch beside touchpad
+  source: https://support.turtlebeach.com/s/article/VelocityOne-Flightdeck-Product-Guide?language=en_US
+- type: hat
+  ways: 8
+  count: 1
+  location: handle
+  label: Throttle eight-way hat
+  source: https://acpv.prod.turtlebeach.com/support/qig/en/33/velocityone-flightdeck.pdf
+- type: hat
+  ways: 4
+  count: 1
+  location: handle
+  label: Throttle four-way D-pad B7-B10
+  source: https://acpv.prod.turtlebeach.com/support/qig/en/33/velocityone-flightdeck.pdf
+- type: analog_ministick
+  push: true
+  count: 1
+  location: handle
+  label: Throttle analog POV (B1 click)
+  source: https://acpv.prod.turtlebeach.com/support/qig/en/33/velocityone-flightdeck.pdf
+- type: button
+  count: 4
+  location: handle
+  label: Throttle B2-B4 and B11
+  source: https://acpv.prod.turtlebeach.com/support/qig/en/33/velocityone-flightdeck.pdf
+- type: button
+  count: 1
+  location: base
+  label: Throttle guarded button B18
+  source: https://acpv.prod.turtlebeach.com/support/qig/en/33/velocityone-flightdeck.pdf
+- type: rocker
+  analog: false
+  count: 1
+  location: handle
+  label: Throttle B5/B6 left-right rocker
+  source: https://acpv.prod.turtlebeach.com/support/qig/en/33/velocityone-flightdeck.pdf
+- type: toggle
+  ways: 2
+  count: 2
+  location: handle
+  label: Throttle up/down switches B12-B15
+  source: https://acpv.prod.turtlebeach.com/support/qig/en/33/velocityone-flightdeck.pdf
+- type: lever
+  kind: flap
+  analog: true
+  count: 1
+  location: base
+  label: Throttle flap lever with B16/B17 end contacts
+  source: https://acpv.prod.turtlebeach.com/support/qig/en/33/velocityone-flightdeck.pdf
+- type: rotary
+  mode: analog
+  push: true
+  count: 1
+  location: base
+  label: Throttle upper outer ALT dial with B23 press (axis or digital output)
+  source: https://acpv.prod.turtlebeach.com/support/qig/en/33/velocityone-flightdeck.pdf
+- type: encoder
+  count: 1
+  location: base
+  label: Throttle upper inner dial B26/B27
+  source: https://acpv.prod.turtlebeach.com/support/qig/en/33/velocityone-flightdeck.pdf
+- type: encoder
+  push: true
+  count: 2
+  location: base
+  label: Throttle HDG and SPD dials with B28/B31 press
+  source: https://acpv.prod.turtlebeach.com/support/qig/en/33/velocityone-flightdeck.pdf
+- type: rotary
+  mode: analog
+  count: 1
+  location: handle
+  label: Throttle thumbwheel axis
+  source: https://acpv.prod.turtlebeach.com/support/qig/en/33/velocityone-flightdeck.pdf
+- type: scroll_wheel
+  count: 1
+  location: handle
+  label: Throttle rear finger wheel (axis or B40/B41 digital output)
+  source: https://acpv.prod.turtlebeach.com/support/qig/en/33/velocityone-flightdeck.pdf
+controls_evidence:
+  coverage: complete
+  source: https://acpv.prod.turtlebeach.com/support/qig/en/33/velocityone-flightdeck.pdf
+  checked: '2026-10-20'
+  notes: Visually reconciled the official quick-guide physical control diagrams with the full product-guide
+    tables. Direction contacts, center clicks, dual-stage trigger and lever end contacts remain attached to
+    their physical controls. Virtual throttle detent buttons and configurable touchscreen cells are excluded
+    from physical button counts. The clickable FIRE touchpad is recorded once with its mouse-axis behavior
+    noted. Fifteen published controller axes exclude its separate mouse X/Y outputs. Optional switch
+    return behavior and undocumented click/backlight properties remain unknown. Combined mass is stick
+    1460 g plus throttle 1510 g; no single overall assembled dimension is published.
+hardware:
+  sensor: contactless_magnetic
+  axes: []
+  axis_count: 15
+connectivity:
+  usb: c
+  standalone_usb: true
+physical:
+  weight_g: 2970
+  materials: []
+software: Turtle Beach Flight Hangar (Windows 10/11) for profiles, RGB settings and firmware updates
+use_case_fit: {}
+prices:
+- region: US
+  currency: USD
+  amount: 429.99
+  incl_vat: false
+  store: turtlebeach.com
+  url: https://www.turtlebeach.com/products/velocity-one-flight-deck
+  verified: '2026-10-20'
+  source: manual
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official page lists Windows 10/11 PC compatibility only; Xbox and PS5 are not mentioned.
+  sources:
+  - https://www.turtlebeach.com/products/velocity-one-flight-deck
+verification: draft
+images:
+- file: /images/turtle-beach/velocityone-flightdeck.png
+  source: https://www.turtlebeach.com/products/velocity-one-flight-deck
+  caption: VelocityOne Flightdeck
+sources:
+- https://www.turtlebeach.com/products/velocity-one-flight-deck
+- https://support.turtlebeach.com/articles/en_US/Knowledge/VelocityOne-Flightdeck-Customize-Controls-With-VelocityOne-Hangar-App
+- https://acpv.prod.turtlebeach.com/support/qig/en/33/velocityone-flightdeck.pdf
+- https://support.turtlebeach.com/s/article/VelocityOne-Flightdeck-Product-Guide?language=en_US
+- https://support.turtlebeach.com/s/article/VelocityOne-Flightdeck-Re-Calibration-Process-Stick-And-Throttle-Modules?language=en_US

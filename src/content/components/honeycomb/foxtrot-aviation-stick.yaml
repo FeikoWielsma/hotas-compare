@@ -86,7 +86,7 @@ connectivity:
 physical:
   weight_g: 884
   dimensions_mm: [215, 173, 233]
-  materials: []
+  materials: [metal]
 use_case_fit: {}
 prices:
 - region: EU
@@ -112,3 +112,10 @@ images:
   caption: Foxtrot Aviation Stick
 sources:
 - https://eu.flyhoneycomb.com/products/foxtrot-aviation-stick
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unknown
+  notes: Official system compatibility lists PC and Mac only; Xbox is not listed. PS5 is not mentioned.
+  sources:
+  - https://flyhoneycomb.com/products/foxtrot-aviation-stick

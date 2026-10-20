@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" fill="none">
+<defs><pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0v24" stroke="#8e9dae" stroke-opacity=".09"/></pattern><linearGradient id="body" x2=".8" y2="1"><stop stop-color="#28364a"/><stop offset="1" stop-color="#101722"/></linearGradient><linearGradient id="edge" x2="1" y2="1"><stop stop-color="#b2c0d0"/><stop offset="1" stop-color="#53677f"/></linearGradient></defs>
+<path fill="url(#grid)" d="M0 0h600v360H0z"/>
+<g stroke="#71859c" stroke-opacity=".3"><ellipse cx="310" cy="257" rx="256" ry="73"/><path d="m38 257 272-82 263 82-263 80-272-80Zm272-82v162M54 69v20m-10-10h20m482 224v20m-10-10h20"/><path d="M42 128h516M42 290h516" stroke-dasharray="3 7"/></g>
+<g stroke="url(#edge)" stroke-width="1.7" stroke-linejoin="round">
+<path d="m326 247 103-31 106 33v24l-103 35-106-37v-24Z" fill="#101722"/><path d="m326 247 106 35 103-33M432 282v26"/><path d="m345 239 83-25 88 28-84 28-87-31Z" fill="url(#body)"/>
+<path d="m404 233-6-37 4-22-12-29-4-38-8-14 12-39 40-10 33 20 6 36-15 28-15 8-7 40 9 37-10 18-27 7-13-6Z" fill="url(#body)"/><path d="m378 93 39 19 52-12m-79-46 36 20 37-10m-37 10-9 38-4 33 10 27-4 25 9 35M390 145h23m-15 51h21"/>
+<path d="m439 109 18-4 1 17-16 10-6-6 3-17Z" fill="#111923"/><path d="m398 67 13 7-3 12-13-6 3-13Z" fill="#f59e0b" stroke="#fbbf24"/><path d="m432 79 13-4 7 7-4 10-13 3-7-6 4-10Z" fill="#101722"/><path d="m438 81 6 8m-9-1 12-5"/><path d="m393 116 13 6-1 11-12-5v-12Zm7 40 10 3 3 10-11-2-2-11Z" fill="#101722"/><path d="m414 244 17 5 17-6m-82 0 7 3m119-1 7 2m-150 15 9 3m130 5 9-3"/>
+<path d="m69 236 95-31 117 42v28l-96 36-116-45v-30Z" fill="#101722"/><path d="m69 236 116 44 96-33m-96 33v31"/><path d="m80 231 84-27 105 37-84 29-105-39Z" fill="url(#body)"/><path d="m116 226-7-42 30-9 11 40m34 28-4-43 30-9 12 40" fill="url(#body)"/>
+<path d="m99 155 17-15 43 15 6 28-17 13-43-16-6-25Z" fill="url(#body)"/><path d="m99 155 42 16 18-16m-18 16 7 25m-32-56 5 24m11-20 5 24"/><path d="m162 176 18-15 44 15 7 28-18 13-44-16-7-25Z" fill="url(#body)"/><path d="m162 176 44 16 18-16m-18 16 7 25m-33-56 6 24m10-19 5 24"/><path d="m112 153 12 4 2 9-12-4-2-9Z" fill="#f59e0b" stroke="#fbbf24"/><path d="m178 179 13 5 2 9-13-5-2-9Zm-80 58 20 7 15-5-20-8-15 6Z" fill="#06b6d4" stroke="#67e8f9"/><path d="m218 245 13 5m-80 1 9 4m-71 0 14 5m106 29 19-7"/>
+</g>
+<g stroke="#f59e0b" stroke-width="1" stroke-opacity=".7"><path d="M396 57V27h-89m151 120h66v-34m-399 49-36-42H40M258 287v35h82"/><circle cx="396" cy="57" r="3" fill="#f59e0b"/><circle cx="458" cy="147" r="3" fill="#f59e0b"/><circle cx="125" cy="162" r="3" fill="#f59e0b"/></g>
+<g fill="#a7b6c8" font-family="ui-monospace,monospace" font-size="9" letter-spacing="1.8"><text x="307" y="18">01 / FLIGHT STICK</text><text x="482" y="102">MULTI-AXIS</text><text x="39" y="110">02 / THROTTLE</text><text x="269" y="340">YOUR NEXT COCKPIT</text></g>
+</svg>

@@ -54,7 +54,11 @@ controls_evidence:
   coverage: complete
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant/TCA_Quadrant_Airbus_Edition_user_manual.pdf
   checked: '2026-10-19'
-  notes: Standard quadrant without add-ons. Manual pages 1-4 visually distinguish two grip push buttons, two base push buttons, two engine master switches, a three-position engine-mode knob and rear engine-pair configuration selector. Eight advertised physical button events include switch contacts and are not eight standalone pushbuttons. Eight additional axis-region events are virtual. Reverse-thrust latches unlock axis travel rather than adding independent buttons.
+  notes: Standard quadrant without add-ons. Manual pages 1-4 visually distinguish two grip push buttons, two base
+    push buttons, two engine master switches, a three-position engine-mode knob and rear engine-pair configuration
+    selector. Eight advertised physical button events include switch contacts and are not eight standalone pushbuttons.
+    Eight additional axis-region events are virtual. Reverse-thrust latches unlock axis travel rather than adding
+    independent buttons.
 hardware:
   gimbal: null
   sensor: hall
@@ -75,6 +79,8 @@ software: T.A.R.G.E.T
 physical:
   materials:
   - abs
+  weight_g: 530
+  dimensions_mm: [85, 255, 145]
 use_case_fit:
   modern_jet: 4
   heli: 3
@@ -110,6 +116,14 @@ verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/tca-quadrant-airbus-edition/
 images:
-  - file: /images/thrustmaster/tca-quadrant-airbus.webp
-    source: https://www.thrustmaster.com/en-us/products/tca-quadrant-airbus-edition/
-    caption: TCA Quadrant Airbus Edition
+- file: /images/thrustmaster/tca-quadrant-airbus.webp
+  source: https://www.thrustmaster.com/en-us/products/tca-quadrant-airbus-edition/
+  caption: TCA Quadrant Airbus Edition
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product/support documentation lists PC compatibility; this exact component has no console host
+    support listed.
+  sources:
+  - https://www.thrustmaster.com/en-us/products/tca-quadrant-airbus-edition/

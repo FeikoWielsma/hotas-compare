@@ -1,6 +1,14 @@
 brand: virpil
 name: VPC FLNKR Grip
 category: grip
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product listing identifies the intended platform as PC; the listing
+    has no Xbox or PS5 platform support.
+  sources:
+  - https://virpil-controls.eu/vpc-flnkr-grip.html
 status: current
 release_year: 2024
 handedness: right
@@ -8,62 +16,66 @@ mount:
   provides: virpil-grip
   accepts: []
 controls:
-  - type: trigger
-    location: grip
-    stages: 1
-    count: 1
-    label: Primary trigger
-    source: https://virpil-controls.eu/vpc-flnkr-grip.html
-  - type: trigger
-    location: grip
-    stages: 2
-    action: flip
-    count: 1
-    label: Dual-stage weapon flip trigger
-    source: https://virpil-controls.eu/vpc-flnkr-grip.html
-  - type: trigger
-    location: grip
-    stages: 1
-    action: flip
-    count: 1
-    label: Front flip trigger
-    source: https://virpil-controls.eu/vpc-flnkr-grip.html
-  - type: button
-    location: grip
-    count: 8
-    label: Momentary push buttons, preinstalled layout
-    source: https://virpil-controls.eu/vpc-flnkr-grip.html
-  - type: hat
-    location: grip
-    ways: 2
-    push: true
-    count: 2
-    label: 2-way hats, preinstalled layout
-    source: https://virpil-controls.eu/vpc-flnkr-grip.html
-  - type: hat
-    location: grip
-    ways: 4
-    push: true
-    count: 1
-    label: 4-way hat, preinstalled layout
-    source: https://virpil-controls.eu/vpc-flnkr-grip.html
-  - type: analog_ministick
-    location: grip
-    push: true
-    count: 1
-    source: https://virpil-controls.eu/vpc-flnkr-grip.html
-  - type: lever
-    location: grip
-    kind: brake
-    analog: true
-    count: 1
-    label: Brake lever axis
-    source: https://virpil-controls.eu/vpc-flnkr-grip.html
+- type: trigger
+  location: grip
+  stages: 1
+  count: 1
+  label: Primary trigger
+  source: https://virpil-controls.eu/vpc-flnkr-grip.html
+- type: trigger
+  location: grip
+  stages: 2
+  action: flip
+  count: 1
+  label: Dual-stage weapon flip trigger
+  source: https://virpil-controls.eu/vpc-flnkr-grip.html
+- type: trigger
+  location: grip
+  stages: 1
+  action: flip
+  count: 1
+  label: Front flip trigger
+  source: https://virpil-controls.eu/vpc-flnkr-grip.html
+- type: button
+  location: grip
+  count: 8
+  label: Momentary push buttons, preinstalled layout
+  source: https://virpil-controls.eu/vpc-flnkr-grip.html
+- type: hat
+  location: grip
+  ways: 2
+  push: true
+  count: 2
+  label: 2-way hats, preinstalled layout
+  source: https://virpil-controls.eu/vpc-flnkr-grip.html
+- type: hat
+  location: grip
+  ways: 4
+  push: true
+  count: 1
+  label: 4-way hat, preinstalled layout
+  source: https://virpil-controls.eu/vpc-flnkr-grip.html
+- type: analog_ministick
+  location: grip
+  push: true
+  count: 1
+  source: https://virpil-controls.eu/vpc-flnkr-grip.html
+- type: lever
+  location: grip
+  kind: brake
+  analog: true
+  count: 1
+  label: Brake lever axis
+  source: https://virpil-controls.eu/vpc-flnkr-grip.html
 controls_evidence:
   coverage: complete
   source: https://virpil-controls.eu/vpc-flnkr-grip.html
   checked: '2026-10-19'
-  notes: 'Counts are for the preinstalled configuration (2 two-way + push hats, 1 four-way + push hat, 8 momentary buttons). Alternate configuration replaces two 2-way hats and one button with additional four-way hats (4 total); these alternatives are not simultaneous. Mapping counts include 2 virtual buttons which are logical bindings, not separate physical controls. RGB status LEDs are not inputs.'
+  notes: Counts are for the preinstalled configuration (2 two-way + push hats, 1 four-way
+    + push hat, 8 momentary buttons). Alternate configuration replaces two 2-way hats
+    and one button with additional four-way hats (4 total); these alternatives are
+    not simultaneous. Mapping counts include 2 virtual buttons which are logical bindings,
+    not separate physical controls. RGB status LEDs are not inputs.
 hardware:
   gimbal: null
   sensor: contactless_magnetic
@@ -77,7 +89,7 @@ hardware:
   extension_support: false
   throw_deg: null
 connectivity:
-  usb: null
+  usb: none; connects through a compatible flightstick or collective base
   standalone_usb: false
 software: VPC Configuration Tool
 physical:
@@ -148,6 +160,6 @@ verification: draft
 sources:
 - https://virpil-controls.eu/products/vpc-flnkr-grip
 images:
-  - file: /images/virpil/vpc-flanker-grip.jpg
-    source: https://virpil-controls.eu/vpc-flnkr-grip.html
-    caption: VPC FLNKR Grip
+- file: /images/virpil/vpc-flanker-grip.jpg
+  source: https://virpil-controls.eu/vpc-flnkr-grip.html
+  caption: VPC FLNKR Grip

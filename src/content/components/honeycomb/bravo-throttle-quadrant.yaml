@@ -23,6 +23,31 @@ controls:
   label: TOGA button on throttle lever
   location: handle
   source: https://flyhoneycomb.com/products/bravo-throttle-quadrant
+- type: button
+  count: 8
+  location: panel
+  label: HDG, NAV, APR, REV, ALT, VS, IAS and AUTO PILOT buttons
+  source: https://flyhoneycomb.com/cdn/shop/files/HC003042_BravoThrottleQuadrant_1.jpg?v=1756653266&width=2000
+- type: rotary
+  mode: selector
+  positions: 5
+  count: 1
+  location: panel
+  label: ALT / VS / HDG / CRS / IAS selector
+  source: https://flyhoneycomb.com/cdn/shop/files/HC003042_BravoThrottleQuadrant_1.jpg?v=1756653266&width=2000
+- type: encoder
+  count: 1
+  location: panel
+  label: DECR / INCR autopilot adjustment knob
+  source: https://flyhoneycomb.com/cdn/shop/files/HC003042_BravoThrottleQuadrant_1.jpg?v=1756653266&width=2000
+- type: lever
+  kind: flap
+  analog: false
+  positions: 2
+  count: 1
+  location: panel
+  label: Separate UP / DOWN flap switch lever
+  source: https://flyhoneycomb.com/cdn/shop/files/HC003042_BravoThrottleQuadrant_1.jpg?v=1756653266&width=2000
 - type: lever
   kind: other
   analog: false
@@ -35,17 +60,11 @@ controls:
   label: Trim wheel
   location: panel
   source: https://flyhoneycomb.com/products/bravo-throttle-quadrant
-- type: detent
-  count: 6
-  customizable: true
-  label: Lever detents; flap kit offers optional 5/7/9-position plates
-  location: handle
-  source: https://flyhoneycomb.com/products/bravo-throttle-quadrant
 controls_evidence:
   coverage: partial
   source: https://flyhoneycomb.com/products/bravo-throttle-quadrant
   checked: '2026-10-19'
-  notes: Six levers refers to installed lever slots, with interchangeable GA/commercial caps rather than additional levers. Trim wheel classified as encoder, consistent with incremental digital trim adjustment; electronic implementation is undocumented. Page gives seven assignable switches and 14 indicator lights; lights are outputs, not controls. Autopilot control types and lever detent count are not fully enumerated; optional flap-kit plates are accessories, not installed controls.
+  notes: Six levers refers to installed lever slots, with interchangeable GA/commercial caps rather than additional levers. Official product photograph identifies eight autopilot buttons, five-position selector, DECR/INCR adjustment knob and separate flap switch. Trim-wheel electronic implementation and complete lever detent contacts remain undocumented; optional flap-kit plates are accessories. Indicator lights are outputs, not controls.
 hardware:
   gimbal: null
   sensor: contactless_magnetic
@@ -59,8 +78,14 @@ connectivity:
   usb: c
   standalone_usb: true
 physical:
+  weight_g: 3794
+  dimensions_mm:
+  - 273
+  - 382
+  - 198
   materials: []
 use_case_fit: {}
+software: Honeycomb landing-gear LED driver for Microsoft Flight Simulator 2020/2024
 prices:
 - region: EU
   currency: EUR
@@ -92,3 +117,12 @@ images:
     caption: Bravo Throttle Quadrant
 sources:
 - https://honeycomb.com
+- https://flyhoneycomb.com/products/bravo-throttle-quadrant
+- https://flyhoneycomb.com/cdn/shop/files/HC003042_BravoThrottleQuadrant_1.jpg?v=1756653266&width=2000
+platform_compatibility:
+  pc: supported
+  xbox: supported
+  ps5: unknown
+  notes: Official page lists XBOX only in addition to Alpha XPC and XBOX Hub. PS5 is not mentioned.
+  sources:
+  - https://flyhoneycomb.com/products/bravo-throttle-quadrant

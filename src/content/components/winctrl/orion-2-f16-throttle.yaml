@@ -1,6 +1,13 @@
 brand: winctrl
 name: Orion 2 F-16 Viper Throttle
 category: throttle
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official listing/manual establishes computer USB use; no exact product source establishes Xbox or PS5 support or incompatibility.
+  sources:
+    - https://eu.winctrl.com/view/goods-details.html?id=1765
 status: current
 handedness: n/a
 mount:

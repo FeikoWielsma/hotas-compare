@@ -1,5 +1,5 @@
 brand: thrustmaster
-name: T.Flight HOTAS One / 4 / X
+name: T.Flight HOTAS One
 category: stick_fixed
 status: current
 release_year: 2017
@@ -29,7 +29,9 @@ controls_evidence:
   coverage: partial
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TFHOne/T-Flight_HO_Manual.pdf
   checked: '2026-10-19'
-  notes: File groups T.Flight HOTAS One, 4 and X variants. Manual describes HOTAS One; variants differ in console/menu controls and action-button totals. Hat directions, hat push, precise button count/location, and variant-specific inventory remain unresolved. Twist rudder is an alternative physical rudder input to the tilting rocker.
+  notes: Exact T.Flight HOTAS One SKU only. Manufacturer lists 14 action buttons as an aggregate; they are not expanded
+    into invented physical button types. The manual diagrams a multidirectional hat, throttle, twist rudder, and
+    tilting rudder alternative; hat directions and push behavior remain unconfirmed. Coverage remains partial.
 hardware:
   gimbal: ball_joint
   sensor: potentiometer
@@ -45,6 +47,7 @@ hardware:
   damping: null
   extension_support: false
   throw_deg: null
+  axis_count: 5
 connectivity:
   usb: a_cable
   standalone_usb: true
@@ -85,7 +88,16 @@ prices:
 verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/t-flight-hotas-one/
+- https://support.thrustmaster.com/en/product/t-flight-hotas-one-en/
 images:
-  - file: /images/thrustmaster/t-flight-hotas-one-x.webp
-    source: https://www.thrustmaster.com/en-us/products/t-flight-hotas-one/
-    caption: T.Flight HOTAS One / 4 / X
+- file: /images/thrustmaster/t-flight-hotas-one-x.webp
+  source: https://www.thrustmaster.com/en-us/products/t-flight-hotas-one/
+  caption: T.Flight HOTAS One
+platform_compatibility:
+  pc: supported
+  xbox: supported
+  ps5: unsupported
+  notes: This record now identifies the exact HOTAS One SKU; its manual specifies PC and Xbox. HOTAS 4 and HOTAS
+    X are separate variants.
+  sources:
+  - https://ts.thrustmaster.com/download/accessories/Manuals/TFHOne/T-Flight_HO_Manual.pdf

@@ -1,6 +1,13 @@
 brand: virpil
 name: VPC MongoosT-50CM3 Throttle
 category: throttle
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product listing identifies the intended platform as PC; the listing has no Xbox or PS5 platform support.
+  sources:
+    - https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
 status: discontinued
 release_year: 2021
 handedness: n/a

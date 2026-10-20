@@ -12,9 +12,10 @@ controls:
     source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
   - type: button
     location: grip
-    label: Fire button(s)
-    count: 2
-    notes: Product feature sheet labels two fire buttons; not inferred from programmable button totals.
+    count: 3
+    backlit: true
+    label: Three backlit fire buttons on joystick head
+    notes: Manual product tour (p.3) shows three fire buttons on the joystick head, backlit per the product tour.
     source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
   - type: button
     location: grip
@@ -24,7 +25,6 @@ controls:
     location: grip
     ways: 8
     count: 2
-    push: false
     label: Hat switches
     source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
   - type: toggle
@@ -96,3 +96,10 @@ images:
   - file: /images/logitech/x52-pro-flight-stick.webp
     source: https://www.logitechg.com/en-us/shop/p/x52-pro-space-flight-simulator-controller.945-000022
     caption: X52 Pro Flight Stick
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Manual documents Windows setup through Windows Game Controllers and G HUB; no Xbox or PS5 statement appears in the manual or official SKU page. Console support remains unknown.
+  sources:
+  - https://www.logitech.com/assets/65327/x52-professional-hotas.pdf

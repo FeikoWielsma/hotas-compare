@@ -15,6 +15,12 @@ controls:
     label: Idle and afterburner detents
     customizable: true
     source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+  - type: button
+    location: handle
+    count: 2
+    label: Two fire buttons on throttle head
+    notes: Manual product tour (p.4) shows two fire buttons on the throttle head.
+    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
   - type: scroll_wheel
     label: Rear index-finger scroll wheel
     push: true
@@ -91,3 +97,10 @@ images:
   - file: /images/logitech/x52-pro-throttle.webp
     source: https://www.logitechg.com/en-us/shop/p/x52-pro-space-flight-simulator-controller.945-000022
     caption: X52 Pro Throttle
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Manual documents Windows setup through Windows Game Controllers and G HUB; no Xbox or PS5 statement appears in the manual or official SKU page. Console support remains unknown.
+  sources:
+  - https://www.logitech.com/assets/65327/x52-professional-hotas.pdf

@@ -11,13 +11,21 @@ controls_evidence:
   coverage: partial
   source: https://support.mozaracing.com/en/support/solutions/articles/70000668982-moza-ab9-base-support
   checked: '2026-10-19'
-  notes: No onboard flight controls are specified in the AB9 support inventory; optional Active Shifter Knob and attached grips are excluded. Absence of every possible physical base control was not fully established.
+  notes: No onboard flight controls are specified in the AB9 support inventory; optional Active Shifter Knob and
+    attached grips are excluded. Absence of every possible physical base control was not fully established.
 hardware:
-  axes: []
+  gimbal: force_feedback
+  sensor: encoder
+  force_adjustable: true
+  cams_swappable: false
+  damping: active_motor
+  extension_support: null
 connectivity:
   standalone_usb: true
+  usb: USB
 physical:
-  materials: []
+  materials:
+  - aviation-grade aluminum alloy
 use_case_fit:
   modern_jet: 4
   heli: 3
@@ -37,24 +45,25 @@ prices:
   source: manual
 - region: UK
   currency: GBP
-  amount: 529
+  amount: 479
   incl_vat: true
-  store: moza-racing.com
-  verified: '2026-10-01'
+  store: uk.mozaracing.com
+  url: https://uk.mozaracing.com/products/ab9-base
+  verified: '2026-10-20'
   source: manual
 - region: US
   currency: USD
-  amount: 599
+  amount: 499
   incl_vat: false
-  store: moza-racing.com
-  verified: '2026-10-01'
+  store: us.mozaracing.com
+  url: https://us.mozaracing.com/products/ab9-base
+  verified: '2026-10-20'
   source: manual
 verdict:
   author: feiko
   hands_on: true
-  take: The AB9 brings active force feedback to desktop flight simulation at a more approachable price
-    than bespoke FFB bases. Its appeal depends on tuning and game support, and it needs a compatible grip
-    plus a very solid mount.
+  take: The AB9 brings active force feedback to desktop flight simulation at a more approachable price than bespoke
+    FFB bases. Its appeal depends on tuning and game support, and it needs a compatible grip plus a very solid mount.
   pros:
   - Active force feedback can reproduce aircraft loading and trim forces
   - Compact base is easier to fit than large industrial direct-drive units
@@ -78,7 +87,17 @@ verdict:
 verification: verified
 sources:
 - https://mozaracing.com/collections/flight-series
+- https://eu.mozaracing.com/products/ab9-base
+- https://support.mozaracing.com/en/support/solutions/articles/70000668982-moza-ab9-base-support
 images:
 - file: /images/moza/ab9-force-feedback-base.webp
   source: https://eu.mozaracing.com/products/ab9-base
   caption: MOZA AB9 Force Feedback Base
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: 'Official support: "PC only"; the FAQ says the base "does not support Xbox or PlayStation consoles".'
+  sources:
+  - https://support.mozaracing.com/en/support/solutions/articles/70000668982-moza-ab9-base-support
+software: MOZA Cockpit

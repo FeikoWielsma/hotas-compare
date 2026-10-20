@@ -1,6 +1,13 @@
 brand: winctrl
 name: Ursa Minor Airline Joystick Left
 category: stick_fixed
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official listing/manual establishes computer USB use; no exact product source establishes Xbox or PS5 support or incompatibility.
+  sources:
+    - https://eu.winctrl.com/static/download/QmTNG9wYC7V5h4a5U4m2ZbYY55uag2c3wQc2MUw9m7KXHK?filename=URSA+MINOR-Airlines-Joystick+L-User+Manual-V1.3.pdf
 status: current
 handedness: left
 mount:
@@ -46,6 +53,11 @@ hardware:
 connectivity:
   standalone_usb: true
 physical:
+  weight_g: 980
+  dimensions_mm:
+  - 227
+  - 217
+  - 230
   materials: []
 use_case_fit:
   modern_jet: 4

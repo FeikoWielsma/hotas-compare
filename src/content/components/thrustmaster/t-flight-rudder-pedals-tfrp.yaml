@@ -23,7 +23,10 @@ controls_evidence:
   coverage: complete
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TFRP/TFRP_User_Manual.pdf
   checked: '2026-10-19'
-  notes: 'Three analog axes total: one rudder axis and two differential brake axes. Device has no standalone buttons, hats or hand levers; toe brakes are foot pedal mechanisms, represented as brake controls because schema has no pedal type. Pedal movements are represented explicitly as axes; they are not hand-operated levers or rocker switches.'
+  notes: 'Three analog axes total: one rudder axis and two differential brake axes. Device has no standalone buttons,
+    hats or hand levers; toe brakes are foot pedal mechanisms, represented as brake controls because schema has
+    no pedal type. Pedal movements are represented explicitly as axes; they are not hand-operated levers or rocker
+    switches.'
 hardware:
   gimbal: null
   sensor: potentiometer
@@ -46,6 +49,8 @@ software: T.A.R.G.E.T
 physical:
   materials:
   - abs
+  weight_g: 2210
+  dimensions_mm: [349, 314, 206]
 use_case_fit:
   modern_jet: 4
   heli: 3
@@ -80,7 +85,19 @@ prices:
 verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/t-flight-rudder-pedals/
+- https://www.thrustmaster.com/en-gb/products/t-flight-rudder-pedals/
+- https://support.thrustmaster.com/en/kb/1776-en/
 images:
-  - file: /images/thrustmaster/t-flight-rudder-pedals-tfrp.webp
-    source: https://www.thrustmaster.com/en-us/products/t-flight-rudder-pedals/
-    caption: T.Flight Rudder Pedals (TFRP)
+- file: /images/thrustmaster/t-flight-rudder-pedals-tfrp.webp
+  source: https://www.thrustmaster.com/en-us/products/t-flight-rudder-pedals/
+  caption: T.Flight Rudder Pedals (TFRP)
+platform_compatibility:
+  pc: supported
+  xbox: supported
+  ps5: supported
+  notes: PC works through USB/USB adapter. On Xbox and PS5, these are an independent accessory and require a compatible
+    Thrustmaster host joystick connected by the documented RJ12 accessory connection; they are not standalone console
+    controllers.
+  sources:
+  - https://www.thrustmaster.com/en-gb/products/t-flight-rudder-pedals/
+  - https://support.thrustmaster.com/en/kb/1776-en/

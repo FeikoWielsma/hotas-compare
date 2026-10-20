@@ -19,16 +19,34 @@ controls_evidence:
   coverage: partial
   source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_z_axis_manual.pdf?v=1779863078
   checked: '2026-10-19'
-  notes: Separate mechanical twist-axis accessory; no discrete controls are documented. Product is installed between grip and compatible base and represents one analog twist input. The official product page specifies a 16-bit Hall sensor and ±20° travel; the one-page manual is brief.
+  notes: >-
+    Separate mechanical twist-axis accessory; no discrete controls are documented. Product is installed between
+    grip and compatible base and represents one analog twist input. The product page says "16-bit Hall sensor" in its
+    description and FAQ but "Angle Sensor Resolution: 15-bit (32768 PPR)" in its spec table, so the 16-bit value is
+    left unresolved because the source conflicts. Travel is given as "Yaw Angle: ±20°" with no per-side or
+    total wording, so no throw_deg is recorded.
 hardware:
   axes:
-  - name: Twist
-    resolution_bits: 16
-    sensor: hall_effect
+  - name: Twist / yaw
+    sensor: Hall effect
+  axis_count: 1
+  gimbal: mechanical twist module
+  sensor: Hall effect; published resolution conflicts between 15-bit and 16-bit
+  force_adjustable: null
+  cams_swappable: null
+  damping: null
+  extension_support: null
+  throw_deg: null
 connectivity:
-  standalone_usb: true
+  standalone_usb: false
 physical:
-  materials: []
+  weight_g: 260
+  dimensions_mm:
+  - 110
+  - 47.5
+  - 47.5
+  materials:
+  - aerospace-grade aluminum alloy
 use_case_fit:
   modern_jet: 4
   heli: 3
@@ -49,3 +67,12 @@ prices:
 verification: draft
 sources:
 - https://mozaracing.com/products/z-axis-module
+- https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_z_axis_manual.pdf?v=1779863078
+platform_compatibility:
+  pc: unknown
+  xbox: unknown
+  ps5: unknown
+  notes: The product page names no platforms and no exclusions, so all platform fields are unknown. It names no
+    compatible bases either; the manual describes it as installed between grip and compatible base.
+  sources:
+  - https://mozaracing.com/products/z-axis-module

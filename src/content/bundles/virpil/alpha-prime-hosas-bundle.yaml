@@ -1,6 +1,13 @@
 brand: virpil
 name: Constellation Alpha Prime HOSAS Bundle
 category: hosas_bundle
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product listing identifies the intended platform as PC; the listing has no Xbox or PS5 platform support.
+  sources:
+    - https://virpil-controls.eu/products/alpha-prime-hosas-bundle
 status: current
 components:
 - virpil/constellation-alpha-prime-r

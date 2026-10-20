@@ -1,0 +1,73 @@
+brand: thrustmaster
+name: T.FLIGHT HOTAS NEO Ace Combat 8 Wings of Theve Edition Xbox / PC
+category: stick_fixed
+status: current
+platform_compatibility:
+  pc: supported
+  xbox: supported
+  ps5: unsupported
+  notes: Xbox / PC edition; the separate PlayStation / PC edition is a different SKU.
+  sources:
+  - https://www.thrustmaster.com/nl-nl/products/thrustmaster-t-flight-hotas-neo-ace-combat-8-wings-of-theve-edition-xbox-pc/
+controls:
+- type: hat
+  location: grip
+  label: Hat switch
+  source: https://www.thrustmaster.com/nl-nl/products/thrustmaster-t-flight-hotas-neo-ace-combat-8-wings-of-theve-edition-xbox-pc/
+- type: analog_ministick
+  location: grip
+  source: https://www.thrustmaster.com/nl-nl/products/thrustmaster-t-flight-hotas-neo-ace-combat-8-wings-of-theve-edition-xbox-pc/
+- type: trigger
+  count: 1
+  location: grip
+  label: Rapid-fire trigger
+  source: https://www.thrustmaster.com/nl-nl/products/thrustmaster-t-flight-hotas-neo-ace-combat-8-wings-of-theve-edition-xbox-pc/
+- type: button
+  location: grip
+  label: High-G Turns button
+  source: https://www.thrustmaster.com/nl-nl/products/thrustmaster-t-flight-hotas-neo-ace-combat-8-wings-of-theve-edition-xbox-pc/
+- type: lever
+  kind: throttle_single
+  analog: true
+  location: base
+  label: Detachable throttle
+  source: https://www.thrustmaster.com/nl-nl/products/thrustmaster-t-flight-hotas-neo-ace-combat-8-wings-of-theve-edition-xbox-pc/
+hardware:
+  axis_count: 7
+  sensor: 16-bit axes; H.E.A.R.T. Hall effect magnetic technology on Z axis
+  axes:
+  - name: Z (twist rudder)
+    resolution_bits: 16
+    sensor: H.E.A.R.T. Hall effect
+physical:
+  weight_g: 1425
+  dimensions_mm:
+  - 350
+  - 200
+  - 230
+connectivity:
+  usb: USB-C
+  standalone_usb: true
+prices:
+- region: EU
+  currency: EUR
+  amount: 129.99
+  incl_vat: true
+  store: Thrustmaster Netherlands
+  url: https://www.thrustmaster.com/nl-nl/products/thrustmaster-t-flight-hotas-neo-ace-combat-8-wings-of-theve-edition-xbox-pc/
+  verified: '2026-10-20'
+  source: manual
+controls_evidence:
+  coverage: partial
+  source: https://www.thrustmaster.com/nl-nl/products/thrustmaster-t-flight-hotas-neo-ace-combat-8-wings-of-theve-edition-xbox-pc/
+  checked: '2026-10-20'
+  notes: Manufacturer describes 16 action buttons, a mini-stick, rapid-fire trigger, hat switch, High-G Turns button,
+    seven axes and detachable throttle. The 16 action-button marketing total is not treated as a count of physical
+    buttons; unnamed buttons and axes are omitted. USB-C cable included.
+verification: draft
+sources:
+- https://www.thrustmaster.com/nl-nl/products/thrustmaster-t-flight-hotas-neo-ace-combat-8-wings-of-theve-edition-xbox-pc/
+images:
+- file: /images/thrustmaster/thrustmaster-t-flight-hotas-neo-ace-combat-8-wings-of-theve-edition-xbox-pc.webp
+  source: https://www.thrustmaster.com/wp-content/uploads/2026/10/Website_TFH-NeoAC8-XB_PageProductListing.webp
+  caption: T.FLIGHT HOTAS NEO Ace Combat 8 Wings Of Theve Edition (Xbox / PC)

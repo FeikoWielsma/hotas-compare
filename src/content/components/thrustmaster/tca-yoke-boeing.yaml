@@ -27,8 +27,9 @@ controls_evidence:
   coverage: partial
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Yoke_Boeing/TCA_Yoke_Boeing_Edition_user_manual.pdf
   checked: '2026-10-19'
-  notes: 'Product 4460209 manual gives an aggregate 18 action-button total, but the diagram does not verify 18 standalone pushbuttons; omitted from physical button count. Hat, pushable mini-stick and dual throttle axes are identified. Landing gear and Xbox controls are not fully classified, so coverage is partial.'
-
+  notes: Product 4460209 manual gives an aggregate 18 action-button total, but the diagram does not verify 18 standalone
+    pushbuttons; omitted from physical button count. Hat, pushable mini-stick and dual throttle axes are identified.
+    Landing gear and Xbox controls are not fully classified, so coverage is partial.
 hardware:
   gimbal: pendular
   sensor: hall
@@ -50,6 +51,7 @@ physical:
   materials:
   - metal
   - abs
+  dimensions_mm: [300, 390, 380]
 use_case_fit:
   modern_jet: 4
   heli: 3
@@ -85,6 +87,13 @@ verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/tca-yoke-boeing-edition/
 images:
-  - file: /images/thrustmaster/tca-yoke-boeing.webp
-    source: https://www.thrustmaster.com/en-us/products/tca-yoke-boeing-edition/
-    caption: TCA Yoke Boeing Edition
+- file: /images/thrustmaster/tca-yoke-boeing.webp
+  source: https://www.thrustmaster.com/en-us/products/tca-yoke-boeing-edition/
+  caption: TCA Yoke Boeing Edition
+platform_compatibility:
+  pc: supported
+  xbox: supported
+  ps5: unsupported
+  notes: Officially licensed for Xbox One/Xbox Series X|S and compatible with PC; PlayStation is not listed.
+  sources:
+  - https://www.thrustmaster.com/en-us/products/tca-yoke-boeing-edition/

@@ -1,57 +1,69 @@
 brand: virpil
 name: 'VPC Universal Control Panel #2'
 category: module
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product listing identifies the intended platform as PC; the listing
+    has no Xbox or PS5 platform support.
+  sources:
+  - https://virpil-controls.eu/vpc-control-panel-2.html
 status: current
 release_year: 2020
 handedness: n/a
 mount: null
 controls:
-  - type: button
-    location: panel
-    count: 10
-    backlit: true
-    label: RGB momentary buttons
-    source: https://virpil-controls.eu/vpc-control-panel-2.html
-  - type: toggle
-    location: panel
-    count: 6
-    ways: 3
-    momentary: true
-    label: ON-OFF-ON momentary toggles
-    source: https://virpil-controls.eu/vpc-control-panel-2.html
-  - type: toggle
-    location: panel
-    count: 2
-    ways: 2
-    momentary: false
-    label: ON-ON latched toggles
-    source: https://virpil-controls.eu/vpc-control-panel-2.html
-  - type: toggle
-    location: panel
-    count: 2
-    ways: 3
-    momentary: false
-    label: Flip-cover toggles
-    source: https://virpil-controls.eu/vpc-control-panel-2.html
-  - type: encoder
-    location: panel
-    count: 3
-    push: true
-    label: Encoder dials
-    source: https://virpil-controls.eu/vpc-control-panel-2.html
-  - type: lever
-    location: panel
-    kind: other
-    analog: false
-    count: 1
-    label: Three-position landing-gear lever
-    notes: 'ON-ON-ON with lift-and-return; swappable detent plate'
-    source: https://virpil-controls.eu/vpc-control-panel-2.html
+- type: button
+  location: panel
+  count: 10
+  backlit: true
+  label: RGB momentary buttons
+  source: https://virpil-controls.eu/vpc-control-panel-2.html
+- type: toggle
+  location: panel
+  count: 6
+  ways: 3
+  momentary: true
+  label: ON-OFF-ON momentary toggles
+  source: https://virpil-controls.eu/vpc-control-panel-2.html
+- type: toggle
+  location: panel
+  count: 2
+  ways: 2
+  momentary: false
+  label: ON-ON latched toggles
+  source: https://virpil-controls.eu/vpc-control-panel-2.html
+- type: toggle
+  location: panel
+  count: 2
+  ways: 3
+  momentary: false
+  label: Flip-cover toggles
+  source: https://virpil-controls.eu/vpc-control-panel-2.html
+- type: encoder
+  location: panel
+  count: 3
+  push: true
+  label: Encoder dials
+  source: https://virpil-controls.eu/vpc-control-panel-2.html
+- type: lever
+  location: panel
+  kind: other
+  analog: false
+  count: 1
+  label: Three-position landing-gear lever
+  notes: ON-ON-ON with lift-and-return; swappable detent plate
+  source: https://virpil-controls.eu/vpc-control-panel-2.html
 controls_evidence:
   coverage: complete
   source: https://virpil-controls.eu/vpc-control-panel-2.html
   checked: '2026-10-19'
-  notes: 'Exact preinstalled panel layout per official product page/B-stock detailed input list. Gear lever is a spring-loaded three-position digital selector with lift/return; schema cannot represent its three positions or spring-return action on a lever.'
+  notes: Exact preinstalled panel layout per official product page/B-stock detailed
+    input list. Gear lever is a spring-loaded three-position digital selector with
+    lift/return; schema cannot represent its three positions or spring-return action
+    on a lever. Current exact-SKU store Product Weight field checked 2026-10-20; manufacturer
+    does not label net versus packed basis.
 hardware:
   gimbal: null
   sensor: contactless_magnetic
@@ -66,7 +78,7 @@ connectivity:
   standalone_usb: true
 software: VPC Configuration Tool
 physical:
-  weight_g: 1400
+  weight_g: 2300
   materials:
   - aluminium
   - abs
@@ -79,28 +91,28 @@ use_case_fit:
   space_hotas: 2
   space_hosas: 2
 prices:
-  - region: EU
-    currency: EUR
-    amount: 239.95
-    incl_vat: true
-    store: virpil-controls.eu
-    url: https://virpil-controls.eu/vpc-control-panel-2.html
-    verified: '2026-10-19'
-    source: manual
-  - region: UK
-    currency: GBP
-    amount: 211
-    incl_vat: true
-    store: virpil-controls.eu
-    verified: '2026-10-01'
-    source: manual
-  - region: US
-    currency: USD
-    amount: 259
-    incl_vat: false
-    store: virpil-controls.us
-    verified: '2026-10-01'
-    source: manual
+- region: EU
+  currency: EUR
+  amount: 239.95
+  incl_vat: true
+  store: virpil-controls.eu
+  url: https://virpil-controls.eu/vpc-control-panel-2.html
+  verified: '2026-10-19'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 211
+  incl_vat: true
+  store: virpil-controls.eu
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 259
+  incl_vat: false
+  store: virpil-controls.us
+  verified: '2026-10-01'
+  source: manual
 verdict:
   author: feiko
   hands_on: false
@@ -126,7 +138,8 @@ verdict:
 verification: draft
 sources:
 - https://virpil-controls.eu/products/vpc-universal-control-panel-2
+- https://virpil-controls.eu/vpc-control-panel-2.html
 images:
-  - file: /images/virpil/vpc-control-panel-2.jpg
-    source: https://virpil-controls.eu/vpc-control-panel-2.html
-    caption: VPC Universal Control Panel #2
+- file: /images/virpil/vpc-control-panel-2.jpg
+  source: https://virpil-controls.eu/vpc-control-panel-2.html
+  caption: VPC Universal Control Panel

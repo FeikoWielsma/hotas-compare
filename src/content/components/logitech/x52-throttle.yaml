@@ -9,51 +9,54 @@ controls:
     kind: throttle_single
     analog: true
     label: Progressive throttle
-    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
   - type: detent
     count: 2
     label: Idle and afterburner detents
     customizable: true
-    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
+  - type: button
+    location: handle
+    count: 2
+    label: Throttle-head fire buttons
+    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
   - type: scroll_wheel
     label: Rear index-finger scroll wheel
     push: true
-    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
   - type: hat
     ways: 8
     label: Thumb POV hat
-    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
   - type: hat
-    ways: 8
     label: Mouse controller hat mode
     notes: Mouse controller can function as a hat; alternate mode, not an additional simultaneously installed control.
-    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
   - type: button
     label: Mouse left button
-    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
   - type: button
     label: Clutch button
-    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
   - type: slider
     analog: true
     label: Thumb slider
-    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
   - type: rotary
     mode: analog
     count: 2
     label: Analog throttle rotaries
-    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
 controls_evidence:
   coverage: partial
-  source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
-  checked: '2026-10-19'
-  notes: Shared X52 Pro manual describes throttle head and base controls. Throttle rotary/slider behavior is described as axes, but exact physical segmentation differs across X52 revision and standard/Pro bundle manuals; coverage remains partial.
+  source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
+  checked: '2026-10-20'
+  notes: Standard X52 manual product-tour page 4 shows two throttle-head fire buttons, thumb slider, two rotary axes, rear scroll wheel with built-in button, 8-way POV hat, mouse controller with alternate hat mode, left mouse button, and clutch button. The mouse controller's complete physical input behavior remains unclear, so coverage remains partial.
 hardware:
   gimbal: null
-  sensor: potentiometer
+  sensor: null
   axes:
   - name: Throttle
-    sensor: potentiometer
 connectivity:
   usb: a_cable
   standalone_usb: true
@@ -90,3 +93,10 @@ images:
   - file: /images/logitech/x52-throttle.webp
     source: https://www.logitechg.com/en-us/shop/p/x52-space-flight-simulator-controller.945-000025
     caption: X52 Throttle
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: The official X52 HOTAS user guide documents Windows setup and use. The guide does not specify Xbox or PS5 support.
+  sources:
+  - https://www.logitech.com/assets/65328/2/x52-hotas.pdf

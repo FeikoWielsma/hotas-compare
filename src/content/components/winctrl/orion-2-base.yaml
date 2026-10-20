@@ -1,6 +1,13 @@
 brand: winctrl
 name: Orion 2 Joystick Base
 category: base
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official listing/manual establishes computer USB use; no exact product source establishes Xbox or PS5 support or incompatibility.
+  sources:
+    - https://eu.winctrl.com/view/goods-details.html?id=333
 status: current
 release_year: 2022
 handedness: n/a

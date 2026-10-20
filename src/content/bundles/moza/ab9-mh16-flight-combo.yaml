@@ -13,3 +13,10 @@ images:
 - file: /images/moza/ab9-mh16-flight-combo.jpg
   source: https://mozaracing.com/collections/flight-series
   caption: AB9 + MH16 Flight Combo
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Complete bundle combines a PC-only AB9 base and MOZA grip.
+  sources:
+  - https://support.mozaracing.com/en/support/solutions/articles/70000668982-moza-ab9-base-support

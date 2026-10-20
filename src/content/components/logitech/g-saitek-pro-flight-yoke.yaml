@@ -8,31 +8,39 @@ controls:
   - type: hat
     location: grip
     ways: 8
-    push: false
-    label: POV hat
-    source: https://origin-saitek2.logitech.com/uk/blog/wp-content/uploads/2014/08/07-14.pdf
+    label: Left-handle POV hat
+    source: https://www.logitech.com/assets/65128/flight-yoke-system.pdf
   - type: rocker
     location: grip
     count: 3
     analog: false
-    label: B1/B2 and paired rockers
-    source: https://origin-saitek2.logitech.com/uk/blog/wp-content/uploads/2014/08/07-14.pdf
+    label: Three handle rocker switches
+    notes: The manual shows one 2-way rocker on the left handle and two 2-way rockers on the right handle.
+    source: https://www.logitech.com/assets/65128/flight-yoke-system.pdf
   - type: button
     location: grip
     count: 2
-    label: Yoke buttons
-    source: https://origin-saitek2.logitech.com/uk/blog/wp-content/uploads/2014/08/07-14.pdf
+    label: Single-function handle buttons
+    notes: One is on the back of each handle.
+    source: https://www.logitech.com/assets/65128/flight-yoke-system.pdf
   - type: toggle
-    location: base
+    location: grip
     ways: 3
     count: 1
-    label: Mode selector
-    source: https://origin-saitek2.logitech.com/uk/blog/wp-content/uploads/2014/08/07-14.pdf
+    label: Right-handle 3-position mode selector
+    notes: Located on the back of the right handle.
+    source: https://www.logitech.com/assets/65128/flight-yoke-system.pdf
+  - type: button
+    location: panel
+    count: 3
+    label: Chronograph function, start/stop, and reset buttons
+    notes: Three physical buttons below the display, as shown on manual page 4.
+    source: https://www.logitech.com/assets/65128/flight-yoke-system.pdf
 controls_evidence:
   coverage: complete
-  source: https://origin-saitek2.logitech.com/uk/blog/wp-content/uploads/2014/08/07-14.pdf
-  checked: '2026-10-19'
-  notes: Primary product/manual evidence checked; coverage applies to the physical inventory described by this exact component.
+  source: https://www.logitech.com/assets/65128/flight-yoke-system.pdf
+  checked: '2026-10-20'
+  notes: Logitech Flight Yoke System manual product-tour page 4 shows the handle and chronograph controls with their physical locations. The manual’s feature list confirms six 2-way rocker directions, two single-function handle buttons, and one 8-way POV hat; its six directions are represented by three physical rocker switches. The three display buttons operate chronograph functions. Coverage applies to this yoke component.
 hardware:
   gimbal: shaft
   sensor: potentiometer
@@ -78,3 +86,10 @@ images:
   - file: /images/logitech/g-saitek-pro-flight-yoke.webp
     source: https://www.logitechg.com/en-us/shop/p/flight-simulator-yoke-system.945-000023
     caption: Logitech G Flight Yoke System - Yoke
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: The official Flight Yoke System user guide documents Windows setup and use. The guide does not specify Xbox or PS5 support.
+  sources:
+  - https://www.logitech.com/assets/65128/flight-yoke-system.pdf

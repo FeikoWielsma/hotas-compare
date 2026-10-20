@@ -1,0 +1,39 @@
+brand: thrustmaster
+name: HOTAS Warthog MKII System
+category: hotas_bundle
+status: current
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Bundle support is limited by its required PC-only members.
+  sources:
+  - https://www.thrustmaster.com/nl-nl/products/hotas-warthog-mkii/
+components:
+- thrustmaster/warthog-mkii-base
+- thrustmaster/warthog-stick-grip
+- thrustmaster/warthog-dual-throttle
+prices:
+- region: EU
+  currency: EUR
+  amount: 549.99
+  incl_vat: true
+  store: Thrustmaster Netherlands
+  url: https://www.thrustmaster.com/nl-nl/products/hotas-warthog-mkii/
+  verified: '2026-10-20'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 449.99
+  incl_vat: true
+  store: Thrustmaster UK eshop
+  url: https://shop.thrustmaster.com/en_gb/hotas-warthog-mkii.html
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources:
+- https://www.thrustmaster.com/nl-nl/products/hotas-warthog-mkii/
+images:
+- file: /images/thrustmaster/hotas-warthog-mkii.webp
+  source: https://www.thrustmaster.com/wp-content/uploads/2026/08/Website_HotasWarthogMKII_PageProductListing.webp
+  caption: HOTAS Warthog MKII System

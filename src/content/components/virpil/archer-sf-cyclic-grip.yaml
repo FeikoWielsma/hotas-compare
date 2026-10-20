@@ -1,6 +1,14 @@
 brand: virpil
 name: Archer-SF Cyclic Grip
 category: grip
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product listing identifies the intended platform as PC; the listing
+    has no Xbox or PS5 platform support.
+  sources:
+  - https://virpil-controls.eu/archer-sf-cyclic-grip.html
 status: announced
 release_year: 2026
 handedness: right
@@ -10,6 +18,7 @@ mount:
 controls:
 - type: trigger
   stages: 2
+  action: sequential
   count: 1
   location: grip
   label: Dual-stage trigger
@@ -36,7 +45,9 @@ controls_evidence:
   coverage: complete
   source: https://virpil-controls.eu/archer-sf-cyclic-grip.html
   checked: '2026-10-19'
-  notes: Official input list specifies one dual-stage trigger, guarded button input, three momentary buttons, and five gated four-way hats with push. No other physical inputs are listed; RGB button-label lighting is not an input.
+  notes: Official input list specifies one dual-stage trigger, guarded button input,
+    three momentary buttons, and five gated four-way hats with push. No other physical
+    inputs are listed; RGB button-label lighting is not an input.
 hardware:
   gimbal: null
   sensor: null
@@ -47,7 +58,7 @@ hardware:
   extension_support: null
   throw_deg: null
 connectivity:
-  usb: null
+  usb: none; connects through a compatible flightstick or collective base
   standalone_usb: false
 software: VPC Configuration Tool
 physical:

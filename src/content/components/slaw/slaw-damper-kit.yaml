@@ -8,20 +8,25 @@ controls: []
 controls_evidence:
   coverage: complete
   source: https://slawdevice.com/en/rudder-pedals/48-pre-order-rh-rotor-v2-rudder-pedals.html
-  checked: '2026-10-19'
-  notes: 'Optional hydraulic shock absorber/damper is a mechanical accessory with no discrete electrical inputs. The RH Rotor product page explicitly says the damper is optional and not included; standalone Slaw damper-kit documentation was not separately found.'
+  checked: '2026-10-20'
+  notes: Optional hydraulic shock absorber/damper is a mechanical accessory with no
+    discrete electrical inputs. The RH Rotor product page explicitly says the damper
+    is optional and not included; standalone Slaw damper-kit documentation was not
+    separately found. The standalone accessory contains no USB electronics or position
+    sensors; any measured axes belong to the parent pedals.
 hardware:
-  gimbal: null
-  sensor: contactless_magnetic
-  axes: [] # no published input list
+  gimbal: not applicable (passive accessory)
+  sensor: none (passive mechanical accessory)
+  axes: []
   force_adjustable: null
   cams_swappable: null
   damping: hydraulic
   extension_support: null
   throw_deg: null
+  axis_count: 0
 connectivity:
-  usb: c
-  standalone_usb: true
+  usb: none (passive mechanical accessory)
+  standalone_usb: false
 physical:
   materials: []
 use_case_fit: {}
@@ -30,3 +35,13 @@ verification: draft
 images: []
 sources:
 - https://slawdevice.com/en/rudder-pedals/48-pre-order-rh-rotor-v2-rudder-pedals.html
+platform_compatibility:
+  pc: unknown
+  xbox: unknown
+  ps5: unknown
+  notes: Mechanical accessory with no USB or controller of its own; compatibility
+    depends on the Slaw pedal host. No standalone platform statement exists. Xbox
+    and PS5 are not mentioned.
+  sources:
+  - https://slawdevice.com/en/content/7-downloads
+software: Not required; passive mechanical accessory

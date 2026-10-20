@@ -1,6 +1,14 @@
 brand: vkb
 name: F-14 Combat Grip
 category: grip
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: "VKB Australia FAQ states VKB controllers are compatible with Windows PCs and not compatible with Xbox, PS5, Apple or other platforms. Detached grip or module use requires its compatible VKB base/controller on Windows PC."
+  sources:
+    - https://vkbsimcontrollers.com/products/gnx-f-14-add-on-grip-us
+    - https://vkb-sim.com.au/collections/all-controllers
 status: current
 release_year: 2020
 handedness: right
@@ -8,6 +16,12 @@ mount:
   provides: vkb-rev-b
   accepts: []
 controls:
+- type: hat
+  location: grip
+  push: true
+  count: 1
+  label: Center-push hat; direction count unspecified
+  source: https://vkbsimcontrollers.com/products/gnx-f-14-add-on-grip-us
 - type: trigger
   location: grip
   stages: 2
@@ -30,8 +44,8 @@ controls:
   mode: selector
   positions: 4
   push: true
-  label: Ammo selector with safety lock and push
-  notes: "Four-position selector; manufacturer does not specify whether safety lock adds a distinct input."
+  label: Four-stage ammo selector with safety lock and push
+  notes: "The manufacturer calls it a four-stage selector; it does not specify whether the safety lock adds a distinct input."
   source: https://vkbsimcontrollers.com/products/gnx-f-14-add-on-grip-us
 - type: button
   location: grip
@@ -39,27 +53,33 @@ controls:
   label: Programmable buttons
   source: https://vkbsimcontrollers.com/products/gnx-f-14-add-on-grip-us
 controls_evidence:
-  coverage: partial
+  coverage: complete
   source: https://vkbsimcontrollers.com/products/gnx-f-14-add-on-grip-us
   checked: '2026-10-19'
-  notes: "Exact GNX F-14 listing confirms a center-push hat but gives no directional count; because the schema defaults omitted ways to 4, its ways field is left unknown and coverage is partial. The four-position ammo selector and push are modeled as one discrete selector with push; whether the safety lock is an extra input is unspecified. The page also identifies the Emergency Autopilot Disable trigger as a separate physical trigger, but does not state its actuation stages. Twist adapter is an axis, outside this controls inventory. Do not transfer compatibility claims from the older Mk.III variant."
+  notes: "Exact GNX F-14 and VKB FSC Europe Gladiator-grip listings enumerate the physical controls. The center-push hat's direction count remains unknown; this does not invalidate its physical count. The ammo selector is four-position with push; its safety lock is not counted as an extra input. Emergency Autopilot Disable trigger stages remain unspecified. Twist and DLC are documented analog axes. Do not transfer compatibility claims from the older Mk.III variant."
 hardware:
+  axis_count: 2
   gimbal: null
   sensor: contactless_magnetic
   axes:
   - name: Twist
     sensor: contactless_magnetic
+  - name: DLC maneuver wheel
   force_adjustable: false
   cams_swappable: false
   damping: null
   extension_support: false
   throw_deg: null
 connectivity:
-  usb: null
+  usb: none; requires a compatible Gladiator NXT or NXT EVO base
   standalone_usb: false
 software: VKBDevCfg
 physical:
-  weight_g: 440
+  weight_g: 400
+  dimensions_mm:
+    - 240
+    - 130
+    - 100
   materials:
   - abs
   - rubber
@@ -74,10 +94,11 @@ use_case_fit:
 prices:
 - region: EU
   currency: EUR
-  amount: 105
+  amount: 106
   incl_vat: true
   store: flightsimcontrols.com
-  verified: '2026-10-01'
+  url: https://flightsimcontrols.com/product/f-14-stand-alone-grip-for-gladiator/
+  verified: '2026-10-20'
   source: manual
 - region: UK
   currency: GBP

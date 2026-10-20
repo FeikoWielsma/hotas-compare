@@ -1,0 +1,104 @@
+brand: thrustmaster
+name: Sol-R 3 AVA Add-On Grip
+category: grip
+status: current
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product/support documentation lists PC compatibility; this exact component has no console host
+    support listed.
+  sources:
+  - https://www.thrustmaster.com/nl-nl/products/sol-r-3-ava-add-on-grip/
+prices:
+- region: EU
+  currency: EUR
+  amount: 99.99
+  incl_vat: true
+  store: Thrustmaster Netherlands
+  url: https://www.thrustmaster.com/nl-nl/products/sol-r-3-ava-add-on-grip/
+  verified: '2026-10-20'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 89.99
+  incl_vat: true
+  store: Thrustmaster UK eshop
+  url: https://shop.thrustmaster.com/en_gb/sol-r-3-ava-add-on-grip.html
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources:
+- https://www.thrustmaster.com/nl-nl/products/sol-r-3-ava-add-on-grip/
+- https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_3_AVA_Add-On_Grip_user_manual.pdf
+images:
+- file: /images/thrustmaster/sol-r-3-ava-grip.webp
+  source: https://www.thrustmaster.com/nl-nl/products/sol-r-3-ava-add-on-grip/
+  caption: Sol-R 3 AVA Add-On Grip
+handedness: ambi
+controls:
+- type: trigger
+  count: 1
+  stages: 2
+  location: grip
+  source: https://www.thrustmaster.com/nl-nl/products/sol-r-3-ava-add-on-grip/
+- type: trigger
+  count: 1
+  location: grip
+  label: Secondary trigger
+  source: https://www.thrustmaster.com/nl-nl/products/sol-r-3-ava-add-on-grip/
+- type: hat
+  count: 2
+  ways: 8
+  push: true
+  location: grip
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_3_AVA_Add-On_Grip_user_manual.pdf
+- type: analog_ministick
+  count: 1
+  push: true
+  location: grip
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_3_AVA_Add-On_Grip_user_manual.pdf
+- type: scroll_wheel
+  count: 1
+  push: true
+  location: grip
+  label: Scroll wheel with center click
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_3_AVA_Add-On_Grip_user_manual.pdf
+- type: button
+  count: 3
+  location: grip
+  label: Two front action buttons and one installed rear removable button
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_3_AVA_Add-On_Grip_user_manual.pdf
+- type: axis
+  kind: twist
+  count: 1
+  location: grip
+  source: https://www.thrustmaster.com/nl-nl/products/sol-r-3-ava-add-on-grip/
+hardware:
+  sensor: H.E.A.R.T. (Hall effect)
+  axes:
+  - name: Z
+    sensor: H.E.A.R.T. (Hall effect)
+  - name: Ministick X
+  - name: Ministick Y
+  axis_count: 3
+connectivity:
+  standalone_usb: false
+  usb: none; connects through a compatible joystick base
+physical:
+  weight_g: 309
+  dimensions_mm:
+  - 75
+  - 115
+  - 200
+controls_evidence:
+  coverage: complete
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_3_AVA_Add-On_Grip_user_manual.pdf
+  checked: '2026-10-20'
+  notes: English technical features and right-handed Sol-R mapping confirm two eight-way hats with center
+    clicks, a clickable analog ministick, clickable digital scroll wheel, two front buttons and one installed
+    rear removable button. The spare rear button and alternative POV mappings are not extra physical controls.
+    Two triggers are documented, one dual-position; secondary trigger action remains unspecified.
+    Twist plus ministick X/Y provide three analog axes. Includes two STAR cams for AVA; resistance/damping
+    belong to the base. English PDF printed pages 7, 8 and 13 provide diagrams.
+software: T.A.R.G.E.T. when used with compatible base

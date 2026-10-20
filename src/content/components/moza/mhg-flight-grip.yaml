@@ -35,8 +35,16 @@ controls:
 controls_evidence:
   coverage: partial
   source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mhg_flightsticks_manual.pdf?v=1779866649
-  checked: '2026-10-19'
-  notes: Manual diagram labels the mini stick, four dedicated buttons, dual-stage trigger, and four management switches (target, countermeasure, sensor, navigation). Product text calls the stick a Hall-effect hat configurable as axis or button input; it is counted once as the physical mini stick above. Marketing calls three management switches “5-way,” but neither diagram nor text defines their electrical/directional arrangement, so no mapping is guessed and those three are recorded as generic switches without guessed directions. The explicitly stated 3-way management switch is recorded. Four dedicated buttons exclude trigger and management switches; overall coverage remains partial.
+  checked: '2026-10-20'
+  notes: The UK product page lists a "hat switch" among its inputs (4 buttons, three 5-way switches, one 3-way switch, a
+    hat switch) and does not name a mini stick; the manual names a mini stick, so the mini stick is kept and this
+    conflict is unresolved. Manual diagram labels the mini stick, four dedicated buttons, dual-stage trigger, and four management switches
+    (target, countermeasure, sensor, navigation). Product text calls the stick a Hall-effect hat configurable as
+    axis or button input; it is counted once as the physical mini stick above. Marketing calls three management
+    switches “5-way,” but neither diagram nor text defines their electrical/directional arrangement, so no mapping
+    is guessed and those three are recorded as generic switches without guessed directions. The explicitly stated
+    3-way management switch is recorded. Four dedicated buttons exclude trigger and management switches; overall
+    coverage remains partial.
 verification: draft
 sources:
 - https://mozaracing.com
@@ -53,3 +61,15 @@ prices:
   url: https://eu.mozaracing.com/products/mhg-flightstick
   verified: '2026-10-19'
   source: manual
+software: MOZA Cockpit
+physical:
+  materials:
+  - carbon fiber reinforced composite
+platform_compatibility:
+  pc: unknown
+  xbox: unknown
+  ps5: unknown
+  notes: 'The UK product page names no platform and no exclusion, so all platform fields are unknown. It says the grip
+    is "built to handle high-torque setups like the AB9"; it gives no compatible base list.'
+  sources:
+  - https://uk.mozaracing.com/products/mhg-flightstick

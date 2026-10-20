@@ -7,25 +7,35 @@ mount: null
 controls:
   - type: trigger
     location: grip
-    stages: 2
     label: Trigger
     source: https://www.logitech.com/assets/65324/x56-hotas.pdf
   - type: button
     location: grip
-    count: 4
-    label: A, B, D and pinkie controls
-    notes: Manual labels stick buttons in controller test, while diagram identifies pinkie and flying-pinkie contacts; firmware names are not treated as twelve logical bindings.
+    count: 2
+    label: Two stick head buttons
+    notes: Manual overview (p.3) lists stick buttons with trigger and two head buttons.
+    source: https://www.logitech.com/assets/65324/x56-hotas.pdf
+  - type: button
+    location: grip
+    count: 2
+    label: Pinkie and flying pinkie
+    notes: Manual overview (p.3) names both pinkie controls; whether each is a button, switch or lever is not stated.
     source: https://www.logitech.com/assets/65324/x56-hotas.pdf
   - type: hat
     location: grip
     ways: 8
+    count: 1
+    label: POV hat (A)
+    source: https://www.logitech.com/assets/65324/x56-hotas.pdf
+  - type: hat
+    location: grip
     count: 2
-    label: POV hats H1 and H2
+    label: Thumb hats (Witches and Castle)
+    notes: Manual overview (p.3) lists thumb HATs, Witches and Castle; their direction count is not stated.
     source: https://www.logitech.com/assets/65324/x56-hotas.pdf
   - type: analog_ministick
     location: grip
-    push: true
-    label: Thumb mini analog stick
+    label: Mini analog stick (B)
     source: https://www.logitech.com/assets/65324/x56-hotas.pdf
 controls_evidence:
   coverage: complete
@@ -80,3 +90,10 @@ images:
   - file: /images/logitech/x56-rhino-stick.webp
     source: https://www.logitechg.com/en-us/shop/p/x56-space-flight-vr-simulator-controller
     caption: X56 Rhino Stick
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Manual documents Windows setup through Windows Game Controllers and G HUB; no Xbox or PS5 statement appears in the manual or official SKU page. Console support remains unknown.
+  sources:
+  - https://www.logitech.com/assets/65324/x56-hotas.pdf

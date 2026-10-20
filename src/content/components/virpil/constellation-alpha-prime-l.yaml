@@ -1,6 +1,14 @@
 brand: virpil
 name: Constellation Alpha Prime (Left)
 category: grip
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product listing identifies the intended platform as PC; the listing
+    has no Xbox or PS5 platform support.
+  sources:
+  - https://virpil-controls.eu/vpc-constellation-alpha-prime-l.html
 status: current
 release_year: 2022
 handedness: left
@@ -22,7 +30,8 @@ controls:
   flip: true
   label: Flip trigger
   location: grip
-  notes: 'Two physical positions: raised position switch plus tactile trigger. Combined use with main trigger creates additional logical stages; not an extra trigger.'
+  notes: 'Two physical positions: raised position switch plus tactile trigger. Combined
+    use with main trigger creates additional logical stages; not an extra trigger.'
   source: https://virpil-controls.eu/vpc-constellation-alpha-prime-l.html
 - type: hat
   ways: 4
@@ -52,21 +61,23 @@ controls:
   count: 1
   push: true
   location: grip
-  notes: 'Brake lever includes a separate momentary button.'
+  notes: Brake lever includes a separate momentary button.
   source: https://virpil-controls.eu/vpc-constellation-alpha-prime-l.html
 - type: scroll_wheel
   count: 1
   push: true
   location: grip
   label: Scroll encoder
-  notes: 'Manufacturer calls this a Scroll encoder with dual push; the two push inputs are not documented as sequential stages.'
+  notes: Manufacturer calls this a Scroll encoder with dual push; the two push inputs
+    are not documented as sequential stages.
   source: https://virpil-controls.eu/vpc-constellation-alpha-prime-l.html
 controls_evidence:
   coverage: complete
   source: https://virpil-controls.eu/vpc-constellation-alpha-prime-l.html
   checked: '2026-10-19'
-  notes: "Left and right Prime grips have the same listed control inventory. The manufacturer distinguishes flip-trigger position and brake-lever button from the three standalone momentary buttons; do not double count those controls."
-
+  notes: Left and right Prime grips have the same listed control inventory. The manufacturer
+    distinguishes flip-trigger position and brake-lever button from the three standalone
+    momentary buttons; do not double count those controls.
 hardware:
   gimbal: null
   sensor: contactless_magnetic
@@ -81,7 +92,7 @@ hardware:
   extension_support: false
   throw_deg: null
 connectivity:
-  usb: null
+  usb: none; connects through a compatible flightstick or collective base
   standalone_usb: false
 software: VPC Configuration Tool
 physical:
@@ -151,6 +162,6 @@ verification: draft
 sources:
 - https://virpil-controls.eu/products/vpc-constellation-alpha-prime-l
 images:
-  - file: /images/virpil/constellation-alpha-prime-l.jpg
-    source: https://virpil-controls.eu/vpc-constellation-alpha-prime-l.html
-    caption: Constellation Alpha Prime (Left)
+- file: /images/virpil/constellation-alpha-prime-l.jpg
+  source: https://virpil-controls.eu/vpc-constellation-alpha-prime-l.html
+  caption: Constellation Alpha Prime (Left)

@@ -1,71 +1,91 @@
-brand: honeycomb
 name: Alpha Flight Controls Lite
+brand: honeycomb
 category: yoke
 status: current
 release_year: 2025
-handedness: n/a
-mount: null
+handedness: ambi
+mount:
+  provides: desk
+  accepts: []
 controls:
-- type: hat
-  ways: 8
-  label: POV switch
-  location: handle
-  source: https://flyhoneycomb.com/products/alpha-flight-controls-lite
-- type: rocker
-  count: 2
-  label: Two 2-way rockers
-  location: handle
-  source: https://flyhoneycomb.com/products/alpha-flight-controls-lite
-- type: button
-  count: 4
-  label: Programmable buttons (two per handle)
-  location: handle
-  source: https://flyhoneycomb.com/products/alpha-flight-controls-lite
+  - type: hat
+    label: POV switch
+    location: handle
+    ways: 8
+    source: https://flyhoneycomb.com/products/alpha-flight-controls-lite
+  - type: rocker
+    count: 2
+    label: Two 2-way rockers
+    location: handle
+    source: https://flyhoneycomb.com/products/alpha-flight-controls-lite
+  - type: button
+    count: 4
+    label: Programmable buttons (two per handle)
+    location: handle
+    source: https://flyhoneycomb.com/products/alpha-flight-controls-lite
 controls_evidence:
   coverage: complete
   source: https://flyhoneycomb.com/products/alpha-flight-controls-lite
   checked: '2026-10-19'
-  notes: Official product page enumerates one POV, two 2-way rockers, and four programmable buttons. No other installed switch types are described; button-mapping totals are not used as physical counts.
+  notes: >-
+    Official product page enumerates one POV, two 2-way rockers, and four
+    programmable buttons. No other installed switch types are described;
+    button-mapping totals are not used as physical counts.
 hardware:
-  gimbal: null
-  sensor: null
   axes:
-  - name: Aileron
-  - name: Elevator
-  force_adjustable: null
-  cams_swappable: null
-  damping: null
-  extension_support: null
+    - name: Aileron
+    - name: Elevator
+  force_adjustable: false
+  cams_swappable: false
+  extension_support: false
   throw_deg: 180
 connectivity:
   usb: c
   standalone_usb: true
 physical:
   weight_g: 4377
-  dimensions_mm: [273, 410, 208]
-  materials: []
-use_case_fit: {}
+  dimensions_mm:
+    - 273
+    - 410
+    - 208
+  materials: [steel shaft]
+use_case_fit:
+  modern_jet: 1
+  heli: 1
+  ww2: 1
+  ga: 5
+  airliner: 5
+  space_hotas: 1
+  space_hosas: 1
 prices:
-- region: EU
-  currency: EUR
-  amount: 199.99
-  incl_vat: true
-  store: eu.flyhoneycomb.com
-  url: https://eu.flyhoneycomb.com/products/alpha-flight-controls-lite
-  verified: '2026-10-19'
-  source: manual
-- region: US
-  currency: USD
-  amount: 199.99
-  incl_vat: false
-  store: flyhoneycomb.com
-  url: https://flyhoneycomb.com/products/alpha-flight-controls-lite
-  verified: '2026-10-19'
-  source: manual
+  - region: EU
+    currency: EUR
+    amount: 199.99
+    incl_vat: true
+    store: eu.flyhoneycomb.com
+    url: https://eu.flyhoneycomb.com/products/alpha-flight-controls-lite
+    verified: '2026-10-19'
+    source: manual
+  - region: US
+    currency: USD
+    amount: 199.99
+    incl_vat: false
+    store: flyhoneycomb.com
+    url: https://flyhoneycomb.com/products/alpha-flight-controls-lite
+    verified: '2026-10-19'
+    source: manual
+external_reviews: []
 verification: draft
-images:
-- file: /images/honeycomb/alpha-flight-controls-lite.webp
-  source: https://eu.flyhoneycomb.com/products/alpha-flight-controls-lite
-  caption: Alpha Flight Controls Lite
 sources:
-- https://eu.flyhoneycomb.com/products/alpha-flight-controls-lite
+  - https://eu.flyhoneycomb.com/products/alpha-flight-controls-lite
+images:
+  - file: /images/honeycomb/alpha-flight-controls-lite.webp
+    source: https://eu.flyhoneycomb.com/products/alpha-flight-controls-lite
+    caption: Alpha Flight Controls Lite
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unknown
+  notes: Official product page lists PC and Mac only. PS5 is not mentioned.
+  sources:
+  - https://flyhoneycomb.com/products/alpha-flight-controls-lite

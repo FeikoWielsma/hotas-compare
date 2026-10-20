@@ -1,60 +1,72 @@
 brand: virpil
 name: VPC Rotor TCS Plus Base
 category: base
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product listing identifies the intended platform as PC; the listing
+    has no Xbox or PS5 platform support.
+  sources:
+  - https://virpil-controls.eu/vpc-rotor-tcs-plus-base-upgraded.html
 status: current
 release_year: 2021
 handedness: n/a
 mount: null
 controls:
-  - type: lever
-    location: handle
-    kind: collective
-    analog: true
-    count: 1
-    label: Collective axis
-    source: https://virpil-controls.eu/vpc-rotor-tcs-plus-base-upgraded.html
-  - type: lever
-    location: handle
-    kind: throttle_single
-    analog: true
-    count: 1
-    label: Twist throttle axis
-    source: https://virpil-controls.eu/vpc-rotor-tcs-plus-base-upgraded.html
-  - type: button
-    location: handle
-    count: 1
-    label: Engine idle button
-    source: https://virpil-controls.eu/vpc-rotor-tcs-plus-base-upgraded.html
-  - type: toggle
-    location: handle
-    ways: 2
-    count: 1
-    label: Twist restrictor switch
-    source: https://virpil-controls.eu/vpc-rotor-tcs-plus-base-upgraded.html
+- type: lever
+  location: handle
+  kind: collective
+  analog: true
+  count: 1
+  label: Collective axis
+  source: https://virpil-controls.eu/vpc-rotor-tcs-plus-base-upgraded.html
+- type: lever
+  location: handle
+  kind: throttle_single
+  analog: true
+  count: 1
+  label: Twist throttle axis
+  source: https://virpil-controls.eu/vpc-rotor-tcs-plus-base-upgraded.html
+- type: button
+  location: handle
+  count: 1
+  label: Engine idle button
+  source: https://virpil-controls.eu/vpc-rotor-tcs-plus-base-upgraded.html
+- type: toggle
+  location: handle
+  ways: 2
+  count: 1
+  label: Twist restrictor switch
+  source: https://virpil-controls.eu/vpc-rotor-tcs-plus-base-upgraded.html
 controls_evidence:
   coverage: complete
   source: https://virpil-controls.eu/vpc-rotor-tcs-plus-base-upgraded.html
   checked: '2026-10-19'
-  notes: 'Exact SKU VPC-112-001 Plus upgraded variant has collective axis plus twist throttle axis, engine-idle button and twist-restrictor switch. Switch maintained/momentary behavior is not stated. Do not apply these Plus-only controls to standard Rotor TCS base.'
+  notes: Exact SKU VPC-112-001 Plus upgraded variant has collective axis plus twist
+    throttle axis, engine-idle button and twist-restrictor switch. Switch maintained/momentary
+    behavior is not stated. Do not apply these Plus-only controls to standard Rotor
+    TCS base. Current exact-SKU store Product Weight field checked 2026-10-20; manufacturer
+    does not label net versus packed basis.
 hardware:
   gimbal: dual_cam
   sensor: contactless_magnetic
   axes:
-    - name: Collective
-      sensor: contactless_magnetic
-    - name: Twist
-      sensor: contactless_magnetic
+  - name: Collective
+    sensor: contactless_magnetic
+  - name: Twist
+    sensor: contactless_magnetic
   force_adjustable: true
   cams_swappable: true
-  damping: adjustable_dry_clutch
+  damping: adjustable collective clutch and twist-axis resistance
   extension_support: false
   throw_deg: 40
 connectivity:
-  usb: c
+  usb: VPC DUAL USB - XS9 cable
   standalone_usb: true
 software: VPC Configuration Tool
 physical:
-  weight_g: 2800
+  weight_g: 1650
   materials:
   - aluminium
   - steel
@@ -67,28 +79,28 @@ use_case_fit:
   space_hotas: 3
   space_hosas: 3
 prices:
-  - region: EU
-    currency: EUR
-    amount: 299.95
-    incl_vat: true
-    store: virpil-controls.eu
-    url: https://virpil-controls.eu/vpc-rotor-tcs-plus-base-upgraded.html
-    verified: '2026-10-19'
-    source: manual
-  - region: UK
-    currency: GBP
-    amount: 264
-    incl_vat: true
-    store: virpil-controls.eu
-    verified: '2026-10-01'
-    source: manual
-  - region: US
-    currency: USD
-    amount: 324
-    incl_vat: false
-    store: virpil-controls.us
-    verified: '2026-10-01'
-    source: manual
+- region: EU
+  currency: EUR
+  amount: 299.95
+  incl_vat: true
+  store: virpil-controls.eu
+  url: https://virpil-controls.eu/vpc-rotor-tcs-plus-base-upgraded.html
+  verified: '2026-10-19'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 264
+  incl_vat: true
+  store: virpil-controls.eu
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 324
+  incl_vat: false
+  store: virpil-controls.us
+  verified: '2026-10-01'
+  source: manual
 verdict:
   author: feiko
   hands_on: false
@@ -116,7 +128,9 @@ verdict:
 verification: draft
 sources:
 - https://virpil-controls.eu/products/vpc-rotor-tcs-plus-base
+- https://virpil-controls.eu/vpc-rotor-tcs-plus-base-upgraded.html
+- https://support.virpil.com/en/support/solutions/articles/47001258794-rotor-plus-tcs-base-upgraded-user-manual
 images:
-  - file: /images/virpil/vpc-rotor-tcs-base.jpg
-    source: https://virpil-controls.eu/vpc-rotor-tcs-plus-base-upgraded.html
-    caption: VPC Rotor TCS Plus Base
+- file: /images/virpil/vpc-rotor-tcs-base.jpg
+  source: https://virpil-controls.eu/vpc-rotor-tcs-plus-base-upgraded.html
+  caption: VPC Rotor TCS Plus Base

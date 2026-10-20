@@ -91,4 +91,10 @@ images:
   - file: /images/logitech/extreme-3d-pro.webp
     source: https://www.logitechg.com/en-us/shop/p/extreme-3d-pro-joystick
     caption: Logitech Extreme 3D Pro
-
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official product page establishes PC use but the legacy product listing does not provide a sufficiently explicit exhaustive platform exclusion for console use; console compatibility remains unknown.
+  sources:
+  - https://www.logitechg.com/en-us/products/flight.html

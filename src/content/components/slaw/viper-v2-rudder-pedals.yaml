@@ -41,3 +41,10 @@ images:
     caption: Viper V2 Rudder Pedals
 sources:
 - https://slawdevice.com/en/blog/post/7-Announcement-RX-Viper-V2-rudder-pedals.html
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Manufacturer provides rudder calibration software for these pedals; the downloads page does not state an operating system. No Xbox or PS5 statement appears.
+  sources:
+  - https://slawdevice.com/en/content/7-downloads

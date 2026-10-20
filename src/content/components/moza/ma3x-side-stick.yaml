@@ -7,10 +7,20 @@ controls_evidence:
   coverage: partial
   source: https://support.mozaracing.com/en/support/solutions/articles/70000679588-moza-ma3x-side-stick-support
   checked: '2026-10-19'
-  notes: Official spec itemizes one ALPS 8-way hat, one trigger, and one toggle. The 12 programmable-input total is logical mapping capacity; trigger stages and toggle positions/latching are not specified. The manual/support spec identifies an 8-way ALPS hat but does not establish center push; omitted as unknown.
+  notes: Official spec itemizes one ALPS 8-way hat, one trigger, and one toggle. The 12 programmable-input total
+    is logical mapping capacity; trigger stages and toggle positions/latching are not specified. The manual/support
+    spec identifies an 8-way ALPS hat but does not establish center push; omitted as unknown.
+connectivity:
+  standalone_usb: false
+physical:
+  weight_g: 220
+  materials:
+  - ultra-rigid composite casing
+  - ABS switches
 verification: draft
 sources:
 - https://mozaracing.com
+- https://support.mozaracing.com/en/support/solutions/articles/70000679588-moza-ma3x-side-stick-support
 images:
 - file: /images/moza/ma3x-side-stick.webp
   source: https://eu.mozaracing.com/products/ma3x-sidestick
@@ -25,19 +35,27 @@ prices:
   verified: '2026-10-19'
   source: manual
 controls:
-  - type: trigger
-    location: grip
-    count: 1
-    label: Trigger
-    source: https://support.mozaracing.com/en/support/solutions/articles/70000679588-moza-ma3x-side-stick-support
-  - type: hat
-    location: grip
-    ways: 8
-    count: 1
-    label: ALPS 8-way hat
-    source: https://support.mozaracing.com/en/support/solutions/articles/70000679588-moza-ma3x-side-stick-support
-  - type: toggle
-    location: grip
-    count: 1
-    label: Toggle switch
-    source: https://support.mozaracing.com/en/support/solutions/articles/70000679588-moza-ma3x-side-stick-support
+- type: trigger
+  location: grip
+  count: 1
+  label: Trigger
+  source: https://support.mozaracing.com/en/support/solutions/articles/70000679588-moza-ma3x-side-stick-support
+- type: hat
+  location: grip
+  ways: 8
+  count: 1
+  label: ALPS 8-way hat
+  source: https://support.mozaracing.com/en/support/solutions/articles/70000679588-moza-ma3x-side-stick-support
+- type: toggle
+  location: grip
+  count: 1
+  label: Toggle switch
+  source: https://support.mozaracing.com/en/support/solutions/articles/70000679588-moza-ma3x-side-stick-support
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: MOZA documents PC compatibility and use with MOZA/third-party bases; the support page does not provide
+    an exhaustive console list, so console compatibility remains unknown.
+  sources:
+  - https://support.mozaracing.com/en/support/solutions/articles/70000679588-moza-ma3x-side-stick-support

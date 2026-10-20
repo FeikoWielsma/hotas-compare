@@ -35,3 +35,10 @@ images:
   - file: /images/logitech/flight-yoke-system.webp
     source: https://www.logitechg.com/en-us/shop/p/flight-simulator-yoke-system.945-000023
     caption: Logitech G Flight Yoke System
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: The official system manual documents Windows installation and use for the included components. Xbox and PS5 support are not documented.
+  sources:
+  - https://www.logitech.com/assets/65128/flight-yoke-system.pdf

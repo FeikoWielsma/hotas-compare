@@ -28,25 +28,54 @@ controls:
   label: Ignition selector
   location: panel
   source: https://flyhoneycomb.com/products/alpha-flight-controls
-controls_evidence:
-  coverage: partial
+- type: toggle
+  count: 4
+  location: panel
+  label: Master ALT/BAT and AVIONICS BUS1/BUS2 switches
   source: https://flyhoneycomb.com/products/alpha-flight-controls
-  checked: '2026-10-19'
-  notes: Detailed left/right handle callouts specify one POV hat on the left and two buttons on each handle, conflicting with broad prose saying both handles have a POV and three buttons plus PTT per handle; counts follow the specific callouts. The product page names four switch categories but does not enumerate physical panel switch count or mechanism, so no panel control count is inferred from categories. Ignition is modeled as a five-position rotary selector. PTT inclusion/placement remains unclear.
+- type: toggle
+  count: 5
+  location: panel
+  label: BCN/LAND/TAXI/NAV/STROBE light switches
+  source: https://flyhoneycomb.com/products/alpha-flight-controls
+controls_evidence:
+  coverage: complete
+  source: https://flyhoneycomb.com/products/alpha-flight-controls
+  checked: '2026-10-20'
+  notes: 'Shared full-size Alpha inventory: one left-handle 8-way POV, four 2-way
+    handle rockers, four handle buttons, four master/avionics panel switches, five
+    lighting panel switches and five-position ignition selector. Panel labels/counts
+    are visible in the Honeycomb default-setup diagram supplied by the owner and product
+    photos; switch off-position electrical mappings are not inferred. Specific manufacturer
+    handle callouts take precedence for the listed physical grouping, but broad prose
+    conflicts on per-handle POV/button counts and PTT placement. Full installed handle
+    inventory is therefore not established. Physical inventory completeness uses the
+    owner-supplied Honeycomb default mapping diagram; optional click, lighting and
+    switch contact behavior may still be unspecified.'
 hardware:
   gimbal: null
-  sensor: contactless_magnetic
-  axes: []
+  sensor: null
+  axes:
+  - name: Elevator (pitch)
+  - name: Aileron (roll)
   force_adjustable: null
   cams_swappable: null
-  damping: null
+  damping: Damped self-centering mechanism; no center detent
   extension_support: null
-  throw_deg: null
+  throw_deg: 180
+  axis_count: 2
 connectivity:
   usb: c
   standalone_usb: true
+software: Honeycomb Configurator for custom button mappings; Windows utility
 physical:
-  materials: []
+  weight_g: 4769
+  dimensions_mm:
+  - 273
+  - 410
+  - 208
+  materials:
+  - steel shaft
 use_case_fit: {}
 prices:
 - region: EU
@@ -75,21 +104,24 @@ prices:
 verdict:
   author: feiko
   hands_on: true
-  take: "A polished entry point for general aviation and airliner flying, with a broad, smooth yoke arc and useful cockpit-style controls. It is a substantial desktop unit, so measure your mounting space and pair it with a throttle quadrant for a complete setup."
+  take: A polished entry point for general aviation and airliner flying, with a broad,
+    smooth yoke arc and useful cockpit-style controls. It is a substantial desktop
+    unit, so measure your mounting space and pair it with a throttle quadrant for
+    a complete setup.
   pros:
-    - "Comfortable, wide yoke travel suits GA and commercial aircraft"
-    - "Integrated switches and buttons reduce reliance on keyboard commands"
-    - "Straightforward USB setup and broad simulator compatibility"
+  - Comfortable, wide yoke travel suits GA and commercial aircraft
+  - Integrated switches and buttons reduce reliance on keyboard commands
+  - Straightforward USB setup and broad simulator compatibility
   cons:
-    - "Requires a sizeable, secure desk mounting area"
-    - "No throttle quadrant included"
-    - "Price is high for users who mainly fly with a joystick"
+  - Requires a sizeable, secure desk mounting area
+  - No throttle quadrant included
+  - Price is high for users who mainly fly with a joystick
   great_for:
-    - ga
-    - airliner
+  - ga
+  - airliner
   skip_if:
-    - "You mainly fly combat aircraft or space sims"
-    - "You cannot clamp a large yoke to your desk"
+  - You mainly fly combat aircraft or space sims
+  - You cannot clamp a large yoke to your desk
   scores:
     build: 4
     feel: 4
@@ -98,8 +130,19 @@ verdict:
     qc_support: 3
 verification: verified
 images:
-  - file: /images/honeycomb/alpha-flight-controls-yoke.jpg
-    source: https://flyhoneycomb.com/products/alpha-flight-controls
-    caption: Alpha Flight Controls Yoke
+- file: /images/honeycomb/alpha-flight-controls-yoke.jpg
+  source: https://flyhoneycomb.com/products/alpha-flight-controls
+  caption: Alpha Flight Controls Yoke
 sources:
 - https://honeycomb.com
+- https://flyhoneycomb.com/products/alpha-flight-controls
+- https://flyhoneycomb.com/pages/downloads
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unknown
+  notes: Official product page lists PC and Mac only; XPC is the Xbox variant. PS5
+    is not mentioned. Sensor technology is not identified by the manufacturer and
+    is left unknown.
+  sources:
+  - https://flyhoneycomb.com/products/alpha-flight-controls

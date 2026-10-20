@@ -1,6 +1,13 @@
 brand: virpil
 name: VPC CDT-Aeromax Throttle Lever Module
 category: module
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product listing identifies the intended platform as PC; the listing has no Xbox or PS5 platform support.
+  sources:
+    - https://virpil-controls.eu/cdt-aeromax-throttle-module.html
 status: current
 release_year: 2026
 handedness: ambi

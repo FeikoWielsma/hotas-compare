@@ -17,18 +17,20 @@ controls:
   analog: false
   count: 1
   label: Lift-to-arm reverse-thrust lever
-  notes: 'The official description identifies a physical lift-to-arm lever; its exact electrical mapping is not specified.'
+  notes: The official description identifies a physical lift-to-arm lever; its exact electrical mapping is not specified.
   source: https://eu.mozaracing.com/products/tqb-mod
 - type: button
   location: handle
   count: 1
   label: TO/GA button
-  source: https://mozaracing.com/products/mtq-throttle
+  source: https://eu.mozaracing.com/products/tqb-mod
 controls_evidence:
   coverage: partial
-  source: https://mozaracing.com/products/mtq-throttle
-  checked: '2026-10-19'
-  notes: 'Boeing TQB is an optional replacement module, not installed alongside the default TQF grips. Official MTQ page explicitly attributes a TO/GA button to the Boeing lever and a lift-to-arm reverse-thrust lever; other module controls and exact reverse-thrust input encoding are not specified.'
+  source: https://eu.mozaracing.com/products/tqb-mod
+  checked: '2026-10-20'
+  notes: Boeing TQB is an optional replacement module, not installed alongside the default TQF grips. The TQB product
+    page names a TO/GA button and a lift-to-arm reverse-thrust lever. It does not state the grip input count, other
+    switches, or the reverse-thrust electrical encoding, so those are not recorded.
 verification: draft
 sources:
 - https://mozaracing.com
@@ -45,3 +47,11 @@ prices:
   url: https://eu.mozaracing.com/products/tqb-mod
   verified: '2026-10-19'
   source: manual
+platform_compatibility:
+  pc: unknown
+  xbox: unknown
+  ps5: unknown
+  notes: The TQB product page names no platforms and no exclusions, so all platform fields are unknown. The "PC only"
+    wording on the MTQ pages is for the MTQ quadrant and is not applied to this module.
+  sources:
+  - https://eu.mozaracing.com/products/tqb-mod

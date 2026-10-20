@@ -1,0 +1,86 @@
+brand: thrustmaster
+name: T.Flight HOTAS 4
+category: stick_fixed
+status: current
+handedness: ambi
+mount: null
+controls:
+- type: lever
+  kind: throttle_single
+  analog: true
+  count: 1
+  location: base
+  label: Detachable throttle
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TFH4/T-Flight_Hotas_4_Manual.pdf
+- type: axis
+  kind: rudder
+  count: 1
+  location: handle
+  label: Rudder via twisting handle
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TFH4/T-Flight_Hotas_4_Manual.pdf
+- type: rocker
+  count: 1
+  location: base
+  label: Rudder via rocking button on throttle
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TFH4/T-Flight_Hotas_4_Manual.pdf
+- type: hat
+  count: 1
+  location: handle
+  label: Multidirectional POV hat-switch
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TFH4/T-Flight_Hotas_4_Manual.pdf
+- type: button
+  count: 1
+  location: base
+  label: PS button with LED
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TFH4/T-Flight_Hotas_4_Manual.pdf
+controls_evidence:
+  coverage: partial
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TFH4/T-Flight_Hotas_4_Manual.pdf
+  checked: '2026-10-20'
+  notes: Inventory from the official T.Flight Hotas 4 user manual technical-features list (callouts 1-11) and text.
+    The manual shows action buttons (callout 9, several leader lines on handle and throttle) but gives no count, so
+    they are not itemised; retailer listings quote 12 action buttons, which is not an official source. The handle
+    resistance dial (callout 7) and rudder locking screw (callout 5) are adjustments, not inputs, and the Allen key
+    is for throttle installation. The manual has no PC button-numbering diagram.
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: supported
+  notes: The official user manual covers PlayStation 5 and PlayStation 4 and PC use; the Thrustmaster support product
+    page lists the manual for PC, PS4 and PS5. Xbox is not listed.
+  sources:
+  - https://support.thrustmaster.com/en/product/tflighthotas4-en/
+  - https://ts.thrustmaster.com/download/accessories/Manuals/TFH4/T-Flight_Hotas_4_Manual.pdf
+sources:
+- https://support.thrustmaster.com/en/product/tflighthotas4-en/
+- https://ts.thrustmaster.com/download/accessories/Manuals/TFH4/T-Flight_Hotas_4_Manual.pdf
+- https://www.thrustmaster.com/en-us/universe/flying/
+- https://shop.thrustmaster.com/en_eu/t-flight-hotas-4.html
+- https://shop.thrustmaster.com/en_gb/t-flight-hotas-4.html
+verification: draft
+hardware:
+  force_adjustable: true
+connectivity:
+  standalone_usb: true
+  usb: USB cable (PC, PS4, PS5); RJ12 Thrustmaster rudder connector
+prices:
+- region: EU
+  currency: EUR
+  amount: 89.99
+  incl_vat: true
+  store: Thrustmaster EU eshop
+  url: https://shop.thrustmaster.com/en_eu/t-flight-hotas-4.html
+  verified: '2026-10-20'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 79.99
+  incl_vat: true
+  store: Thrustmaster UK eshop
+  url: https://shop.thrustmaster.com/en_gb/t-flight-hotas-4.html
+  verified: '2026-10-20'
+  source: manual
+images:
+- file: /images/thrustmaster/t-flight-hotas-4.webp
+  source: https://support.thrustmaster.com/en/product/tflighthotas4-en/
+  caption: T.Flight Hotas 4 (official Thrustmaster support image)

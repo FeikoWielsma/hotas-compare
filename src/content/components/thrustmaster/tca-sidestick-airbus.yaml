@@ -24,7 +24,10 @@ controls_evidence:
   coverage: partial
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Sidestick/TCA_Sidestick_AE_User_Manual.pdf
   checked: '2026-10-19'
-  notes: Manual identifies digital trigger, PoV hat, rudder twist and built-in throttle; its diagram says 15 action buttons and one virtual throttle button. Product page says 17 action buttons and four swappable head modules, counting mapped/virtual events differently. Exact standalone button count and hat push behavior remain unresolved; modules are interchangeable, not four simultaneous controls.
+  notes: Manual identifies digital trigger, PoV hat, rudder twist and built-in throttle; its diagram says 15 action
+    buttons and one virtual throttle button. Product page says 17 action buttons and four swappable head modules,
+    counting mapped/virtual events differently. Exact standalone button count and hat push behavior remain unresolved;
+    modules are interchangeable, not four simultaneous controls.
 hardware:
   gimbal: ball_joint
   sensor: hall
@@ -47,6 +50,8 @@ software: T.A.R.G.E.T
 physical:
   materials:
   - abs
+  weight_g: 920
+  dimensions_mm: [195, 195, 225]
 use_case_fit:
   modern_jet: 4
   heli: 3
@@ -82,6 +87,14 @@ verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/tca-sidestick-airbus-edition/
 images:
-  - file: /images/thrustmaster/tca-sidestick-airbus.webp
-    source: https://www.thrustmaster.com/en-us/products/tca-sidestick-airbus-edition/
-    caption: TCA Sidestick Airbus Edition
+- file: /images/thrustmaster/tca-sidestick-airbus.webp
+  source: https://www.thrustmaster.com/en-us/products/tca-sidestick-airbus-edition/
+  caption: TCA Sidestick Airbus Edition
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product/support documentation lists PC compatibility; this exact component has no console host
+    support listed.
+  sources:
+  - https://www.thrustmaster.com/en-us/products/tca-sidestick-airbus-edition/

@@ -1,0 +1,68 @@
+brand: thrustmaster
+name: T.Flight Hotas 5 Microsoft Flight Simulator Edition
+category: stick_fixed
+status: current
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: supported
+  notes: Official page lists Windows and PS5/PS4; Xbox is not listed.
+  sources:
+  - https://www.thrustmaster.com/nl-nl/products/t-flight-hotas-5-microsoft-flight-simulator-edition/
+controls:
+- type: trigger
+  count: 1
+  location: grip
+  source: https://www.thrustmaster.com/nl-nl/products/t-flight-hotas-5-microsoft-flight-simulator-edition/
+- type: hat
+  location: grip
+  label: Hat switch
+  source: https://www.thrustmaster.com/nl-nl/products/t-flight-hotas-5-microsoft-flight-simulator-edition/
+- type: lever
+  kind: throttle_single
+  analog: true
+  location: base
+  label: Detachable throttle
+  source: https://www.thrustmaster.com/nl-nl/products/t-flight-hotas-5-microsoft-flight-simulator-edition/
+- type: lever
+  kind: other
+  analog: true
+  location: base
+  label: Rudder tilt lever
+  source: https://www.thrustmaster.com/nl-nl/products/t-flight-hotas-5-microsoft-flight-simulator-edition/
+hardware:
+  axis_count: 5
+  axes:
+  - name: Z (twist rudder)
+physical:
+  weight_g: 2060
+  dimensions_mm:
+  - 350
+  - 200
+  - 235
+connectivity:
+  usb: USB (product page does not name connector type)
+  standalone_usb: true
+prices:
+- region: EU
+  currency: EUR
+  amount: 99.99
+  incl_vat: true
+  store: Thrustmaster Netherlands
+  url: https://www.thrustmaster.com/nl-nl/products/t-flight-hotas-5-microsoft-flight-simulator-edition/
+  verified: '2026-10-20'
+  source: manual
+controls_evidence:
+  coverage: partial
+  source: https://www.thrustmaster.com/nl-nl/products/t-flight-hotas-5-microsoft-flight-simulator-edition/
+  checked: '2026-10-20'
+  notes: Manufacturer states five axes, 14 buttons, one trigger and one hat switch, plus detachable throttle and
+    dual rudder controls via twist Z axis or throttle tilt lever. The 14-control button total is not treated as
+    a physical button count; unspecified buttons and axis names are omitted.
+verification: draft
+sources:
+- https://www.thrustmaster.com/nl-nl/products/t-flight-hotas-5-microsoft-flight-simulator-edition/
+images:
+- file: /images/thrustmaster/t-flight-hotas-5-microsoft-flight-simulator-edition.webp
+  source: https://www.thrustmaster.com/wp-content/uploads/2026/05/Website_TFHO5-MSF_PageProductListing_800x800.webp
+  caption: T.Flight Hotas 5 Microsoft Flight Simulator Edition

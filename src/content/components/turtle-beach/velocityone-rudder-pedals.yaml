@@ -21,7 +21,11 @@ controls_evidence:
   coverage: complete
   source: https://www.turtlebeach.com/products/velocity-one-rudder
   checked: '2026-10-19'
-  notes: 'Three 10-bit Hall-effect axes: one return-to-center rudder axis and two independent spring-loaded brake axes. Pedal geometry swaps between included styles but does not add controls. The rudder axis is not representable in the controls schema; no discrete buttons or switches are documented. Pedal movements are represented explicitly as axes; they are not hand-operated levers or rocker switches.'
+  notes: 'Three 10-bit Hall-effect axes: one return-to-center rudder axis and two
+    independent spring-loaded brake axes. Pedal geometry swaps between included styles
+    but does not add controls. The rudder axis is not representable in the controls
+    schema; no discrete buttons or switches are documented. Pedal movements are represented
+    explicitly as axes; they are not hand-operated levers or rocker switches.'
 hardware:
   gimbal: cam
   sensor: contactless_magnetic
@@ -45,10 +49,17 @@ connectivity:
   standalone_usb: true
 physical:
   materials:
-  - steel
-  - aluminium
+  - metal
 use_case_fit: {}
 prices:
+- region: US
+  currency: USD
+  amount: 319.99
+  incl_vat: false
+  store: turtlebeach.com
+  url: https://www.turtlebeach.com/products/velocity-one-rudder
+  verified: '2026-10-20'
+  source: manual
 - region: EU
   currency: EUR
   amount: 299.99
@@ -65,18 +76,17 @@ prices:
   url: https://uk.turtlebeach.com/products/velocity-one-rudder
   verified: '2026-10-19'
   source: manual
-- region: US
-  currency: USD
-  amount: 319.99
-  incl_vat: false
-  store: turtlebeach.com
-  url: https://www.turtlebeach.com/products/velocity-one-rudder
-  verified: '2026-10-19'
-  source: manual
+platform_compatibility:
+  pc: supported
+  xbox: supported
+  ps5: unknown
+  notes: Official page lists Windows 10/11 PCs, XBOX Series X|S and XBOX One, but Xbox use requires the VelocityOne Flight Universal Control System (or Flightstick via pass-through cable). PS5 is not mentioned.
+  sources:
+  - https://www.turtlebeach.com/products/velocity-one-rudder
 verification: draft
 images:
-  - file: /images/turtle-beach/velocityone-rudder-pedals.png
-    source: https://uk.turtlebeach.com/products/velocity-one-rudder
-    caption: VelocityOne Rudder Pedals
+- file: /images/turtle-beach/velocityone-rudder-pedals.png
+  source: https://uk.turtlebeach.com/products/velocity-one-rudder
+  caption: VelocityOne Rudder Pedals
 sources:
 - https://turtlebeach.com

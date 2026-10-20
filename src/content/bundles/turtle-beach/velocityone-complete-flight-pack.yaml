@@ -6,6 +6,14 @@ components:
 - turtle-beach/velocityone-flight-yoke-system
 - turtle-beach/velocityone-rudder-pedals
 prices:
+- region: US
+  currency: USD
+  amount: 647.99
+  incl_vat: false
+  store: turtlebeach.com
+  url: https://www.turtlebeach.com/products/velocityone-flight-velocityone-rudder-bundle
+  verified: '2026-10-20'
+  source: manual
 - region: EU
   currency: EUR
   amount: 611.99
@@ -22,18 +30,17 @@ prices:
   url: https://uk.turtlebeach.com/products/velocityone-flight-velocityone-rudder-bundle
   verified: '2026-10-19'
   source: manual
-- region: US
-  currency: USD
-  amount: 647.99
-  incl_vat: false
-  store: turtlebeach.com
-  url: https://www.turtlebeach.com/products/velocityone-flight-velocityone-rudder-bundle
-  verified: '2026-10-19'
-  source: manual
+platform_compatibility:
+  pc: supported
+  xbox: supported
+  ps5: unknown
+  notes: Official bundle page states Compatible with XBOX | PC; Xbox use of the VelocityOne Rudder requires the Flight Universal Control System. PS5 is not mentioned.
+  sources:
+  - https://www.turtlebeach.com/products/velocityone-flight-velocityone-rudder-bundle
 verification: draft
 images:
-  - file: /images/turtle-beach/velocityone-complete-flight-pack.png
-    source: https://www.turtlebeach.com/products/velocityone-flight-velocityone-rudder-bundle
-    caption: VelocityOne Flight and Rudder Bundle
+- file: /images/turtle-beach/velocityone-complete-flight-pack.png
+  source: https://www.turtlebeach.com/products/velocityone-flight-velocityone-rudder-bundle
+  caption: VelocityOne Flight and Rudder Bundle
 sources:
 - https://turtlebeach.com

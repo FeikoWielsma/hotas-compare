@@ -42,14 +42,26 @@ controls:
   count: 1
   label: Landing gear lever
   source: https://mozaracing.com/products/mtq-throttle
+- type: switch
+  location: panel
+  count: 17
+  label: Toggle switches (positions not stated)
+  source: https://support.mozaracing.com/en/support/solutions/articles/70000679590-mtq-throttle-quadrant-support
+  notes: Spec table gives 17 toggle switches with no position count, so no toggle-way value is set. The 10 multifunction
+    buttons (6 RGB-backlit, a subset) are counted separately.
 controls_evidence:
   coverage: partial
-  source: https://mozaracing.com/products/mtq-throttle
-  checked: '2026-10-19'
-  notes: 'Default supplied grips are TQF fighter type; TQA/TQB are alternatives. The official product page explicitly itemizes 10 multifunction buttons, 3 rotary knobs, 3 toggle switches, and a landing-gear lever; the six RGB-backlit buttons are a subset/description, not added to the ten. The page also names three toggle switches, but their number of positions is unspecified; since the schema defaults an omitted toggle-way count to two, those three known switches are noted here and not added to the structured array. The same page says 23 physical controls while its specs report 17 physical toggle switches, so panel inventory is partial and no extra controls are inferred from those aggregates. TQF layout has two throttle axes plus flap and speedbrake axes per manual.'
+  source: https://support.mozaracing.com/en/support/solutions/articles/70000679590-mtq-throttle-quadrant-support
+  checked: '2026-10-20'
+  notes: Default supplied grips are TQF fighter type; TQA/TQB are alternatives. The support spec table gives 10
+    multifunction buttons, 3 rotary knobs, 17 toggle switches and 1 landing-gear lever. The official pages state
+    "23 physical controls" while those itemized counts total 31; the conflict is not resolved here, so the itemized
+    counts are recorded as stated, not reconciled. TQF layout has two throttle axes plus flap and speedbrake axes per manual.
 verification: draft
 sources:
 - https://mozaracing.com
+- https://mozaracing.com/products/mtq-throttle
+- https://support.mozaracing.com/en/support/solutions/articles/70000679590-mtq-throttle-quadrant-support
 images:
 - file: /images/moza/mtq-throttle.webp
   source: https://eu.mozaracing.com/products/mtq-throttle
@@ -63,3 +75,38 @@ prices:
   url: https://eu.mozaracing.com/products/mtq-throttle
   verified: '2026-10-19'
   source: manual
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: 'Official product overview: "PC only". Xbox and PS5 are not named; the "PC only" line is the explicit
+    platform statement.'
+  sources:
+  - https://mozaracing.com/products/mtq-throttle
+  - https://support.mozaracing.com/en/support/solutions/articles/70000679590-mtq-throttle-quadrant-support
+hardware:
+  axis_count: 4
+  gimbal: null
+  sensor: null
+  axes:
+  - name: Throttle 1
+  - name: Throttle 2
+  - name: Flap
+  - name: Speedbrake
+  force_adjustable: true
+  cams_swappable: false
+  damping: independently adjustable mechanical damping
+  extension_support: false
+  throw_deg: null
+physical:
+  dimensions_mm:
+  - 216
+  - 166
+  - 198
+  materials:
+  - composite housing
+  - composite throttle grips
+connectivity:
+  usb: USB to PC; RJ11 to MOZA flight base
+  standalone_usb: true
+software: MOZA Cockpit

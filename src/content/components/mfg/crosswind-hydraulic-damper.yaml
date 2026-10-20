@@ -8,27 +8,33 @@ controls: []
 controls_evidence:
   coverage: complete
   source: https://mfg-sim.com/rudder-acessories/hydraulic-damper-universal-kit-for-v1-3-pedals.html
-  checked: '2026-10-19'
-  notes: 'Standalone adjustable hydraulic damping accessory, compatible with Crosswind V1–V3; it adds resistance to the parent rudder axis and no discrete electrical inputs.'
+  checked: '2026-10-20'
+  notes: Standalone adjustable hydraulic damping accessory, compatible with Crosswind
+    V1–V3; it adds resistance to the parent rudder axis and no discrete electrical
+    inputs. The standalone accessory contains no USB electronics or position sensors;
+    any measured axes belong to the parent pedals.
 hardware:
-  gimbal: null
-  sensor: contactless_magnetic
-  axes: [] # no published input list
-  force_adjustable: null
+  gimbal: not applicable (passive accessory)
+  sensor: none (passive mechanical accessory)
+  axes: []
+  force_adjustable: true
   cams_swappable: null
-  damping: hydraulic
+  damping: hydraulic; 23 adjustment increments
   extension_support: null
   throw_deg: null
+  axis_count: 0
 connectivity:
-  usb: c
-  standalone_usb: true
+  usb: none (passive mechanical accessory)
+  standalone_usb: false
 physical:
-  materials: []
+  materials:
+  - composite holder
+  - aluminum spacers
 use_case_fit: {}
 prices:
 - region: EU
   currency: EUR
-  amount: 45.60
+  amount: 45.6
   incl_vat: false
   store: mfg-sim.com
   url: https://mfg-sim.com/rudder-acessories/hydraulic-damper-universal-kit-for-v1-3-pedals.html
@@ -36,7 +42,7 @@ prices:
   source: manual
 - region: UK
   currency: GBP
-  amount: 39.40
+  amount: 39.4
   incl_vat: false
   store: mfg-sim.com
   url: https://mfg-sim.com/rudder-acessories/hydraulic-damper-universal-kit-for-v1-3-pedals.html
@@ -52,8 +58,18 @@ prices:
   source: manual
 verification: draft
 images:
-  - file: /images/mfg/crosswind-hydraulic-damper.jpg
-    source: https://mfg-sim.com/rudder-acessories/hydraulic-damper-universal-kit-for-v1-3-pedals.html
-    caption: Crosswind Hydraulic Damper
+- file: /images/mfg/crosswind-hydraulic-damper.jpg
+  source: https://mfg-sim.com/rudder-acessories/hydraulic-damper-universal-kit-for-v1-3-pedals.html
+  caption: Crosswind Hydraulic Damper
 sources:
 - https://mfg-sim.com/rudder-acessories/hydraulic-damper-universal-kit-for-v1-3-pedals.html
+platform_compatibility:
+  pc: unknown
+  xbox: unknown
+  ps5: unknown
+  notes: Mechanical accessory with no USB or controller of its own; compatibility
+    depends on the Crosswind pedal host. No standalone platform statement exists.
+    Xbox and PS5 are not mentioned.
+  sources:
+  - https://mfg-sim.com/rudders/mfg-crosswind-v3-base.html
+software: Not required; passive mechanical accessory

@@ -40,7 +40,8 @@ controls:
 - type: rotary
   count: 1
   label: Antenna thumbwheel axis
-  notes: Rotating antenna thumbwheel. Mapping names the continuous 0-1024 signal Slider 0; its physical mechanism is a wheel.
+  notes: Rotating antenna thumbwheel. Mapping names the continuous 0-1024 signal Slider 0; its physical mechanism
+    is a wheel.
   source: https://ts.thrustmaster.com/download/pictures/PCMAC/TWCS/TWCS_PC_Generic_Mapping.pdf
   location: handle
   mode: analog
@@ -59,19 +60,22 @@ controls_evidence:
   coverage: complete
   source: https://ts.thrustmaster.com/download/pictures/PCMAC/TWCS/TWCS_PC_Generic_Mapping.pdf
   checked: '2026-10-19'
-  notes: 'Control geometry visually checked against the official mapping: three standalone push buttons (1-3), one two-direction switch (4/5), ministick center push (6), two four-way hats (7-14), separate eight-way POV, main throttle, analog rudder rocker and continuous antenna thumbwheel. These are five analog axes. The numbered switch contacts are not standalone physical buttons. Undocumented center clicks remain unknown.'
+  notes: 'Control geometry visually checked against the official mapping: three standalone push buttons (1-3), one
+    two-direction switch (4/5), ministick center push (6), two four-way hats (7-14), separate eight-way POV, main
+    throttle, analog rudder rocker and continuous antenna thumbwheel. These are five analog axes. The numbered switch
+    contacts are not standalone physical buttons. Undocumented center clicks remain unknown.'
 hardware:
   gimbal: null
   sensor: potentiometer
   axes:
-    - name: Throttle_Main
-      sensor: potentiometer
-    - name: Rudder_Rocker
-      resolution_bits: 10
-      sensor: potentiometer
-    - name: Ministick_X
-    - name: Ministick_Y
-    - name: Antenna_Thumbwheel
+  - name: Throttle_Main
+    sensor: potentiometer
+  - name: Rudder_Rocker
+    resolution_bits: 10
+    sensor: potentiometer
+  - name: Ministick_X
+  - name: Ministick_Y
+  - name: Antenna_Thumbwheel
   force_adjustable: true
   cams_swappable: false
   damping: friction
@@ -82,9 +86,10 @@ connectivity:
   standalone_usb: true
 software: T.A.R.G.E.T
 physical:
-  weight_g: 850
+  weight_g: 710
   materials:
-    - abs
+  - abs
+  dimensions_mm: [152, 229, 264]
 use_case_fit:
   modern_jet: 4
   heli: 3
@@ -94,47 +99,49 @@ use_case_fit:
   space_hotas: 4
   space_hosas: 1
 prices:
-  - region: EU
-    currency: EUR
-    amount: 89
-    incl_vat: true
-    store: amazon.de
-    verified: '2026-10-01'
-    source: manual
-  - region: UK
-    currency: GBP
-    amount: 79
-    incl_vat: true
-    store: amazon.co.uk
-    verified: '2026-10-01'
-    source: manual
-  - region: US
-    currency: USD
-    amount: 129.99
-    incl_vat: false
-    store: eshop.thrustmaster.com
-    verified: '2026-10-19'
-    source: manual
-    url: https://eshop.thrustmaster.com/en_us/twcs-throttle.html
+- region: EU
+  currency: EUR
+  amount: 89
+  incl_vat: true
+  store: amazon.de
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 79
+  incl_vat: true
+  store: amazon.co.uk
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 129.99
+  incl_vat: false
+  store: eshop.thrustmaster.com
+  verified: '2026-10-19'
+  source: manual
+  url: https://eshop.thrustmaster.com/en_us/twcs-throttle.html
 verdict:
   author: feiko
   hands_on: true
   owned_hours: 600
-  take: "The default budget throttle for flight sim and DCS entry. It gives you an analog ministick and rear rudder rocker, but the stock S.M.A.R.T sliding rails suffer from sticktion unless re-greased with Nyogel 767A or modified with polymer bearings."
+  take: The default budget throttle for flight sim and DCS entry. It gives you an analog ministick and rear rudder
+    rocker, but the stock S.M.A.R.T sliding rails suffer from sticktion unless re-greased with Nyogel 767A or modified
+    with polymer bearings.
   pros:
-    - "Generous control layout with analog ministick and finger rudder paddle"
-    - "Hall sensor on main throttle sliding axis"
-    - "Accessible budget pricing for standalone throttle"
+  - Generous control layout with analog ministick and finger rudder paddle
+  - Hall sensor on main throttle sliding axis
+  - Accessible budget pricing for standalone throttle
   cons:
-    - "Stock rail sticktion causes stutters during fine carrier landings or formation flying"
-    - "Single throttle axis (not split for dual engine)"
-    - "Lightweight plastic body tends to slide on desks without sticky pads or clamping"
+  - Stock rail sticktion causes stutters during fine carrier landings or formation flying
+  - Single throttle axis (not split for dual engine)
+  - Lightweight plastic body tends to slide on desks without sticky pads or clamping
   great_for:
-    - modern_jet
-    - space_hotas
-    - ww2
+  - modern_jet
+  - space_hotas
+  - ww2
   skip_if:
-    - "You want a dual-engine split throttle or heavy metal base"
+  - You want a dual-engine split throttle or heavy metal base
   scores:
     build: 3
     feel: 3
@@ -142,15 +149,24 @@ verdict:
     software: 2
     qc_support: 3
 external_reviews:
-  - reviewer: mysh
-    url: https://www.youtube.com/watch?v=2z54NHzy_Gc
-    summary: "Cheap sliding rail throttle and okay-ish stock. Grease it with Nyogel 767A, 774VH, or Tribosyn 320 and it goes from okay to good. Aftermarket slider and detent mods exist."
-    tag: recommended
-    date: '2026-09-15'
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=2z54NHzy_Gc
+  summary: Cheap sliding rail throttle and okay-ish stock. Grease it with Nyogel 767A, 774VH, or Tribosyn 320 and
+    it goes from okay to good. Aftermarket slider and detent mods exist.
+  tag: recommended
+  date: '2026-09-15'
 verification: verified
 sources:
-  - https://www.thrustmaster.com/en-us/products/twcs-throttle/
+- https://www.thrustmaster.com/en-us/products/twcs-throttle/
 images:
-  - file: /images/thrustmaster/twcs-throttle.webp
-    source: https://www.thrustmaster.com/en-us/products/twcs-throttle/
-    caption: TWCS Throttle
+- file: /images/thrustmaster/twcs-throttle.webp
+  source: https://www.thrustmaster.com/en-us/products/twcs-throttle/
+  caption: TWCS Throttle
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product/support documentation lists PC compatibility; this exact component has no console host
+    support listed.
+  sources:
+  - https://www.thrustmaster.com/en-us/products/twcs-throttle/

@@ -1,6 +1,14 @@
 brand: virpil
 name: VPC ACE Interceptor Pedals
 category: pedals
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product listing identifies the intended platform as PC; the listing
+    has no Xbox or PS5 platform support.
+  sources:
+  - https://virpil-controls.eu/vpc-ace-interceptor-pedals.html
 status: current
 release_year: 2020
 handedness: n/a
@@ -22,17 +30,21 @@ controls_evidence:
   coverage: complete
   source: https://virpil-controls.eu/vpc-ace-interceptor-pedals.html
   checked: '2026-10-19'
-  notes: Three physical pedal assemblies map to rudder yaw plus two independent toe-brake axes; brakes are axes, not push buttons. Exact SKU VPC-302-001. Pedal movements are represented explicitly as axes; they are not hand-operated levers or rocker switches.
+  notes: Three physical pedal assemblies map to rudder yaw plus two independent toe-brake
+    axes; brakes are axes, not push buttons. Exact SKU VPC-302-001. Pedal movements
+    are represented explicitly as axes; they are not hand-operated levers or rocker
+    switches. Current exact-SKU store Product Weight field checked 2026-10-20; manufacturer
+    does not label net versus packed basis.
 hardware:
   gimbal: null
   sensor: contactless_magnetic
   axes:
-    - name: Rudder
-      sensor: contactless_magnetic
-    - name: Left_Brake
-      sensor: contactless_magnetic
-    - name: Right_Brake
-      sensor: contactless_magnetic
+  - name: Rudder
+    sensor: contactless_magnetic
+  - name: Left_Brake
+    sensor: contactless_magnetic
+  - name: Right_Brake
+    sensor: contactless_magnetic
   force_adjustable: false
   cams_swappable: false
   damping: null
@@ -43,7 +55,7 @@ connectivity:
   standalone_usb: true
 software: VPC Configuration Tool
 physical:
-  weight_g: 4300
+  weight_g: 7850
   materials:
   - aluminium
   - steel
@@ -56,28 +68,28 @@ use_case_fit:
   space_hotas: 3
   space_hosas: 3
 prices:
-  - region: EU
-    currency: EUR
-    amount: 299.95
-    incl_vat: true
-    store: virpil-controls.eu
-    url: https://virpil-controls.eu/vpc-ace-interceptor-pedals.html
-    verified: '2026-10-19'
-    source: manual
-  - region: UK
-    currency: GBP
-    amount: 334
-    incl_vat: true
-    store: virpil-controls.eu
-    verified: '2026-10-01'
-    source: manual
-  - region: US
-    currency: USD
-    amount: 410
-    incl_vat: false
-    store: virpil-controls.us
-    verified: '2026-10-01'
-    source: manual
+- region: EU
+  currency: EUR
+  amount: 299.95
+  incl_vat: true
+  store: virpil-controls.eu
+  url: https://virpil-controls.eu/vpc-ace-interceptor-pedals.html
+  verified: '2026-10-19'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 334
+  incl_vat: true
+  store: virpil-controls.eu
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 410
+  incl_vat: false
+  store: virpil-controls.us
+  verified: '2026-10-01'
+  source: manual
 verdict:
   author: feiko
   hands_on: false
@@ -106,7 +118,8 @@ verdict:
 verification: draft
 sources:
 - https://virpil-controls.eu/products/vpc-ace-interceptor-pedals
+- https://virpil-controls.eu/vpc-ace-interceptor-pedals.html
 images:
-  - file: /images/virpil/vpc-ace-interceptor-pedals.jpg
-    source: https://virpil-controls.eu/vpc-ace-interceptor-pedals.html
-    caption: VPC ACE Interceptor Pedals
+- file: /images/virpil/vpc-ace-interceptor-pedals.jpg
+  source: https://virpil-controls.eu/vpc-ace-interceptor-pedals.html
+  caption: VPC ACE Interceptor Pedals

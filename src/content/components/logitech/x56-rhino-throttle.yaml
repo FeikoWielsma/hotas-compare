@@ -23,7 +23,6 @@ controls:
     source: https://www.logitech.com/assets/65324/x56-hotas.pdf
   - type: analog_ministick
     location: handle
-    push: true
     label: Mini analog stick
     source: https://www.logitech.com/assets/65324/x56-hotas.pdf
   - type: rotary
@@ -43,7 +42,6 @@ controls:
     label: Mode switch
     source: https://www.logitech.com/assets/65324/x56-hotas.pdf
   - type: toggle
-    ways: 3
     count: 7
     location: base
     label: Base toggles
@@ -103,3 +101,10 @@ images:
   - file: /images/logitech/x56-rhino-throttle.webp
     source: https://www.logitechg.com/en-us/shop/p/x56-space-flight-vr-simulator-controller
     caption: X56 Rhino Throttle
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Manual documents Windows setup through Windows Game Controllers and G HUB; no Xbox or PS5 statement appears in the manual or official SKU page. Console support remains unknown.
+  sources:
+  - https://www.logitech.com/assets/65324/x56-hotas.pdf

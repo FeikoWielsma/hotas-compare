@@ -8,10 +8,12 @@ controls_evidence:
   coverage: complete
   source: https://eu.mozaracing.com/products/mrp-damper
   checked: '2026-10-19'
-  notes: Optional mechanical pedal damper accessory; it adds adjustable resistance and has no user-operated electrical controls or inputs.
+  notes: Optional pedal damper accessory (sold separately per the MRP pedal page). The damper page says it lets you
+    "fine-tune resistance" and states no controls, sensors, electrical connection or platforms, so none are recorded.
 verification: draft
 sources:
 - https://mozaracing.com
+- https://eu.mozaracing.com/products/mrp-damper
 images:
 - file: /images/moza/mrp-adjustable-damper.webp
   source: https://eu.mozaracing.com/products/mrp-damper
@@ -25,3 +27,21 @@ prices:
   url: https://eu.mozaracing.com/products/mrp-damper
   verified: '2026-10-19'
   source: manual
+platform_compatibility:
+  pc: unknown
+  xbox: unknown
+  ps5: unknown
+  notes: The damper product page names no platforms and no exclusions. The PC-only wording on the MRP pedal page
+    describes the pedals, not this accessory, so nothing is inherited.
+  sources:
+  - https://eu.mozaracing.com/products/mrp-damper
+hardware:
+  gimbal: null
+  sensor: null
+  force_adjustable: true
+  cams_swappable: null
+  damping: adjustable resistance
+  extension_support: null
+  throw_deg: null
+connectivity:
+  standalone_usb: false

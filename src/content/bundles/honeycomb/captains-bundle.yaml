@@ -22,3 +22,10 @@ images:
   caption: Captain's Bundle
 sources:
 - https://eu.flyhoneycomb.com/products/captains-bundle
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Bundle page is titled for PC. It contains the non-XPC Alpha, so no Xbox statement applies. PS5 is not mentioned.
+  sources:
+  - https://eu.flyhoneycomb.com/products/captains-bundle

@@ -9,16 +9,20 @@ controls:
   location: panel
   label: Programmable RGB panel switches
   source: https://support.mozaracing.com/en/support/solutions/articles/70000679586-moza-ay210-yoke-base-support
-  notes: Manufacturer specifies thirteen switches; their physical mechanisms and press/position
-    behavior are not identified.
+  notes: Manufacturer specifies thirteen switches; their physical mechanisms and press/position behavior are not
+    identified.
 controls_evidence:
   coverage: partial
   source: https://support.mozaracing.com/en/support/solutions/articles/70000679586-moza-ay210-yoke-base-support
   checked: '2026-10-19'
-  notes: MOZA documents 13 programmable front-panel switches with RGB lighting, telemetry sync, and long-press commands, but does not identify physical mechanisms or provide a clear control diagram. Recorded as generic switches because their exact mechanisms are not established; no standalone push-button count is inferred. Count refers to listed switches, not independent logical outputs.
+  notes: MOZA documents 13 programmable front-panel switches with RGB lighting, telemetry sync, and long-press commands,
+    but does not identify physical mechanisms or provide a clear control diagram. Recorded as generic switches because
+    their exact mechanisms are not established; no standalone push-button count is inferred. Count refers to listed
+    switches, not independent logical outputs.
 verification: draft
 sources:
 - https://mozaracing.com
+- https://support.mozaracing.com/en/support/solutions/articles/70000679586-moza-ay210-yoke-base-support
 images: []
 prices:
 - region: EU
@@ -29,3 +33,39 @@ prices:
   url: https://eu.mozaracing.com/products/ay210-yoke-base
   verified: '2026-10-19'
   source: manual
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: 'Official support: spec table "Platform: PC" and FAQ "does not support Xbox or PlayStation". PlayStation
+    covers PS5.'
+  sources:
+  - https://support.mozaracing.com/en/support/solutions/articles/70000679586-moza-ay210-yoke-base-support
+hardware:
+  axis_count: 2
+  gimbal: force_feedback
+  sensor: 15-bit magnetic encoder
+  axes:
+  - name: Roll
+    resolution_bits: 15
+    sensor: magnetic encoder
+  - name: Pitch
+    resolution_bits: 15
+    sensor: magnetic encoder
+  force_adjustable: true
+  cams_swappable: false
+  damping: active_motor
+  extension_support: false
+  throw_deg: 180
+physical:
+  weight_g: 8000
+  dimensions_mm:
+  - 243
+  - 403
+  - 112
+  materials:
+  - aluminum alloy
+connectivity:
+  usb: USB; throttle, rudder pedals, and panel ports
+  standalone_usb: true
+software: MOZA Cockpit

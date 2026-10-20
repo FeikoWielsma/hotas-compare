@@ -64,7 +64,6 @@ controls:
   location: handle
   label: Three-position switch, one momentary direction and two permanent positions
   source: https://ts.thrustmaster.com/download/accessories/pc/hotas/manual/HOTAS_Warthog/HOTAS_Warthog_Manual.pdf
-
 - type: toggle
   count: 5
   ways: 2
@@ -94,7 +93,11 @@ controls_evidence:
   coverage: partial
   source: https://ts.thrustmaster.com/download/accessories/pc/hotas/manual/HOTAS_Warthog/HOTAS_Warthog_Manual.pdf
   checked: '2026-10-19'
-  notes: Manual pages 3-4 inventory throttle grip and panel separately. The 17 action-button aggregate excludes separately listed POV and mouse hats. Manual also describes a friction adjustment wheel, which is mechanical and not an electrical input; schema lacks a passive adjustment-wheel type so it is not included as a control. Panel has one actual trim-wheel axis. Mixed momentary/latching sets are grouped because exact individual switch identity is not clear from the text list.
+  notes: Manual pages 3-4 inventory throttle grip and panel separately. The 17 action-button aggregate excludes
+    separately listed POV and mouse hats. Manual also describes a friction adjustment wheel, which is mechanical
+    and not an electrical input; schema lacks a passive adjustment-wheel type so it is not included as a control.
+    Panel has one actual trim-wheel axis. Mixed momentary/latching sets are grouped because exact individual switch
+    identity is not clear from the text list.
 hardware:
   gimbal: null
   sensor: hall
@@ -116,6 +119,8 @@ physical:
   materials:
   - metal
   - abs
+  weight_g: 5000
+  dimensions_mm: [314, 199, 246]
 use_case_fit:
   modern_jet: 4
   heli: 3
@@ -151,6 +156,14 @@ verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/hotas-warthog-dual-throttle/
 images:
-  - file: /images/thrustmaster/warthog-dual-throttle.webp
-    source: https://www.thrustmaster.com/en-us/products/hotas-warthog-dual-throttle/
-    caption: HOTAS Warthog Dual Throttle
+- file: /images/thrustmaster/warthog-dual-throttle.webp
+  source: https://www.thrustmaster.com/en-us/products/hotas-warthog-dual-throttle/
+  caption: HOTAS Warthog Dual Throttle
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product/support documentation lists PC compatibility; this exact component has no console host
+    support listed.
+  sources:
+  - https://www.thrustmaster.com/en-us/products/hotas-warthog-dual-throttle/

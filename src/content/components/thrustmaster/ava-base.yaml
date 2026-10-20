@@ -17,20 +17,18 @@ controls_evidence:
   coverage: complete
   source: https://www.thrustmaster.com/products/ava-base/
   checked: '2026-10-19'
-  notes: Bare AVA Base only, without a grip. Two control axes; the only documented physical button is the rear calibration button, which is not a flight input.
+  notes: Bare AVA Base only, without a grip. Two control axes; the only documented physical button is the rear calibration
+    button, which is not a flight input.
 hardware:
   gimbal: modular_cam_gimbal
   sensor: hall
-  axes:
-  - name: X
-    sensor: hall
-  - name: Y
-    sensor: hall
+  axes: []
   force_adjustable: false
   cams_swappable: true
   damping: adjustable
   extension_support: true
   throw_deg: null
+  axis_count: 2
 connectivity:
   usb: a_cable
   standalone_usb: true
@@ -73,6 +71,14 @@ verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/ava-base/
 images:
-  - file: /images/thrustmaster/ava-base.webp
-    source: https://www.thrustmaster.com/en-us/products/ava-base/
-    caption: AVA - Advanced Versatile Aviation Base
+- file: /images/thrustmaster/ava-base.webp
+  source: https://www.thrustmaster.com/en-us/products/ava-base/
+  caption: AVA - Advanced Versatile Aviation Base
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product/support documentation lists PC compatibility; this exact component has no console host
+    support listed.
+  sources:
+  - https://www.thrustmaster.com/en-us/products/ava-base/

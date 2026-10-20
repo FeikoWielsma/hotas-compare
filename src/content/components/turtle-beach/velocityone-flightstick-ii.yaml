@@ -1,0 +1,142 @@
+brand: turtle-beach
+name: VelocityOne Flightstick II
+category: stick_fixed
+status: current
+handedness: ambi
+mount: null
+controls:
+- type: lever
+  kind: other
+  analog: true
+  count: 2
+  label: Dual analog levers
+  source: https://support.turtlebeach.com/s/article/velocityone-flightstick-ii-quick-start-guide
+  button_contacts: 2
+  notes: Two electrical end-detent contacts per lever, actuated by lever travel; not separate push-button
+    bodies.
+  location: base
+- type: analog_ministick
+  count: 1
+  push: true
+  label: Analog POV1 with click press (B18)
+  notes: Product page calls this a precision thumbstick. The quick start guide tour and PC button chart
+    place the analog POV with click press at this stick-head position.
+  source: https://support.turtlebeach.com/s/article/velocityone-flightstick-ii-quick-start-guide
+  location: grip
+- type: hat
+  count: 1
+  ways: 4
+  push: true
+  location: handle
+  label: 4-way HAT1 (H1)
+  notes: Centre click of H1 is documented for FMD navigation (press and hold centre for 1 second; centre
+    click cycles data screens). Click is attached to the hat, not counted as a separate button.
+  source: https://support.turtlebeach.com/s/article/velocityone-flightstick-ii-quick-start-guide
+- type: button
+  count: 3
+  location: handle
+  label: Stick buttons (B23, B24, B25)
+  source: https://acpv.prod.turtlebeach.com/support/v3/additional-files/en/43/VelocityOne-Flightstick-II-en.pdf
+- type: button
+  count: 1
+  location: handle
+  label: Bumper (B22)
+  source: https://acpv.prod.turtlebeach.com/support/v3/additional-files/en/43/VelocityOne-Flightstick-II-en.pdf
+- type: trigger
+  count: 1
+  location: handle
+  label: Trigger (B26)
+  notes: Stage count not stated.
+  source: https://acpv.prod.turtlebeach.com/support/v3/additional-files/en/43/VelocityOne-Flightstick-II-en.pdf
+- type: scroll_wheel
+  count: 1
+  label: Scroll wheel (analogue or digital)
+  notes: Product page calls it a multi-function wheel that works as an axis or as inputs. The PC chart
+    shows analogue up/down and digital outputs B19-B21. Click is not stated.
+  source: https://acpv.prod.turtlebeach.com/support/v3/additional-files/en/43/VelocityOne-Flightstick-II-en.pdf
+  location: grip
+- type: encoder
+  count: 2
+  label: Dual encoder cockpit control dial
+  notes: The nine chart inputs B09-B17 are grouped under altitude, speed and heading and are unlocked
+    by the tri-position mode switch. They are not counted as additional physical buttons.
+  source: https://acpv.prod.turtlebeach.com/support/v3/additional-files/en/43/VelocityOne-Flightstick-II-en.pdf
+  location: base
+- type: switch
+  count: 1
+  positions: 3
+  label: Tri-position mode switch on cockpit control dial
+  source: https://acpv.prod.turtlebeach.com/support/v3/additional-files/en/43/VelocityOne-Flightstick-II-en.pdf
+  location: base
+- type: button
+  count: 8
+  location: base
+  label: Base buttons (B01-B04, B27-B30)
+  notes: On the XBOX chart B27-B30 are labelled A, B, X and Y.
+  source: https://acpv.prod.turtlebeach.com/support/v3/additional-files/en/43/VelocityOne-Flightstick-II-en.pdf
+- type: button
+  count: 4
+  location: base
+  label: Menu buttons (B31-B34)
+  notes: On the XBOX chart these are labelled view, share, menu and Xbox.
+  source: https://acpv.prod.turtlebeach.com/support/v3/additional-files/en/43/VelocityOne-Flightstick-II-en.pdf
+controls_evidence:
+  coverage: complete
+  source: https://support.turtlebeach.com/s/article/velocityone-flightstick-ii-quick-start-guide
+  checked: '2026-10-20'
+  notes: Physical inventory from the official Quick Start Guide product tour and the official PC button
+    mapping chart. The XBOX chart uses the same groups with XBOX labels only. Physical buttons are the
+    orange physical-button labels on the chart. Virtual outputs and FMD navigation are not counted as
+    buttons. Stick twist, palm and thumb rests, springs, lighting and haptics are not inputs. The product
+    totals of 38 programmable inputs and 8 axes are not used to infer button or axis subtypes. Button
+    sensor type, click force, backlight and trigger stages are not published. End-detent contacts are
+    attached to their lever records and excluded from standalone push-button counts.
+hardware:
+  force_adjustable: true
+  sensor: contactless_magnetic
+  axes:
+  - name: Pitch
+    resolution_bits: 16
+    sensor: contactless_magnetic
+  - name: Roll
+    resolution_bits: 16
+    sensor: contactless_magnetic
+  - name: Twist
+    sensor: contactless_magnetic
+  axis_count: 8
+connectivity:
+  usb: c
+  standalone_usb: true
+physical:
+  weight_g: 1400
+  dimensions_mm:
+  - 208
+  - 190
+  - 252
+use_case_fit: {}
+prices:
+- region: US
+  currency: USD
+  amount: 149.99
+  incl_vat: false
+  store: turtlebeach.com
+  url: https://www.turtlebeach.com/products/velocity-one-flight-stick-ii?Platform=Xbox
+  verified: '2026-10-20'
+  source: manual
+platform_compatibility:
+  pc: supported
+  xbox: supported
+  ps5: unknown
+  notes: Official Xbox product page lists XBOX Series X|S and Windows 10/11 compatibility with USB-C to
+    USB-A connection; Xbox Cloud is not supported. PS5 is not mentioned.
+  sources:
+  - https://www.turtlebeach.com/products/velocity-one-flight-stick-ii?Platform=Xbox
+verification: draft
+images:
+- file: /images/turtle-beach/velocityone-flightstick-ii.png
+  source: https://www.turtlebeach.com/products/velocity-one-flight-stick-ii?Platform=Xbox
+  caption: VelocityOne Flightstick II Xbox variant
+sources:
+- https://www.turtlebeach.com/products/velocity-one-flight-stick-ii?Platform=Xbox
+- https://support.turtlebeach.com/s/article/velocityone-flightstick-ii-quick-start-guide
+- https://acpv.prod.turtlebeach.com/support/v3/additional-files/en/43/VelocityOne-Flightstick-II-en.pdf

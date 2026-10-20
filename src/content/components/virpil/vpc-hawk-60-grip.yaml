@@ -1,6 +1,14 @@
 brand: virpil
 name: VPC Hawk-60 Collective Grip
 category: grip
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product listing identifies the intended platform as PC; the listing
+    has no Xbox or PS5 platform support.
+  sources:
+  - https://virpil-controls.eu/vpc-hawk-60-collective-grip.html
 status: current
 release_year: 2021
 handedness: ambi
@@ -8,45 +16,49 @@ mount:
   provides: virpil-rotor-grip
   accepts: []
 controls:
-  - type: trigger
-    location: grip
-    stages: 1
-    count: 1
-    label: Single-stage trigger
-    source: https://virpil-controls.eu/vpc-hawk-60-collective-grip.html
-  - type: hat
-    location: grip
-    ways: 8
-    push: true
-    count: 4
-    label: 8-way hats (configurable as 4-way)
-    source: https://virpil-controls.eu/vpc-hawk-60-collective-grip.html
-  - type: hat
-    location: grip
-    ways: 2
-    push: true
-    count: 1
-    source: https://virpil-controls.eu/vpc-hawk-60-collective-grip.html
-  - type: toggle
-    location: grip
-    ways: 3
-    count: 1
-    label: ON-OFF-ON toggle
-    source: https://virpil-controls.eu/vpc-hawk-60-collective-grip.html
-  - type: button
-    location: grip
-    count: 1
-    backlit: true
-    label: RGB push button
-    source: https://virpil-controls.eu/vpc-hawk-60-collective-grip.html
+- type: trigger
+  location: grip
+  stages: 1
+  count: 1
+  label: Single-stage trigger
+  source: https://virpil-controls.eu/vpc-hawk-60-collective-grip.html
+- type: hat
+  location: grip
+  ways: 8
+  push: true
+  count: 4
+  label: 8-way hats (configurable as 4-way)
+  source: https://virpil-controls.eu/vpc-hawk-60-collective-grip.html
+- type: hat
+  location: grip
+  ways: 2
+  push: true
+  count: 1
+  source: https://virpil-controls.eu/vpc-hawk-60-collective-grip.html
+- type: toggle
+  location: grip
+  ways: 3
+  count: 1
+  label: ON-OFF-ON toggle
+  source: https://virpil-controls.eu/vpc-hawk-60-collective-grip.html
+- type: button
+  location: grip
+  count: 1
+  backlit: true
+  label: RGB push button
+  source: https://virpil-controls.eu/vpc-hawk-60-collective-grip.html
 controls_evidence:
   coverage: complete
   source: https://virpil-controls.eu/vpc-hawk-60-collective-grip.html
   checked: '2026-10-19'
-  notes: 'Preinstalled Hawk-60 VPC-012-001 layout. Four 8-way hats can be configured as 4-way; retained as installed physical 8-way modules. The manufacturer calls the switch ON-OFF-ON but does not say whether it is maintained or momentary, so behavior is left unknown.'
+  notes: Preinstalled Hawk-60 VPC-012-001 layout. Four 8-way hats can be configured
+    as 4-way; retained as installed physical 8-way modules. The manufacturer calls
+    the switch ON-OFF-ON but does not say whether it is maintained or momentary, so
+    behavior is left unknown. Current exact-SKU store Product Weight field checked
+    2026-10-20; manufacturer does not label net versus packed basis.
 hardware:
   gimbal: null
-  sensor: contactless_magnetic
+  sensor: null
   axes: []
   force_adjustable: false
   cams_swappable: false
@@ -54,14 +66,14 @@ hardware:
   extension_support: false
   throw_deg: null
 connectivity:
-  usb: null
+  usb: none; connects through a compatible flightstick or collective base
   standalone_usb: false
 software: VPC Configuration Tool
 physical:
-  weight_g: 520
+  weight_g: 350
   materials:
-  - aluminium
-  - polymer
+  - enhanced PU plastic
+  - metal faceplate
 use_case_fit:
   modern_jet: 2
   heli: 5
@@ -122,7 +134,8 @@ verdict:
 verification: draft
 sources:
 - https://virpil-controls.eu/products/vpc-hawk-60-grip
+- https://virpil-controls.eu/vpc-hawk-60-collective-grip.html
 images:
-  - file: /images/virpil/vpc-hawk-60-grip.jpg
-    source: https://virpil-controls.eu/vpc-hawk-60-collective-grip.html
-    caption: VPC Hawk-60 Collective Grip
+- file: /images/virpil/vpc-hawk-60-grip.jpg
+  source: https://virpil-controls.eu/vpc-hawk-60-collective-grip.html
+  caption: VPC Hawk-60 Collective Grip

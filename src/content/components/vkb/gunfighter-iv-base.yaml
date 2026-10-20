@@ -1,6 +1,14 @@
 brand: vkb
 name: Gunfighter Mk.IV Base
 category: base
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: "VKB Australia FAQ states VKB controllers are compatible with Windows PCs and not compatible with Xbox, PS5, Apple or other platforms. Detached grip or module use requires its compatible VKB base/controller on Windows PC."
+  sources:
+    - https://vkbsimcontrollers.com/products/gunfighter-mk-iv-base-only-us
+    - https://vkb-sim.com.au/collections/all-controllers
 status: current
 release_year: 2024
 handedness: n/a
@@ -31,7 +39,7 @@ connectivity:
   standalone_usb: true
 software: VKBDevCfg
 physical:
-  weight_g: 2400
+  weight_g: 1300
   materials:
   - aluminium
   - steel
@@ -46,10 +54,11 @@ use_case_fit:
 prices:
 - region: EU
   currency: EUR
-  amount: 260
+  amount: 319
   incl_vat: true
   store: flightsimcontrols.com
-  verified: '2026-10-01'
+  url: https://flightsimcontrols.com/product/gunfighter-iv-base-only/
+  verified: '2026-10-20'
   source: manual
 - region: UK
   currency: GBP

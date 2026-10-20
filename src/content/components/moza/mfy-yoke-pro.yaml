@@ -4,35 +4,39 @@ category: yoke
 status: current
 handedness: n/a
 controls:
-  - type: hat
-    location: handle
-    ways: 8
-    count: 2
-    label: 8-way hat switches
-    source: https://us.mozaracing.com/pages/mfy-pro-yoke
-  - type: analog_ministick
-    location: handle
-    count: 2
-    label: Hall Effect thumbsticks
-    source: https://us.mozaracing.com/pages/mfy-pro-yoke
-  - type: button
-    location: handle
-    count: 2
-    label: Bumpers (LB/RB)
-    source: https://us.mozaracing.com/pages/mfy-pro-yoke
-  - type: trigger
-    location: handle
-    count: 2
-    label: Triggers
-    source: https://us.mozaracing.com/pages/mfy-pro-yoke
+- type: hat
+  location: handle
+  ways: 8
+  count: 2
+  label: 8-way hat switches
+  source: https://us.mozaracing.com/pages/mfy-pro-yoke
+- type: analog_ministick
+  location: handle
+  count: 2
+  label: Hall Effect thumbsticks
+  source: https://us.mozaracing.com/pages/mfy-pro-yoke
+- type: button
+  location: handle
+  count: 2
+  label: Bumpers (LB/RB)
+  source: https://us.mozaracing.com/pages/mfy-pro-yoke
+- type: trigger
+  location: handle
+  count: 2
+  label: Triggers
+  source: https://us.mozaracing.com/pages/mfy-pro-yoke
 controls_evidence:
   coverage: partial
   source: https://us.mozaracing.com/pages/mfy-pro-yoke
   checked: '2026-10-19'
-  notes: Official specs enumerate two hats, two Hall Effect thumbsticks, two bumpers and two triggers. No touchscreen interaction is represented by the current controls schema; it is not counted as physical buttons. Thumbstick push and trigger stages remain unspecified.
+  notes: Official specs enumerate two hats, two Hall Effect thumbsticks, two bumpers and two triggers. No touchscreen
+    interaction is represented by the current controls schema; it is not counted as physical buttons. Thumbstick
+    push and trigger stages remain unspecified.
 verification: draft
 sources:
 - https://mozaracing.com
+- https://us.mozaracing.com/pages/mfy-pro-yoke
+- https://support.mozaracing.com/en/support/solutions/articles/70000679589-moza-mfy-yoke-support
 images:
 - file: /images/moza/mfy-yoke-pro.webp
   source: https://eu.mozaracing.com/products/mfy-pro-yoke
@@ -46,3 +50,22 @@ prices:
   url: https://eu.mozaracing.com/products/mfy-pro-yoke
   verified: '2026-10-19'
   source: manual
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: The MFY requires AY210 or AY90 yoke bases. AY210 is explicitly PC-only; AY90 console compatibility is not
+    explicitly stated, so console compatibility remains unknown.
+  sources:
+  - https://support.mozaracing.com/en/support/solutions/articles/70000679589-moza-mfy-yoke-support
+physical:
+  weight_g: 1300
+  dimensions_mm:
+  - 142.5
+  - 202
+  - 313
+  materials:
+  - fiberglass-reinforced PA66 composite
+  - aluminum alloy quick release
+  - ABS button caps
+software: MOZA Cockpit

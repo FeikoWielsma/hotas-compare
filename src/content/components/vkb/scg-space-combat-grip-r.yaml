@@ -1,6 +1,14 @@
 brand: vkb
 name: Space Combat Grip (SCG) Premium (Right)
 category: grip
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: "VKB Australia FAQ states VKB controllers are compatible with Windows PCs and not compatible with Xbox, PS5, Apple or other platforms. Detached grip or module use requires its compatible VKB base/controller on Windows PC."
+  sources:
+    - https://vkbcontrollers.com/products/scg-space-combat-grip
+    - https://vkb-sim.com.au/collections/all-controllers
 status: current
 release_year: 2020
 handedness: right
@@ -56,7 +64,6 @@ connectivity:
   standalone_usb: false
 software: VKBDevCfg
 physical:
-  weight_g: 380
   materials:
     - abs
 use_case_fit:
@@ -70,10 +77,11 @@ use_case_fit:
 prices:
   - region: EU
     currency: EUR
-    amount: 110
+    amount: 103
     incl_vat: true
     store: flightsimcontrols.com
-    verified: '2026-10-01'
+    url: https://flightsimcontrols.com/product/scg-kosmosima-premium-stand-alone-grip-gladiator/
+    verified: '2026-10-20'
     source: manual
   - region: UK
     currency: GBP

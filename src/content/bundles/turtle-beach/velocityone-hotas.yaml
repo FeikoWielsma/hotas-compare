@@ -1,0 +1,30 @@
+brand: turtle-beach
+name: VelocityOne H.O.T.A.S.
+category: hotas_bundle
+status: current
+components:
+- turtle-beach/velocityone-flightstick-ii
+- turtle-beach/velocityone-dual-throttle
+prices:
+- region: US
+  currency: USD
+  amount: 279.99
+  incl_vat: false
+  store: turtlebeach.com
+  url: https://www.turtlebeach.com/products/velocity-one-hotas?Platform=Xbox
+  verified: '2026-10-20'
+  source: manual
+platform_compatibility:
+  pc: supported
+  xbox: supported
+  ps5: unknown
+  notes: Official H.O.T.A.S. page confirms Xbox and Windows PC support. Dual Throttle uses the Flightstick II pass-through on Xbox. Support guides establish Series X|S; Xbox One wording on the bundle page conflicts with those guides and is not confirmed. PS5 is not mentioned.
+  sources:
+  - https://www.turtlebeach.com/products/velocity-one-hotas?Platform=Xbox
+verification: draft
+images:
+- file: /images/turtle-beach/velocityone-hotas.png
+  source: https://www.turtlebeach.com/products/velocity-one-hotas?Platform=Xbox
+  caption: VelocityOne H.O.T.A.S.
+sources:
+- https://www.turtlebeach.com/products/velocity-one-hotas?Platform=Xbox

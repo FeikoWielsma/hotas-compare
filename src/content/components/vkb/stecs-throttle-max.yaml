@@ -1,6 +1,14 @@
 brand: vkb
 name: STECS Modern Throttle System Mk.II Max
 category: throttle
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: "VKB Australia FAQ states VKB controllers are compatible with Windows PCs and not compatible with Xbox, PS5, Apple or other platforms. Detached grip or module use requires its compatible VKB base/controller on Windows PC."
+  sources:
+    - https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-max-us
+    - https://vkb-sim.com.au/collections/all-controllers
 status: current
 release_year: 2023
 handedness: ambi
@@ -16,7 +24,7 @@ controls:
 - type: hat
   ways: 4
   push: true
-  count: 3
+  count: 2
   location: grip
   label: MTG-R center-push hats
   source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-max-us
@@ -43,9 +51,9 @@ controls:
   label: MTG-R 2-way rocker with center push
   source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-max-us
 - type: button
-  count: 4
+  count: 5
   location: grip
-  label: MTG-L/MTG-R push buttons
+  label: MTG-L/MTG-R push buttons (2 + 3)
   source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-max-us
 - type: button
   count: 2
@@ -109,7 +117,7 @@ controls_evidence:
   coverage: complete
   source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-max-us
   checked: '2026-10-19'
-  notes: Exact STECS Modern Throttle System Mk.II Max (current product page/revision); Mk.I differs. Two main throttle levers. STEM has eight standalone buttons plus two K-switches with integrated center pushes, two push encoders, and two separate three-position flip switches (one self-centering). Spare replacement modules are not installed controls. Detent frame/inserts are configurable alternatives; installed detent count is not asserted. Schema cannot encode integrated K-switch pushes.
+  notes: "Exact STECS Modern Throttle System Mk.II Max (current product page/revision); Mk.I differs. MTG-R has two installed center-push 4-way hats; the three included 5-way hat modules are replacement modules. Each grip has two triggers; the physical buttons are two on MTG-L and three on MTG-R. STEM has eight standalone buttons plus two K-switches with integrated center pushes, two push encoders, and two separate three-position flip switches (one self-centering). Detent frame/inserts are configurable alternatives; installed detent count is not asserted. Schema cannot encode integrated K-switch pushes."
 hardware:
   gimbal: null
   sensor: contactless_magnetic
@@ -128,9 +136,14 @@ connectivity:
   standalone_usb: true
 software: VKBDevCfg
 physical:
-  weight_g: 2400
+  weight_g: 3800
+  dimensions_mm:
+    - 216
+    - 405
+    - 195
   materials:
-  - polymer
+  - abs
+  - glass_fiber_pa
   - steel
 use_case_fit:
   modern_jet: 5
@@ -143,17 +156,19 @@ use_case_fit:
 prices:
 - region: EU
   currency: EUR
-  amount: 400
+  amount: 396
   incl_vat: true
   store: flightsimcontrols.com
-  verified: '2026-10-01'
+  url: https://flightsimcontrols.com/product/stecs-throttle-system-max-mk-ii/
+  verified: '2026-10-20'
   source: manual
 - region: UK
   currency: GBP
-  amount: 344
+  amount: 369
   incl_vat: true
-  store: flightsimcontrols.com
-  verified: '2026-10-01'
+  store: flightsimcontrols.co.uk
+  url: https://flightsimcontrols.co.uk/product-category/controllers/page/3/
+  verified: '2026-10-20'
   source: manual
 - region: US
   currency: USD

@@ -35,3 +35,10 @@ images:
   - file: /images/logitech/x52-pro-hotas-system.png
     source: https://www.logitechg.com/en-us/shop/p/x52-pro-space-flight-simulator-controller.945-000022
     caption: X52 Pro HOTAS System
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Manual documents Windows setup through Windows Game Controllers and G HUB; no Xbox or PS5 statement appears in the manual or official SKU page. Console support remains unknown.
+  sources:
+  - https://www.logitech.com/assets/65327/x52-professional-hotas.pdf

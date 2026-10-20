@@ -1,6 +1,13 @@
 brand: winctrl
 name: Orion 2 F-16 HOTAS
 category: hotas_bundle
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official listing/manual establishes computer USB use; no exact product source establishes Xbox or PS5 support or incompatibility.
+  sources:
+    - https://eu.winctrl.com/view/goods-details.html?id=340
 status: current
 components:
   - winctrl/orion-2-base

@@ -4,31 +4,40 @@ category: base
 status: current
 handedness: n/a
 controls:
-  - type: hat
-    location: base
-    count: 1
-    label: Base hat switch
-    source: https://us.mozaracing.com/pages/ay90-yoke-base
-  - type: rocker
-    location: base
-    count: 4
-    analog: false
-    label: Rocker switches
-    source: https://us.mozaracing.com/pages/ay90-yoke-base
-  - type: slider
-    location: base
-    count: 2
-    analog: false
-    label: Slider switches
-    source: https://us.mozaracing.com/pages/ay90-yoke-base
+- type: hat
+  location: base
+  count: 1
+  label: Base hat switch
+  source: https://us.mozaracing.com/pages/ay90-yoke-base
+- type: rocker
+  location: base
+  count: 4
+  analog: false
+  label: Rocker switches
+  source: https://us.mozaracing.com/pages/ay90-yoke-base
+- type: slider
+  location: base
+  count: 2
+  analog: false
+  label: Slider switches
+  source: https://us.mozaracing.com/pages/ay90-yoke-base
+- type: rotary
+  location: base
+  count: 1
+  label: Multi-position rotary knob
+  source: https://us.mozaracing.com/pages/ay90-yoke-base
 controls_evidence:
   coverage: partial
   source: https://us.mozaracing.com/pages/ay90-yoke-base
-  checked: '2026-10-19'
-  notes: Official spec calls this a "5-Way Hat Switch" but gives no directional diagram or definition; `ways` is therefore unknown, and push is also unspecified. It lists four rocker switches and two slider switches, without rocker latching behavior or slider positions. Yoke handle is separate and excluded.
+  checked: '2026-10-20'
+  notes: Official spec calls this a "5-Way Hat Switch" but gives no directional diagram or definition; `ways` is
+    therefore unknown, and push is also unspecified. The front panel is listed as 1 multi-position rotary knob, 4
+    rocker switches and 2 sliders, without rocker latching behavior or slider positions. Yoke handle is separate and
+    excluded.
 verification: draft
 sources:
 - https://mozaracing.com
+- https://us.mozaracing.com/pages/ay90-yoke-base
 images:
 - file: /images/moza/ay90-yoke-base.webp
   source: https://eu.mozaracing.com/products/ay90-yoke-base
@@ -42,3 +51,40 @@ prices:
   url: https://eu.mozaracing.com/products/ay90-yoke-base
   verified: '2026-10-19'
   source: manual
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: The product page lists its yoke specifications and compatible simulators but does not provide an exhaustive
+    console compatibility list; console compatibility remains unknown.
+  sources:
+  - https://us.mozaracing.com/pages/ay90-yoke-base
+hardware:
+  axis_count: 2
+  gimbal: force_feedback
+  sensor: 15-bit magnetic encoder
+  axes:
+  - name: Roll
+    resolution_bits: 15
+    sensor: magnetic encoder
+  - name: Pitch
+    sensor: magnetic encoder
+  force_adjustable: true
+  cams_swappable: false
+  damping: active_motor
+  extension_support: false
+  throw_deg: 180
+physical:
+  weight_g: 4500
+  dimensions_mm:
+  - 325
+  - 252
+  - 111
+  materials:
+  - carbon fiber reinforced composite
+  - aluminum alloy quick release
+  - ABS button caps
+connectivity:
+  usb: USB
+  standalone_usb: true
+software: MOZA Cockpit

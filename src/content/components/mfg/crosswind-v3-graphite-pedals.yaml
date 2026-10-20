@@ -106,3 +106,10 @@ images:
     caption: Crosswind V3 Graphite Rudder Pedals
 sources:
 - https://mfg-sim.com/rudders/mfg-crosswind-v3-me109-rudder-pedals.html
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Manufacturer product page describes a plug-and-play HID USB rudder for Windows, Mac OS and Linux; configurator software is Windows only. Xbox and PS5 are not mentioned.
+  sources:
+  - https://mfg-sim.com/rudders/mfg-crosswind-v3-base.html

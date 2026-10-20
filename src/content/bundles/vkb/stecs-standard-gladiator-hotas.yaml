@@ -1,6 +1,14 @@
 brand: vkb
 name: STECS Standard and Gladiator NXT EVO HOTAS
 category: hotas_bundle
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: "VKB Australia FAQ states VKB controllers are compatible with Windows PCs and not compatible with Xbox, PS5, Apple or other platforms. Bundled VKB hardware therefore inherits the Windows PC-only restriction."
+  sources:
+    - https://vkbcontrollers.com/products/stecs-throttle-system-standard
+    - https://vkb-sim.com.au/collections/all-controllers
 status: current
 components:
   - vkb/stecs-throttle-standard

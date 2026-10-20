@@ -1,6 +1,13 @@
 brand: virpil
 name: MongoosT-50CM4 Throttle
 category: throttle
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product listing identifies the intended platform as PC; the listing has no Xbox or PS5 platform support.
+  sources:
+    - https://virpil-controls.eu/mongoost-50cm4-throttle.html
 status: current
 release_year: 2026
 handedness: n/a

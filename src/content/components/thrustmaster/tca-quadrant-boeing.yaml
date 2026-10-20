@@ -19,7 +19,8 @@ controls:
   count: 1
   location: handle
   label: Third configurable axis
-  notes: Three axes can be configured with four supplied lever types; speedbrake/flaps handle assignment is swappable, not four simultaneous axes.
+  notes: Three axes can be configured with four supplied lever types; speedbrake/flaps handle assignment is swappable,
+    not four simultaneous axes.
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant_Boeing/TCA_Quadrant_Boeing_Edition_user_manual.pdf
 - type: button
   count: 17
@@ -30,13 +31,16 @@ controls:
   count: 1
   location: base
   label: Autopilot encoder
-  notes: Manufacturer identifies an encoder; exact push behavior and selector/encoder decomposition are unclear in accessible official text.
+  notes: Manufacturer identifies an encoder; exact push behavior and selector/encoder decomposition are unclear
+    in accessible official text.
   source: https://www.thrustmaster.com/news/thrustmaster-teams-up-with-boeing-to-innovate-and-create-new-tca-peripherals-a-unique-experience-where-dreams-meet-reality/
 controls_evidence:
   coverage: partial
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant_Boeing/TCA_Quadrant_Boeing_Edition_user_manual.pdf
   checked: '2026-10-19'
-  notes: Exact single quadrant. Three magnetic analog axes and 17 action buttons are confirmed; four supplied lever types are swappable across three axes, so they are not four simultaneously installed levers. Manufacturer also identifies an autopilot encoder, but accessible material does not resolve its push behavior and selector decomposition.
+  notes: Exact single quadrant. Three magnetic analog axes and 17 action buttons are confirmed; four supplied lever
+    types are swappable across three axes, so they are not four simultaneously installed levers. Manufacturer also
+    identifies an autopilot encoder, but accessible material does not resolve its push behavior and selector decomposition.
 hardware:
   gimbal: null
   sensor: hall
@@ -55,6 +59,8 @@ software: T.A.R.G.E.T
 physical:
   materials:
   - abs
+  weight_g: 600
+  dimensions_mm: [130, 195, 150]
 use_case_fit:
   modern_jet: 4
   heli: 3
@@ -89,7 +95,17 @@ prices:
 verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/tca-quadrant-boeing-edition/
+- https://support.thrustmaster.com/en/kb/1772-en/
 images:
-  - file: /images/thrustmaster/tca-quadrant-boeing.webp
-    source: https://www.thrustmaster.com/en-us/products/tca-quadrant-boeing-edition/
-    caption: TCA Quadrant Boeing Edition
+- file: /images/thrustmaster/tca-quadrant-boeing.webp
+  source: https://www.thrustmaster.com/en-us/products/tca-quadrant-boeing-edition/
+  caption: TCA Quadrant Boeing Edition
+platform_compatibility:
+  pc: supported
+  xbox: supported
+  ps5: unsupported
+  notes: Official page lists PC and Xbox. On Xbox the quadrant requires connection to a TCA Yoke Boeing Edition
+    host; it is not a standalone console controller.
+  sources:
+  - https://www.thrustmaster.com/en-us/products/tca-quadrant-boeing-edition/
+  - https://support.thrustmaster.com/en/kb/1772-en/

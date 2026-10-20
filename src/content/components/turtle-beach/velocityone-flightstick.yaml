@@ -26,7 +26,8 @@ controls:
   label: Multifunction levers
   source: https://cdn.turtlebeach.com/device/qig/velocityone--flightstick/velocityone--flightstick_367-6703-v1.pdf
   push: true
-  notes: Each lever activates an additional contact in its lower detent. This is not a separately actuated standalone push button.
+  notes: Each lever activates an additional contact in its lower detent. This is not
+    a separately actuated standalone push button.
 - type: button
   count: 8
   label: Button groups B1-B8
@@ -51,7 +52,12 @@ controls_evidence:
   coverage: partial
   source: https://cdn.turtlebeach.com/device/qig/velocityone--flightstick/velocityone--flightstick_367-6703-v1.pdf
   checked: '2026-10-19'
-  notes: Lists controls explicitly called out in the handbook. Xbox navigation controls are integrated but their physical button count is not clear in the source. Trigger stages and multifunction-lever axis/digital modes are unspecified. Trim wheel can be configured as an analog axis or directional digital inputs; schema has no dual-mode control type. Marketing programmable-button total was not treated as a count of standalone physical buttons.
+  notes: Lists controls explicitly called out in the handbook. Xbox navigation controls
+    are integrated but their physical button count is not clear in the source. Trigger
+    stages and multifunction-lever axis/digital modes are unspecified. Trim wheel
+    can be configured as an analog axis or directional digital inputs; schema has
+    no dual-mode control type. Marketing programmable-button total was not treated
+    as a count of standalone physical buttons.
 hardware:
   gimbal: null
   sensor: contactless_magnetic
@@ -81,9 +87,22 @@ connectivity:
   usb: c
   standalone_usb: true
 physical:
+  weight_g: 820
+  dimensions_mm:
+  - 164.1
+  - 216.84
+  - 230.47
   materials: []
 use_case_fit: {}
 prices:
+- region: US
+  currency: USD
+  amount: 139.99
+  incl_vat: false
+  store: turtlebeach.com
+  url: https://www.turtlebeach.com/products/velocity-one-flight-stick
+  verified: '2026-10-20'
+  source: manual
 - region: EU
   currency: EUR
   amount: 129.99
@@ -100,18 +119,17 @@ prices:
   url: https://uk.turtlebeach.com/products/velocity-one-flight-stick
   verified: '2026-10-19'
   source: manual
-- region: US
-  currency: USD
-  amount: 139.99
-  incl_vat: false
-  store: turtlebeach.com
-  url: https://www.turtlebeach.com/products/velocity-one-flight-stick
-  verified: '2026-10-19'
-  source: manual
+platform_compatibility:
+  pc: supported
+  xbox: supported
+  ps5: unknown
+  notes: Official page lists USB connection to XBOX Series X|S & XBOX One and Windows 10/11 PCs; Xbox Cloud is not supported. PS5 is not mentioned.
+  sources:
+  - https://www.turtlebeach.com/products/velocity-one-flight-stick
 verification: draft
 images:
-  - file: /images/turtle-beach/velocityone-flightstick.png
-    source: https://uk.turtlebeach.com/products/velocity-one-flight-stick
-    caption: VelocityOne Flightstick
+- file: /images/turtle-beach/velocityone-flightstick.png
+  source: https://uk.turtlebeach.com/products/velocity-one-flight-stick
+  caption: VelocityOne Flightstick
 sources:
 - https://turtlebeach.com

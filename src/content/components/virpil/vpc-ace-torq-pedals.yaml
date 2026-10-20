@@ -1,6 +1,13 @@
 brand: virpil
 name: VPC ACE-TORQ Pedals
 category: pedals
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product listing identifies the intended platform as PC; the listing has no Xbox or PS5 platform support.
+  sources:
+    - https://virpil-controls.eu/vpc-ace-torq-rudder-pedals.html
 status: current
 release_year: 2022
 handedness: n/a

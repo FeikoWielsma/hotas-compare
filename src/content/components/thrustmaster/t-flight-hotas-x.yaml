@@ -1,0 +1,121 @@
+brand: thrustmaster
+name: T.Flight HOTAS X
+category: stick_fixed
+status: current
+handedness: ambi
+mount: null
+controls:
+- type: lever
+  kind: throttle_single
+  analog: true
+  count: 1
+  location: base
+  label: Detachable throttle
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TFHX/t-flight_hotas_X_manual.pdf
+- type: axis
+  kind: rudder
+  count: 1
+  location: handle
+  label: Rudder via twisting handle (RZ axis in 4-axis mode)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TFHX/t-flight_hotas_X_manual.pdf
+- type: rocker
+  count: 1
+  location: base
+  analog: true
+  label: Rudder rocking button (combined with twist in 4-axis mode; independent 5th axis in 5-axis mode)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TFHX/t-flight_hotas_X_manual.pdf
+- type: hat
+  count: 1
+  location: handle
+  label: Multidirectional POV hat-switch
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TFHX/t-flight_hotas_X_manual.pdf
+- type: button
+  count: 12
+  label: Action buttons (12 total per Thrustmaster product page)
+  source: https://www.thrustmaster.com/products/t-flight-hotas-x/
+- type: button
+  count: 1
+  location: base
+  label: PRESET button (programming mode select, LED)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TFHX/t-flight_hotas_X_manual.pdf
+- type: button
+  count: 1
+  location: base
+  label: MAPPING button (programming)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TFHX/t-flight_hotas_X_manual.pdf
+- type: button
+  count: 1
+  location: base
+  label: HOME button (4/5-axis mode select, LED)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TFHX/t-flight_hotas_X_manual.pdf
+- type: switch
+  count: 1
+  location: base
+  label: USB selector (set to PC)
+  notes: Sets the USB mode before connection; not a game input.
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TFHX/t-flight_hotas_X_manual.pdf
+controls_evidence:
+  coverage: partial
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TFHX/t-flight_hotas_X_manual.pdf
+  checked: '2026-10-20'
+  notes: Inventory from the official T.Flight HOTAS X user manual technical-features list (callouts 1-13) and the PC
+    automatic-preset diagram (X, Y, Z, RZ and Slider 0 axes). The 12 action buttons are the Thrustmaster product-page
+    total; the manual does not number or locate each one, so they are a single entry with count 12. The handle
+    resistance dial (callout 9) and rudder locking screw (callout 5) are adjustments, not inputs. Coverage stays
+    partial because the per-button layout of the action buttons is not diagrammed.
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: The user manual cover lists compatibility as PC only. The Thrustmaster product page lists PC and legacy PS3;
+    PS4, PS5 and Xbox are not listed.
+  sources:
+  - https://support.thrustmaster.com/en/product/tflighthotasx-en/
+  - https://www.thrustmaster.com/products/t-flight-hotas-x/
+sources:
+- https://support.thrustmaster.com/en/product/tflighthotasx-en/
+- https://www.thrustmaster.com/products/t-flight-hotas-x/
+- https://ts.thrustmaster.com/download/accessories/Manuals/TFHX/t-flight_hotas_X_manual.pdf
+- https://shop.thrustmaster.com/en_eu/t-flight-hotas-x.html
+- https://shop.thrustmaster.com/en_gb/t-flight-hotas-x.html
+verification: draft
+hardware:
+  axis_count: 5
+  force_adjustable: true
+  axes:
+  - name: X Axis
+  - name: Y Axis
+  - name: Z Axis (throttle)
+  - name: RZ Axis (twist rudder, 4-axis mode)
+  - name: Slider 0 Axis (rocker, 5-axis mode)
+physical:
+  weight_g: 2165
+  dimensions_mm:
+  - 242
+  - 264
+  - 265
+  materials: []
+connectivity:
+  standalone_usb: true
+  usb: USB (PC; set USB selector to PC)
+prices:
+- region: EU
+  currency: EUR
+  amount: 79.99
+  incl_vat: true
+  store: Thrustmaster EU eshop
+  url: https://shop.thrustmaster.com/en_eu/t-flight-hotas-x.html
+  verified: '2026-10-20'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 69.99
+  incl_vat: true
+  store: Thrustmaster UK eshop
+  url: https://shop.thrustmaster.com/en_gb/t-flight-hotas-x.html
+  verified: '2026-10-20'
+  source: manual
+images:
+- file: /images/thrustmaster/t-flight-hotas-x.webp
+  source: https://www.thrustmaster.com/products/t-flight-hotas-x/
+  caption: T.Flight HOTAS X

@@ -1,6 +1,13 @@
 brand: winctrl
 name: F-16 Integrated Control Panel Module
 category: module
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official listing/manual establishes computer USB use; no exact product source establishes Xbox or PS5 support or incompatibility.
+  sources:
+    - https://eu.winctrl.com/view/goods-details.html?id=544
 status: current
 handedness: n/a
 mount:
@@ -9,6 +16,7 @@ mount:
 controls:
 - type: button
   count: 23
+  backlit: true
   location: panel
   label: Silicone backlight pushbuttons
   source: https://eu.winctrl.com/view/goods-details.html?id=544
@@ -26,6 +34,7 @@ controls:
   source: https://eu.winctrl.com/view/goods-details.html?id=544
   ways: 3
 - type: hat
+  ways: 5
   count: 1
   location: panel
   label: Five-way hat

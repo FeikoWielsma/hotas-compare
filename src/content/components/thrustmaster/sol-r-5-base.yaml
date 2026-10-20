@@ -1,0 +1,104 @@
+brand: thrustmaster
+name: Sol-R 5 Base
+category: base
+status: current
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product/support documentation lists PC compatibility; this exact component has no console
+    host support listed.
+  sources:
+  - https://www.thrustmaster.com/nl-nl/products/sol-r-5-base/
+prices:
+- region: EU
+  currency: EUR
+  amount: 129.99
+  incl_vat: true
+  store: Thrustmaster Netherlands
+  url: https://www.thrustmaster.com/nl-nl/products/sol-r-5-base/
+  verified: '2026-10-20'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 109.99
+  incl_vat: true
+  store: Thrustmaster UK eshop
+  url: https://shop.thrustmaster.com/en_gb/sol-r-5-base.html
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources:
+- https://www.thrustmaster.com/nl-nl/products/sol-r-5-base/
+- https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_FlightStick_user-manual_21L.pdf
+images:
+- file: /images/thrustmaster/sol-r-5-base.webp
+  source: https://www.thrustmaster.com/wp-content/uploads/2025/10/Website_ProductPageListing_SolR5_800x800_1.webp
+  caption: Sol-R 5 Base
+controls:
+- type: toggle
+  count: 4
+  location: base
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_FlightStick_user-manual_21L.pdf
+  ways: 2
+- type: button
+  count: 8
+  location: base
+  label: DJ-style pads
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_FlightStick_user-manual_21L.pdf
+  backlit: true
+- type: lever
+  kind: throttle_single
+  analog: true
+  count: 1
+  location: base
+  label: Mini-throttle
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_FlightStick_user-manual_21L.pdf
+- type: rotary
+  mode: selector
+  count: 1
+  location: base
+  label: Selector switch
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_FlightStick_user-manual_21L.pdf
+  positions: 4
+- type: encoder
+  count: 1
+  location: base
+  label: Base rotary encoder with center click
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_FlightStick_user-manual_21L.pdf
+  push: true
+- type: switch
+  count: 1
+  positions: 2
+  location: base
+  label: Left-handed / right-handed configuration selector
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_FlightStick_user-manual_21L.pdf
+hardware:
+  axes:
+  - name: X
+    resolution_bits: 16
+    sensor: Hall effect
+  - name: Y
+    resolution_bits: 16
+    sensor: Hall effect
+  - name: Mini-throttle
+  sensor: 16-bit Hall effect
+  axis_count: 3
+connectivity:
+  usb: c
+  standalone_usb: true
+physical:
+  weight_g: 960
+  dimensions_mm:
+  - 196
+  - 196
+  - 67
+software: T.A.R.G.E.T.
+controls_evidence:
+  coverage: complete
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_FlightStick_user-manual_21L.pdf
+  checked: '2026-10-20'
+  notes: Sol-R 5 product page identifies the shared Sol-R base controls. English Sol-R flightstick manual
+    pages 9-10 and 20 visually identify four two-position toggles, eight backlit pads, clickable encoder,
+    four-position rotary selector, mini-throttle and handedness configuration switch. Software actions
+    are not standalone button counts.

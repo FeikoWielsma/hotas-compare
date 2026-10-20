@@ -4,10 +4,11 @@ category: yoke_bundle
 status: current
 components:
 - moza/ay210-yoke-base
-- moza/j04-yoke
+- moza/mfy-yoke-pro
 verification: draft
 sources:
 - https://mozaracing.com
+- https://eu.mozaracing.com/products/ay210-ffb-yoke-bundle
 images:
 - file: /images/moza/ay210-yoke-bundle.webp
   source: https://eu.mozaracing.com/products/ay210-ffb-yoke-bundle
@@ -15,9 +16,16 @@ images:
 prices:
 - region: EU
   currency: EUR
-  amount: 928
+  amount: 908
   incl_vat: true
   store: eu.mozaracing.com
   url: https://eu.mozaracing.com/products/ay210-ffb-yoke-bundle
-  verified: '2026-10-19'
+  verified: '2026-10-20'
   source: manual
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Complete bundle is the PC-only AY210 base and MFY handle.
+  sources:
+  - https://support.mozaracing.com/en/support/solutions/articles/70000679586-moza-ay210-yoke-base-support

@@ -1,15 +1,18 @@
-brand: honeycomb
 name: Alpha Flight Controls XPC
+brand: honeycomb
 category: yoke
 status: current
+release_year: 2022
 handedness: n/a
-mount: null
+mount:
+  provides: desk
+  accepts: []
 controls:
 - type: hat
   count: 1
-  ways: 8
   label: Left-handle POV switch
   location: handle
+  ways: 8
   source: https://flyhoneycomb.com/products/alpha-flight-controls-xpc
 - type: rocker
   count: 4
@@ -18,35 +21,70 @@ controls:
   source: https://flyhoneycomb.com/products/alpha-flight-controls-xpc
 - type: button
   count: 4
-  label: Programmable handle buttons (two per handle, detailed callouts)
+  label: Programmable handle buttons (two per handle)
   location: handle
   source: https://flyhoneycomb.com/products/alpha-flight-controls-xpc
 - type: rotary
-  mode: selector
-  positions: 5
   count: 1
   label: Ignition selector
   location: panel
+  positions: 5
+  mode: selector
+  source: https://flyhoneycomb.com/products/alpha-flight-controls-xpc
+- type: toggle
+  count: 4
+  label: Master Alt/Bat and Avionic Bus1/2 toggles
+  location: panel
+  source: https://flyhoneycomb.com/products/alpha-flight-controls-xpc
+- type: toggle
+  count: 5
+  label: BCN/LND/TAXI/NAV/STROBE light toggles
+  location: panel
+  source: https://flyhoneycomb.com/products/alpha-flight-controls-xpc
+- type: button
+  count: 4
+  label: Xbox button, share/view/menu buttons
+  location: panel
   source: https://flyhoneycomb.com/products/alpha-flight-controls-xpc
 controls_evidence:
-  coverage: partial
+  coverage: complete
   source: https://flyhoneycomb.com/products/alpha-flight-controls-xpc
-  checked: '2026-10-19'
-  notes: Detailed left/right handle callouts specify one POV hat on the left and two buttons on each handle, conflicting with broad prose saying both handles have a POV and three buttons plus PTT per handle; counts follow the specific callouts. The product page names four switch categories but does not enumerate physical panel switch count or mechanism, so no panel control count is inferred from categories. Ignition is modeled as a five-position rotary selector. PTT inclusion/placement remains unclear.
+  checked: '2026-10-20'
+  notes: 'Shared full-size Alpha inventory: one left-handle 8-way POV, four 2-way
+    handle rockers, four handle buttons, four master/avionics panel switches, five
+    lighting panel switches and five-position ignition selector. Panel labels/counts
+    are visible in the Honeycomb default-setup diagram supplied by the owner and product
+    photos; switch off-position electrical mappings are not inferred. The current
+    product page prose says both handles have an 8-way POV, three buttons and PTT,
+    while its specific callouts show one POV and two buttons per handle; PTT inclusion
+    and per-handle count therefore remain unresolved. XPC additionally has four Xbox/navigation
+    buttons. The original Alpha has no Xbox navigation group. Physical inventory completeness
+    uses the owner-supplied Honeycomb default mapping diagram; optional click, lighting
+    and switch contact behavior may still be unspecified.'
 hardware:
-  gimbal: null
-  sensor: contactless_magnetic
-  axes: []
-  force_adjustable: null
-  cams_swappable: null
-  damping: null
-  extension_support: null
-  throw_deg: null
+  sensor: hall_effect
+  axes:
+  - name: Elevator (pitch)
+  - name: Aileron (roll)
+  force_adjustable: false
+  cams_swappable: false
+  extension_support: false
+  axis_count: 2
+  gimbal: linear bearing yoke mechanism
+  damping: Self-centering damped mechanism; no center detent
+  throw_deg: 180
 connectivity:
   usb: c
   standalone_usb: true
+software: Honeycomb Configurator for custom button mappings; Windows utility
 physical:
-  materials: []
+  weight_g: 4650
+  dimensions_mm:
+  - 273
+  - 410
+  - 208
+  materials:
+  - steel shaft
 use_case_fit: {}
 prices:
 - region: EU
@@ -72,10 +110,21 @@ prices:
   url: https://flyhoneycomb.com/products/alpha-flight-controls-xpc
   verified: '2026-10-19'
   source: manual
+external_reviews: []
 verification: draft
-images:
-  - file: /images/honeycomb/alpha-flight-controls-xpc.jpg
-    source: https://flyhoneycomb.com/products/alpha-flight-controls-xpc
-    caption: Alpha Flight Controls XPC
 sources:
 - https://honeycomb.com
+- https://flyhoneycomb.com/products/alpha-flight-controls-xpc
+- https://flyhoneycomb.com/pages/downloads
+images:
+- file: /images/honeycomb/alpha-flight-controls-xpc.jpg
+  source: https://flyhoneycomb.com/products/alpha-flight-controls-xpc
+  caption: Alpha Flight Controls XPC
+platform_compatibility:
+  pc: supported
+  xbox: supported
+  ps5: unknown
+  notes: Manufacturer explicitly lists PC/Mac, Xbox One and Xbox Series X|S support.
+    PS5 is not mentioned.
+  sources:
+  - https://flyhoneycomb.com/products/alpha-flight-controls-xpc

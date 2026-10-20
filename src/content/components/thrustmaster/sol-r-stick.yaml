@@ -1,71 +1,128 @@
 brand: thrustmaster
-name: Sol-R Space Flight Stick
+name: Sol-R 1 Flightstick
 category: stick_fixed
 status: current
 release_year: 2025
-handedness: right
+handedness: ambi
 mount: null
 controls:
 - type: hat
   count: 2
   location: grip
   label: Grip hat switches
-  source: https://www.thrustmaster.com/en-us/products/sol-r-1-flightstick/
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_FlightStick_user-manual_21L.pdf
+  ways: 8
+  push: true
 - type: trigger
   count: 1
   location: grip
   stages: 2
   label: Dual-position trigger
-  source: https://www.thrustmaster.com/en-us/products/sol-r-1-flightstick/
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_FlightStick_user-manual_21L.pdf
 - type: trigger
   count: 1
   location: grip
-  stages: 1
   label: Secondary trigger
-  source: https://www.thrustmaster.com/en-us/products/sol-r-1-flightstick/
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_FlightStick_user-manual_21L.pdf
 - type: analog_ministick
   count: 1
   location: grip
   label: Ministick
-  source: https://www.thrustmaster.com/en-us/products/sol-r-1-flightstick/
-- type: rotary
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_FlightStick_user-manual_21L.pdf
+  push: true
+- type: scroll_wheel
   count: 1
   location: grip
-  label: Thumbwheel
-  notes: Manufacturer identifies a thumbwheel axis but does not specify analog versus incremental reporting.
-  source: https://www.thrustmaster.com/en-us/products/sol-r-1-flightstick/
+  label: Digital scroll wheel with center click
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_FlightStick_user-manual_21L.pdf
+  push: true
 - type: lever
   kind: throttle_single
   analog: true
   count: 1
   location: base
   label: Central throttle
-  source: https://www.thrustmaster.com/en-us/products/sol-r-1-flightstick/
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_FlightStick_user-manual_21L.pdf
+- type: toggle
+  count: 4
+  location: base
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_FlightStick_user-manual_21L.pdf
+  ways: 2
+- type: button
+  count: 8
+  location: base
+  label: DJ-style pads
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_FlightStick_user-manual_21L.pdf
+  backlit: true
+- type: rotary
+  mode: selector
+  count: 1
+  location: base
+  label: Selector switch
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_FlightStick_user-manual_21L.pdf
+  positions: 4
+- type: encoder
+  count: 1
+  location: base
+  label: Base rotary encoder with center click
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_FlightStick_user-manual_21L.pdf
+  push: true
+- type: button
+  count: 3
+  location: grip
+  label: Two front action buttons and one installed rear button
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_FlightStick_user-manual_21L.pdf
+- type: switch
+  count: 1
+  positions: 2
+  location: base
+  label: Left-handed / right-handed configuration selector
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_FlightStick_user-manual_21L.pdf
+- type: axis
+  kind: twist
+  count: 1
+  location: grip
+  label: Lockable grip twist
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_FlightStick_user-manual_21L.pdf
 controls_evidence:
-  coverage: partial
-  source: https://www.thrustmaster.com/en-us/products/sol-r-1-flightstick/
-  checked: '2026-10-19'
-  notes: Product combines removable grip and base. Grip's two triggers, two hats, ministick and thumbwheel are identified. Hat directions and push properties remain unknown and omitted. Manufacturer calls thumbwheel a virtual axis; rotary mode is unknown. Marketing total of 44 assignable actions is not a physical-button count; base button inventory is unresolved.
+  coverage: complete
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_FlightStick_user-manual_21L.pdf
+  checked: '2026-10-20'
+  notes: Visually reconciled English manual pages 7-10 and 20-22. Two eight-way clickable hats, clickable
+    ministick, clickable digital scroll wheel, three installed grip buttons, four two-position base toggles,
+    eight backlit base pads, clickable encoder and four-position selector. Includes physical handedness
+    selector; spare rear button and alternate POV mappings are not extra controls. Secondary trigger action
+    remains unspecified. Published eight-axis total includes virtual axes; it is not an inventory of eight
+    separate analog mechanisms.
 hardware:
   gimbal: ball_joint
   sensor: hall
   axes:
   - name: X
     sensor: hall
+    resolution_bits: 16
   - name: Y
     sensor: hall
+    resolution_bits: 16
   - name: Twist_Z
     sensor: hall
+    resolution_bits: 16
   force_adjustable: false
   cams_swappable: false
   damping: null
   extension_support: false
   throw_deg: null
+  axis_count: 8
 connectivity:
-  usb: a_cable
+  usb: c
   standalone_usb: true
 software: T.A.R.G.E.T
 physical:
+  weight_g: 1270
+  dimensions_mm:
+  - 196
+  - 196
+  - 247
   materials:
   - abs
 use_case_fit:
@@ -79,10 +136,11 @@ use_case_fit:
 prices:
 - region: EU
   currency: EUR
-  amount: 130
+  amount: 179.99
   incl_vat: true
-  store: amazon.de
-  verified: '2026-10-01'
+  store: Thrustmaster Netherlands
+  url: https://www.thrustmaster.com/nl-nl/products/sol-r-1-flightstick/
+  verified: '2026-10-20'
   source: manual
 - region: UK
   currency: GBP
@@ -100,8 +158,18 @@ prices:
   source: manual
 verification: draft
 sources:
-- https://www.thrustmaster.com/en-us/products/sol-r-1/
+- https://www.thrustmaster.com/nl-nl/products/sol-r-1-flightstick/
+- https://www.thrustmaster.com/nl-nl/products/sol-r-4-hotas/
+- https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_FlightStick_user-manual_21L.pdf
 images:
-  - file: /images/thrustmaster/sol-r-stick.webp
-    source: https://www.thrustmaster.com/en-us/products/sol-r-1/
-    caption: Sol-R Space Flight Stick
+- file: /images/thrustmaster/sol-r-stick.webp
+  source: https://www.thrustmaster.com/en-us/products/sol-r-1/
+  caption: Sol-R Space Flight Stick
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product/support documentation lists PC compatibility; this exact component has no console
+    host support listed.
+  sources:
+  - https://www.thrustmaster.com/nl-nl/products/sol-r-1-flightstick/

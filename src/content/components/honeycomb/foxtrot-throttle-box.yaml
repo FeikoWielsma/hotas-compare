@@ -53,3 +53,10 @@ verification: draft
 images: []
 sources:
 - https://eu.flyhoneycomb.com/products/foxtrot-takeoff-kit
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unknown
+  notes: Official system compatibility lists PC and Mac only; Xbox is not listed. PS5 is not mentioned.
+  sources:
+  - https://flyhoneycomb.com/products/foxtrot-takeoff-kit

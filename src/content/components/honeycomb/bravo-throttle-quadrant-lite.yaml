@@ -84,3 +84,10 @@ images:
   caption: Bravo Throttle Quadrant Lite
 sources:
 - https://eu.flyhoneycomb.com/products/bravo-throttle-quadrant-lite
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Manufacturer lists PC/Mac support only; Xbox requires the XPC variant. Manufacturer platform list does not include PS5.
+  sources:
+  - https://flyhoneycomb.com/products/bravo-throttle-quadrant-lite

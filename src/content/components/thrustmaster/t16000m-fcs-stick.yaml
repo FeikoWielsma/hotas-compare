@@ -6,55 +6,56 @@ release_year: 2016
 handedness: ambi
 mount: null
 controls:
-  - type: trigger
-    count: 1
-    location: grip
-    stages: 1
-    label: Ergonomic trigger
-    source: https://www.thrustmaster.com/en-us/products/t-16000m-fcs/
-  - type: hat
-    ways: 8
-    count: 1
-    location: grip
-    label: Point-of-view hat
-    source: https://www.thrustmaster.com/en-us/products/t-16000m-fcs/
-  - type: button
-    count: 3
-    location: grip
-    label: Grip buttons
-    source: https://www.thrustmaster.com/en-us/products/t-16000m-fcs/
-  - type: button
-    count: 12
-    location: base
-    label: Base buttons (6 per side)
-    source: https://www.thrustmaster.com/en-us/products/t-16000m-fcs/
-  - type: slider
-    count: 1
-    analog: true
-    location: base
-    label: Base throttle slider
-    source: https://www.thrustmaster.com/en-us/products/t-16000m-fcs/
+- type: trigger
+  count: 1
+  location: grip
+  stages: 1
+  label: Ergonomic trigger
+  source: https://www.thrustmaster.com/en-us/products/t-16000m-fcs/
+- type: hat
+  ways: 8
+  count: 1
+  location: grip
+  label: Point-of-view hat
+  source: https://www.thrustmaster.com/en-us/products/t-16000m-fcs/
+- type: button
+  count: 3
+  location: grip
+  label: Grip buttons
+  source: https://www.thrustmaster.com/en-us/products/t-16000m-fcs/
+- type: button
+  count: 12
+  location: base
+  label: Base buttons (6 per side)
+  source: https://www.thrustmaster.com/en-us/products/t-16000m-fcs/
+- type: slider
+  count: 1
+  analog: true
+  location: base
+  label: Base throttle slider
+  source: https://www.thrustmaster.com/en-us/products/t-16000m-fcs/
 controls_evidence:
   coverage: complete
   source: https://www.thrustmaster.com/en-us/products/t-16000m-fcs/
   checked: '2026-10-19'
-  notes: Manufacturer specifies 16 action buttons, one 8-way PoV hat and trigger. Physical split is 12 base buttons plus three grip buttons and trigger. Hat push is not stated and remains unknown.
+  notes: Manufacturer specifies 16 action buttons, one 8-way PoV hat and trigger. Physical split is 12 base buttons
+    plus three grip buttons and trigger. Hat push is not stated and remains unknown.
 hardware:
   gimbal: ball_joint
   sensor: hall
   axes:
-    - name: X
-      resolution_bits: 16
-      sensor: hall
-    - name: Y
-      resolution_bits: 16
-      sensor: hall
-    - name: Twist_Z
-      resolution_bits: 8
-      sensor: potentiometer
-    - name: Slider
-      resolution_bits: 8
-      sensor: potentiometer
+  - name: X
+    resolution_bits: 16
+    sensor: hall
+  - name: Y
+    resolution_bits: 16
+    sensor: hall
+  - name: Twist_Z
+    resolution_bits: 8
+    sensor: potentiometer
+  - name: Slider
+    resolution_bits: 8
+    sensor: potentiometer
   force_adjustable: false
   cams_swappable: false
   damping: null
@@ -65,9 +66,10 @@ connectivity:
   standalone_usb: true
 software: T.A.R.G.E.T
 physical:
-  weight_g: 820
+  weight_g: 1320
   materials:
-    - abs
+  - abs
+  dimensions_mm: [220, 214, 242]
 use_case_fit:
   modern_jet: 3
   heli: 3
@@ -77,46 +79,47 @@ use_case_fit:
   space_hotas: 4
   space_hosas: 4
 prices:
-  - region: EU
-    currency: EUR
-    amount: 69
-    incl_vat: true
-    store: amazon.de
-    verified: '2026-10-01'
-    source: manual
-  - region: UK
-    currency: GBP
-    amount: 59
-    incl_vat: true
-    store: amazon.co.uk
-    verified: '2026-10-01'
-    source: manual
-  - region: US
-    currency: USD
-    amount: 79.99
-    incl_vat: false
-    store: eshop.thrustmaster.com
-    verified: '2026-10-19'
-    source: manual
-    url: https://eshop.thrustmaster.com/en_us/products-joysticks/t-16000m-fcs.html
+- region: EU
+  currency: EUR
+  amount: 69
+  incl_vat: true
+  store: amazon.de
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 59
+  incl_vat: true
+  store: amazon.co.uk
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 79.99
+  incl_vat: false
+  store: eshop.thrustmaster.com
+  verified: '2026-10-19'
+  source: manual
+  url: https://eshop.thrustmaster.com/en_us/products-joysticks/t-16000m-fcs.html
 verdict:
   author: feiko
   hands_on: true
   owned_hours: 800
-  take: "The universal budget entry point. Accurate H.E.A.R.T hall sensor on the main X/Y axes and true ambidextrous modular grips make it cheap to start HOSAS, but the twist potentiometer is notorious for early failure."
+  take: The universal budget entry point. Accurate H.E.A.R.T hall sensor on the main X/Y axes and true ambidextrous
+    modular grips make it cheap to start HOSAS, but the twist potentiometer is notorious for early failure.
   pros:
-    - "16-bit Hall effect magnetic sensors on primary X/Y axes"
-    - "Fully ambidextrous with swappable left/right thumb rests"
-    - "Very affordable and widely available in stores worldwide"
+  - 16-bit Hall effect magnetic sensors on primary X/Y axes
+  - Fully ambidextrous with swappable left/right thumb rests
+  - Very affordable and widely available in stores worldwide
   cons:
-    - "Single-spring ball-and-cup gimbal has a distinct center clunk and noticeable breakout force"
-    - "Twist (Z) axis uses a cheap potentiometer prone to jitter and failure after 6-12 months"
-    - "Only one hat and three buttons on the stick grip itself"
+  - Single-spring ball-and-cup gimbal has a distinct center clunk and noticeable breakout force
+  - Twist (Z) axis uses a cheap potentiometer prone to jitter and failure after 6-12 months
+  - Only one hat and three buttons on the stick grip itself
   great_for:
-    - space_hosas
-    - modern_jet
+  - space_hosas
+  - modern_jet
   skip_if:
-    - "You have a budget over €150 and want durable contactless twist or modular cams"
+  - You have a budget over €150 and want durable contactless twist or modular cams
   scores:
     build: 3
     feel: 3
@@ -124,15 +127,24 @@ verdict:
     software: 2
     qc_support: 3
 external_reviews:
-  - reviewer: mysh
-    url: https://youtube.com/watch?v=sample-t16000m
-    summary: "Solid starter stick on main axes, let down by weak twist potentiometer longevity."
-    tag: mixed
-    date: '2023-10-05'
+- reviewer: mysh
+  url: https://youtube.com/watch?v=sample-t16000m
+  summary: Solid starter stick on main axes, let down by weak twist potentiometer longevity.
+  tag: mixed
+  date: '2023-10-05'
 verification: verified
 sources:
-  - https://www.thrustmaster.com/en-us/products/t-16000m-fcs/
+- https://www.thrustmaster.com/en-gb/products/t-16000m-fcs/
+- https://www.thrustmaster.com/en-us/products/t-16000m-fcs/
 images:
-  - file: /images/thrustmaster/t16000m-fcs-stick.webp
-    source: https://www.thrustmaster.com/en-us/products/t-16000m-fcs/
-    caption: T.16000M FCS Flight Stick
+- file: /images/thrustmaster/t16000m-fcs-stick.webp
+  source: https://www.thrustmaster.com/en-us/products/t-16000m-fcs/
+  caption: T.16000M FCS Flight Stick
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product/support documentation lists PC compatibility; this exact component has no console host
+    support listed.
+  sources:
+  - https://www.thrustmaster.com/en-us/products/t-16000m-fcs/

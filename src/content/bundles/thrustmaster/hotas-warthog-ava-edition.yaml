@@ -1,0 +1,39 @@
+brand: thrustmaster
+name: HOTAS Warthog AVA Edition
+category: hotas_bundle
+status: current
+components:
+- thrustmaster/ava-base
+- thrustmaster/warthog-stick-grip
+- thrustmaster/warthog-dual-throttle
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Bundle support is limited by its required PC-only members.
+  sources:
+  - https://www.thrustmaster.com/nl-nl/products/hotas-warthog-ava-edition/
+prices:
+- region: EU
+  currency: EUR
+  amount: 599.99
+  incl_vat: true
+  store: Thrustmaster Netherlands
+  url: https://www.thrustmaster.com/nl-nl/products/hotas-warthog-ava-edition/
+  verified: '2026-10-20'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 519.99
+  incl_vat: true
+  store: Thrustmaster UK eshop
+  url: https://shop.thrustmaster.com/en_gb/hotas-warthog-ava-edition.html
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources:
+- https://www.thrustmaster.com/nl-nl/products/hotas-warthog-ava-edition/
+images:
+- file: /images/thrustmaster/hotas-warthog-ava-edition.webp
+  source: https://www.thrustmaster.com/wp-content/uploads/2026/07/WebsiteHotasWarthogA-produit-800x800-1.webp
+  caption: HOTAS Warthog AVA Edition

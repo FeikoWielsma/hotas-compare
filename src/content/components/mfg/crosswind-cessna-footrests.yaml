@@ -8,20 +8,24 @@ controls: []
 controls_evidence:
   coverage: complete
   source: https://mfg-sim.com/rudder-acessories/footrest-kit-for-mfg-rudder-pedals.html
-  checked: '2026-10-19'
-  notes: 'Mechanical Cessna-style footrest pair only; no switches, buttons, levers, or electrical inputs are part of this accessory. Its parent Crosswind base supplies the rudder and toe-brake axes.'
+  checked: '2026-10-20'
+  notes: Mechanical Cessna-style footrest pair only; no switches, buttons, levers,
+    or electrical inputs are part of this accessory. Its parent Crosswind base supplies
+    the rudder and toe-brake axes. The standalone accessory contains no USB electronics
+    or position sensors; any measured axes belong to the parent pedals.
 hardware:
-  gimbal: null
-  sensor: contactless_magnetic
-  axes: [] # no published input list
+  gimbal: not applicable (passive accessory)
+  sensor: none (passive mechanical accessory)
+  axes: []
   force_adjustable: null
   cams_swappable: null
   damping: null
   extension_support: null
   throw_deg: null
+  axis_count: 0
 connectivity:
-  usb: c
-  standalone_usb: true
+  usb: none (passive mechanical accessory)
+  standalone_usb: false
 physical:
   materials: []
 use_case_fit: {}
@@ -52,8 +56,18 @@ prices:
   source: manual
 verification: draft
 images:
-  - file: /images/mfg/crosswind-cessna-footrests.jpg
-    source: https://mfg-sim.com/rudder-acessories/footrest-kit-for-mfg-rudder-pedals.html
-    caption: Crosswind Cessna Footrests
+- file: /images/mfg/crosswind-cessna-footrests.jpg
+  source: https://mfg-sim.com/rudder-acessories/footrest-kit-for-mfg-rudder-pedals.html
+  caption: Crosswind Cessna Footrests
 sources:
 - https://mfg-sim.com/rudder-acessories/footrest-kit-for-mfg-rudder-pedals.html#/4-model-cessna
+platform_compatibility:
+  pc: unknown
+  xbox: unknown
+  ps5: unknown
+  notes: Mechanical accessory with no USB or controller of its own; compatibility
+    depends on the Crosswind pedal host. No standalone platform statement exists.
+    Xbox and PS5 are not mentioned.
+  sources:
+  - https://mfg-sim.com/rudders/mfg-crosswind-v3-base.html
+software: Not required; passive mechanical accessory

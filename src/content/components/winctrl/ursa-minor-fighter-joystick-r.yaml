@@ -1,6 +1,13 @@
 brand: winctrl
 name: Ursa Minor Fighter Joystick Right
 category: stick_fixed
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official listing/manual establishes computer USB use; no exact product source establishes Xbox or PS5 support or incompatibility.
+  sources:
+    - https://eu.winctrl.com/static/download/QmTvHcYNoR17Ro8AHmA7j6jpqwnHHbaYWS8dXGxM8QbTgh?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+V1.3+20250708.pdf
 status: current
 release_year: 2024
 handedness: right
@@ -10,6 +17,7 @@ mount:
 controls:
   - type: trigger
     stages: 2
+    action: sequential
     location: grip
     label: First and second stage trigger
     source: https://eu.winctrl.com/static/download/QmZmKJ7NdwQ8FDSQrSCgHTz8czJdWTEi9YduELWz63pqMU?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+EN+V1.0.pdf
@@ -64,7 +72,11 @@ connectivity:
   standalone_usb: true
 software: SimApp Pro
 physical:
-  weight_g: 1100
+  weight_g: 1050
+  dimensions_mm:
+  - 227
+  - 217
+  - 246
   materials:
     - glass_fiber_nylon
     - abs

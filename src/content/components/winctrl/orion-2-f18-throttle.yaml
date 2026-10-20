@@ -1,6 +1,14 @@
 brand: winctrl
 name: Orion 2 FA-18 Dual Throttle Handles
 category: throttle
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: The official Orion 2 throttle-base page describes PC software/USB operation; referenced goods ID 375 currently shows a NavyAce throttle combo rather than the assigned F/A-18 handle SKU. No exact source establishes Xbox or PS5 support or incompatibility.
+  sources:
+    - https://eu.winctrl.com/view/goods-details.html?id=375
+    - https://eu.winctrl.com/h5/Orion2_Throttle_Base/en/
 status: current
 handedness: n/a
 mount:
@@ -12,7 +20,7 @@ controls_evidence:
   source: https://eu.winctrl.com/view/goods-details.html?id=375
   checked: '2026-10-19'
   notes: >-
-    Rendered exact Orion2 NavyAce combo page only names selectable throttle base and grip options; it does not describe the F/A-18 dual-handle control layout. Generic Orion2 detent information does not verify this exact installed handle pair; no unsupported counts are asserted.
+    The current rendered goods ID 375 page is titled Orion2 NavyAce Throttle Combo and lists the Orion2 throttle base, NavyAce metal throttle grip, and dual throttle connector. It does not describe an F/A-18 dual-handle control layout. Generic Orion2 detent information does not verify this assigned handle pair; no unsupported counts are asserted.
 
 hardware:
   axes: []

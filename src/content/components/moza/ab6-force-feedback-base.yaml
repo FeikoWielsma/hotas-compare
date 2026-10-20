@@ -9,46 +9,51 @@ mount:
   accepts:
   - moza-flight-qr
 controls:
-  - type: button
-    location: base
-    count: 8
-    label: RGB-backlit customizable buttons
-    backlit: true
-    source: https://support.mozaracing.com/en/support/solutions/articles/70000684201-ab6-force-feedback-base
-  - type: slider
-    location: base
-    count: 2
-    analog: true
-    label: Axis sliders
-    source: https://support.mozaracing.com/en/support/solutions/articles/70000684201-ab6-force-feedback-base
+- type: button
+  location: base
+  count: 8
+  label: RGB-backlit customizable buttons
+  backlit: true
+  source: https://support.mozaracing.com/en/support/solutions/articles/70000684201-ab6-force-feedback-base
+- type: slider
+  location: base
+  count: 2
+  analog: true
+  label: Axis sliders
+  source: https://support.mozaracing.com/en/support/solutions/articles/70000684201-ab6-force-feedback-base
 controls_evidence:
   coverage: partial
   source: https://support.mozaracing.com/en/support/solutions/articles/70000684201-ab6-force-feedback-base
   checked: '2026-10-19'
-  notes: Eight illuminated buttons and two axis sliders are explicitly documented. Separate power control is excluded as a device input; no evidence found for other onboard input types.
+  notes: Eight illuminated buttons and two axis sliders are explicitly documented. Separate power control is excluded
+    as a device input; no evidence found for other onboard input types.
 hardware:
   gimbal: force_feedback
-  sensor: encoder_20bit
+  sensor: magnetic_encoder
   axes:
   - name: X
-    resolution_bits: 20
-    sensor: direct_drive_servo
+    resolution_bits: 15
+    sensor: magnetic_encoder
   - name: Y
-    resolution_bits: 20
-    sensor: direct_drive_servo
+    resolution_bits: 15
+    sensor: magnetic_encoder
   force_adjustable: true
   cams_swappable: false
   damping: active_motor
-  extension_support: false
-  throw_deg: 32
+  extension_support: null
+  throw_deg: null
 connectivity:
-  usb: c
+  usb: USB-C to PC; RJ11 accessory ports
   standalone_usb: true
-software: MOZA Cockpit
+software: MOZA Cockpit and MOZA Pit House
 physical:
-  weight_g: 2900
+  weight_g: 2950
+  dimensions_mm:
+  - 188
+  - 123
+  - 163
   materials:
-  - aviation_aluminum
+  - aviation-grade aluminum alloy
 use_case_fit:
   modern_jet: 3
   heli: 4
@@ -61,9 +66,8 @@ prices: []
 verdict:
   author: feiko
   hands_on: false
-  take: MOZA's entry-level 6Nm direct drive force feedback flight base. While more accessible in price
-    than the AB9, the lower torque headroom limits fidelity in high-G maneuvers and aerodynamic force
-    saturation.
+  take: MOZA's entry-level 6Nm direct drive force feedback flight base. While more accessible in price than the
+    AB9, the lower torque headroom limits fidelity in high-G maneuvers and aerodynamic force saturation.
   pros:
   - Direct drive active force feedback at lower price point
   - Aviation-grade aluminum housing
@@ -84,14 +88,25 @@ verdict:
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=2z54NHzy_Gc
-  summary: Skip the MOZA AB6. The MOZA AB9 is far better and well worth the step up for force feedback
-    fidelity.
+  summary: Skip the MOZA AB6. The MOZA AB9 is far better and well worth the step up for force feedback fidelity.
   tag: avoid
   date: '2026-09-15'
 verification: draft
 sources:
 - https://mozaracing.com
+- https://support.mozaracing.com/en/support/solutions/articles/70000684201-ab6-force-feedback-base
 images:
 - file: /images/moza/ab6-force-feedback-base.webp
   source: https://eu.mozaracing.com/products/ab6-bundle/
   caption: MOZA AB6 Force Feedback Base
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: >-
+    The support page specifies PC USB connectivity, but does not give an exhaustive platform list or explicitly
+    exclude consoles; console compatibility remains unknown. The product page lists "Platform: PC" with no console
+    wording.
+  sources:
+  - https://support.mozaracing.com/en/support/solutions/articles/70000684201-ab6-force-feedback-base
+  - https://eu.mozaracing.com/products/ab6-bundle/

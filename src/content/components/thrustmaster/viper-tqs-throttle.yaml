@@ -47,7 +47,11 @@ controls_evidence:
   coverage: partial
   source: https://ts.thrustmaster.com/download/accessories/Manuals/Viper/Viper_Mission_Pack_User_Manual.pdf
   checked: '2026-10-19'
-  notes: Handle only; do not include separately sold Viper Panel. Mode A mapping enumerates physical button events but does not reliably establish which remaining numbered inputs are standalone pushbuttons versus switch contacts; unsupported generic button count omitted. Marketing's 21 includes two virtual buttons. Two mechanical stop regions and cut-off trigger are distinct. Calibration support identifies two analog rotary axes with center detents; intermediate stop count unknown.
+  notes: Handle only; do not include separately sold Viper Panel. Mode A mapping enumerates physical button events
+    but does not reliably establish which remaining numbered inputs are standalone pushbuttons versus switch contacts;
+    unsupported generic button count omitted. Marketing's 21 includes two virtual buttons. Two mechanical stop regions
+    and cut-off trigger are distinct. Calibration support identifies two analog rotary axes with center detents;
+    intermediate stop count unknown.
 hardware:
   gimbal: null
   sensor: hall
@@ -101,6 +105,14 @@ verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/viper-tqs/
 images:
-  - file: /images/thrustmaster/viper-tqs-throttle.webp
-    source: https://www.thrustmaster.com/en-us/products/viper-tqs/
-    caption: Viper TQS
+- file: /images/thrustmaster/viper-tqs-throttle.webp
+  source: https://www.thrustmaster.com/en-us/products/viper-tqs/
+  caption: Viper TQS
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product/support documentation lists PC compatibility; this exact component has no console host
+    support listed.
+  sources:
+  - https://www.thrustmaster.com/en-us/products/viper-tqs/

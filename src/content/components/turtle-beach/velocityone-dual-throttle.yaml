@@ -1,0 +1,141 @@
+brand: turtle-beach
+name: VelocityOne Dual Throttle
+category: throttle
+status: current
+handedness: n/a
+mount: null
+controls:
+- type: lever
+  kind: throttle_dual
+  analog: true
+  count: 2
+  label: Lockable dual throttle levers
+  notes: On the PC chart the lever-head L1 and L2 buttons B24-B27 are virtual outputs, not physical buttons,
+    so no button records are added for them. The throttle lock merges the two levers and is not counted
+    as an input.
+  source: https://support.turtlebeach.com/s/article/velocityone-dual-throttle-quick-start-guide
+- type: lever
+  kind: other
+  analog: true
+  count: 1
+  label: Base lever (multifunction lever with detent buttons)
+  source: https://support.turtlebeach.com/s/article/velocityone-dual-throttle-quick-start-guide
+  button_contacts: 2
+  notes: Two electrical end-detent contacts per lever, actuated by lever travel; not separate push-button
+    bodies.
+  location: base
+- type: analog_ministick
+  count: 1
+  push: true
+  label: Analog POV1 with click press (B01)
+  notes: Product page calls this a thumbstick. The quick start guide tour and PC button chart place the
+    analog POV with click press on the lever head.
+  source: https://support.turtlebeach.com/s/article/velocityone-dual-throttle-quick-start-guide
+  location: handle
+- type: rotary
+  count: 1
+  mode: analog
+  location: handle
+  label: 'Rotary axis on lever head (product page: textured wheel)'
+  notes: PC chart lists WHEEL up/down as an axis.
+  source: https://acpv.prod.turtlebeach.com/support/v3/additional-files/en/45/VelocityOne-Dual-Throttle-en.pdf
+- type: scroll_wheel
+  count: 1
+  location: other
+  label: Rear scroll wheel (analogue or digital)
+  notes: PC chart shows analogue D up/down and digital outputs B05-B07. Click is not stated.
+  source: https://acpv.prod.turtlebeach.com/support/v3/additional-files/en/45/VelocityOne-Dual-Throttle-en.pdf
+- type: hat
+  count: 1
+  ways: 4
+  location: handle
+  label: 4-way HAT1 (H1, lever head)
+  notes: Click is not stated.
+  source: https://acpv.prod.turtlebeach.com/support/v3/additional-files/en/45/VelocityOne-Dual-Throttle-en.pdf
+- type: hat
+  count: 1
+  ways: 4
+  location: handle
+  label: 4-way HAT2 (H2, rear handle)
+  notes: Click is not stated.
+  source: https://acpv.prod.turtlebeach.com/support/v3/additional-files/en/45/VelocityOne-Dual-Throttle-en.pdf
+- type: button
+  count: 3
+  location: handle
+  label: Thumb buttons (B02, B03, B04)
+  source: https://acpv.prod.turtlebeach.com/support/v3/additional-files/en/45/VelocityOne-Dual-Throttle-en.pdf
+- type: button
+  count: 3
+  location: base
+  label: Base buttons (B12, B13, B14)
+  source: https://acpv.prod.turtlebeach.com/support/v3/additional-files/en/45/VelocityOne-Dual-Throttle-en.pdf
+- type: toggle
+  count: 3
+  location: base
+  label: Toggle switches (B15-B20)
+  notes: Each toggle has two chart outputs, for example B15 and B16. The number of positions is not stated.
+  source: https://acpv.prod.turtlebeach.com/support/v3/additional-files/en/45/VelocityOne-Dual-Throttle-en.pdf
+- type: rotary
+  count: 1
+  push: true
+  location: base
+  label: Rotary dial with centre click (B21, B22, B23)
+  notes: The chart lists three outputs on the dial. Which output is rotation and which is the click is
+    not stated.
+  source: https://acpv.prod.turtlebeach.com/support/v3/additional-files/en/45/VelocityOne-Dual-Throttle-en.pdf
+- type: button
+  count: 2
+  location: other
+  label: Rear buttons (B08, B09)
+  source: https://acpv.prod.turtlebeach.com/support/v3/additional-files/en/45/VelocityOne-Dual-Throttle-en.pdf
+controls_evidence:
+  coverage: complete
+  source: https://support.turtlebeach.com/s/article/velocityone-dual-throttle-quick-start-guide
+  checked: '2026-10-20'
+  notes: Physical inventory from the official Quick Start Guide product tour (17 numbered items) and the
+    official PC button mapping chart. The XBOX chart uses different B-numbers and was not used for counts.
+    Physical buttons are the orange physical-button labels on the chart. Virtual outputs are not counted.
+    The product totals of 35 programmable inputs and 7 axes are not used to infer button or axis subtypes.
+    Button sensor type, click force, backlight and toggle positions are not published. End-detent contacts
+    are attached to their lever records and excluded from standalone push-button counts.
+hardware:
+  sensor: contactless_magnetic
+  axes: []
+  axis_count: 7
+connectivity:
+  usb: c
+  standalone_usb: true
+physical:
+  weight_g: 1900
+  dimensions_mm:
+  - 273
+  - 158
+  - 256
+  materials: []
+use_case_fit: {}
+prices:
+- region: US
+  currency: USD
+  amount: 149.99
+  incl_vat: false
+  store: turtlebeach.com
+  url: https://www.turtlebeach.com/products/velocity-one-dual-throttle
+  verified: '2026-10-20'
+  source: manual
+platform_compatibility:
+  pc: supported
+  xbox: supported
+  ps5: unknown
+  notes: Official page lists PC direct USB and Xbox use only when paired with the VelocityOne Flightstick
+    II through its pass-through connection. Not compatible with Xbox Cloud streaming. PS5 is not mentioned.
+  sources:
+  - https://www.turtlebeach.com/products/velocity-one-dual-throttle?Title=Default+Title
+verification: draft
+images:
+- file: /images/turtle-beach/velocityone-dual-throttle.png
+  source: https://www.turtlebeach.com/products/velocity-one-dual-throttle
+  caption: VelocityOne Dual Throttle Xbox variant
+sources:
+- https://www.turtlebeach.com/products/velocity-one-dual-throttle
+- https://support.turtlebeach.com/s/article/velocityone-dual-throttle-quick-start-guide
+- https://acpv.prod.turtlebeach.com/support/v3/additional-files/en/45/VelocityOne-Dual-Throttle-en.pdf

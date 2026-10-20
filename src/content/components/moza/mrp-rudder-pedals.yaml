@@ -23,19 +23,40 @@ controls_evidence:
   coverage: partial
   source: https://support.mozaracing.com/en/support/solutions/articles/70000684204-mrp-rudder-pedals
   checked: '2026-10-19'
-  notes: Official guide confirms Hall-effect yaw plus differential toe-brake control. Physical lever groups represent pedals, not added switches. I found no official confirmation whether this variant exposes toe-brake input as two separate axes or one combined axis; no standalone switches are represented. Pedal movements are represented explicitly as axes; they are not hand-operated levers or rocker switches.
+  notes: Official guide confirms Hall-effect yaw plus differential toe-brake control. Physical lever groups represent
+    pedals, not added switches. I found no official confirmation whether this variant exposes toe-brake input as
+    two separate axes or one combined axis; no standalone switches are represented. Pedal movements are represented
+    explicitly as axes; they are not hand-operated levers or rocker switches.
 hardware:
   axes:
-  - name: Yaw
-    sensor: hall_effect
-  - name: Left brake
-    sensor: hall_effect
-  - name: Right brake
-    sensor: hall_effect
+  - name: Rudder
+    sensor: Hall effect
+  - name: Left toe brake
+    sensor: Hall effect
+  - name: Right toe brake
+    sensor: Hall effect
+  axis_count: 3
+  gimbal: swing-arm
+  sensor: Hall effect
+  force_adjustable: true
+  cams_swappable: false
+  damping: optional adjustable damper (sold separately)
+  extension_support: false
+  throw_deg: null
 connectivity:
   standalone_usb: true
+  usb: USB standalone or RJ11 to MOZA flight bases
 physical:
-  materials: []
+  materials:
+  - aluminum alloy housing
+  - high-strength steel swing arm
+  - high-strength steel pedal plates
+  - removable high-strength plastic heel rest
+  weight_g: 8000
+  dimensions_mm:
+  - 354
+  - 518
+  - 264
 use_case_fit:
   modern_jet: 4
   heli: 3
@@ -56,7 +77,17 @@ prices:
 verification: draft
 sources:
 - https://eu.mozaracing.com/collections/shop
+- https://support.mozaracing.com/en/support/solutions/articles/70000684204-mrp-rudder-pedals
 images:
 - file: /images/moza/mrp-rudder-pedals.webp
   source: https://eu.mozaracing.com/products/mrp-rudder-pedals
   caption: MOZA MRP Flight Rudder Pedals
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: 'The spec table lists "PC" as the platform and "USB for standalone PC use". The page has no console exclusion
+    wording, so Xbox and PS5 are unknown.'
+  sources:
+  - https://support.mozaracing.com/en/support/solutions/articles/70000684204-mrp-rudder-pedals
+software: MOZA Cockpit

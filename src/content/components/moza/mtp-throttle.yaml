@@ -24,19 +24,32 @@ controls:
   location: handle
   count: 1
   label: Hall-effect thumb joystick
-  notes: 'In software it can switch between analog axes and 4-way button mode; this is one physical device and is not counted twice. Center push behavior is not stated.'
+  notes: In software it can switch between analog axes and 4-way button mode; this is one physical device and is
+    not counted twice. Center push behavior is not stated.
   source: https://support.mozaracing.com/en/support/solutions/articles/70000679591-moza-mtp-throttle-support
 controls_evidence:
   coverage: partial
   source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtp_throttle_panel_manual.pdf?v=1779863093
   checked: '2026-10-19'
-  notes: 'Official support describes one Hall-effect thumb joystick that operates as axes or 4-way buttons; it is represented once as the physical analog ministick, not as an additional hat. Push behavior is unstated. The official support and product pages both count 27 programmable physical switches but do not itemize the panel controls, so standalone button/rotary/toggle totals remain unresolved. Detents are mechanical adjustments, not separate inputs.'
+  notes: Official support describes one Hall-effect thumb joystick that operates as axes or 4-way buttons; it is
+    represented once as the physical analog ministick, not as an additional hat. Push behavior is unstated. The
+    official support and product pages both count 27 programmable physical switches but do not itemize the panel
+    controls, so standalone button/rotary/toggle totals remain unresolved. Detents are mechanical adjustments, not
+    separate inputs.
 hardware:
   axes: []
 connectivity:
   standalone_usb: true
+  usb: USB (connector type not stated)
 physical:
-  materials: []
+  materials:
+  - composite housing
+  - CNC-machined aluminum alloy throttle grip
+  weight_g: 2100
+  dimensions_mm:
+  - 277
+  - 194
+  - 216
 use_case_fit:
   modern_jet: 4
   heli: 3
@@ -57,7 +70,17 @@ prices:
 verification: draft
 sources:
 - https://us.mozaracing.com/products/mtp-throttle
+- https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtp_throttle_panel_manual.pdf?v=1779863093
+- https://support.mozaracing.com/en/support/solutions/articles/70000679591-moza-mtp-throttle-support
 images:
 - file: /images/moza/mtp-throttle.webp
   source: https://eu.mozaracing.com/products/mtp-throttle
   caption: MOZA MTP Flight Throttle
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: 'Official product overview: "PC only". Spec table: "PC" with a direct USB connection to a PC.'
+  sources:
+  - https://support.mozaracing.com/en/support/solutions/articles/70000679591-moza-mtp-throttle-support
+software: MOZA Cockpit

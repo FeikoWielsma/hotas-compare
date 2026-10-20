@@ -43,7 +43,9 @@ controls_evidence:
   coverage: complete
   source: https://ts.thrustmaster.com/download/accessories/pc/hotas/manual/HOTAS_Warthog/HOTAS_Warthog_Manual.pdf
   checked: '2026-10-19'
-  notes: Manual's exact grip list identifies one POV hat, two 8-way hats, one 4-way hat with push, one dual metal trigger, two pushbuttons, and two pinkie pushbuttons. Count physical controls rather than logical button numbers; the manual separately calls out CMS push button as button 19.
+  notes: Manual's exact grip list identifies one POV hat, two 8-way hats, one 4-way hat with push, one dual metal
+    trigger, two pushbuttons, and two pinkie pushbuttons. Count physical controls rather than logical button numbers;
+    the manual separately calls out CMS push button as button 19.
 hardware:
   gimbal: null
   sensor: null
@@ -95,6 +97,14 @@ verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/hotas-warthog-mk-ii/
 images:
-  - file: /images/thrustmaster/warthog-stick-grip.webp
-    source: https://eshop.thrustmaster.com/en_us/hotas-warthog-flight-stick.html
-    caption: HOTAS Warthog A-10C Flight Stick Grip
+- file: /images/thrustmaster/warthog-stick-grip.webp
+  source: https://eshop.thrustmaster.com/en_us/hotas-warthog-flight-stick.html
+  caption: HOTAS Warthog A-10C Flight Stick Grip
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product/support documentation lists PC compatibility; this exact component has no console host
+    support listed.
+  sources:
+  - https://www.thrustmaster.com/en-us/products/hotas-warthog-mk-ii/

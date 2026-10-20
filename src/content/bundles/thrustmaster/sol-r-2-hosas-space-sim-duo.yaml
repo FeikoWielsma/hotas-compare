@@ -1,0 +1,30 @@
+brand: thrustmaster
+name: Sol-R 2 HOSAS Space Sim Duo
+category: hosas_bundle
+status: current
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Bundle support is limited by its required PC-only members.
+  sources:
+  - https://www.thrustmaster.com/nl-nl/products/sol-r-2-hosas-space-sim-duo/
+prices:
+- region: EU
+  currency: EUR
+  amount: 329.99
+  incl_vat: true
+  store: Thrustmaster Netherlands
+  url: https://www.thrustmaster.com/nl-nl/products/sol-r-2-hosas-space-sim-duo/
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources:
+- https://www.thrustmaster.com/nl-nl/products/sol-r-2-hosas-space-sim-duo/
+images:
+- file: /images/thrustmaster/sol-r-2-hosas.webp
+  source: https://www.thrustmaster.com/nl-nl/products/sol-r-2-hosas-space-sim-duo/
+  caption: Sol-R 2 HOSAS Space Sim Duo
+components:
+- thrustmaster/sol-r-stick
+- thrustmaster/sol-r-stick

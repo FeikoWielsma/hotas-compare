@@ -15,7 +15,9 @@ controls_evidence:
   coverage: partial
   source: https://eu.mozaracing.com/products/tqa-mod
   checked: '2026-10-19'
-  notes: 'Standalone replacement grip module with Airbus detent and reverse-thrust behavior. Two grips assumed from MTQ TQA configuration imagery/product family; official text does not enumerate inputs or confirm any discrete switches/buttons on the module. TQA replaces installed TQF grips; it is not simultaneous with them.'
+  notes: Standalone replacement grip module with Airbus detent and reverse-thrust behavior. Two grips assumed from
+    MTQ TQA configuration imagery/product family; official text does not enumerate inputs or confirm any discrete
+    switches/buttons on the module. TQA replaces installed TQF grips; it is not simultaneous with them.
 verification: draft
 sources:
 - https://mozaracing.com
@@ -32,3 +34,11 @@ prices:
   url: https://eu.mozaracing.com/products/tqa-mod
   verified: '2026-10-19'
   source: manual
+platform_compatibility:
+  pc: unknown
+  xbox: unknown
+  ps5: unknown
+  notes: The TQA product page names no platforms and no exclusions, so all platform fields are unknown. The "PC only"
+    wording on the MTQ pages is for the MTQ quadrant and is not applied to this module.
+  sources:
+  - https://eu.mozaracing.com/products/tqa-mod

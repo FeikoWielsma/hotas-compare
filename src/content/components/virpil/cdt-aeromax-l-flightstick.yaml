@@ -1,6 +1,13 @@
 brand: virpil
 name: VPC CDT-Aeromax [L] Flightstick
 category: stick_fixed
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product listing identifies the intended platform as PC; the listing has no Xbox or PS5 platform support.
+  sources:
+    - https://virpil-controls.eu/cdt-aeromax-l-flightstick.html
 status: current
 release_year: 2026
 handedness: left
@@ -8,6 +15,7 @@ mount: null
 controls:
   - type: trigger
     stages: 2
+    action: sequential
     location: grip
     label: Dual-stage trigger
     source: https://virpil-controls.eu/cdt-aero-l-grip.html
@@ -60,7 +68,7 @@ controls_evidence:
   coverage: partial
   source: https://virpil-controls.eu/cdt-aeromax-l-flightstick.html
   checked: '2026-10-19'
-  notes: Exact SKU VPC-120-L. The manufacturer page says the grip uses the AEROMAX design but does not enumerate its physical inputs. Inventory cross-checked against the manufacturer's CDT-AERO L/R input lists and mapping sheets, which describe that same grip design; keep partial until VIRPIL publishes an explicit AEROMAX physical control list. Optional throttle modules are not included in this inventory.
+  notes: Exact SKU VPC-120-L. The product listing describes the AEROMAX grip design but does not enumerate its physical inputs. The CDT-AERO L listing says its grip uses the same design introduced with AEROMAX and enumerates a control set; its official mapping sheet shows button outputs and rX/rY/rZ/SLDR axes. The mapping sheet has blank profile/revision fields and does not identify this fixed-stick SKU, so retain partial coverage pending a revision-matched AEROMAX control list. Optional throttle modules are not included in this inventory.
 hardware:
   gimbal: cam_and_spring
   sensor: contactless_magnetic

@@ -1,6 +1,15 @@
 brand: winctrl
 name: Orion 2 F/A-18 HOTAS
 category: hotas_bundle
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: The official Orion 2 throttle-base page establishes PC software/USB operation for the base. Referenced goods ID 375 currently renders as an Orion2 NavyAce Throttle Combo (throttle base, NavyAce metal throttle grip, and dual throttle connector), not this F/A-18 HOTAS bundle. No exact source establishes this bundle's Xbox or PS5 support or incompatibility.
+  sources:
+    - https://eu.winctrl.com/view/goods-details.html?id=375
+    - https://eu.winctrl.com/h5/Orion2_Throttle_Base/en/
+    - https://eu.winctrl.com/static/download/QmQHHeiMhWatgMrJhm9QpHuQ7KDoHC6SuFG3aq39JyMAgx?filename=J2-2-BASE-User+Manual+EN+V1.2.pdf
 status: current
 components:
   - winctrl/orion-2-base
@@ -9,4 +18,4 @@ components:
 prices: []
 verification: draft
 sources:
-  - https://eu.winctrl.com/view/goods-details.html?id=314
+  - https://eu.winctrl.com/view/goods-details.html?id=375

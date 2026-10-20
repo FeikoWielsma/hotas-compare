@@ -12,7 +12,8 @@ controls:
   label: Rotational quadrant levers
   source: https://support.turtlebeach.com/articles/en_US/Knowledge/4409140258715-VelocityOne-Flight-Features-And-Controls
   push: true
-  notes: Each lever activates an additional contact in its lower detent. This is not a separately actuated standalone push button.
+  notes: Each lever activates an additional contact in its lower detent. This is not
+    a separately actuated standalone push button.
 - type: lever
   kind: other
   analog: true
@@ -21,11 +22,11 @@ controls:
   label: TPM linear throttle, propeller, and mixture levers
   source: https://support.turtlebeach.com/articles/en_US/Knowledge/4409140258715-VelocityOne-Flight-Features-And-Controls
 - type: hat
-  ways: 4
+  ways: 8
   count: 2
   location: grip
-  label: POV-1 and POV-2 (four cardinal directions documented)
-  source: https://support.turtlebeach.com/articles/en_US/Knowledge/4409140258715-VelocityOne-Flight-Features-And-Controls
+  label: POV-1 and POV-2 (eight directions per current product specifications)
+  source: https://www.turtlebeach.com/products/velocity-one-flight
 - type: hat
   ways: 4
   count: 2
@@ -67,33 +68,63 @@ controls_evidence:
   coverage: partial
   source: https://support.turtlebeach.com/articles/en_US/Knowledge/4409140258715-VelocityOne-Flight-Features-And-Controls
   checked: '2026-10-19'
-  notes: 'Records controls named in the support guide: handle POV/HATs, triggers, seven throttle/prop/mixture levers, quadrant buttons and detents, Xbox controls, FMD buttons, and trim wheel. Manufacturer also advertises 18 assignable buttons but does not reconcile that total with physical-control naming; aggregate was not used. Trigger behavior, POV diagonal gating/push, and wheel encoding are unspecified. Rotary analog approximates the trim-wheel axis because schema has no wheel-axis type. Xbox navigation mappings may reuse flight controls, so unverified console-only button groups are not counted again. Lever detent contacts stay attached to their levers. Hardware axis names cover the ten directly documented yoke/quadrant movements; rudder-trigger output encoding remains unconfirmed. Prior toe-brake and twist axis names did not belong to this yoke system and were removed.'
+  notes: 'Records controls named in the support guide: handle POV/HATs, triggers,
+    seven throttle/prop/mixture levers, quadrant buttons and detents, Xbox controls,
+    FMD buttons, and trim wheel. Manufacturer also advertises 18 assignable buttons
+    but does not reconcile that total with physical-control naming; aggregate was
+    not used. Trigger behavior and POV center push remain unspecified. Current product
+    specifications establish eight-way POVs, 12 total axes, optical trim encoding,
+    and variable-resistor lever sensors.
+    Rotary analog approximates the trim-wheel axis because schema has no wheel-axis
+    type. Xbox navigation mappings may reuse flight controls, so unverified console-only
+    button groups are not counted again. Lever detent contacts stay attached to their
+    levers. Hardware axis names cover the ten directly documented yoke/quadrant movements;
+    rudder-trigger output encoding remains unconfirmed. Prior toe-brake and twist
+    axis names did not belong to this yoke system and were removed.'
 hardware:
+  axis_count: 12
   gimbal: null
   sensor: contactless_magnetic
   axes:
   - name: Pitch
   - name: Roll
   - name: Quadrant lever 1
+    sensor: potentiometer
   - name: Quadrant lever 2
+    sensor: potentiometer
   - name: Quadrant lever 3
+    sensor: potentiometer
   - name: Quadrant lever 4
+    sensor: potentiometer
   - name: Vernier throttle
+    sensor: potentiometer
   - name: Vernier propeller
+    sensor: potentiometer
   - name: Vernier mixture
+    sensor: potentiometer
   - name: Trim wheel
+    sensor: optical_encoder
   force_adjustable: null
   cams_swappable: null
   damping: null
   extension_support: null
-  throw_deg: null
+  throw_deg: 180
 connectivity:
   usb: c
   standalone_usb: true
 physical:
+  dimensions_mm: [496, 483, 183]
   materials: []
 use_case_fit: {}
 prices:
+- region: US
+  currency: USD
+  amount: 329.99
+  incl_vat: false
+  store: turtlebeach.com
+  url: https://www.turtlebeach.com/products/velocity-one-flight
+  verified: '2026-10-20'
+  source: manual
 - region: EU
   currency: EUR
   amount: 379.99
@@ -110,18 +141,18 @@ prices:
   url: https://uk.turtlebeach.com/products/velocity-one-flight
   verified: '2026-10-19'
   source: manual
-- region: US
-  currency: USD
-  amount: 329.99
-  incl_vat: false
-  store: turtlebeach.com
-  url: https://www.turtlebeach.com/products/velocity-one-flight
-  verified: '2026-10-19'
-  source: manual
+platform_compatibility:
+  pc: supported
+  xbox: supported
+  ps5: unknown
+  notes: Official page lists Windows 10/11 and XBOX Series X|S & XBOX One USB connections for this yoke system; it is the Xbox host for VelocityOne Rudder pedals. PS5 is not mentioned.
+  sources:
+  - https://www.turtlebeach.com/products/velocity-one-flight
 verification: draft
 images:
-  - file: /images/turtle-beach/velocityone-flight-yoke-system.png
-    source: https://au.turtlebeach.com/products/velocity-one-flight
-    caption: VelocityOne Flight Yoke System
+- file: /images/turtle-beach/velocityone-flight-yoke-system.png
+  source: https://www.turtlebeach.com/products/velocity-one-flight
+  caption: VelocityOne Flight Yoke System
 sources:
 - https://turtlebeach.com
+- https://www.turtlebeach.com/products/velocity-one-flight

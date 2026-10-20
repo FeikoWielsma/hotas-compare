@@ -1,6 +1,15 @@
 brand: virpil
 name: Constellation Alpha Prime and WarBRD-D HOTAS
 category: hotas_bundle
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Each listed component's exact product page identifies PC as its platform. The old bundle URL does not resolve to this component combination; console support for this bundle is unsupported because each included electronic component is PC-only.
+  sources:
+    - https://virpil-controls.eu/vpc-constellation-alpha-prime-r.html
+    - https://virpil-controls.eu/vpc-warbrd-d-base.html
+    - https://virpil-controls.eu/vpc-mongoost-50cm3-throttle.html
 status: current
 components:
 - virpil/constellation-alpha-prime-r

@@ -33,6 +33,13 @@ verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/
 images:
-  - file: /images/thrustmaster/hotas-warthog-bundle.webp
-    source: https://www.thrustmaster.com/products/hotas-warthog/
-    caption: HOTAS Warthog System
+- file: /images/thrustmaster/hotas-warthog-bundle.webp
+  source: https://www.thrustmaster.com/products/hotas-warthog/
+  caption: HOTAS Warthog System
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Bundle support is limited by its required PC-only members.
+  sources:
+  - https://www.thrustmaster.com/en-us/products/

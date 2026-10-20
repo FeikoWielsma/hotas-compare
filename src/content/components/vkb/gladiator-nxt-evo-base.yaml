@@ -1,6 +1,14 @@
 brand: vkb
 name: Gladiator NXT EVO Base
 category: base
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: "VKB Australia FAQ states VKB controllers are compatible with Windows PCs and not compatible with Xbox, PS5, Apple or other platforms. Detached grip or module use requires its compatible VKB base/controller on Windows PC."
+  sources:
+    - https://vkbsimcontrollers.com/products/gladiator-nxt-evo-base-only-us
+    - https://vkb-sim.com.au/collections/all-controllers
 status: current
 release_year: 2022
 handedness: n/a
@@ -55,10 +63,11 @@ connectivity:
   standalone_usb: true
 software: VKBDevCfg
 physical:
-  weight_g: 950
+  weight_g: 1100
   materials:
     - abs
-    - steel_plate
+    - glass_fiber_pa
+    - steel
 use_case_fit:
   modern_jet: 4
   heli: 4
@@ -70,17 +79,19 @@ use_case_fit:
 prices:
   - region: EU
     currency: EUR
-    amount: 115
+    amount: 103
     incl_vat: true
     store: flightsimcontrols.com
-    verified: '2026-10-01'
+    url: https://flightsimcontrols.com/product/gladiator-nxt-evo-base-only/
+    verified: '2026-10-20'
     source: manual
   - region: UK
     currency: GBP
-    amount: 99
+    amount: 105
     incl_vat: true
-    store: flightsimcontrols.com
-    verified: '2026-10-01'
+    store: flightsimcontrols.co.uk
+    url: https://flightsimcontrols.co.uk/product-category/controllers/
+    verified: '2026-10-20'
     source: manual
   - region: US
     currency: USD

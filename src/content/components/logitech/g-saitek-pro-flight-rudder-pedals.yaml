@@ -69,3 +69,10 @@ images:
   - file: /images/logitech/g-saitek-pro-flight-rudder-pedals.png
     source: https://www.logitechg.com/en-us/shop/p/flight-simulator-rudder-pedals.945-000024
     caption: Logitech G Pro Flight Rudder Pedals
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official product page establishes PC use but the legacy product listing does not provide a sufficiently explicit exhaustive platform exclusion for console use; console compatibility remains unknown.
+  sources:
+  - https://www.logitechg.com/en-us/products/flight.html

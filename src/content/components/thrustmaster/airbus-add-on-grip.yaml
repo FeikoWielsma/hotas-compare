@@ -1,0 +1,79 @@
+brand: thrustmaster
+name: AIRBUS Add-On Grip
+category: grip
+status: current
+handedness: left
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product/support documentation lists PC compatibility; this exact component has no console host
+    support listed.
+  sources:
+  - https://www.thrustmaster.com/nl-nl/products/airbus-add-on-grip/
+controls:
+- type: button
+  count: 5
+  location: grip
+  source: https://www.thrustmaster.com/nl-nl/products/airbus-add-on-grip/
+- type: trigger
+  count: 1
+  location: grip
+  label: Dual-mode trigger
+  source: https://www.thrustmaster.com/nl-nl/products/airbus-add-on-grip/
+  notes: Configurable as a button or analog axis; not a documented two-stage trigger.
+- type: analog_ministick
+  count: 1
+  location: grip
+  source: https://www.thrustmaster.com/nl-nl/products/airbus-add-on-grip/
+hardware:
+  axis_count: 4
+  sensor: H.E.A.R.T. Hall effect magnetic sensors
+  axes:
+  - name: Twist Z
+    sensor: hall
+    resolution_bits: 16
+connectivity:
+  usb: 6-pin grip connector to compatible Thrustmaster base
+  standalone_usb: false
+physical:
+  weight_g: 203
+  dimensions_mm:
+  - 78
+  - 83
+  - 195
+  materials:
+  - plastic
+controls_evidence:
+  coverage: partial
+  source: https://www.thrustmaster.com/nl-nl/products/airbus-add-on-grip/
+  checked: '2026-10-20'
+  notes: Manufacturer lists 5 buttons, a trigger configurable as button or axis, four total axes including lockable
+    Z, and Hall-sensor ministick. Button total may include the trigger; no additional trigger stages are counted.
+    Only the named Z axis is listed individually; unnamed axis mapping remains unresolved.
+prices:
+- region: EU
+  currency: EUR
+  amount: 99.99
+  incl_vat: true
+  store: Thrustmaster EU eshop
+  url: https://shop.thrustmaster.com/en_eu/airbus-add-on-grip.html
+  verified: '2026-10-20'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 89.99
+  incl_vat: true
+  store: Thrustmaster UK eshop
+  url: https://shop.thrustmaster.com/en_gb/airbus-add-on-grip.html
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources:
+- https://www.thrustmaster.com/nl-nl/products/airbus-add-on-grip/
+- https://shop.thrustmaster.com/en_eu/airbus-add-on-grip.html
+- https://shop.thrustmaster.com/en_gb/airbus-add-on-grip.html
+images:
+- file: /images/thrustmaster/airbus-add-on-grip.webp
+  source: https://www.thrustmaster.com/wp-content/uploads/2026/06/website-AirbusAddOnGrip-PageProduitListing-800x800-1.webp
+  caption: AIRBUS Add-On Grip

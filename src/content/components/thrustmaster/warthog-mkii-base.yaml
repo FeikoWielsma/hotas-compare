@@ -1,0 +1,65 @@
+brand: thrustmaster
+name: HOTAS Warthog MKII Base
+category: base
+status: current
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product/support documentation lists PC compatibility; this exact component has no console host
+    support listed.
+  sources:
+  - https://www.thrustmaster.com/nl-nl/products/hotas-warthog-mkii-base/
+controls:
+- type: axis
+  count: 2
+  kind: other
+  location: base
+  label: Stick axes, pitch and roll
+  source: https://www.thrustmaster.com/nl-nl/products/hotas-warthog-mkii-base/
+hardware:
+  axis_count: 2
+  sensor: H.E.A.R.T. Hall effect magnetic sensors
+  axes:
+  - name: Pitch
+    sensor: H.E.A.R.T. Hall effect
+    resolution_bits: 16
+  - name: Roll
+    sensor: H.E.A.R.T. Hall effect
+    resolution_bits: 16
+  gimbal: Re-engineered metal gimbal with anti-stiction ball bearings
+connectivity:
+  usb: Detachable USB-C cable
+  standalone_usb: true
+physical:
+  weight_g: 996
+  dimensions_mm:
+  - 110
+  - 110
+  - 94
+  materials:
+  - metal
+prices:
+- region: EU
+  currency: EUR
+  amount: 99.99
+  incl_vat: true
+  store: Thrustmaster Netherlands
+  url: https://www.thrustmaster.com/nl-nl/products/hotas-warthog-mkii-base/
+  verified: '2026-10-20'
+  source: manual
+controls_evidence:
+  coverage: partial
+  source: https://www.thrustmaster.com/nl-nl/products/hotas-warthog-mkii-base/
+  checked: '2026-10-20'
+  notes: Manufacturer specifies H.E.A.R.T. technology and a 6-pin grip connector supporting up to 128 buttons and
+    8 axes; this base itself exposes the two stick axes. Price is the Netherlands product page price, not an accessory
+    recommendation.
+verification: draft
+sources:
+- https://www.thrustmaster.com/nl-nl/products/hotas-warthog-mkii-base/
+images:
+- file: /images/thrustmaster/hotas-warthog-mkii-base.webp
+  source: https://www.thrustmaster.com/wp-content/uploads/2026/09/Website_HotasWarthogMKIIBase_PageProductListing.webp
+  caption: HOTAS Warthog MKII Base
+software: T.A.R.G.E.T

@@ -1,0 +1,54 @@
+brand: thrustmaster
+name: OMNI Extension
+category: module
+status: current
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product/support documentation lists PC compatibility; this exact component has no console host
+    support listed.
+  sources:
+  - https://www.thrustmaster.com/nl-nl/products/omni-extension/
+connectivity:
+  standalone_usb: false
+physical:
+  materials:
+  - reinforced polyamide
+  weight_g: 92
+  dimensions_mm:
+  - 50
+  - 120
+  - 89
+controls_evidence:
+  coverage: partial
+  source: https://www.thrustmaster.com/nl-nl/products/omni-extension/
+  checked: '2026-10-20'
+  notes: Mechanical extension for an omnidirectional left-stick configuration. Adds no electronic axes or controls;
+    6-DoF describes the connected controller system.
+prices:
+- region: EU
+  currency: EUR
+  amount: 39.99
+  incl_vat: true
+  store: Thrustmaster EU eshop
+  url: https://shop.thrustmaster.com/en_eu/omni-extension.html
+  verified: '2026-10-20'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 39.99
+  incl_vat: true
+  store: Thrustmaster UK eshop
+  url: https://shop.thrustmaster.com/en_gb/omni-extension.html
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources:
+- https://www.thrustmaster.com/nl-nl/products/omni-extension/
+- https://shop.thrustmaster.com/en_eu/omni-extension.html
+- https://shop.thrustmaster.com/en_gb/omni-extension.html
+images:
+- file: /images/thrustmaster/omni-extension.webp
+  source: https://www.thrustmaster.com/wp-content/uploads/2026/06/Website-Omni-PPbanner-1920x1080-1-3.webp
+  caption: OMNI Extension

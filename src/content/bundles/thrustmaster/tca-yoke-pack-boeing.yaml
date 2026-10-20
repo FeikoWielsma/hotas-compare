@@ -31,7 +31,16 @@ prices:
 verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/
+- https://www.thrustmaster.com/en-us/products/tca-yoke-pack-boeing-edition/
 images:
-  - file: /images/thrustmaster/tca-yoke-pack-boeing.webp
-    source: https://www.thrustmaster.com/en-us/products/tca-yoke-pack-boeing-edition/
-    caption: TCA Yoke Pack Boeing Edition
+- file: /images/thrustmaster/tca-yoke-pack-boeing.webp
+  source: https://www.thrustmaster.com/en-us/products/tca-yoke-pack-boeing-edition/
+  caption: TCA Yoke Pack Boeing Edition
+platform_compatibility:
+  pc: supported
+  xbox: supported
+  ps5: unsupported
+  notes: Official complete TCA Yoke Pack Boeing Edition is licensed for Xbox One/Xbox Series X|S and compatible
+    with PC; PlayStation is not listed.
+  sources:
+  - https://www.thrustmaster.com/en-us/products/tca-yoke-pack-boeing-edition/

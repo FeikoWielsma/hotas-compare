@@ -35,3 +35,10 @@ images:
   - file: /images/logitech/x56-hotas-system.png
     source: https://www.logitechg.com/en-us/shop/p/x56-space-flight-vr-simulator-controller.945-000058
     caption: X56 Rhino HOTAS System
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Manual documents Windows setup through Windows Game Controllers and G HUB; no Xbox or PS5 statement appears in the manual or official SKU page. Console support remains unknown.
+  sources:
+  - https://www.logitech.com/assets/65324/x56-hotas.pdf

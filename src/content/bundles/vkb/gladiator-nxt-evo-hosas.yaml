@@ -1,6 +1,14 @@
 brand: vkb
 name: Gladiator NXT EVO HOSAS Bundle
 category: hosas_bundle
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: "VKB Australia FAQ states VKB controllers are compatible with Windows PCs and not compatible with Xbox, PS5, Apple or other platforms. Bundled VKB hardware therefore inherits the Windows PC-only restriction."
+  sources:
+    - https://vkbcontrollers.com/products/gladiator-nxt-evo-space-combat-edition
+    - https://vkb-sim.com.au/collections/all-controllers
 status: current
 components:
   - vkb/gladiator-nxt-evo-base

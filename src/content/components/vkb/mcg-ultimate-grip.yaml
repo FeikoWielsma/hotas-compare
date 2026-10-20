@@ -3,6 +3,14 @@ brand: vkb
 name: Modern Combat Grip Ultimate
 
 category: grip
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: "VKB Australia FAQ states VKB controllers are compatible with Windows PCs and not compatible with Xbox, PS5, Apple or other platforms. Detached grip or module use requires its compatible VKB base/controller on Windows PC."
+  sources:
+    - https://vkbsimcontrollers.com/products/mcg-ultimate-add-on-grip-for-gunfighter-mk-iv-us
+    - https://vkb-sim.com.au/collections/all-controllers
 
 status: current
 
@@ -105,14 +113,8 @@ connectivity:
 software: VKBDevCfg
 
 physical:
-
-  weight_g: 700
-
   materials:
-
-  - al6061_aluminium
-
-  - polymer
+  - aluminium
 
 use_case_fit:
 

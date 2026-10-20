@@ -1,0 +1,122 @@
+brand: thrustmaster
+name: Sol-R 6 Throttle
+category: throttle
+status: current
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Official product/support documentation lists PC compatibility; this exact component has no console
+    host support listed.
+  sources:
+  - https://www.thrustmaster.com/nl-nl/products/sol-r-6-throttle/
+prices:
+- region: EU
+  currency: EUR
+  amount: 99.99
+  incl_vat: true
+  store: Thrustmaster Netherlands
+  url: https://www.thrustmaster.com/nl-nl/products/sol-r-6-throttle/
+  verified: '2026-10-20'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 89.99
+  incl_vat: true
+  store: Thrustmaster UK eshop
+  url: https://shop.thrustmaster.com/en_gb/sol-r-6-throttle.html
+  verified: '2026-10-20'
+  source: manual
+verification: draft
+sources:
+- https://www.thrustmaster.com/nl-nl/products/sol-r-6-throttle/
+- https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_6_Throttle_user-manual.pdf
+images:
+- file: /images/thrustmaster/sol-r-6-throttle.webp
+  source: https://www.thrustmaster.com/nl-nl/products/sol-r-6-throttle/
+  caption: Sol-R 6 Throttle
+handedness: left
+controls:
+- type: lever
+  kind: throttle_single
+  analog: true
+  count: 1
+  location: handle
+  label: 80 mm sliding throttle
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_6_Throttle_user-manual.pdf
+- type: button
+  count: 3
+  location: handle
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_6_Throttle_user-manual.pdf
+  label: Three standalone action buttons (1, 2, 3)
+- type: hat
+  ways: 4
+  count: 2
+  location: handle
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_6_Throttle_user-manual.pdf
+- type: hat
+  ways: 8
+  count: 1
+  location: handle
+  label: POV
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_6_Throttle_user-manual.pdf
+- type: analog_ministick
+  count: 1
+  location: handle
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_6_Throttle_user-manual.pdf
+  push: true
+- type: rotary
+  count: 1
+  location: handle
+  label: Radio rotary knob / antenna axis
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_6_Throttle_user-manual.pdf
+  mode: analog
+- type: rocker
+  analog: true
+  count: 1
+  location: handle
+  label: Self-centering rudder, 15 degrees
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_6_Throttle_user-manual.pdf
+- type: detent
+  count: 1
+  customizable: true
+  label: Four selectable cam configurations
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_6_Throttle_user-manual.pdf
+  location: base
+- type: toggle
+  ways: 2
+  count: 1
+  location: handle
+  label: Two-position toggle (button outputs 4 and 5)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_6_Throttle_user-manual.pdf
+hardware:
+  axes:
+  - name: Throttle Z
+  - name: Ministick X
+  - name: Ministick Y
+  - name: Rudder rocker RZ
+  - name: Antenna slider
+  axis_count: 5
+  gimbal: sliding throttle rail
+  cams_swappable: false
+  throw_deg: null
+connectivity:
+  usb: c
+  standalone_usb: true
+physical:
+  weight_g: 670
+  dimensions_mm:
+  - 170
+  - 205
+  - 125
+software: T.A.R.G.E.T.
+controls_evidence:
+  coverage: complete
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/SOL-R/Sol-R_6_Throttle_user-manual.pdf
+  checked: '2026-10-20'
+  notes: English manual pages 6-7 and mapping page 14 visually establish three standalone buttons, one
+    two-position toggle, clickable ministick, two four-way hats, one eight-way POV, analog radio rotary
+    knob, self-centering rudder rocker and throttle. Toggle outputs 4/5 are one physical control; ministick
+    click 6 is integrated. Five named axes are documented. Pages 16-18 establish one repositionable detent
+    part with four configurations, not four installed detent controls. Undocumented hat clicks and button
+    backlighting remain unset.

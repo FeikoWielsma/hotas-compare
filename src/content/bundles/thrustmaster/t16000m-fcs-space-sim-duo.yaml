@@ -32,6 +32,13 @@ verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/
 images:
-  - file: /images/thrustmaster/t16000m-fcs-space-sim-duo.webp
-    source: https://www.thrustmaster.com/en-us/products/t-16000m-fcs-space-sim-duo/
-    caption: T.16000M FCS Space Sim Duo
+- file: /images/thrustmaster/t16000m-fcs-space-sim-duo.webp
+  source: https://www.thrustmaster.com/en-us/products/t-16000m-fcs-space-sim-duo/
+  caption: T.16000M FCS Space Sim Duo
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: Bundle support is limited by its required PC-only members.
+  sources:
+  - https://www.thrustmaster.com/en-us/products/
