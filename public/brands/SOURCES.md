@@ -12,4 +12,4 @@ These manufacturer marks are local copies of assets referenced by the respective
 | `virpil` | `virpil.png` | [VIRPIL Controls EU header logo](https://virpil-controls.eu/media/logo/stores/1/EUWEBSTOREHEADER.png) |
 | `vkb` | `vkb.png` | [VKB Controllers website logo](https://vkbcontrollers.com/logo.png) |
 
-The SVG copies were checked for script elements and external URL references. Downloaded assets are each under 100 KB. No suitable official logo asset was confirmed for `logitech`, `mfg`, or `winctrl`; those brands should use the labeled fallback.
+The SVG copies were checked for script elements and external URL references. Downloaded assets are each under 100 KB. `logitech.png`, `mfg.png` and `winctrl.png` were supplied by the site owner on 2026-10-20.

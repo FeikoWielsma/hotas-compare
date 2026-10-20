@@ -1,5 +1,17 @@
 /** Official brand artwork copied from the manufacturers' public websites. */
 export const brandAssets: Record<string, { src: string; source: string }> = {
+  logitech: {
+    src: '/brands/logitech.png',
+    source: 'user-supplied Logitech G logo',
+  },
+  mfg: {
+    src: '/brands/mfg.png',
+    source: 'user-supplied MFG Crosswind logo',
+  },
+  winctrl: {
+    src: '/brands/winctrl.png',
+    source: 'user-supplied WINCTRL logo',
+  },
   honeycomb: {
     src: '/brands/honeycomb.svg',
     source: 'https://flyhoneycomb.com/cdn/shop/files/HC_Logo_Colour_Icon_721652ae-241a-4f44-8421-a833206d4862.svg?v=1715763674',
