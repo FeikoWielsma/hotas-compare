@@ -6,9 +6,10 @@ handedness: n/a
 mount: null
 controls:
   - type: rotary
-    count: 2
+    count: 1
+    positions: 7
     location: panel
-    label: COM/NAV/ADF/DME radio mode selectors
+    label: COM1/COM2/NAV1/NAV2/ADF/DME/XPDR mode selector
     source: https://www.logitech.com/assets/65157/flight-radio-panel.pdf
   - type: encoder
     count: 2
@@ -16,22 +17,24 @@ controls:
     label: Outer and inner frequency adjustment knobs
     source: https://www.logitech.com/assets/65157/flight-radio-panel.pdf
   - type: button
-    count: 2
+    count: 1
     location: panel
-    label: ACT/STBY frequency transfer buttons
+    label: ACT/STBY frequency transfer switch
     source: https://www.logitech.com/assets/65157/flight-radio-panel.pdf
 controls_evidence:
-  coverage: partial
+  coverage: complete
   source: https://www.logitech.com/assets/65157/flight-radio-panel.pdf
-  checked: '2026-10-20'
+  checked: '2026-10-21'
   notes: >-
-    The official manual labels the radio mode selector, outer and inner rotary controls, and ACT/STBY switch. The manual text does not state how many of each the panel has, so the counts are unverified and coverage stays partial.
+    The official manual identifies one radio-mode selector, the seven selectable modes (COM1, COM2, NAV1, NAV2, ADF, DME, XPDR), outer and inner frequency rotaries, and one ACT/STBY switch. Counts follow the manual's singular selector and switch descriptions.
 hardware: null
 connectivity:
   usb: a_cable
   standalone_usb: true
 software: Logitech G HUB
-physical: null
+physical:
+  weight_g: 420
+  dimensions_mm: [282, 55, 84]
 platform_compatibility:
   pc: supported
   xbox: unknown
@@ -69,6 +72,7 @@ verification: draft
 sources:
   - https://www.logitechg.com/en-us/shop/p/flight-simulator-cockpit-radio-panel.945-000029
   - https://www.logitech.com/assets/65157/flight-radio-panel.pdf
+  - https://support.logi.com/hc/en-001/articles/360023462933-Flight-Radio-Panel-Technical-Specifications
 images:
   - file: /images/logitech/flight-radio-panel.png
     source: https://www.logitechg.com/en-us/shop/p/flight-simulator-cockpit-radio-panel.945-000029

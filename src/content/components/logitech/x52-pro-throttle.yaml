@@ -8,7 +8,6 @@ controls:
 - type: lever
   kind: throttle_single
   analog: true
-  push: false
   location: handle
   label: Progressive throttle
   source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
@@ -32,7 +31,6 @@ controls:
   source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
 - type: hat
   ways: 8
-  push: false
   location: handle
   count: 1
   label: Thumb POV hat
@@ -48,7 +46,6 @@ controls:
   source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
 - type: button
   location: handle
-  backlit: false
   count: 1
   label: Mouse left button
   source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
@@ -60,14 +57,12 @@ controls:
   source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
 - type: slider
   analog: true
-  center_detent: false
   location: handle
   label: Thumb slider
   source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
 - type: rotary
   mode: analog
   count: 2
-  push: false
   location: handle
   label: Analog throttle rotaries
   source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
@@ -80,10 +75,8 @@ controls_evidence:
     across X52 revision and standard/Pro bundle manuals; coverage remains partial.
 hardware:
   gimbal: null
-  sensor: potentiometer
   axes:
   - name: Throttle
-    sensor: potentiometer
   force_adjustable: true
   cams_swappable: false
   extension_support: false
@@ -127,6 +120,7 @@ sources:
 - https://www.logitechg.com/en-us/products/flight.html
 - https://www.logitechg.com/en-us/shop/p/x52-pro-space-flight-simulator-controller.945-000022
 - https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+- https://support.logi.com/hc/en-001/articles/360023462793-X52-Professional-Space-Flight-H-O-T-A-S-Technical-Specifications
 images:
 - file: /images/logitech/x52-pro-throttle.webp
   source: https://www.logitechg.com/en-us/shop/p/x52-pro-space-flight-simulator-controller.945-000022

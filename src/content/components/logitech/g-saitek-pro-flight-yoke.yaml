@@ -44,12 +44,9 @@ controls_evidence:
   notes: Logitech Flight Yoke System manual product-tour page 4 shows the handle and chronograph controls with their physical locations. The manual's feature list confirms six 2-way rocker directions, two single-function handle buttons, and one 8-way POV hat; its six directions are represented by three physical rocker switches. The three display buttons operate chronograph functions. Coverage applies to this yoke component.
 hardware:
   gimbal: shaft
-  sensor: potentiometer
   axes:
   - name: Pitch
-    sensor: potentiometer
   - name: Roll
-    sensor: potentiometer
   force_adjustable: false
   cams_swappable: false
   extension_support: false
@@ -89,6 +86,7 @@ verification: draft
 sources:
 - https://www.logitechg.com/en-us/products/flight.html
 - https://www.logitechg.com/en-us/shop/p/flight-simulator-yoke-system.945-000023
+- https://support.logi.com/hc/en-us/articles/360023462873-Flight-Yoke-System-Technical-Specifications
 images:
   - file: /images/logitech/g-saitek-pro-flight-yoke.webp
     source: https://www.logitechg.com/en-us/shop/p/flight-simulator-yoke-system.945-000023

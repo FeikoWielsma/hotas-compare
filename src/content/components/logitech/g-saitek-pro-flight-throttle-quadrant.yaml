@@ -25,7 +25,6 @@ controls:
     location: base
     count: 3
     analog: false
-    push: false
     label: Three 2-way base rocker switches
     notes: Each rocker has two digital directions; six commands are not six separate pushbuttons.
     source: https://www.logitech.com/assets/65155/2/flight-throttle-quadrant.pdf
@@ -36,14 +35,10 @@ controls_evidence:
   notes: Logitech Flight Throttle Quadrant manual product-tour page 4 labels three analog levers with 0-button detents and three 2-way rocker switches. The six rocker directions are represented as three physical switches, not six pushbuttons. Coverage applies to this exact quadrant.
 hardware:
   gimbal: null
-  sensor: potentiometer
   axes:
   - name: Throttle_1
-    sensor: potentiometer
   - name: Throttle_2
-    sensor: potentiometer
   - name: Throttle_3
-    sensor: potentiometer
   force_adjustable: false
   cams_swappable: false
   extension_support: false
@@ -83,6 +78,7 @@ verification: draft
 sources:
 - https://www.logitechg.com/en-us/products/flight.html
 - https://www.logitechg.com/en-us/shop/p/flight-simulator-throttle-quadrant.945-000032
+- https://support.logi.com/hc/en-us/articles/360023462893-Flight-Throttle-Quadrant-Technical-Specifications
 images:
   - file: /images/logitech/g-saitek-pro-flight-throttle-quadrant.png
     source: https://www.logitechg.com/en-us/shop/p/flight-simulator-throttle-quadrant.945-000032

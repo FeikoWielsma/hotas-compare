@@ -24,14 +24,10 @@ controls_evidence:
   notes: Primary product/manual evidence checked; coverage applies to the physical inventory described by this exact component. Pedal movements are represented explicitly as axes; they are not hand-operated levers or rocker switches.
 hardware:
   gimbal: null
-  sensor: potentiometer
   axes:
   - name: Rudder
-    sensor: potentiometer
   - name: Brake_Left
-    sensor: potentiometer
   - name: Brake_Right
-    sensor: potentiometer
   force_adjustable: true
   cams_swappable: false
   extension_support: false
@@ -71,6 +67,7 @@ verification: draft
 sources:
 - https://www.logitechg.com/en-us/products/flight.html
 - https://www.logitechg.com/en-us/shop/p/flight-simulator-rudder-pedals.945-000024
+- https://support.logi.com/hc/en-us/articles/360023302934-Flight-Rudder-Pedals-Technical-Specifications
 images:
   - file: /images/logitech/g-saitek-pro-flight-rudder-pedals.png
     source: https://www.logitechg.com/en-us/shop/p/flight-simulator-rudder-pedals.945-000024

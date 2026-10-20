@@ -31,7 +31,9 @@ connectivity:
   usb: a_cable
   standalone_usb: true
 software: Logitech G HUB
-physical: null
+physical:
+  weight_g: 118
+  dimensions_mm: [94, 26, 84]
 platform_compatibility:
   pc: supported
   xbox: unknown
@@ -69,6 +71,7 @@ verification: draft
 sources:
   - https://www.logitechg.com/en-us/shop/p/flight-simulator-instrument-panel
   - https://www.logitech.com/assets/65156/flight-instrument-panel.pdf
+  - https://support.logi.com/hc/en-us/articles/360023302894-Flight-Instrument-Panel-Technical-Specifications
 images:
   - file: /images/logitech/flight-instrument-panel.png
     source: https://www.logitechg.com/en-us/shop/p/flight-simulator-instrument-panel

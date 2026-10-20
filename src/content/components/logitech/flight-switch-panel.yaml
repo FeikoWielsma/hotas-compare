@@ -7,10 +7,9 @@ mount: null
 controls:
   - type: toggle
     ways: 2
-    count: 13
     location: panel
-    label: On/off aircraft system rocker switches
-    source: https://www.logitech.com/assets/65158/flight-switch-panel.pdf
+    label: Aircraft system ON/OFF rocker switches (count not specified)
+    source: https://www.logitech.com/assets/65149/2/flight-switch-panel.pdf
   - type: rotary
     positions: 5
     count: 1
@@ -22,19 +21,21 @@ controls:
     count: 1
     location: panel
     label: Landing gear up/down control
-    source: https://www.logitech.com/assets/65158/flight-switch-panel.pdf
+    source: https://www.logitech.com/assets/65149/2/flight-switch-panel.pdf
 controls_evidence:
   coverage: partial
-  source: https://www.logitech.com/assets/65158/flight-switch-panel.pdf
-  checked: '2026-10-20'
+  source: https://www.logitech.com/assets/65149/2/flight-switch-panel.pdf
+  checked: '2026-10-21'
   notes: >-
-    The official product page describes a five-setting rotary switch (R, L, BOTH/ALL, START) and a landing gear lever. The thirteen-switch count comes from the user guide, which could not be retrieved, so it is unverified and coverage stays partial.
+    The official product page describes a single five-setting rotary switch (R, L, BOTH/ALL, START) and a landing-gear lever. The official user guide labels ON/OFF aircraft system switches but does not state their count or momentary/latching behavior, so the count stays unset and coverage remains partial.
 hardware: null
 connectivity:
   usb: a_cable
   standalone_usb: true
 software: Logitech G HUB
-physical: null
+physical:
+  weight_g: 369
+  dimensions_mm: [282, 63, 84]
 platform_compatibility:
   pc: supported
   xbox: unknown
@@ -42,7 +43,7 @@ platform_compatibility:
   notes: >-
     The official Flight Switch Panel user guide documents Windows setup and driver installation with Microsoft Flight Simulator X. Xbox and PS5 support are not documented.
   sources:
-    - https://www.logitech.com/assets/65158/flight-switch-panel.pdf
+    - https://www.logitech.com/assets/65149/2/flight-switch-panel.pdf
 prices:
   - region: US
     currency: USD
@@ -71,7 +72,8 @@ prices:
 verification: draft
 sources:
   - https://www.logitechg.com/en-us/shop/p/flight-simulator-switch-panel.945-000030
-  - https://www.logitech.com/assets/65158/flight-switch-panel.pdf
+  - https://www.logitech.com/assets/65149/2/flight-switch-panel.pdf
+  - https://support.logi.com/hc/en-001/articles/360023462953-Flight-Switch-Panel-Technical-Specifications
 images:
   - file: /images/logitech/flight-switch-panel.png
     source: https://www.logitechg.com/en-us/shop/p/flight-simulator-switch-panel.945-000030
