@@ -1,0 +1,33 @@
+# Consumer flight hardware: lineup and control inventory pass
+
+Checked 2026-10-20. Sources are first-party Logitech G, Honeycomb Aeronautical, MFG, and Turtle Beach pages/manuals. Product photos in the newly added entries are from the manufacturers. No git reset, clean, checkout, or commit was performed.
+
+## Catalog additions
+
+Added component records and official product photos for Logitech G Flight Multi Panel, Flight Radio Panel, Flight Switch Panel, Flight Instrument Panel, and Honeycomb Echo Aviation Controller. Logitech Multi, Radio, and Switch are listed as purchasable on the [Flight Gear collection](https://www.logitechg.com/en-us/shop/sim/flight-gear). The [Instrument Panel page](https://www.logitechg.com/en-us/shop/p/flight-simulator-instrument-panel) currently reports it unavailable; its record is marked discontinued pending better availability evidence. The [Honeycomb hardware collection](https://flyhoneycomb.com/collections/hardware) and [Echo product page](https://flyhoneycomb.com/products/echo-aviation-controller) list the Echo controller. The Echo product text specifies a Hall-effect thumbstick for pitch and roll and the control layout; the left four-button cluster in the official photo is not classified as a hat or buttons because the textual product description does not identify it.
+
+No exact purchasable Logitech bundle SKU was found for the promotional five-part cockpit kit described on the Instrument Panel page. The existing Logitech yoke system bundle and the Honeycomb Captain's Bundle/Foxtrot Takeoff Kit, MFG V3 combo, and Turtle Beach bundles remain the exact bundle records already represented in their folders.
+
+## Source-backed inventories for additions
+
+- **Flight Multi Panel:** official [user guide](https://www.logitech.com/assets/65126/2/flight-multi-panel.pdf) labels eight autopilot push buttons, the autothrottle selector, flap rocker, function selector, value knob, and pitch-trim wheel. Published axis count is not specified; continuous controls are represented by their control types without claiming an axis total.
+- **Flight Radio Panel:** official [user guide](https://www.logitech.com/assets/65157/flight-radio-panel.pdf) identifies two radio mode selectors, four frequency adjustment knobs (outer and inner on each row), and two ACT/STBY switches. No discrete axis total is stated.
+- **Flight Switch Panel:** the official [product page](https://www.logitechg.com/en-us/shop/p/flight-simulator-switch-panel.945-000030) specifies a five-position magneto selector. The official product image shows 13 two-way rocker switches and a landing-gear up/down control. Its official asset guide URL returned HTTP 403 during this check, so the visible layout and current page were used for those counts.
+- **Flight Instrument Panel:** the official [product page](https://www.logitechg.com/en-us/shop/p/flight-simulator-instrument-panel) describes twin dials and hotkeys; its official image shows six left-side buttons, two arrow buttons, and two dials. It is unavailable on the current page. The record is partial: exact dial encoding/clicks and a published axis count are not stated.
+- **Honeycomb Echo:** the official [product page](https://flyhoneycomb.com/products/echo-aviation-controller) describes a 16-bit Hall-effect thumbstick for pitch and roll and four levers; its official image shows three center push buttons and a trim wheel. The left cluster's input type, full button inventory, hat ways/push behavior, and any additional axes are unresolved and left partial.
+
+The Multi and Radio Panel manuals were rendered with PyMuPDF and read from their English control diagrams (manual page 4 for each). Their pages label the physical controls used above; the added records keep behaviors such as encoder push and analog-axis reporting unset where the diagrams do not establish them. Physical inventory coverage is marked complete on the X52-family and Honeycomb records whose installed control types and counts are enumerated by the exact-product/manual diagrams, even when an optional behavior such as hat push remains undocumented.
+
+## Lineup coverage and unresolved gaps
+
+- Logitech's current first-party Flight Gear collection lists the yoke, rudder pedals, throttle quadrant, X52, X52 Pro, X56, and the Multi/Radio/Switch panels. Existing components/bundles already cover the current yoke/quadrant/pedals and HOTAS sets. The X52, X52 Pro, and Extreme 3D Pro files still mark control coverage partial; verify every stick-head and base physical input from the exact manual diagrams before upgrading coverage. Current product source: [Logitech Flight Gear](https://www.logitechg.com/en-us/shop/sim/flight-gear).
+- I found no current first-party sale evidence for the historical Cessna Yoke System, Cessna Trim Wheel, or Backlit Information Panel, or for a distinct current Mad Catz Force 3D flight product. They were not added as current products. A first-party live or archived product manual/page that verifies the exact SKU and inventory is needed before creating records.
+- Honeycomb's current hardware list contains Alpha/Bravo variants, Charlie, Foxtrot, and Sierra already in the catalog. Echo was the missing in-stock hardware. Echo XPC remains “Available soon” on the official collection and is not yet represented as a currently purchasable SKU.
+- MFG's current catalog offers Crosswind V3 models and the universal V1–V3 compatible hydraulic damper; the existing V3 model, footrest/damper accessories, and combo cover the current named lineup. The official [downloads page](https://mfg-sim.com/downloads/) supports software/firmware for V1, V2, and V3, but does not show V1/V2 as current products. V2 is not separately added as a current variant.
+- Turtle Beach records already cover VelocityOne Flight, Flightstick, Flightstick II, Rudder, Flightdeck, Dual Throttle, and the Flightstick II + Dual Throttle combo. The official [UK Dual Throttle page](https://uk.turtlebeach.com/products/velocity-one-dual-throttle) and [HOTAS page](https://uk.turtlebeach.com/products/velocity-one-hotas) still show preorder/anticipated 2026-09-21 wording even though the date passed; current sale state is unclear and needs a refreshed store check.
+
+## Validation status
+
+All target-brand YAML files parse and every image path referenced by those component records exists. The first `pnpm check` caught Honeycomb Echo's optional `software` field written as null; that field was removed. The final check synced the catalog successfully and reported 166 TypeScript errors, all in `work/` scratch files, which were ignored as requested.
+
+The catalog unknowns audit was regenerated after the additions; `docs/catalog-unknowns.md` reflects 168 catalog products.

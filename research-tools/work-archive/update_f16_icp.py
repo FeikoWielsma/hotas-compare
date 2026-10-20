@@ -1,0 +1,103 @@
+text = """brand: winctrl
+name: F-16 Integrated Control Panel Module
+category: module
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official listing/manual establishes computer USB use; no exact product source establishes Xbox or PS5 support or incompatibility.
+  sources:
+    - https://eu.winctrl.com/view/goods-details.html?id=544
+    - https://eu.winctrl.com/static/download/QmVUekeGd37nnGiFxhEufKT7Mjtw5zkySFZPLSTgVmFYHN?filename=ICP-User+Manual+EN+V1.0.pdf
+status: current
+handedness: n/a
+mount:
+  provides: null
+  accepts: []
+controls:
+- type: button
+  count: 23
+  backlit: true
+  location: panel
+  label: Silicone backlight pushbuttons
+  source: https://eu.winctrl.com/view/goods-details.html?id=544
+- type: toggle
+  count: 1
+  momentary: false
+  location: panel
+  label: Non-self-centering toggle
+  source: https://eu.winctrl.com/view/goods-details.html?id=544
+  ways: 3
+- type: toggle
+  count: 1
+  momentary: true
+  location: panel
+  label: WARN RESET single-side self-centering toggle
+  source: https://eu.winctrl.com/view/goods-details.html?id=544
+  ways: 3
+- type: hat
+  ways: 5
+  count: 1
+  location: panel
+  label: Five-way hat
+  source: https://eu.winctrl.com/view/goods-details.html?id=544
+  notes: Manufacturer calls this a five-way control; direction count versus center-push interpretation is not confirmed. Neither five directional contacts nor center push is assumed.
+- type: rotary
+  mode: analog
+  count: 4
+  location: panel
+  label: Damped thumbwheels (four physical axes)
+  source: https://eu.winctrl.com/view/goods-details.html?id=544
+controls_evidence:
+  coverage: complete
+  source: https://eu.winctrl.com/view/goods-details.html?id=544
+  checked: '2026-10-19'
+  notes: Rendered exact ViperAce ICP product detail specifies 23 silicone buttons, two 3-position toggles (one non-self-centering and WARN RESET single-side self-centering), one 5-way hat, four damped thumbwheels/four axes, and adjustable backlighting. Five-way hat pressability is not specified. No separate press function is asserted for thumbwheels. Five-way marketing terminology is preserved without guessing the split between directional contacts and center press.
+hardware:
+  axes:
+    - name: X
+      resolution_bits: 12
+    - name: Y
+      resolution_bits: 12
+    - name: Rx
+      resolution_bits: 12
+    - name: Ry
+      resolution_bits: 12
+connectivity:
+  standalone_usb: true
+software: SimApp Pro
+physical:
+  weight_g: 500
+  dimensions_mm: [145, 60, 167]
+  materials: []
+use_case_fit:
+  modern_jet: 4
+  heli: 3
+  ww2: 3
+  ga: 3
+  airliner: 3
+  space_hotas: 4
+  space_hosas: 3
+prices:
+  - region: EU
+    currency: EUR
+    amount: 193.75
+    incl_vat: true
+    store: eu.winctrl.com
+    url: https://eu.winctrl.com/view/goods-details.html?id=544
+    verified: '2026-10-19'
+    source: manual
+verification: draft
+sources:
+  - https://eu.winctrl.com/view/goods-details.html?id=544
+  - https://eu.winctrl.com/static/download/QmVUekeGd37nnGiFxhEufKT7Mjtw5zkySFZPLSTgVmFYHN?filename=ICP-User+Manual+EN+V1.0.pdf
+
+images:
+  - file: /images/winctrl/f16-icp-module.jpg
+    source: https://eu.winctrl.com/view/goods-details.html?id=544
+    caption: F-16 Integrated Control Panel Module
+"""
+
+with open("src/content/components/winctrl/f16-icp-module.yaml", "w", encoding="utf-8") as f:
+    f.write(text)
+print("Updated f16-icp-module.yaml successfully")

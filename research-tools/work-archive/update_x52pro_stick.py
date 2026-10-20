@@ -1,0 +1,122 @@
+import yaml
+
+text = """brand: logitech
+name: X52 Pro Flight Stick
+category: stick_fixed
+status: current
+handedness: right
+mount: null
+controls:
+  - type: trigger
+    location: grip
+    stages: 2
+    action: sequential
+    label: Two-stage metal trigger
+    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+  - type: button
+    location: grip
+    count: 3
+    backlit: true
+    label: Three backlit fire buttons on joystick head
+    notes: Manual product tour (p.3) shows three fire buttons on the joystick head, backlit per the product tour.
+    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+  - type: button
+    location: grip
+    backlit: false
+    label: Missile launcher button
+    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+  - type: hat
+    location: grip
+    ways: 8
+    push: false
+    count: 2
+    label: Hat switches
+    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+  - type: toggle
+    location: grip
+    ways: 3
+    momentary: false
+    label: Mode selector
+    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+  - type: toggle
+    location: base
+    count: 3
+    ways: 2
+    momentary: true
+    label: Spring-loaded base switches
+    notes: Three spring-loaded switches provide six programmed commands (each switch has two directions).
+    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+  - type: button
+    location: grip
+    backlit: false
+    label: Pinkie switch
+    source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+controls_evidence:
+  coverage: partial
+  source: https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+  checked: '2026-10-19'
+  notes: Shared X52 family manual/product sheet checked. Stick controls documented; distinguish X52 Pro fire button layout from standard X52 where exact generation images/mapping are ambiguous.
+hardware:
+  gimbal: ball_joint
+  sensor: hall
+  axes:
+  - name: X
+    sensor: hall
+  - name: Y
+    sensor: hall
+  - name: Twist
+    sensor: potentiometer
+  force_adjustable: false
+  cams_swappable: false
+  extension_support: false
+connectivity:
+  usb: a_cable
+  standalone_usb: true
+software: Logitech G HUB
+physical:
+  weight_g: 905
+  dimensions_mm: [170, 170, 278]
+  materials:
+  - abs
+  - metal
+prices:
+- region: EU
+  currency: EUR
+  amount: 130
+  incl_vat: true
+  store: amazon.de
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 112
+  incl_vat: true
+  store: amazon.co.uk
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 136
+  incl_vat: false
+  store: amazon.com
+  verified: '2026-10-01'
+  source: manual
+verification: draft
+sources:
+- https://www.logitechg.com/en-us/products/flight.html
+images:
+  - file: /images/logitech/x52-pro-flight-stick.webp
+    source: https://www.logitechg.com/en-us/shop/p/x52-pro-space-flight-simulator-controller.945-000022
+    caption: X52 Pro Flight Stick
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Manual documents Windows setup through Windows Game Controllers and G HUB; no Xbox or PS5 statement appears in the manual or official SKU page. Console support remains unknown.
+  sources:
+  - https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+"""
+
+with open("src/content/components/logitech/x52-pro-flight-stick.yaml", "w", encoding="utf-8") as f:
+    f.write(text)
+print("Updated x52-pro-flight-stick.yaml successfully")

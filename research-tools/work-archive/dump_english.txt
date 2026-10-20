@@ -1,0 +1,1298 @@
+
+============================== AY90 (45 pages total) ==============================
+
+--- Page 1 ---
+User Manual 使用说明书
+AY90 Force Feedback Yoke Base
+Quick Guide
+售后客服
+
+--- Page 2 ---
+01
+CONTENTS
+EN...............................................................................................................................1
+FRA.............................................................................................................................5
+DE...............................................................................................................................9
+ESP............................................................................................................................13
+ITA............................................................................................................................17
+RUS...........................................................................................................................21
+JAP............................................................................................................................25
+PT............................................................................................................................. 29
+中文..........................................................................................................................33
+繁體中文..................................................................................................................38
+
+--- Page 3 ---
+1
+Set Introduction
+01
+Usage Tutorial
+02
+1. Securing the Base
+Method1: Desk Clamp Mounting
+(1) Attach the nano tape included in the packaging to the end of AY90. Tear off the tape and
+place the AY90 on the desired edge of the table or board that needs to be secured, as
+shown in the illustration.
+(2) Align the desk clamp with the mounting holes. Rotate the star-shaped tightening knob
+clockwise until the base is ﬁrmly secured. Conﬁrm that the base is stable and does not
+wobble before use.
+Note: Please apply the nano tape following the instructions to ensure proper functionality of
+the device.
+Method2:  Proﬁle Mounting
+Pre-drilled mounting holes are located on the protruding blocks on both sides of the base. We
+also provide 4 mounting holes at the bottom. These can be used to securely install the AY90
+onto aluminum proﬁle rigs or compatible simulator cockpit frames.
+•   Without the yoke, the overall axial length is a minimum of 396mm and a maximum of 491mm.
+•   With the yoke installed, the overall axial length is a minimum of 500mm and a maximum of 595mm.
+Nano tape area
+
+--- Page 4 ---
+2
+Note: The bottom mounting holes require M6 screws and have a depth of 6mm. Please use
+screws of appropriate length for installation, otherwise damage to the device may occur. (For
+example, if the bracket thickness is 2mm, use screws shorter than 8mm in length.)
+(1)Rotate the D-shaped connection shaft on the AY90 base to the position shown in the
+diagram.
+(2)Press the handles on both sides of the yoke's quick-release mechanism, align it with the AY90
+base's connecting rod, and connect it in the direction of the arrow shown in the diagram:
+Note:The AY90 is currently compatible with the MFY and MFY Pro yoke within the MOZA
+ecosystem. Compatibility with more yokes will be added in the future.
+(3)After connection, release the handles on both sides of the yoke’s quick-release mechanism.
+Gently rotate the yoke to ensure it is ﬁrmly connected to the base without any wobble
+2.Installing the Yoke
+
+--- Page 5 ---
+3
+1. Software Installation
+Please visit the ofﬁcial MOZA website to download and install the MOZA Cockpit software.
+After installation, the software will automatically detect the device once it is powered on.
+Quick Setup: On the main interface, navigate to the game list on the right-hand side. Select
+“Conﬁg all” from the dropdown menu to automatically apply recommended settings.
+Device Parameter Adjustment: Click the device card or enter via the device list to access the
+AY90 settings interface.
+Software Introduction
+04
+Connect to PC
+03
+(1) Connect the power adapter to the power outlet and plug it into the base’s power port.
+(2) Use the provided USB cable to connect the base to your PC.
+(3)Press the Power switch on the front of the base to turn on the AY90 base. After powering on,
+AY90’s front panel lights illuminate in an orderly fashion, and AY90 will automatically perform a
+calibration.
+
+--- Page 6 ---
+4
+2. Settings Tabs Introduction
+You can customize your device within the following tabs:
+Basic Settings: Adjust overall force feedback strength and perform device calibration.
+Panel Settings: Customize lighting effects and conﬁgure switch logic for the front panel.
+Advanced Settings: Designed for advanced users, offering in-depth adjustments for
+control/yoke response and ﬁne-tuning of force feedback parameters.
+Telemetry FFB: Conﬁgure force feedback feedback effects - such as stall vibration, ground
+interaction, and airﬂow disturbances - based on real-time in-game telemetry data.
+Axis Travel: Customize output curves and deﬁne both physical and software travel limits.
+Special: Conﬁgure additional extended features speciﬁc to the device.
+3. Operational Notes
+The yoke conﬁguration interface can be accessed through the device list in the sidebar.
+Due to operating system input recognition limitations, when this device is used together with
+MFY/MFY Pro, the following applies:
+Joystick Mode Restriction: The left and right joysticks cannot operate in Axis mode simultane-
+ously.
+Default Behavior: Only one joystick can function as an axis at a time; the other will automati-
+cally switch to Button mode.
+*Note: It is recommended to pre-conﬁgure one joystick as the primary axis in the software
+based on your usage preferences.
+Precautions
+05
+• Do not expose the device to rain or humid environments to prevent ﬁre/electric shock
+hazards.
+• Avoid using the device under direct sunlight.
+• Recommended ambient temperature: 5°C to 35°C.
+• For your health, manage gaming time appropriately.
+• Not suitable for children under 6 years old. Small parts may pose a choking hazard.
+• Children under 13 years old must use under parental supervision.
+• Unauthorized disassembly will void the warranty.
+• Repairs or component replacements must be performed exclusively by authorized service
+centers.
+• Keep the device away from heat sources.
+• Disconnect the power cable when not in use for extended periods.
+
+--- Page 7 ---
+5
+Présentation de l'ensemble
+01
+Tutoriel d'utilisation
+02
+1. Sécuriser la base
+Méthode 1 : Fixation par pince de bureau
+(1)Fixez le nano-ruban adhésif inclus dans l'emballage à l'extrémité de la pièce AY90. Retirez le
+ﬁlm de protection du ruban et placez l'AY90 sur le bord souhaité de la table ou de la
+planche à sécuriser, comme illustré.
+(2)Alignez la pince de bureau avec les trous de montage. Tournez le bouton de serrage en
+étoile dans le sens des aiguilles d'une montre jusqu'à ce que la base soit solidement ﬁxée.
+Assurez-vous que la base est stable et ne vacille pas avant toute utilisation.
+Remarque : veuillez appliquer le nano-ruban adhésif en suivant les instructions aﬁn de garantir
+le bon fonctionnement de l'appareil.
+Méthode 2 : Fixation sur proﬁlé
+Des trous de montage pré-percés sont situés sur les blocs saillants des deux côtés de la base.
+Nous fournissons également 4 trous de montage sur le dessous. Ceux-ci peuvent être utilisés
+pour installer solidement l'AY90 sur des châssis en proﬁlé d'aluminium ou sur des structures de
+cockpit de simulation compatibles.
+•   Sans le manche, la longueur axiale totale est comprise entre 396 mm au minimum et 491 mm au
+maximum.
+•   Avec le manche installé, la longueur axiale totale est de 500 mm au minimum et de 595 mm au
+maximum.
+Zone du nano-ruban adhésif
+
+============================== AB6 (15 pages total) ==============================
+
+--- Page 1 ---
+User Manual 使用说明书
+AB6 Flight Simulator
+Quick Guide
+售后客服
+
+--- Page 2 ---
+1
+AB6 Force Feedback Base
+01
+Base Connection Ports
+Installation Guide
+Power and USB Connection
+1. Connect the power cable and USB Type-B cable to their respective ports at the back of the
+AB6 Base. Plug the power cable into a 220V outlet. Press the switch brieﬂy to power on (Short
+press to power on, long press to power off). A quick ﬂashing of the power indicator conﬁrms
+successful power connection.
+2. Connect the USB Type-A end to your PC. Once connected, the power indicator will remain lit.
+Throttle
+Power
+Flight Stick
+USB-B(Connect to Computer)
+Dash Display
+Rudder Pedal
+Power Switch
+188mm
+163 mm
+1
+2
+Mounting the Base
+Mounting to a Desktop:
+1. Use the included wrench and four M6 screws to attach the C-shaped clamp and mounting
+plate to the height adjustment bracket. Adjust the height to your preference before tightening
+securely.
+2. Use the included wrench and M4 screws to mount the AB6 base onto the plate. Make sure
+it’s ﬁrmly secured with no looseness or wobble.
+3. Place the assembled clamp onto your desk. Turn the star-shaped knob until the clamp is
+tightly fastened to the desktop.
+Note:The base can also be mounted to select sim racing rigs using the threaded holes on
+the bottom side.
+
+--- Page 3 ---
+2
+Visit www.mozaracing.com and navigate to the Help Center to download and install the MOZA
+Cockpit software.
+Software Introduction
+Connecting the MHG ﬂightstick
+1. Pull out the connection cable from the ﬂightstick. Connect the ﬂightstick to the aviation
+base connector in the direction indicated by the forward-facing arrow.
+2. Tighten the nut ring on the ﬂightstick by turning it clockwise (see Diagram 2).
+3. Use the provided wrench to turn the screw on top of the nut ring clockwise until the stick
+is ﬁrmly secured.
+Connecting other ﬂightsticks
+1. Hand-tighten the ring nut clockwise.
+2. While continuing to turn the nut clockwise, ﬁrmly twist the ﬂightstick left and right. Keep
+tightening until the ﬂightstick is locked solidly onto the base.
+Basic Settings: Adjust base parameters and monitor its status in real time.
+Expert Settings:  Fine-tunes advanced parameters to match the feel of speciﬁc aircraft.
+Telemetry FFB: Conﬁgures force feedback effects based on in-game telemetry data.
+Axis Travel: Adjusts axis output curves for smoother, more precise control.
+1
+2
+3
+
+--- Page 4 ---
+3
+Panel Settings
+The AB6 Force Feedback Base features 2 analog throttle sliders and 8 RGB-backlit buttons.
+You can customize both lighting and input behavior through the Panel Settings page.
+Slider (Axis) Calibration
+The sliders come pre-calibrated and are ready to use out of the box.
+If you notice a mismatch between your physical input and the game value, please
+recalibrate the slider:
+1. Click the "Start Calibration" button.
+2. When the timer begins, move both sliders back and forth across their full range before
+the countdown ends.
+Slider Mapping Modes
+The slider supports three signal mapping modes:
+•  Button Mode: The sliders send only digital button press signals - no analog axis data is
+output.
+•  Axis Mode: Sliders output raw analog axis values.
+•  Mixed Mode: Sliders output both analog axis values and digital button press signals
+simultaneously.
+Button Lighting & Effects
+Through MOZA Cockpit software, you can customize lighting modes, colors, and
+brightness to match your style.Supported features include:
+•  Multiple lighting effects (static, blinking, breathing, or telemetry-based)
+•  Reactive lighting that responds to button presses
+•  16.7 million color RGB backlight customization
+
+--- Page 5 ---
+4
+MHG FlightStick
+02
+Locking the Yaw Axis
+If yaw control is not needed, it can be locked. Use the included wrench and screw to tighten the
+screw clockwise into the designated hole (as shown in the diagram) until ﬁrmly secured.
+Tighten both screws until the shaft is fully locked and cannot rotate. Do not over-tighten.
+Buttons
+Launch
+Mini stick
+Target Management
+Switch
+Countermeasure
+Management Switch
+Sensor Management Switch
+Warning Button Light
+Mode Cycle Button
+Navigation Management Switch
+Dual-stage Trigger
+Nosewheel Steering
+Lock Button
+226.82
+91
+Size：91*226.82*144.6mm
+
+--- Page 6 ---
+5
+Software Introduction
+Adjusting the Hand Rest Height
+To create more space for hand movement, you can remove part of the hand rest. Using the
+included hex wrench, unscrew the screw (as shown in the diagram) counterclockwise until fully
+removed, then detach the partial component.
+Grip Settings and Button Indicator
+Once the ﬂightstick is connected to the base, it will appear on the main page along with its
+ﬁrmware version. Click the grip icon to open the conﬁguration page.
+MHG Flightstick
+Axis Calibration
+The ﬂightstick (the mini-stick and Z-axis) comes pre-calibrated and is ready to use out of the box.
+If you notice a mismatch between your physical input and the game value, please recalibrate the
+axis:
+1. Click the "Start Calibration" button.
+2. When the timer begins, move the mini-stick along its X and Y axes, and twist the ﬂightstick’s
+Z-axis (left and right) through their full range of motion before the countdown ends.
+
+--- Page 7 ---
+6
+• Do not expose the device to liquids or humidity as it may cause ﬁre or electric shock.
+• Avoid using the device in direct sunlight.
+• Do not use MOZA ﬂight sim gear with the MOZA racing gear.
+• Recommended indoor temperature: 5°C ~ 35°C.
+• For your safety and well-being, please monitor your gaming time and take breaks as
+needed.
+• The device is not suitable for children under the age of 6, small accessories may pose a
+choking hazard!
+• Children under 13 should have adult supervision.
+• It is strictly forbidden to disassemble the equipment by yourself, failure to adhere to this
+will result in loss of warranty.
+• The equipment must be connected with the factory-supplied power supply to ensure the
+electrical safety and the protection of user rights and interests.
+• In order to ensure user safety, parts repair or replacement can only be carried out by
+ofﬁcially authorized repair centers.
+• Non-standard power supplies are strictly prohibited even if data such as related voltages
+match.
+• Use only AC power provided by a standard wall outlet to avoid damage to the product.
+• Do not expose the device to heat sources.
+• Unplug the power cord of the device if it will not be used for a long time.
+Button Lighting & Effects
+Through MOZA Cockpit software, you can customize lighting modes, colors, and brightness to
+match your style.Supported features include:
+•  Multiple lighting effects (static, blinking, breathing, or telemetry-based)
+•  Reactive lighting that responds to button presses
+•  16.7 million color RGB backlight customization
+Precautions
+03
+
+============================== AB9 (32 pages total) ==============================
+
+--- Page 1 ---
+User Manual 使用说明书
+AB9 Force Feedback Base
+Quick Guide
+售后客服
+
+--- Page 2 ---
+01
+CONTENTS
+EN...............................................................................................................................1
+FRA.............................................................................................................................4
+DE...............................................................................................................................7
+ESP............................................................................................................................10
+ITA............................................................................................................................13
+RUS...........................................................................................................................16
+JAP............................................................................................................................19
+中文..........................................................................................................................22
+繁體中文..................................................................................................................26
+
+--- Page 3 ---
+1
+Base Connection Ports
+01
+Installation Guide
+02
+Throttle
+Power
+Flight Stick
+Dash Display
+Control Panel
+Rudder Pedal
+USB-B
+(Connect to
+Computer)
+Installing the Flight Stick
+1. Connect the ﬂight stick to the base aviation connector in the direction indicated by the forward
+facing arrow (refer to diagram1).
+2. Rotate the nut ring on the ﬂight stick clockwise to tighten (refer to diagram2).
+3. Use the provided wrench to further tighten until the ﬂight stick is securely connected to the
+base (refer to diagram3).
+227.9mm
+157mm
+69
+111
+60
+60
+54
+82
+4-M6 7
+8-M4 5.5
+1
+2
+3
+
+--- Page 4 ---
+2
+1. The main page displays the status of connected devices, including the base, ﬂight stick,
+throttle, and rudder pedals.
+2. Basic Settings: Easily access game settings and choose preset force feedback modes, ideal for
+beginner players to quickly get setup and ﬂying. Real-time monitoring of the ﬂight stick's
+coordinate position is also available.
+3. Axis Range Settings: Adjust the sensitivity and dead zone of individual motors to match
+personal preferences.
+4. Axis Force Feedback Settings: Allow users to ﬁnely adjust the force feedback intensity of each
+segment to match the ﬂight characteristics of speciﬁc aircraft.
+5. One-Click Firmware Upgrade: Easily update the MOZA ﬂight simulation ecosystem with the
+latest features in one click.
+* For detailed software instructions, please visit the MOZA Racing ofﬁcial website
+(www.mozaracing.com) help center page.
+Software Introduction
+03
+Mounting the Base
+1. Desktop Clamp Mode (Desk clamp requires separate purchase):
+a. Secure the MOZA AB9 base to the desktop clamp using 4-6 screws at the bottom.
+b. Place the desktop clamp on the desk and tighten the star-shaped handle until the clamp is
+securely attached to the desk.
+2. Desktop Clamp Hanging Mode (Desk clamp requires separate purchase):
+a. Adjust the height as desired, then secure the desktop clamp's 4 screws onto the nuts on the
+AB9's side groove.
+b. Tighten the star-shaped handle of the desktop clamp until it is secure.
+3.  Alternative Installation Methods:
+The base can also be secured to some pre-made simulator brackets using the screw hole
+spacing at the bottom.
+Using the Product
+1. Connect the power cable and USB Type-B cable to their respective ports at the back of the
+AB9 Force Feedback Base. Plug the power cable into a 220V outlet. Press the switch brieﬂy to
+power on (short press for on, long press for off). A quick ﬂashing of the power indicator
+conﬁrms successful power connection.
+2. Connect the USB Type-A end to your PC. Once connected, the power indicator will remain lit.
+Visit www.mozaracing.com to download and install the MOZA software from the help center
+to begin your ﬂight experience. For additional information and tutorial videos, please visit the
+ofﬁcial website.
+
+--- Page 5 ---
+3
+·   Do not expose the device to liquids or humidity as it may cause ﬁre or electric shock.
+·   Avoid using the device in direct sunlight.
+·   Do not use MOZA ﬂight sim gear with the MOZA racing gear.
+·   Recommended indoor temperature: 5°C ~ 35°C.
+·   For your safety and well-being, please monitor your gaming time and take breaks as
+needed.
+·   The device is not suitable for children under the age of 6, small accessories may pose a
+choking hazard!
+·   Children under 13 should have adult supervision.
+·   It is strictly forbidden to disassemble the equipment by yourself, failure to adhere to this
+will result in loss of warranty.
+·   The equipment must be connected with the factory-supplied power supply to ensure the
+electrical safety and the protection of user rights and interests.
+·   In order to ensure user safety, parts repair or replacement can only be carried out by
+ofﬁcially authorized repair centers.
+·   Non-standard power supplies are strictly prohibited even if data such as related voltages
+match.
+·   Use only AC power provided by a standard wall outlet to avoid damage to the product.
+·   Do not expose the device to heat sources.
+·   Unplug the power cord of the device if it will not be used for a long time.
+·   If you ﬁnd any abnormality, please stop using it immediately and seek help from MOZA
+representatives or authorized repair centers.
+·   Stay tuned to our ofﬁcial website and social media platforms for the latest product updates.
+Precautions
+05
+Specs
+04
+Supported Platform: PC
+Maximum Limit Angle: ±20°
+Main Body Material: Aviation-Grade Aluminum Alloy
+Peak Torque: 12N·m
+Rated Voltage: 110V～220V AC > 36V DC
+Rated Current: 6A
+Rated Power: 216W
+USB Refresh Rate: 1000Hz
+Base Indicator Light: Supports displaying base status
+Connection Ports: Power, data, throttle, rudder pedals, etc.
+Installation Method: desktop or rig
+Desktop Clamp: Optional
+
+--- Page 6 ---
+4
+Ports de connexion de la base
+01
+Guide d'installation
+02
+Accélérateur
+Alimentation
+Clé de vol
+Écran du tableau de bord
+Panneau de commande
+Pédale de direction
+USB-B
+(Connexion à
+l'ordinateur)
+Installation de la clé de vol
+1. Connectez la clé de vol au connecteur aviation de la base dans le sens indiqué par la ﬂèche
+orientée vers l'avant (voir schéma 1).
+2. Tournez la bague de serrage de la clé de vol dans le sens des aiguilles d'une montre pour
+serrer (voir schéma 2).
+3. Utilisez la clé fournie pour serrer davantage jusqu'à ce que la clé de vol soit solidement ﬁxée à
+la base (voir schéma 3).
+227.9mm
+157mm
+69
+111
+60
+60
+54
+82
+4-M6 7
+8-M4 5.5
+1
+2
+3
+
+--- Page 7 ---
+5
+1. La page principale afﬁche l'état des appareils connectés, notamment la base, le manche à
+balai, l'accélérateur et le palonnier.
+2. Paramètres de base : Accédez facilement aux paramètres du jeu et choisissez des modes de
+retour de force prédéﬁnis, parfaits pour les débutants souhaitant une conﬁguration et un
+pilotage rapides. La surveillance en temps réel de la position du manche à balai est
+également disponible.
+3. Paramètres de portée des axes : Ajustez la sensibilité et la zone morte de chaque moteur
+selon vos préférences.
+4. Paramètres de retour de force des axes : Permet aux utilisateurs d'ajuster ﬁnement l'intensité
+du retour de force de chaque segment pour l'adapter aux caractéristiques de vol de chaque
+avion.
+5. Mise à jour du micrologiciel en un clic : Mettez à jour l'écosystème de simulation de vol MOZA
+avec les dernières fonctionnalités en un clic.
+*  Pour des instructions détaillées sur le logiciel, veuillez consulter la page d'aide du site ofﬁciel
+de MOZA Racing (www.mozaracing.com).
+Présentation du logiciel
+03
+Montage de la base
+1. Mode pince de bureau (la pince de bureau nécessite un achat séparé) :
+a. Fixez la base MOZA AB9 à la pince de bureau à l'aide de 4 à 6 vis situées en bas.
+b. Placez la pince de bureau sur le bureau et serrez la poignée en étoile jusqu'à ce que la
+pince soit solidement ﬁxée au bureau.
+2. Mode suspension de la pince de bureau (la pince de bureau nécessite un achat séparé) :
+a. Réglez la hauteur selon vos besoins, puis ﬁxez les 4 vis de la pince de bureau sur les écrous
+situés dans la rainure latérale de l'AB9.
+b. Serrez la poignée en étoile de la pince de bureau jusqu'à ce qu'elle soit bien ﬁxée.
+3. Autres méthodes d'installation :
+La base peut également être ﬁxée à certains supports de simulateur préfabriqués grâce à
+l'espacement des trous de vis situés en bas.
+Utilisation du produit
+1. Connectez le câble d'alimentation et le câble USB Type-B à leurs ports respectifs situés à
+l'arrière de la base à retour de force AB9. Branchez le câble d'alimentation sur une prise 220
+V. Appuyez brièvement sur l'interrupteur pour allumer (appui court pour allumer, appui long
+pour éteindre). Un clignotement rapide du voyant d'alimentation conﬁrme la connexion.
+2. Connectez l'extrémité USB Type-A à votre PC. Une fois connecté, le voyant d'alimentation
+reste allumé. Rendez-vous sur www.mozaracing.com pour télécharger et installer le logiciel
+MOZA depuis le centre d'aide et commencer votre expérience de vol. Pour plus d'informa-
+tions et des tutoriels vidéo, veuillez consulter le site web ofﬁciel.
+
+============================== MHG (10 pages total) ==============================
+
+--- Page 1 ---
+User Manual 使用说明书
+MHG Flightstick
+Quick Guide
+售后客服
+
+--- Page 2 ---
+1
+Launch
+Mini stick
+Target Management
+Switch
+Countermeasure
+Management Switch
+Sensor Management Switch
+Warning Button Light
+Mode Cycle Button
+Dual-stage Trigger
+Nosewheel Steering
+Lock Button
+Navigation Management Switch
+226.82
+91
+144.6
+Buttons
+01
+
+--- Page 3 ---
+2
+1. Pull out the connection cable from the ﬂightstick. Connect the ﬂight stick to the aviation base
+connector in the direction indicated by the forward facing arrow.
+2. Tighten the nut ring on the ﬂightstick by turning it clockwise (see Diagram 2).
+3. Use the provided wrench to turn the screw on top of the nut ring clockwise until the stick is
+ﬁrmly secured.
+Connecting the Base
+1
+2
+3
+Locking the Yaw Axis
+If yaw control is not needed, it can be locked. Use the included wrench and screw to tighten the
+screw clockwise into the designated hole (as shown in the diagram) until ﬁrmly secured.
+Tighten both screws until the shaft is fully locked and cannot rotate. Do not over-tighten.
+Adjusting the Hand Rest Height
+To create more space for hand movement, you can remove part of the hand rest. Using the
+included hex wrench, unscrew the screw (as shown in the diagram) counterclockwise until fully
+removed, then detach the partial component.
+2
+User Guide
+02
+
+--- Page 4 ---
+3
+MHG Flightstick
+Grip Settings and Button Indicator
+Once the ﬂightstick is connected to the base, it will appear on the main page along with its
+ﬁrmware version. Click the grip icon to open the conﬁguration page.
+Button Lighting & Effects
+Through MOZA Cockpit software, you can customize lighting modes, colors, and brightness to
+match your style.Supported features include:
+•  Multiple lighting effects (static, blinking, breathing, or telemetry-based)
+•  Reactive lighting that responds to button presses
+•  16.7 million color RGB backlight customization
+Axis Calibration
+The ﬂightstick (the mini-stick and Z-axis) comes pre-calibrated and is ready to use out of the
+box.
+If you notice a mismatch between your physical input and the game value, please recalibrate
+the axis:
+1. Click the "Start Calibration" button.
+2. When the timer begins, move the mini-stick along its X and Y axes, and twist the ﬂightstick’s
+Z-axis (left and right) through their full range of motion before the countdown ends.
+Software Introduction
+03
+
+--- Page 5 ---
+4
+Main Body Material: High-strength Composite Construction
+Yaw Limit Angle:±18°
+Rated Voltage: 110V～220V AC > 12V DC
+Rated Current: 6A
+Indicator Light: Supports displaying ﬂightstick status
+Connector: 5-pin aviation connector
+• Do not expose the device to liquids or humidity as it may cause ﬁre or electric shock.
+• Avoid using the device in direct sunlight.
+• Do not use MOZA ﬂight sim gear with the MOZA racing gear.
+• Recommended indoor temperature: 5°C ~ 35°C.
+• For your safety and well-being, please monitor your gaming time and take breaks as
+needed.
+• The device is not suitable for children under the age of 6, small accessories may pose a
+choking hazard!
+• Children under 13 should have adult supervision.
+• It is strictly forbidden to disassemble the equipment by yourself, failure to adhere to this
+will result in loss of warranty.
+• The equipment must be connected with the factory-supplied power supply to ensure the
+electrical safety and the protection of user rights and interests.
+• In order to ensure user safety, parts repair or replacement can only be carried out by
+ofﬁcially authorized repair centers.
+• Non-standard power supplies are strictly prohibited even if data such as related voltages
+match.
+• Use only AC power provided by a standard wall outlet to avoid damage to the product.
+• Do not expose the device to heat sources.
+• Unplug the power cord of the device if it will not be used for a long time.
+Specs
+04
+Precautions
+05
+
+--- Page 6 ---
+5
+1. 抽出操纵杆的连接线，将连接线航空头上的箭头与基座刻度线对齐后插入到底，保证连接线稳固
+2. 顺时针方向旋紧操纵杆上的螺母环（示意图2）
+3. 用包装附赠的扳手将螺母环顶部的螺丝，顺时针拧紧直到摇杆不会左右晃动
+固定基座
+1
+2
+3
+发射按钮
+小摇杆
+目标管理开关
+电子战控
+制开关
+传感器控制开关
+警告灯开关
+模式切换按钮
+二段扳机
+前轮锁按钮
+导航控制开关
+产品尺寸：91*226.82*144.6mm
+226.82
+91
+操纵杆按键介绍
+01
+使用教程
+02
+
+--- Page 7 ---
+6
+锁定操纵杆偏航轴组件
+若无需使用偏航轴功能，可以将其锁定。使用包装中附赠的扳手和螺丝，对准图中显示的孔位，
+顺时针拧紧螺丝直到操纵杆左右拧动无晃动
+锁定Z轴功能时，请将两侧螺丝旋入，杆身不能转动即为锁好，请勿施加过大扭力以免损坏设备
+改变操纵杆手托高度
+若需要更大的使用空间，可以将手托部分拆卸。使用包装中附赠的六角扳手，对准图中该位置，
+逆时针拧动螺丝，直到螺丝完全脱出，可以取下手托组件
+杆头设置和按键指示
+将操纵杆连接至基座后，主界面将显示 MHG 杆头示意图及对应固件版本。点击图标可进入杆
+头设置界面。
+MHG 操纵杆
+软件介绍
+03
+
+============================== MTQ (13 pages total) ==============================
+
+--- Page 1 ---
+User Manual 使用说明书
+MTQ Throttle Panel
+Quick Guide
+售后客服
+
+--- Page 2 ---
+1
+Parameters
+01
+User Guide
+02
+1. Direct Connection to PC
+Use the included USB cable to connect the Type-B end to the corresponding port
+on the back of the MOZA MTQ Throttle Quadrant, and the Type-A end to your PC. If
+connected successfully, the device's light will gradually illuminate, and the MOZA
+Cockpit will indicate that the device is connected.
+* If the device fails to light up, check whether the light brightness is turned off in the
+MOZA Cockpit.
+2. Connecting to PC through MOZA Flight Base
+Connect one end of the included RJ11 cable to the corresponding port on the
+MOZA MTQ Throttle Quadrant and the other end to the MOZA Flight Base. Power
+on the base; if connected successfully, the device light will illuminate. and the
+MOZA Cockpit will indicate that the device is connected.
+Connecting to PC
+166.4mm
+216.1mm
+197.3mm
+RJ11
+USB Type-B
+60.0 ±0.1
+60.0 ±0.1
+60.0 ±0.1
+54.0 ±0.1
+13.3
+45.0
+18.5
+6 X M4
+2 X M6
+
+--- Page 3 ---
+2
+To adjust the sliding friction of the levers, use the included wrench to turn the screw
+clockwise to increase or counterclockwise to decrease.
+To replace the throttle levers, follow these steps:
+1. Loosen the Fixing Screw
+Use the provided wrench to loosen the ﬁxing screw at the indicated position.
+2.Remove the Existing Levers
+Once the screw is loosened, gently pull out the existing throttle levers.
+3.Install the New Lever Module
+Align the new throttle lever module with the connecting rod, then insert it fully
+until it is secure without wobbling.
+4.Secure the New Levers
+Using the provided wrench and screwdriver, tighten the screw at the indicated
+position to ensure the new lever module is ﬁrmly secured in place.
+*Note: TQA and TQB need to be purchased separately.
+Installation of the MTQ Support Plate
+Align the mounting holes of the MTQ Support Plate with the threaded holes at the
+bottom of the MTQ equipment. Using the provided wrench, insert the two screws
+and tighten them clockwise until secure.
+Adjusting Sliding Friction
+Replacing the Throttle Levers
+
+--- Page 4 ---
+3
+Axis Calibration
+The throttle quadrant sticks are factory-calibrated and ready for immediate use.
+If you notice a mismatch between the physical movement of the sticks on the TQF
+and the corresponding axis output, you may need to perform axis calibration.
+To begin calibration:
+• Click the “Start Calibration” button.
+• Follow the on-screen instructions. Before the countdown ends, move all sticks
+(throttle, ﬂap, and speedbrake) back and forth through their full range of motion.
+• Once calibration is complete, the sticks will function properly.
+Panel Settings
+When the throttle levers are replaced, the right-side diagram automatically
+updates to match the new layout and inputs.
+Software Introduction
+03
+
+--- Page 5 ---
+4
+Axis Detent Function
+This feature maps throttle travel to game
+input with precision and deﬁnes Cutoff,
+Idle, and Afterburner zones.
+Users can calibrate detent positions via
+the settings window; six virtual buttons
+will be added for mapping each zone.
+The Axis Output panel shows logical axis
+values (top) and physical travel
+percentage (bottom) for easy alignment
+and feedback.
+Button Light
+Lighting Control Modes
+Lighting control modes determine how the software manages the button lighting.
+Users can choose between two modes:
+• Device Mode: Button lighting responds dynamically to input from a selected
+control axis (e.g., the speedbrake axis). As the axis value changes (e.g., the
+speedbrake axis value increases), the lights react according to the selected lighting
+pattern.
+• Manual Mode: Manually adjust the button lighting using the brightness slider and
+lighting effect dropdown in the software interface.
+Speedbrake and Flap Axis Mapping Modes
+The speedbrake and ﬂap levers support
+three modes:
+• Button Mode: Outputs only button
+signals, no axis data.
+• Axis Mode: Outputs raw analog axis
+values.
+
+--- Page 6 ---
+5
+•  Do not expose the device to liquids or humidity as it may cause ﬁre or electric shock.
+•  Avoid using the device in direct sunlight.
+•  Do not use MOZA ﬂight sim gear with the MOZA racing gear.
+•  Recommended indoor temperature: 5°C ~ 35°C.
+•  For your safety and well-being, please monitor your gaming time and take breaks as
+needed.
+•  The device is not suitable for children under the age of 6, small accessories may pose
+a choking hazard!
+•  Children under 13 should have adult supervision.
+•  It is strictly forbidden to disassemble the equipment by yourself, failure to adhere to
+this will result in loss of warranty.
+•  The equipment must be connected with the factory-supplied power supply to ensure
+the electrical safety and the protection of user rights and interests.
+•  In order to ensure user safety, parts repair or replacement can only be carried out by
+ofﬁcially authorized repair centers.
+•  Non-standard power supplies are strictly prohibited even if data such as related
+voltages match.
+•  Use only AC power provided by a standard wall outlet to avoid damage to the
+product.
+•  Do not expose the device to heat sources.
+•  Unplug the power cord of the device if it will not be used for a long time.
+•  If you ﬁnd any abnormality, please stop using it immediately and seek help from
+MOZA representatives or authorized repair centers.
+•  Stay tuned to our ofﬁcial website and social media platforms for the latest product
+updates.
+Precautions
+04
+Button Lighting & Effects
+This device supports customizable backlighting and lighting effects. Users can
+conﬁgure lighting modes and colors via the Cockpit software to create a personal-
+ized visual experience.
+Supported features:
+• Multiple lighting modes (Static, Blinking, Breathing)
+• Button lighting feedback
+• 16.7 million-color RGB customization
+• Pattern and brightness adjustment
+Click the color swatch in the MOZA Cockpit interface to select your preferred
+lighting style and brightness.
+
+--- Page 7 ---
+6
+基本数据
+01
+使用教程
+02
+166.4mm
+216.1mm
+197.3mm
+1.直接连接PC
+使用附赠的USB线，将Type-B端分别插入MTQ油门尾部对应接口上，另一头Type-A端接
+入PC，若成功连接则设备灯光逐渐亮起，MOZA Cockpit中将显示设备已连接。
+*若设备灯光无亮起，在MOZA Cockpit中检查灯光亮度是否被关闭。
+2.通过基座连接PC
+使用附赠的RJ11线，将一段连接MTQ油门尾部对应的接口上，另一头连接至MOZA飞行模
+拟基座，将基座通电，若成功连接则设备灯光亮起，MOZA Cockpit中将显示设备已连接。
+连接PC
+RJ11接口
+USB Type-B 接口
+60.0 ±0.1
+60.0 ±0.1
+60.0 ±0.1
+54.0 ±0.1
+13.3
+45.0
+18.5
+6 X M4
+2 X M6
+
+============================== MTP (7 pages total) ==============================
+
+--- Page 1 ---
+User Manual
+MTP Throttle Panel
+Quick Guide
+
+--- Page 2 ---
+1
+•   Realistic Design
+•   Aluminum Alloy Throttle Grip
+•   High-Resolution Encoder
+Product Features
+01
+Connection Ports
+02
+Parameters
+03
+USB Type-B
+RJ11
+194
+277
+216
+8-M6
+7.5
+110
+150
+130
+133
+7
+3
+•   27 Physical Switches
+•   Adjustable Gear Mechanism
+•   Adjustable Vibration Function
+
+--- Page 3 ---
+2
+User Guide
+04
+1. Stick the throttle to the desk.
+Align and ﬁrmly press the included sticker onto the designated area below the MTP
+throttle, ensuring the surface is clean and dust-free.
+*The mounting plate must be purchased separately.
+2. Installing the Mounting Plate
+Securing the Throttle
+Connecting to PC
+1. Direct Connection to PC
+•  Use the included USB cable to connect the Type-B end to the corresponding port on
+the MTP throttle, and the Type-A end to your PC. If connected successfully, the device's
+light will gradually illuminate, and the MOZA Cockpit will display that the device is
+connected and functioning correctly.
+* If the device fails to light up, turn the light control button clockwise.
+* If the device light ﬂashes, it indicates BOOT mode. Please exit BOOT mode from the host
+computer.
+To mount the MTP throttle, align it with the 4 holes indicated in the diagram, secure it by
+tightening 4 M6 countersunk screws, and lock it into place according to the mounting holes
+on the bracket.
+Direct connection via USB cable
+
+--- Page 4 ---
+3
+2. Connecting to PC through MOZA Flight Base
+•  Connect one end of the included RJ11 cable to the corresponding port on the MTP
+throttle and the other end to the MOZA AB9 Base. Power on the base; if connected
+successfully, the device light will illuminate, and the MOZA Cockpit will indicate that the
+device is connected and functioning correctly.
+*   If the device's light is ﬂashing slowly, it is in BOOT mode. Please exit BOOT mode on the
+host computer.
+Gear Adjustment
+1. If you wish to detach the throttle detent mechanism, use the included wrench to turn the
+screw (as shown below) on the detent adjustment mechanism counterclockwise to
+remove it.
+2. If you wish to adjust the position of afterburner and middile detent, use the included
+wrench to turn the screw on the detent adjustment mechanism counterclockwise,
+move the detent to desired position, and then tighten the screw by turning them
+closewise.
+*   If the device fails to light up, turn the light control button clockwise.
+The Panel connects to the Base via RJ11, Then connect the Base to the PC via USB cable.
+
+--- Page 5 ---
+4
+The main home page allows you to not only view the operational status of connected
+devices, including the base, ﬂightstick, throttle, rudder, etc, but also provides quick access
+to start your favorite games/simulators directly from the MOZA Cockpit Software.
+Software Introduction
+05
+Throttle Damping Adjustment
+1. To increase the sliding damping and friction of the throttle grip, use the included wrench
+to turn the screw in the diagram (shown below) clockwise.
+2. To decrease the sliding damping and friction of the throttle grip, use the included
+wrench to turn the screw counterclockwise.
+
+--- Page 6 ---
+5
+The throttle grip has a telemetry vibration function to indicate the aircraft's airspeed
+changes:
+1. Launch the MOZA Cockpit software.
+2. Go to the throttle settings page and select vibration settings.
+3. In the settings page, you can adjust the following according to your preferences:
+•  Vibration Strength: Adjust the strength of the vibration for more intense airspeed
+feedback.
+Throttle Grip Vibration Function
+06
+Speciﬁcations
+07
+•    Supported Platform: PC
+•    Resolution: 15-bit
+•    Throttle Grip Material: Aluminum Alloy
+•    Throttle Panel Material: Composite Material
+•    Rated Voltage: 5V
+•    Rated Current: 0.22A
+•    Connection Ports: USB Type-B, RJ11
+•    Mounting Method:  Mounts on a desktop with desk clamp or directly onto ﬂight simulator
+cockpits.
+•    Desktop Clamp: Optional
+•    Mounting Plate: Optional
+Notes: Ensure the device is correctly connected and conﬁgured in the MOZA Cockpit.
+
+--- Page 7 ---
+6
+08
+·   Do not expose the device to liquids or humidity as it may cause ﬁre or electric shock.
+·   Avoid using the device in direct sunlight.
+·   Do not use MOZA ﬂight sim gear with the MOZA racing gear.
+·   Recommended indoor temperature: 5°C ~ 35°C.
+·   For your safety and well-being, please monitor your gaming time and take breaks as needed.
+·   The device is not suitable for children under the age of 6, small accessories may pose a
+choking hazard!
+·   Children under 13 should have adult supervision.
+·   It is strictly forbidden to disassemble the equipment by yourself, failure to adhere to this will
+result in loss of warranty.
+·   The equipment must be connected with the factory-supplied power supply to ensure the
+electrical safety and the protection of user rights and interests.
+·   In order to ensure user safety, parts repair or replacement can only be carried out by ofﬁcially
+authorized repair centers.
+·   Non-standard power supplies are strictly prohibited even if data such as related voltages
+match.
+·   Use only AC power provided by a standard wall outlet to avoid damage to the product.
+·   Do not expose the device to heat sources.
+·   Unplug the power cord of the device if it will not be used for a long time.
+·   If you ﬁnd any abnormality, please stop using it immediately and seek help from MOZA
+representatives or authorized repair centers.
+·   Stay tuned to our ofﬁcial website and social media platforms for the latest product updates.
+Precautions
+
+============================== MFY_PRO (45 pages total) ==============================
+
+--- Page 1 ---
+User Manual 使用说明书
+MFY Pro Yoke Handle
+Quick Guide
+售后客服
+
+--- Page 2 ---
+01
+CONTENTS
+EN...............................................................................................................................1
+FRA.............................................................................................................................5
+DE...............................................................................................................................9
+ESP............................................................................................................................13
+ITA............................................................................................................................17
+RUS...........................................................................................................................21
+JAP............................................................................................................................25
+PT............................................................................................................................. 29
+中文..........................................................................................................................33
+繁體中文..................................................................................................................38
+
+--- Page 3 ---
+1
+Parameters
+01
+Securing the Yoke Handle
+03
+1. Rotate the D-shaped head of the MOZA Force Feedback Yoke Base to the position shown in
+the diagram.
+7. Push-to-talk 1
+8. Rudder Axis
+9. Push-to-talk 2
+1. Auxiliary Axis Switch
+2. AP Disconnect
+3. Trim Switch
+4. POV Control Axis Switch
+5. AP Disconnect
+6. View Switch
+Buttons / Switches Description
+02
+303.6mm
+142.4mm
+1
+2
+3
+7
+8
+9
+4
+5
+6
+202.2mm
+
+--- Page 4 ---
+2
+From the left-side icon menu in MOZA Cockpit, select the MFY Pro yoke icon to access the
+Joystick Settings page.
+Software Introduction
+04
+2. Press and hold the quick release handle on the back of the MFY Pro Yoke Handle then align
+the yoke with the connecting rod.
+3. After attaching the yoke, release the quick release handle and gently wiggle the yoke to
+ensure it is securely mounted.
+4. Once connected, power on the MOZA yoke base, and the lights on the MFY Pro yoke handle
+will illuminate.
+*   If the connection fails, conﬁrm that the MFY Pro yoke handle is securely attached to the yoke
+base. If the lights remain off, verify the brightness settings in MOZA Cockpit software.
+
+--- Page 5 ---
+3
+Axis Calibration
+Use the Axis Calibration function to calibrate all axes on the yoke. Click Start Calibration, move
+each axis through its full range, then click Finish Calibration.
+Lighting
+Two lighting modes are available:
+•  Manual Mode: Adjust brightness (4 levels).
+•  Telemetry Mode: Brightness changes with base and in-game lighting.
+•  Light ring color supports 16.7 million colors and can be set in the software.
+Joystick Mapping
+Each joystick (left/right) can be set to one of three modes:
+•  Axis Mode: Left joystick outputs RZ and Dial; right joystick outputs RX and RY.
+•  Button Mode: Joystick works as independent buttons.
+•  Mixed Mode: Joystick works outputs axis and button signals simultaneously.
+5-way Switch Mapping
+Each switch (left/right) can be set to one of the three modes:
+•  Button Mode: Switch works as 5 indepent buttons.
+•  D-pad Mode: Joystick mapped as an 8-way D-Pad.
+Trigger Axis Mapping
+Two modes are available:
+•  Combined Mode: Left and right triggers map to the positive and negative halves of the Z-axis;
+inputs add together.
+•  Separate Mode: Left trigger maps to full Z-axis; right trigger maps to full Slider axis.
+05
+Screen Functions
+The built-in screen provides timer, axis display, button test, checklist, and integrated ﬂight
+instrument view. Swipe left or right to switch functions.
+Note: Local Time (LT) in the timer requires connection to MOZA Cockpit software to display
+correctly.
+
+--- Page 6 ---
+4
+•   Do not expose the device to liquids or humidity as it may cause ﬁre or electric shock.
+•   Avoid using the device in direct sunlight.
+•   Do not use MOZA ﬂight sim gear with the MOZA racing gear.
+•   Recommended indoor temperature: 5°C ~ 35°C.
+•   For your safety and well-being, please monitor your gaming time and take breaks as needed.
+•   The device is not suitable for children under the age of 6, small accessories may pose a
+choking hazard!
+•   Children under 13 should have adult supervision.
+•   It is strictly forbidden to disassemble the equipment by yourself, failure to adhere to this will
+result in loss of warranty.
+•   The equipment must be connected with the factory-supplied power supply to ensure the
+electrical safety and the protection of user rights and interests.
+•   In order to ensure user safety, parts repair or replacement can only be carried out by ofﬁcially
+authorized repair centers.
+•   Non-standard power supplies are strictly prohibited even if data such as related voltages
+match.
+•   Use only AC power provided by a standard wall outlet to avoid damage to the product.
+•   Do not expose the device to heat sources.
+•   Unplug the power cord of the device if it will not be used for a long time.
+•   If you ﬁnd any abnormality, please stop using it immediately and seek help from MOZA
+representatives or authorized repair centers.
+•   Stay tuned to our ofﬁcial website and social media platforms for the latest product updates.
+Precautions
+06
+
+--- Page 7 ---
+5
+Paramètres
+01
+Fixation de la poignée en forme d'arceau
+03
+1. Tournez la tête en forme de D du MOZA Force Feedback Yoke Base pour l'amener dans la position
+indiquée sur le schéma.
+7. Appuyer pour parler 1
+8. Axe du gouvernail
+9. Appuyer pour parler 2
+1. Commutateur d'axe auxiliaire
+2. Déconnexion de l'AP
+3. Commutateur de réglage
+4. Commutateur d'axe de
+contrôle de la vue
+5. Déconnexion de l'AP
+6. Commutateur d'afﬁchage
+Boutons / Description de commutateurs
+02
+303.6mm
+142.4mm
+1
+2
+3
+7
+8
+9
+4
+5
+6
+202.2mm
+
+============================== MTLP (6 pages total) ==============================
+
+--- Page 1 ---
+User Manual
+MTLP Take-off Landing Panel
+Quick Guide
+
+--- Page 2 ---
+1
+Product Features
+•   Multi-Function Brake Lever
+•   Realistic Switch Caps
+•   Programmable Panel Lights
+产品介绍
+01
+•   25 Switch Signals
+•   High-Precision Hall Sensor
+•   High-Strength Structure
+Connection Ports
+02
+Parameters
+03
+RJ11
+USB Type-B
+149
+134.75
+196.5
+M6 7
+125
+22
+41
+
+--- Page 3 ---
+2
+User Guide
+04
+*  If the device fails to light up, check the light brightness settings in the MOZA Cockpit.
+*  If the device light ﬂashes, it indicates BOOT mode. Please exit BOOT mode from the host
+computer.
+* If the device fails to light up, check the light brightness settings in the MOZA Cockpit.
+* If the device light ﬂashes, it indicates BOOT mode. Please exit BOOT mode from the host
+computer.
+Connecting to PC through MOZA Flight Base
+•   Connect one end of the included RJ11 cable to the corresponding port on the MOZA
+MTLP panel and the other end to the MOZA Flight Base. Power on the base; if connected
+successfully, the device light will illuminate, and the MOZA Cockpit will indicate that the
+device is connected and functioning correctly.
+Securing the Panel
+•  Secure the MOZA MTLP Panel to the desk clamp using the 2 screw holes on the bottom.
+•  Place the desk clamp on the tabletop and tighten the star-shaped handle until the clamp is
+securely fastened to the desk.
+* The MOZA desktop clamp must be purchased separately.
+Connecting to PC
+1.Direct Connection to PC
+•   Use the included USB cable to connect the Type-B end to the corresponding port on the
+back of the MOZA MTLP panel, and the Type-A end to your PC. If connected successfully,
+the device's light will gradually illuminate, and the MOZA Cockpit will indicate that the
+device is connected and functioning correctly.
+Direct connection via USB cable
+The Panel connects to the Base via RJ11, Then connect the Base to the PC via USB cable.
+
+--- Page 4 ---
+3
+The main home page allows users to not only view the operational status of connected
+devices, including the base, ﬂightstick, throttle, rudder, etc, but also provides quick access
+to start your favorite games/simulators directly from the MOZA Cockpit Software.
+The MTLP Panel and MTP Throttle Panel share a uniﬁed conﬁguration interface. The
+interface adapts based on the connection scenario:
+1.Both MTLP and MTP Connected: The interface displays the control panel along with the
+instrument panel diagram, providing a comprehensive view of both devices. (Refer to the
+image below)
+Software Introduction
+05
+Panel Conﬁguration Interface
+06
+
+--- Page 5 ---
+4
+Panel Backlight Adjustment
+The MTLP Panel provides three modes for adjusting backlight brightness:
+Manual Mode:
+•  Adjust the backlight brightness using the Instrument Panel Light Intensity slider in the
+MOZA Cockpit software.
+•  Set the slider to 0% to completely turn off the backlight.
+Telemetry Mode:
+•  Synchronizes the panel backlight brightness with in-game cockpit lighting using
+telemetry data.
+Device Mode (Requires USB connection):
+•  Connect both the MTLP and MTP panels to your PC via USB.
+•  Use the dimmer knob on the front of the MTP panel to adjust brightness.
+Note: In this mode, the brightness levels of both panels are synchronized.
+2.Only MTLP Connected: The interface displays the MTLP panel diagram tailored to the
+connected device. (Refer to the image below)
+
+--- Page 6 ---
+5
+•   Do not expose the device to liquids or humidity as it may cause ﬁre or electric shock.
+•   Avoid using the device in direct sunlight.
+•   Do not use MOZA ﬂight sim gear with the MOZA racing gear.
+•   Recommended indoor temperature: 5°C ~ 35°C.
+•   For your safety and well-being, please monitor your gaming time and take breaks as needed.
+•   The device is not suitable for children under the age of 6, small accessories may pose a
+choking hazard!
+•   Children under 13 should have adult supervision.
+•   It is strictly forbidden to disassemble the equipment by yourself, failure to adhere to this will
+result in loss of warranty.
+•   The equipment must be connected with the factory-supplied power supply to ensure the
+electrical safety and the protection of user rights and interests.
+•   In order to ensure user safety, parts repair or replacement can only be carried out by ofﬁcially
+authorized repair centers.
+•   Non-standard power supplies are strictly prohibited even if data such as related voltages
+match.
+•   Use only AC power provided by a standard wall outlet to avoid damage to the product.
+•   Do not expose the device to heat sources.
+•   Unplug the power cord of the device if it will not be used for a long time.
+•   If you ﬁnd any abnormality, please stop using it immediately and seek help from MOZA
+representatives or authorized repair centers.
+•   Stay tuned to our ofﬁcial website and social media platforms for the latest product updates.
+Precautions
+08
+Speciﬁcations
+07
+Supported Platform: PC
+Housing Material: Composite material
+Grip Material: Aluminum Alloy
+Rated Voltage: 5V
+Rated Current: 0.3A
+Connection Ports: USB Type-B, RJ11
+Mounting Method: Mounts on a desktop with desk clamp or directly onto ﬂight simulator
+cockpits.
+Desktop Clamp: Optional

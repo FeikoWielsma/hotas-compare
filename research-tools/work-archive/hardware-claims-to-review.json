@@ -1,0 +1,464 @@
+[
+  [
+    "honeycomb",
+    "Alpha Flight Controls XPC",
+    "sensor",
+    "contactless_magnetic",
+    "hall_effect"
+  ],
+  [
+    "honeycomb",
+    "Alpha Flight Controls XPC",
+    "gimbal",
+    null,
+    "linear bearing yoke mechanism"
+  ],
+  [
+    "honeycomb",
+    "Alpha Flight Controls XPC",
+    "damping",
+    null,
+    "Self-centering damped mechanism; no center detent"
+  ],
+  [
+    "honeycomb",
+    "Alpha Flight Controls XPC",
+    "throw_deg",
+    null,
+    180
+  ],
+  [
+    "honeycomb",
+    "Alpha Flight Controls Yoke",
+    "sensor",
+    "contactless_magnetic",
+    null
+  ],
+  [
+    "honeycomb",
+    "Alpha Flight Controls Yoke",
+    "damping",
+    null,
+    "Damped self-centering mechanism; no center detent"
+  ],
+  [
+    "honeycomb",
+    "Alpha Flight Controls Yoke",
+    "throw_deg",
+    null,
+    180
+  ],
+  [
+    "moza",
+    "MOZA AB6 Force Feedback Base",
+    "sensor",
+    "encoder_20bit",
+    "magnetic_encoder"
+  ],
+  [
+    "moza",
+    "MOZA AB6 Force Feedback Base",
+    "extension_support",
+    false,
+    true
+  ],
+  [
+    "moza",
+    "MOZA AB9 Force Feedback Base",
+    "sensor",
+    null,
+    "magnetic_encoder"
+  ],
+  [
+    "moza",
+    "MOZA AB9 Force Feedback Base",
+    "gimbal",
+    null,
+    "force_feedback"
+  ],
+  [
+    "moza",
+    "MOZA AB9 Force Feedback Base",
+    "force_adjustable",
+    null,
+    true
+  ],
+  [
+    "moza",
+    "MOZA AB9 Force Feedback Base",
+    "cams_swappable",
+    null,
+    false
+  ],
+  [
+    "moza",
+    "MOZA AB9 Force Feedback Base",
+    "damping",
+    null,
+    "active_motor"
+  ],
+  [
+    "moza",
+    "MOZA AY210 Yoke Base",
+    "sensor",
+    null,
+    "15-bit magnetic encoder"
+  ],
+  [
+    "moza",
+    "MOZA AY210 Yoke Base",
+    "gimbal",
+    null,
+    "force_feedback"
+  ],
+  [
+    "moza",
+    "MOZA AY210 Yoke Base",
+    "force_adjustable",
+    null,
+    true
+  ],
+  [
+    "moza",
+    "MOZA AY210 Yoke Base",
+    "cams_swappable",
+    null,
+    false
+  ],
+  [
+    "moza",
+    "MOZA AY210 Yoke Base",
+    "damping",
+    null,
+    "active_motor"
+  ],
+  [
+    "moza",
+    "MOZA AY210 Yoke Base",
+    "extension_support",
+    null,
+    false
+  ],
+  [
+    "moza",
+    "MOZA AY210 Yoke Base",
+    "throw_deg",
+    null,
+    180
+  ],
+  [
+    "moza",
+    "MOZA AY210 Yoke Base",
+    "axis_count",
+    null,
+    2
+  ],
+  [
+    "moza",
+    "MOZA AY90 Yoke Base",
+    "sensor",
+    null,
+    "15-bit magnetic encoder"
+  ],
+  [
+    "moza",
+    "MOZA AY90 Yoke Base",
+    "gimbal",
+    null,
+    "force_feedback"
+  ],
+  [
+    "moza",
+    "MOZA AY90 Yoke Base",
+    "force_adjustable",
+    null,
+    true
+  ],
+  [
+    "moza",
+    "MOZA AY90 Yoke Base",
+    "cams_swappable",
+    null,
+    false
+  ],
+  [
+    "moza",
+    "MOZA AY90 Yoke Base",
+    "damping",
+    null,
+    "active_motor"
+  ],
+  [
+    "moza",
+    "MOZA AY90 Yoke Base",
+    "extension_support",
+    null,
+    false
+  ],
+  [
+    "moza",
+    "MOZA AY90 Yoke Base",
+    "throw_deg",
+    null,
+    180
+  ],
+  [
+    "moza",
+    "MOZA AY90 Yoke Base",
+    "axis_count",
+    null,
+    2
+  ],
+  [
+    "moza",
+    "MOZA MRP Adjustable Damper",
+    "force_adjustable",
+    null,
+    true
+  ],
+  [
+    "moza",
+    "MOZA MRP Adjustable Damper",
+    "cams_swappable",
+    null,
+    false
+  ],
+  [
+    "moza",
+    "MOZA MRP Adjustable Damper",
+    "damping",
+    null,
+    "adjustable passive mechanical damper"
+  ],
+  [
+    "moza",
+    "MOZA MRP Adjustable Damper",
+    "extension_support",
+    null,
+    false
+  ],
+  [
+    "moza",
+    "MOZA MRP Flight Rudder Pedals",
+    "sensor",
+    null,
+    "Hall effect"
+  ],
+  [
+    "moza",
+    "MOZA MRP Flight Rudder Pedals",
+    "gimbal",
+    null,
+    "swing-arm"
+  ],
+  [
+    "moza",
+    "MOZA MRP Flight Rudder Pedals",
+    "force_adjustable",
+    null,
+    true
+  ],
+  [
+    "moza",
+    "MOZA MRP Flight Rudder Pedals",
+    "cams_swappable",
+    null,
+    false
+  ],
+  [
+    "moza",
+    "MOZA MRP Flight Rudder Pedals",
+    "damping",
+    null,
+    "optional adjustable mechanical damper"
+  ],
+  [
+    "moza",
+    "MOZA MRP Flight Rudder Pedals",
+    "extension_support",
+    null,
+    false
+  ],
+  [
+    "moza",
+    "MOZA MRP Flight Rudder Pedals",
+    "axis_count",
+    null,
+    3
+  ],
+  [
+    "moza",
+    "MOZA MTQ Throttle",
+    "force_adjustable",
+    null,
+    true
+  ],
+  [
+    "moza",
+    "MOZA MTQ Throttle",
+    "cams_swappable",
+    null,
+    false
+  ],
+  [
+    "moza",
+    "MOZA MTQ Throttle",
+    "damping",
+    null,
+    "independently adjustable mechanical damping"
+  ],
+  [
+    "moza",
+    "MOZA MTQ Throttle",
+    "extension_support",
+    null,
+    false
+  ],
+  [
+    "moza",
+    "MOZA MTQ Throttle",
+    "axis_count",
+    null,
+    4
+  ],
+  [
+    "moza",
+    "MOZA Z-Axis Twist Module",
+    "sensor",
+    null,
+    "16-bit Hall effect"
+  ],
+  [
+    "moza",
+    "MOZA Z-Axis Twist Module",
+    "gimbal",
+    null,
+    "mechanical twist module"
+  ],
+  [
+    "moza",
+    "MOZA Z-Axis Twist Module",
+    "force_adjustable",
+    null,
+    false
+  ],
+  [
+    "moza",
+    "MOZA Z-Axis Twist Module",
+    "cams_swappable",
+    null,
+    false
+  ],
+  [
+    "moza",
+    "MOZA Z-Axis Twist Module",
+    "extension_support",
+    null,
+    false
+  ],
+  [
+    "moza",
+    "MOZA Z-Axis Twist Module",
+    "throw_deg",
+    null,
+    40
+  ],
+  [
+    "moza",
+    "MOZA Z-Axis Twist Module",
+    "axis_count",
+    null,
+    1
+  ],
+  [
+    "thrustmaster",
+    "AVA - Advanced Versatile Aviation Base",
+    "axis_count",
+    null,
+    2
+  ],
+  [
+    "thrustmaster",
+    "Sol-R 3 AVA Add-On Grip",
+    "sensor",
+    "hall",
+    "H.E.A.R.T. (Hall effect)"
+  ],
+  [
+    "thrustmaster",
+    "Sol-R 3 AVA Add-On Grip",
+    "axis_count",
+    null,
+    3
+  ],
+  [
+    "thrustmaster",
+    "Sol-R 5 Base",
+    "sensor",
+    "hall",
+    "16-bit Hall effect"
+  ],
+  [
+    "thrustmaster",
+    "Sol-R 5 Base",
+    "axis_count",
+    null,
+    3
+  ],
+  [
+    "thrustmaster",
+    "Sol-R 6 Throttle",
+    "gimbal",
+    null,
+    "sliding throttle rail"
+  ],
+  [
+    "thrustmaster",
+    "Sol-R 6 Throttle",
+    "cams_swappable",
+    null,
+    false
+  ],
+  [
+    "thrustmaster",
+    "Sol-R 6 Throttle",
+    "axis_count",
+    null,
+    5
+  ],
+  [
+    "thrustmaster",
+    "T.Flight HOTAS One",
+    "axis_count",
+    null,
+    5
+  ],
+  [
+    "thrustmaster",
+    "T.Flight HOTAS X",
+    "axis_count",
+    null,
+    5
+  ],
+  [
+    "thrustmaster",
+    "TCA SKY YOKE Xbox / PC",
+    "sensor",
+    "H.E.A.R.T. Hall effect magnetic sensors (16-bit)",
+    "16-bit H.E.A.R.T."
+  ],
+  [
+    "thrustmaster",
+    "TCA SKY YOKE Xbox / PC",
+    "throw_deg",
+    null,
+    180
+  ],
+  [
+    "vkb",
+    "GNX SEM Side Extension Module",
+    "axis_count",
+    null,
+    2
+  ]
+]

@@ -1,0 +1,132 @@
+import yaml
+
+text = """brand: logitech
+name: X56 Rhino Throttle
+category: throttle
+status: current
+handedness: n/a
+mount: null
+controls:
+  - type: lever
+    kind: throttle_dual
+    analog: true
+    count: 2
+    location: handle
+    label: Twin throttle levers
+    source: https://www.logitech.com/assets/65324/x56-hotas.pdf
+  - type: hat
+    location: handle
+    ways: 8
+    push: false
+    count: 2
+    label: Thumb hats
+    source: https://www.logitech.com/assets/65324/x56-hotas.pdf
+  - type: button
+    location: handle
+    backlit: false
+    label: Thumb button
+    source: https://www.logitech.com/assets/65324/x56-hotas.pdf
+  - type: analog_ministick
+    location: handle
+    push: true
+    label: Mini analog stick
+    source: https://www.logitech.com/assets/65324/x56-hotas.pdf
+  - type: rotary
+    mode: analog
+    count: 2
+    location: handle
+    label: Throttle handle rotary axes
+    notes: Four rotary axes are shown by manual/controller configuration; the throttle overview calls out rotary controls with inset buttons, but inset button count/layout is ambiguous, so not added as buttons.
+    source: https://www.logitech.com/assets/65324/x56-hotas.pdf
+  - type: slider
+    analog: false
+    positions: 2
+    location: handle
+    label: Two-position slider
+    source: https://www.logitech.com/assets/65324/x56-hotas.pdf
+  - type: toggle
+    ways: 3
+    momentary: false
+    location: base
+    label: Mode switch
+    source: https://www.logitech.com/assets/65324/x56-hotas.pdf
+  - type: toggle
+    count: 7
+    ways: 2
+    momentary: true
+    location: base
+    label: Base toggles
+    source: https://www.logitech.com/assets/65324/x56-hotas.pdf
+  - type: rotary
+    mode: analog
+    count: 2
+    location: base
+    label: Base rotary axes
+    source: https://www.logitech.com/assets/65324/x56-hotas.pdf
+controls_evidence:
+  coverage: complete
+  source: https://www.logitech.com/assets/65324/x56-hotas.pdf
+  checked: '2026-10-19'
+  notes: X56 user manual overview checked for exact separate unit. Rotary axes and inset button labeling are not clear enough to assert separate click-button counts; installed control types are otherwise covered.
+hardware:
+  gimbal: null
+  sensor: hall
+  axes:
+  - name: Throttle_Left
+    sensor: hall
+  - name: Throttle_Right
+    sensor: hall
+  force_adjustable: true
+  cams_swappable: false
+  extension_support: false
+connectivity:
+  usb: a_cable
+  standalone_usb: true
+software: Logitech G HUB
+physical:
+  weight_g: 1156
+  dimensions_mm: [225, 185, 170]
+  materials:
+  - abs
+prices:
+- region: EU
+  currency: EUR
+  amount: 150
+  incl_vat: true
+  store: amazon.de
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 129
+  incl_vat: true
+  store: amazon.co.uk
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 158
+  incl_vat: false
+  store: amazon.com
+  verified: '2026-10-01'
+  source: manual
+verification: draft
+sources:
+- https://www.logitechg.com/en-us/products/flight.html
+- https://www.logitechg.com/en-us/shop/p/x56-space-flight-vr-simulator-controller
+images:
+  - file: /images/logitech/x56-rhino-throttle.webp
+    source: https://www.logitechg.com/en-us/shop/p/x56-space-flight-vr-simulator-controller
+    caption: X56 Rhino Throttle
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Manual documents Windows setup through Windows Game Controllers and G HUB; no Xbox or PS5 statement appears in the manual or official SKU page. Console support remains unknown.
+  sources:
+  - https://www.logitech.com/assets/65324/x56-hotas.pdf
+"""
+
+with open("src/content/components/logitech/x56-rhino-throttle.yaml", "w", encoding="utf-8") as f:
+    f.write(text)
+print("Updated x56-rhino-throttle.yaml successfully")

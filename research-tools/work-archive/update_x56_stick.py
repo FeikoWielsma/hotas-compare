@@ -1,0 +1,120 @@
+import yaml
+
+text = """brand: logitech
+name: X56 Rhino Stick
+category: stick_fixed
+status: current
+handedness: right
+mount: null
+controls:
+  - type: trigger
+    location: grip
+    stages: 2
+    action: sequential
+    label: Two-stage trigger
+    source: https://www.logitech.com/assets/65324/x56-hotas.pdf
+  - type: button
+    location: grip
+    count: 2
+    backlit: true
+    label: Two stick head buttons
+    notes: Manual overview (p.3) lists stick buttons with trigger and two head buttons.
+    source: https://www.logitech.com/assets/65324/x56-hotas.pdf
+  - type: button
+    location: grip
+    count: 2
+    backlit: false
+    label: Pinkie and flying pinkie
+    notes: Manual overview (p.3) names both pinkie controls; whether each is a button, switch or lever is not stated.
+    source: https://www.logitech.com/assets/65324/x56-hotas.pdf
+  - type: hat
+    location: grip
+    ways: 8
+    push: false
+    count: 1
+    label: POV hat (A)
+    source: https://www.logitech.com/assets/65324/x56-hotas.pdf
+  - type: hat
+    location: grip
+    ways: 8
+    push: false
+    count: 2
+    label: Thumb hats (Witches and Castle)
+    notes: Manual overview (p.3) lists thumb HATs, Witches and Castle.
+    source: https://www.logitech.com/assets/65324/x56-hotas.pdf
+  - type: analog_ministick
+    location: grip
+    push: true
+    label: Mini analog stick (B)
+    source: https://www.logitech.com/assets/65324/x56-hotas.pdf
+controls_evidence:
+  coverage: complete
+  source: https://www.logitech.com/assets/65324/x56-hotas.pdf
+  checked: '2026-10-19'
+  notes: X56 user manual overview checked for exact separate unit. Rotary axes and inset button labeling are not clear enough to assert separate click-button counts; installed control types are otherwise covered.
+hardware:
+  gimbal: ball_joint
+  sensor: hall
+  axes:
+  - name: X
+    sensor: hall
+    resolution_bits: 16
+  - name: Y
+    sensor: hall
+    resolution_bits: 16
+  - name: Twist_Z
+    sensor: potentiometer
+  force_adjustable: true
+  cams_swappable: false
+  extension_support: false
+connectivity:
+  usb: a_cable
+  standalone_usb: true
+software: Logitech G HUB
+physical:
+  weight_g: 1123
+  dimensions_mm: [225, 185, 266]
+  materials:
+  - abs
+prices:
+- region: EU
+  currency: EUR
+  amount: 150
+  incl_vat: true
+  store: amazon.de
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 129
+  incl_vat: true
+  store: amazon.co.uk
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 158
+  incl_vat: false
+  store: amazon.com
+  verified: '2026-10-01'
+  source: manual
+verification: draft
+sources:
+- https://www.logitechg.com/en-us/products/flight.html
+- https://www.logitechg.com/en-us/shop/p/x56-space-flight-vr-simulator-controller
+images:
+  - file: /images/logitech/x56-rhino-stick.webp
+    source: https://www.logitechg.com/en-us/shop/p/x56-space-flight-vr-simulator-controller
+    caption: X56 Rhino Stick
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Manual documents Windows setup through Windows Game Controllers and G HUB; no Xbox or PS5 statement appears in the manual or official SKU page. Console support remains unknown.
+  sources:
+  - https://www.logitech.com/assets/65324/x56-hotas.pdf
+"""
+
+with open("src/content/components/logitech/x56-rhino-stick.yaml", "w", encoding="utf-8") as f:
+    f.write(text)
+print("Updated x56-rhino-stick.yaml successfully")

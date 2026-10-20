@@ -1,0 +1,102 @@
+import yaml
+
+text = """brand: logitech
+name: Logitech G Pro Flight Throttle Quadrant
+category: quadrant
+status: current
+handedness: n/a
+mount: null
+controls:
+  - type: lever
+    kind: throttle_single
+    analog: true
+    push: true
+    count: 3
+    location: panel
+    label: Detachable-knob levers
+    notes: Each lever has a bottom-travel detent that produces a button input; represented by push on each lever and also described by the detent group.
+    source: https://www.logitech.com/assets/65155/2/flight-throttle-quadrant.pdf
+  - type: detent
+    count: 3
+    customizable: false
+    location: panel
+    label: Lever bottom detents
+    notes: Each lever detent actuates a button at full-down position.
+    source: https://www.logitech.com/assets/65155/2/flight-throttle-quadrant.pdf
+  - type: rocker
+    location: base
+    count: 3
+    analog: false
+    push: false
+    label: Three 2-way base rocker switches
+    notes: Each rocker has two digital directions; six commands are not six separate pushbuttons.
+    source: https://www.logitech.com/assets/65155/2/flight-throttle-quadrant.pdf
+controls_evidence:
+  coverage: complete
+  source: https://www.logitech.com/assets/65155/2/flight-throttle-quadrant.pdf
+  checked: '2026-10-20'
+  notes: Logitech Flight Throttle Quadrant manual product-tour page 4 labels three analog levers with 0-button detents and three 2-way rocker switches. The six rocker directions are represented as three physical switches, not six pushbuttons. Coverage applies to this exact quadrant.
+hardware:
+  gimbal: null
+  sensor: potentiometer
+  axes:
+  - name: Throttle_1
+    sensor: potentiometer
+  - name: Throttle_2
+    sensor: potentiometer
+  - name: Throttle_3
+    sensor: potentiometer
+  force_adjustable: false
+  cams_swappable: false
+  extension_support: false
+connectivity:
+  usb: a_cable
+  standalone_usb: true
+software: Logitech G HUB
+physical:
+  weight_g: 501
+  dimensions_mm: [175, 175, 90]
+  materials:
+  - abs
+prices:
+- region: EU
+  currency: EUR
+  amount: 70
+  incl_vat: true
+  store: amazon.de
+  verified: '2026-10-01'\n  source: manual
+- region: UK
+  currency: GBP
+  amount: 60
+  incl_vat: true
+  store: amazon.co.uk
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 55.99
+  incl_vat: false
+  store: logitechg.com
+  url: https://www.logitechg.com/en-us/shop/p/flight-simulator-throttle-quadrant.945-000032
+  verified: '2026-10-19'
+  source: manual
+verification: draft
+sources:
+- https://www.logitechg.com/en-us/products/flight.html
+- https://www.logitechg.com/en-us/shop/p/flight-simulator-throttle-quadrant.945-000032
+images:
+  - file: /images/logitech/g-saitek-pro-flight-throttle-quadrant.png
+    source: https://www.logitechg.com/en-us/shop/p/flight-simulator-throttle-quadrant.945-000032
+    caption: Logitech G Pro Flight Throttle Quadrant
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: The official Flight Throttle Quadrant user guide documents Windows setup and use. The guide does not specify Xbox or PS5 support.
+  sources:
+  - https://www.logitech.com/assets/65155/2/flight-throttle-quadrant.pdf
+"""
+
+with open("src/content/components/logitech/g-saitek-pro-flight-throttle-quadrant.yaml", "w", encoding="utf-8") as f:
+    f.write(text)
+print("Updated g-saitek-pro-flight-throttle-quadrant.yaml successfully")

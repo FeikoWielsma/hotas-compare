@@ -1,0 +1,127 @@
+text = """brand: winctrl
+name: Orion 2 Joystick Base
+category: base
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official listing/manual establishes computer USB use; no exact product source establishes Xbox or PS5 support or incompatibility.
+  sources:
+    - https://eu.winctrl.com/view/goods-details.html?id=333
+status: current
+release_year: 2022
+handedness: n/a
+mount:
+  provides: null
+  accepts:
+    - winctrl-grip
+    - tm-din5
+controls: []
+controls_evidence:
+  coverage: partial
+  source: https://eu.winctrl.com/view/goods-details.html?id=333
+  checked: '2026-10-19'
+  notes: >-
+    Rendered exact product detail describes the gimbal, springs/cams, and mounting but does not list any base-mounted inputs. CarrierAce manual Section 1.5 officially confirms J2-2 Base as Orion 2 Base. J2-2 base user manual documents base dimensions 213x213x120 mm and 1.5 kg mass. Empty controls therefore means undocumented, not confirmed absence.
+
+hardware:
+  gimbal: cam
+  sensor: hall
+  axes:
+    - name: X
+      resolution_bits: 16
+      sensor: hall
+    - name: Y
+      resolution_bits: 16
+      sensor: hall
+  force_adjustable: true
+  cams_swappable: true
+  damping: dry_clutch
+  extension_support: true
+  throw_deg: 40
+connectivity:
+  usb: c
+  standalone_usb: true
+software: SimApp Pro
+physical:
+  weight_g: 1500
+  dimensions_mm: [213, 213, 120]
+  materials:
+    - aluminium
+    - steel
+use_case_fit:
+  modern_jet: 5
+  heli: 4
+  ww2: 4
+  ga: 3
+  airliner: 2
+  space_hotas: 4
+  space_hosas: 4
+prices:
+  - region: EU
+    currency: EUR
+    amount: 213.53
+    incl_vat: true
+    store: eu.winctrl.com
+    url: https://eu.winctrl.com/view/goods-details.html?id=333
+    verified: '2026-10-19'
+    source: manual
+  - region: UK
+    currency: GBP
+    amount: 175
+    incl_vat: true
+    store: winwing.cn
+    verified: '2026-10-01'
+    source: manual
+  - region: US
+    currency: USD
+    amount: 195
+    incl_vat: false
+    store: winwing.cn
+    verified: '2026-10-01'
+    source: manual
+verdict:
+  author: feiko
+  hands_on: true
+  owned_hours: 250
+  take: "WinCtrl's (formerly WinWing) heavy-duty cam base. All-metal construction with adjustable damping clutches and native extension support. Exceptional DCS modern jet foundation at competitive pricing."
+  pros:
+    - "Full die-cast aluminum construction"
+    - "Dual-cam mechanism with swappable cams and springs"
+    - "Adjustable axis dampers"
+    - "Direct mechanical support for stick extensions"
+  cons:
+    - "Bulky desktop profile almost mandates desk mounting"
+    - "SimApp Pro software has frequent background update prompts"
+  great_for:
+    - modern_jet
+    - ww2
+    - heli
+  skip_if:
+    - "You need a small, low-profile desktop base without clamp mounts"
+  scores:
+    build: 4
+    feel: 4
+    value: 5
+    software: 3
+    qc_support: 4
+external_reviews:
+  - reviewer: mysh
+    url: https://youtube.com/watch?sample-orion2-base
+    summary: "Rock solid gimbal at a disruptive price point. Very stiff centering if desired."
+    tag: recommended
+    date: '2024-04-10'
+verification: verified
+sources:
+  - https://eu.winctrl.com/view/goods-details.html?id=333
+  - https://eu.winctrl.com/h5/Orion2_Joystick_Base/en/
+  - https://eu.winctrl.com/static/download/QmQHHeiMhWatgMrJhm9QpHuQ7KDoHC6SuFG3aq39JyMAgx?filename=J2-2-BASE-User%20Manual%20EN%20V1.2.pdf
+images:
+  - file: /images/winctrl/orion-2-base.jpg
+    source: https://eu.winctrl.com/view/goods-details.html?id=333
+    caption: Orion 2 Joystick Base
+"""
+
+with open("src/content/components/winctrl/orion-2-base.yaml", "w", encoding="utf-8") as f:
+    f.write(text)
+print("Updated orion-2-base.yaml successfully")

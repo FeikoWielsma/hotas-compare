@@ -1,0 +1,5709 @@
+[
+  {
+    "id": "components/honeycomb/alpha-flight-controls-lite.yaml",
+    "brand": "honeycomb",
+    "name": "Alpha Flight Controls Lite",
+    "category": "yoke",
+    "gaps": [
+      "platform.ps5",
+      "controls[0].push",
+      "controls[1].analog",
+      "controls[1].push",
+      "controls[2].backlit",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.damping",
+      "software",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/honeycomb/alpha-flight-controls-xpc.yaml",
+    "brand": "honeycomb",
+    "name": "Alpha Flight Controls XPC",
+    "category": "yoke",
+    "gaps": [
+      "platform.ps5",
+      "controls[0].push",
+      "controls[1].analog",
+      "controls[1].push",
+      "controls[2].backlit",
+      "controls[3].push",
+      "controls[4].ways",
+      "controls[4].momentary",
+      "controls[4].push",
+      "controls[5].ways",
+      "controls[5].momentary",
+      "controls[5].push",
+      "controls[6].backlit"
+    ]
+  },
+  {
+    "id": "components/honeycomb/alpha-flight-controls-yoke.yaml",
+    "brand": "honeycomb",
+    "name": "Alpha Flight Controls Yoke",
+    "category": "yoke",
+    "gaps": [
+      "platform.ps5",
+      "controls[0].push",
+      "controls[1].analog",
+      "controls[1].push",
+      "controls[2].backlit",
+      "controls[3].push",
+      "controls[4].ways",
+      "controls[4].momentary",
+      "controls[4].push",
+      "controls[5].ways",
+      "controls[5].momentary",
+      "controls[5].push",
+      "hardware.sensor",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.extension_support"
+    ]
+  },
+  {
+    "id": "components/honeycomb/bravo-throttle-quadrant-lite.yaml",
+    "brand": "honeycomb",
+    "name": "Bravo Throttle Quadrant Lite",
+    "category": "quadrant",
+    "gaps": [
+      "controls[0].push",
+      "controls[1].push",
+      "controls[2].push",
+      "controls[3].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.materials",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/honeycomb/bravo-throttle-quadrant.yaml",
+    "brand": "honeycomb",
+    "name": "Bravo Throttle Quadrant",
+    "category": "quadrant",
+    "gaps": [
+      "platform.ps5",
+      "controls[0].push",
+      "controls[1].momentary",
+      "controls[1].push",
+      "controls[2].backlit",
+      "controls[3].backlit",
+      "controls[4].push",
+      "controls[5].push",
+      "controls[6].push",
+      "controls[7].push",
+      "controls[8].push",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.materials"
+    ]
+  },
+  {
+    "id": "components/honeycomb/charlie-rudder-pedals.yaml",
+    "brand": "honeycomb",
+    "name": "Charlie Rudder Pedals",
+    "category": "pedals",
+    "gaps": [
+      "platform.ps5",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "software"
+    ]
+  },
+  {
+    "id": "components/honeycomb/echo-aviation-controller.yaml",
+    "brand": "honeycomb",
+    "name": "Echo Aviation Controller",
+    "category": "stick_fixed",
+    "gaps": [
+      "platform.pc",
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[0].push",
+      "controls[1].backlit",
+      "controls[2].analog",
+      "controls[2].push",
+      "controls[3].mode",
+      "controls[3].positions",
+      "controls[3].push",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "software",
+      "prices.EU",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/honeycomb/foxtrot-aviation-stick.yaml",
+    "brand": "honeycomb",
+    "name": "Foxtrot Aviation Stick",
+    "category": "stick_fixed",
+    "gaps": [
+      "platform.ps5",
+      "controls[0].action",
+      "controls[1].push",
+      "controls[2].analog",
+      "controls[2].push",
+      "controls[3].backlit",
+      "controls[4].momentary",
+      "controls[4].push",
+      "controls[5].momentary",
+      "controls[5].push",
+      "controls[6].push",
+      "controls[7].push",
+      "controls[8].positions",
+      "controls[8].push",
+      "controls[8].momentary",
+      "controls[9].push",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/honeycomb/foxtrot-throttle-box.yaml",
+    "brand": "honeycomb",
+    "name": "Foxtrot Throttle Box",
+    "category": "quadrant",
+    "gaps": [
+      "platform.ps5",
+      "controls[0].push",
+      "controls[1].push",
+      "controls[2].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.materials",
+      "prices.EU",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/honeycomb/sierra-tpm-module.yaml",
+    "brand": "honeycomb",
+    "name": "Sierra TPM Module",
+    "category": "quadrant",
+    "gaps": [
+      "platform.ps5",
+      "controls[0].push",
+      "controls[1].push",
+      "controls[2].push",
+      "controls[3].push",
+      "controls[4].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/logitech/extreme-3d-pro.yaml",
+    "brand": "logitech",
+    "name": "Logitech Extreme 3D Pro",
+    "category": "stick_fixed",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "physical.dimensions_mm",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/logitech/flight-instrument-panel.yaml",
+    "brand": "logitech",
+    "name": "Logitech G Flight Instrument Panel",
+    "category": "module",
+    "gaps": [
+      "platform.pc",
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[0].backlit",
+      "controls[1].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "prices.EU",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/logitech/flight-multi-panel.yaml",
+    "brand": "logitech",
+    "name": "Logitech G Flight Multi Panel",
+    "category": "module",
+    "gaps": [
+      "platform.pc",
+      "platform.xbox",
+      "platform.ps5",
+      "controls[0].backlit",
+      "controls[1].momentary",
+      "controls[1].push",
+      "controls[2].analog",
+      "controls[2].push",
+      "controls[3].mode",
+      "controls[3].positions",
+      "controls[3].push",
+      "controls[4].push",
+      "controls[5].mode",
+      "controls[5].positions",
+      "controls[5].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "prices.EU",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/logitech/flight-radio-panel.yaml",
+    "brand": "logitech",
+    "name": "Logitech G Flight Radio Panel",
+    "category": "module",
+    "gaps": [
+      "platform.pc",
+      "platform.xbox",
+      "platform.ps5",
+      "controls[0].mode",
+      "controls[0].positions",
+      "controls[0].push",
+      "controls[1].push",
+      "controls[2].backlit",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "prices.EU",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/logitech/flight-switch-panel.yaml",
+    "brand": "logitech",
+    "name": "Logitech G Flight Switch Panel",
+    "category": "module",
+    "gaps": [
+      "platform.pc",
+      "platform.xbox",
+      "platform.ps5",
+      "controls[0].momentary",
+      "controls[0].push",
+      "controls[1].mode",
+      "controls[1].push",
+      "controls[2].analog",
+      "controls[2].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "prices.EU",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/logitech/g-saitek-pro-flight-rudder-pedals.yaml",
+    "brand": "logitech",
+    "name": "Logitech G Pro Flight Rudder Pedals",
+    "category": "pedals",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg"
+    ]
+  },
+  {
+    "id": "components/logitech/g-saitek-pro-flight-throttle-quadrant.yaml",
+    "brand": "logitech",
+    "name": "Logitech G Pro Flight Throttle Quadrant",
+    "category": "quadrant",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg"
+    ]
+  },
+  {
+    "id": "components/logitech/g-saitek-pro-flight-yoke.yaml",
+    "brand": "logitech",
+    "name": "Logitech G Flight Yoke System - Yoke",
+    "category": "yoke",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[0].push",
+      "controls[1].push",
+      "controls[2].backlit",
+      "controls[3].momentary",
+      "controls[3].push",
+      "controls[4].backlit",
+      "hardware.damping",
+      "hardware.throw_deg"
+    ]
+  },
+  {
+    "id": "components/logitech/x52-pro-flight-stick.yaml",
+    "brand": "logitech",
+    "name": "X52 Pro Flight Stick",
+    "category": "stick_fixed",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[4].push",
+      "controls[5].push",
+      "hardware.damping",
+      "hardware.throw_deg"
+    ]
+  },
+  {
+    "id": "components/logitech/x52-pro-throttle.yaml",
+    "brand": "logitech",
+    "name": "X52 Pro Throttle",
+    "category": "throttle",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[8].positions",
+      "controls[9].positions",
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg"
+    ]
+  },
+  {
+    "id": "components/logitech/x52-space-flight-stick.yaml",
+    "brand": "logitech",
+    "name": "Logitech G X52 Flight Stick",
+    "category": "stick_fixed",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[4].push",
+      "controls[5].push",
+      "controls[6].push",
+      "hardware.sensor",
+      "hardware.damping",
+      "hardware.throw_deg"
+    ]
+  },
+  {
+    "id": "components/logitech/x52-throttle.yaml",
+    "brand": "logitech",
+    "name": "X52 Throttle",
+    "category": "throttle",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[8].positions",
+      "controls[8].center_detent",
+      "controls[9].positions",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg"
+    ]
+  },
+  {
+    "id": "components/logitech/x56-rhino-stick.yaml",
+    "brand": "logitech",
+    "name": "X56 Rhino Stick",
+    "category": "stick_fixed",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "hardware.damping",
+      "hardware.throw_deg"
+    ]
+  },
+  {
+    "id": "components/logitech/x56-rhino-throttle.yaml",
+    "brand": "logitech",
+    "name": "X56 Rhino Throttle",
+    "category": "throttle",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[0].push",
+      "controls[4].positions",
+      "controls[4].push",
+      "controls[5].center_detent",
+      "controls[6].push",
+      "controls[7].push",
+      "controls[8].positions",
+      "controls[8].push",
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg"
+    ]
+  },
+  {
+    "id": "components/mfg/crosswind-cessna-footrests.yaml",
+    "brand": "mfg",
+    "name": "Crosswind Cessna Footrests",
+    "category": "module",
+    "gaps": [
+      "platform.pc",
+      "platform.xbox",
+      "platform.ps5",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials"
+    ]
+  },
+  {
+    "id": "components/mfg/crosswind-combat-footrests.yaml",
+    "brand": "mfg",
+    "name": "Crosswind ME-109 Combat Footrests",
+    "category": "module",
+    "gaps": [
+      "platform.pc",
+      "platform.xbox",
+      "platform.ps5",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials"
+    ]
+  },
+  {
+    "id": "components/mfg/crosswind-hydraulic-damper.yaml",
+    "brand": "mfg",
+    "name": "Crosswind Hydraulic Damper",
+    "category": "module",
+    "gaps": [
+      "platform.pc",
+      "platform.xbox",
+      "platform.ps5",
+      "hardware.cams_swappable",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm"
+    ]
+  },
+  {
+    "id": "components/mfg/crosswind-v3-graphite-pedals.yaml",
+    "brand": "mfg",
+    "name": "Crosswind V3 Graphite Rudder Pedals",
+    "category": "pedals",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm"
+    ]
+  },
+  {
+    "id": "components/moza/ab6-force-feedback-base.yaml",
+    "brand": "moza",
+    "name": "MOZA AB6 Force Feedback Base",
+    "category": "base",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[1].positions",
+      "controls[1].center_detent",
+      "hardware.throw_deg",
+      "prices.EU",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/moza/ab9-force-feedback-base.yaml",
+    "brand": "moza",
+    "name": "MOZA AB9 Force Feedback Base",
+    "category": "base",
+    "gaps": [
+      "hardware.extension_support",
+      "hardware.throw_deg"
+    ]
+  },
+  {
+    "id": "components/moza/ay210-yoke-base.yaml",
+    "brand": "moza",
+    "name": "MOZA AY210 Yoke Base",
+    "category": "base",
+    "gaps": [
+      "controls.inventory",
+      "controls[0].positions",
+      "controls[0].push",
+      "controls[0].momentary"
+    ]
+  },
+  {
+    "id": "components/moza/ay90-yoke-base.yaml",
+    "brand": "moza",
+    "name": "MOZA AY90 Yoke Base",
+    "category": "base",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[0].push",
+      "controls[1].push",
+      "controls[2].positions",
+      "controls[2].center_detent",
+      "controls[3].positions",
+      "controls[3].push"
+    ]
+  },
+  {
+    "id": "components/moza/ma3f-efcm.yaml",
+    "brand": "moza",
+    "name": "MOZA MA3F EFCM Main Module",
+    "category": "module",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[2].mode",
+      "controls[2].positions",
+      "controls[2].push",
+      "controls[3].mode",
+      "controls[3].positions",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.dimensions_mm",
+      "software",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/moza/ma3f-fcd.yaml",
+    "brand": "moza",
+    "name": "MOZA MA3F Flight Computer Display",
+    "category": "module",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[0].backlit",
+      "controls[1].backlit",
+      "controls[2].backlit",
+      "controls[3].backlit",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.dimensions_mm",
+      "software",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/moza/ma3x-side-stick.yaml",
+    "brand": "moza",
+    "name": "MOZA MA3X Side Stick",
+    "category": "grip",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[0].backlit",
+      "controls[1].stages",
+      "controls[1].action",
+      "controls[2].push",
+      "controls[3].ways",
+      "controls[3].momentary",
+      "controls[3].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.dimensions_mm",
+      "connectivity.usb"
+    ]
+  },
+  {
+    "id": "components/moza/mb7f-fcd.yaml",
+    "brand": "moza",
+    "name": "MOZA MB7F Flight Computer Display",
+    "category": "module",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[0].backlit",
+      "controls[1].backlit",
+      "controls[2].backlit",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.dimensions_mm",
+      "software",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/moza/mfy-yoke-handle.yaml",
+    "brand": "moza",
+    "name": "MOZA MFY Yoke Handle",
+    "category": "yoke",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[0].push",
+      "controls[1].push",
+      "controls[2].backlit",
+      "controls[3].stages",
+      "controls[3].action",
+      "controls[4].backlit",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "connectivity.usb",
+      "connectivity.standalone_usb",
+      "software",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/moza/mfy-yoke-pro.yaml",
+    "brand": "moza",
+    "name": "MOZA MFY Yoke Pro",
+    "category": "yoke",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[0].push",
+      "controls[1].push",
+      "controls[2].backlit",
+      "controls[3].backlit",
+      "controls[4].stages",
+      "controls[4].action",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.weight_g",
+      "connectivity.usb"
+    ]
+  },
+  {
+    "id": "components/moza/mgx1000.yaml",
+    "brand": "moza",
+    "name": "MOZA MGX1000 Instrument Panel",
+    "category": "module",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[0].mode",
+      "controls[0].positions",
+      "controls[1].mode",
+      "controls[1].positions",
+      "controls[1].push",
+      "controls[2].backlit",
+      "controls[3].backlit",
+      "controls[4].backlit",
+      "controls[5].backlit",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.dimensions_mm",
+      "software",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/moza/mh16-flight-grip.yaml",
+    "brand": "moza",
+    "name": "MOZA MH16 Flightstick Grip",
+    "category": "grip",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[0].action",
+      "controls[1].backlit",
+      "controls[2].ways",
+      "controls[2].push",
+      "controls[3].positions",
+      "controls[3].push",
+      "controls[3].momentary",
+      "controls[4].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.weight_g",
+      "connectivity.usb"
+    ]
+  },
+  {
+    "id": "components/moza/mhg-flight-grip.yaml",
+    "brand": "moza",
+    "name": "MOZA MHG Flight Grip",
+    "category": "grip",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[0].action",
+      "controls[1].push",
+      "controls[2].backlit",
+      "controls[4].backlit",
+      "controls[5].backlit",
+      "controls[6].push",
+      "controls[7].momentary",
+      "controls[7].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g"
+    ]
+  },
+  {
+    "id": "components/moza/mrp-adjustable-damper.yaml",
+    "brand": "moza",
+    "name": "MOZA MRP Adjustable Damper",
+    "category": "module",
+    "gaps": [
+      "platform.pc",
+      "platform.xbox",
+      "platform.ps5",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.cams_swappable",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "connectivity.usb",
+      "software",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/moza/mrp-rudder-pedals.yaml",
+    "brand": "moza",
+    "name": "MOZA MRP Flight Rudder Pedals",
+    "category": "pedals",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "hardware.throw_deg"
+    ]
+  },
+  {
+    "id": "components/moza/mtlp-panel.yaml",
+    "brand": "moza",
+    "name": "MOZA MTLP Panel",
+    "category": "module",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[0].push",
+      "controls[1].backlit",
+      "controls[2].momentary",
+      "controls[2].push",
+      "controls[3].momentary",
+      "controls[3].push",
+      "controls[4].momentary",
+      "controls[4].push",
+      "controls[5].momentary",
+      "controls[5].push",
+      "controls[6].momentary",
+      "controls[6].push",
+      "controls[7].push",
+      "controls[8].push",
+      "controls[9].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/moza/mtp-throttle.yaml",
+    "brand": "moza",
+    "name": "MOZA MTP Flight Throttle",
+    "category": "throttle",
+    "gaps": [
+      "controls.inventory",
+      "controls[0].push",
+      "controls[2].push",
+      "controls[3].positions",
+      "controls[3].push",
+      "controls[3].momentary",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg"
+    ]
+  },
+  {
+    "id": "components/moza/mtq-throttle.yaml",
+    "brand": "moza",
+    "name": "MOZA MTQ Throttle",
+    "category": "throttle",
+    "gaps": [
+      "controls.inventory",
+      "controls[0].push",
+      "controls[1].push",
+      "controls[2].push",
+      "controls[3].push",
+      "controls[5].mode",
+      "controls[5].positions",
+      "controls[5].push",
+      "controls[6].positions",
+      "controls[6].push",
+      "controls[6].momentary",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.throw_deg",
+      "physical.weight_g"
+    ]
+  },
+  {
+    "id": "components/moza/tqa-throttle-module.yaml",
+    "brand": "moza",
+    "name": "MOZA TQA Throttle Module",
+    "category": "module",
+    "gaps": [
+      "controls[0].push",
+      "controls[1].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "connectivity.usb",
+      "connectivity.standalone_usb",
+      "software"
+    ]
+  },
+  {
+    "id": "components/moza/tqb-throttle-module.yaml",
+    "brand": "moza",
+    "name": "MOZA TQB Throttle Module",
+    "category": "module",
+    "gaps": [
+      "controls[0].push",
+      "controls[1].push",
+      "controls[2].backlit",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "connectivity.usb",
+      "connectivity.standalone_usb",
+      "software"
+    ]
+  },
+  {
+    "id": "components/moza/z-axis-twist-module.yaml",
+    "brand": "moza",
+    "name": "MOZA Z-Axis Twist Module",
+    "category": "module",
+    "gaps": [
+      "platform.pc",
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[0].push",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "connectivity.usb",
+      "software"
+    ]
+  },
+  {
+    "id": "components/slaw/rf-dora-v3-rudder-pedals.yaml",
+    "brand": "slaw",
+    "name": "RF Dora V3 Rudder Pedals",
+    "category": "pedals",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/slaw/rotor-pedals.yaml",
+    "brand": "slaw",
+    "name": "RH Rotor Pedals",
+    "category": "pedals",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "hardware.throw_deg",
+      "physical.dimensions_mm",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/slaw/rx-viper-v3-rudder-pedals.yaml",
+    "brand": "slaw",
+    "name": "RX Viper V3 Rudder Pedals",
+    "category": "pedals",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/slaw/slaw-damper-kit.yaml",
+    "brand": "slaw",
+    "name": "Slaw Device Damper Kit",
+    "category": "module",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "prices.EU",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/slaw/viper-v2-rudder-pedals.yaml",
+    "brand": "slaw",
+    "name": "Viper V2 Rudder Pedals",
+    "category": "pedals",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "prices.EU",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/airbus-add-on-grip.yaml",
+    "brand": "thrustmaster",
+    "name": "AIRBUS Add-On Grip",
+    "category": "grip",
+    "gaps": [
+      "controls.inventory",
+      "controls[0].backlit",
+      "controls[1].stages",
+      "controls[1].action",
+      "controls[2].push",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "software"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/ava-base.yaml",
+    "brand": "thrustmaster",
+    "name": "AVA - Advanced Versatile Aviation Base",
+    "category": "base",
+    "gaps": [
+      "controls[0].backlit",
+      "hardware.throw_deg"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/f-16c-viper-hotas-add-on-grip.yaml",
+    "brand": "thrustmaster",
+    "name": "Viper HOTAS Add-On Grip",
+    "category": "grip",
+    "gaps": [
+      "controls[0].action",
+      "controls[1].push",
+      "controls[2].push",
+      "controls[4].backlit",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "software",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/f-a-18c-hornet-hotas-add-on-grip.yaml",
+    "brand": "thrustmaster",
+    "name": "F/A-18C Hornet HOTAS Add-On Grip",
+    "category": "grip",
+    "gaps": [
+      "controls[0].action",
+      "controls[1].push",
+      "controls[3].momentary",
+      "controls[4].backlit",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "software",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/omni-extension.yaml",
+    "brand": "thrustmaster",
+    "name": "OMNI Extension",
+    "category": "module",
+    "gaps": [
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "connectivity.usb",
+      "software"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/sol-r-3-ava-add-on-grip.yaml",
+    "brand": "thrustmaster",
+    "name": "Sol-R 3 AVA Add-On Grip",
+    "category": "grip",
+    "gaps": [
+      "controls[0].action",
+      "controls[1].stages",
+      "controls[1].action",
+      "controls[5].backlit",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.materials"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/sol-r-5-base.yaml",
+    "brand": "thrustmaster",
+    "name": "Sol-R 5 Base",
+    "category": "base",
+    "gaps": [
+      "controls[0].momentary",
+      "controls[0].push",
+      "controls[2].push",
+      "controls[3].push",
+      "controls[5].push",
+      "controls[5].momentary",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.materials"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/sol-r-6-throttle.yaml",
+    "brand": "thrustmaster",
+    "name": "Sol-R 6 Throttle",
+    "category": "throttle",
+    "gaps": [
+      "controls[0].push",
+      "controls[1].backlit",
+      "controls[2].push",
+      "controls[3].push",
+      "controls[5].positions",
+      "controls[5].push",
+      "controls[6].push",
+      "controls[8].momentary",
+      "controls[8].push",
+      "hardware.sensor",
+      "hardware.force_adjustable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.materials"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/sol-r-stick.yaml",
+    "brand": "thrustmaster",
+    "name": "Sol-R 1 Flightstick",
+    "category": "stick_fixed",
+    "gaps": [
+      "controls[1].action",
+      "controls[2].stages",
+      "controls[2].action",
+      "controls[5].push",
+      "controls[6].momentary",
+      "controls[6].push",
+      "controls[8].push",
+      "controls[10].backlit",
+      "controls[11].push",
+      "controls[11].momentary",
+      "hardware.damping",
+      "hardware.throw_deg"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/t-flight-hotas-4.yaml",
+    "brand": "thrustmaster",
+    "name": "T.Flight HOTAS 4",
+    "category": "stick_fixed",
+    "gaps": [
+      "controls.inventory",
+      "controls[0].push",
+      "controls[2].analog",
+      "controls[2].push",
+      "controls[3].ways",
+      "controls[3].push",
+      "controls[4].backlit",
+      "controls[4].location",
+      "controls[5].backlit",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "software"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/t-flight-hotas-5-msfs-edition.yaml",
+    "brand": "thrustmaster",
+    "name": "T.Flight Hotas 5 Microsoft Flight Simulator Edition",
+    "category": "stick_fixed",
+    "gaps": [
+      "controls[0].stages",
+      "controls[0].action",
+      "controls[1].ways",
+      "controls[1].push",
+      "controls[2].backlit",
+      "controls[3].backlit",
+      "controls[4].backlit",
+      "controls[5].push",
+      "controls[6].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.materials",
+      "software",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/t-flight-hotas-neo-ace-combat-8-ps.yaml",
+    "brand": "thrustmaster",
+    "name": "T.FLIGHT HOTAS NEO Ace Combat 8 Wings of Theve Edition PlayStation / PC",
+    "category": "stick_fixed",
+    "gaps": [
+      "controls.inventory",
+      "controls[0].ways",
+      "controls[0].push",
+      "controls[1].push",
+      "controls[2].stages",
+      "controls[2].action",
+      "controls[3].backlit",
+      "controls[4].push",
+      "controls[5].backlit",
+      "controls[5].location",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.materials",
+      "software"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/t-flight-hotas-neo-ace-combat-8-xbox-pc.yaml",
+    "brand": "thrustmaster",
+    "name": "T.FLIGHT HOTAS NEO Ace Combat 8 Wings of Theve Edition Xbox / PC",
+    "category": "stick_fixed",
+    "gaps": [
+      "controls.inventory",
+      "controls[0].ways",
+      "controls[0].push",
+      "controls[1].push",
+      "controls[2].stages",
+      "controls[2].action",
+      "controls[3].backlit",
+      "controls[4].push",
+      "controls[5].backlit",
+      "controls[5].location",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.materials",
+      "software"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/t-flight-hotas-one-msfs-edition.yaml",
+    "brand": "thrustmaster",
+    "name": "T.Flight Hotas One Microsoft Flight Simulator Edition",
+    "category": "stick_fixed",
+    "gaps": [
+      "controls.inventory",
+      "controls[0].stages",
+      "controls[0].action",
+      "controls[1].ways",
+      "controls[1].push",
+      "controls[2].push",
+      "controls[3].push",
+      "controls[4].backlit",
+      "controls[4].location",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.materials",
+      "connectivity.usb",
+      "software",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/t-flight-hotas-one-x.yaml",
+    "brand": "thrustmaster",
+    "name": "T.Flight HOTAS One",
+    "category": "stick_fixed",
+    "gaps": [
+      "controls.inventory",
+      "controls[0].action",
+      "controls[1].push",
+      "controls[2].push",
+      "controls[3].backlit",
+      "controls[3].location",
+      "hardware.damping",
+      "hardware.throw_deg"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/t-flight-hotas-x.yaml",
+    "brand": "thrustmaster",
+    "name": "T.Flight HOTAS X",
+    "category": "stick_fixed",
+    "gaps": [
+      "controls.inventory",
+      "controls[0].push",
+      "controls[2].push",
+      "controls[3].ways",
+      "controls[3].push",
+      "controls[4].backlit",
+      "controls[4].location",
+      "controls[5].backlit",
+      "controls[6].backlit",
+      "controls[7].backlit",
+      "controls[8].positions",
+      "controls[8].push",
+      "controls[8].momentary",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.materials",
+      "software"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/t-flight-rudder-pedals-tfrp.yaml",
+    "brand": "thrustmaster",
+    "name": "T.Flight Rudder Pedals (TFRP)",
+    "category": "pedals",
+    "gaps": [
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/t-flight-stick-x.yaml",
+    "brand": "thrustmaster",
+    "name": "T.Flight Stick X",
+    "category": "stick_fixed",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[0].ways",
+      "controls[0].push",
+      "controls[1].backlit",
+      "controls[1].location",
+      "controls[2].backlit",
+      "controls[3].backlit",
+      "controls[4].positions",
+      "controls[4].center_detent",
+      "controls[6].push",
+      "controls[6].momentary",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.materials",
+      "software",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/t16000m-fcs-stick.yaml",
+    "brand": "thrustmaster",
+    "name": "T.16000M FCS Flight Stick",
+    "category": "stick_fixed",
+    "gaps": [
+      "controls[0].action",
+      "controls[1].push",
+      "controls[2].backlit",
+      "controls[3].backlit",
+      "controls[4].positions",
+      "controls[4].center_detent",
+      "hardware.damping"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/tca-quadrant-add-on-airbus.yaml",
+    "brand": "thrustmaster",
+    "name": "TCA Quadrant Add-On Airbus Edition",
+    "category": "module",
+    "gaps": [
+      "controls.inventory",
+      "controls[0].push",
+      "controls[1].customizable",
+      "controls[2].backlit",
+      "controls[3].push",
+      "controls[4].customizable",
+      "controls[5].backlit",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.materials",
+      "software",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/tca-quadrant-airbus.yaml",
+    "brand": "thrustmaster",
+    "name": "TCA Quadrant Airbus Edition",
+    "category": "quadrant",
+    "gaps": [
+      "controls[0].push",
+      "controls[2].backlit",
+      "controls[3].backlit",
+      "controls[4].momentary",
+      "controls[4].push",
+      "controls[5].push",
+      "controls[6].push",
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/tca-quadrant-boeing.yaml",
+    "brand": "thrustmaster",
+    "name": "TCA Quadrant Boeing Edition",
+    "category": "quadrant",
+    "gaps": [
+      "controls.inventory",
+      "controls[0].push",
+      "controls[1].push",
+      "controls[2].backlit",
+      "controls[3].backlit",
+      "controls[4].momentary",
+      "controls[4].push",
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/tca-sidestick-airbus.yaml",
+    "brand": "thrustmaster",
+    "name": "TCA Sidestick Airbus Edition",
+    "category": "stick_fixed",
+    "gaps": [
+      "controls.inventory",
+      "controls[0].action",
+      "controls[1].ways",
+      "controls[1].push",
+      "controls[2].backlit",
+      "controls[3].backlit",
+      "controls[4].push",
+      "controls[4].momentary",
+      "controls[5].push",
+      "hardware.damping",
+      "hardware.throw_deg"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/tca-sidestick-x-airbus.yaml",
+    "brand": "thrustmaster",
+    "name": "TCA Sidestick X Airbus Edition",
+    "category": "stick_fixed",
+    "gaps": [
+      "controls[0].stages",
+      "controls[0].action",
+      "controls[1].ways",
+      "controls[1].push",
+      "controls[2].backlit",
+      "controls[3].push",
+      "controls[5].push",
+      "controls[5].momentary",
+      "controls[6].push",
+      "controls[6].momentary",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.materials",
+      "software",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/tca-sky-yoke-ps-pc.yaml",
+    "brand": "thrustmaster",
+    "name": "TCA SKY YOKE PlayStation / PC",
+    "category": "yoke",
+    "gaps": [
+      "controls.inventory",
+      "controls[0].push",
+      "controls[1].push",
+      "controls[2].stages",
+      "controls[2].action",
+      "controls[3].push",
+      "controls[4].positions",
+      "controls[4].push",
+      "controls[5].backlit",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.extension_support",
+      "physical.materials",
+      "software",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/tca-sky-yoke.yaml",
+    "brand": "thrustmaster",
+    "name": "TCA SKY YOKE Xbox / PC",
+    "category": "yoke",
+    "gaps": [
+      "controls.inventory",
+      "controls[0].push",
+      "controls[1].push",
+      "controls[2].stages",
+      "controls[2].action",
+      "controls[3].push",
+      "controls[4].positions",
+      "controls[4].push",
+      "controls[5].backlit",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.extension_support",
+      "physical.materials",
+      "software",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/tca-yoke-boeing.yaml",
+    "brand": "thrustmaster",
+    "name": "TCA Yoke Boeing Edition",
+    "category": "yoke",
+    "gaps": [
+      "controls.inventory",
+      "controls[0].push",
+      "controls[1].push",
+      "controls[1].location",
+      "controls[2].backlit",
+      "controls[3].location",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "physical.weight_g"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/tpr-pendular-rudder.yaml",
+    "brand": "thrustmaster",
+    "name": "TPR PENDUL_R Rudder Pedals",
+    "category": "pedals",
+    "gaps": [
+      "hardware.damping",
+      "hardware.throw_deg",
+      "physical.dimensions_mm"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/twcs-throttle.yaml",
+    "brand": "thrustmaster",
+    "name": "TWCS Throttle",
+    "category": "throttle",
+    "gaps": [
+      "controls[0].push",
+      "controls[1].push",
+      "controls[2].push",
+      "controls[4].push",
+      "controls[5].positions",
+      "controls[5].push",
+      "controls[6].backlit",
+      "controls[7].push",
+      "hardware.gimbal"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/viper-bap-panel.yaml",
+    "brand": "thrustmaster",
+    "name": "Viper Mission Pack BAP Panel",
+    "category": "module",
+    "gaps": [
+      "controls.inventory",
+      "controls[0].backlit",
+      "controls[1].positions",
+      "controls[1].push",
+      "controls[2].backlit",
+      "controls[3].push",
+      "controls[4].push",
+      "controls[5].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/viper-tqs-throttle.yaml",
+    "brand": "thrustmaster",
+    "name": "Viper TQS",
+    "category": "throttle",
+    "gaps": [
+      "controls.inventory",
+      "controls[0].push",
+      "controls[4].backlit",
+      "controls[5].positions",
+      "controls[5].push",
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/warthog-base.yaml",
+    "brand": "thrustmaster",
+    "name": "HOTAS Warthog Magnetic Flight Base",
+    "category": "base",
+    "gaps": [
+      "hardware.damping",
+      "hardware.throw_deg"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/warthog-dual-throttle.yaml",
+    "brand": "thrustmaster",
+    "name": "HOTAS Warthog Dual Throttle",
+    "category": "throttle",
+    "gaps": [
+      "controls.inventory",
+      "controls[0].push",
+      "controls[0].location",
+      "controls[1].location",
+      "controls[5].backlit",
+      "controls[6].backlit",
+      "controls[7].push",
+      "controls[8].momentary",
+      "controls[8].push",
+      "controls[9].momentary",
+      "controls[9].push",
+      "controls[10].momentary",
+      "controls[10].push",
+      "controls[11].push",
+      "controls[12].momentary",
+      "controls[12].push",
+      "controls[13].positions",
+      "controls[13].push",
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/warthog-mkii-base.yaml",
+    "brand": "thrustmaster",
+    "name": "HOTAS Warthog MKII Base",
+    "category": "base",
+    "gaps": [
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg"
+    ]
+  },
+  {
+    "id": "components/thrustmaster/warthog-stick-grip.yaml",
+    "brand": "thrustmaster",
+    "name": "HOTAS Warthog A-10C Flight Stick Grip",
+    "category": "grip",
+    "gaps": [
+      "controls[4].backlit",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.weight_g",
+      "physical.dimensions_mm"
+    ]
+  },
+  {
+    "id": "components/turtle-beach/velocityone-dual-throttle.yaml",
+    "brand": "turtle-beach",
+    "name": "VelocityOne Dual Throttle",
+    "category": "throttle",
+    "gaps": [
+      "platform.ps5",
+      "controls[0].push",
+      "controls[0].location",
+      "controls[1].push",
+      "controls[3].positions",
+      "controls[3].push",
+      "controls[4].push",
+      "controls[5].push",
+      "controls[6].push",
+      "controls[7].backlit",
+      "controls[8].backlit",
+      "controls[9].ways",
+      "controls[9].momentary",
+      "controls[9].push",
+      "controls[10].mode",
+      "controls[10].positions",
+      "controls[11].backlit",
+      "hardware.gimbal",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.materials",
+      "software"
+    ]
+  },
+  {
+    "id": "components/turtle-beach/velocityone-flight-yoke-system.yaml",
+    "brand": "turtle-beach",
+    "name": "VelocityOne Flight Yoke System",
+    "category": "yoke",
+    "gaps": [
+      "platform.ps5",
+      "controls[0].location",
+      "controls[1].push",
+      "controls[2].push",
+      "controls[3].push",
+      "controls[4].stages",
+      "controls[4].action",
+      "controls[5].backlit",
+      "controls[6].backlit",
+      "controls[7].backlit",
+      "controls[8].backlit",
+      "controls[9].positions",
+      "controls[9].push",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "physical.weight_g",
+      "physical.materials"
+    ]
+  },
+  {
+    "id": "components/turtle-beach/velocityone-flightdeck.yaml",
+    "brand": "turtle-beach",
+    "name": "VelocityOne Flightdeck",
+    "category": "stick_fixed",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[0].push",
+      "controls[1].push",
+      "controls[2].push",
+      "controls[3].push",
+      "controls[4].push",
+      "controls[9].backlit",
+      "controls[10].backlit",
+      "controls[11].backlit",
+      "controls[12].momentary",
+      "controls[12].push",
+      "controls[13].push",
+      "controls[13].momentary",
+      "controls[14].push",
+      "controls[15].push",
+      "controls[17].backlit",
+      "controls[18].backlit",
+      "controls[19].push",
+      "controls[20].momentary",
+      "controls[20].push",
+      "controls[21].push",
+      "controls[22].positions",
+      "controls[23].push",
+      "controls[25].positions",
+      "controls[25].push",
+      "controls[26].push",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.dimensions_mm",
+      "physical.materials"
+    ]
+  },
+  {
+    "id": "components/turtle-beach/velocityone-flightstick-ii.yaml",
+    "brand": "turtle-beach",
+    "name": "VelocityOne Flightstick II",
+    "category": "stick_fixed",
+    "gaps": [
+      "platform.ps5",
+      "controls[0].push",
+      "controls[3].backlit",
+      "controls[4].backlit",
+      "controls[5].stages",
+      "controls[5].action",
+      "controls[6].push",
+      "controls[7].push",
+      "controls[8].push",
+      "controls[8].momentary",
+      "controls[9].backlit",
+      "controls[10].backlit",
+      "hardware.gimbal",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.materials",
+      "software"
+    ]
+  },
+  {
+    "id": "components/turtle-beach/velocityone-flightstick.yaml",
+    "brand": "turtle-beach",
+    "name": "VelocityOne Flightstick",
+    "category": "stick_fixed",
+    "gaps": [
+      "platform.ps5",
+      "controls[0].push",
+      "controls[0].location",
+      "controls[1].location",
+      "controls[2].stages",
+      "controls[2].action",
+      "controls[2].location",
+      "controls[3].location",
+      "controls[4].backlit",
+      "controls[4].location",
+      "controls[5].backlit",
+      "controls[5].location",
+      "controls[6].backlit",
+      "controls[6].location",
+      "controls[7].location",
+      "controls[8].mode",
+      "controls[8].positions",
+      "controls[8].push",
+      "controls[8].location",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.materials"
+    ]
+  },
+  {
+    "id": "components/turtle-beach/velocityone-rudder-pedals.yaml",
+    "brand": "turtle-beach",
+    "name": "VelocityOne Rudder Pedals",
+    "category": "pedals",
+    "gaps": [
+      "platform.ps5",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "software"
+    ]
+  },
+  {
+    "id": "components/virpil/archer-sf-cyclic-grip.yaml",
+    "brand": "virpil",
+    "name": "Archer-SF Cyclic Grip",
+    "category": "grip",
+    "gaps": [
+      "controls[1].backlit",
+      "controls[2].backlit",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials"
+    ]
+  },
+  {
+    "id": "components/virpil/atlas-ffb-base.yaml",
+    "brand": "virpil",
+    "name": "VPC ATLAS FFB Base",
+    "category": "base",
+    "gaps": [
+      "controls[0].backlit",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "connectivity.usb",
+      "prices.EU",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/virpil/atlas-pro-ffb-base.yaml",
+    "brand": "virpil",
+    "name": "VPC ATLAS PRO FFB Base",
+    "category": "base",
+    "gaps": [
+      "controls[0].backlit",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "connectivity.usb",
+      "prices.EU",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/virpil/b-jet-ministick-module.yaml",
+    "brand": "virpil",
+    "name": "VPC B-JET Ministick Module",
+    "category": "module",
+    "gaps": [
+      "controls[1].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "software",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/virpil/b-jet-yoke-handle.yaml",
+    "brand": "virpil",
+    "name": "VPC B-JET Yoke Handle",
+    "category": "grip",
+    "gaps": [
+      "controls[0].analog",
+      "controls[0].push",
+      "controls[1].positions",
+      "controls[1].push",
+      "controls[1].momentary",
+      "controls[4].backlit",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "software",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/virpil/cdt-aero-l-grip.yaml",
+    "brand": "virpil",
+    "name": "CDT-AERO-L Grip",
+    "category": "grip",
+    "gaps": [
+      "controls[3].push",
+      "controls[4].backlit",
+      "controls[6].push",
+      "controls[7].positions",
+      "controls[7].center_detent",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials"
+    ]
+  },
+  {
+    "id": "components/virpil/cdt-aero-r-grip.yaml",
+    "brand": "virpil",
+    "name": "CDT-AERO-R Grip",
+    "category": "grip",
+    "gaps": [
+      "controls[3].push",
+      "controls[4].backlit",
+      "controls[6].push",
+      "controls[7].positions",
+      "controls[7].center_detent",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials"
+    ]
+  },
+  {
+    "id": "components/virpil/cdt-aeromax-l-flightstick.yaml",
+    "brand": "virpil",
+    "name": "VPC CDT-Aeromax [L] Flightstick",
+    "category": "stick_fixed",
+    "gaps": [
+      "controls[4].backlit",
+      "controls[5].push",
+      "controls[6].push",
+      "controls[7].positions",
+      "controls[7].center_detent",
+      "physical.dimensions_mm"
+    ]
+  },
+  {
+    "id": "components/virpil/cdt-aeromax-lz-flightstick.yaml",
+    "brand": "virpil",
+    "name": "VPC CDT-Aeromax [LZ] Flightstick",
+    "category": "stick_fixed",
+    "gaps": [
+      "controls[4].backlit",
+      "controls[5].push",
+      "controls[6].push",
+      "controls[7].positions",
+      "controls[7].center_detent",
+      "physical.dimensions_mm"
+    ]
+  },
+  {
+    "id": "components/virpil/cdt-aeromax-r-flightstick.yaml",
+    "brand": "virpil",
+    "name": "VPC CDT-Aeromax [R] Flightstick",
+    "category": "stick_fixed",
+    "gaps": [
+      "controls[4].backlit",
+      "controls[5].push",
+      "controls[6].push",
+      "controls[7].positions",
+      "controls[7].center_detent",
+      "physical.dimensions_mm"
+    ]
+  },
+  {
+    "id": "components/virpil/cdt-aeromax-rz-flightstick.yaml",
+    "brand": "virpil",
+    "name": "VPC CDT-Aeromax [RZ] Flightstick",
+    "category": "stick_fixed",
+    "gaps": [
+      "controls[4].backlit",
+      "controls[5].push",
+      "controls[6].push",
+      "controls[7].positions",
+      "controls[7].center_detent",
+      "physical.dimensions_mm"
+    ]
+  },
+  {
+    "id": "components/virpil/cdt-aeromax-throttle-lever-module.yaml",
+    "brand": "virpil",
+    "name": "VPC CDT-Aeromax Throttle Lever Module",
+    "category": "module",
+    "gaps": [
+      "controls[0].push",
+      "hardware.gimbal",
+      "physical.dimensions_mm",
+      "connectivity.usb"
+    ]
+  },
+  {
+    "id": "components/virpil/cdt-vmax-throttle.yaml",
+    "brand": "virpil",
+    "name": "CDT-VMAX Throttle",
+    "category": "throttle",
+    "gaps": [
+      "controls[0].push",
+      "controls[0].location",
+      "controls[1].push",
+      "controls[1].location",
+      "controls[2].location",
+      "controls[3].location",
+      "controls[4].location",
+      "controls[5].positions",
+      "controls[5].location",
+      "controls[6].backlit",
+      "controls[6].location",
+      "hardware.gimbal",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "connectivity.usb",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/virpil/constellation-alpha-prime-l.yaml",
+    "brand": "virpil",
+    "name": "Constellation Alpha Prime (Left)",
+    "category": "grip",
+    "gaps": [
+      "controls[5].backlit",
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "physical.dimensions_mm"
+    ]
+  },
+  {
+    "id": "components/virpil/constellation-alpha-prime-r.yaml",
+    "brand": "virpil",
+    "name": "Constellation Alpha Prime (Right)",
+    "category": "grip",
+    "gaps": [
+      "controls[5].backlit",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.dimensions_mm"
+    ]
+  },
+  {
+    "id": "components/virpil/constellation-vega-yoke-handle.yaml",
+    "brand": "virpil",
+    "name": "VPC Constellation VEGA Yoke Handle",
+    "category": "grip",
+    "gaps": [
+      "controls[0].push",
+      "controls[2].push",
+      "controls[4].backlit",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "software",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/virpil/mongoost-50cm3-base.yaml",
+    "brand": "virpil",
+    "name": "VPC MongoosT-50CM3 Base",
+    "category": "base",
+    "gaps": [
+      "physical.dimensions_mm"
+    ]
+  },
+  {
+    "id": "components/virpil/mongoost-50cm3-throttle.yaml",
+    "brand": "virpil",
+    "name": "VPC MongoosT-50CM3 Throttle",
+    "category": "throttle",
+    "gaps": [
+      "controls[0].push",
+      "controls[1].push",
+      "controls[2].positions",
+      "controls[2].center_detent",
+      "controls[8].push",
+      "controls[12].backlit",
+      "controls[13].push",
+      "controls[14].push",
+      "controls[15].push",
+      "hardware.gimbal",
+      "physical.dimensions_mm",
+      "prices.EU",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/virpil/mongoost-50cm4-throttle.yaml",
+    "brand": "virpil",
+    "name": "MongoosT-50CM4 Throttle",
+    "category": "throttle",
+    "gaps": [
+      "controls[0].push",
+      "controls[1].push",
+      "controls[5].positions",
+      "controls[8].backlit",
+      "controls[9].backlit",
+      "controls[10].push",
+      "hardware.gimbal",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "connectivity.usb",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/virpil/prm-hat-module.yaml",
+    "brand": "virpil",
+    "name": "VPC PRM-HAT Module",
+    "category": "module",
+    "gaps": [
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "software",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/virpil/prm-hes-module.yaml",
+    "brand": "virpil",
+    "name": "VPC PRM-HES Module",
+    "category": "module",
+    "gaps": [
+      "controls[0].push",
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "software",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/virpil/r1-falcon-rudder-pedals.yaml",
+    "brand": "virpil",
+    "name": "VPC R1-FALCON Rudder Pedals",
+    "category": "pedals",
+    "gaps": [
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "connectivity.usb",
+      "software",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/virpil/r1-legend-rudder-pedals.yaml",
+    "brand": "virpil",
+    "name": "VPC R1-LEGEND Rudder Pedals",
+    "category": "pedals",
+    "gaps": [
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "connectivity.usb",
+      "software",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/virpil/vector-engine-mcp.yaml",
+    "brand": "virpil",
+    "name": "VPC Vector Engine MCP",
+    "category": "module",
+    "gaps": [
+      "controls[0].push",
+      "controls[1].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "software",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/virpil/vector-flight-yoke-base.yaml",
+    "brand": "virpil",
+    "name": "VPC Vector Flight Yoke Base",
+    "category": "yoke",
+    "gaps": [
+      "hardware.cams_swappable",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "connectivity.usb",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/virpil/vector-gear-mcp.yaml",
+    "brand": "virpil",
+    "name": "VPC Vector Gear MCP",
+    "category": "module",
+    "gaps": [
+      "controls[0].analog",
+      "controls[0].push",
+      "controls[1].backlit",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "software",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/virpil/vector-lighting-mcp.yaml",
+    "brand": "virpil",
+    "name": "VPC Vector Lighting MCP",
+    "category": "module",
+    "gaps": [
+      "controls[0].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "software",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/virpil/vpc-ace-interceptor-pedals.yaml",
+    "brand": "virpil",
+    "name": "VPC ACE Interceptor Pedals",
+    "category": "pedals",
+    "gaps": [
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "physical.dimensions_mm"
+    ]
+  },
+  {
+    "id": "components/virpil/vpc-ace-torq-pedals.yaml",
+    "brand": "virpil",
+    "name": "VPC ACE-TORQ Pedals",
+    "category": "pedals",
+    "gaps": [
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "physical.dimensions_mm"
+    ]
+  },
+  {
+    "id": "components/virpil/vpc-control-panel-1.yaml",
+    "brand": "virpil",
+    "name": "VPC Universal Control Panel #1",
+    "category": "module",
+    "gaps": [
+      "controls[1].push",
+      "controls[2].push",
+      "controls[3].push",
+      "controls[5].positions",
+      "controls[5].push",
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.dimensions_mm"
+    ]
+  },
+  {
+    "id": "components/virpil/vpc-control-panel-2.yaml",
+    "brand": "virpil",
+    "name": "VPC Universal Control Panel #2",
+    "category": "module",
+    "gaps": [
+      "controls[1].push",
+      "controls[2].push",
+      "controls[3].push",
+      "controls[5].push",
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.dimensions_mm"
+    ]
+  },
+  {
+    "id": "components/virpil/vpc-control-panel-3.yaml",
+    "brand": "virpil",
+    "name": "VPC Universal Control Panel #3",
+    "category": "module",
+    "gaps": [
+      "controls[0].push",
+      "controls[2].backlit",
+      "controls[3].momentary",
+      "controls[3].push",
+      "controls[4].momentary",
+      "controls[4].push",
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "connectivity.usb",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/virpil/vpc-dual-sf-collective-grip.yaml",
+    "brand": "virpil",
+    "name": "VPC Dual-SF Collective Grip",
+    "category": "grip",
+    "gaps": [
+      "controls[0].action",
+      "controls[4].backlit",
+      "controls[5].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/virpil/vpc-flanker-grip.yaml",
+    "brand": "virpil",
+    "name": "VPC FLNKR Grip",
+    "category": "grip",
+    "gaps": [
+      "controls[0].action",
+      "controls[3].backlit",
+      "controls[7].push",
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "physical.dimensions_mm"
+    ]
+  },
+  {
+    "id": "components/virpil/vpc-hawk-60-grip.yaml",
+    "brand": "virpil",
+    "name": "VPC Hawk-60 Collective Grip",
+    "category": "grip",
+    "gaps": [
+      "controls[0].action",
+      "controls[3].momentary",
+      "controls[3].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.dimensions_mm"
+    ]
+  },
+  {
+    "id": "components/virpil/vpc-rotor-tcs-base-upgraded.yaml",
+    "brand": "virpil",
+    "name": "VPC Rotor TCS Base",
+    "category": "base",
+    "gaps": [
+      "controls[0].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.cams_swappable",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/virpil/vpc-rotor-tcs-base.yaml",
+    "brand": "virpil",
+    "name": "VPC Rotor TCS Plus Base",
+    "category": "base",
+    "gaps": [
+      "controls[0].push",
+      "controls[1].push",
+      "controls[2].backlit",
+      "controls[3].momentary",
+      "controls[3].push",
+      "physical.dimensions_mm"
+    ]
+  },
+  {
+    "id": "components/virpil/vpc-sharka-50-collective-grip.yaml",
+    "brand": "virpil",
+    "name": "VPC SharKa-50 Collective Grip",
+    "category": "grip",
+    "gaps": [
+      "controls[1].positions",
+      "controls[1].momentary",
+      "controls[2].momentary",
+      "controls[2].push",
+      "controls[3].backlit",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "software",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/virpil/vpc-vmax-prime-throttle.yaml",
+    "brand": "virpil",
+    "name": "VPC VMAX Prime Throttle",
+    "category": "throttle",
+    "gaps": [
+      "controls[0].push",
+      "controls[0].location",
+      "controls[1].push",
+      "controls[1].location",
+      "controls[2].location",
+      "controls[3].location",
+      "controls[4].location",
+      "controls[5].location",
+      "controls[6].positions",
+      "controls[6].location",
+      "controls[7].mode",
+      "controls[7].positions",
+      "controls[7].location",
+      "controls[8].location",
+      "controls[9].push",
+      "controls[9].location",
+      "controls[10].positions",
+      "controls[10].push",
+      "controls[10].location",
+      "controls[11].backlit",
+      "controls[11].location",
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "physical.dimensions_mm"
+    ]
+  },
+  {
+    "id": "components/virpil/warbrd-d-base.yaml",
+    "brand": "virpil",
+    "name": "VPC WarBRD-D Base",
+    "category": "base",
+    "gaps": [
+      "physical.dimensions_mm"
+    ]
+  },
+  {
+    "id": "components/vkb/blackbox-mk2.yaml",
+    "brand": "vkb",
+    "name": "BlackBox Mk2",
+    "category": "module",
+    "gaps": [
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "prices.EU",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/vkb/blackbox-mk3.yaml",
+    "brand": "vkb",
+    "name": "BlackBox Mk3",
+    "category": "module",
+    "gaps": [
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/f14-add-on-grip-gunfighter-mk-iii.yaml",
+    "brand": "vkb",
+    "name": "F-14 Add-On Grip for Gunfighter Mk.III",
+    "category": "grip",
+    "gaps": [
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/f14-add-on-grip-gunfighter-mk-iv.yaml",
+    "brand": "vkb",
+    "name": "F-14 GF Add-On Grip for Gunfighter Mk.IV",
+    "category": "grip",
+    "gaps": [
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/f14-combat-grip.yaml",
+    "brand": "vkb",
+    "name": "F-14 Combat Grip",
+    "category": "grip",
+    "gaps": [
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg"
+    ]
+  },
+  {
+    "id": "components/vkb/gladiator-nxt-evo-base.yaml",
+    "brand": "vkb",
+    "name": "Gladiator NXT EVO Base",
+    "category": "base",
+    "gaps": [
+      "controls[1].positions",
+      "physical.dimensions_mm"
+    ]
+  },
+  {
+    "id": "components/vkb/gladiator-nxt-evo-omni-throttle-l.yaml",
+    "brand": "vkb",
+    "name": "Gladiator NXT EVO Omni-Throttle (Left)",
+    "category": "stick_fixed",
+    "gaps": [
+      "controls[7].positions",
+      "physical.dimensions_mm"
+    ]
+  },
+  {
+    "id": "components/vkb/gladiator-nxt-evo-omni-throttle-r.yaml",
+    "brand": "vkb",
+    "name": "Gladiator NXT EVO Omni-Throttle (Right)",
+    "category": "stick_fixed",
+    "gaps": [
+      "controls[7].positions",
+      "physical.dimensions_mm"
+    ]
+  },
+  {
+    "id": "components/vkb/gnx-fsm-ga.yaml",
+    "brand": "vkb",
+    "name": "GNX FSM-GA Front Switchboard Module (General Aviation)",
+    "category": "module",
+    "gaps": [
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/gnx-mfh.yaml",
+    "brand": "vkb",
+    "name": "GNX MFH Multi-Functional Holder",
+    "category": "module",
+    "gaps": [
+      "platform.pc",
+      "platform.xbox",
+      "platform.ps5",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "connectivity.usb",
+      "connectivity.standalone_usb",
+      "software",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/gnx-scg-premium-grip-with-ota-l.yaml",
+    "brand": "vkb",
+    "name": "GNX SCG Premium Grip with OTA Preinstalled (Left)",
+    "category": "grip",
+    "gaps": [
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/gnx-scg-premium-grip-with-ota-r.yaml",
+    "brand": "vkb",
+    "name": "GNX SCG Premium Grip with OTA Preinstalled (Right)",
+    "category": "grip",
+    "gaps": [
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/gnx-sem-v.yaml",
+    "brand": "vkb",
+    "name": "GNX SEM-V Side Extension Module (Vertical)",
+    "category": "module",
+    "gaps": [
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/gnx-thq-v.yaml",
+    "brand": "vkb",
+    "name": "GNX THQ-V Throttle Quadrant (Vertical)",
+    "category": "quadrant",
+    "gaps": [
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/gnx-thq.yaml",
+    "brand": "vkb",
+    "name": "GNX THQ Throttle Quadrant",
+    "category": "quadrant",
+    "gaps": [
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/gnx-usb-controller-hid-main.yaml",
+    "brand": "vkb",
+    "name": "GNX USB Controller (HID-Main)",
+    "category": "module",
+    "gaps": [
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/gunfighter-iv-base.yaml",
+    "brand": "vkb",
+    "name": "Gunfighter Mk.IV Base",
+    "category": "base",
+    "gaps": [
+      "physical.dimensions_mm"
+    ]
+  },
+  {
+    "id": "components/vkb/kg12-gen-2-add-on-grip-gunfighter-mk-iii.yaml",
+    "brand": "vkb",
+    "name": "KG12 (Gen.2) Add-On Grip for Gunfighter Mk.III",
+    "category": "grip",
+    "gaps": [
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/kg12-gen-2-add-on-grip-gunfighter-mk-iv.yaml",
+    "brand": "vkb",
+    "name": "KG12 GF (Gen.2) Add-On Grip for Gunfighter IV",
+    "category": "grip",
+    "gaps": [
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/kg12-gf-gen-1-add-on-grip-for-gunfighter-mk-iii.yaml",
+    "brand": "vkb",
+    "name": "KG12 GF (Gen.1) Add-On Grip for Gunfighter Mk.III",
+    "category": "grip",
+    "gaps": [
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "software",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/kg12-wwii-grip.yaml",
+    "brand": "vkb",
+    "name": "KG12 WWII Grip",
+    "category": "grip",
+    "gaps": [
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "physical.dimensions_mm"
+    ]
+  },
+  {
+    "id": "components/vkb/mcg-pro-add-on-grip-gunfighter-mk-iii.yaml",
+    "brand": "vkb",
+    "name": "MCG Pro Add-On Grip for Gunfighter Mk.III",
+    "category": "grip",
+    "gaps": [
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "software",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/mcg-pro-add-on-grip-gunfighter-mk-iv.yaml",
+    "brand": "vkb",
+    "name": "MCG Pro Add-On Grip for Gunfighter Mk.IV",
+    "category": "grip",
+    "gaps": [
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "software",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/mcg-ultimate-add-on-grip-gunfighter-mk-iii.yaml",
+    "brand": "vkb",
+    "name": "MCG Ultimate Add-On Grip for Gunfighter Mk.III",
+    "category": "grip",
+    "gaps": [
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/mcg-ultimate-grip.yaml",
+    "brand": "vkb",
+    "name": "Modern Combat Grip Ultimate",
+    "category": "grip",
+    "gaps": [
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm"
+    ]
+  },
+  {
+    "id": "components/vkb/scg-space-combat-grip-l.yaml",
+    "brand": "vkb",
+    "name": "Space Combat Grip (SCG) Premium (Left)",
+    "category": "grip",
+    "gaps": [
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm"
+    ]
+  },
+  {
+    "id": "components/vkb/scg-space-combat-grip-r.yaml",
+    "brand": "vkb",
+    "name": "Space Combat Grip (SCG) Premium (Right)",
+    "category": "grip",
+    "gaps": [
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm"
+    ]
+  },
+  {
+    "id": "components/vkb/scg-standard-grip-gunfighter-mk-iii-l.yaml",
+    "brand": "vkb",
+    "name": "SCG Standard Add-On Grip for Gunfighter Mk.III (Left)",
+    "category": "grip",
+    "gaps": [
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/scg-standard-grip-gunfighter-mk-iii-r.yaml",
+    "brand": "vkb",
+    "name": "SCG Standard Add-On Grip for Gunfighter Mk.III (Right)",
+    "category": "grip",
+    "gaps": [
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/scg-standard-grip-gunfighter-mk-iv-l.yaml",
+    "brand": "vkb",
+    "name": "SCG Standard Add-On Grip for Gunfighter Mk.IV (Left)",
+    "category": "grip",
+    "gaps": [
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/scg-standard-grip-gunfighter-mk-iv-r.yaml",
+    "brand": "vkb",
+    "name": "SCG Standard Add-On Grip for Gunfighter Mk.IV (Right)",
+    "category": "grip",
+    "gaps": [
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/sem-side-extension-module.yaml",
+    "brand": "vkb",
+    "name": "GNX SEM Side Extension Module",
+    "category": "module",
+    "gaps": [
+      "hardware.gimbal",
+      "hardware.damping",
+      "hardware.throw_deg"
+    ]
+  },
+  {
+    "id": "components/vkb/stecs-atem.yaml",
+    "brand": "vkb",
+    "name": "STECS ATEM (Auxiliary Throttle Extension Module)",
+    "category": "module",
+    "gaps": [
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "software",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/stecs-modern-throttle-grip-premium-combo.yaml",
+    "brand": "vkb",
+    "name": "STECS Modern Throttle Grip - Premium Combo (Left-Hand)",
+    "category": "grip",
+    "gaps": [
+      "controls[6].positions",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "software",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/stecs-modern-throttle-grip-standard-combo.yaml",
+    "brand": "vkb",
+    "name": "STECS Modern Throttle Grip - Standard Combo (Left-Hand)",
+    "category": "grip",
+    "gaps": [
+      "controls[5].positions",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "software",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/stecs-space-throttle-system-max-r.yaml",
+    "brand": "vkb",
+    "name": "STECS Space Throttle System - Max (Right-Hand)",
+    "category": "throttle",
+    "gaps": [
+      "hardware.cams_swappable",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/stecs-space-throttle-system-max.yaml",
+    "brand": "vkb",
+    "name": "STECS Space Throttle System - Max (Left-Hand)",
+    "category": "throttle",
+    "gaps": [
+      "hardware.cams_swappable",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/stecs-space-throttle-system-mini-plus-r.yaml",
+    "brand": "vkb",
+    "name": "STECS Space Throttle System - Mini Plus (Right-Hand)",
+    "category": "throttle",
+    "gaps": [
+      "hardware.cams_swappable",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/stecs-space-throttle-system-mini-plus.yaml",
+    "brand": "vkb",
+    "name": "STECS Space Throttle System - Mini Plus (Left-Hand)",
+    "category": "throttle",
+    "gaps": [
+      "hardware.cams_swappable",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/stecs-space-throttle-system-mini-r.yaml",
+    "brand": "vkb",
+    "name": "STECS Space Throttle System - Mini (Right-Hand)",
+    "category": "throttle",
+    "gaps": [
+      "hardware.cams_swappable",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/stecs-space-throttle-system-mini.yaml",
+    "brand": "vkb",
+    "name": "STECS Space Throttle System - Mini (Left-Hand)",
+    "category": "throttle",
+    "gaps": [
+      "hardware.cams_swappable",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/stecs-space-throttle-system-standard-r.yaml",
+    "brand": "vkb",
+    "name": "STECS Space Throttle System - Standard (Right-Hand)",
+    "category": "throttle",
+    "gaps": [
+      "hardware.cams_swappable",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/stecs-space-throttle-system-standard.yaml",
+    "brand": "vkb",
+    "name": "STECS Space Throttle System - Standard (Left-Hand)",
+    "category": "throttle",
+    "gaps": [
+      "hardware.cams_swappable",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/stecs-stem.yaml",
+    "brand": "vkb",
+    "name": "STECS STEM (Standard Throttle Extension Module)",
+    "category": "module",
+    "gaps": [
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "software",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/stecs-stg-grip-l.yaml",
+    "brand": "vkb",
+    "name": "STECS Space Throttle Add-On Grip (STG) Left-Hand",
+    "category": "grip",
+    "gaps": [
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "software",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/stecs-stg-grip-r.yaml",
+    "brand": "vkb",
+    "name": "STECS Space Throttle Add-On Grip (STG) Right-Hand",
+    "category": "grip",
+    "gaps": [
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "software",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/stecs-throttle-max.yaml",
+    "brand": "vkb",
+    "name": "STECS Modern Throttle System Mk.II Max",
+    "category": "throttle",
+    "gaps": [
+      "controls[3].positions",
+      "hardware.gimbal",
+      "hardware.throw_deg"
+    ]
+  },
+  {
+    "id": "components/vkb/stecs-throttle-mini-plus.yaml",
+    "brand": "vkb",
+    "name": "STECS Modern Throttle System Mk.II Mini Plus",
+    "category": "throttle",
+    "gaps": [
+      "controls[3].positions",
+      "hardware.gimbal",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/vkb/stecs-throttle-mini.yaml",
+    "brand": "vkb",
+    "name": "STECS Modern Throttle System Mk.II Mini",
+    "category": "throttle",
+    "gaps": [
+      "controls[3].positions",
+      "hardware.gimbal",
+      "hardware.throw_deg"
+    ]
+  },
+  {
+    "id": "components/vkb/stecs-throttle-standard.yaml",
+    "brand": "vkb",
+    "name": "STECS Modern Throttle System Mk.II Standard",
+    "category": "throttle",
+    "gaps": [
+      "controls[3].positions",
+      "hardware.gimbal",
+      "hardware.throw_deg"
+    ]
+  },
+  {
+    "id": "components/vkb/t-rudder-mk5.yaml",
+    "brand": "vkb",
+    "name": "T-Rudder Mk.V Pedals",
+    "category": "pedals",
+    "gaps": [
+      "hardware.damping"
+    ]
+  },
+  {
+    "id": "components/vkb/wwii-gnx-thq-add-on-grip.yaml",
+    "brand": "vkb",
+    "name": "WWII GNX THQ Add-On Grip",
+    "category": "grip",
+    "gaps": [
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "software",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/3x0-joystick-grip.yaml",
+    "brand": "winctrl",
+    "name": "3X0 Joystick Grip",
+    "category": "grip",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[0].stages",
+      "controls[0].action",
+      "controls[1].backlit",
+      "controls[2].push",
+      "controls[3].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.materials",
+      "connectivity.usb",
+      "software",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/winctrl/agp-32-metal.yaml",
+    "brand": "winctrl",
+    "name": "32 AGP Metal",
+    "category": "module",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[0].backlit",
+      "controls[1].backlit",
+      "controls[2].momentary",
+      "controls[2].push",
+      "controls[3].positions",
+      "controls[5].push",
+      "controls[6].push",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/carrierace-joystick-grip.yaml",
+    "brand": "winctrl",
+    "name": "CarrierAce Joystick Grip Right",
+    "category": "grip",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[2].backlit",
+      "controls[3].mode",
+      "controls[3].positions",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "connectivity.usb",
+      "software",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/carrierace-ufc-2.yaml",
+    "brand": "winctrl",
+    "name": "CarrierAce UFC 2",
+    "category": "module",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[0].backlit",
+      "controls[1].momentary",
+      "controls[1].push",
+      "controls[2].positions",
+      "controls[3].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.materials",
+      "connectivity.usb",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/cyber-taurus-32-rudder-pedals-eb192.yaml",
+    "brand": "winctrl",
+    "name": "Cyber Taurus 32 Rudder Pedals E.B.192",
+    "category": "pedals",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[2].backlit",
+      "hardware.sensor",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/cyber-taurus-32-rudder-pedals-eb530.yaml",
+    "brand": "winctrl",
+    "name": "Cyber Taurus 32 Rudder Pedals E.B.530",
+    "category": "pedals",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[2].backlit",
+      "hardware.sensor",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/cyber-taurus-base-eb82.yaml",
+    "brand": "winctrl",
+    "name": "Cyber Taurus Joystick Base E.B.82",
+    "category": "base",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "hardware.sensor",
+      "hardware.damping",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/winctrl/cyber-taurus-base-ed16.yaml",
+    "brand": "winctrl",
+    "name": "Cyber Taurus Joystick Base E.D.16",
+    "category": "base",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "hardware.sensor",
+      "hardware.damping",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/winctrl/cyber-taurus-base.yaml",
+    "brand": "winctrl",
+    "name": "Cyber Taurus Joystick Base E.B.29",
+    "category": "base",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "hardware.sensor",
+      "hardware.damping",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/winctrl/cyber-taurus-combat-rudder-pedals-eb192.yaml",
+    "brand": "winctrl",
+    "name": "Cyber Taurus Combat Rudder Pedals E.B.192",
+    "category": "pedals",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[2].backlit",
+      "hardware.sensor",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/cyber-taurus-combat-rudder-pedals-eb530.yaml",
+    "brand": "winctrl",
+    "name": "Cyber Taurus Combat Rudder Pedals E.B.530",
+    "category": "pedals",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[2].backlit",
+      "hardware.sensor",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/ecam-32.yaml",
+    "brand": "winctrl",
+    "name": "32 ECAM",
+    "category": "module",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[0].backlit",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.materials",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/efis-l.yaml",
+    "brand": "winctrl",
+    "name": "EFIS L",
+    "category": "module",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[0].positions",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.materials",
+      "connectivity.usb",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/efis-r.yaml",
+    "brand": "winctrl",
+    "name": "EFIS R",
+    "category": "module",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[0].positions",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "connectivity.usb",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/f16-ex-viper-grip.yaml",
+    "brand": "winctrl",
+    "name": "F-16EX Viper Grip",
+    "category": "grip",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[1].push",
+      "controls[2].push",
+      "controls[3].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "connectivity.usb"
+    ]
+  },
+  {
+    "id": "components/winctrl/f16-icp-module.yaml",
+    "brand": "winctrl",
+    "name": "F-16 Integrated Control Panel Module",
+    "category": "module",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[1].push",
+      "controls[2].push",
+      "controls[3].push",
+      "controls[4].positions",
+      "controls[4].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.materials",
+      "connectivity.usb",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/winctrl/f18-hornet-grip.yaml",
+    "brand": "winctrl",
+    "name": "WinCtrl FA-18 Hornet Replica Grip",
+    "category": "grip",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "connectivity.usb",
+      "software",
+      "prices.EU",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/winctrl/fcu-unit.yaml",
+    "brand": "winctrl",
+    "name": "FCU Unit",
+    "category": "module",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[0].positions",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.materials",
+      "connectivity.usb",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/gemini-throttle-collective-base.yaml",
+    "brand": "winctrl",
+    "name": "Gemini Throttle/Collective Base",
+    "category": "base",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[0].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.materials",
+      "connectivity.usb",
+      "software",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/winctrl/ka-50-collective-grip.yaml",
+    "brand": "winctrl",
+    "name": "KA-50 Black Shark Metal Collective Grip",
+    "category": "grip",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[0].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.materials",
+      "connectivity.usb",
+      "software",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/winctrl/mcdu-32.yaml",
+    "brand": "winctrl",
+    "name": "MCDU",
+    "category": "module",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[0].backlit",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.materials",
+      "connectivity.usb",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/mfd-unit.yaml",
+    "brand": "winctrl",
+    "name": "MFD Unit",
+    "category": "module",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[0].backlit",
+      "controls[1].backlit",
+      "controls[2].backlit",
+      "controls[3].analog",
+      "controls[3].center_detent",
+      "controls[4].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.materials",
+      "connectivity.usb",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/navyace-hud.yaml",
+    "brand": "winctrl",
+    "name": "NavyAce HUD",
+    "category": "module",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[0].positions",
+      "controls[0].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.materials",
+      "connectivity.usb",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/navyace-ufc.yaml",
+    "brand": "winctrl",
+    "name": "NavyAce UFC",
+    "category": "module",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[0].backlit",
+      "controls[1].momentary",
+      "controls[1].push",
+      "controls[2].positions",
+      "controls[3].positions",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.materials",
+      "connectivity.usb",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/nws-handwheel-l.yaml",
+    "brand": "winctrl",
+    "name": "32 NWS Handwheel Left",
+    "category": "stick_fixed",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[1].backlit",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "physical.materials",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/nws-handwheel-r.yaml",
+    "brand": "winctrl",
+    "name": "32 NWS Handwheel Right",
+    "category": "stick_fixed",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[1].backlit",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "physical.materials",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/orion-2-base.yaml",
+    "brand": "winctrl",
+    "name": "Orion 2 Joystick Base",
+    "category": "base",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory"
+    ]
+  },
+  {
+    "id": "components/winctrl/orion-2-f16-throttle.yaml",
+    "brand": "winctrl",
+    "name": "Orion 2 F-16 Viper Throttle",
+    "category": "throttle",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[0].ways",
+      "controls[0].push",
+      "controls[2].mode",
+      "controls[2].positions",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.axes",
+      "connectivity.usb",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/winctrl/orion-2-f18-throttle.yaml",
+    "brand": "winctrl",
+    "name": "NavyAce Metal Throttle Grip",
+    "category": "throttle",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[1].backlit",
+      "controls[3].positions",
+      "controls[3].push",
+      "controls[4].momentary",
+      "controls[4].push",
+      "controls[5].ways",
+      "controls[5].push",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "connectivity.usb",
+      "software",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/orion-2-throttle-base.yaml",
+    "brand": "winctrl",
+    "name": "Orion 2 Throttle Base",
+    "category": "base",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.weight_g",
+      "connectivity.usb",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/orion-32-rudder-pedals-damper.yaml",
+    "brand": "winctrl",
+    "name": "Orion 32 Rudder Pedals Metal with Damper",
+    "category": "pedals",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "physical.weight_g",
+      "connectivity.usb",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/orion-32-rudder-pedals.yaml",
+    "brand": "winctrl",
+    "name": "Orion 32 Rudder Pedals Metal",
+    "category": "pedals",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "connectivity.usb",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/orion-metal-rudder-pedals-damper.yaml",
+    "brand": "winctrl",
+    "name": "Orion Metal Flight Rudder Pedals with Damper",
+    "category": "pedals",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "connectivity.usb",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/pac-32-metal.yaml",
+    "brand": "winctrl",
+    "name": "32 PAC Metal",
+    "category": "module",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[0].push",
+      "controls[1].push",
+      "controls[2].backlit",
+      "controls[3].mode",
+      "controls[3].positions",
+      "controls[4].mode",
+      "controls[4].positions",
+      "controls[4].push",
+      "controls[5].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "connectivity.usb",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/pcr-panel.yaml",
+    "brand": "winctrl",
+    "name": "PCR Panel of Combat Ready",
+    "category": "module",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[0].backlit",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.materials",
+      "connectivity.usb",
+      "software",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/winctrl/pdc-3m.yaml",
+    "brand": "winctrl",
+    "name": "3M PDC",
+    "category": "module",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[0].backlit",
+      "controls[1].momentary",
+      "controls[1].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.materials",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/pdc-3n.yaml",
+    "brand": "winctrl",
+    "name": "3N PDC",
+    "category": "module",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[0].backlit",
+      "controls[1].momentary",
+      "controls[1].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.materials",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/pfp-3n.yaml",
+    "brand": "winctrl",
+    "name": "PFP 3N",
+    "category": "module",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[0].backlit",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.materials",
+      "connectivity.usb",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/pfp-4.yaml",
+    "brand": "winctrl",
+    "name": "PFP 4",
+    "category": "module",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[0].backlit",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.materials",
+      "connectivity.usb",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/pfp-7.yaml",
+    "brand": "winctrl",
+    "name": "PFP 7",
+    "category": "module",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[0].backlit",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.materials",
+      "connectivity.usb",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/pfp3-cockpit-module.yaml",
+    "brand": "winctrl",
+    "name": "Panel of Auto Pilot 3",
+    "category": "module",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[0].backlit",
+      "controls[1].positions",
+      "controls[1].push",
+      "controls[2].push",
+      "controls[3].push",
+      "controls[4].momentary",
+      "controls[4].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.materials",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/pto-2.yaml",
+    "brand": "winctrl",
+    "name": "PTO 2 Panel of Take Off",
+    "category": "module",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[0].positions",
+      "controls[0].push",
+      "controls[0].momentary",
+      "controls[1].mode",
+      "controls[1].positions",
+      "controls[1].push",
+      "controls[2].push",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.materials",
+      "connectivity.usb",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/rmp-32.yaml",
+    "brand": "winctrl",
+    "name": "32 RMP",
+    "category": "module",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[0].backlit",
+      "controls[1].momentary",
+      "controls[1].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.materials",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/skywalker-rudder-pedals.yaml",
+    "brand": "winctrl",
+    "name": "Orion Metal Flight Rudder Pedals",
+    "category": "pedals",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "hardware.sensor",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/winctrl/strikeace-e-throttle-grip.yaml",
+    "brand": "winctrl",
+    "name": "StrikeAce E Metal Throttle Grip",
+    "category": "throttle",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[0].backlit",
+      "controls[1].push",
+      "controls[2].positions",
+      "controls[2].push",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "connectivity.usb",
+      "software",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/strikeace-ex-ii-throttle-grip.yaml",
+    "brand": "winctrl",
+    "name": "StrikeAce EX II Metal Throttle Grip",
+    "category": "throttle",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[0].backlit",
+      "controls[1].push",
+      "controls[2].positions",
+      "controls[2].push",
+      "controls[3].push",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "connectivity.usb",
+      "software",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/super-libra-joystick-base.yaml",
+    "brand": "winctrl",
+    "name": "Super Libra Joystick Base",
+    "category": "base",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "connectivity.usb",
+      "software",
+      "prices.EU",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/winctrl/tcas-32.yaml",
+    "brand": "winctrl",
+    "name": "32 TCAS",
+    "category": "module",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[0].backlit",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.materials",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/ursa-minor-32-throttle.yaml",
+    "brand": "winctrl",
+    "name": "URSA MINOR 32 Throttle Metal",
+    "category": "throttle",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[0].push",
+      "controls[1].stages",
+      "controls[1].action",
+      "controls[2].backlit",
+      "controls[3].backlit",
+      "controls[4].backlit",
+      "controls[5].push",
+      "controls[6].momentary",
+      "controls[6].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "physical.weight_g",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/ursa-minor-airline-joystick-l.yaml",
+    "brand": "winctrl",
+    "name": "Ursa Minor Airline Joystick Left",
+    "category": "stick_fixed",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[0].stages",
+      "controls[0].action",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "components/winctrl/ursa-minor-airline-joystick-r.yaml",
+    "brand": "winctrl",
+    "name": "Ursa Minor Airline Joystick Right",
+    "category": "stick_fixed",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[0].backlit",
+      "controls[2].ways",
+      "controls[2].push",
+      "controls[3].positions",
+      "controls[3].center_detent",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "physical.materials",
+      "connectivity.usb",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/ursa-minor-combat-t-ex.yaml",
+    "brand": "winctrl",
+    "name": "URSA MINOR Combat T EX",
+    "category": "module",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[0].momentary",
+      "controls[0].push",
+      "controls[1].backlit",
+      "controls[2].backlit",
+      "controls[3].analog",
+      "controls[3].push",
+      "controls[4].mode",
+      "controls[4].positions",
+      "controls[4].push",
+      "controls[5].positions",
+      "controls[5].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.materials",
+      "connectivity.usb",
+      "software",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/ursa-minor-combat-throttle.yaml",
+    "brand": "winctrl",
+    "name": "URSA MINOR Combat Throttle Metal",
+    "category": "throttle",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls[0].push",
+      "controls[1].backlit",
+      "controls[2].backlit",
+      "controls[6].momentary",
+      "controls[6].push",
+      "controls[7].ways",
+      "controls[7].momentary",
+      "controls[7].push",
+      "controls[8].ways",
+      "controls[8].momentary",
+      "controls[8].push",
+      "controls[9].positions",
+      "controls[10].positions",
+      "controls[10].push",
+      "hardware.gimbal",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/ursa-minor-fighter-joystick-l.yaml",
+    "brand": "winctrl",
+    "name": "Ursa Minor Fighter Joystick Left",
+    "category": "stick_fixed",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[0].action",
+      "controls[1].backlit",
+      "controls[3].push",
+      "controls[4].positions",
+      "controls[4].center_detent",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "physical.materials",
+      "connectivity.usb",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/ursa-minor-fighter-joystick-r.yaml",
+    "brand": "winctrl",
+    "name": "Ursa Minor Fighter Joystick Right",
+    "category": "stick_fixed",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5"
+    ]
+  },
+  {
+    "id": "components/winctrl/ursa-minor-space-joystick-l.yaml",
+    "brand": "winctrl",
+    "name": "Ursa Minor Space Joystick Left",
+    "category": "stick_fixed",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[0].action",
+      "controls[1].backlit",
+      "controls[3].push",
+      "controls[4].positions",
+      "controls[4].center_detent",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "physical.materials",
+      "connectivity.usb",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/ursa-minor-space-joystick-r.yaml",
+    "brand": "winctrl",
+    "name": "Ursa Minor Space Joystick Right",
+    "category": "stick_fixed",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[0].backlit",
+      "controls[1].ways",
+      "controls[1].push",
+      "controls[2].push",
+      "controls[3].positions",
+      "controls[3].center_detent",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "physical.materials",
+      "connectivity.usb",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/usb-instrument-display.yaml",
+    "brand": "winctrl",
+    "name": "USB 3.0 Instrument Display",
+    "category": "module",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "connectivity.usb",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/viperace-ex-throttle-grip.yaml",
+    "brand": "winctrl",
+    "name": "ViperAce EX Metal Throttle Grip",
+    "category": "throttle",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[0].push",
+      "hardware.sensor",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.axes",
+      "connectivity.usb",
+      "software",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "components/winctrl/viperace-joystick-grip.yaml",
+    "brand": "winctrl",
+    "name": "ViperAce Metal Joystick Grip",
+    "category": "grip",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "controls.inventory",
+      "controls[2].backlit",
+      "controls[3].action",
+      "controls[4].stages",
+      "controls[4].action",
+      "hardware.gimbal",
+      "hardware.force_adjustable",
+      "hardware.cams_swappable",
+      "hardware.damping",
+      "hardware.extension_support",
+      "hardware.throw_deg",
+      "hardware.axes",
+      "physical.weight_g",
+      "physical.dimensions_mm",
+      "physical.materials",
+      "connectivity.usb",
+      "software",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/honeycomb/captains-bundle.yaml",
+    "brand": "honeycomb",
+    "name": "Captain's Bundle",
+    "category": "system",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "bundles/honeycomb/foxtrot-takeoff-kit.yaml",
+    "brand": "honeycomb",
+    "name": "Foxtrot Takeoff Kit",
+    "category": "hotas_bundle",
+    "gaps": [
+      "platform.ps5",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/logitech/flight-yoke-system.yaml",
+    "brand": "logitech",
+    "name": "Logitech G Flight Yoke System",
+    "category": "yoke_bundle",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5"
+    ]
+  },
+  {
+    "id": "bundles/logitech/x52-hotas-system.yaml",
+    "brand": "logitech",
+    "name": "X52 HOTAS System",
+    "category": "hotas_bundle",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5"
+    ]
+  },
+  {
+    "id": "bundles/logitech/x52-pro-hotas-system.yaml",
+    "brand": "logitech",
+    "name": "X52 Pro HOTAS System",
+    "category": "hotas_bundle",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5"
+    ]
+  },
+  {
+    "id": "bundles/logitech/x56-hotas-system.yaml",
+    "brand": "logitech",
+    "name": "X56 Rhino HOTAS System",
+    "category": "hotas_bundle",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5"
+    ]
+  },
+  {
+    "id": "bundles/mfg/crosswind-v3-combo.yaml",
+    "brand": "mfg",
+    "name": "Crosswind V3 Combo",
+    "category": "system",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5"
+    ]
+  },
+  {
+    "id": "bundles/moza/ab6-bundle.yaml",
+    "brand": "moza",
+    "name": "MOZA AB6 Flight Simulator Bundle",
+    "category": "stick_combo",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5"
+    ]
+  },
+  {
+    "id": "bundles/moza/ab9-mh16-flight-combo.yaml",
+    "brand": "moza",
+    "name": "AB9 + MH16 Flight Combo",
+    "category": "stick_combo",
+    "gaps": [
+      "prices.EU",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "bundles/moza/ay210-yoke-bundle.yaml",
+    "brand": "moza",
+    "name": "MOZA AY210 Yoke Bundle",
+    "category": "yoke_bundle",
+    "gaps": [
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "bundles/thrustmaster/hotas-warthog-ava-edition.yaml",
+    "brand": "thrustmaster",
+    "name": "HOTAS Warthog AVA Edition",
+    "category": "hotas_bundle",
+    "gaps": [
+      "prices.US"
+    ]
+  },
+  {
+    "id": "bundles/thrustmaster/hotas-warthog-bundle.yaml",
+    "brand": "thrustmaster",
+    "name": "HOTAS Warthog System",
+    "category": "hotas_bundle",
+    "gaps": []
+  },
+  {
+    "id": "bundles/thrustmaster/hotas-warthog-mkii.yaml",
+    "brand": "thrustmaster",
+    "name": "HOTAS Warthog MKII System",
+    "category": "hotas_bundle",
+    "gaps": [
+      "prices.US"
+    ]
+  },
+  {
+    "id": "bundles/thrustmaster/sol-r-2-hosas-space-sim-duo.yaml",
+    "brand": "thrustmaster",
+    "name": "Sol-R 2 HOSAS Space Sim Duo",
+    "category": "hosas_bundle",
+    "gaps": [
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "bundles/thrustmaster/sol-r-4-hotas.yaml",
+    "brand": "thrustmaster",
+    "name": "Sol-R 4 HOTAS",
+    "category": "hotas_bundle",
+    "gaps": [
+      "prices.US"
+    ]
+  },
+  {
+    "id": "bundles/thrustmaster/t16000m-fcs-flight-pack.yaml",
+    "brand": "thrustmaster",
+    "name": "T.16000M FCS Flight Pack",
+    "category": "system",
+    "gaps": [
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/thrustmaster/t16000m-fcs-hotas.yaml",
+    "brand": "thrustmaster",
+    "name": "T.16000M FCS HOTAS",
+    "category": "hotas_bundle",
+    "gaps": []
+  },
+  {
+    "id": "bundles/thrustmaster/t16000m-fcs-space-sim-duo.yaml",
+    "brand": "thrustmaster",
+    "name": "T.16000M FCS Space Sim Duo",
+    "category": "hosas_bundle",
+    "gaps": []
+  },
+  {
+    "id": "bundles/thrustmaster/tca-captain-pack-airbus.yaml",
+    "brand": "thrustmaster",
+    "name": "TCA Captain Pack Airbus Edition",
+    "category": "hotas_bundle",
+    "gaps": []
+  },
+  {
+    "id": "bundles/thrustmaster/tca-captain-pack-x-airbus.yaml",
+    "brand": "thrustmaster",
+    "name": "TCA Captain Pack X Airbus Edition",
+    "category": "hotas_bundle",
+    "gaps": [
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/thrustmaster/tca-officer-pack-airbus.yaml",
+    "brand": "thrustmaster",
+    "name": "TCA Officer Pack Airbus Edition",
+    "category": "hotas_bundle",
+    "gaps": [
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/thrustmaster/tca-yoke-pack-boeing.yaml",
+    "brand": "thrustmaster",
+    "name": "TCA Yoke Pack Boeing Edition",
+    "category": "yoke_bundle",
+    "gaps": []
+  },
+  {
+    "id": "bundles/thrustmaster/viper-tqs-mission-pack.yaml",
+    "brand": "thrustmaster",
+    "name": "Viper TQS Mission Pack",
+    "category": "system",
+    "gaps": [
+      "prices.EU",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "bundles/turtle-beach/velocityone-complete-flight-pack.yaml",
+    "brand": "turtle-beach",
+    "name": "VelocityOne Complete Flight Pack",
+    "category": "system",
+    "gaps": [
+      "platform.ps5"
+    ]
+  },
+  {
+    "id": "bundles/turtle-beach/velocityone-hotas.yaml",
+    "brand": "turtle-beach",
+    "name": "VelocityOne H.O.T.A.S.",
+    "category": "hotas_bundle",
+    "gaps": [
+      "platform.ps5",
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/virpil/alpha-prime-hosas-bundle.yaml",
+    "brand": "virpil",
+    "name": "Constellation Alpha Prime HOSAS Bundle",
+    "category": "hosas_bundle",
+    "gaps": []
+  },
+  {
+    "id": "bundles/virpil/alpha-prime-warbrd-d-hotas.yaml",
+    "brand": "virpil",
+    "name": "Constellation Alpha Prime and WarBRD-D HOTAS",
+    "category": "hotas_bundle",
+    "gaps": [
+      "prices.EU",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "bundles/virpil/warbrd-d-cadet-alpha-prime-hotas.yaml",
+    "brand": "virpil",
+    "name": "WarBRD-D CADET HOTAS Bundle \u2013 Alpha Prime Edition",
+    "category": "hotas_bundle",
+    "gaps": [
+      "prices.EU",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "bundles/vkb/gladiator-nxt-evo-f-14-combat-edition.yaml",
+    "brand": "vkb",
+    "name": "Gladiator NXT EVO \u2018F-14 Combat Edition\u2019",
+    "category": "stick_combo",
+    "gaps": [
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/vkb/gladiator-nxt-evo-hosas.yaml",
+    "brand": "vkb",
+    "name": "Gladiator NXT EVO HOSAS Bundle",
+    "category": "hosas_bundle",
+    "gaps": []
+  },
+  {
+    "id": "bundles/vkb/gladiator-nxt-evo-sce-l.yaml",
+    "brand": "vkb",
+    "name": "Gladiator NXT EVO 'Space Combat Edition' (Left)",
+    "category": "stick_combo",
+    "gaps": []
+  },
+  {
+    "id": "bundles/vkb/gladiator-nxt-evo-sce-r.yaml",
+    "brand": "vkb",
+    "name": "Gladiator NXT EVO 'Space Combat Edition' (Right)",
+    "category": "stick_combo",
+    "gaps": []
+  },
+  {
+    "id": "bundles/vkb/gladiator-nxt-evo-wwii-combat-edition.yaml",
+    "brand": "vkb",
+    "name": "Gladiator NXT EVO \u2018WWII Combat Edition\u2019",
+    "category": "stick_combo",
+    "gaps": [
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/vkb/gnx-dual-thq-fsm-ga-combo.yaml",
+    "brand": "vkb",
+    "name": "GNX Dual THQ + FSM-GA Combo",
+    "category": "system",
+    "gaps": [
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/vkb/gnx-dual-thq-sem-fsm-ga-combo.yaml",
+    "brand": "vkb",
+    "name": "GNX Dual THQ + SEM + FSM-GA Combo",
+    "category": "system",
+    "gaps": [
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/vkb/gnx-dual-thq-sem-v-combo.yaml",
+    "brand": "vkb",
+    "name": "GNX Dual THQ + SEM-V Combo",
+    "category": "system",
+    "gaps": [
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/vkb/gnx-dual-thq-sem-v-thq-v-combo.yaml",
+    "brand": "vkb",
+    "name": "GNX Dual THQ + SEM-V + THQ-V Combo",
+    "category": "system",
+    "gaps": [
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/vkb/gnx-triple-thq-fsm-ga-combo.yaml",
+    "brand": "vkb",
+    "name": "GNX Triple THQ + FSM-GA Combo",
+    "category": "system",
+    "gaps": [
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/vkb/gnx-triple-thq-sem-v-combo.yaml",
+    "brand": "vkb",
+    "name": "GNX Triple THQ + SEM-V Combo",
+    "category": "system",
+    "gaps": [
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/vkb/gnx-wwii-throttle-combo.yaml",
+    "brand": "vkb",
+    "name": "GNX WWII Throttle Combo",
+    "category": "system",
+    "gaps": [
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/vkb/gunfighter-iv-mcg-ultimate.yaml",
+    "brand": "vkb",
+    "name": "Gunfighter Mk.IV with MCG Ultimate",
+    "category": "stick_combo",
+    "gaps": []
+  },
+  {
+    "id": "bundles/vkb/gunfighter-iv-tabletop-f-14-combat-edition.yaml",
+    "brand": "vkb",
+    "name": "Gunfighter Mk.IV 'F-14 Combat Edition' - Tabletop",
+    "category": "stick_combo",
+    "gaps": [
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/vkb/gunfighter-iv-tabletop-modern-combat-edition.yaml",
+    "brand": "vkb",
+    "name": "Gunfighter Mk.IV \u2018Modern Combat Edition\u2019 - Tabletop",
+    "category": "stick_combo",
+    "gaps": [
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/vkb/gunfighter-iv-tabletop-space-combat-edition-l.yaml",
+    "brand": "vkb",
+    "name": "Gunfighter Mk.IV 'Space Combat Edition' - Tabletop - Left Hand",
+    "category": "stick_combo",
+    "gaps": [
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/vkb/gunfighter-iv-tabletop-space-combat-edition-r.yaml",
+    "brand": "vkb",
+    "name": "Gunfighter Mk.IV 'Space Combat Edition' - Tabletop - Right Hand",
+    "category": "stick_combo",
+    "gaps": [
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/vkb/gunfighter-iv-tabletop-wwii-combat-edition.yaml",
+    "brand": "vkb",
+    "name": "Gunfighter Mk.IV 'WWII Combat Edition' - Tabletop",
+    "category": "stick_combo",
+    "gaps": [
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/vkb/stecs-space-throttle-gladiator-hosas.yaml",
+    "brand": "vkb",
+    "name": "STECS Space Throttle and Gladiator NXT EVO HOSAS",
+    "category": "hosas_bundle",
+    "gaps": [
+      "prices.EU",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/vkb/stecs-standard-gladiator-hotas.yaml",
+    "brand": "vkb",
+    "name": "STECS Standard and Gladiator NXT EVO HOTAS",
+    "category": "hotas_bundle",
+    "gaps": []
+  },
+  {
+    "id": "bundles/winctrl/cyber-taurus-eb29-viperace-joystick.yaml",
+    "brand": "winctrl",
+    "name": "Cyber Taurus E.B.29 ViperAce Joystick",
+    "category": "stick_combo",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/winctrl/cyber-taurus-eb82-viperace-joystick.yaml",
+    "brand": "winctrl",
+    "name": "Cyber Taurus E.B.82 ViperAce Joystick",
+    "category": "stick_combo",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/winctrl/cyber-taurus-ed16-viperace-joystick.yaml",
+    "brand": "winctrl",
+    "name": "Cyber Taurus E.D.16 ViperAce Joystick",
+    "category": "stick_combo",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/winctrl/efis-combo.yaml",
+    "brand": "winctrl",
+    "name": "EFIS Combo",
+    "category": "system",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/winctrl/glareshield-3.yaml",
+    "brand": "winctrl",
+    "name": "3 Glareshield",
+    "category": "system",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/winctrl/orion-2-black-shark-collective.yaml",
+    "brand": "winctrl",
+    "name": "Orion 2 Black Shark Collective Combo",
+    "category": "system",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "bundles/winctrl/orion-2-carrierace-hotas.yaml",
+    "brand": "winctrl",
+    "name": "Orion 2 CarrierAce HOTAS",
+    "category": "hotas_bundle",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/winctrl/orion-2-carrierace-joystick.yaml",
+    "brand": "winctrl",
+    "name": "Orion 2 CarrierAce Joystick",
+    "category": "stick_combo",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/winctrl/orion-2-f16-hotas.yaml",
+    "brand": "winctrl",
+    "name": "Orion 2 F-16 HOTAS",
+    "category": "hotas_bundle",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "bundles/winctrl/orion-2-f18-hotas.yaml",
+    "brand": "winctrl",
+    "name": "Orion 2 NavyAce HOTAS",
+    "category": "hotas_bundle",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "bundles/winctrl/orion-2-hotas-max.yaml",
+    "brand": "winctrl",
+    "name": "Orion 2 HOTAS MAX",
+    "category": "hotas_bundle",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/winctrl/orion-2-hotas-metal-warthog.yaml",
+    "brand": "winctrl",
+    "name": "Orion 2 HOTAS Metal Warthog",
+    "category": "hotas_bundle",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/winctrl/orion-2-navyace-joystick.yaml",
+    "brand": "winctrl",
+    "name": "Orion 2 NavyAce Joystick",
+    "category": "stick_combo",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/winctrl/orion-2-navyace-throttle.yaml",
+    "brand": "winctrl",
+    "name": "Orion 2 NavyAce Throttle",
+    "category": "system",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/winctrl/orion-2-strikeace-hotas.yaml",
+    "brand": "winctrl",
+    "name": "Orion 2 StrikeAce HOTAS",
+    "category": "hotas_bundle",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/winctrl/orion-2-strikeace-throttle.yaml",
+    "brand": "winctrl",
+    "name": "Orion 2 StrikeAce E Throttle",
+    "category": "system",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/winctrl/orion-2-viperace-ex-throttle.yaml",
+    "brand": "winctrl",
+    "name": "Orion 2 ViperAce Throttle",
+    "category": "system",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/winctrl/orion-2-viperace-joystick.yaml",
+    "brand": "winctrl",
+    "name": "Orion 2 ViperAce Joystick",
+    "category": "stick_combo",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/winctrl/pdc-3-combo.yaml",
+    "brand": "winctrl",
+    "name": "3 PDC Combo",
+    "category": "system",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/winctrl/super-libra-3x0-joystick.yaml",
+    "brand": "winctrl",
+    "name": "Super Libra 3X0 Joystick Combo",
+    "category": "stick_combo",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "bundles/winctrl/super-libra-navyace-joystick.yaml",
+    "brand": "winctrl",
+    "name": "Super Libra NavyAce Joystick Combo",
+    "category": "stick_combo",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "bundles/winctrl/ursa-minor-32-throttle-pac.yaml",
+    "brand": "winctrl",
+    "name": "URSA MINOR 32 Throttle and 32 PAC",
+    "category": "system",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/winctrl/ursa-minor-combat-hotas.yaml",
+    "brand": "winctrl",
+    "name": "URSA MINOR Combat HOTAS",
+    "category": "hotas_bundle",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "prices.UK",
+      "prices.US"
+    ]
+  },
+  {
+    "id": "bundles/winctrl/ursa-minor-combat-throttle-ex.yaml",
+    "brand": "winctrl",
+    "name": "URSA MINOR Combat Throttle Metal EX",
+    "category": "system",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "prices.UK"
+    ]
+  },
+  {
+    "id": "bundles/winctrl/ursa-minor-space-hosas.yaml",
+    "brand": "winctrl",
+    "name": "Ursa Minor Space HOSAS",
+    "category": "hosas_bundle",
+    "gaps": [
+      "platform.xbox",
+      "platform.ps5",
+      "prices.UK",
+      "prices.US"
+    ]
+  }
+]

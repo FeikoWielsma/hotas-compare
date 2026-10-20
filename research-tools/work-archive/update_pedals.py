@@ -1,0 +1,91 @@
+import yaml
+
+text = """brand: logitech
+name: Logitech G Pro Flight Rudder Pedals
+category: pedals
+status: current
+handedness: n/a
+mount: null
+controls:
+- type: axis
+  kind: rudder
+  count: 1
+  label: Rudder pedal axis
+  source: https://www.logitechg.com/en-us/shop/p/flight-simulator-rudder-pedals.945-000024
+  location: other
+- type: axis
+  kind: toe_brake
+  count: 2
+  label: Independent toe brake axes
+  source: https://www.logitechg.com/en-us/shop/p/flight-simulator-rudder-pedals.945-000024
+  location: other
+controls_evidence:
+  coverage: complete
+  source: https://www.logitechg.com/en-us/shop/p/flight-simulator-rudder-pedals.945-000024
+  checked: '2026-10-19'
+  notes: Primary product/manual evidence checked; coverage applies to the physical inventory described by this exact component. Pedal movements are represented explicitly as axes; they are not hand-operated levers or rocker switches.
+hardware:
+  gimbal: null
+  sensor: potentiometer
+  axes:
+  - name: Rudder
+    sensor: potentiometer
+  - name: Brake_Left
+    sensor: potentiometer
+  - name: Brake_Right
+    sensor: potentiometer
+  force_adjustable: true
+  cams_swappable: false
+  extension_support: false
+connectivity:
+  usb: a_cable
+  standalone_usb: true
+software: Logitech G HUB
+physical:
+  weight_g: 2350
+  dimensions_mm: [403, 310, 168]
+  materials:
+  - abs
+prices:
+- region: EU
+  currency: EUR
+  amount: 170
+  incl_vat: true
+  store: amazon.de
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 146
+  incl_vat: true
+  store: amazon.co.uk
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 159.99
+  incl_vat: false
+  store: logitechg.com
+  url: https://www.logitechg.com/en-us/shop/p/flight-simulator-rudder-pedals.945-000024
+  verified: '2026-10-19'
+  source: manual
+verification: draft
+sources:
+- https://www.logitechg.com/en-us/products/flight.html
+- https://www.logitechg.com/en-us/shop/p/flight-simulator-rudder-pedals.945-000024
+images:
+  - file: /images/logitech/g-saitek-pro-flight-rudder-pedals.png
+    source: https://www.logitechg.com/en-us/shop/p/flight-simulator-rudder-pedals.945-000024
+    caption: Logitech G Pro Flight Rudder Pedals
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official product page establishes PC use but the legacy product listing does not provide a sufficiently explicit exhaustive platform exclusion for console use; console compatibility remains unknown.
+  sources:
+  - https://www.logitechg.com/en-us/products/flight.html
+"""
+
+with open("src/content/components/logitech/g-saitek-pro-flight-rudder-pedals.yaml", "w", encoding="utf-8") as f:
+    f.write(text)
+print("Updated g-saitek-pro-flight-rudder-pedals.yaml successfully")

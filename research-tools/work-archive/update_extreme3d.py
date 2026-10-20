@@ -1,0 +1,120 @@
+import yaml
+
+text = """brand: logitech
+name: Logitech Extreme 3D Pro
+category: stick_fixed
+status: discontinued
+release_year: 2003
+handedness: right
+mount: null
+controls:
+  - type: trigger
+    location: grip
+    stages: 1
+    action: sequential
+    label: Main trigger
+    source: https://www.logitechg.com/en-us/shop/p/extreme-3d-pro-joystick
+  - type: hat
+    location: grip
+    ways: 8
+    push: false
+    label: POV hat
+    source: https://www.logitechg.com/en-us/shop/p/extreme-3d-pro-joystick
+  - type: lever
+    kind: throttle_single
+    analog: true
+    push: false
+    location: base
+    label: Throttle lever
+    source: https://www.logitechg.com/en-us/shop/p/extreme-3d-pro-joystick
+controls_evidence:
+  coverage: partial
+  source: https://www.logitechg.com/en-us/shop/p/extreme-3d-pro-joystick
+  checked: '2026-10-19'
+  notes: Logitech product page separately advertises 12 programmable buttons and a rapid-fire trigger but does not establish whether the trigger is included in 12 or enumerate the standalone button count and grip/base split. Trigger is recorded separately; the aggregate 12 is not converted into a physical button group. Hat and throttle are documented. Partial inventory.
+hardware:
+  gimbal: ball_joint
+  sensor: potentiometer
+  axes:
+    - name: X
+      sensor: potentiometer
+    - name: Y
+      sensor: potentiometer
+    - name: Twist
+      sensor: potentiometer
+  force_adjustable: false
+  cams_swappable: false
+  extension_support: false
+connectivity:
+  usb: a_cable
+  standalone_usb: true
+software: Logitech G HUB
+physical:
+  weight_g: 800
+  materials:
+    - abs
+use_case_fit:
+  modern_jet: 2
+  heli: 2
+  ww2: 2
+  ga: 3
+  airliner: 2
+  space_hotas: 2
+  space_hosas: 2
+prices:
+  - region: US
+    currency: USD
+    amount: 39.99
+    incl_vat: false
+    store: logitechg.com
+    url: https://www.logitechg.com/en-us/shop/p/extreme-3d-pro-joystick
+    verified: '2026-10-20'
+    source: manual
+verdict:
+  author: feiko
+  hands_on: true
+  owned_hours: 500
+  take: "The legendary $40 entry stick. It's ancient and runs on potentiometers that will eventually wear out, but it's cheap enough to test the flight sim waters."
+  pros:
+    - "Extremely affordable and globally available"
+    - "Stable weighted base"
+    - "Built-in twist rudder and mini throttle lever"
+  cons:
+    - "Potentiometers prone to jitter and drift over time"
+    - "Stiff ball-and-cup center detent"
+    - "Phasing out from retail channels"
+  great_for:
+    - ga
+  skip_if:
+    - "You know you love flight sims and can invest $90-$160 for contactless pincer gimbals (Ursa Minor or Gladiator)"
+  scores:
+    build: 2
+    feel: 2
+    value: 4
+    software: 2
+    qc_support: 3
+external_reviews:
+  - reviewer: mysh
+    url: https://www.youtube.com/watch?v=2z54NHzy_Gc
+    summary: "Testing the waters budget tier. It's ancient, runs on potentiometers and will develop drift eventually. But it flies, and if you're not sure the hobby sticks, don't spend more than that. Being phased out."
+    tag: neutral
+    date: '2026-09-15'
+verification: verified
+sources:
+  - https://www.logitechg.com/en-us/products/flight.html
+images:
+  - file: /images/logitech/extreme-3d-pro.webp
+    source: https://www.logitechg.com/en-us/shop/p/extreme-3d-pro-joystick
+    caption: Logitech Extreme 3D Pro
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official product page establishes PC use but the legacy product listing does not provide a sufficiently explicit exhaustive platform exclusion for console use; console compatibility remains unknown.
+  sources:
+  - https://www.logitechg.com/en-us/products/flight.html
+"""
+
+with open("src/content/components/logitech/extreme-3d-pro.yaml", "w", encoding="utf-8") as f:
+    f.write(text)
+print("Updated extreme-3d-pro.yaml successfully")

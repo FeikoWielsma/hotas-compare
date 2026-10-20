@@ -1,0 +1,73 @@
+text = """brand: winctrl
+name: WinCtrl FA-18 Hornet Replica Grip
+category: grip
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official listing/manual establishes computer USB use; no exact product source establishes Xbox or PS5 support or incompatibility.
+  sources:
+    - https://eu.winctrl.com/view/goods-details.html?id=314
+status: current
+handedness: right
+mount:
+  provides: winctrl-grip
+  accepts: []
+controls:
+  - type: trigger
+    stages: 2
+    action: sequential
+    source: https://eu.winctrl.com/view/goods-details.html?id=314
+  - type: hat
+    ways: 4
+    push: true
+    count: 3
+  - type: hat
+    ways: 8
+    push: true
+    count: 1
+  - type: button
+    count: 2
+    backlit: false
+    label: Physical press switches
+    source: https://eu.winctrl.com/view/goods-details.html?id=314
+  - type: lever
+    kind: brake
+    analog: false
+    count: 1
+    push: false
+    label: Brake/trigger switch
+controls_evidence:
+  coverage: partial
+  source: https://eu.winctrl.com/view/goods-details.html?id=314
+  checked: '2026-10-19'
+  notes: >-
+    Official F-18/NavyAce product text reports three pressable 4-direction switches, one pressable 8-direction switch, two press switches, one on/off brake/trigger switch and one two-stage trigger. Page describes NavyAce metal grip in an older HOTAS bundle; check exact current FA-18 replica SKU before treating as exhaustive.
+hardware:
+  axes: []
+connectivity:
+  usb: null
+  standalone_usb: false
+physical:
+  materials: []
+use_case_fit:
+  modern_jet: 4
+  heli: 3
+  ww2: 3
+  ga: 3
+  airliner: 3
+  space_hotas: 4
+  space_hosas: 3
+prices: []
+verification: draft
+sources:
+  - https://eu.winctrl.com/view/goods-details.html?id=314
+images:
+  - file: /images/winctrl/f18-hornet-grip.jpg
+    source: https://eu.winctrl.com/view/goods-details.html?id=314
+    caption: WinCtrl FA-18 Hornet Replica Grip
+"""
+
+with open("src/content/components/winctrl/f18-hornet-grip.yaml", "w", encoding="utf-8") as f:
+    f.write(text)
+print("Updated f18-hornet-grip.yaml successfully")

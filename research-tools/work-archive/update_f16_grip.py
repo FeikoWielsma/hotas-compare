@@ -1,0 +1,142 @@
+text = """brand: winctrl
+name: F-16EX Viper Grip
+category: grip
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official listing/manual establishes computer USB use; no exact product source establishes Xbox or PS5 support or incompatibility.
+  sources:
+    - https://eu.winctrl.com/view/goods-details.html?id=341
+status: current
+release_year: 2022
+handedness: right
+mount:
+  provides: winctrl-grip
+  accepts: []
+controls:
+  - type: trigger
+    stages: 2
+    action: sequential
+    source: https://eu.winctrl.com/view/goods-details.html?id=314
+  - type: hat
+    ways: 4
+    count: 5
+  - type: hat
+    ways: 8
+    count: 1
+  - type: analog_ministick
+    count: 1
+  - type: lever
+    kind: brake
+    analog: true
+    push: true
+    count: 2
+    label: Brake/trigger levers (Hall axis plus switch)
+    source: https://eu.winctrl.com/view/goods-details.html?id=314
+  - type: button
+    count: 2
+    backlit: false
+    label: Physical switches
+    source: https://eu.winctrl.com/view/goods-details.html?id=341
+controls_evidence:
+  coverage: partial
+  source: https://eu.winctrl.com/view/goods-details.html?id=341
+  checked: '2026-10-19'
+  notes: >-
+    Rendered official variant comparison at the legacy HOTAS listing identifies ViperAce EX separately from standard ViperAce: five 4-direction and one 8-direction switches, one mini joystick, two brake/trigger levers each with Hall sensor plus switch, two physical switches, and one dual-stage trigger. Hat and ministick push behavior are not specified for EX, so omitted. The F-16 joystick grip manual and EX2 J2-2 manual are in the official Download Center; exact control-by-control mapping between the standalone EX SKU and the mixed ViperAce EX bundle remains unclear.
+hardware:
+  gimbal: null
+  sensor: null
+  axes: []
+  force_adjustable: null
+  cams_swappable: null
+  damping: null
+  extension_support: null
+  throw_deg: null
+connectivity:
+  usb: null
+  standalone_usb: false
+software: SimApp Pro
+physical:
+  weight_g: 700
+  dimensions_mm: [106, 133, 191]
+  materials:
+    - abs
+    - aluminium
+use_case_fit:
+  modern_jet: 5
+  heli: 3
+  ww2: 3
+  ga: 2
+  airliner: 1
+  space_hotas: 4
+  space_hosas: 3
+prices:
+  - region: EU
+    currency: EUR
+    amount: 145
+    incl_vat: true
+    store: winwing.cn
+    verified: '2026-10-01'
+    source: manual
+  - region: UK
+    currency: GBP
+    amount: 129
+    incl_vat: true
+    store: winwing.cn
+    verified: '2026-10-01'
+    source: manual
+  - region: US
+    currency: USD
+    amount: 139
+    incl_vat: false
+    store: winwing.cn
+    verified: '2026-10-01'
+    source: manual
+verdict:
+  author: feiko
+  hands_on: true
+  owned_hours: 250
+  take: "An authentic replica of the F-16 Viper flight stick, enhanced with WinCtrl's 'EX' expansion module providing extra hats and an analog ministick for modern DCS multi-role fighters."
+  pros:
+    - "Authentic F-16 / A-10C ergonomics with 1:1 scale feel"
+    - "EX expansion module adds a ministick and extra 5-way hat"
+    - "Stepped dual-stage trigger"
+  cons:
+    - "No twist (Z) axis — requires rudder pedals"
+    - "Right-hand only"
+  great_for:
+    - modern_jet
+    - space_hotas
+  skip_if:
+    - "You don't own rudder pedals or twist stick"
+    - "You need a left-hand stick for HOSAS"
+  scores:
+    build: 4
+    feel: 5
+    value: 4
+    software: 3
+    qc_support: 4
+external_reviews:
+  - reviewer: mysh
+    url: https://youtube.com/watch?sample-viper-grip
+    summary: "The go-to grip for DCS F-16 pilots. EX head expansion makes it versatile across other jets."
+    tag: recommended
+    date: '2024-03-25'
+verification: verified
+sources:
+  - https://eu.winctrl.com/view/goods-details.html?id=314
+  - https://eu.winctrl.com/view/goods-details.html?id=340
+  - https://eu.winctrl.com/view/goods-details.html?id=341
+  - https://eu.winctrl.com/static/download/QmPtTVatYdWyuGYVSFHMhBXTEWM9iU3g5S2nomoLczHDuS?filename=EX2_J2_2-User+Manual+EN+V1.2.pdf
+  - https://eu.winctrl.com/static/download/Qmbw11j3CZkVhfaFXFNx3aYRU2fJMKRLJj8eC7DtNyghMm?filename=JOYSTICK+GRIP+OF+16+H.O.T.A.S-User+MANUAL+EN+V+2.1.pdf
+images:
+  - file: /images/winctrl/f16-ex-viper-grip.jpg
+    source: https://eu.winctrl.com/view/goods-details.html?id=341
+    caption: F-16EX Viper Grip
+"""
+
+with open("src/content/components/winctrl/f16-ex-viper-grip.yaml", "w", encoding="utf-8") as f:
+    f.write(text)
+print("Updated f16-ex-viper-grip.yaml successfully")

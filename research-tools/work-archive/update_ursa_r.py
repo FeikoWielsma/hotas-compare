@@ -1,0 +1,163 @@
+import yaml
+
+text = """brand: winctrl
+name: Ursa Minor Fighter Joystick Right
+category: stick_fixed
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official listing/manual establishes computer USB use; no exact product source establishes Xbox or PS5 support or incompatibility.
+  sources:
+    - https://eu.winctrl.com/static/download/QmTvHcYNoR17Ro8AHmA7j6jpqwnHHbaYWS8dXGxM8QbTgh?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+V1.3+20250708.pdf
+status: current
+release_year: 2024
+handedness: right
+mount:
+  provides: null
+  accepts: []
+controls:
+  - type: trigger
+    stages: 2
+    action: sequential
+    location: grip
+    label: First and second stage trigger
+    source: https://eu.winctrl.com/static/download/QmTvHcYNoR17Ro8AHmA7j6jpqwnHHbaYWS8dXGxM8QbTgh?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+V1.3+20250708.pdf
+  - type: hat
+    count: 1
+    ways: 8
+    push: false
+    location: grip
+    label: HAT switch
+    source: https://eu.winctrl.com/static/download/QmTvHcYNoR17Ro8AHmA7j6jpqwnHHbaYWS8dXGxM8QbTgh?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+V1.3+20250708.pdf
+  - type: analog_ministick
+    count: 1
+    push: false
+    location: grip
+    label: Rx/Ry mini joystick
+    source: https://eu.winctrl.com/static/download/QmTvHcYNoR17Ro8AHmA7j6jpqwnHHbaYWS8dXGxM8QbTgh?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+V1.3+20250708.pdf
+  - type: button
+    count: 14
+    backlit: false
+    location: base
+    label: Button switches
+    source: https://eu.winctrl.com/static/download/QmTvHcYNoR17Ro8AHmA7j6jpqwnHHbaYWS8dXGxM8QbTgh?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+V1.3+20250708.pdf
+  - type: slider
+    analog: true
+    positions: 2
+    center_detent: false
+    count: 1
+    location: base
+    label: Throttle slider axis
+    source: https://eu.winctrl.com/static/download/QmTvHcYNoR17Ro8AHmA7j6jpqwnHHbaYWS8dXGxM8QbTgh?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+V1.3+20250708.pdf
+controls_evidence:
+  coverage: complete
+  source: https://eu.winctrl.com/static/download/QmTvHcYNoR17Ro8AHmA7j6jpqwnHHbaYWS8dXGxM8QbTgh?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+V1.3+20250708.pdf
+  checked: '2026-10-20'
+  notes: >-
+    Exact right-hand V1.3 manual (2025.07.08) inspected. Physical inventory confirms 2-stage trigger, HAT switch, Rx/Ry mini-joystick, 14 base button switches, and 38mm potentiometer throttle slider.
+hardware:
+  gimbal: pincer
+  sensor: contactless_magnetic
+  axes:
+    - name: X
+      sensor: hall
+    - name: Y
+      sensor: hall
+    - name: Twist
+      sensor: hall
+    - name: Rx
+    - name: Ry
+    - name: Throttle
+  force_adjustable: false
+  cams_swappable: false
+  damping: integrated_clutches
+  extension_support: false
+  throw_deg: 30
+connectivity:
+  usb: c
+  standalone_usb: true
+software: SimApp Pro
+physical:
+  weight_g: 1050
+  dimensions_mm:
+  - 217
+  - 227
+  - 246
+  materials:
+    - glass_fiber_nylon
+    - abs
+use_case_fit:
+  modern_jet: 5
+  heli: 4
+  ww2: 4
+  ga: 3
+  airliner: 2
+  space_hotas: 4
+  space_hosas: 4
+prices:
+  - region: EU
+    currency: EUR
+    amount: 108.77
+    incl_vat: true
+    store: eu.winctrl.com
+    url: https://eu.winctrl.com/view/goods-details.html?id=551
+    verified: '2026-10-19'
+    source: manual
+  - region: UK
+    currency: GBP
+    amount: 75
+    incl_vat: true
+    store: winwing.cn
+    verified: '2026-10-01'
+    source: manual
+  - region: US
+    currency: USD
+    amount: 95
+    incl_vat: false
+    store: winwing.cn
+    verified: '2026-10-01'
+    source: manual
+verdict:
+  author: feiko
+  hands_on: true
+  take: "The best budget desktop flight stick in the EU. Offers a glass-fiber pincer gimbal, contactless magnetic sensors, and lockable twist with integrated dampers for under €100."
+  pros:
+    - "Glass fiber reinforced pincer gimbal is far smoother and more durable than ball-and-cup"
+    - "Contactless magnetic sensors on primary axes and twist Z-axis"
+    - "Integrated dampers prevent oscillating bounce-back"
+    - "Outstanding price-to-performance ratio in Europe"
+  cons:
+    - "Hat switches are the known weak point and prone to wear under heavy abuse"
+    - "Software requires account login"
+  great_for:
+    - modern_jet
+    - space_hotas
+  skip_if:
+    - "You live in the US, where VKB Gladiator EVO pricing offers superior component longevity"
+  scores:
+    build: 4
+    feel: 4
+    value: 5
+    software: 3
+    qc_support: 4
+external_reviews:
+  - reviewer: mysh
+    url: https://youtube.com/watch?v=sample-viper-grip
+    summary: "Best budget stick in EU. Glass fiber pincer gimbal, contactless sensors, lockable twist, integrated dampers. Everything else is decent; the hats are the weak spot."
+    tag: recommended
+    date: '2024-03-25'
+verification: verified
+sources:
+  - https://eu.winctrl.com/view/goods-details.html?id=551
+  - https://eu.winctrl.com/static/download/QmTvHcYNoR17Ro8AHmA7j6jpqwnHHbaYWS8dXGxM8QbTgh?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+V1.3+20250708.pdf
+  - https://eu.winctrl.com/static/download/QmZmKJ7NdwQ8FDSQrSCgHTz8czJdWTEi9YduELWz63pqMU?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+EN+V1.0.pdf
+images:
+  - file: /images/winctrl/ursa-minor-fighter-joystick-r.jpg
+    source: https://eu.winctrl.com/view/goods-details.html?id=551
+    caption: Ursa Minor Fighter Joystick Right
+"""
+
+with open("src/content/components/winctrl/ursa-minor-fighter-joystick-r.yaml", "w", encoding="utf-8") as f:
+    f.write(text)
+print("Updated ursa-minor-fighter-joystick-r.yaml successfully")

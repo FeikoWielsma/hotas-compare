@@ -1,0 +1,113 @@
+text = """brand: winctrl
+name: Orion 2 F-16 Viper Throttle
+category: throttle
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Official listing/manual establishes computer USB use; no exact product source establishes Xbox or PS5 support or incompatibility.
+  sources:
+    - https://eu.winctrl.com/view/goods-details.html?id=1765
+    - https://eu.winctrl.com/static/download/QmVogWajtbAAa6iTNGjYJBncNX696Loiwywwf3FDMjyL1A?filename=WINCTRL+ViperAce+Throttle+Grip+L.+Metal+2.0+User+Manual+V1.0-202501127.pdf
+status: current
+handedness: n/a
+mount:
+  provides: null
+  accepts: []
+controls:
+- type: hat
+  count: 1
+  location: handle
+  label: Five-way switch
+  source: https://eu.winctrl.com/view/goods-details.html?id=1765
+  notes: Manufacturer calls this a five-way control; direction count versus center-push interpretation is not confirmed. Neither five directional contacts nor center push is assumed.
+- type: analog_ministick
+  push: true
+  count: 1
+  location: handle
+  label: Pressable mini-joystick
+  source: https://eu.winctrl.com/view/goods-details.html?id=1765
+- type: rotary
+  count: 2
+  push: true
+  location: handle
+  label: Pressable rotary wheels
+  source: https://eu.winctrl.com/view/goods-details.html?id=1765
+  notes: Manufacturer specifies pressable rotary wheels; continuous analog versus incremental encoder behavior is not established.
+- type: button
+  count: 2
+  backlit: false
+  location: handle
+  label: Buttons
+  source: https://eu.winctrl.com/view/goods-details.html?id=1765
+- type: toggle
+  count: 2
+  ways: 3
+  momentary: false
+  push: false
+  location: handle
+  label: Three-position switches
+  source: https://eu.winctrl.com/view/goods-details.html?id=1765
+- type: lever
+  kind: throttle_single
+  analog: true
+  push: false
+  count: 1
+  location: handle
+  label: Main throttle axis with idle and afterburner detents
+  source: https://eu.winctrl.com/view/goods-details.html?id=1765
+- type: detent
+  count: 1
+  customizable: true
+  location: handle
+  label: Arc rail detent system
+  source: https://eu.winctrl.com/view/goods-details.html?id=1765
+controls_evidence:
+  coverage: partial
+  source: https://eu.winctrl.com/view/goods-details.html?id=1765
+  checked: '2026-10-19'
+  notes: 'Rendered exact ViperAce throttle grip 2.0 listing (model VIPER.TG.L.MET.2) specifies 10 physical switches excluding axes: 2 buttons, one 5-way switch, one pressable mini-joystick, two pressable rotary wheels, and two 3-position switches. It also names folding and locking mechanism controls; their electrical input behavior is unspecified. The main throttle has idle/work/afterburner zones; three included guide rails support different detent layouts, so only one installed rail/detent system is counted. Rotary wheels are represented as scroll wheels because no discrete encoder vs analog behavior is stated; thumb rotary count is zero for this model. Folding/locking hardware is not counted as electrical switches without confirmation. Rotary wheel input mode remains unknown. Five-way marketing terminology is preserved without guessing the split between directional contacts and center press.'
+hardware:
+  throw_deg: 80
+  axes: []
+connectivity:
+  standalone_usb: false
+software: SimApp Pro
+physical:
+  weight_g: 800
+  dimensions_mm: [108, 210, 178]
+  materials:
+    - aluminium
+use_case_fit:
+  modern_jet: 4
+  heli: 3
+  ww2: 3
+  ga: 3
+  airliner: 3
+  space_hotas: 4
+  space_hosas: 3
+prices:
+  - region: EU
+    currency: EUR
+    amount: 234.29
+    incl_vat: true
+    store: eu.winctrl.com
+    url: https://eu.winctrl.com/view/goods-details.html?id=1765
+    verified: '2026-10-19'
+    source: manual
+verification: draft
+sources:
+  - https://eu.winctrl.com/view/goods-details.html?id=1765
+  - https://eu.winctrl.com/h5/Orion2_Throttle_Base/en/
+  - https://eu.winctrl.com/view/goods-details.html?id=340
+  - https://eu.winctrl.com/static/download/QmVogWajtbAAa6iTNGjYJBncNX696Loiwywwf3FDMjyL1A?filename=WINCTRL+ViperAce+Throttle+Grip+L.+Metal+2.0+User+Manual+V1.0-202501127.pdf
+
+images:
+  - file: /images/winctrl/orion-2-f16-throttle.jpg
+    source: https://eu.winctrl.com/view/goods-details.html?id=1765
+    caption: Orion 2 F-16 Viper Throttle
+"""
+
+with open("src/content/components/winctrl/orion-2-f16-throttle.yaml", "w", encoding="utf-8") as f:
+    f.write(text)
+print("Updated orion-2-f16-throttle.yaml successfully")

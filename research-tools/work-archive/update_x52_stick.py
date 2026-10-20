@@ -1,0 +1,119 @@
+import yaml
+
+text = """brand: logitech
+name: Logitech G X52 Flight Stick
+category: stick_fixed
+status: current
+handedness: right
+mount: null
+controls:
+  - type: trigger
+    location: grip
+    stages: 2
+    action: sequential
+    label: Two-stage metal trigger
+    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
+  - type: button
+    location: grip
+    label: Backlit fire buttons
+    count: 3
+    backlit: true
+    notes: The standard X52 manual product-tour diagram labels three buttons on the joystick head.
+    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
+  - type: button
+    location: grip
+    backlit: false
+    label: Missile launcher button
+    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
+  - type: hat
+    location: grip
+    ways: 8
+    push: false
+    count: 2
+    label: Hat switches
+    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
+  - type: toggle
+    location: grip
+    ways: 3
+    momentary: false
+    label: Mode selector
+    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
+  - type: toggle
+    location: base
+    count: 3
+    ways: 2
+    momentary: true
+    label: Spring-loaded base switches
+    notes: Three spring-loaded switches provide six programmed commands (each switch has two directions).
+    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
+  - type: switch
+    location: grip
+    positions: 2
+    momentary: false
+    label: Metal pinkie switch
+    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
+controls_evidence:
+  coverage: partial
+  source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
+  checked: '2026-10-20'
+  notes: Standard X52 manual product-tour pages 3-4 visually label the two-stage trigger, three backlit stick-head fire buttons, two 8-way hats, pinkie switch, missile-launcher button, mode selector and three spring-loaded base switches. Programmable command totals are not treated as physical button counts.
+hardware:
+  gimbal: ball_joint
+  sensor: null
+  axes:
+  - name: X
+  - name: Y
+  - name: Twist
+  force_adjustable: false
+  cams_swappable: false
+  extension_support: false
+connectivity:
+  usb: a_cable
+  standalone_usb: true
+software: Logitech G HUB
+physical:
+  weight_g: 1033
+  dimensions_mm: [170, 170, 278]
+  materials:
+  - abs
+prices:
+- region: EU
+  currency: EUR
+  amount: 100
+  incl_vat: true
+  store: amazon.de
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 86
+  incl_vat: true
+  store: amazon.co.uk
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 105
+  incl_vat: false
+  store: amazon.com
+  verified: '2026-10-01'
+  source: manual
+verification: draft
+sources:
+- https://www.logitechg.com/en-us/products/flight.html
+images:
+  - file: /images/logitech/x52-space-flight-stick.webp
+    source: https://www.logitechg.com/en-us/shop/p/x52-space-flight-simulator-controller.945-000025
+    caption: X52 Space Flight Stick
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: The official X52 HOTAS user guide documents Windows setup and use. The guide does not specify Xbox or PS5 support.
+  sources:
+  - https://www.logitech.com/assets/65328/2/x52-hotas.pdf
+"""
+
+with open("src/content/components/logitech/x52-space-flight-stick.yaml", "w", encoding="utf-8") as f:
+    f.write(text)
+print("Updated x52-space-flight-stick.yaml successfully")

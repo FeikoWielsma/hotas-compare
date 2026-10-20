@@ -1,0 +1,131 @@
+import yaml
+
+text = """brand: logitech
+name: X52 Throttle
+category: throttle
+status: current
+handedness: n/a
+mount: null
+controls:
+  - type: lever
+    kind: throttle_single
+    analog: true
+    push: false
+    location: handle
+    label: Progressive throttle
+    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
+  - type: detent
+    count: 2
+    location: handle
+    label: Idle and afterburner detents
+    customizable: true
+    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
+  - type: button
+    location: handle
+    count: 2
+    backlit: false
+    label: Throttle-head fire buttons
+    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
+  - type: scroll_wheel
+    location: handle
+    label: Rear index-finger scroll wheel
+    push: true
+    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
+  - type: hat
+    location: handle
+    ways: 8
+    push: false
+    label: Thumb POV hat
+    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
+  - type: hat
+    location: handle
+    ways: 8
+    push: false
+    label: Mouse controller hat mode
+    notes: Mouse controller can function as a hat; alternate mode, not an additional simultaneously installed control.
+    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
+  - type: button
+    location: handle
+    backlit: false
+    label: Mouse left button
+    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
+  - type: button
+    location: handle
+    backlit: false
+    label: Clutch button
+    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
+  - type: slider
+    analog: true
+    location: handle
+    label: Thumb slider
+    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
+  - type: rotary
+    mode: analog
+    count: 2
+    push: false
+    location: handle
+    label: Analog throttle rotaries
+    source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
+controls_evidence:
+  coverage: partial
+  source: https://www.logitech.com/assets/65328/2/x52-hotas.pdf
+  checked: '2026-10-20'
+  notes: Standard X52 manual product-tour page 4 shows two throttle-head fire buttons, thumb slider, two rotary axes, rear scroll wheel with built-in button, 8-way POV hat, mouse controller with alternate hat mode, left mouse button, and clutch button. The mouse controller's complete physical input behavior remains unclear, so coverage remains partial.
+hardware:
+  gimbal: null
+  sensor: null
+  axes:
+  - name: Throttle
+  force_adjustable: true
+  cams_swappable: false
+  extension_support: false
+connectivity:
+  usb: a_cable
+  standalone_usb: true
+software: Logitech G HUB
+physical:
+  weight_g: 728
+  dimensions_mm: [170, 170, 190]
+  materials:
+  - abs
+prices:
+- region: EU
+  currency: EUR
+  amount: 100
+  incl_vat: true
+  store: amazon.de
+  verified: '2026-10-01'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 86
+  incl_vat: true
+  store: amazon.co.uk
+  verified: '2026-10-01'
+  source: manual
+- region: US
+  currency: USD
+  amount: 105
+  incl_vat: false
+  store: amazon.com
+  verified: '2026-10-01'
+  source: manual
+verification: draft
+sources:
+- https://www.logitechg.com/en-us/products/flight.html
+images:
+  - file: /images/logitech/x52-throttle.webp
+    source: https://www.logitechg.com/en-us/shop/p/x52-space-flight-simulator-controller.945-000025
+    caption: X52 Throttle
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: The official X52 HOTAS user guide documents Windows setup and use. The guide does not specify Xbox or PS5 support.
+  sources:
+  - https://www.logitech.com/assets/65328/2/x52-hotas.pdf
+"""
+
+with open("src/content/components/logitech/x52-throttle.yaml", "w", encoding="utf-8") as f:
+    f.write(text)
+print("Updated x52-throttle.yaml successfully")
