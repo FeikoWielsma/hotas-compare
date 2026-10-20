@@ -6,6 +6,8 @@ Current coverage: **55 complete physical inventories; 55 partial inventories**. 
 
 The WINCTRL rendered-page follow-up is complete. It recovered exact-handed manuals and additional inventories; unresolved SKU identities and unclassified controls remain explicitly partial.
 
+Catalog update 2026-10-20: the original Constellation Alpha Left/Right records were removed at the owner’s request because they are no longer sold. Their historical research notes remain below; the current additions are documented in [Thrustmaster](research/catalog-refresh-thrustmaster.md), [SOL-R](research/catalog-refresh-solr.md) and [Turtle Beach](research/catalog-refresh-turtle-beach.md).
+
 ## Evidence and display rules
 
 - Physical push buttons exclude contacts belonging to hats, trigger stages, switch positions, lever detents, and encoder clicks.
@@ -112,10 +114,8 @@ Known unresolved facts and revision caveats are stored in each linked data file.
 | [VPC CDT-Aeromax [RZ] Flightstick](../src/content/components/virpil/cdt-aeromax-rz-flightstick.yaml) | partial | 8 | 0 | 0 | [Manufacturer](https://virpil-controls.eu/cdt-aeromax-rz-flightstick-omnithrottle.html) |
 | [VPC CDT-Aeromax Throttle Lever Module](../src/content/components/virpil/cdt-aeromax-throttle-lever-module.yaml) | complete | 1 | 0 | 0 | [Manufacturer](https://virpil-controls.eu/cdt-aeromax-throttle-module.html) |
 | [CDT-VMAX Throttle](../src/content/components/virpil/cdt-vmax-throttle.yaml) | complete | 7 | 0 | 7 | [Manufacturer](https://virpil-controls.eu/vpc-cdt-vmax-throttle.html) |
-| [Constellation Alpha (Left)](../src/content/components/virpil/constellation-alpha-l.yaml) | complete | 8 | 0 | 0 | [Manufacturer](https://virpil-controls.eu/vpc-constellation-alpha-r.html) |
 | [Constellation Alpha Prime (Left)](../src/content/components/virpil/constellation-alpha-prime-l.yaml) | complete | 8 | 0 | 0 | [Manufacturer](https://virpil-controls.eu/vpc-constellation-alpha-prime-l.html) |
 | [Constellation Alpha Prime (Right)](../src/content/components/virpil/constellation-alpha-prime-r.yaml) | complete | 8 | 0 | 0 | [Manufacturer](https://virpil-controls.eu/vpc-constellation-alpha-prime-r.html) |
-| [Constellation Alpha (Right)](../src/content/components/virpil/constellation-alpha-r.yaml) | complete | 8 | 0 | 0 | [Manufacturer](https://virpil-controls.eu/vpc-constellation-alpha-r.html) |
 | [VPC MongoosT-50CM3 Base](../src/content/components/virpil/mongoost-50cm3-base.yaml) | complete | 0 | 0 | 0 | [Manufacturer](https://virpil-controls.eu/vpc-mongoost-50cm3-base.html) |
 | [VPC MongoosT-50CM3 Throttle](../src/content/components/virpil/mongoost-50cm3-throttle.yaml) | complete | 16 | 4 | 0 | [Manufacturer](https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html) |
 | [MongoosT-50CM4 Throttle](../src/content/components/virpil/mongoost-50cm4-throttle.yaml) | complete | 11 | 1 | 0 | [Manufacturer](https://virpil-controls.eu/mongoost-50cm4-throttle.html) |
