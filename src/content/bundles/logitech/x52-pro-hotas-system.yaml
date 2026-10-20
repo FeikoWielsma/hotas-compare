@@ -8,17 +8,19 @@ components:
 prices:
 - region: EU
   currency: EUR
-  amount: 260
+  amount: 229.99
   incl_vat: true
-  store: amazon.de
-  verified: '2026-10-01'
+  store: logitechg.com
+  url: https://www.logitechg.com/de-de/shop/p/x52-pro-space-flight-simulator-controller
+  verified: '2026-10-21'
   source: manual
 - region: UK
   currency: GBP
-  amount: 224
+  amount: 199.99
   incl_vat: true
-  store: amazon.co.uk
-  verified: '2026-10-01'
+  store: logitechg.com
+  url: https://www.logitechg.com/en-gb/shop/p/x52-pro-space-flight-simulator-controller
+  verified: '2026-10-21'
   source: manual
 - region: US
   currency: USD
@@ -39,6 +41,7 @@ platform_compatibility:
   pc: supported
   xbox: unknown
   ps5: unknown
-  notes: Manual documents Windows setup through Windows Game Controllers and G HUB; no Xbox or PS5 statement appears in the manual or official SKU page. Console support remains unknown.
+  notes: >-
+    Manual documents Windows setup through Windows Game Controllers and G HUB; no Xbox or PS5 statement appears in the manual or official SKU page. Console support remains unknown.
   sources:
-  - https://www.logitech.com/assets/65327/x52-professional-hotas.pdf
+    - https://www.logitech.com/assets/65327/x52-professional-hotas.pdf

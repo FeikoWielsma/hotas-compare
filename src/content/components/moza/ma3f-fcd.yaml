@@ -31,12 +31,13 @@ controls:
   label: Alphanumeric keys (A-Z, 0-9, ., +/-, /, SP, DVRT, CLR)
   source: https://us.mozaracing.com/products/ma3f-fcd
 controls_evidence:
-  coverage: partial
+  coverage: complete
   source: https://us.mozaracing.com/products/ma3f-fcd
-  checked: '2026-10-20'
-  notes: Counted from the user manual cover photo (MA3F FCD, 300 dpi crop). The top row of five small lamps is not
-    counted as buttons (indicators, no separate key cap visible). Two blank keys are counted as keys. The 5.1-inch
-    display is an output. Total 74 keys. The manual has no further diagrams.
+  checked: '2026-10-21'
+  notes: >-
+    Counted from the user manual cover photo at 3x render: 12 bezel line-select keys, 14 function keys (DIR to DIM), six
+    airport, blank and arrow keys, and 42 alphanumeric keys = 74 keys. The top row of five lamps is indicators, not keys.
+    The 5.1-inch display is an output. The manual has no further diagrams.
 connectivity:
   usb: Type-C USB 2.0
   standalone_usb: true
@@ -55,6 +56,22 @@ prices:
   store: MOZA US store
   url: https://us.mozaracing.com/products/ma3f-fcd
   verified: '2026-10-20'
+  source: manual
+- region: EU
+  currency: EUR
+  amount: 259
+  incl_vat: true
+  store: eu.mozaracing.com
+  url: https://eu.mozaracing.com/products/ma3f-fcd
+  verified: '2026-10-21'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 229
+  incl_vat: true
+  store: uk.mozaracing.com
+  url: https://uk.mozaracing.com/products/ma3f-fcd
+  verified: '2026-10-21'
   source: manual
 sources:
 - https://us.mozaracing.com/products/ma3f-fcd

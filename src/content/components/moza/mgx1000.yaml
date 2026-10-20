@@ -55,6 +55,10 @@ connectivity:
   standalone_usb: true
 physical:
   weight_g: 1170
+  dimensions_mm:
+  - 304
+  - 201
+  - 66.8
   materials:
   - ABS
   - PC
@@ -67,6 +71,22 @@ prices:
   store: MOZA US store
   url: https://us.mozaracing.com/products/mgx1000
   verified: '2026-10-20'
+  source: manual
+- region: EU
+  currency: EUR
+  amount: 469
+  incl_vat: true
+  store: eu.mozaracing.com
+  url: https://eu.mozaracing.com/products/mgx1000
+  verified: '2026-10-21'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 449
+  incl_vat: true
+  store: uk.mozaracing.com
+  url: https://uk.mozaracing.com/products/mgx1000
+  verified: '2026-10-21'
   source: manual
 sources:
 - https://us.mozaracing.com/products/mgx1000

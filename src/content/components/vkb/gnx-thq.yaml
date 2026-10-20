@@ -5,9 +5,7 @@ platform_compatibility:
   pc: supported
   xbox: unsupported
   ps5: unsupported
-  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs
-    and not compatible with Xbox, PS5, Apple or other platforms. GNX modules work
-    through Gladiator NXT/EVO bases or a standalone GNX USB Controller (HID-Main) on Windows PC.
+  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs and not compatible with Xbox, PS5, Apple or other platforms. GNX modules work through Gladiator NXT/EVO bases or a standalone GNX USB Controller (HID-Main) on Windows PC.
   sources:
   - https://vkbsimcontrollers.com/products/gnx-thq-throttle-quadrant-us
   - https://vkb-sim.com.au/collections/all-controllers
@@ -33,9 +31,7 @@ controls_evidence:
   coverage: complete
   source: https://vkbsimcontrollers.com/products/gnx-thq-throttle-quadrant-us
   checked: '2026-10-20'
-  notes: Physical inventory verified against official VKB THQ template (VKB-THQ-v1.0.pdf) and
-    product page (3 analog axes with contactless MaRS sensors, 8 non-backlit push buttons, no hats).
-    Lever heads are interchangeable.
+  notes: Physical inventory verified against official VKB THQ template (VKB-THQ-v1.0.pdf) and product page (3 analog axes with contactless MaRS sensors, 8 non-backlit push buttons, no hats). Lever heads are interchangeable.
 hardware:
   axis_count: 3
   gimbal: null
@@ -61,6 +57,22 @@ prices:
   store: vkbsimcontrollers.com
   url: https://vkbsimcontrollers.com/products/gnx-thq-throttle-quadrant-us
   verified: '2026-10-19'
+  source: manual
+- region: EU
+  currency: EUR
+  amount: 98.0
+  incl_vat: true
+  store: flightsimcontrols.com
+  url: https://flightsimcontrols.com/product/gnx-thq-throttle-quadrant/
+  verified: '2026-10-21'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 99.0
+  incl_vat: true
+  store: flightsimcontrols.co.uk
+  url: https://flightsimcontrols.co.uk/product/gnx-thq-throttle-quadrant/
+  verified: '2026-10-21'
   source: manual
 verification: draft
 sources:

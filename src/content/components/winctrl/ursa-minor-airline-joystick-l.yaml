@@ -67,7 +67,7 @@ hardware:
     sensor: hall
   - name: Twist
     sensor: hall
-  - name: Throttle
+  - name: Slider
   force_adjustable: false
   cams_swappable: false
   damping: integrated_clutches
@@ -95,6 +95,14 @@ use_case_fit:
   space_hotas: 4
   space_hosas: 3
 prices:
+- region: US
+  currency: USD
+  amount: 62.40
+  incl_vat: false
+  store: us.winwingsim.com
+  url: https://us.winwingsim.com/p/556.html
+  verified: '2026-10-21'
+  source: manual
 - region: EU
   currency: EUR
   amount: 59.9
@@ -103,6 +111,15 @@ prices:
   url: https://eu.winctrl.com/view/goods-details.html?id=559
   verified: '2026-10-19'
   source: manual
+- region: UK
+  currency: GBP
+  amount: 64.27
+  incl_vat: true
+  store: uk.winctrl.com
+  url: https://uk.winctrl.com/p/556.html
+  verified: '2026-10-21'
+  source: manual
+
 verification: draft
 sources:
 - https://eu.winctrl.com/view/goods-details.html?id=559

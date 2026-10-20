@@ -7,44 +7,44 @@ platform_compatibility:
   ps5: unsupported
   notes: Official product listing identifies the intended platform as PC and does not list Xbox or PS5 support.
   sources:
-    - https://virpil-controls.eu/vpc-sharka-50-collective-grip.html
+  - https://virpil-controls.eu/vpc-sharka-50-collective-grip.html
 status: current
 handedness: n/a
 mount:
   provides: virpil-rotor-grip
   accepts: []
 controls:
-  - type: hat
-    ways: 8
-    push: true
-    count: 2
-    location: grip
-    label: 8-way hats
-    source: https://virpil-controls.eu/vpc-sharka-50-collective-grip.html
-  - type: switch
-    count: 1
-    push: true
-    location: grip
-    label: 2-way switch
-    notes: The page says "2-way switch (+ push)" and does not say whether the two ways are a hat, toggle, or momentary switch.
-    source: https://virpil-controls.eu/vpc-sharka-50-collective-grip.html
-  - type: toggle
-    ways: 3
-    count: 3
-    location: grip
-    label: ON-OFF-ON toggles
-    notes: The page does not say whether these ON-OFF-ON toggles are maintained or momentary.
-    source: https://virpil-controls.eu/vpc-sharka-50-collective-grip.html
-  - type: button
-    count: 3
-    location: grip
-    label: Push buttons
-    source: https://virpil-controls.eu/vpc-sharka-50-collective-grip.html
+- type: hat
+  ways: 8
+  push: true
+  count: 2
+  location: grip
+  label: 8-way hats
+  source: https://virpil-controls.eu/vpc-sharka-50-collective-grip.html
+- type: switch
+  count: 1
+  push: true
+  location: grip
+  label: 2-way switch
+  notes: The page says "2-way switch (+ push)" and does not say whether the two ways are a hat, toggle, or momentary switch.
+  source: https://virpil-controls.eu/vpc-sharka-50-collective-grip.html
+- type: toggle
+  ways: 3
+  count: 3
+  location: grip
+  label: ON-OFF-ON toggles
+  notes: The page does not say whether these ON-OFF-ON toggles are maintained or momentary.
+  source: https://virpil-controls.eu/vpc-sharka-50-collective-grip.html
+- type: button
+  count: 3
+  location: grip
+  label: Push buttons
+  source: https://virpil-controls.eu/vpc-sharka-50-collective-grip.html
 controls_evidence:
   coverage: complete
   source: https://virpil-controls.eu/vpc-sharka-50-collective-grip.html
   checked: '2026-10-20'
-  notes: 'SKU VPC-011. The product page lists 2 x 8-way hats with push, 1 x 2-way switch with push, 3 x ON-OFF-ON toggles, and 3 push buttons. No analog axes are listed. The overview says enhanced PU plastic while the description says a metal handle with a rubberised grip, so materials are left unset.'
+  notes: SKU VPC-011. The product page lists 2 x 8-way hats with push, 1 x 2-way switch with push, 3 x ON-OFF-ON toggles, and 3 push buttons. No analog axes are listed. The overview says enhanced PU plastic while the description says a metal handle with a rubberised grip, so materials are left unset.
 hardware:
   gimbal: null
   sensor: null
@@ -60,18 +60,34 @@ connectivity:
 physical:
   materials: []
 prices:
-  - region: EU
-    currency: EUR
-    amount: 169.95
-    incl_vat: true
-    store: virpil-controls.eu
-    url: https://virpil-controls.eu/vpc-sharka-50-collective-grip.html
-    verified: '2026-10-20'
-    source: manual
+- region: EU
+  currency: EUR
+  amount: 169.95
+  incl_vat: true
+  store: virpil-controls.eu
+  url: https://virpil-controls.eu/vpc-sharka-50-collective-grip.html
+  verified: '2026-10-20'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 189.95
+  incl_vat: true
+  store: virpil-controls.co.uk
+  url: https://virpil-controls.co.uk/vpc-sharka-50-collective-grip.html
+  verified: '2026-10-21'
+  source: manual
+- region: US
+  currency: USD
+  amount: 199.95
+  incl_vat: false
+  store: virpil-controls.us.com
+  url: https://virpil-controls.us.com/vpc-sharka-50-collective-grip.html
+  verified: '2026-10-21'
+  source: manual
 verification: draft
 sources:
-  - https://virpil-controls.eu/vpc-sharka-50-collective-grip.html
+- https://virpil-controls.eu/vpc-sharka-50-collective-grip.html
 images:
-  - file: /images/virpil/vpc-sharka-50-collective-grip.jpg
-    source: https://virpil-controls.eu/vpc-sharka-50-collective-grip.html
-    caption: VPC SharKa-50 Collective Grip
+- file: /images/virpil/vpc-sharka-50-collective-grip.jpg
+  source: https://virpil-controls.eu/vpc-sharka-50-collective-grip.html
+  caption: VPC SharKa-50 Collective Grip

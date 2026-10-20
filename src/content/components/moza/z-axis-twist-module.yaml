@@ -8,10 +8,9 @@ mount:
   accepts:
   - moza-flight-qr
 controls:
-- type: lever
+- type: axis
   location: other
-  kind: other
-  analog: true
+  kind: twist
   count: 1
   label: Z-axis twist
   source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_z_axis_manual.pdf?v=1779863078

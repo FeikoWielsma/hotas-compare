@@ -5,33 +5,89 @@ status: discontinued
 handedness: n/a
 mount: null
 controls:
-- type: button
-  count: 8
-  location: panel
-  label: Eight physical hotkeys on front panel
-  source: https://www.logitechg.com/en-us/shop/p/flight-simulator-instrument-panel
-- type: encoder
-  count: 2
-  location: panel
-  label: Twin display selection dials
-  source: https://www.logitechg.com/en-us/shop/p/flight-simulator-instrument-panel
+  - type: button
+    count: 6
+    location: panel
+    label: Left side cockpit display hotkey buttons (Map, Main Panel, Radios, GPS, Panel 4, Panel 5)
+    backlit: false
+    source: https://www.logitech.com/assets/65156/flight-instrument-panel.pdf
+  - type: button
+    count: 2
+    location: panel
+    label: Display page scroll cursor up/down buttons
+    backlit: false
+    source: https://www.logitech.com/assets/65156/flight-instrument-panel.pdf
+  - type: encoder
+    count: 2
+    location: panel
+    label: Dual continuous rotary adjustment dials
+    push: false
+    source: https://www.logitech.com/assets/65156/flight-instrument-panel.pdf
 controls_evidence:
-  coverage: partial
-  source: https://www.logitechg.com/en-us/shop/p/flight-simulator-instrument-panel
-  checked: '2026-10-20'
-  notes: Official page documents twin dials and a set of hotkeys; the official photograph
-    shows six left-side keys and two arrow keys. The page currently says unavailable.
-    Axis reporting and exact dial click behavior are not documented.
+  coverage: complete
+  source: https://www.logitech.com/assets/65156/flight-instrument-panel.pdf
+  checked: '2026-10-21'
+  notes: >-
+    Official Logitech G Flight Instrument Panel user guide (pp. 4-7) documents the six left-hand cockpit display hotkey buttons, two bottom-center cursor up/down scroll buttons, and dual continuous rotary adjustment dials.
 hardware:
   axes: []
+  sensor: null
+  gimbal: null
+  force_adjustable: null
+  cams_swappable: null
+  damping: null
+  extension_support: null
+  throw_deg: null
 connectivity:
   usb: a_cable
   standalone_usb: true
 software: Logitech G HUB
+physical:
+  weight_g: 118
+  dimensions_mm:
+    - 94
+    - 26
+    - 84
+  materials:
+    - abs
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: >-
+    The official Flight Instrument Panel user guide documents Windows 10, 8.1, and 7 setup and driver installation with Microsoft Flight Simulator X / SimConnect. Xbox and PS5 support are not documented.
+  sources:
+    - https://www.logitech.com/assets/65156/flight-instrument-panel.pdf
+prices:
+  - region: US
+    currency: USD
+    amount: 179.99
+    incl_vat: false
+    store: logitechg.com
+    url: https://www.logitechg.com/en-us/shop/p/flight-simulator-instrument-panel
+    verified: '2026-10-21'
+    source: manual
+  - region: UK
+    currency: GBP
+    amount: 139.99
+    incl_vat: true
+    store: logitechg.com
+    url: https://www.logitechg.com/en-gb/shop/p/flight-simulator-instrument-panel
+    verified: '2026-10-21'
+    source: manual
+  - region: EU
+    currency: EUR
+    amount: 159.99
+    incl_vat: true
+    store: logitechg.com
+    url: https://www.logitechg.com/de-de/shop/p/flight-simulator-instrument-panel
+    verified: '2026-10-21'
+    source: manual
 verification: draft
 sources:
-- https://www.logitechg.com/en-us/shop/p/flight-simulator-instrument-panel
+  - https://www.logitechg.com/en-us/shop/p/flight-simulator-instrument-panel
+  - https://www.logitech.com/assets/65156/flight-instrument-panel.pdf
 images:
-- file: /images/logitech/flight-instrument-panel.png
-  source: https://www.logitechg.com/en-us/shop/p/flight-simulator-instrument-panel
-  caption: Flight Instrument Panel
+  - file: /images/logitech/flight-instrument-panel.png
+    source: https://www.logitechg.com/en-us/shop/p/flight-simulator-instrument-panel
+    caption: Flight Instrument Panel

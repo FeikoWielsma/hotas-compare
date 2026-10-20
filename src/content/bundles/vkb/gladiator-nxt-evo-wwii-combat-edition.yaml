@@ -5,9 +5,7 @@ platform_compatibility:
   pc: supported
   xbox: unsupported
   ps5: unsupported
-  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs
-    and not compatible with Xbox, PS5, Apple or other platforms. Bundled VKB hardware
-    inherits the Windows PC-only restriction.
+  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs and not compatible with Xbox, PS5, Apple or other platforms. Bundled VKB hardware inherits the Windows PC-only restriction.
   sources:
   - https://vkbsimcontrollers.com/products/gladiator-nxt-evo-wwii-combat-edition-us
   - https://vkb-sim.com.au/collections/all-controllers
@@ -24,11 +22,26 @@ prices:
   url: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-wwii-combat-edition-us
   verified: '2026-10-19'
   source: manual
+- region: EU
+  currency: EUR
+  amount: 135.0
+  incl_vat: true
+  store: flightsimcontrols.com
+  url: https://flightsimcontrols.com/product/gladiator-nxt-evo-wwii-combat-edition/
+  verified: '2026-10-21'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 145.0
+  incl_vat: true
+  store: flightsimcontrols.co.uk
+  url: https://flightsimcontrols.co.uk/product/gladiator-nxt-evo-wwii-combat-edition/
+  verified: '2026-10-21'
+  source: manual
 verdict:
   author: feiko
   hands_on: false
-  take: 'Draft assessment: An official VKB coordinated combo for accessible tabletop
-    WWII warbird simulation.'
+  take: 'Draft assessment: An official VKB coordinated combo for accessible tabletop WWII warbird simulation.'
   pros:
   - Complete coordinated control set with well-matched components
   - Components remain independently configurable and modular

@@ -56,6 +56,22 @@ physical:
   - 200
   - 235
 prices:
+- region: EU
+  currency: EUR
+  amount: 99.99
+  incl_vat: true
+  store: Thrustmaster Netherlands
+  url: https://shop.thrustmaster.com/nl_nl/t-flight-hotas-one-microsoft-flight-simulator-edition.html
+  verified: '2026-10-20'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 89.99
+  incl_vat: true
+  store: Thrustmaster UK eshop
+  url: https://shop.thrustmaster.com/en_gb/t-flight-hotas-one-microsoft-flight-simulator-edition.html
+  verified: '2026-10-20'
+  source: manual
 - region: US
   currency: USD
   amount: 109.99

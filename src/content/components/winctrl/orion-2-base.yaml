@@ -68,10 +68,11 @@ prices:
     source: manual
   - region: UK
     currency: GBP
-    amount: 175
+    amount: 229.10
     incl_vat: true
-    store: winwing.cn
-    verified: '2026-10-01'
+    store: uk.winctrl.com
+    url: https://uk.winctrl.com/p/333.html
+    verified: '2026-10-21'
     source: manual
   - region: US
     currency: USD

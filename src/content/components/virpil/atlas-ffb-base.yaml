@@ -7,42 +7,42 @@ platform_compatibility:
   ps5: unsupported
   notes: Official product listing presents the base as a PC USB flightstick base and does not list Xbox or PS5 support.
   sources:
-    - https://virpil-controls.eu/atlas-ffb-base.html
+  - https://virpil-controls.eu/atlas-ffb-base.html
 status: announced
 release_year: 2026
 handedness: n/a
 mount:
   provides: null
   accepts:
-    - virpil-grip
+  - virpil-grip
 controls:
-  - type: button
-    count: 1
-    location: other
-    label: Remote emergency stop
-    notes: Included remote button that disables motor force output. The page does not describe it as a simulator input.
-    source: https://virpil-controls.eu/atlas-ffb-base.html
-  - type: axis
-    kind: other
-    count: 2
-    location: base
-    label: Pitch and roll axes
-    source: https://virpil-controls.eu/atlas-ffb-base.html
+- type: button
+  count: 1
+  location: other
+  label: Remote emergency stop
+  notes: Included remote button that disables motor force output. The page does not describe it as a simulator input.
+  source: https://virpil-controls.eu/atlas-ffb-base.html
+- type: axis
+  kind: other
+  count: 2
+  location: base
+  label: Pitch and roll axes
+  source: https://virpil-controls.eu/atlas-ffb-base.html
 controls_evidence:
   coverage: complete
   source: https://virpil-controls.eu/atlas-ffb-base.html
   checked: '2026-10-20'
-  notes: 'SKU VPC-115-001. Pre-order base, shipping estimate late Q4 2026. Bare base has two gimbal axes and the included remote emergency stop. No grip is installed. The page states an axis range of 18 degrees without saying whether that is total travel or travel each side of center, so throw_deg is unset. Cart price is a 50 percent deposit of the stated €599.95 pre-order price; the deposit is not recorded as the product price. Motors are 25 nm, stated as over 12 kg at the stick.'
+  notes: SKU VPC-115-001. Pre-order base, shipping estimate late Q4 2026. Bare base has two gimbal axes and the included remote emergency stop. No grip is installed. The page states an axis range of 18 degrees without saying whether that is total travel or travel each side of center, so throw_deg is unset. Cart price is a 50 percent deposit of the stated €599.95 pre-order price; the deposit is not recorded as the product price. Motors are 25 nm, stated as over 12 kg at the stick.
 hardware:
   gimbal: cord_drive
   sensor: contactless_magnetic
   axes:
-    - name: X
-      resolution_bits: 14
-      sensor: contactless_magnetic
-    - name: Y
-      resolution_bits: 14
-      sensor: contactless_magnetic
+  - name: X
+    resolution_bits: 14
+    sensor: contactless_magnetic
+  - name: Y
+    resolution_bits: 14
+    sensor: contactless_magnetic
   force_adjustable: true
   cams_swappable: null
   damping: null
@@ -54,8 +54,8 @@ connectivity:
 software: ATLAS FFB Software
 physical:
   materials:
-    - aluminium
-    - metal
+  - aluminium
+  - metal
 use_case_fit:
   modern_jet: 5
   heli: 4
@@ -64,11 +64,35 @@ use_case_fit:
   airliner: 3
   space_hotas: 5
   space_hosas: 5
-prices: []
+prices:
+- region: EU
+  currency: EUR
+  amount: 599.95
+  incl_vat: true
+  store: virpil-controls.eu
+  url: https://virpil-controls.eu/atlas-ffb-base.html
+  verified: '2026-10-21'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 629.95
+  incl_vat: true
+  store: virpil-controls.co.uk
+  url: https://virpil-controls.co.uk/atlas-ffb-base.html
+  verified: '2026-10-21'
+  source: manual
+- region: US
+  currency: USD
+  amount: 719.95
+  incl_vat: false
+  store: virpil-controls.us.com
+  url: https://virpil-controls.us.com/atlas-ffb-base.html
+  verified: '2026-10-21'
+  source: manual
 verification: draft
 sources:
-  - https://virpil-controls.eu/atlas-ffb-base.html
+- https://virpil-controls.eu/atlas-ffb-base.html
 images:
-  - file: /images/virpil/atlas-ffb-base.png
-    source: https://virpil-controls.eu/atlas-ffb-base.html
-    caption: VPC ATLAS FFB Base
+- file: /images/virpil/atlas-ffb-base.png
+  source: https://virpil-controls.eu/atlas-ffb-base.html
+  caption: VPC ATLAS FFB Base

@@ -46,12 +46,12 @@ controls:
   label: Two-position toggle switch
   source: https://eu.winctrl.com/mobileview/goods-details.html?id=1065
 controls_evidence:
-  coverage: partial
+  coverage: complete
   source: https://eu.winctrl.com/mobileview/goods-details.html?id=1065
-  checked: '2026-10-20'
-  notes: Store specifications count 17 pushbuttons, five 360° rotary knobs, a separate five-position 120° knob,
-    one rotary encoder wheel, and a two-position toggle. The axis/contact behavior of the rotary controls is not
-    stated.
+  checked: '2026-10-21'
+  notes: Store specifications itemize 17 pushbuttons, five 360° rotary knobs, a separate five-position 120° knob,
+    one rotary encoder wheel, and a two-position toggle, so the physical control inventory is complete. Rotary
+    axis/contact behavior is not stated and is not inferred.
 connectivity:
   usb: c
   standalone_usb: true
@@ -72,6 +72,15 @@ prices:
   url: https://us.winwingsim.com/view/goods-details.html?id=1065
   verified: '2026-10-20'
   source: manual
+- region: UK
+  currency: GBP
+  amount: 159.08
+  incl_vat: true
+  store: uk.winctrl.com
+  url: https://uk.winctrl.com/p/1065.html
+  verified: '2026-10-21'
+  source: manual
+
 verification: draft
 sources: *id001
 images:

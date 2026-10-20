@@ -7,48 +7,48 @@ platform_compatibility:
   ps5: unsupported
   notes: Official product listing presents the handle as a PC yoke control and does not list Xbox or PS5 support.
   sources:
-    - https://virpil-controls.eu/b-jet-yoke-handle.html
+  - https://virpil-controls.eu/b-jet-yoke-handle.html
 status: announced
 release_year: 2026
 handedness: n/a
 mount: null
 controls:
-  - type: rocker
-    count: 2
-    location: grip
-    label: Rocker triggers
-    notes: The page does not say whether these rockers are analog or digital.
-    source: https://virpil-controls.eu/b-jet-yoke-handle.html
-  - type: switch
-    count: 2
-    location: grip
-    label: Trimmer switches
-    notes: The page lists trimmer switches without stating hat, rocker, or toggle mechanism.
-    source: https://virpil-controls.eu/b-jet-yoke-handle.html
-  - type: hat
-    ways: 8
-    push: true
-    count: 1
-    location: grip
-    label: 8-way hat
-    source: https://virpil-controls.eu/b-jet-yoke-handle.html
-  - type: hat
-    ways: 4
-    push: true
-    count: 1
-    location: grip
-    label: 4-way hat
-    source: https://virpil-controls.eu/b-jet-yoke-handle.html
-  - type: button
-    count: 2
-    location: grip
-    label: Push buttons
-    source: https://virpil-controls.eu/b-jet-yoke-handle.html
+- type: rocker
+  count: 2
+  location: grip
+  label: Rocker triggers
+  notes: The page does not say whether these rockers are analog or digital.
+  source: https://virpil-controls.eu/b-jet-yoke-handle.html
+- type: switch
+  count: 2
+  location: grip
+  label: Trimmer switches
+  notes: The page lists trimmer switches without stating hat, rocker, or toggle mechanism.
+  source: https://virpil-controls.eu/b-jet-yoke-handle.html
+- type: hat
+  ways: 8
+  push: true
+  count: 1
+  location: grip
+  label: 8-way hat
+  source: https://virpil-controls.eu/b-jet-yoke-handle.html
+- type: hat
+  ways: 4
+  push: true
+  count: 1
+  location: grip
+  label: 4-way hat
+  source: https://virpil-controls.eu/b-jet-yoke-handle.html
+- type: button
+  count: 2
+  location: grip
+  label: Push buttons
+  source: https://virpil-controls.eu/b-jet-yoke-handle.html
 controls_evidence:
   coverage: complete
   source: https://virpil-controls.eu/b-jet-yoke-handle.html
   checked: '2026-10-20'
-  notes: 'SKU VPC-020. Pre-order, webstore ETA late Q4 2026. Installed control list is the page''s "Realistic Control Set". Optional ministick and other button modules are sold separately and are not included. Hat modules can be rotated, which does not change the installed count.'
+  notes: SKU VPC-020. Pre-order, webstore ETA late Q4 2026. Installed control list is the page's "Realistic Control Set". Optional ministick and other button modules are sold separately and are not included. Hat modules can be rotated, which does not change the installed count.
 hardware:
   gimbal: null
   sensor: null
@@ -64,18 +64,34 @@ connectivity:
 physical:
   materials: []
 prices:
-  - region: EU
-    currency: EUR
-    amount: 169.95
-    incl_vat: true
-    store: virpil-controls.eu
-    url: https://virpil-controls.eu/b-jet-yoke-handle.html
-    verified: '2026-10-20'
-    source: manual
+- region: EU
+  currency: EUR
+  amount: 169.95
+  incl_vat: true
+  store: virpil-controls.eu
+  url: https://virpil-controls.eu/b-jet-yoke-handle.html
+  verified: '2026-10-20'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 179.95
+  incl_vat: true
+  store: virpil-controls.co.uk
+  url: https://virpil-controls.co.uk/b-jet-yoke-handle.html
+  verified: '2026-10-21'
+  source: manual
+- region: US
+  currency: USD
+  amount: 199.95
+  incl_vat: false
+  store: virpil-controls.us.com
+  url: https://virpil-controls.us.com/b-jet-yoke-handle.html
+  verified: '2026-10-21'
+  source: manual
 verification: draft
 sources:
-  - https://virpil-controls.eu/b-jet-yoke-handle.html
+- https://virpil-controls.eu/b-jet-yoke-handle.html
 images:
-  - file: /images/virpil/b-jet-yoke-handle.jpg
-    source: https://virpil-controls.eu/b-jet-yoke-handle.html
-    caption: VPC B-JET Yoke Handle
+- file: /images/virpil/b-jet-yoke-handle.jpg
+  source: https://virpil-controls.eu/b-jet-yoke-handle.html
+  caption: VPC B-JET Yoke Handle

@@ -27,10 +27,13 @@ hardware:
   sensor: contactless_magnetic
   axes:
   - name: Rudder
+    resolution_bits: 13
     sensor: contactless_magnetic
   - name: Left brake
+    resolution_bits: 13
     sensor: contactless_magnetic
   - name: Right brake
+    resolution_bits: 13
     sensor: contactless_magnetic
   force_adjustable: true
   cams_swappable: false
@@ -41,8 +44,9 @@ hardware:
 connectivity:
   usb: c
   standalone_usb: true
-software: Slaw Device Rudder calibration software
+software: Slaw Device Rudder pedals calibration program (listed for RX Viper, RX Viper V2, BF109 and RF Dora pedals)
 physical:
+  weight_g: 7500
   materials:
   - steel
   - aluminium
@@ -74,6 +78,6 @@ platform_compatibility:
   pc: supported
   xbox: unknown
   ps5: unknown
-  notes: Manufacturer provides dedicated rudder calibration software (Slaw Device Rudder calibration software) for these pedals; the downloads page does not state an operating system. No Xbox or PS5 statement appears.
+  notes: Manufacturer lists a rudder pedals calibration program for RF Dora pedals on its downloads page; the page does not state an operating system. No Xbox or PS5 statement appears.
   sources:
   - https://slawdevice.com/en/content/7-downloads

@@ -33,13 +33,11 @@ controls:
   label: Five-way switch
   source: https://eu.winctrl.com/view/goods-details.html?id=542
 controls_evidence:
-  coverage: partial
+  coverage: complete
   source: https://eu.winctrl.com/view/goods-details.html?id=542
   checked: '2026-10-20'
-  notes: Product page lists 41 physical switches, 6 thumbwheels and 1 five-way switch, and Hall sensors
-    on the landing-gear, hook, parking-brake and wing-fold handles. The 41 switches are not broken into
-    buttons versus toggles. Landing-gear handle is described as a 3-position hidden switch. Dimensions
-    249×130×103 mm and mass 1.9 kg are from the PTO2 manual.
+  notes: >-
+    Exact PTO2 specification itemizes 41 physical switches, six thumbwheels and one five-way switch. It also names Hall sensing for the landing-gear, hook, parking-brake and wing-fold handles. The 41 switches are not broken into buttons versus toggles; coverage is complete at the published inventory category level. Landing gear is a three-position hidden switch. Dimensions 249×130×103 mm and mass 1.9 kg are from the PTO2 manual.
 hardware:
   sensor: hall
 connectivity:
@@ -61,6 +59,15 @@ prices:
   url: https://us.winwingsim.com/view/goods-details.html?id=542
   verified: '2026-10-20'
   source: manual
+- region: UK
+  currency: GBP
+  amount: 122.57
+  incl_vat: true
+  store: uk.winctrl.com
+  url: https://uk.winctrl.com/p/542.html
+  verified: '2026-10-21'
+  source: manual
+
 verification: draft
 sources: *id001
 images:

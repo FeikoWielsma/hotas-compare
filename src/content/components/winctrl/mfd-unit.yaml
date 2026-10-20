@@ -43,12 +43,11 @@ controls:
   label: Encoder
   source: https://eu.winctrl.com/mobileview/goods-details.html?id=549
 controls_evidence:
-  coverage: partial
-  source: https://eu.winctrl.com/mobileview/goods-details.html?id=549
+  coverage: complete
+  source: https://eu.winctrl.com/view/goods-details.html?id=402
   checked: '2026-10-20'
-  notes: 'The official Legend MIP product listing describes the MFD1 control layout: 4 seesaw, 20 square, and 16
-    rectangular buttons, plus a three-position slide knob and encoder. It does not state MFD axis totals or encoder
-    push behavior.'
+  notes: >-
+    Exact MFD1 product specification enumerates four seesaw, 20 square and 16 rectangular buttons, one three-position slide knob, and one encoder. Encoder push behavior is not stated, but the physical control inventory is itemized.
 connectivity:
   standalone_usb: true
 prices:
@@ -68,6 +67,15 @@ prices:
   url: https://us.winwingsim.com/view/goods-details.html?id=402
   verified: '2026-10-20'
   source: manual
+- region: UK
+  currency: GBP
+  amount: 58.25
+  incl_vat: true
+  store: uk.winctrl.com
+  url: https://uk.winctrl.com/p/402.html
+  verified: '2026-10-21'
+  source: manual
+
 verification: draft
 sources: *id001
 images:

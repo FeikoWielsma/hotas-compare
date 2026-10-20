@@ -5,40 +5,90 @@ status: current
 handedness: n/a
 mount: null
 controls:
-- type: toggle
-  ways: 2
-  count: 13
-  location: panel
-  label: On/off aircraft system rocker switches
-  source: https://www.logitech.com/assets/65158/flight-switch-panel.pdf
-- type: rotary
-  positions: 5
-  count: 1
-  location: panel
-  label: Five-position magneto/ignition selector
-  source: https://www.logitech.com/en-us/shop/p/flight-simulator-switch-panel.945-000030
-- type: lever
-  count: 1
-  location: panel
-  label: Landing gear up/down control
-  source: https://www.logitech.com/assets/65158/flight-switch-panel.pdf
+  - type: toggle
+    ways: 2
+    count: 13
+    location: panel
+    label: On/off aircraft system rocker switches
+    momentary: false
+    source: https://www.logitech.com/assets/65158/flight-switch-panel.pdf
+  - type: rotary
+    positions: 5
+    count: 1
+    location: panel
+    label: Five-position magneto/ignition selector
+    mode: selector
+    source: https://www.logitech.com/en-us/shop/p/flight-simulator-switch-panel.945-000030
+  - type: lever
+    count: 1
+    location: panel
+    label: Landing gear up/down control
+    source: https://www.logitech.com/assets/65158/flight-switch-panel.pdf
 controls_evidence:
   coverage: complete
   source: https://www.logitech.com/assets/65158/flight-switch-panel.pdf
   checked: '2026-10-20'
-  notes: Official product guide diagram and labeled functions show thirteen ON/OFF
-    rocker switches, the five-setting ignition selector and landing gear control.
+  notes: >-
+    Official product guide diagram and labeled functions show thirteen ON/OFF rocker switches, the five-setting ignition selector and landing gear control.
 hardware:
   axes: []
+  sensor: null
+  gimbal: null
+  force_adjustable: null
+  cams_swappable: null
+  damping: null
+  extension_support: null
+  throw_deg: null
 connectivity:
   usb: a_cable
   standalone_usb: true
 software: Logitech G HUB
+physical:
+  weight_g: 369
+  dimensions_mm:
+    - 282
+    - 63
+    - 84
+  materials:
+    - abs
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: >-
+    The official Flight Switch Panel user guide documents Windows setup and driver installation with Microsoft Flight Simulator X. Xbox and PS5 support are not documented.
+  sources:
+    - https://www.logitech.com/assets/65158/flight-switch-panel.pdf
+prices:
+  - region: US
+    currency: USD
+    amount: 119.99
+    incl_vat: false
+    store: logitechg.com
+    url: https://www.logitechg.com/en-us/shop/p/flight-simulator-switch-panel
+    verified: '2026-10-21'
+    source: manual
+  - region: UK
+    currency: GBP
+    amount: 59.99
+    incl_vat: true
+    store: logitechg.com
+    url: https://www.logitechg.com/en-gb/shop/p/flight-simulator-switch-panel
+    verified: '2026-10-21'
+    source: manual
+  - region: EU
+    currency: EUR
+    amount: 69.99
+    incl_vat: true
+    store: logitechg.com
+    url: https://www.logitechg.com/de-de/shop/p/flight-simulator-switch-panel
+    verified: '2026-10-21'
+    source: manual
 verification: draft
 sources:
-- https://www.logitechg.com/en-us/shop/p/flight-simulator-switch-panel.945-000030
-- https://www.logitech.com/assets/65158/flight-switch-panel.pdf
+  - https://www.logitechg.com/en-us/shop/p/flight-simulator-switch-panel.945-000030
+  - https://www.logitech.com/assets/65158/flight-switch-panel.pdf
 images:
-- file: /images/logitech/flight-switch-panel.png
-  source: https://www.logitechg.com/en-us/shop/p/flight-simulator-switch-panel.945-000030
-  caption: Flight Switch Panel
+  - file: /images/logitech/flight-switch-panel.png
+    source: https://www.logitechg.com/en-us/shop/p/flight-simulator-switch-panel.945-000030
+    caption: Flight Switch Panel

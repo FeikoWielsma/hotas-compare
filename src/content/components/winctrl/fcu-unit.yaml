@@ -23,12 +23,18 @@ controls:
   location: panel
   label: Knobs, 360° and 2.5 mm push-pull
   source: https://eu.winctrl.com/static/download/QmaNia5yLCgSvvnhtU6n1k1bwDHfYV5K8CSdnLEk2K7MCx?filename=FCU-User-Manual-V2.1-2024.11.pdf
+- type: switch
+  count: 1
+  positions: 2
+  location: panel
+  label: 100/1000 altitude-selector gear knob
+  source: https://eu.winctrl.com/view/goods-details.html?id=550
 controls_evidence:
   coverage: partial
   source: https://eu.winctrl.com/static/download/QmaNia5yLCgSvvnhtU6n1k1bwDHfYV5K8CSdnLEk2K7MCx?filename=FCU-User-Manual-V2.1-2024.11.pdf
   checked: '2026-10-20'
-  notes: Manual states four push/pull knobs. Additional FCU buttons are drawn but not counted in the text.
-    One knob is described as a two-position push-pull rotary; that split is not given its own count.
+  notes: >-
+    Manual states four push/pull rotary knobs. The exact product page separately names the 100/1000 altitude-selector gear knob and gives its 60° rotation. Other FCU keys are illustrated but not counted in text, so the inventory remains partial.
 connectivity:
   standalone_usb: true
 prices:
@@ -48,6 +54,15 @@ prices:
   url: https://us.winwingsim.com/view/goods-details.html?id=550
   verified: '2026-10-20'
   source: manual
+- region: UK
+  currency: GBP
+  amount: 133.53
+  incl_vat: true
+  store: uk.winctrl.com
+  url: https://uk.winctrl.com/p/550.html
+  verified: '2026-10-21'
+  source: manual
+
 verification: draft
 sources: *id001
 images:

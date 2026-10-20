@@ -86,6 +86,14 @@ physical:
   - 195
   - 225
 prices:
+- region: EU
+  currency: EUR
+  amount: 119.99
+  incl_vat: true
+  store: Thrustmaster Netherlands
+  url: https://shop.thrustmaster.com/nl_nl/tca-sidestick-x-airbus-edition.html
+  verified: '2026-10-20'
+  source: manual
 - region: US
   currency: USD
   amount: 149.99

@@ -45,19 +45,32 @@ controls:
   label: Flaps axis detents
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant/TCA_Quadrant_Add-On_Airbus_Edition_user_manual.pdf
 - type: button
-  count: 4
+  count: 1
   location: panel
-  label: Flaps module action buttons
+  label: Flaps-module push button (mapped 17)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant/TCA_Quadrant_Add-On_Airbus_Edition_user_manual.pdf
+- type: toggle
+  count: 1
+  ways: 2
+  location: panel
+  label: Flaps-module two-position switch (mapped 18-19)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant/TCA_Quadrant_Add-On_Airbus_Edition_user_manual.pdf
+- type: rotary
+  count: 1
+  location: panel
+  label: Flaps-module knob (mapped 20)
+  notes: One button number on a knob. The page's only axes are the two levers, so this knob is not a third axis. Positions and analog-versus-selector behavior are not stated.
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant/TCA_Quadrant_Add-On_Airbus_Edition_user_manual.pdf
 controls_evidence:
   coverage: partial
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Quadrant/TCA_Quadrant_Add-On_Airbus_Edition_user_manual.pdf
   checked: '2026-10-20'
-  notes: English features page calls out a speed-brake axis, four detents plus five virtual buttons, six action
-    buttons, a flaps axis, four detents, and four action buttons. Mapping page 6 titles 15 button numbers and two
-    axes (Z and ZR). Fifteen equals the ten action buttons plus the five virtual speed-brake events. The legend does
-    not say which of the ten are push buttons, paired switch contacts, or the wheel and knob shapes drawn inside the
-    flaps bracket, so those ten stay typed as the manual's action buttons. One published SKU contains both modules.
+  notes: >-
+    Mapping page 6 (printed 6/14) numbers 17-31, which is 15 inputs, plus axes Z and ZR. 27-31 sit on the speed-brake
+    lever travel and are the five virtual detent buttons. Flaps leaders hit three bodies: round button 17, toggle
+    18-19, and knob 20. Those replace the flaps "4 action buttons" aggregate. Speed-brake callout 3 still brackets a
+    thumbwheel and a toggle under action buttons 21 and 22-26; the leaders do not separate those six numbers onto
+    individual bodies, so that group stays an action-button aggregate. One published SKU contains both modules.
 hardware:
   axis_count: 2
   axes:
@@ -73,6 +86,22 @@ physical:
   - 235
   - 130
 prices:
+- region: EU
+  currency: EUR
+  amount: 99.99
+  incl_vat: true
+  store: Thrustmaster Netherlands
+  url: https://shop.thrustmaster.com/nl_nl/tca-quadrant-add-on-airbus-edition.html
+  verified: '2026-10-20'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 89.99
+  incl_vat: true
+  store: Thrustmaster UK eshop
+  url: https://shop.thrustmaster.com/en_gb/tca-quadrant-add-on-airbus-edition.html
+  verified: '2026-10-20'
+  source: manual
 - region: US
   currency: USD
   amount: 109.99

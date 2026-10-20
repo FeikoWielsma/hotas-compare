@@ -46,6 +46,7 @@ connectivity:
   standalone_usb: true
 software: Slaw Device Rudder calibration software
 physical:
+  weight_g: 7500
   materials:
   - steel
   - aluminium

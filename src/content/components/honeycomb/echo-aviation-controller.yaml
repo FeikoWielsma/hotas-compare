@@ -13,12 +13,33 @@ controls:
 - type: button
   count: 3
   location: panel
-  label: Three central cockpit control buttons visible in official product image
+  label: Top function buttons with camera, checklist and toolbar icons
+  notes: >-
+    Product page says integrated buttons for camera, checklist, and toolbar functions. Icons match in the official image.
   source: https://flyhoneycomb.com/cdn/shop/files/HC003981_EchoAviationController_1.webp?v=1774814963&width=1920
-- type: lever
+- type: button
+  count: 1
+  location: panel
+  label: Honeycomb logo button with LED charge indicator
+  notes: >-
+    Product page describes a Honeycomb button with an LED charge indicator. Shown at top centre in the official image.
+  source: https://flyhoneycomb.com/cdn/shop/files/HC003981_EchoAviationController_1.webp?v=1774814963&width=1920
+- type: button
   count: 4
   location: panel
-  label: Configurable throttle, speed brake, and flap levers
+  label: Left diamond cluster of four round buttons (north, east, south, west)
+  notes: >-
+    Visible in the official product image only. Page text does not describe this cluster, so its function and mapping are unset.
+  source: https://flyhoneycomb.com/cdn/shop/files/HC003981_EchoAviationController_1.webp?v=1774814963&width=1920
+- type: slider
+  count: 4
+  location: panel
+  label: Four detented sliders with interchangeable caps (throttle, flaps, speed brakes)
+  source: https://flyhoneycomb.com/products/echo-aviation-controller
+- type: lever
+  count: 3
+  location: other
+  label: Three tactile levers on the lower edge (page names flaps, parking brake and gear)
   source: https://flyhoneycomb.com/products/echo-aviation-controller
 - type: rotary
   count: 1
@@ -28,11 +49,15 @@ controls:
 controls_evidence:
   coverage: partial
   source: https://flyhoneycomb.com/products/echo-aviation-controller
-  checked: '2026-10-20'
-  notes: Official product page identifies a 16-bit Hall-effect thumbstick for pitch
-    and roll, four levers and trim wheel. Main product image visibly shows three central
-    buttons. The left four-button cluster is not described in available text and is
-    not classified without an official diagram.
+  checked: '2026-10-21'
+  notes: >-
+    Official product page identifies a 16-bit Hall-effect thumbstick for pitch and roll, four detented sliders with
+    interchangeable caps (throttle, flaps, speed brakes), three tactile levers (flaps, parking brake, gear), a trim wheel
+    and assignable switches. The official product image shows the top buttons, a left diamond cluster of four round
+    buttons, four sliders, three lever stems on the lower edge and a concentric round control at upper left. The
+    upper-left control is not named in any text and is not classified, so coverage stays partial. The left cluster is
+    itemized from the image only; its mapping is unset. The page does not state how many assignable switches there are,
+    so none are counted. Weight is left unset: the page gives 564 g only with the full set, travel case and accessories.
 hardware:
   sensor: hall
   axes:
@@ -49,3 +74,16 @@ images:
 - file: /images/honeycomb/echo-aviation-controller.jpg
   source: https://flyhoneycomb.com/products/echo-aviation-controller
   caption: Echo Aviation Controller
+software: Echo dongle and controller firmware update (standard and X-Input beta), input documentation and MSFS 2024 profiles
+physical:
+  dimensions_mm:
+  - 169
+  - 69
+  - 119
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Product page lists system compatibility as PC and Mac, with X-Plane 11 and 12, Prepar3D and Microsoft Flight Simulator. No Xbox or PS5 statement appears.
+  sources:
+  - https://flyhoneycomb.com/products/echo-aviation-controller

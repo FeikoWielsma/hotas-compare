@@ -45,6 +45,15 @@ prices:
   url: https://us.winwingsim.com/view/goods-details.html?id=334
   verified: '2026-10-20'
   source: manual
+- region: UK
+  currency: GBP
+  amount: 229.10
+  incl_vat: true
+  store: uk.winctrl.com
+  url: https://uk.winctrl.com/p/334.html
+  verified: '2026-10-21'
+  source: manual
+
 verification: draft
 sources: *id001
 images:

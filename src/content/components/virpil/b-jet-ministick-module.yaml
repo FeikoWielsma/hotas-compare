@@ -7,36 +7,38 @@ platform_compatibility:
   ps5: unsupported
   notes: Official product listing presents the module as a PC yoke accessory and does not list Xbox or PS5 support.
   sources:
-    - https://virpil-controls.eu/b-jet-ministick-module.html
+  - https://virpil-controls.eu/b-jet-ministick-module.html
 status: announced
 release_year: 2026
 handedness: n/a
 mount: null
 controls:
-  - type: hat
-    ways: 4
-    push: true
-    count: 1
-    location: grip
-    label: 4-way hat
-    source: https://virpil-controls.eu/b-jet-ministick-module.html
-  - type: analog_ministick
-    count: 1
-    location: grip
-    label: Contactless analogue ministick
-    notes: The page does not state a center push.
-    source: https://virpil-controls.eu/b-jet-ministick-module.html
+- type: hat
+  ways: 4
+  push: true
+  count: 1
+  location: grip
+  label: 4-way hat
+  source: https://virpil-controls.eu/b-jet-ministick-module.html
+- type: analog_ministick
+  count: 1
+  location: grip
+  label: Contactless analogue ministick
+  notes: The page does not state a center push.
+  source: https://virpil-controls.eu/b-jet-ministick-module.html
 controls_evidence:
   coverage: complete
   source: https://virpil-controls.eu/b-jet-ministick-module.html
   checked: '2026-10-20'
-  notes: 'SKU VPC-633-03. Optional module for the B-JET yoke handle. The page says it replaces one hat switch and lists the module itself as one 4-way hat with push plus one contactless analogue ministick. It is not included with the handle.'
+  notes: SKU VPC-633-03. Optional module for the B-JET yoke handle. The page says it replaces one hat switch and lists the module itself as one 4-way hat with push plus one contactless analogue ministick. It is not included with the handle.
 hardware:
   gimbal: null
-  sensor: null
+  sensor: contactless_magnetic
   axes:
-    - name: Ministick X
-    - name: Ministick Y
+  - name: Ministick X
+    sensor: contactless_magnetic
+  - name: Ministick Y
+    sensor: contactless_magnetic
   force_adjustable: false
   cams_swappable: false
   damping: null
@@ -48,18 +50,34 @@ connectivity:
 physical:
   materials: []
 prices:
-  - region: EU
-    currency: EUR
-    amount: 16.95
-    incl_vat: true
-    store: virpil-controls.eu
-    url: https://virpil-controls.eu/b-jet-ministick-module.html
-    verified: '2026-10-20'
-    source: manual
+- region: EU
+  currency: EUR
+  amount: 16.95
+  incl_vat: true
+  store: virpil-controls.eu
+  url: https://virpil-controls.eu/b-jet-ministick-module.html
+  verified: '2026-10-20'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 16.95
+  incl_vat: true
+  store: virpil-controls.co.uk
+  url: https://virpil-controls.co.uk/b-jet-ministick-module.html
+  verified: '2026-10-21'
+  source: manual
+- region: US
+  currency: USD
+  amount: 19.95
+  incl_vat: false
+  store: virpil-controls.us.com
+  url: https://virpil-controls.us.com/b-jet-ministick-module.html
+  verified: '2026-10-21'
+  source: manual
 verification: draft
 sources:
-  - https://virpil-controls.eu/b-jet-ministick-module.html
+- https://virpil-controls.eu/b-jet-ministick-module.html
 images:
-  - file: /images/virpil/b-jet-ministick-module.jpg
-    source: https://virpil-controls.eu/b-jet-ministick-module.html
-    caption: VPC B-JET Ministick Module
+- file: /images/virpil/b-jet-ministick-module.jpg
+  source: https://virpil-controls.eu/b-jet-ministick-module.html
+  caption: VPC B-JET Ministick Module

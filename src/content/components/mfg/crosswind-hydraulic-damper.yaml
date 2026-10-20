@@ -40,22 +40,6 @@ prices:
   url: https://mfg-sim.com/rudder-acessories/hydraulic-damper-universal-kit-for-v1-3-pedals.html
   verified: '2026-10-19'
   source: manual
-- region: UK
-  currency: GBP
-  amount: 39.4
-  incl_vat: false
-  store: mfg-sim.com
-  url: https://mfg-sim.com/rudder-acessories/hydraulic-damper-universal-kit-for-v1-3-pedals.html
-  verified: '2026-10-19'
-  source: manual
-- region: US
-  currency: USD
-  amount: 54.56
-  incl_vat: false
-  store: mfg-sim.com
-  url: https://mfg-sim.com/rudder-acessories/hydraulic-damper-universal-kit-for-v1-3-pedals.html
-  verified: '2026-10-19'
-  source: manual
 verification: draft
 images:
 - file: /images/mfg/crosswind-hydraulic-damper.jpg

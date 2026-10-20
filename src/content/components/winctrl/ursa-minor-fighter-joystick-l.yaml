@@ -19,7 +19,7 @@ controls:
 - type: trigger
   count: 1
   location: grip
-  label: Trigger; stage count not stated in manual diagram
+  label: Two-stage trigger; separate first and second stages shown in the manual diagram
   source: https://eu.winctrl.com/static/download/QmabSXmvPxNp2ZXHidaDhGq73XGHyKicn6YWrgQksanXDp?filename=URSA-MINOR-Fighter-Joystick-L-User-Manual-v1.3.pdf
   stages: 2
 - type: button
@@ -33,7 +33,6 @@ controls:
   label: HAT
   source: https://eu.winctrl.com/static/download/QmabSXmvPxNp2ZXHidaDhGq73XGHyKicn6YWrgQksanXDp?filename=URSA-MINOR-Fighter-Joystick-L-User-Manual-v1.3.pdf
   ways: 4
-  push: false
 - type: analog_ministick
   count: 1
   location: grip
@@ -48,7 +47,7 @@ controls:
 controls_evidence:
   coverage: partial
   source: https://eu.winctrl.com/static/download/QmabSXmvPxNp2ZXHidaDhGq73XGHyKicn6YWrgQksanXDp?filename=URSA-MINOR-Fighter-Joystick-L-User-Manual-v1.3.pdf
-  checked: '2026-10-20'
+  checked: '2026-10-21'
   notes: Exact left-hand manual diagram inspected. HAT is four-way; the diagram does not document a center press.
     Trigger has separate 1st/2nd stages shown. Diagram key indices are not treated as physical counts.
 hardware:
@@ -59,8 +58,7 @@ hardware:
   - name: Twist
   - name: Rx
   - name: Ry
-  - name: Throttle
-connectivity:
+  - name: Slider
   standalone_usb: true
 prices:
 - region: EU
@@ -79,6 +77,15 @@ prices:
   url: https://us.winwingsim.com/view/goods-details.html?id=705
   verified: '2026-10-20'
   source: manual
+- region: UK
+  currency: GBP
+  amount: 116.70
+  incl_vat: true
+  store: uk.winctrl.com
+  url: https://uk.winctrl.com/p/554.html
+  verified: '2026-10-21'
+  source: manual
+
 verification: draft
 sources: *id001
 images:

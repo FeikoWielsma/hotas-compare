@@ -7,29 +7,29 @@ platform_compatibility:
   ps5: unsupported
   notes: Official product listing presents the panel as a PC Vector yoke module and does not list Xbox or PS5 support.
   sources:
-    - https://virpil-controls.eu/vector-gmc-panel.html
+  - https://virpil-controls.eu/vector-gmc-panel.html
 status: announced
 release_year: 2026
 handedness: n/a
 mount: null
 controls:
-  - type: lever
-    kind: other
-    count: 1
-    location: panel
-    label: Landing gear lever
-    notes: The page lists one landing gear lever with an adjustable mechanism and does not say whether it is an analog axis or a discrete switch, so analog is unset.
-    source: https://virpil-controls.eu/vector-gmc-panel.html
-  - type: button
-    count: 1
-    location: panel
-    label: Push button
-    source: https://virpil-controls.eu/vector-gmc-panel.html
+- type: lever
+  kind: other
+  count: 1
+  location: panel
+  label: Landing gear lever
+  notes: The page lists one landing gear lever with an adjustable mechanism and does not say whether it is an analog axis or a discrete switch, so analog is unset.
+  source: https://virpil-controls.eu/vector-gmc-panel.html
+- type: button
+  count: 1
+  location: panel
+  label: Push button
+  source: https://virpil-controls.eu/vector-gmc-panel.html
 controls_evidence:
   coverage: complete
   source: https://virpil-controls.eu/vector-gmc-panel.html
   checked: '2026-10-20'
-  notes: 'SKU VPC-414-002. Pre-order, webstore ETA late Q4 2026. Listed inputs are one landing gear lever and one push button, plus programmable RGB lighting that is not an input. The plate is not included with the Vector yoke base.'
+  notes: SKU VPC-414-002. Pre-order, webstore ETA late Q4 2026. Listed inputs are one landing gear lever and one push button, plus programmable RGB lighting that is not an input. The plate is not included with the Vector yoke base.
 hardware:
   gimbal: null
   sensor: null
@@ -45,18 +45,34 @@ connectivity:
 physical:
   materials: []
 prices:
-  - region: EU
-    currency: EUR
-    amount: 49.95
-    incl_vat: true
-    store: virpil-controls.eu
-    url: https://virpil-controls.eu/vector-gmc-panel.html
-    verified: '2026-10-20'
-    source: manual
+- region: EU
+  currency: EUR
+  amount: 49.95
+  incl_vat: true
+  store: virpil-controls.eu
+  url: https://virpil-controls.eu/vector-gmc-panel.html
+  verified: '2026-10-20'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 49.95
+  incl_vat: true
+  store: virpil-controls.co.uk
+  url: https://virpil-controls.co.uk/vector-gmc-panel.html
+  verified: '2026-10-21'
+  source: manual
+- region: US
+  currency: USD
+  amount: 59.95
+  incl_vat: false
+  store: virpil-controls.us.com
+  url: https://virpil-controls.us.com/vector-gmc-panel.html
+  verified: '2026-10-21'
+  source: manual
 verification: draft
 sources:
-  - https://virpil-controls.eu/vector-gmc-panel.html
+- https://virpil-controls.eu/vector-gmc-panel.html
 images:
-  - file: /images/virpil/vector-gear-mcp.jpg
-    source: https://virpil-controls.eu/vector-gmc-panel.html
-    caption: VPC Vector Gear MCP
+- file: /images/virpil/vector-gear-mcp.jpg
+  source: https://virpil-controls.eu/vector-gmc-panel.html
+  caption: VPC Vector Gear MCP

@@ -11,27 +11,47 @@ controls:
     stages: 1
     action: sequential
     count: 1
-    label: Main trigger
+    label: Rapid-fire trigger (Button 1)
+    source: https://www.logitechg.com/en-us/shop/p/extreme-3d-pro-joystick
+  - type: button
+    location: grip
+    count: 1
+    label: Thumb button (Button 2)
+    backlit: false
+    source: https://www.logitechg.com/en-us/shop/p/extreme-3d-pro-joystick
+  - type: button
+    location: grip
+    count: 4
+    label: Grip head buttons (Buttons 3-6)
+    backlit: false
+    source: https://www.logitechg.com/en-us/shop/p/extreme-3d-pro-joystick
+  - type: button
+    location: base
+    count: 6
+    label: Base buttons (Buttons 7-12)
+    backlit: false
     source: https://www.logitechg.com/en-us/shop/p/extreme-3d-pro-joystick
   - type: hat
     location: grip
     ways: 8
     push: false
     count: 1
-    label: POV hat
+    label: 8-way POV hat switch
     source: https://www.logitechg.com/en-us/shop/p/extreme-3d-pro-joystick
   - type: lever
     kind: throttle_single
     analog: true
     push: false
     location: base
+    count: 1
     label: Throttle lever
     source: https://www.logitechg.com/en-us/shop/p/extreme-3d-pro-joystick
 controls_evidence:
-  coverage: partial
+  coverage: complete
   source: https://www.logitechg.com/en-us/shop/p/extreme-3d-pro-joystick
-  checked: '2026-10-19'
-  notes: Logitech product page separately advertises 12 programmable buttons and a rapid-fire trigger but does not establish whether the trigger is included in 12 or enumerate the standalone button count and grip/base split. Trigger is recorded separately; the aggregate 12 is not converted into a physical button group. Hat and throttle are documented. Partial inventory.
+  checked: '2026-10-21'
+  notes: >-
+    Official Logitech G product tour and physical device layout confirm 12 individually numbered programmable buttons (Trigger 1, Thumb 2, Head 3-6, Base 7-12), 8-way POV hat switch, and analog throttle slider lever.
 hardware:
   gimbal: ball_joint
   sensor: potentiometer
@@ -110,6 +130,7 @@ platform_compatibility:
   pc: supported
   xbox: unknown
   ps5: unknown
-  notes: Official product page establishes PC use but the legacy product listing does not provide a sufficiently explicit exhaustive platform exclusion for console use; console compatibility remains unknown.
+  notes: >-
+    Official product page establishes PC use but the legacy product listing does not provide a sufficiently explicit exhaustive platform exclusion for console use; console compatibility remains unknown.
   sources:
-  - https://www.logitechg.com/en-us/products/flight.html
+    - https://www.logitechg.com/en-us/products/flight.html

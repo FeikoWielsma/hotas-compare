@@ -26,12 +26,13 @@ controls:
   label: Alphanumeric keys (A-Z, 0-9, ., +/-, /, SP, DEL, CLR)
   source: https://us.mozaracing.com/products/mb7f-fcd
 controls_evidence:
-  coverage: partial
+  coverage: complete
   source: https://us.mozaracing.com/products/mb7f-fcd
-  checked: '2026-10-20'
-  notes: Counted from the user manual cover photo (MB7F, 300 dpi crop of the front panel). Key groups are read from the
-    photo; the vertical side labels and the small white lamp are not counted. The lower-left key is read as +/-. Total 70 keys. The 5.1-inch display is an
-    output. The manual has no further diagrams.
+  checked: '2026-10-21'
+  notes: >-
+    Counted from the user manual cover photo at 3x render: 12 bezel line-select keys, 16 function keys (INIT REF to NEXT
+    PAGE, including the BRT key), and 42 alphanumeric keys = 70 keys. The side labels and lamps are indicators, not keys.
+    The 5.1-inch display is an output. The manual has no further diagrams.
 connectivity:
   usb: Type-C USB 2.0
   standalone_usb: true
@@ -50,6 +51,22 @@ prices:
   store: MOZA US store
   url: https://us.mozaracing.com/products/mb7f-fcd
   verified: '2026-10-20'
+  source: manual
+- region: EU
+  currency: EUR
+  amount: 259
+  incl_vat: true
+  store: eu.mozaracing.com
+  url: https://eu.mozaracing.com/products/mb7f-fcd
+  verified: '2026-10-21'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 229
+  incl_vat: true
+  store: uk.mozaracing.com
+  url: https://uk.mozaracing.com/products/mb7f-fcd
+  verified: '2026-10-21'
   source: manual
 sources:
 - https://us.mozaracing.com/products/mb7f-fcd

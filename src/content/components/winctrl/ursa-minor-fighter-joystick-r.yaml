@@ -58,15 +58,15 @@ hardware:
   gimbal: pincer
   sensor: contactless_magnetic
   axes:
-    - name: X
-      sensor: hall
-    - name: Y
-      sensor: hall
-    - name: Twist
-      sensor: hall
-    - name: Rx
-    - name: Ry
-    - name: Throttle
+  - name: X
+    sensor: hall
+  - name: Y
+    sensor: hall
+  - name: Twist
+    sensor: hall
+  - name: Rx
+  - name: Ry
+  - name: Slider
   force_adjustable: false
   cams_swappable: false
   damping: integrated_clutches

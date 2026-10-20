@@ -5,9 +5,7 @@ platform_compatibility:
   pc: supported
   xbox: unsupported
   ps5: unsupported
-  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs
-    and not compatible with Xbox, PS5, Apple or other platforms. GNX modules work
-    through Gladiator NXT/EVO bases or a standalone GNX USB Controller (HID-Main) on Windows PC.
+  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs and not compatible with Xbox, PS5, Apple or other platforms. GNX modules work through Gladiator NXT/EVO bases or a standalone GNX USB Controller (HID-Main) on Windows PC.
   sources:
   - https://vkbsimcontrollers.com/products/gnx-sem-v-side-extension-module-vertical-us
   - https://vkb-sim.com.au/collections/all-controllers
@@ -59,10 +57,7 @@ controls_evidence:
   coverage: complete
   source: https://vkbsimcontrollers.com/products/gnx-sem-v-side-extension-module-vertical-us
   checked: '2026-10-20'
-  notes: Counts and control actions verified against official VKB SEM-V template (VKB-SEM-V-v1.0.pdf)
-    and product page. Features two multi-function analog levers with contactless MaRS sensors
-    (Flaps with 4 marked detent positions, Gear with 3 positions UP/-/DN), 4-position Mode rotary
-    switch, two 3-way momentary K-switches with center push, and seven non-backlit push buttons.
+  notes: Counts and control actions verified against official VKB SEM-V template (VKB-SEM-V-v1.0.pdf) and product page. Features two multi-function analog levers with contactless MaRS sensors (Flaps with 4 marked detent positions, Gear with 3 positions UP/-/DN), 4-position Mode rotary switch, two 3-way momentary K-switches with center push, and seven non-backlit push buttons.
 hardware:
   axis_count: 2
   gimbal: null
@@ -85,6 +80,22 @@ prices:
   store: vkbsimcontrollers.com
   url: https://vkbsimcontrollers.com/products/gnx-sem-v-side-extension-module-vertical-us
   verified: '2026-10-19'
+  source: manual
+- region: EU
+  currency: EUR
+  amount: 103.8
+  incl_vat: true
+  store: flightsimcontrols.com
+  url: https://flightsimcontrols.com/product/gnx-sem-v-side-extension-module-vertical/
+  verified: '2026-10-21'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 102.0
+  incl_vat: true
+  store: flightsimcontrols.co.uk
+  url: https://flightsimcontrols.co.uk/product/gnx-sem-v-side-extension-module-vertical/
+  verified: '2026-10-21'
   source: manual
 verification: draft
 sources:

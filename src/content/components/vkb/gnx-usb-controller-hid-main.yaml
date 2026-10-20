@@ -5,9 +5,7 @@ platform_compatibility:
   pc: supported
   xbox: unsupported
   ps5: unsupported
-  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs
-    and not compatible with Xbox, PS5, Apple or other platforms. Replaces the GNX BUS
-    interface on a GNX module so it connects to Windows PC by USB.
+  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs and not compatible with Xbox, PS5, Apple or other platforms. Replaces the GNX BUS interface on a GNX module so it connects to Windows PC by USB.
   sources:
   - https://vkbsimcontrollers.com/products/gnx-usb-controller-hid-main-us
   - https://vkb-sim.com.au/collections/all-controllers
@@ -19,8 +17,7 @@ controls_evidence:
   coverage: complete
   source: https://vkbsimcontrollers.com/products/gnx-usb-controller-hid-main-us
   checked: '2026-10-20'
-  notes: Electronics board with no physical controls. Product page lists USB 2.0 HID,
-    Type-C connection and compatibility with GNX THQ/THQ-V, FSM-GA and SEM/SEM-V.
+  notes: Electronics board with no physical controls. Product page lists USB 2.0 HID, Type-C connection and compatibility with GNX THQ/THQ-V, FSM-GA and SEM/SEM-V.
 hardware: null
 connectivity:
   usb: USB 2.0 HID, Type-C (replaces GNX BUS interface in the module)
@@ -34,6 +31,22 @@ prices:
   store: vkbsimcontrollers.com
   url: https://vkbsimcontrollers.com/products/gnx-usb-controller-hid-main-us
   verified: '2026-10-19'
+  source: manual
+- region: EU
+  currency: EUR
+  amount: 22.9
+  incl_vat: true
+  store: flightsimcontrols.com
+  url: https://flightsimcontrols.com/product/gnx-usb-controller-hid-main/
+  verified: '2026-10-21'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 19.0
+  incl_vat: true
+  store: flightsimcontrols.co.uk
+  url: https://flightsimcontrols.co.uk/product/gnx-usb-controller-hid-main/
+  verified: '2026-10-21'
   source: manual
 verification: draft
 sources:

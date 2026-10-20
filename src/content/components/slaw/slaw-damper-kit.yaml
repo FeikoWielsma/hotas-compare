@@ -40,8 +40,8 @@ platform_compatibility:
   pc: supported
   xbox: unknown
   ps5: unknown
-  notes: Mechanical accessory with no USB or controller of its own; operates attached to
-    the host Slaw rudder pedals on PC. Xbox and PS5 are not supported by the host pedals.
+  notes: Mechanical accessory with no USB or controller of its own; fitted to the host Slaw rudder pedals.
+    The store page does not state a platform for the damper; Xbox and PS5 are not mentioned.
   sources:
   - https://slawdevice.com/en/content/7-downloads
 software: Not required; passive mechanical accessory

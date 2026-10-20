@@ -4,12 +4,13 @@ category: grip
 status: current
 handedness: right
 controls_evidence:
-  coverage: partial
+  coverage: complete
   source: https://support.mozaracing.com/en/support/solutions/articles/70000679588-moza-ma3x-side-stick-support
-  checked: '2026-10-19'
-  notes: Official spec itemizes one ALPS 8-way hat, one trigger, and one toggle. The 12 programmable-input total
-    is logical mapping capacity; trigger stages and toggle positions/latching are not specified. The manual/support
-    spec identifies an 8-way ALPS hat but does not establish center push; omitted as unknown.
+  checked: '2026-10-21'
+  notes: >-
+    Quick-guide diagram (page 1, buttons section) itemizes four grip controls: A/P button, auxiliary switch, view control
+    8-way ALPS hat and MIC trigger. The 12 programmable-input total is logical mapping capacity, not a physical count.
+    Trigger stages, auxiliary-switch positions and hat center push are not specified and are left unset.
 connectivity:
   standalone_usb: false
 software: MOZA Cockpit

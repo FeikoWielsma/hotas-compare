@@ -5,38 +5,87 @@ status: current
 handedness: n/a
 mount: null
 controls:
-- type: rotary
-  count: 2
-  location: panel
-  label: COM/NAV/ADF/DME radio mode selectors
-  source: https://www.logitech.com/assets/65157/flight-radio-panel.pdf
-- type: encoder
-  count: 2
-  location: panel
-  label: Outer and inner frequency adjustment knobs
-  source: https://www.logitech.com/assets/65157/flight-radio-panel.pdf
-- type: button
-  count: 2
-  location: panel
-  label: ACT/STBY frequency transfer buttons
-  source: https://www.logitech.com/assets/65157/flight-radio-panel.pdf
+  - type: rotary
+    count: 2
+    location: panel
+    label: COM/NAV/ADF/DME radio mode selectors
+    source: https://www.logitech.com/assets/65157/flight-radio-panel.pdf
+  - type: encoder
+    count: 2
+    location: panel
+    label: Outer and inner frequency adjustment knobs
+    source: https://www.logitech.com/assets/65157/flight-radio-panel.pdf
+  - type: button
+    count: 2
+    location: panel
+    label: ACT/STBY frequency transfer buttons
+    backlit: false
+    source: https://www.logitech.com/assets/65157/flight-radio-panel.pdf
 controls_evidence:
   coverage: complete
   source: https://www.logitech.com/assets/65157/flight-radio-panel.pdf
   checked: '2026-10-20'
-  notes: Official manual labels the mode selector, outer and inner rotary controls,
-    and ACT/STBY switches for each of two radio rows.
+  notes: >-
+    Official manual labels the mode selector, outer and inner rotary controls, and ACT/STBY switches for each of two radio rows.
 hardware:
   axes: []
+  sensor: null
+  gimbal: null
+  force_adjustable: null
+  cams_swappable: null
+  damping: null
+  extension_support: null
+  throw_deg: null
 connectivity:
   usb: a_cable
   standalone_usb: true
 software: Logitech G HUB
+physical:
+  weight_g: 419
+  dimensions_mm:
+    - 282
+    - 55
+    - 84
+  materials:
+    - abs
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: >-
+    The official Flight Radio Panel user guide documents Windows setup and driver installation with Microsoft Flight Simulator X. Xbox and PS5 support are not documented.
+  sources:
+    - https://www.logitech.com/assets/65157/flight-radio-panel.pdf
+prices:
+  - region: US
+    currency: USD
+    amount: 169.99
+    incl_vat: false
+    store: logitechg.com
+    url: https://www.logitechg.com/en-us/shop/p/flight-simulator-cockpit-radio-panel
+    verified: '2026-10-21'
+    source: manual
+  - region: UK
+    currency: GBP
+    amount: 94.99
+    incl_vat: true
+    store: logitechg.com
+    url: https://www.logitechg.com/en-gb/shop/p/flight-simulator-cockpit-radio-panel
+    verified: '2026-10-21'
+    source: manual
+  - region: EU
+    currency: EUR
+    amount: 109.99
+    incl_vat: true
+    store: logitechg.com
+    url: https://www.logitechg.com/de-de/shop/p/flight-simulator-cockpit-radio-panel
+    verified: '2026-10-21'
+    source: manual
 verification: draft
 sources:
-- https://www.logitechg.com/en-us/shop/p/flight-simulator-cockpit-radio-panel.945-000029
-- https://www.logitech.com/assets/65157/flight-radio-panel.pdf
+  - https://www.logitechg.com/en-us/shop/p/flight-simulator-cockpit-radio-panel.945-000029
+  - https://www.logitech.com/assets/65157/flight-radio-panel.pdf
 images:
-- file: /images/logitech/flight-radio-panel.png
-  source: https://www.logitechg.com/en-us/shop/p/flight-simulator-cockpit-radio-panel.945-000029
-  caption: Flight Radio Panel
+  - file: /images/logitech/flight-radio-panel.png
+    source: https://www.logitechg.com/en-us/shop/p/flight-simulator-cockpit-radio-panel.945-000029
+    caption: Flight Radio Panel

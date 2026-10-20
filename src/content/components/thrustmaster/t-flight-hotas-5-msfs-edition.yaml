@@ -80,6 +80,14 @@ prices:
   url: https://www.thrustmaster.com/nl-nl/products/t-flight-hotas-5-microsoft-flight-simulator-edition/
   verified: '2026-10-20'
   source: manual
+- region: UK
+  currency: GBP
+  amount: 89.99
+  incl_vat: true
+  store: Thrustmaster UK eshop
+  url: https://shop.thrustmaster.com/en_gb/t-flight-hotas-5-microsoft-flight-simulator-edition.html
+  verified: '2026-10-20'
+  source: manual
 - region: US
   currency: USD
   amount: 109.99

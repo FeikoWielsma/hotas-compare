@@ -7,7 +7,7 @@ platform_compatibility:
   ps5: unsupported
   notes: Official product listing identifies the intended platform as PC; the listing has no Xbox or PS5 platform support.
   sources:
-    - https://virpil-controls.eu/vpc-cdt-vmax-throttle.html
+  - https://virpil-controls.eu/vpc-cdt-vmax-throttle.html
 status: current
 release_year: 2026
 handedness: n/a
@@ -53,22 +53,21 @@ controls_evidence:
   coverage: complete
   source: https://virpil-controls.eu/vpc-cdt-vmax-throttle.html
   checked: '2026-10-19'
-  notes: 'Manufacturer lists 4 momentary buttons, 3 push hats, analogue ministick, 2 axis dials with push, 2 throttle axes and 1 auxiliary axis. Preinstalled mechanical throttle detents are adjustable between idle and afterburner points; the included CosmoSim plate is an alternative with one central detent.'
-
+  notes: Manufacturer lists 4 momentary buttons, 3 push hats, analogue ministick, 2 axis dials with push, 2 throttle axes and 1 auxiliary axis. Preinstalled mechanical throttle detents are adjustable between idle and afterburner points; the included CosmoSim plate is an alternative with one central detent.
 hardware:
   gimbal: null
   sensor: contactless
   axes:
-    - name: Throttle_Left
-      sensor: contactless_magnetic
-    - name: Throttle_Right
-      sensor: contactless_magnetic
-    - name: Auxiliary
-      sensor: contactless_magnetic
-    - name: Axis_Dial_1
-      sensor: contactless_magnetic
-    - name: Axis_Dial_2
-      sensor: contactless_magnetic
+  - name: Throttle_Left
+    sensor: contactless_magnetic
+  - name: Throttle_Right
+    sensor: contactless_magnetic
+  - name: Auxiliary
+    sensor: contactless_magnetic
+  - name: Axis_Dial_1
+    sensor: contactless_magnetic
+  - name: Axis_Dial_2
+    sensor: contactless_magnetic
   force_adjustable: true
   cams_swappable: null
   damping: null
@@ -83,14 +82,30 @@ physical:
   - metal
 use_case_fit: {}
 prices:
-  - region: EU
-    currency: EUR
-    amount: 229.95
-    incl_vat: true
-    store: virpil-controls.eu
-    url: https://virpil-controls.eu/vpc-cdt-vmax-throttle.html
-    verified: '2026-10-19'
-    source: manual
+- region: EU
+  currency: EUR
+  amount: 229.95
+  incl_vat: true
+  store: virpil-controls.eu
+  url: https://virpil-controls.eu/vpc-cdt-vmax-throttle.html
+  verified: '2026-10-19'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 239.95
+  incl_vat: true
+  store: virpil-controls.co.uk
+  url: https://virpil-controls.co.uk/vpc-cdt-vmax-throttle.html
+  verified: '2026-10-21'
+  source: manual
+- region: US
+  currency: USD
+  amount: 269.95
+  incl_vat: false
+  store: virpil-controls.us.com
+  url: https://virpil-controls.us.com/vpc-cdt-vmax-throttle.html
+  verified: '2026-10-21'
+  source: manual
 verification: draft
 sources:
 - https://virpil-controls.eu/vpc-cdt-vmax-throttle.html

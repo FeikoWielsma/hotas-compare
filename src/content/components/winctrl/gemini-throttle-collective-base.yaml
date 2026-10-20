@@ -44,13 +44,29 @@ physical:
   - 107
   - 95
 prices:
+- region: US
+  currency: USD
+  amount: 133.85
+  incl_vat: false
+  store: us.winwingsim.com
+  url: https://us.winwingsim.com/p/326.html
+  verified: '2026-10-21'
+  source: manual
 - region: EU
   currency: EUR
   amount: 128.49
   incl_vat: true
   store: eu.winctrl.com
   url: https://eu.winctrl.com/mobileview/goods-details.html?id=326
-  verified: '2026-10-20'
+  verified: '2026-10-21'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 137.87
+  incl_vat: true
+  store: uk.winctrl.com
+  url: https://uk.winctrl.com/p/326.html
+  verified: '2026-10-21'
   source: manual
 verification: draft
 sources:

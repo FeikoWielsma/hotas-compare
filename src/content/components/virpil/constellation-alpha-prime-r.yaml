@@ -5,8 +5,7 @@ platform_compatibility:
   pc: supported
   xbox: unsupported
   ps5: unsupported
-  notes: Official product listing identifies the intended platform as PC; the listing
-    has no Xbox or PS5 platform support.
+  notes: Official product listing identifies the intended platform as PC; the listing has no Xbox or PS5 platform support.
   sources:
   - https://virpil-controls.eu/vpc-constellation-alpha-prime-r.html
 status: current
@@ -30,8 +29,7 @@ controls:
   flip: true
   label: Flip trigger
   location: grip
-  notes: 'Two physical positions: raised position switch plus tactile trigger. Combined
-    use with main trigger creates additional logical stages; not an extra trigger.'
+  notes: 'Two physical positions: raised position switch plus tactile trigger. Combined use with main trigger creates additional logical stages; not an extra trigger.'
   source: https://virpil-controls.eu/vpc-constellation-alpha-prime-r.html
 - type: hat
   ways: 4
@@ -68,28 +66,29 @@ controls:
   push: true
   location: grip
   label: Scroll encoder
-  notes: Manufacturer calls this a Scroll encoder with dual push; the two push inputs
-    are not documented as sequential stages.
+  notes: Manufacturer calls this a Scroll encoder with dual push; the two push inputs are not documented as sequential stages.
   source: https://virpil-controls.eu/vpc-constellation-alpha-prime-r.html
 controls_evidence:
   coverage: complete
   source: https://virpil-controls.eu/vpc-constellation-alpha-prime-r.html
   checked: '2026-10-19'
-  notes: Left and right Prime grips have the same listed control inventory. The manufacturer
-    distinguishes flip-trigger position and brake-lever button from the three standalone
-    momentary buttons; do not double count those controls.
+  notes: Left and right Prime grips have the same listed control inventory. The manufacturer distinguishes flip-trigger position and brake-lever button from the three standalone momentary buttons; do not double count those controls.
 hardware:
   gimbal: null
-  sensor: null
+  sensor: contactless_magnetic
   axes:
   - name: Ministick X
+    sensor: contactless_magnetic
   - name: Ministick Y
+    sensor: contactless_magnetic
   - name: Brake
+    sensor: contactless_magnetic
   - name: Twist
-  force_adjustable: null
-  cams_swappable: null
+    sensor: contactless_magnetic
+  force_adjustable: false
+  cams_swappable: false
   damping: null
-  extension_support: null
+  extension_support: false
   throw_deg: null
 connectivity:
   usb: none; connects through a compatible flightstick or collective base
@@ -137,8 +136,7 @@ verdict:
   author: feiko
   hands_on: true
   owned_hours: 400
-  take: The undisputed gold standard for space sims and multi-role flight. The metal
-    casing, flip trigger, and analog brake axis provide unmatched tactile feedback.
+  take: The undisputed gold standard for space sims and multi-role flight. The metal casing, flip trigger, and analog brake axis provide unmatched tactile feedback.
   pros:
   - Full metal casing with cold-to-the-touch premium feel
   - Analog brake lever doubles as an extra flight or strafe axis
@@ -163,8 +161,7 @@ verdict:
 external_reviews:
 - reviewer: mysh
   url: https://youtube.com/watch?v=sample-alpha-prime
-  summary: Superb build quality upgrade over the original Alpha. Metal shell adds
-    welcome rigidity and weight.
+  summary: Superb build quality upgrade over the original Alpha. Metal shell adds welcome rigidity and weight.
   tag: recommended
   date: '2025-03-01'
 verification: verified

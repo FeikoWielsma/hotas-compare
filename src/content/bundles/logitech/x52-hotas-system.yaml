@@ -8,17 +8,19 @@ components:
 prices:
 - region: EU
   currency: EUR
-  amount: 200
+  amount: 179.99
   incl_vat: true
-  store: amazon.de
-  verified: '2026-10-01'
+  store: logitechg.com
+  url: https://www.logitechg.com/de-de/shop/p/x52-space-flight-simulator-controller
+  verified: '2026-10-21'
   source: manual
 - region: UK
   currency: GBP
-  amount: 172
+  amount: 159.99
   incl_vat: true
-  store: amazon.co.uk
-  verified: '2026-10-01'
+  store: logitechg.com
+  url: https://www.logitechg.com/en-gb/shop/p/x52-space-flight-simulator-controller
+  verified: '2026-10-21'
   source: manual
 - region: US
   currency: USD
@@ -39,6 +41,7 @@ platform_compatibility:
   pc: supported
   xbox: unknown
   ps5: unknown
-  notes: The official X52 HOTAS user guide documents Windows software and controller setup. Xbox and PS5 support are not documented.
+  notes: >-
+    The official X52 HOTAS user guide documents Windows software and controller setup. Xbox and PS5 support are not documented.
   sources:
-  - https://www.logitech.com/assets/65328/2/x52-hotas.pdf
+    - https://www.logitech.com/assets/65328/2/x52-hotas.pdf

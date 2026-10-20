@@ -5,9 +5,7 @@ platform_compatibility:
   pc: supported
   xbox: unsupported
   ps5: unsupported
-  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs
-    and not compatible with Xbox, PS5, Apple or other platforms. GNX modules work
-    through Gladiator NXT/EVO bases or a standalone GNX USB Controller (HID-Main) on Windows PC.
+  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs and not compatible with Xbox, PS5, Apple or other platforms. GNX modules work through Gladiator NXT/EVO bases or a standalone GNX USB Controller (HID-Main) on Windows PC.
   sources:
   - https://vkbsimcontrollers.com/products/gnx-fsm-ga-front-switchboard-module-general-aviation-us
   - https://vkb-sim.com.au/collections/all-controllers
@@ -37,10 +35,7 @@ controls_evidence:
   coverage: complete
   source: https://vkbsimcontrollers.com/products/gnx-fsm-ga-front-switchboard-module-general-aviation-us
   checked: '2026-10-20'
-  notes: Counts and control actions verified visually against official VKB FSM-GA template
-    (VKB-FSM-GA-v1.0.pdf) - 16 non-backlit push buttons across four panels, two rotary knobs
-    with center push (HDG/TRK, ALT SEL marked with center push symbol), and 1 vertical VS wheel
-    encoder marked without center push. 12 bi-colored LEDs function as status indicators.
+  notes: Counts and control actions verified visually against official VKB FSM-GA template (VKB-FSM-GA-v1.0.pdf) - 16 non-backlit push buttons across four panels, two rotary knobs with center push (HDG/TRK, ALT SEL marked with center push symbol), and 1 vertical VS wheel encoder marked without center push. 12 bi-colored LEDs function as status indicators.
 hardware:
   axis_count: 0
   gimbal: null
@@ -57,6 +52,22 @@ prices:
   store: vkbsimcontrollers.com
   url: https://vkbsimcontrollers.com/products/gnx-fsm-ga-front-switchboard-module-general-aviation-us
   verified: '2026-10-19'
+  source: manual
+- region: EU
+  currency: EUR
+  amount: 132.9
+  incl_vat: true
+  store: flightsimcontrols.com
+  url: https://flightsimcontrols.com/product/gnx-fsm-ga-front-switchboard-module-general-aviation/
+  verified: '2026-10-21'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 129.0
+  incl_vat: true
+  store: flightsimcontrols.co.uk
+  url: https://flightsimcontrols.co.uk/product/gnx-fsm-ga-front-switchboard-module-general-aviation/
+  verified: '2026-10-21'
   source: manual
 verification: draft
 sources:

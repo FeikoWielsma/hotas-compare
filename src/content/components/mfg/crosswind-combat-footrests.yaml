@@ -38,22 +38,6 @@ prices:
   url: https://mfg-sim.com/rudder-acessories/footrest-kit-for-mfg-rudder-pedals.html#/3-model-combat-universal
   verified: '2026-10-19'
   source: manual
-- region: UK
-  currency: GBP
-  amount: 29.38
-  incl_vat: false
-  store: mfg-sim.com
-  url: https://mfg-sim.com/rudder-acessories/footrest-kit-for-mfg-rudder-pedals.html#/3-model-combat-universal
-  verified: '2026-10-19'
-  source: manual
-- region: US
-  currency: USD
-  amount: 39.41
-  incl_vat: false
-  store: mfg-sim.com
-  url: https://mfg-sim.com/rudder-acessories/footrest-kit-for-mfg-rudder-pedals.html#/3-model-combat-universal
-  verified: '2026-10-19'
-  source: manual
 verification: draft
 images:
 - file: /images/mfg/crosswind-combat-footrests.jpg

@@ -23,12 +23,16 @@ controls:
   location: panel
   label: PULL STD knob, 360° and 2.5 mm push-pull
   source: https://eu.winctrl.com/static/download/QmUZU73aqkdY3Zs59noF8oKHM43A9WtoqVvxcCTRAk7Xjc?filename=EFIS-32L-User-Manual-V1.0-2024.09.pdf
+- type: switch
+  location: panel
+  label: ADF and VOR selector switches
+  source: https://eu.winctrl.com/view/goods-details.html?id=845
 controls_evidence:
   coverage: partial
   source: https://eu.winctrl.com/static/download/QmUZU73aqkdY3Zs59noF8oKHM43A9WtoqVvxcCTRAk7Xjc?filename=EFIS-32L-User-Manual-V1.0-2024.09.pdf
   checked: '2026-10-20'
-  notes: The manual text extracted here specifies the PULL STD knob and the 158×103.2×75 mm body. Other
-    EFIS keys are not given a count.
+  notes: >-
+    The exact product specification names the PULL STD push-pull knob and ADF/VOR selector switches. It does not give a written count or positions for the selectors or enumerate all panel keys; this remains a partial inventory.
 connectivity:
   standalone_usb: true
 prices:
@@ -48,6 +52,15 @@ prices:
   url: https://us.winwingsim.com/view/goods-details.html?id=845
   verified: '2026-10-20'
   source: manual
+- region: UK
+  currency: GBP
+  amount: 81.12
+  incl_vat: true
+  store: uk.winctrl.com
+  url: https://uk.winctrl.com/p/845.html
+  verified: '2026-10-21'
+  source: manual
+
 verification: draft
 sources: *id001
 images:

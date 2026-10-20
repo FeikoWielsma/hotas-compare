@@ -68,6 +68,22 @@ physical:
   - 180
 verification: draft
 prices:
+- region: EU
+  currency: EUR
+  amount: 199.99
+  incl_vat: true
+  store: Thrustmaster EU eshop
+  url: https://shop.thrustmaster.com/en_eu/tca-sky-yoke-ps.html
+  verified: '2026-10-20'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 169.99
+  incl_vat: true
+  store: Thrustmaster UK eshop
+  url: https://shop.thrustmaster.com/en_gb/tca-sky-yoke-ps.html
+  verified: '2026-10-20'
+  source: manual
 - region: US
   currency: USD
   amount: 199.99

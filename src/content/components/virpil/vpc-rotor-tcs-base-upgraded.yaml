@@ -7,28 +7,29 @@ platform_compatibility:
   ps5: unsupported
   notes: Official product listing identifies the device as a collective base for PC and does not list Xbox or PS5 support.
   sources:
-    - https://virpil-controls.eu/vpc-rotor-tcs-base-upgraded.html
+  - https://virpil-controls.eu/vpc-rotor-tcs-base-upgraded.html
 status: current
 handedness: n/a
 mount: null
 controls:
-  - type: lever
-    kind: collective
-    analog: true
-    count: 1
-    location: base
-    label: Collective axis
-    source: https://support.virpil.com/en/support/solutions/articles/47001258804-rotor-tcs-base-upgraded-user-manual
+- type: lever
+  kind: collective
+  analog: true
+  count: 1
+  location: base
+  label: Collective axis
+  source: https://support.virpil.com/en/support/solutions/articles/47001258804-rotor-tcs-base-upgraded-user-manual
 controls_evidence:
   coverage: complete
   source: https://virpil-controls.eu/vpc-rotor-tcs-base-upgraded.html
   checked: '2026-10-20'
-  notes: 'SKU VPC-111-200. This is the upgraded Rotor TCS base, not the Rotor TCS Plus base. The user manual describes one collective lever, a travel limiter, and an adjustable clutch. It does not list a twist throttle, engine-idle button, or twist-restrictor switch; those controls stay on the Plus record. Grip inputs belong to the separately sold collective grip. The store page repeats MongoosT-50CM3 throttle marketing text, which was not used.'
+  notes: SKU VPC-111-200. This is the upgraded Rotor TCS base, not the Rotor TCS Plus base. The user manual describes one collective lever, a travel limiter, and an adjustable clutch. It does not list a twist throttle, engine-idle button, or twist-restrictor switch; those controls stay on the Plus record. Grip inputs belong to the separately sold collective grip. The store page repeats MongoosT-50CM3 throttle marketing text, which was not used.
 hardware:
   gimbal: null
-  sensor: null
+  sensor: contactless_magnetic
   axes:
-    - name: Collective
+  - name: Collective
+    sensor: contactless_magnetic
   force_adjustable: true
   cams_swappable: null
   damping: adjustable clutch
@@ -40,21 +41,37 @@ connectivity:
 software: VPC Configuration Tool
 physical:
   materials:
-    - metal
+  - metal
 prices:
-  - region: EU
-    currency: EUR
-    amount: 199.95
-    incl_vat: true
-    store: virpil-controls.eu
-    url: https://virpil-controls.eu/vpc-rotor-tcs-base-upgraded.html
-    verified: '2026-10-20'
-    source: manual
+- region: EU
+  currency: EUR
+  amount: 199.95
+  incl_vat: true
+  store: virpil-controls.eu
+  url: https://virpil-controls.eu/vpc-rotor-tcs-base-upgraded.html
+  verified: '2026-10-20'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 219.95
+  incl_vat: true
+  store: virpil-controls.co.uk
+  url: https://virpil-controls.co.uk/vpc-rotor-tcs-base-upgraded.html
+  verified: '2026-10-21'
+  source: manual
+- region: US
+  currency: USD
+  amount: 229.95
+  incl_vat: false
+  store: virpil-controls.us.com
+  url: https://virpil-controls.us.com/vpc-rotor-tcs-base-upgraded.html
+  verified: '2026-10-21'
+  source: manual
 verification: draft
 sources:
-  - https://virpil-controls.eu/vpc-rotor-tcs-base-upgraded.html
-  - https://support.virpil.com/en/support/solutions/articles/47001258804-rotor-tcs-base-upgraded-user-manual
+- https://virpil-controls.eu/vpc-rotor-tcs-base-upgraded.html
+- https://support.virpil.com/en/support/solutions/articles/47001258804-rotor-tcs-base-upgraded-user-manual
 images:
-  - file: /images/virpil/vpc-rotor-tcs-base-upgraded.jpg
-    source: https://virpil-controls.eu/vpc-rotor-tcs-base-upgraded.html
-    caption: VPC Rotor TCS Base
+- file: /images/virpil/vpc-rotor-tcs-base-upgraded.jpg
+  source: https://virpil-controls.eu/vpc-rotor-tcs-base-upgraded.html
+  caption: VPC Rotor TCS Base

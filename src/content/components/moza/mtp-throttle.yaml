@@ -27,19 +27,133 @@ controls:
   notes: In software it can switch between analog axes and 4-way button mode; this is one physical device and is
     not counted twice. Center push behavior is not stated.
   source: https://support.mozaracing.com/en/support/solutions/articles/70000679591-moza-mtp-throttle-support
+- type: toggle
+  location: panel
+  count: 1
+  ways: 2
+  label: L GEN toggle (NORM / OFF)
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtp_throttle_panel_manual.pdf?v=1779863093
+- type: toggle
+  location: panel
+  count: 1
+  ways: 2
+  label: BATT toggle (ON / ORIDE)
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtp_throttle_panel_manual.pdf?v=1779863093
+- type: toggle
+  location: panel
+  count: 1
+  ways: 2
+  label: R GEN toggle (NORM / OFF)
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtp_throttle_panel_manual.pdf?v=1779863093
 - type: switch
   location: panel
-  count: 27
-  label: Panel switches and controls (27 physical switches total)
+  count: 1
+  label: FLIR switch (ON, STBY, OFF, ARM, SAFE labels)
+  notes: >-
+    Mechanism and position count not legible in the manual diagram; labels only.
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtp_throttle_panel_manual.pdf?v=1779863093
+- type: switch
+  location: panel
+  count: 1
+  label: LTDR control (round, unlabeled position count)
+  notes: >-
+    Mechanism and position count not legible in the manual diagram.
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtp_throttle_panel_manual.pdf?v=1779863093
+- type: toggle
+  location: panel
+  count: 1
+  ways: 2
+  label: LSTR/FLR toggle (ON / OFF)
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtp_throttle_panel_manual.pdf?v=1779863093
+- type: rotary
+  location: panel
+  count: 1
+  mode: selector
+  label: RADAR selector (OFF, STBY, OPR, PULL EMERG labels)
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtp_throttle_panel_manual.pdf?v=1779863093
+- type: rotary
+  location: panel
+  count: 1
+  mode: selector
+  label: INS/GND selector (INS/GND, NORM, CV, OFF, TEST, GB labels; partly hidden by grip)
+  notes: >-
+    Position count not confirmed: the throttle grip covers part of the dial in the manual diagram.
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtp_throttle_panel_manual.pdf?v=1779863093
+- type: switch
+  location: panel
+  count: 1
+  label: PROBE switch (EXTEND / RETRACT / EMERGENCY labels)
+  notes: >-
+    Vertical-slot switch; mechanism and position count not confirmed.
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtp_throttle_panel_manual.pdf?v=1779863093
+- type: rotary
+  location: panel
+  count: 1
+  mode: selector
+  label: FORMATION knob (OFF, BRT labels)
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtp_throttle_panel_manual.pdf?v=1779863093
+- type: rotary
+  location: panel
+  count: 1
+  mode: selector
+  label: POSITION knob (OFF, BRT labels)
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtp_throttle_panel_manual.pdf?v=1779863093
+- type: toggle
+  location: panel
+  count: 1
+  ways: 2
+  label: APU toggle (ON / OFF)
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtp_throttle_panel_manual.pdf?v=1779863093
+- type: toggle
+  location: panel
+  count: 1
+  ways: 3
+  label: ENG CRANK toggle (L / OFF / R)
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtp_throttle_panel_manual.pdf?v=1779863093
+- type: toggle
+  location: panel
+  count: 1
+  ways: 2
+  label: STROBE toggle (BRT / DIM)
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtp_throttle_panel_manual.pdf?v=1779863093
+- type: toggle
+  location: panel
+  count: 1
+  ways: 2
+  label: INTR WING toggle (INHIBIT / NORM)
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtp_throttle_panel_manual.pdf?v=1779863093
+- type: rotary
+  location: panel
+  count: 1
+  mode: analog
+  label: LIGHT CONTROL knob (MIN to MAX)
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtp_throttle_panel_manual.pdf?v=1779863093
+- type: rotary
+  location: panel
+  count: 1
+  push: true
+  label: RUD TRIM knob (L / R, pushes for T/O TRIM)
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtp_throttle_panel_manual.pdf?v=1779863093
+- type: button
+  location: panel
+  count: 1
+  label: RESET pushbutton
+  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtp_throttle_panel_manual.pdf?v=1779863093
+- type: slider
+  location: panel
+  count: 1
+  label: MAX slide control (vertical; labels only, position count not confirmed)
   source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtp_throttle_panel_manual.pdf?v=1779863093
 controls_evidence:
   coverage: partial
   source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtp_throttle_panel_manual.pdf?v=1779863093
   checked: '2026-10-20'
-  notes: Verified against official MTP Throttle Panel user manual (pages 2-6). Hardware features dual throttle levers with
-    aluminum grips and 15-bit magnetic encoders, 1 Hall-effect thumb joystick on grip, adjustable afterburner/middle detents,
-    telemetry vibration motor, and 27 physical panel switches. The 27 switches are documented as a manufacturer total without
-    itemized mechanism breakdown per switch, so coverage remains partial.
+  notes: >-
+    Verified against official MTP Throttle Panel user manual (page 2 panel diagram, rendered at high resolution). Panel
+    itemizes 19 controls (8 toggles, 3 switches, 6 rotaries/selectors, 1 button, 1 slider). The manual and support article
+    state 27 physical switches in total; the 8-control gap is not located in the diagram (grip-side and hidden controls
+    are not drawn), so it is not added as a count. Grip: 2 throttle levers, 2 detents, 1 Hall thumb joystick (existing).
+    Coverage stays partial.
 hardware:
   sensor: 15-bit magnetic encoder
   axis_count: 2

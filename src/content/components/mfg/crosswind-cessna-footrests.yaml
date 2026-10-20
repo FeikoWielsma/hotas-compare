@@ -38,22 +38,6 @@ prices:
   url: https://mfg-sim.com/rudder-acessories/footrest-kit-for-mfg-rudder-pedals.html#/4-model-cessna
   verified: '2026-10-19'
   source: manual
-- region: UK
-  currency: GBP
-  amount: 32.84
-  incl_vat: false
-  store: mfg-sim.com
-  url: https://mfg-sim.com/rudder-acessories/footrest-kit-for-mfg-rudder-pedals.html#/4-model-cessna
-  verified: '2026-10-19'
-  source: manual
-- region: US
-  currency: USD
-  amount: 44.04
-  incl_vat: false
-  store: mfg-sim.com
-  url: https://mfg-sim.com/rudder-acessories/footrest-kit-for-mfg-rudder-pedals.html#/4-model-cessna
-  verified: '2026-10-19'
-  source: manual
 verification: draft
 images:
 - file: /images/mfg/crosswind-cessna-footrests.jpg

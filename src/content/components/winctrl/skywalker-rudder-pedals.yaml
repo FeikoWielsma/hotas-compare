@@ -64,13 +64,21 @@ use_case_fit:
   space_hotas: 4
   space_hosas: 3
 prices:
+  - region: US
+    currency: USD
+    amount: 298.55
+    incl_vat: false
+    store: us.winwingsim.com
+    url: https://us.winwingsim.com/p/543.html
+    verified: '2026-10-21'
+    source: manual
   - region: EU
     currency: EUR
     amount: 286.61
     incl_vat: true
     store: eu.winctrl.com
     url: https://eu.winctrl.com/view/goods-details.html?id=543
-    verified: '2026-10-19'
+    verified: '2026-10-21'
     source: manual
 verification: draft
 sources:

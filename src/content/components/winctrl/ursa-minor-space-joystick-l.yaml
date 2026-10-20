@@ -57,8 +57,9 @@ hardware:
   - name: X
   - name: Y
   - name: Twist
-  - name: Throttle
-connectivity:
+  - name: Rx
+  - name: Ry
+  - name: Slider
   standalone_usb: true
 prices:
 - region: EU
@@ -77,6 +78,15 @@ prices:
   url: https://us.winwingsim.com/view/goods-details.html?id=553
   verified: '2026-10-20'
   source: manual
+- region: UK
+  currency: GBP
+  amount: 127.26
+  incl_vat: true
+  store: uk.winctrl.com
+  url: https://uk.winctrl.com/p/553.html
+  verified: '2026-10-21'
+  source: manual
+
 verification: draft
 sources: *id001
 images:

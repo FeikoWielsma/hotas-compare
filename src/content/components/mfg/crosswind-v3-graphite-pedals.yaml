@@ -21,7 +21,7 @@ controls_evidence:
   coverage: complete
   source: https://mfg-sim.com/rudders/mfg-crosswind-v3-base.html
   checked: '2026-10-19'
-  notes: 'Three physical analog axes: rudder plus independent left/right toe brakes. Controls schema has no generic axis item for the rudder axis, so controls lists only the two brake pedals; no standalone buttons or switches are specified. Footrest geometry varies by selected model; this record is Graphite/Bf109. Pedal movements are represented explicitly as axes; they are not hand-operated levers or rocker switches. The V3 base page states a return-to-center tension knob and exchangeable CAM4 and CAM6 profiles. Hydraulic damping is a separate accessory. The linked specifications drawing is labeled V1.7 in part and is not used for V3 dimensions.'
+  notes: 'Three physical analog axes: rudder plus independent left/right toe brakes, all listed under controls. No standalone buttons or switches are specified. Footrest geometry varies by selected model; this record is Graphite/Bf109. Pedal movements are represented explicitly as axes; they are not hand-operated levers or rocker switches. The V3 base page states a return-to-center tension knob and exchangeable CAM4 and CAM6 profiles. Hydraulic damping is a separate accessory. The linked specifications drawing is labeled V1.7 in part and is not used for V3 dimensions.'
 hardware:
   gimbal: cam
   sensor: contactless_magnetic
@@ -53,22 +53,6 @@ prices:
 - region: EU
   currency: EUR
   amount: 286.22
-  incl_vat: false
-  store: mfg-sim.com
-  url: https://mfg-sim.com/rudders/mfg-crosswind-v3-me109-rudder-pedals.html
-  verified: '2026-10-19'
-  source: manual
-- region: UK
-  currency: GBP
-  amount: 247.32
-  incl_vat: false
-  store: mfg-sim.com
-  url: https://mfg-sim.com/rudders/mfg-crosswind-v3-me109-rudder-pedals.html
-  verified: '2026-10-19'
-  source: manual
-- region: US
-  currency: USD
-  amount: 331.75
   incl_vat: false
   store: mfg-sim.com
   url: https://mfg-sim.com/rudders/mfg-crosswind-v3-me109-rudder-pedals.html

@@ -59,6 +59,22 @@ prices:
   url: https://us.mozaracing.com/products/ma3f-efcm
   verified: '2026-10-20'
   source: manual
+- region: EU
+  currency: EUR
+  amount: 159
+  incl_vat: true
+  store: eu.mozaracing.com
+  url: https://eu.mozaracing.com/products/ma3f-efcm
+  verified: '2026-10-21'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 149
+  incl_vat: true
+  store: uk.mozaracing.com
+  url: https://uk.mozaracing.com/products/ma3f-efcm
+  verified: '2026-10-21'
+  source: manual
 sources:
 - https://us.mozaracing.com/products/ma3f-efcm
 

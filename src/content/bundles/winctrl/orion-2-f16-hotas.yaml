@@ -23,6 +23,14 @@ prices:
     url: https://eu.winctrl.com/view/goods-details.html?id=340
     verified: '2026-10-19'
     source: manual
+  - region: US
+    currency: USD
+    amount: 514.85
+    incl_vat: false
+    store: us.winwingsim.com
+    url: https://us.winwingsim.com/p/340.html
+    verified: '2026-10-21'
+    source: manual
 verification: draft
 sources:
   - https://eu.winctrl.com/view/goods-details.html?id=340

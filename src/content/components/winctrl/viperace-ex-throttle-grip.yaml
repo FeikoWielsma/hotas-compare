@@ -16,6 +16,49 @@ mount:
   provides: null
   accepts: []
 controls:
+- type: hat
+  count: 1
+  ways: 4
+  push: true
+  location: handle
+  label: Four-direction switch with press
+  source: https://eu.winctrl.com/view/goods-details.html?id=339
+- type: hat
+  count: 1
+  ways: 8
+  push: true
+  location: handle
+  label: Eight-direction switch with press
+  source: https://eu.winctrl.com/view/goods-details.html?id=339
+- type: button
+  count: 2
+  location: handle
+  label: Hidden switches beneath the grip
+  source: https://eu.winctrl.com/view/goods-details.html?id=339
+- type: analog_ministick
+  count: 1
+  push: true
+  location: handle
+  label: Mini joystick with press
+  source: https://eu.winctrl.com/view/goods-details.html?id=339
+- type: rotary
+  count: 1
+  mode: analog
+  location: handle
+  label: Hall-sensor rotary switch / axis
+  source: https://eu.winctrl.com/view/goods-details.html?id=339
+- type: switch
+  count: 1
+  positions: 3
+  location: handle
+  label: DF OVRD three-position switch
+  source: https://eu.winctrl.com/view/goods-details.html?id=339
+- type: switch
+  count: 1
+  momentary: true
+  location: handle
+  label: Spring-loaded SPD BRK switch
+  source: https://eu.winctrl.com/view/goods-details.html?id=339
 - type: lever
   kind: throttle_single
   analog: true
@@ -24,11 +67,10 @@ controls:
   label: Throttle travel 80° (18° idle, 44° normal, 18° afterburner)
   source: https://eu.winctrl.com/static/download/QmVFGazAj4BdEn5rUL273NxNsNJs6ynRrQ7Wvg5vSU5Knr?filename=THROTTLE-HANDLE-OF-16-HOTAS-User-Manual-EN-V3.2.pdf
 controls_evidence:
-  coverage: partial
-  source: https://eu.winctrl.com/static/download/QmVFGazAj4BdEn5rUL273NxNsNJs6ynRrQ7Wvg5vSU5Knr?filename=THROTTLE-HANDLE-OF-16-HOTAS-User-Manual-EN-V3.2.pdf
+  coverage: complete
+  source: https://eu.winctrl.com/view/goods-details.html?id=339
   checked: '2026-10-20'
-  notes: Manual V3.2 gives size, mass and the 80° throw. The button map is a numbered drawing without
-    a written count, so button, hat and wheel totals are not copied off the key numbers.
+  notes: Official exact-SKU product specification enumerates the switches, mini joystick, rotary axis, and spring-loaded switch recorded here. The manual supplies the separate 80° throttle-axis travel. No count is inferred from diagram output numbers.
 hardware:
   throw_deg: 80
 connectivity:

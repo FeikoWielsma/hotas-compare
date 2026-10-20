@@ -7,7 +7,7 @@ platform_compatibility:
   ps5: unsupported
   notes: Official product listing identifies the intended platform as PC; the listing has no Xbox or PS5 platform support.
   sources:
-    - https://virpil-controls.eu/mongoost-50cm4-throttle.html
+  - https://virpil-controls.eu/mongoost-50cm4-throttle.html
 status: current
 release_year: 2026
 handedness: n/a
@@ -32,7 +32,7 @@ controls:
   customizable: true
   location: handle
   label: Throttle detents
-  notes: 'Configurable mechanical detent plates on throttle axes.'
+  notes: Configurable mechanical detent plates on throttle axes.
   source: https://virpil-controls.eu/mongoost-50cm4-throttle.html
 - type: hat
   ways: 4
@@ -85,18 +85,17 @@ controls_evidence:
   coverage: complete
   source: https://virpil-controls.eu/mongoost-50cm4-throttle.html
   checked: '2026-10-19'
-  notes: "Inventory separates base panel from grip. Page prose includes a generic 5-way mode-dial paragraph copied from CM3, but CM4's explicit BASE PANEL INPUTS list omits such a dial; not counted. Axial rotary versus selector behavior is described as rotary dial with center push but axis mode is not explicit, so mode remains unknown."
-
+  notes: Inventory separates base panel from grip. Page prose includes a generic 5-way mode-dial paragraph copied from CM3, but CM4's explicit BASE PANEL INPUTS list omits such a dial; not counted. Axial rotary versus selector behavior is described as rotary dial with center push but axis mode is not explicit, so mode remains unknown.
 hardware:
   gimbal: null
   sensor: contactless
   axes:
-    - name: Throttle_Left
-      sensor: contactless
-    - name: Throttle_Right
-      sensor: contactless
-    - name: Auxiliary
-      sensor: contactless
+  - name: Throttle_Left
+    sensor: contactless
+  - name: Throttle_Right
+    sensor: contactless
+  - name: Auxiliary
+    sensor: contactless
   force_adjustable: true
   cams_swappable: null
   damping: null
@@ -111,14 +110,30 @@ physical:
   - duralumin
 use_case_fit: {}
 prices:
-  - region: EU
-    currency: EUR
-    amount: 314.95
-    incl_vat: true
-    store: virpil-controls.eu
-    url: https://virpil-controls.eu/mongoost-50cm4-throttle.html
-    verified: '2026-10-19'
-    source: manual
+- region: EU
+  currency: EUR
+  amount: 314.95
+  incl_vat: true
+  store: virpil-controls.eu
+  url: https://virpil-controls.eu/mongoost-50cm4-throttle.html
+  verified: '2026-10-19'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 324.95
+  incl_vat: true
+  store: virpil-controls.co.uk
+  url: https://virpil-controls.co.uk/mongoost-50cm4-throttle.html
+  verified: '2026-10-21'
+  source: manual
+- region: US
+  currency: USD
+  amount: 369.95
+  incl_vat: false
+  store: virpil-controls.us.com
+  url: https://virpil-controls.us.com/mongoost-50cm4-throttle.html
+  verified: '2026-10-21'
+  source: manual
 verification: draft
 sources:
 - https://virpil-controls.eu/mongoost-50cm4-throttle.html

@@ -42,14 +42,15 @@ controls:
   notes: Reverser is a virtual event at the start of throttle travel, not an extra physical button.
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Sidestick/TCA_Sidestick_AE_User_Manual.pdf
 controls_evidence:
-  coverage: partial
+  coverage: complete
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Sidestick/TCA_Sidestick_AE_User_Manual.pdf
-  checked: '2026-10-19'
-  notes: Counts from the numbered PC map (manual page 2) and feature diagram (page 4). Physical inputs 3-16 are 14
-    buttons (2 handle-side, 12 in the two base modules); the feature list's "15 action buttons" is one more than the
-    map numbers, so the map is used. Input 1 is the digital trigger and 2 the hat; 17 is a virtual throttle button and
-    is excluded. Hat ways and push are not stated. The two base modules are interchangeable, so only the 12 pads in
-    the two modules are counted once. Handedness selector is a two-position switch.
+  checked: '2026-10-20'
+  notes: >-
+    Numbered PC map and the feature list. Inputs 3-16 are 14 buttons (2 on the handle, 12 in the two base modules).
+    Input 1 is the digital trigger and 2 is the hat. 17 is the virtual throttle reverser and is excluded. The feature
+    list's "15 action buttons" is one higher than the numbered button bodies, so the map is used. Hat direction count
+    and hat push are not stated. The two base modules are interchangeable, so the 12 pads are counted once. The
+    handedness selector is a two-position switch.
 hardware:
   gimbal: ball_joint
   sensor: hall

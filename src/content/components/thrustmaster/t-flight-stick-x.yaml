@@ -74,6 +74,22 @@ physical:
   materials: []
 verification: draft
 prices:
+- region: EU
+  currency: EUR
+  amount: 49.99
+  incl_vat: true
+  store: Thrustmaster EU eshop
+  url: https://shop.thrustmaster.com/en_eu/t-flight-stick-x.html
+  verified: '2026-10-20'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 44.99
+  incl_vat: true
+  store: Thrustmaster UK eshop
+  url: https://shop.thrustmaster.com/en_gb/t-flight-stick-x.html
+  verified: '2026-10-20'
+  source: manual
 - region: US
   currency: USD
   amount: 49.99

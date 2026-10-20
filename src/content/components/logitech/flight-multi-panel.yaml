@@ -5,56 +5,104 @@ status: current
 handedness: n/a
 mount: null
 controls:
-- type: button
-  count: 8
-  location: panel
-  label: Autopilot function buttons (AP, HDG, NAV, APR, REV, ALT, CRS, IAS)
-  source: https://www.logitech.com/assets/65126/2/flight-multi-panel.pdf
-- type: toggle
-  ways: 3
-  count: 1
-  location: panel
-  label: Autothrottle OFF/ARM/ON selector
-  source: https://www.logitech.com/assets/65126/2/flight-multi-panel.pdf
-- type: rocker
-  ways: 2
-  count: 1
-  location: panel
-  label: Flaps up/down rocker
-  source: https://www.logitech.com/assets/65126/2/flight-multi-panel.pdf
-- type: rotary
-  count: 1
-  location: panel
-  label: Autopilot function selector
-  source: https://www.logitech.com/assets/65126/2/flight-multi-panel.pdf
-- type: encoder
-  count: 1
-  location: panel
-  label: Value adjustment knob
-  source: https://www.logitech.com/assets/65126/2/flight-multi-panel.pdf
-- type: rotary
-  count: 1
-  location: panel
-  label: Pitch trim wheel
-  source: https://www.logitech.com/assets/65126/2/flight-multi-panel.pdf
+  - type: button
+    count: 8
+    location: panel
+    label: Autopilot function buttons (AP, HDG, NAV, APR, REV, ALT, CRS, IAS)
+    backlit: false
+    source: https://www.logitech.com/assets/65126/2/flight-multi-panel.pdf
+  - type: toggle
+    ways: 3
+    count: 1
+    location: panel
+    label: Autothrottle OFF/ARM/ON selector
+    source: https://www.logitech.com/assets/65126/2/flight-multi-panel.pdf
+  - type: rocker
+    ways: 2
+    count: 1
+    location: panel
+    label: Flaps up/down rocker
+    source: https://www.logitech.com/assets/65126/2/flight-multi-panel.pdf
+  - type: rotary
+    count: 1
+    location: panel
+    label: Autopilot function selector
+    source: https://www.logitech.com/assets/65126/2/flight-multi-panel.pdf
+  - type: encoder
+    count: 1
+    location: panel
+    label: Value adjustment knob
+    source: https://www.logitech.com/assets/65126/2/flight-multi-panel.pdf
+  - type: rotary
+    count: 1
+    location: panel
+    label: Pitch trim wheel
+    source: https://www.logitech.com/assets/65126/2/flight-multi-panel.pdf
 controls_evidence:
   coverage: complete
   source: https://www.logitech.com/assets/65126/2/flight-multi-panel.pdf
   checked: '2026-10-20'
-  notes: Manual product-tour diagram and controls section identify eight push buttons,
-    one three-position selector, one two-way rocker, function selector, value adjustment
-    knob and pitch trim wheel.
+  notes: >-
+    Manual product-tour diagram and controls section identify eight push buttons, one three-position selector, one two-way rocker, function selector, value adjustment knob and pitch trim wheel.
 hardware:
   axes: []
+  sensor: null
+  gimbal: null
+  force_adjustable: null
+  cams_swappable: null
+  damping: null
+  extension_support: null
+  throw_deg: null
 connectivity:
   usb: a_cable
   standalone_usb: true
 software: Logitech G HUB
+physical:
+  weight_g: 392
+  dimensions_mm:
+    - 282
+    - 57
+    - 84
+  materials:
+    - abs
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: >-
+    The official Flight Multi Panel user guide documents Windows setup and driver installation with Microsoft Flight Simulator X. Xbox and PS5 support are not documented.
+  sources:
+    - https://www.logitech.com/assets/65126/2/flight-multi-panel.pdf
+prices:
+  - region: US
+    currency: USD
+    amount: 169.99
+    incl_vat: false
+    store: logitechg.com
+    url: https://www.logitechg.com/en-us/shop/p/flight-simulator-autopilot-multipanel
+    verified: '2026-10-21'
+    source: manual
+  - region: UK
+    currency: GBP
+    amount: 79.99
+    incl_vat: true
+    store: logitechg.com
+    url: https://www.logitechg.com/en-gb/shop/p/flight-simulator-autopilot-multipanel
+    verified: '2026-10-21'
+    source: manual
+  - region: EU
+    currency: EUR
+    amount: 89.99
+    incl_vat: true
+    store: logitechg.com
+    url: https://www.logitechg.com/de-de/shop/p/flight-simulator-autopilot-multipanel
+    verified: '2026-10-21'
+    source: manual
 verification: draft
 sources:
-- https://www.logitechg.com/en-us/shop/p/flight-simulator-autopilot-multipanel.945-000028
-- https://www.logitech.com/assets/65126/2/flight-multi-panel.pdf
+  - https://www.logitechg.com/en-us/shop/p/flight-simulator-autopilot-multipanel.945-000028
+  - https://www.logitech.com/assets/65126/2/flight-multi-panel.pdf
 images:
-- file: /images/logitech/flight-multi-panel.png
-  source: https://www.logitechg.com/en-us/shop/p/flight-simulator-autopilot-multipanel.945-000028
-  caption: Flight Multi Panel
+  - file: /images/logitech/flight-multi-panel.png
+    source: https://www.logitechg.com/en-us/shop/p/flight-simulator-autopilot-multipanel.945-000028
+    caption: Flight Multi Panel

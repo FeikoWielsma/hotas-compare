@@ -60,6 +60,22 @@ prices:
   url: https://us.mozaracing.com/products/mfy-yoke
   verified: '2026-10-20'
   source: manual
+- region: EU
+  currency: EUR
+  amount: 139
+  incl_vat: true
+  store: eu.mozaracing.com
+  url: https://eu.mozaracing.com/products/mfy-yoke
+  verified: '2026-10-21'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 129
+  incl_vat: true
+  store: uk.mozaracing.com
+  url: https://uk.mozaracing.com/products/mfy-yoke
+  verified: '2026-10-21'
+  source: manual
 sources:
 - https://us.mozaracing.com/products/mfy-yoke
 

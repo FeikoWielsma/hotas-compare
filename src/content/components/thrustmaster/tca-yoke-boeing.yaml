@@ -28,13 +28,28 @@ controls:
   count: 1
   label: Mini-stick
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Yoke_Boeing/TCA_Yoke_Boeing_Edition_user_manual.pdf
+- type: switch
+  count: 1
+  location: base
+  label: Landing gear
+  notes: Feature callout 10, drawn as a small round control separate from the 18 action buttons. Positions and push-versus-toggle behavior are not stated.
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Yoke_Boeing/TCA_Yoke_Boeing_Edition_user_manual.pdf
+- type: switch
+  count: 1
+  positions: 2
+  location: base
+  label: Xbox/PC selector switch
+  notes: Selects the host before connection. Not a game input.
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Yoke_Boeing/TCA_Yoke_Boeing_Edition_user_manual.pdf
 controls_evidence:
   coverage: partial
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Yoke_Boeing/TCA_Yoke_Boeing_Edition_user_manual.pdf
-  checked: '2026-10-19'
-  notes: The Xbox mapping (manual page 7) numbers 18 named buttons, which matches the 18-button aggregate; the names
-    are counted one by one, with D-pad (hat) and axes excluded. Physical push/switch type is not stated, so only the
-    count is recorded. PC mapping also shows numbered buttons 1–18 in the Windows Control Panel; the same count is present on PC and Xbox. Landing gear and TFRP/TPR rudder inputs are not classified, so coverage remains partial.
+  checked: '2026-10-20'
+  notes: >-
+    The Xbox mapping (manual printed page 7) names 18 buttons, matching the feature-list aggregate, with the 8-way
+    hat and axes drawn separately. Push versus switch is not stated for those 18, so they stay one button count. PC
+    properties also show buttons 1-18. Feature callout 10 is the landing gear and is not one of the 18. The Xbox/PC
+    selector is callout 6. TFRP and TPR rudder axes belong to the optional pedals and are not on this device.
 hardware:
   axis_count: 6
   gimbal: pendular

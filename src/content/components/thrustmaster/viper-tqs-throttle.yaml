@@ -31,11 +31,17 @@ controls:
   location: handle
   label: Hat 1 (mapping button 5)
   source: https://ts.thrustmaster.com/download/accessories/Manuals/Viper/Viper_Mission_Pack_User_Manual.pdf
-- type: button
-  count: 7
+- type: toggle
+  count: 1
+  ways: 3
   location: handle
-  label: Mapped handle buttons 7, 8, 13-17 (Mode A; 17 is the top button)
-  notes: Mapped 18 (cut-off) and 19 (afterburner) are the stop-switch inputs covered by the detent and trigger entries.
+  label: Three-position switch (mapped 15-14-13)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/Viper/Viper_Mission_Pack_User_Manual.pdf
+- type: button
+  count: 4
+  location: handle
+  label: Handle buttons 7, 8, 16 and top button 17
+  notes: Mapped 18 (cut-off) and 19 (afterburner) are the stop-switch inputs covered by the detent and trigger entries. 13-15 are the three-position switch, not extra push buttons.
   source: https://ts.thrustmaster.com/download/accessories/Manuals/Viper/Viper_Mission_Pack_User_Manual.pdf
 - type: rotary
   mode: analog
@@ -50,14 +56,16 @@ controls:
   label: XY slew control (mapping axis 12)
   source: https://ts.thrustmaster.com/download/accessories/Manuals/Viper/Viper_Mission_Pack_User_Manual.pdf
 controls_evidence:
-  coverage: partial
+  coverage: complete
   source: https://ts.thrustmaster.com/download/accessories/Manuals/Viper/Viper_Mission_Pack_User_Manual.pdf
-  checked: '2026-10-19'
-  notes: Handle only; do not include separately sold Viper Panel. Counts from the Mode A map (manual page 8, "19
-    buttons and 5 axes without virtual buttons"), hat 1-4 with push 5, buttons 7, 8, 13-17, stops 18-19, axes 6, 9-10,
-    11 (rotary, three knobs) and 12 (XY slew, two axes). Marketing's 21 includes virtual buttons. Button 17 is taken
-    as a standalone button because it is a separate top-mounted input; this is the least certain count. Detent
-    intermediate stop counts are unknown.
+  checked: '2026-10-20'
+  notes: >-
+    Handle only; the Viper Panel is a separate record. Mode A map (manual printed page 8) is titled 19 buttons and 5
+    axes without virtual buttons. Hat directions are 1-4 with center push 5. Knob 6 is the Rx axis, the thumbwheel is
+    the Ry axis (numbers 9-10 stay on that wheel), knob 11 is the third rotary, and 12 is the XY slew. 15-14-13 is one
+    three-position switch. Push buttons are 7, 8, 16 and the separate top button 17. 18 and 19 are the cut-off and
+    afterburner stops. Momentary behavior of the three-position switch is not stated. Marketing's 21 includes virtual
+    buttons and is not the physical count.
 hardware:
   axis_count: 5
   gimbal: null

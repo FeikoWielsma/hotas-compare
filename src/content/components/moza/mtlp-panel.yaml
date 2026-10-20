@@ -108,6 +108,14 @@ prices:
   url: https://us.mozaracing.com/products/mtlp-panel
   verified: '2026-10-20'
   source: manual
+- region: EU
+  currency: EUR
+  amount: 159
+  incl_vat: true
+  store: eu.mozaracing.com
+  url: https://eu.mozaracing.com/products/mtlp-panel
+  verified: '2026-10-21'
+  source: manual
 sources:
 - https://us.mozaracing.com/products/mtlp-panel
 - https://cdn.shopify.com/s/files/1/0937/0802/6176/files/moza_mtlp_panel_manual.pdf?v=1779862892

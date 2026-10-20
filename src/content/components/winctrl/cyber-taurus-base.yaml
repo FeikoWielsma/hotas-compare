@@ -52,13 +52,21 @@ physical:
   materials:
   - metal
 prices:
+- region: US
+  currency: USD
+  amount: 493.00
+  incl_vat: false
+  store: us.winwingsim.com
+  url: https://us.winwingsim.com/p/5885.html
+  verified: '2026-10-21'
+  source: manual
 - region: EU
   currency: EUR
   amount: 473.27
   incl_vat: true
   store: eu.winctrl.com
   url: https://eu.winctrl.com/view/goods-details.html?id=5205
-  verified: '2026-10-20'
+  verified: '2026-10-21'
   source: manual
 verification: draft
 sources: *id001

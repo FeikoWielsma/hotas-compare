@@ -7,66 +7,66 @@ platform_compatibility:
   ps5: unsupported
   notes: Official product listing presents the handle as a PC yoke control and does not list Xbox or PS5 support.
   sources:
-    - https://virpil-controls.eu/constellation-vega-yoke-handle.html
+  - https://virpil-controls.eu/constellation-vega-yoke-handle.html
 status: announced
 release_year: 2026
 handedness: n/a
 mount: null
 controls:
-  - type: lever
-    kind: other
-    analog: true
-    button_contacts: 1
-    count: 2
-    location: grip
-    label: Analogue triggers
-    notes: The page lists two analogue trigger axes and a button input at full depression on each.
-    source: https://virpil-controls.eu/constellation-vega-yoke-handle.html
-  - type: hat
-    ways: 8
-    push: true
-    count: 2
-    location: grip
-    label: 8-way hats
-    source: https://virpil-controls.eu/constellation-vega-yoke-handle.html
-  - type: analog_ministick
-    count: 1
-    location: grip
-    label: Analogue ministick
-    notes: The page does not state a center push.
-    source: https://virpil-controls.eu/constellation-vega-yoke-handle.html
-  - type: scroll_wheel
-    count: 1
-    push: true
-    push_stages: 2
-    location: grip
-    label: Scroll wheel
-    notes: The page says "Scroll Wheel w/ 2 x Push" and does not define two-stage click versus two separate presses.
-    source: https://virpil-controls.eu/constellation-vega-yoke-handle.html
-  - type: button
-    count: 2
-    location: grip
-    label: Push buttons
-    source: https://virpil-controls.eu/constellation-vega-yoke-handle.html
-  - type: button
-    count: 6
-    backlit: true
-    location: grip
-    label: Programmable RGB push buttons
-    source: https://virpil-controls.eu/constellation-vega-yoke-handle.html
+- type: lever
+  kind: other
+  analog: true
+  button_contacts: 1
+  count: 2
+  location: grip
+  label: Analogue triggers
+  notes: The page lists two analogue trigger axes and a button input at full depression on each.
+  source: https://virpil-controls.eu/constellation-vega-yoke-handle.html
+- type: hat
+  ways: 8
+  push: true
+  count: 2
+  location: grip
+  label: 8-way hats
+  source: https://virpil-controls.eu/constellation-vega-yoke-handle.html
+- type: analog_ministick
+  count: 1
+  location: grip
+  label: Analogue ministick
+  notes: The page does not state a center push.
+  source: https://virpil-controls.eu/constellation-vega-yoke-handle.html
+- type: scroll_wheel
+  count: 1
+  push: true
+  push_stages: 2
+  location: grip
+  label: Scroll wheel
+  notes: The page says "Scroll Wheel w/ 2 x Push" and does not define two-stage click versus two separate presses.
+  source: https://virpil-controls.eu/constellation-vega-yoke-handle.html
+- type: button
+  count: 2
+  location: grip
+  label: Push buttons
+  source: https://virpil-controls.eu/constellation-vega-yoke-handle.html
+- type: button
+  count: 6
+  backlit: true
+  location: grip
+  label: Programmable RGB push buttons
+  source: https://virpil-controls.eu/constellation-vega-yoke-handle.html
 controls_evidence:
   coverage: complete
   source: https://virpil-controls.eu/constellation-vega-yoke-handle.html
   checked: '2026-10-20'
-  notes: 'SKU VPC-018. Pre-order, webstore ETA late Q4 2026. Counts follow the page''s "Extensive Control Set". Optional extra hat or ministick modules are not included. Trigger-end presses are lever contacts, not extra button bodies.'
+  notes: SKU VPC-018. Pre-order, webstore ETA late Q4 2026. Counts follow the page's "Extensive Control Set". Optional extra hat or ministick modules are not included. Trigger-end presses are lever contacts, not extra button bodies.
 hardware:
   gimbal: null
   sensor: null
   axes:
-    - name: Trigger L
-    - name: Trigger R
-    - name: Ministick X
-    - name: Ministick Y
+  - name: Trigger L
+  - name: Trigger R
+  - name: Ministick X
+  - name: Ministick Y
   force_adjustable: null
   cams_swappable: null
   damping: null
@@ -78,18 +78,34 @@ connectivity:
 physical:
   materials: []
 prices:
-  - region: EU
-    currency: EUR
-    amount: 189.95
-    incl_vat: true
-    store: virpil-controls.eu
-    url: https://virpil-controls.eu/constellation-vega-yoke-handle.html
-    verified: '2026-10-20'
-    source: manual
+- region: EU
+  currency: EUR
+  amount: 189.95
+  incl_vat: true
+  store: virpil-controls.eu
+  url: https://virpil-controls.eu/constellation-vega-yoke-handle.html
+  verified: '2026-10-20'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 199.95
+  incl_vat: true
+  store: virpil-controls.co.uk
+  url: https://virpil-controls.co.uk/constellation-vega-yoke-handle.html
+  verified: '2026-10-21'
+  source: manual
+- region: US
+  currency: USD
+  amount: 219.95
+  incl_vat: false
+  store: virpil-controls.us.com
+  url: https://virpil-controls.us.com/constellation-vega-yoke-handle.html
+  verified: '2026-10-21'
+  source: manual
 verification: draft
 sources:
-  - https://virpil-controls.eu/constellation-vega-yoke-handle.html
+- https://virpil-controls.eu/constellation-vega-yoke-handle.html
 images:
-  - file: /images/virpil/constellation-vega-yoke-handle.jpg
-    source: https://virpil-controls.eu/constellation-vega-yoke-handle.html
-    caption: VPC Constellation VEGA Yoke Handle
+- file: /images/virpil/constellation-vega-yoke-handle.jpg
+  source: https://virpil-controls.eu/constellation-vega-yoke-handle.html
+  caption: VPC Constellation VEGA Yoke Handle

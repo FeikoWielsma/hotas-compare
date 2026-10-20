@@ -16,19 +16,36 @@ mount:
   provides: null
   accepts: []
 controls:
+- type: switch
+  count: 1
+  positions: 2
+  location: panel
+  label: DAY/ALT toggle
+  source: https://eu.winctrl.com/view/goods-details.html?id=412
+- type: switch
+  count: 1
+  positions: 3
+  location: panel
+  label: NORM/ATT/VID toggle
+  source: https://eu.winctrl.com/view/goods-details.html?id=412
+- type: switch
+  count: 2
+  positions: 3
+  momentary: true
+  location: panel
+  label: HDG and CRS spring-loaded switches
+  source: https://eu.winctrl.com/view/goods-details.html?id=412
 - type: rotary
   count: 4
   mode: analog
   location: panel
-  label: Rotary controls with 0–4095 axis ranges in manual diagram
-  source: https://eu.winctrl.com/static/download/QmZhYCnLyWXRbasmafyG11UF5gfouw2PXiz6KdDvdgrJ48?filename=HUD1-User-Manual-EN-V1.2.pdf
+  label: BRT, BLK LVL, BAL and AOA potentiometer axes
+  source: https://eu.winctrl.com/view/goods-details.html?id=412
 controls_evidence:
-  coverage: partial
-  source: https://eu.winctrl.com/static/download/QmZhYCnLyWXRbasmafyG11UF5gfouw2PXiz6KdDvdgrJ48?filename=HUD1-User-Manual-EN-V1.2.pdf
+  coverage: complete
+  source: https://eu.winctrl.com/view/goods-details.html?id=412
   checked: '2026-10-20'
-  notes: Manual V1.2 key-position diagram shows four distinct 0–4095 axis ranges associated with rotary controls.
-    It does not provide a written physical button count or define all other knob/switch behaviors; output numbers
-    are not treated as a switch inventory.
+  notes: Official HUD1 specification names the DAY/ALT toggle, NORM/ATT/VID toggle, HDG and CRS spring-loaded switches, and four potentiometer axes (BRT, BLK LVL, BAL and AOA). The manual corroborates four rotary axes. Counts describe physical controls, not their HID output values.
 connectivity:
   standalone_usb: true
 prices:
@@ -48,6 +65,15 @@ prices:
   url: https://us.winwingsim.com/view/goods-details.html?id=412
   verified: '2026-10-20'
   source: manual
+- region: UK
+  currency: GBP
+  amount: 58.25
+  incl_vat: true
+  store: uk.winctrl.com
+  url: https://uk.winctrl.com/p/412.html
+  verified: '2026-10-21'
+  source: manual
+
 verification: draft
 sources: *id001
 images:
