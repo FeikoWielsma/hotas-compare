@@ -3,6 +3,7 @@
   import BrandMark from './BrandMark.svelte';
   import { inventoryComplete, inventoryCount } from '../lib/control-inventory';
   import type { CatalogItem } from '../lib/catalog';
+  import { platforms } from '../lib/platforms';
   import { categoryLabels, detailHref, formatAmount, productImageSrc, resolveItemRegion } from '../lib/catalog-ui';
   import { regionStore } from '../lib/stores/region.svelte';
   import { compareStore, MAX_COMPARE_ITEMS } from '../lib/stores/compare.svelte';
@@ -23,9 +24,10 @@
     <p class="brand"><BrandMark brand={item.brand} name={item.brandName} size={22} /><span>{item.brandName}</span></p>
     <h3><a href={detailHref(item)}>{item.name}</a></h3>
     <p class="hand">{item.handedness.map((hand) => hand === 'ambi' ? 'Ambidextrous' : `${hand === 'right' ? 'Right' : 'Left'} hand`).join(' / ') || 'Flight hardware'}</p>
+    {#if item.platform_compatibility}<p class="hand" title={item.platform_compatibility.notes}>Platforms: {platforms.filter(({key}) => item.platform_compatibility?.[key] === 'supported').map(({label}) => label).join(' · ') || 'Support unconfirmed'}</p>{/if}
   </div>
   <div class="specifications">
-    <dl><div><dt title="Estimated button inputs, including hat directions and switch positions">Est. button inputs</dt><dd>{inputs}</dd></div><div><dt>Axes</dt><dd>{item.totalAxes === 0 ? 'Unknown' : item.totalAxes}</dd></div></dl>
+    <dl><div><dt title="Estimated button inputs, including hat directions and switch positions">Est. button inputs</dt><dd>{inputs}</dd></div><div><dt>Axes</dt><dd>{item.totalAxes === 0 && !item.axisCountKnown ? 'Unknown' : item.totalAxes}</dd></div></dl>
     <p class="features">{item.sensor?.replaceAll('_', ' ') || 'Sensor unspecified'}{#if item.hasMinistick}<span> · Ministick</span>{/if}{#if item.hasBrakeAxis}<span> · Brake axis</span>{/if}</p>
     {#if !compact}<div class="control-preview" aria-label="Physical control highlights"><span>Hat switches <b>{countLabel('hat')}</b></span><span>Ministicks <b>{countLabel('analog_ministick')}</b></span></div>{/if}
   </div>

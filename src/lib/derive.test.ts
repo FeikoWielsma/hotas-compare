@@ -6,7 +6,7 @@ import {
   checkMountCompatibility,
   scoreItemForUseCase,
 } from './derive';
-import type { Component, MountStandard } from './schema';
+import { ComponentSchema, type Component, type MountStandard } from './schema';
 
 describe('deriveControlsSummary', () => {
   it('correctly calculates logical buttons, axes, and feature flags', () => {
@@ -45,6 +45,11 @@ describe('deriveControlsSummary', () => {
 });
 
 describe('deriveComponentStats', () => {
+  it('uses a documented axis total without requiring invented individual axis names', () => {
+    const component = ComponentSchema.parse({ brand: 'test', name: 'Stick', category: 'stick_fixed', hardware: { axis_count: 8, axes: [{ name: 'Pitch' }, { name: 'Roll' }, { name: 'Twist' }] }, controls: [{ type: 'analog_ministick' }] });
+    expect(deriveComponentStats(component).totalAxes).toBe(8);
+    expect(component.hardware?.axes).toHaveLength(3);
+  });
   it('computes total axes from hardware when greater than controls', () => {
     const comp: Component = {
       brand: 'virpil',

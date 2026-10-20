@@ -1,5 +1,6 @@
 import type { CatalogItem } from './catalog';
 import { contactless, overallScore } from './catalog-ui';
+import type { Platform } from './platforms';
 
 export interface CatalogFilters {
   search?: string;
@@ -18,6 +19,7 @@ export interface CatalogFilters {
   itemType?: string;
   priceAvailability?: string;
   sort?: string;
+  platform?: Platform | '';
 }
 
 /** Filter a regional catalog projection. Unknown counts cannot meet a positive minimum. */
@@ -38,6 +40,7 @@ export function filterCatalog(items: CatalogItem[], filters: CatalogFilters = {}
       && (!filters.handedness || item.handedness.includes(filters.handedness))
       && meetsMinimum(item.totalAxes, filters.minimumAxes) && meetsMinimum(item.totalLogicalButtons, filters.minimumInputs)
       && (!filters.itemType || item.item_type === filters.itemType)
+      && (!filters.platform || item.platform_compatibility?.[filters.platform] === 'supported')
       && (!filters.priceAvailability || (filters.priceAvailability === 'available' ? amount != null : amount == null));
   }).sort((a, b) => {
     let result = 0;

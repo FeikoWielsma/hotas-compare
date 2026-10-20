@@ -23,3 +23,7 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# local research scratch (downloaded manuals, renders)
+work/
+random_img_dump/

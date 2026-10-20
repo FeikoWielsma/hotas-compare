@@ -18,10 +18,14 @@
   },
   "dependencies": {
     "@astrojs/cloudflare": "^14.4.0",
+    "@astrojs/node": "^11.1.9",
+    "@astrojs/react": "^7.1.0",
     "@astrojs/svelte": "^9.1.0",
     "@keystatic/astro": "^6.0.0",
     "@keystatic/core": "^0.6.9",
     "astro": "^7.4.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "svelte": "^5.57.2",
     "zod": "^4.6.7"
   },

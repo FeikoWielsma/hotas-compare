@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import { controlTypes, inventoryCount, inventoryDetail } from '../lib/control-inventory';
   import type { CatalogItem } from '../lib/catalog';
+  import { platforms, platformSupport } from '../lib/platforms';
   import { categoryLabels, detailHref, formatAmount, productImageSrc, useCases, resolveItemRegion } from '../lib/catalog-ui';
   import { compareStore, MAX_COMPARE_ITEMS } from '../lib/stores/compare.svelte';
   import { regionStore } from '../lib/stores/region.svelte';
@@ -22,6 +23,10 @@
       { label: 'Category', value: (i) => categoryLabels[i.category] },
       { label: 'Handedness', value: (i) => i.handedness.join(' / ') || 'Not applicable' },
     ] },
+    { title: 'Platform compatibility', rows: [
+      ...platforms.map(({ key, label }) => ({ label, value: (i: CatalogItem) => platformSupport(i.platform_compatibility, key) })),
+      { label: 'Compatibility notes', value: (i) => i.platform_compatibility?.notes ?? 'No additional notes' },
+    ] },
     { title: 'Pricing in active region', rows: [
       { label: 'Amount', value: formatAmount }, { label: 'Currency', value: (i) => i.resolvedPrice.price?.currency ?? 'Unavailable' },
       { label: 'Tax', value: (i) => i.resolvedPrice.price ? i.resolvedPrice.price.incl_vat ? 'Includes VAT' : 'Excludes tax' : 'Unknown' },
@@ -30,7 +35,7 @@
     { title: 'Hardware & Mechanics', rows: [
       { label: 'Gimbal', value: (i) => i.gimbal?.replaceAll('_', ' ') ?? 'Unknown' },
       { label: 'Primary Sensor', value: (i) => i.sensor?.replaceAll('_', ' ') ?? 'Unknown' },
-      { label: 'Axes', value: (i) => i.totalAxes }, { label: 'Force Adjustable', value: (i) => i.mechanics.forceAdjustable },
+      { label: 'Axes', value: (i) => i.totalAxes === 0 && !i.axisCountKnown ? 'Unknown' : i.totalAxes }, { label: 'Force Adjustable', value: (i) => i.mechanics.forceAdjustable },
       { label: 'Swappable Cams', value: (i) => i.mechanics.cams }, { label: 'Clutches / Damping', value: (i) => i.mechanics.damping },
     ] },
     { title: 'Physical controls · counts & locations', rows: [

@@ -13,11 +13,14 @@ export interface CatalogItem {
   category: Component['category'] | Bundle['category'];
   item_type: 'component' | 'bundle';
   status: Component['status'];
+  platform_compatibility?: Component['platform_compatibility'];
   verification: Component['verification'];
   prices: Component['prices'];
   region: Region;
   resolvedPrice: ResolvedPrice;
   totalAxes: number;
+  /** Distinguishes a documented zero from an unresolved axis inventory. */
+  axisCountKnown?: boolean;
   totalLogicalButtons: number;
   hasMinistick: boolean;
   hasBrakeAxis: boolean;
@@ -81,8 +84,10 @@ export async function loadCatalog(region: Region = 'EU', now = new Date()) {
     return {
       id, slug: id, name: data.name, brand: data.brand, brandName: brand.name,
       category: data.category, item_type, status: data.status, verification: data.verification,
+      ...(data.platform_compatibility ? { platform_compatibility: data.platform_compatibility } : {}),
       prices: data.prices, region, resolvedPrice: resolvePrice(data.prices, region, now),
       totalAxes: stats.reduce((sum, stat) => sum + stat.totalAxes, 0),
+      axisCountKnown: stats.some((stat) => stat.totalAxes > 0) || members.every((member) => member.hardware?.axis_count != null),
       totalLogicalButtons: controlsSummary.totalLogicalButtons,
       hasMinistick: controlsSummary.hasMinistick, hasBrakeAxis: controlsSummary.hasBrakeAxis,
       controlsSummary, sensor: hardwareValues('sensor'), gimbal: hardwareValues('gimbal'),

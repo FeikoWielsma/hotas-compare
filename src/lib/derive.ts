@@ -79,7 +79,7 @@ export function deriveControlsSummary(controls: ControlItem[] = []): ControlsSum
         } else if (ctrl.analog === false) {
           totalLogicalButtons += count;
         }
-        if (ctrl.push) totalLogicalButtons += count;
+        totalLogicalButtons += count * (ctrl.button_contacts ?? (ctrl.push ? 1 : 0));
         break;
       }
       case 'scroll_wheel':
@@ -163,7 +163,7 @@ export interface DerivedComponentStats {
 export function deriveComponentStats(component: Component): DerivedComponentStats {
   const summary = deriveControlsSummary(component.controls);
   const hardwareAxesCount = component.hardware?.axes?.length ?? 0;
-  const totalAxes = Math.max(hardwareAxesCount, summary.estimatedAxesCount);
+  const totalAxes = component.hardware?.axis_count ?? Math.max(hardwareAxesCount, summary.estimatedAxesCount);
 
   return {
     controlsSummary: summary,

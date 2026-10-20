@@ -1,5 +1,22 @@
 import { config, fields, collection } from '@keystatic/core';
 
+const platformCompatibilityField = () => fields.object({
+  pc: platformSupportField('PC'),
+  xbox: platformSupportField('Xbox'),
+  ps5: platformSupportField('PS5'),
+  notes: fields.text({ label: 'Compatibility notes', multiline: true }),
+  sources: fields.array(fields.url({ label: 'Manufacturer URL' }), { label: 'Compatibility sources' }),
+}, { label: 'Platform compatibility' });
+
+function platformSupportField(label: string) {
+  return fields.select({ label, defaultValue: 'unknown', options: [
+    { label: 'Unknown', value: 'unknown' },
+    { label: 'Supported', value: 'supported' },
+    { label: 'Not supported', value: 'unsupported' },
+  ] });
+}
+
+
 export default config({
   storage:
     process.env.NODE_ENV === 'production'
@@ -20,7 +37,7 @@ export default config({
       path: 'src/content/brands/*',
       format: { data: 'yaml' },
       schema: {
-        name: fields.text({ label: 'Brand Name' }),
+        name: fields.slug({ name: { label: 'Brand Name' } }),
         former_names: fields.array(fields.text({ label: 'Former Name' }), {
           label: 'Former Names',
           itemLabel: (props) => props.value,
@@ -41,7 +58,7 @@ export default config({
       path: 'src/content/mount-standards/*',
       format: { data: 'yaml' },
       schema: {
-        name: fields.text({ label: 'Standard Name' }),
+        name: fields.slug({ name: { label: 'Standard Name' } }),
         description: fields.text({ label: 'Description', multiline: true }),
         physical_type: fields.text({ label: 'Physical Type (e.g. thread_collar)' }),
         compatible_with: fields.array(fields.text({ label: 'Standard ID' }), {
@@ -56,7 +73,7 @@ export default config({
       path: 'src/content/reviewers/*',
       format: { data: 'yaml' },
       schema: {
-        name: fields.text({ label: 'Reviewer Name / Channel' }),
+        name: fields.slug({ name: { label: 'Reviewer Name / Channel' } }),
         platform: fields.text({ label: 'Platform (e.g. YouTube)' }),
         url: fields.url({ label: 'Channel / Website URL' }),
         notes: fields.text({ label: 'Editorial Notes', multiline: true }),
@@ -66,10 +83,11 @@ export default config({
     components: collection({
       label: 'Components',
       slugField: 'name',
-      path: 'src/content/components/*',
+      path: 'src/content/components/**',
       format: { data: 'yaml' },
+      columns: ['brand', 'category'],
       schema: {
-        name: fields.text({ label: 'Product Name' }),
+        name: fields.slug({ name: { label: 'Product Name' } }),
         brand: fields.text({ label: 'Brand Slug' }),
         category: fields.select({
           label: 'Category',
@@ -85,6 +103,7 @@ export default config({
           ],
           defaultValue: 'grip',
         }),
+        platform_compatibility: platformCompatibilityField(),
         status: fields.select({
           label: 'Status',
           options: [
@@ -111,11 +130,178 @@ export default config({
             label: 'Accepts Mount Standards',
           }),
         }),
+        controls: fields.array(
+          fields.object({
+            type: fields.select({
+              label: 'Control Type',
+              options: [
+                { label: 'Button', value: 'button' },
+                { label: 'Hat Switch', value: 'hat' },
+                { label: 'Trigger', value: 'trigger' },
+                { label: 'Analog Ministick', value: 'analog_ministick' },
+                { label: 'Lever', value: 'lever' },
+                { label: 'Encoder', value: 'encoder' },
+                { label: 'Toggle', value: 'toggle' },
+                { label: 'Slider', value: 'slider' },
+                { label: 'Detent', value: 'detent' },
+                { label: 'Rocker', value: 'rocker' },
+                { label: 'Rotary', value: 'rotary' },
+                { label: 'Scroll Wheel', value: 'scroll_wheel' },
+                { label: 'Switch', value: 'switch' },
+                { label: 'Axis', value: 'axis' },
+              ],
+              defaultValue: 'button',
+            }),
+            count: fields.integer({ label: 'Count', defaultValue: 1 }),
+            label: fields.text({ label: 'Label' }),
+            location: fields.text({ label: 'Location (grip, base, handle, panel, other)' }),
+            ways: fields.integer({ label: 'Directions / Ways' }),
+            stages: fields.integer({ label: 'Trigger Stages' }),
+            push: fields.checkbox({ label: 'Pressable / Pushable' }),
+            analog: fields.checkbox({ label: 'Analog' }),
+            positions: fields.integer({ label: 'Positions' }),
+            kind: fields.text({ label: 'Kind (e.g. brake, twist)' }),
+            action: fields.text({ label: 'Action' }),
+            mode: fields.text({ label: 'Mode' }),
+            momentary: fields.checkbox({ label: 'Momentary' }),
+            flip: fields.checkbox({ label: 'Flip' }),
+            backlit: fields.checkbox({ label: 'Backlit' }),
+            customizable: fields.checkbox({ label: 'Customizable' }),
+            push_stages: fields.integer({ label: 'Push Stages' }),
+            button_contacts: fields.integer({ label: 'Contacts actuated by each lever' }),
+            notes: fields.text({ label: 'Notes', multiline: true }),
+            source: fields.url({ label: 'Evidence URL' }),
+          }),
+          {
+            label: 'Physical Controls',
+            itemLabel: (props) =>
+              props.fields.label.value || `${props.fields.type.value} × ${props.fields.count.value ?? 1}`,
+          },
+        ),
+        controls_evidence: fields.object({
+          coverage: fields.select({
+            label: 'Inventory Coverage',
+            options: [
+              { label: 'Partial', value: 'partial' },
+              { label: 'Complete', value: 'complete' },
+            ],
+            defaultValue: 'partial',
+          }),
+          source: fields.url({ label: 'Evidence Source' }),
+          checked: fields.text({ label: 'Last Checked (YYYY-MM-DD)' }),
+          notes: fields.text({ label: 'Evidence Notes', multiline: true }),
+        }),
+        hardware: fields.object({
+          axis_count: fields.integer({ label: 'Manufacturer total axes (if documented)' }),
+          gimbal: fields.text({ label: 'Gimbal Type' }),
+          sensor: fields.text({ label: 'Sensor Type' }),
+          axes: fields.array(
+            fields.object({
+              name: fields.text({ label: 'Axis Name' }),
+              resolution_bits: fields.integer({ label: 'Resolution (bits)' }),
+              sensor: fields.text({ label: 'Sensor' }),
+            }),
+            { label: 'Axes' },
+          ),
+          force_adjustable: fields.checkbox({ label: 'Adjustable Force' }),
+          cams_swappable: fields.checkbox({ label: 'Swappable Cams' }),
+          damping: fields.text({ label: 'Damping' }),
+          extension_support: fields.checkbox({ label: 'Extension Support' }),
+          throw_deg: fields.number({ label: 'Throw (degrees)' }),
+        }),
         connectivity: fields.object({
           usb: fields.text({ label: 'USB Connector Type' }),
           standalone_usb: fields.checkbox({ label: 'Standalone USB Device', defaultValue: true }),
         }),
         software: fields.text({ label: 'Software Suite' }),
+        physical: fields.object({
+          weight_g: fields.number({ label: 'Weight (g)' }),
+          dimensions_mm: fields.array(fields.number({ label: 'Dimension (mm)' }), {
+            label: 'Dimensions (X, Y, Z in mm)',
+          }),
+          materials: fields.array(fields.text({ label: 'Material' }), { label: 'Materials' }),
+        }),
+        use_case_fit: fields.object({
+          modern_jet: fields.integer({ label: 'Modern Jet (1–5)', defaultValue: 3 }),
+          heli: fields.integer({ label: 'Helicopter (1–5)', defaultValue: 3 }),
+          ww2: fields.integer({ label: 'WWII (1–5)', defaultValue: 3 }),
+          ga: fields.integer({ label: 'General Aviation (1–5)', defaultValue: 3 }),
+          airliner: fields.integer({ label: 'Airliner (1–5)', defaultValue: 3 }),
+          space_hotas: fields.integer({ label: 'Space HOTAS (1–5)', defaultValue: 3 }),
+          space_hosas: fields.integer({ label: 'Space HOSAS (1–5)', defaultValue: 3 }),
+        }),
+        prices: fields.array(
+          fields.object({
+            region: fields.select({
+              label: 'Region',
+              options: [
+                { label: 'EU', value: 'EU' },
+                { label: 'UK', value: 'UK' },
+                { label: 'US', value: 'US' },
+              ],
+              defaultValue: 'EU',
+            }),
+            currency: fields.select({
+              label: 'Currency',
+              options: [
+                { label: 'EUR', value: 'EUR' },
+                { label: 'GBP', value: 'GBP' },
+                { label: 'USD', value: 'USD' },
+              ],
+              defaultValue: 'EUR',
+            }),
+            amount: fields.number({ label: 'Amount', defaultValue: 0 }),
+            incl_vat: fields.checkbox({ label: 'Includes VAT', defaultValue: true }),
+            store: fields.text({ label: 'Store' }),
+            url: fields.url({ label: 'Product URL' }),
+            verified: fields.text({ label: 'Price Checked (YYYY-MM-DD)' }),
+            source: fields.select({
+              label: 'Source Type',
+              options: [
+                { label: 'Manual', value: 'manual' },
+                { label: 'Feed', value: 'feed' },
+              ],
+              defaultValue: 'manual',
+            }),
+          }),
+          { label: 'Prices' },
+        ),
+        verdict: fields.object({
+          author: fields.text({ label: 'Reviewer' }),
+          hands_on: fields.checkbox({ label: 'Hands-on Experience' }),
+          owned_hours: fields.integer({ label: 'Hours Owned' }),
+          take: fields.text({ label: 'Verdict', multiline: true }),
+          pros: fields.array(fields.text({ label: 'Pro' }), { label: 'Pros' }),
+          cons: fields.array(fields.text({ label: 'Con' }), { label: 'Cons' }),
+          great_for: fields.array(fields.text({ label: 'Use Case' }), { label: 'Great For' }),
+          skip_if: fields.array(fields.text({ label: 'Caveat' }), { label: 'Skip If' }),
+          scores: fields.object({
+            build: fields.integer({ label: 'Build (1–5)' }),
+            feel: fields.integer({ label: 'Feel (1–5)' }),
+            value: fields.integer({ label: 'Value (1–5)' }),
+            software: fields.integer({ label: 'Software (1–5)' }),
+            qc_support: fields.integer({ label: 'QC & Support (1–5)' }),
+          }),
+        }),
+        external_reviews: fields.array(
+          fields.object({
+            reviewer: fields.text({ label: 'Reviewer' }),
+            url: fields.url({ label: 'Review URL' }),
+            summary: fields.text({ label: 'Summary', multiline: true }),
+            tag: fields.select({
+              label: 'Sentiment',
+              options: [
+                { label: 'Recommended', value: 'recommended' },
+                { label: 'Mixed', value: 'mixed' },
+                { label: 'Avoid', value: 'avoid' },
+                { label: 'Neutral', value: 'neutral' },
+              ],
+              defaultValue: 'neutral',
+            }),
+            date: fields.text({ label: 'Review Date (YYYY-MM-DD)' }),
+          }),
+          { label: 'External Reviews' },
+        ),
         verification: fields.select({
           label: 'Verification Status',
           options: [
@@ -125,16 +311,24 @@ export default config({
           defaultValue: 'draft',
         }),
         sources: fields.array(fields.text({ label: 'Source URL' }), { label: 'Sources' }),
+        images: fields.array(
+          fields.object({
+            file: fields.text({ label: 'Image Path' }),
+            source: fields.text({ label: 'Image Source URL' }),
+            caption: fields.text({ label: 'Caption' }),
+          }),
+          { label: 'Images' },
+        ),
       },
     }),
 
     bundles: collection({
       label: 'Bundles (Real SKUs)',
       slugField: 'name',
-      path: 'src/content/bundles/*',
+      path: 'src/content/bundles/**',
       format: { data: 'yaml' },
       schema: {
-        name: fields.text({ label: 'Bundle SKU Name' }),
+        name: fields.slug({ name: { label: 'Bundle SKU Name' } }),
         brand: fields.text({ label: 'Brand Slug' }),
         category: fields.select({
           label: 'Category',
@@ -147,6 +341,7 @@ export default config({
           ],
           defaultValue: 'hotas_bundle',
         }),
+        platform_compatibility: platformCompatibilityField(),
         status: fields.select({
           label: 'Status',
           options: [
@@ -177,7 +372,7 @@ export default config({
       path: 'src/content/setups/*',
       format: { data: 'yaml' },
       schema: {
-        title: fields.text({ label: 'Setup Title' }),
+        title: fields.slug({ name: { label: 'Setup Title' } }),
         use_case: fields.select({
           label: 'Use Case',
           options: [
@@ -203,6 +398,23 @@ export default config({
         }),
         description: fields.text({ label: 'Description', multiline: true }),
         reasoning: fields.text({ label: 'Editorial Reasoning', multiline: true }),
+        items: fields.array(
+          fields.object({
+            item_type: fields.select({
+              label: 'Item Type',
+              options: [
+                { label: 'Component', value: 'component' },
+                { label: 'Bundle', value: 'bundle' },
+              ],
+              defaultValue: 'component',
+            }),
+            id: fields.text({ label: 'Component or Bundle ID' }),
+            role: fields.text({ label: 'Role in Setup' }),
+          }),
+          {
+            label: 'Setup Items',
+          },
+        ),
         notes: fields.text({ label: 'Additional Notes', multiline: true }),
       },
     }),

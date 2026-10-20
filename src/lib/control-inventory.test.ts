@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ControlItemSchema } from './schema';
+import { ComponentSchema, ControlItemSchema } from './schema';
 import { controlFacts, inventoryCount, inventoryDetail } from './control-inventory';
 import type { ControlSection } from './control-inventory';
 import { deriveControlsSummary } from './derive';
@@ -7,6 +7,22 @@ import { deriveControlsSummary } from './derive';
 const section = (overrides: Partial<ControlSection> = {}): ControlSection => ({ name: 'Test', category: 'grip', controls: [], ...overrides });
 
 describe('physical control evidence', () => {
+  it('does not assume standalone USB support when a product omits connectivity evidence', () => {
+    const component = ComponentSchema.parse({ brand: 'test', name: 'Unknown USB', category: 'grip' });
+    expect(component.connectivity.standalone_usb).toBeNull();
+  });
+  it('keeps lever travel contacts out of the standalone physical button count', () => {
+    const lever = ControlItemSchema.parse({ type: 'lever', kind: 'other', analog: true, count: 2, button_contacts: 2 });
+    expect(deriveControlsSummary([lever])).toMatchObject({ physicalButtons: 0, totalLogicalButtons: 4, estimatedAxesCount: 2 });
+    expect(controlFacts(lever)).toContainEqual({ label: 'Travel contacts per lever', value: '2' });
+    expect(inventoryCount([section({ controls: [lever], controls_evidence: { coverage: 'complete', source: 'https://example.com/manual', checked: '2026-10-20' } })], 'button')).toBe('0');
+  });
+  it('describes documented analog movement as continuous rather than missing discrete positions', () => {
+    for (const control of [ControlItemSchema.parse({ type: 'rotary', mode: 'analog' }), ControlItemSchema.parse({ type: 'slider', analog: true })]) {
+      expect(controlFacts(control)).toContainEqual({ label: 'Positions', value: 'Continuous' });
+    }
+    expect(controlFacts(ControlItemSchema.parse({ type: 'rotary', mode: 'selector' }))).toContainEqual({ label: 'Positions', value: 'Unknown' });
+  });
   it('retains generic switch and pedal counts without inventing switch contacts or extra levers', () => {
     const switches = ControlItemSchema.parse({ type: 'switch', count: 13 });
     const brakes = ControlItemSchema.parse({ type: 'axis', kind: 'toe_brake', count: 2 });

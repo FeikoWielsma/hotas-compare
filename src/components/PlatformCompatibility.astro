@@ -1,0 +1,20 @@
+---
+import type { PlatformCompatibility } from '../lib/schema';
+import { platforms, platformSupport } from '../lib/platforms';
+interface Props { compatibility?: PlatformCompatibility }
+const { compatibility } = Astro.props;
+---
+<section class="compatibility">
+  <h2>Platform compatibility</h2>
+  <dl>{platforms.map(({ key, label }) => <div><dt>{label}</dt><dd>{platformSupport(compatibility, key)}</dd></div>)}</dl>
+  {compatibility?.notes && <p>{compatibility.notes}</p>}
+  {compatibility?.sources.length ? <p class="sources">Sources: {compatibility.sources.map((url, i) => <><a href={url} rel="external noopener">Manufacturer{compatibility.sources.length > 1 ? ` ${i + 1}` : ''}</a>{i < compatibility.sources.length - 1 ? ' · ' : ''}</>)}</p> : <p>Platform support has not yet been verified.</p>}
+</section>
+<style>
+  .compatibility { padding: 1.25rem; border: 1px solid var(--color-rule); background: var(--color-surface); margin-bottom: 1rem; }
+  h2 { font: 700 1.8rem var(--font-display); margin: 0 0 1rem; }
+  dl { display: flex; flex-wrap: wrap; gap: 1rem 3rem; margin: 0; }
+  dt { color: var(--color-muted); font-size: .875rem; } dd { margin: .3rem 0 0; }
+  p { font-size: .875rem; line-height: 1.6; color: var(--color-muted); margin-bottom: 0; }
+  a { color: var(--color-accent); }
+</style>

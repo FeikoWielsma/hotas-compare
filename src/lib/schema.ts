@@ -30,6 +30,16 @@ export type BundleCategory = z.infer<typeof BundleCategoryEnum>;
 export const ProductStatusEnum = z.enum(['current', 'discontinued', 'announced']);
 export type ProductStatus = z.infer<typeof ProductStatusEnum>;
 
+export const PlatformSupportEnum = z.enum(['supported', 'unsupported', 'unknown']);
+export const PlatformCompatibilitySchema = z.object({
+  pc: PlatformSupportEnum.default('unknown'),
+  xbox: PlatformSupportEnum.default('unknown'),
+  ps5: PlatformSupportEnum.default('unknown'),
+  notes: z.string().optional(),
+  sources: z.array(z.url()).default([]),
+});
+export type PlatformCompatibility = z.infer<typeof PlatformCompatibilitySchema>;
+
 export const HandednessEnum = z.enum(['left', 'right', 'ambi', 'n/a']);
 export type Handedness = z.infer<typeof HandednessEnum>;
 
@@ -101,6 +111,8 @@ export const LeverControlSchema = z.object({
   kind: z.enum(['brake', 'throttle_single', 'throttle_dual', 'flap', 'speedbrake', 'collective', 'other']).default('other'),
   analog: z.boolean().optional(),
   push: z.boolean().optional(),
+  /** Electrical contacts actuated by lever travel, not separate push-button bodies. */
+  button_contacts: z.number().int().min(1).optional(),
   positions: z.number().int().min(2).optional(),
   momentary: z.boolean().optional(),
   count: z.number().int().min(1).default(1),
@@ -314,6 +326,8 @@ export type Reviewer = z.infer<typeof ReviewerSchema>;
 
 // Component Collection Schema
 export const HardwareSchema = z.object({
+  /** Manufacturer's total, when the full individual axis mapping is unavailable. */
+  axis_count: z.number().int().nonnegative().optional(),
   gimbal: z.string().nullable().optional(),
   sensor: z.string().nullable().optional(),
   axes: z.array(
@@ -337,7 +351,7 @@ export const MountSchema = z.object({
 
 export const ConnectivitySchema = z.object({
   usb: z.string().nullable().optional(),
-  standalone_usb: z.boolean().default(true),
+  standalone_usb: z.boolean().nullable().default(null),
 });
 
 export const PhysicalSchema = z.object({
@@ -350,6 +364,7 @@ export const ComponentSchema = z.object({
   brand: z.string(),
   name: z.string(),
   category: ComponentCategoryEnum,
+  platform_compatibility: PlatformCompatibilitySchema.optional(),
   status: ProductStatusEnum.default('current'),
   release_year: z.number().int().optional(),
   handedness: HandednessEnum.default('n/a'),
@@ -362,7 +377,7 @@ export const ComponentSchema = z.object({
     notes: z.string().optional(),
   }).optional(),
   hardware: HardwareSchema,
-  connectivity: ConnectivitySchema.default({ standalone_usb: true }),
+  connectivity: ConnectivitySchema.default({ standalone_usb: null }),
   software: z.string().optional(),
   physical: PhysicalSchema,
   use_case_fit: UseCaseFitSchema.default(defaultUseCaseFit),
@@ -380,6 +395,7 @@ export const BundleSchema = z.object({
   brand: z.string(),
   name: z.string(),
   category: BundleCategoryEnum,
+  platform_compatibility: PlatformCompatibilitySchema.optional(),
   status: ProductStatusEnum.default('current'),
   components: z.array(z.string()).min(1),
   prices: z.array(PriceSchema).default([]),

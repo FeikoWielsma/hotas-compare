@@ -20,6 +20,12 @@ function item(overrides: Partial<CatalogItem> = {}): CatalogItem {
 const price = (amount: number) => resolvePrice([{ region: 'EU', currency: 'EUR', amount, store: 'Test', verified: '2026-10-01', incl_vat: true, source: 'manual' }], 'EU');
 
 describe('catalog filters', () => {
+  it('requires confirmed platform support and excludes unknown or unsupported devices', () => {
+    const supported = item({ platform_compatibility: { pc: 'supported', xbox: 'supported', ps5: 'unknown', sources: [] } });
+    const unsupported = item({ id: 'unsupported', platform_compatibility: { pc: 'supported', xbox: 'unsupported', ps5: 'unknown', sources: [] } });
+    expect(filterCatalog([supported, unsupported, item({ id: 'unknown' })], { platform: 'xbox' })).toEqual([supported]);
+    expect(filterCatalog([supported, unsupported], { platform: 'ps5' })).toEqual([]);
+  });
   it('combines search, category, brand, numeric, feature, handedness, type, price and fit requirements', () => {
     const match = item({ totalAxes: 4, totalLogicalButtons: 24, sensor: 'hall', hasMinistick: true, hasBrakeAxis: true, handedness: ['left'], resolvedPrice: price(150), use_case_fit: { modern_jet: 5, space_hosas: 4, space_hotas: 4, heli: 3, ga: 2, airliner: 2, ww2: 3 } });
     const filters = { search: 'flight hall', categories: ['stick_fixed'], brands: ['test'], minimum: 100, maximum: 200, minimumAxes: 4, minimumInputs: 20, sensors: true, ministick: true, brake: true, handedness: 'left', itemType: 'component', priceAvailability: 'available', fit: 'modern_jet', minimumFit: 4 };
