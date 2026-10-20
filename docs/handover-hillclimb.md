@@ -28,3 +28,13 @@ Every model of every brand present; at least physical button counts, hat ways/pu
 - `tsconfig.json` excludes `work/` so scratch scripts do not break `pnpm check`.
 - Dev server must run in background mode: `pnpm exec astro dev --background`.
 - Turtle Beach support pages need browser shadow-DOM inspection; WINCTRL pages time out often (use the Download Center API); Thrustmaster eshop slugs are best found by browsing from product pages.
+
+## Rounds 6-7 (2026-10-20/21)
+
+Notes: `docs/research/hillclimb6*-*.md`, `hillclimb7*-*.md`, audits `hillclimb6-audit*.md`. Price gaps: 191 -> 104 of 960 product-region slots (`python work/pricegap.py`; counts missing `region:` entries, so discontinued/region-unavailable slots are included).
+
+- Gemini 3.8 Flash set many `push: false`/`backlit: false`/null hardware values from silence. Two audit rounds (Luna, Haiku) removed unsupported ones. Audit every Gemini batch: silence is not evidence for false.
+- MFG and SLAW UK/US prices are EUR conversions on the stores and were deliberately removed or left unset. Honeycomb has no GBP store. Do not copy product-page prices when the shop listing disagrees (TCA Sidestick X, Sol-R 2, Captain Pack X UK).
+- "Supported Platform: PC" is not an Xbox/PS5 exclusion: keep unknown.
+- Still unresolved: MOZA MTP 8 of 27 switches, MTQ 23 vs 31 controls, AY210 13 switches vs ~14 in diagram, MH16 TMS/CMS mechanism, Bravo lever contacts, Switch panel 13 switches, hat way counts on T.Flight/NEO/TCA sidesticks, SKY YOKE controls, Boeing yoke 18-button split, Warthog panel latching switches.
+- VKB inventories exhausted from public sources; stays `draft`.
