@@ -15,7 +15,6 @@ mount: null
 controls:
 - type: lever
   kind: other
-  push: false
   count: 1
   location: panel
   label: Landing gear lever
@@ -23,7 +22,6 @@ controls:
   source: https://virpil-controls.eu/vector-gmc-panel.html
 - type: button
   count: 1
-  backlit: false
   location: panel
   label: Push button
   source: https://virpil-controls.eu/vector-gmc-panel.html

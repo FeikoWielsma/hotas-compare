@@ -53,6 +53,14 @@ physical:
   materials:
   - metal
 prices:
+- region: UK
+  currency: GBP
+  amount: 882.71
+  incl_vat: true
+  store: uk.winctrl.com
+  url: https://uk.winctrl.com/p/5765.html
+  verified: '2026-10-21'
+  source: manual
 - region: US
   currency: USD
   amount: 857.00

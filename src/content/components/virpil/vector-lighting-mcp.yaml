@@ -16,7 +16,6 @@ controls:
 - type: toggle
   ways: 3
   momentary: false
-  push: false
   count: 6
   location: panel
   label: 3-way latched toggles

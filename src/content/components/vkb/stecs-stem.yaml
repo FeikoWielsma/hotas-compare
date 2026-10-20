@@ -59,16 +59,7 @@ controls_evidence:
     page (8 non-backlit buttons, 2 K-switches with central push, 2 encoders with push, one self-centering
     and one latching 3-position flip switch). Latching and self-centering behavior follows
     STECS Standard and Max records. Only one STEM can be installed per STECS.
-hardware:
-  axis_count: 0
-  gimbal: null
-  sensor: null
-  axes: []
-  force_adjustable: false
-  cams_swappable: false
-  damping: null
-  extension_support: false
-  throw_deg: null
+hardware: null
 connectivity:
   usb: none as supplied; cable to STECS base (Type-C to Type-C)
   standalone_usb: false

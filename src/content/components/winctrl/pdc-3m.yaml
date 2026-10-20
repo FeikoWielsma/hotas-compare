@@ -43,6 +43,14 @@ connectivity:
   usb: c
   standalone_usb: true
 prices:
+- region: UK
+  currency: GBP
+  amount: 90.13
+  incl_vat: true
+  store: uk.winctrl.com
+  url: https://uk.winctrl.com/p/1245.html
+  verified: '2026-10-21'
+  source: manual
 - region: EU
   currency: EUR
   amount: 84.0

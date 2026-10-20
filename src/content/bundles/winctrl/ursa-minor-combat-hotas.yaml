@@ -21,6 +21,22 @@ prices:
   url: https://eu.winctrl.com/view/goods-details.html?id=6485
   verified: '2026-10-20'
   source: manual
+- region: UK
+  currency: GBP
+  amount: 246.00
+  incl_vat: true
+  store: uk.winctrl.com
+  url: https://uk.winctrl.com/p/6485.html
+  verified: '2026-10-21'
+  source: manual
+- region: US
+  currency: USD
+  amount: 238.83
+  incl_vat: false
+  store: us.winwingsim.com
+  url: https://us.winwingsim.com/p/6485.html
+  verified: '2026-10-21'
+  source: manual
 verification: draft
 sources: *id001
 images:

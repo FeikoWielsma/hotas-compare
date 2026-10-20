@@ -35,16 +35,7 @@ controls_evidence:
   notes: Counts verified against official VKB WWII THQ template (VKB-THQ-WW2-v1.0.pdf, WWII Grip panel)
     and product page (4 non-backlit push buttons, 1 up/down K-switch rocker without push). The grip
     replaces the THQ throttle levers.
-hardware:
-  axis_count: 0
-  gimbal: null
-  sensor: null
-  axes: []
-  force_adjustable: false
-  cams_swappable: false
-  damping: null
-  extension_support: false
-  throw_deg: null
+hardware: null
 connectivity:
   usb: none as supplied; connects through the GNX THQ/THQ-V module
   standalone_usb: false

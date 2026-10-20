@@ -13,6 +13,31 @@ platform_compatibility:
     that Viper Panel.
   sources:
   - https://www.thrustmaster.com/en-us/products/viper-tqs-mission-pack/
+prices:
+- region: EU
+  currency: EUR
+  amount: 499.99
+  incl_vat: true
+  store: Thrustmaster EU eshop
+  url: https://shop.thrustmaster.com/en_eu/viper-tqs-mission-pack.html
+  verified: '2026-10-21'
+  source: manual
+- region: UK
+  currency: GBP
+  amount: 449.99
+  incl_vat: true
+  store: Thrustmaster UK eshop
+  url: https://shop.thrustmaster.com/en_gb/viper-tqs-mission-pack.html
+  verified: '2026-10-21'
+  source: manual
+- region: US
+  currency: USD
+  amount: 599.99
+  incl_vat: false
+  store: Thrustmaster US eshop
+  url: https://eshop.thrustmaster.com/en_us/viper-tqs-mission-pack.html
+  verified: '2026-10-21'
+  source: manual
 verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/viper-tqs-mission-pack/

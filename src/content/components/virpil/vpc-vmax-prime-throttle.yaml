@@ -126,6 +126,22 @@ prices:
     url: https://virpil-controls.eu/vpc-vmax-prime-throttle.html
     verified: '2026-10-19'
     source: manual
+  - region: UK
+    currency: GBP
+    amount: 449.95
+    incl_vat: true
+    store: virpil-controls.co.uk
+    url: https://virpil-controls.co.uk/vpc-vmax-prime-throttle.html
+    verified: '2026-10-21'
+    source: manual
+  - region: US
+    currency: USD
+    amount: 499.95
+    incl_vat: false
+    store: virpil-controls.us.com
+    url: https://virpil-controls.us.com/vpc-vmax-prime-throttle.html
+    verified: '2026-10-21'
+    source: manual
 verdict:
   author: feiko
   hands_on: true

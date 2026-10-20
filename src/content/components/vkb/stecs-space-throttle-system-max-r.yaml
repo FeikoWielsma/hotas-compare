@@ -89,7 +89,6 @@ controls:
   source: https://vkbsimcontrollers.com/products/stecs-space-throttle-system-max-us
 - type: button
   count: 8
-  backlit: false
   location: panel
   label: STEM push buttons A1, A2, B1-B5, C1
   source: https://vkbsimcontrollers.com/products/stecs-space-throttle-system-max-us
@@ -144,10 +143,7 @@ hardware:
   - name: STG(y)
     sensor: contactless_magnetic
   force_adjustable: true
-  cams_swappable: false
   damping: friction
-  extension_support: false
-  throw_deg: null
 connectivity:
   usb: c
   standalone_usb: true

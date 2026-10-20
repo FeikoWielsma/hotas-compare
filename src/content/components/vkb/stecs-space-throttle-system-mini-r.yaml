@@ -96,10 +96,7 @@ hardware:
   - name: STG(y)
     sensor: contactless_magnetic
   force_adjustable: true
-  cams_swappable: false
   damping: friction
-  extension_support: false
-  throw_deg: null
 connectivity:
   usb: c
   standalone_usb: true

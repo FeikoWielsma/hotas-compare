@@ -71,11 +71,6 @@ hardware:
     sensor: contactless_magnetic
   - name: STG(y)
     sensor: contactless_magnetic
-  force_adjustable: false
-  cams_swappable: false
-  damping: null
-  extension_support: false
-  throw_deg: null
 connectivity:
   usb: none as supplied; connects through the STECS base
   standalone_usb: false

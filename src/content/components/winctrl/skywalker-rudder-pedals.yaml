@@ -64,6 +64,14 @@ use_case_fit:
   space_hotas: 4
   space_hosas: 3
 prices:
+  - region: UK
+    currency: GBP
+    amount: 307.51
+    incl_vat: true
+    store: uk.winctrl.com
+    url: https://uk.winctrl.com/p/543.html
+    verified: '2026-10-21'
+    source: manual
   - region: US
     currency: USD
     amount: 298.55
