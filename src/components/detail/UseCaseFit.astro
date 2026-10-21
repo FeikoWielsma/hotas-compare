@@ -1,0 +1,23 @@
+---
+import type { UseCaseFit } from '../../lib/schema';
+import { useCases } from '../../lib/catalog-ui';
+import Pips from './Pips.astro';
+interface Props { fit: UseCaseFit; note?: string }
+const { fit, note } = Astro.props;
+const rows = useCases.map(u => ({ ...u, value: fit[u.key] })).toSorted((a, b) => b.value - a.value);
+---
+<section id="fit" class="fit" aria-labelledby="fit-title">
+  <div><p class="kicker">Flying-style fit</p><h2 id="fit-title">Where it shines</h2><p class="note">{note ?? 'Editorial estimate from 1 (limited) to 5 (excellent), based on the controls and mechanics.'}</p></div>
+  <dl>{rows.map(r => <div class:list={{ top: r.value >= 4.5 }}><dt>{r.label}</dt><dd><Pips value={r.value} label={r.label} /><b>{Number(r.value.toFixed(1))}</b></dd></div>)}</dl>
+</section>
+<style>
+  .fit { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 2rem; padding: 2rem 0; border-top: 1px solid var(--color-rule); }
+  .kicker { margin: 0; color: var(--color-accent); font-size: .8rem; font-weight: 600; }
+  h2 { margin: .25rem 0 .75rem; font-size: clamp(1.9rem, 3vw, 2.5rem); text-transform: uppercase; }
+  .note { color: var(--color-muted); font-size: .875rem; max-width: 40ch; margin: 0; }
+  dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem 2rem; margin: 0; align-content: start; }
+  dl > div { display: grid; grid-template-columns: 8.5rem 1fr 1.75rem; align-items: center; gap: .75rem; font-size: .875rem; }
+  dt { color: var(--color-muted); } .top dt { color: var(--color-ink); font-weight: 600; } dd { display: contents; } b { text-align: right; font-variant-numeric: tabular-nums; }
+  @media (max-width: 900px) { .fit { grid-template-columns: 1fr; gap: 1rem; } }
+  @media (max-width: 560px) { dl { grid-template-columns: 1fr; } }
+</style>

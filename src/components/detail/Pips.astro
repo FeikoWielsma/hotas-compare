@@ -1,0 +1,12 @@
+---
+/** A 1–5 rating drawn as five segments; fractional values fill partially. */
+interface Props { value: number; label: string }
+const { value, label } = Astro.props;
+const shown = Number(value.toFixed(1));
+---
+<span class="pips" role="img" aria-label={`${label}: ${shown} out of 5`}>{[0, 1, 2, 3, 4].map(i => <span class="pip"><span style={`width:${Math.max(0, Math.min(1, value - i)) * 100}%`}></span></span>)}</span>
+<style>
+  .pips { display: inline-grid; grid-template-columns: repeat(5, 1fr); gap: 3px; width: 100%; min-width: 80px; }
+  .pip { height: 8px; background: var(--color-rule); border-radius: 1px; overflow: hidden; }
+  .pip > span { display: block; height: 100%; background: var(--color-accent); }
+</style>

@@ -3,18 +3,41 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BrandMark from '../../components/BrandMark.svelte';
 import JournalHeader from '../../components/JournalHeader.astro';
-import { productImageSrc } from '../../lib/catalog-ui';
-const [components,bundles]=await Promise.all([getCollection('components'),getCollection('bundles')]);
+import ProductCard from '../../components/ProductCard.svelte';
+import { getCatalogItems } from '../../lib/catalog';
+import { cardItem, categoryLabels } from '../../lib/catalog-ui';
 export async function getStaticPaths(){const brands=await getCollection('brands');return brands.map(({id,data})=>({params:{brand:id},props:{brand:{id,data}}}));}
-const {brand:entry}=Astro.props;const {id,data:b}=entry;
-const ownComponents=components.filter(x=>x.data.brand===id);const ownBundles=bundles.filter(x=>x.data.brand===id);
-const money=(item:any)=>{const p=item.prices.find((x:any)=>x.region==='EU')??item.prices[0];return p?new Intl.NumberFormat('en',{style:'currency',currency:p.currency}).format(p.amount):'Price unavailable'};
+const { brand: entry } = Astro.props; const { id, data: b } = entry;
+const own = (await getCatalogItems()).filter(x => x.brand === id);
+// Group by hardware type so a large range (VKB, Virpil) is scannable; bundles get their own group.
+const order = ['stick_fixed', 'base', 'grip', 'throttle', 'pedals', 'yoke', 'quadrant', 'module', 'hotas_bundle', 'hosas_bundle', 'stick_combo', 'yoke_bundle', 'system'] as const;
+const plural: Record<string, string> = { stick_fixed: 'Sticks', base: 'Bases', grip: 'Grips', throttle: 'Throttles', pedals: 'Pedals', yoke: 'Yokes', quadrant: 'Quadrants', module: 'Modules & panels', hotas_bundle: 'HOTAS bundles', hosas_bundle: 'HOSAS bundles', stick_combo: 'Stick combos', yoke_bundle: 'Yoke bundles', system: 'Systems' };
+const groups = order.map(cat => ({ cat, label: plural[cat] ?? categoryLabels[cat], items: own.filter(x => x.category === cat) })).filter(g => g.items.length);
+const countries: Record<string, string> = { US: 'United States', CH: 'Switzerland', HR: 'Croatia', CN: 'China', PL: 'Poland', FR: 'France', BY: 'Belarus' };
+const reviewed = own.filter(x => x.verdict).length;
 const jsonLd = { '@context': 'https://schema.org', '@type': 'Brand', name: b.name, url: b.website ?? new URL(Astro.url.pathname, Astro.site).href, ...(b.website ? { sameAs: b.website } : {}) };
 ---
-<BaseLayout title={b.name} jsonLd={jsonLd} description={`${b.name} flight simulation hardware, products and shipping notes.`}><div class="wrap"><nav class="crumb"><a href="/">Home</a> / <a href="/brands">Brands</a> / {b.name}</nav><JournalHeader eyebrow="Meet the maker" title={b.name} description={`${ownComponents.length + ownBundles.length} products to explore. Find the controls that fit your kind of flying.`}><div slot="art"><BrandMark brand={id} name={b.name} size={100} /></div></JournalHeader><div class="brand-links">{b.country && <span>{b.country}</span>}{b.former_names.map(n=><span>Formerly {n}</span>)}{b.website && <a href={b.website} rel="external noopener">Visit {b.name} ↗</a>}</div><section class="card"><h2>Shipping &amp; landed cost</h2><div class="notes">{(['EU','UK','US'] as const).map(r=><div><b>{r}</b><p>{b.landed_cost_notes[r] ?? 'No regional delivery notes available.'}</p></div>)}</div></section><section><h2>Components made by {b.name}</h2>{ownComponents.length?<div class="grid">{ownComponents.map(({id:ref,data:c})=><a class="card product" href={`/components/${ref}`}>{productImageSrc(c.images[0]?.file) && <img src={productImageSrc(c.images[0].file)!} alt="" />}<span class="eyebrow">{c.category.replaceAll('_',' ')}</span><h3>{c.name}</h3><p>{c.hardware?.gimbal ?? c.hardware?.sensor ?? 'Specifications available on product page'}</p><b>{money(c)}</b></a>)}</div>:<p>No component listings yet.</p>}</section><section><h2>Bundles sold by {b.name}</h2>{ownBundles.length?<div class="grid">{ownBundles.map(({id:ref,data:item})=><a class="card product" href={`/bundles/${ref}`}>{productImageSrc(item.images[0]?.file) && <img src={productImageSrc(item.images[0].file)!} alt="" />}<span class="eyebrow">{item.category.replaceAll('_',' ')}</span><h3>{item.name}</h3><p>{item.components.length} included components</p><b>{money(item)}</b></a>)}</div>:<p>No bundle listings yet.</p>}</section></div></BaseLayout>
+<BaseLayout title={b.name} jsonLd={jsonLd} description={`${b.name} flight simulation hardware, products and shipping notes.`}>
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">Catalog</a> / <a href="/brands">Brands</a> / <span aria-current="page">{b.name}</span></nav>
+  <JournalHeader eyebrow="Meet the maker" title={b.name} description={`${own.length} products${reviewed ? `, ${reviewed} with a verdict` : ''}. Find the controls that fit your kind of flying.`}><div slot="art"><BrandMark brand={id} name={b.name} size={100} /></div></JournalHeader>
+  <div class="brand-links">{b.country && <span>Based in {countries[b.country] ?? b.country}</span>}{b.former_names.map(n => <span>Formerly {n}</span>)}{b.website && <a href={b.website} rel="external noopener">Visit {b.name} ↗</a>}</div>
+  {groups.length > 1 && <nav class="jump" aria-label="Product types">{groups.map(g => <a href={`#${g.cat}`}>{g.label} <span>{g.items.length}</span></a>)}</nav>}
+  {groups.map(g => <section id={g.cat} aria-labelledby={`${g.cat}-title`}><h2 id={`${g.cat}-title`}>{g.label} <span>{g.items.length}</span></h2><div class="grid">{g.items.map(item => <ProductCard client:visible item={cardItem(item)} compact />)}</div></section>)}
+  {!own.length && <p>No product listings yet.</p>}
+  <section class="shipping" aria-labelledby="shipping-title"><h2 id="shipping-title">Shipping &amp; landed cost</h2><div class="notes">{(['EU','UK','US'] as const).map(r => <div><b>{r}</b><p>{b.landed_cost_notes[r] ?? 'No regional delivery notes available.'}</p></div>)}</div></section>
+</div>
+</BaseLayout>
 <style>
-  .wrap{max-width:1100px;margin:auto;min-width:0}.crumb{font-size:.875rem;color:var(--color-muted,var(--text-secondary));margin-bottom:.75rem}.crumb a,header a{color:var(--color-accent,var(--accent-amber))}header{padding:1rem 0 2rem;border-bottom:1px solid var(--color-rule,var(--border-cockpit));margin-bottom:2rem}.wrap h1,.wrap h2,.wrap h3{font-family:var(--font-display,'Barlow Condensed',sans-serif);color:var(--color-ink,var(--text-primary));font-weight:700}.wrap h1{font-size:clamp(2.75rem,7vw,4.5rem);line-height:.95;margin:.25rem 0 .75rem}.eyebrow{font-size:.875rem;color:var(--color-muted,var(--text-secondary))}.pill{display:inline-block;margin:0 .4rem .4rem 0;padding:.3rem .6rem;border:1px solid var(--color-rule,var(--border-cockpit));color:var(--color-muted,var(--text-secondary));font-size:.8rem}.card{min-width:0;padding:1.25rem;border:1px solid var(--color-rule,var(--border-cockpit));background:var(--color-surface,var(--bg-panel));margin-bottom:1rem}.card h2,.wrap section>h2{font-size:1.8rem;margin:0 0 1rem}.notes{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.notes p,.product p{color:var(--color-muted,var(--text-secondary));line-height:1.65}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem}.product{display:block;text-decoration:none;color:var(--color-ink,var(--text-primary))}.product:hover{border-color:var(--color-accent,var(--accent-amber))}.product img{width:100%;aspect-ratio:4/3;object-fit:contain;background:var(--color-photo,#e8e8de);margin-bottom:.75rem}.product h3{font-size:1.35rem;margin:.5rem 0}.product b{color:var(--color-accent,var(--accent-amber))}
-  @media(max-width:700px){.notes{grid-template-columns:1fr}}
-  .product h3 { font-family: var(--font-sans); font-size: 1.125rem; line-height: 1.45; }
-.brand-links { display: flex; gap: 1.25rem; flex-wrap: wrap; align-items: center; margin: -1rem 0 2rem; color: var(--color-muted); font-size: .875rem; } .brand-links a { color: var(--color-accent); }
+  .wrap { max-width: 1240px; margin: auto; min-width: 0; }
+  .crumb { font-size: .8125rem; color: var(--color-muted); margin-bottom: .75rem; } .crumb a { color: var(--color-accent); }
+  .brand-links { display: flex; gap: 1.25rem; flex-wrap: wrap; align-items: center; margin: -1rem 0 1.5rem; color: var(--color-muted); font-size: .875rem; } .brand-links a { color: var(--color-accent); }
+  .jump { position: sticky; top: 0; z-index: 5; display: flex; gap: 1.25rem; overflow-x: auto; padding: .85rem 0; margin-bottom: 1.5rem; background: var(--color-paper); border-block: 1px solid var(--color-rule); scrollbar-width: none; }
+  .jump a { flex: none; font-size: .875rem; color: var(--color-muted); text-decoration: none; } .jump a:hover { color: var(--color-accent); } .jump span { font-size: .75rem; opacity: .75; }
+  section { margin-bottom: 2.5rem; scroll-margin-top: 4rem; }
+  h2 { font-size: clamp(1.7rem, 2.5vw, 2.2rem); text-transform: uppercase; margin: 0 0 1rem; } h2 span { font: 500 .9rem var(--font-sans); color: var(--color-muted); vertical-align: middle; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; }
+  .shipping { padding: 1.5rem; border: 1px solid var(--color-rule); background: var(--color-surface); }
+  .notes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; } .notes p { color: var(--color-muted); line-height: 1.65; font-size: .875rem; margin: .4rem 0 0; }
+  @media (max-width: 700px) { .notes { grid-template-columns: 1fr; } }
 </style>

@@ -6,6 +6,7 @@
   import { categoryLabels, detailHref, formatAmount, productImageSrc, useCases, resolveItemRegion } from '../lib/catalog-ui';
   import { compareStore, MAX_COMPARE_ITEMS } from '../lib/stores/compare.svelte';
   import { regionStore } from '../lib/stores/region.svelte';
+  import { humanize, statusLabels } from '../lib/labels';
   let { initialItems }: { initialItems: CatalogItem[] } = $props();
   let highlight = $state(false);
   let message = $state('');
@@ -21,7 +22,9 @@
     { title: 'Overview', rows: [
       { label: 'Brand', value: (i) => i.brandName }, { label: 'Name', value: (i) => i.name },
       { label: 'Category', value: (i) => categoryLabels[i.category] },
-      { label: 'Handedness', value: (i) => i.handedness.join(' / ') || 'Not applicable' },
+      { label: 'Handedness', value: (i) => i.handedness.map(humanize).join(' / ') || 'Not applicable' },
+      { label: 'Availability', value: (i) => statusLabels[i.status] },
+      { label: 'Data status', value: (i) => i.verification === 'verified' ? 'Editor verified' : 'Draft specifications' },
     ] },
     { title: 'Platform compatibility', rows: [
       ...platforms.map(({ key, label }) => ({ label, value: (i: CatalogItem) => platformSupport(i.platform_compatibility, key) })),
@@ -33,8 +36,8 @@
       { label: 'Price checked', value: (i) => i.resolvedPrice.price ? `${i.resolvedPrice.price.verified}${i.resolvedPrice.isStale ? ' · over 90 days old' : ''}` : 'No regional price' },
     ] },
     { title: 'Hardware & Mechanics', rows: [
-      { label: 'Gimbal', value: (i) => i.gimbal?.replaceAll('_', ' ') ?? 'Unknown' },
-      { label: 'Primary Sensor', value: (i) => i.sensor?.replaceAll('_', ' ') ?? 'Unknown' },
+      { label: 'Gimbal', value: (i) => i.gimbal?.split(', ').map(humanize).join(', ') ?? 'Unknown' },
+      { label: 'Primary Sensor', value: (i) => i.sensor?.split(', ').map(humanize).join(', ') ?? 'Unknown' },
       { label: 'Axes', value: (i) => i.totalAxes === 0 && !i.axisCountKnown ? 'Unknown' : i.totalAxes }, { label: 'Force Adjustable', value: (i) => i.mechanics.forceAdjustable },
       { label: 'Swappable Cams', value: (i) => i.mechanics.cams }, { label: 'Clutches / Damping', value: (i) => i.mechanics.damping },
     ] },

@@ -1,26 +1,65 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import PlatformCompatibility from '../../components/PlatformCompatibility.astro';
-import BrandMark from '../../components/BrandMark.svelte';
+import ProductHero from '../../components/detail/ProductHero.astro';
+import Verdict from '../../components/detail/Verdict.astro';
+import UseCaseFit from '../../components/detail/UseCaseFit.astro';
+import Reviews from '../../components/detail/Reviews.astro';
+import PriceTable from '../../components/detail/PriceTable.astro';
+import ProductCard from '../../components/ProductCard.svelte';
 import ControlInventory from '../../components/ControlInventory.svelte';
+import { getCatalogItems } from '../../lib/catalog';
 import { productJsonLd } from '../../lib/structured-data';
-import { productImageSrc } from '../../lib/catalog-ui';
-import { deriveComponentStats, deriveControlsSummary } from '../../lib/derive';
-const [components,brands]=await Promise.all([getCollection('components'),getCollection('brands')]);
-const brandMap=new Map(brands.map(x=>[x.id,x.data]));
-export async function getStaticPaths(){const bundles=await getCollection('bundles');return bundles.map(({id,data})=>({params:{slug:id},props:{bundle:{id,data}}}));}
-const {bundle:entry}=Astro.props;const {data:b}=entry;const brand=brandMap.get(b.brand);const included=b.components.map(ref=>components.find(x=>x.id===ref)).filter(Boolean);const stats=included.map(x=>deriveComponentStats(x!.data));const controls=deriveControlsSummary(included.flatMap(x=>x!.data.controls));const totalAxes=stats.reduce((n,s)=>n+s.totalAxes,0);
-const money=(p:any)=>new Intl.NumberFormat('en',{style:'currency',currency:p.currency}).format(p.amount);
-const description = `${brand?.name ?? b.brand} ${b.name} bundle contents and regional prices.`;
-const jsonLd = productJsonLd(b, brand?.name ?? b.brand, new URL(Astro.url.pathname, Astro.site), description);
-const heroSrc = productImageSrc(b.images[0]?.file);
+import { inventoryComplete } from '../../lib/control-inventory';
+import { cardItem } from '../../lib/catalog-ui';
+import { overallVerdict, keySpecs, isDefaultFit } from '../../lib/detail';
+const [components, brands, catalog] = await Promise.all([getCollection('components'), getCollection('brands'), getCatalogItems()]);
+const brandMap = new Map(brands.map(x => [x.id, x.data]));
+export async function getStaticPaths() { const bundles = await getCollection('bundles'); return bundles.map(({id,data}) => ({params:{slug:id},props:{bundle:{id,data}}})); }
+const { bundle: entry } = Astro.props;
+const { id, data: b } = entry;
+const brand = brandMap.get(b.brand);
+const brandName = brand?.name ?? b.brand;
+const included = b.components.map(ref => components.find(x => x.id === ref)).filter(Boolean).map(x => x!.data);
+const item = catalog.find(x => x.id === id)!;
+const memberCards = b.components.map(ref => catalog.find(x => x.id === ref)).filter(Boolean);
+const description = `${brandName} ${b.name} bundle contents and regional prices.`;
+const jsonLd = productJsonLd(b, brandName, new URL(Astro.url.pathname, Astro.site), description);
+const complete = inventoryComplete(included);
+const specs = keySpecs({
+  verdict: b.verdict ? overallVerdict(b.verdict) : null,
+  axes: item.totalAxes || item.axisCountKnown ? String(item.totalAxes) : null,
+  inputs: item.totalLogicalButtons || complete ? `${item.totalLogicalButtons}${complete ? '' : '+'}` : null,
+});
+specs.splice(b.verdict ? 1 : 0, 0, { label: 'In the box', value: `${b.components.length} component${b.components.length === 1 ? '' : 's'}` });
+if (item.controlsSummary.ministickCount) specs.push({ label: 'Ministicks', value: String(item.controlsSummary.ministickCount) });
+const showFit = !isDefaultFit(item.use_case_fit);
+const sections = [
+  b.verdict && { href: '#verdict', label: 'Verdict' }, { href: '#included', label: 'What’s included' }, { href: '#controls', label: 'Controls' },
+  showFit && { href: '#fit', label: 'Flying-style fit' }, { href: '#pricing', label: 'Pricing' }, b.external_reviews.length && { href: '#reviews', label: 'Reviews' },
+].filter(Boolean) as { href: string; label: string }[];
 ---
-<BaseLayout title={b.name} description={description} image={b.images[0]?.file} jsonLd={jsonLd}><div class="wrap"><nav class="crumb"><a href="/">Home</a> / <a href="/#hardware">Bundles</a> / {b.name}</nav><header class="hero">{heroSrc && <figure class="shot"><img src={heroSrc} alt={b.images[0]?.caption ?? b.name} />{b.images[0]?.source && <figcaption><a href={b.images[0].source} rel="external noopener">Manufacturer photo</a></figcaption>}</figure>}<div><p class="eyebrow">{brand?.name ?? b.brand} / {b.category.replaceAll('_',' ')}</p><h1>{b.name}</h1><div class="pills"><a class="pill brand-pill" href={`/brands/${b.brand}`}><BrandMark brand={b.brand} name={brand?.name} size={26} />{brand?.name ?? b.brand}</a><span class="pill">{b.category.replaceAll('_',' ')}</span></div></div></header><PlatformCompatibility compatibility={b.platform_compatibility} /><section><h2>Included components</h2><div class="grid">{included.map(({id:ref,data:c}:any)=><a class="card" href={`/components/${ref}`}>{productImageSrc(c.images?.[0]?.file) && <img src={productImageSrc(c.images[0].file)} alt="" />}<span class="eyebrow">{c.category.replaceAll('_',' ')}</span><h3>{c.name}</h3><p>{c.hardware?.gimbal ?? c.hardware?.sensor ?? 'Product specifications'}</p><span>View component ↗</span></a>)}</div></section><ControlInventory sections={included.map(x => x!.data)} /><section class="card"><h2>Combined totals</h2><div class="totals"><div><strong>{controls.totalLogicalButtons}</strong><span>Estimated logical inputs</span></div><div><strong>{totalAxes}</strong><span>Axes</span></div><div><strong>{controls.ministickCount}</strong><span>Ministicks</span></div></div></section><section class="card"><h2>Regional pricing</h2><div class="scroll"><table><thead><tr><th>Region</th><th>Currency</th><th>Price</th><th>VAT status</th><th>Store</th><th>Price checked</th></tr></thead><tbody>{(['EU','UK','US'] as const).map(region=>{const p=b.prices.find((x:any)=>x.region===region);return <tr><td>{region}</td><td>{p?.currency ?? '—'}</td><td>{p?money(p):'—'}</td><td>{p?p.incl_vat?'Included':'Excluded':'—'}</td><td>{p?.url?<a href={p.url} rel="external noopener">{p.store}</a>:p?.store??'—'}</td><td>{p?.verified??'—'}</td></tr>})}</tbody></table></div></section>{b.verdict&&<section class="card"><h2>{b.verdict.hands_on ? 'Hands-on verdict' : 'From the specifications'}</h2><p><b>{b.verdict.author}</b> {b.verdict.hands_on&&<span class="pill">Hands-on</span>}</p><p>{b.verdict.take.replace(/^Draft assessment:\s*/i, '')}</p><div class="grid"><div><h3>Pros</h3><ul>{b.verdict.pros.map((x:string)=><li>{x}</li>)}</ul></div><div><h3>Cons</h3><ul>{b.verdict.cons.map((x:string)=><li>{x}</li>)}</ul></div></div></section>}</div></BaseLayout>
+<BaseLayout title={b.name} description={description} image={b.images[0]?.file} jsonLd={jsonLd}>
+<div class="page">
+  <ProductHero id={id} name={b.name} brand={b.brand} brandName={brandName} category={b.category} status={b.status} verification={b.verification}
+    images={b.images} prices={b.prices} notes={brand?.landed_cost_notes} compatibility={b.platform_compatibility}
+    specs={specs} crumb={{ href: '/#hardware', label: 'Bundles' }} sections={sections} />
+  {b.verdict && <Verdict verdict={b.verdict} />}
+  <section id="included" class="included" aria-labelledby="included-title">
+    <p class="kicker">In the box</p><h2 id="included-title">What’s included</h2>
+    <div class="cards">{memberCards.map(member => <ProductCard client:visible item={cardItem(member!)} compact />)}</div>
+  </section>
+  <div id="controls" class="anchor"><ControlInventory sections={included} /></div>
+  {showFit && <UseCaseFit fit={item.use_case_fit} note="Editorial estimate from 1 (limited) to 5 (excellent), averaged across the included components." />}
+  <PriceTable prices={b.prices} notes={brand?.landed_cost_notes} />
+  {b.external_reviews.length > 0 && <Reviews reviews={b.external_reviews} />}
+</div>
+</BaseLayout>
 <style>
-  .wrap{max-width:1100px;margin:auto;min-width:0}.crumb{font-size:.875rem;color:var(--color-muted,var(--text-secondary));margin-bottom:.75rem}.crumb a,.shot a{color:var(--color-accent,var(--accent-amber))}.hero{display:flex;align-items:flex-start;gap:1.5rem;padding:1.25rem 0 2rem}.hero h1,.wrap h2,.wrap h3{font-family:var(--font-display,'Barlow Condensed',sans-serif);color:var(--color-ink,var(--text-primary));font-weight:700}.hero h1{font-size:clamp(2.5rem,6vw,4rem);line-height:.98;margin:.3rem 0 1rem}.shot{flex:0 0 240px;margin:0;background:var(--color-photo,#e8e8de);border:1px solid var(--color-rule,var(--border-cockpit));overflow:hidden}.shot img{display:block;width:100%;aspect-ratio:1;object-fit:contain}.shot figcaption{padding:.55rem .7rem;background:var(--color-surface,var(--bg-panel));font-size:.8rem}.card img{width:100%;aspect-ratio:4/3;object-fit:contain;background:var(--color-photo,#e8e8de);margin-bottom:.75rem}.eyebrow{font-size:.875rem;color:var(--color-muted,var(--text-secondary))}.pills{display:flex;flex-wrap:wrap;gap:.5rem}.pill{padding:.3rem .6rem;border:1px solid var(--color-rule,var(--border-cockpit));color:var(--color-muted,var(--text-secondary));font-size:.8rem;text-decoration:none}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem}.card{min-width:0;padding:1.25rem;border:1px solid var(--color-rule,var(--border-cockpit));background:var(--color-surface,var(--bg-panel));margin-bottom:1rem}.card h2{font-size:1.8rem;margin:0 0 1rem}.card h3{font-size:1.3rem;margin:.5rem 0}.card a{color:var(--color-accent,var(--accent-amber));overflow-wrap:anywhere}.grid>a{display:block;text-decoration:none;color:var(--color-ink,var(--text-primary))}.grid>a:hover{border-color:var(--color-accent,var(--accent-amber))}.totals{display:flex;gap:3rem;flex-wrap:wrap}.totals div{display:grid}.totals strong{font-size:1.6rem;color:var(--color-accent,var(--accent-amber))}.totals span{color:var(--color-muted,var(--text-secondary))}.scroll{max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}table{width:100%;border-collapse:collapse;font-size:.9rem}th,td{text-align:left;padding:.7rem;border-bottom:1px solid var(--color-rule,var(--border-cockpit));white-space:nowrap}th{font-size:.8rem;font-weight:600;color:var(--color-muted,var(--text-secondary))}.button{display:inline-block;padding:.7rem 1rem;border:1px solid var(--color-rule,var(--border-cockpit));text-decoration:none;color:var(--color-ink,var(--text-primary))}
-  @media(max-width:700px){.hero{flex-direction:column}.shot{flex-basis:auto;width:min(100%,280px)}.totals{gap:1.5rem}}
-  .hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 700; line-height: .98; }
-  .grid > a h3 { font-family: var(--font-sans); font-size: 1.125rem; line-height: 1.45; }
-.brand-pill { display: inline-flex; align-items: center; gap: .5rem; }
+  .page { max-width: 1240px; margin: auto; min-width: 0; }
+  .anchor, section { scroll-margin-top: 4rem; }
+  .page > :global(section), .anchor { margin-bottom: 2.5rem; }
+  .kicker { margin: 0; color: var(--color-accent); font-size: .8rem; font-weight: 600; }
+  .included h2 { margin: .25rem 0 1.25rem; font-size: clamp(1.9rem, 3vw, 2.5rem); text-transform: uppercase; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
 </style>

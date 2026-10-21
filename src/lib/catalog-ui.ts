@@ -35,3 +35,22 @@ export function overallScore(item: CatalogItem): number | null {
 export function contactless(item: CatalogItem) {
   return /hall|magnet|contactless|mars|m\.a\.r\.s|optical|induct|load.cell/i.test(item.sensor ?? '') && !/potentiometer/i.test(item.sensor ?? '');
 }
+
+/**
+ * Trim an item to what catalog cards and filters read, so pages that render many cards
+ * do not serialize full inventories, verdict text and evidence into island props.
+ */
+export function cardItem(item: CatalogItem): CatalogItem {
+  return {
+    ...item,
+    controlSections: item.controlSections?.map((section) => ({
+      name: section.name, category: section.category,
+      controls: section.controls.map(({ type, count }) => ({ type, count })) as typeof section.controls,
+      ...(section.controls_evidence ? { controls_evidence: { coverage: section.controls_evidence.coverage } as typeof section.controls_evidence } : {}),
+    })),
+    verdict: item.verdict ? ({ hands_on: item.verdict.hands_on } as CatalogItem['verdict']) : null,
+    ...(item.platform_compatibility ? { platform_compatibility: { pc: item.platform_compatibility.pc, xbox: item.platform_compatibility.xbox, ps5: item.platform_compatibility.ps5, sources: [] } } : {}),
+    images: item.images.slice(0, 1),
+    axes: undefined, mount: undefined,
+  };
+}

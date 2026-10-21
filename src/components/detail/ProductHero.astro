@@ -1,0 +1,58 @@
+---
+import BrandMark from '../BrandMark.svelte';
+import PlatformCompatibility from '../PlatformCompatibility.astro';
+import PricePanel from '../PricePanel.svelte';
+import { productImageSrc, categoryLabels } from '../../lib/catalog-ui';
+import { statusLabels } from '../../lib/labels';
+import type { Component, Price, PlatformCompatibility as Compat, ProductImage } from '../../lib/schema';
+interface Props {
+  id: string; name: string; brand: string; brandName: string; category: keyof typeof categoryLabels;
+  status: Component['status']; verification: Component['verification']; releaseYear?: number; handedness?: string;
+  images: ProductImage[]; prices: Price[]; notes?: Record<string, string>; compatibility?: Compat;
+  lead?: string; specs: { label: string; value: string; hint?: string }[]; crumb: { href: string; label: string };
+  sections: { href: string; label: string }[];
+}
+const p = Astro.props;
+const photo = productImageSrc(p.images[0]?.file);
+const hand = p.handedness && p.handedness !== 'n/a' ? (p.handedness === 'ambi' ? 'Ambidextrous' : `${p.handedness === 'right' ? 'Right' : 'Left'}-handed`) : null;
+---
+<nav class="crumb" aria-label="Breadcrumb"><a href="/">Catalog</a><span aria-hidden="true">/</span><a href={p.crumb.href}>{p.crumb.label}</a><span aria-hidden="true">/</span><a href={`/brands/${p.brand}`}>{p.brandName}</a><span aria-hidden="true">/</span><span aria-current="page">{p.name}</span></nav>
+<header class="hero">
+  <figure class="shot">{photo ? <img src={photo} alt={p.images[0]?.caption ?? p.name} width="600" height="600" fetchpriority="high" /> : <span class="nophoto">No photo available</span>}{p.images[0]?.source && <figcaption><a href={p.images[0].source} rel="external noopener">Manufacturer photo ↗</a></figcaption>}</figure>
+  <div class="info">
+    <a class="maker" href={`/brands/${p.brand}`}><BrandMark brand={p.brand} name={p.brandName} size={28} />{p.brandName}</a>
+    <h1>{p.name}</h1>
+    <ul class="tags">
+      <li>{categoryLabels[p.category]}</li>
+      {p.status !== 'current' && <li class={`status ${p.status}`}>{statusLabels[p.status]}</li>}
+      {p.releaseYear && <li>Released {p.releaseYear}</li>}
+      {hand && <li>{hand}</li>}
+      <li class={p.verification === 'verified' ? 'verified' : 'draft'} title={p.verification === 'verified' ? 'Specifications checked by an editor' : 'Specifications researched from manufacturer sources; not yet signed off by an editor'}>{p.verification === 'verified' ? '✓ Editor verified' : 'Draft specifications'}</li>
+    </ul>
+    {p.lead && <p class="lead">{p.lead}</p>}
+    {p.specs.length > 0 && <dl class="specs">{p.specs.map(s => <div title={s.hint}><dt>{s.label}</dt><dd>{s.value}</dd></div>)}</dl>}
+    <PlatformCompatibility compatibility={p.compatibility} />
+  </div>
+  <div class="side"><PricePanel client:load id={p.id} prices={p.prices} notes={p.notes} /></div>
+</header>
+{p.sections.length > 1 && <nav class="jump" aria-label="On this page">{p.sections.map(s => <a href={s.href}>{s.label}</a>)}</nav>}
+<style>
+  .crumb { display: flex; flex-wrap: wrap; gap: .45rem; font-size: .8125rem; color: var(--color-muted); margin-bottom: 1.25rem; } .crumb a { color: var(--color-accent); text-decoration: none; } .crumb a:hover { text-decoration: underline; }
+  .hero { display: grid; grid-template-columns: minmax(240px, 380px) minmax(0, 1fr) 280px; gap: 2rem; align-items: start; padding-bottom: 2rem; }
+  .shot { margin: 0; background: #fff; border: 1px solid var(--color-rule); } .shot img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; padding: 1rem; }
+  .nophoto { display: grid; place-items: center; aspect-ratio: 1; color: #586875; font-size: .875rem; }
+  .shot figcaption { padding: .5rem .75rem; font-size: .75rem; background: var(--color-surface); border-top: 1px solid var(--color-rule); } .shot a { color: var(--color-muted); }
+  .info { min-width: 0; display: grid; gap: 1rem; align-content: start; }
+  .maker { display: inline-flex; align-items: center; gap: .55rem; width: fit-content; color: var(--color-accent); font-weight: 600; font-size: .9rem; text-decoration: none; } .maker:hover { text-decoration: underline; }
+  h1 { margin: 0; font: 700 clamp(2.4rem, 4.5vw, 3.6rem)/.98 var(--font-display); text-wrap: balance; overflow-wrap: anywhere; }
+  .tags { display: flex; flex-wrap: wrap; gap: .4rem; list-style: none; margin: 0; padding: 0; } .tags li { padding: .2rem .55rem; border: 1px solid var(--color-rule); font-size: .8rem; color: var(--color-muted); }
+  .tags .verified { color: var(--color-success); border-color: color-mix(in srgb, var(--color-success) 40%, transparent); } .tags .draft { border-style: dashed; }
+  .tags .status { font-weight: 600; } .tags .discontinued { color: var(--color-danger); border-color: color-mix(in srgb, var(--color-danger) 40%, transparent); } .tags .announced { color: var(--color-accent); border-color: var(--color-accent); }
+  .lead { margin: 0; font-size: 1.05rem; line-height: 1.65; max-width: 62ch; }
+  .specs { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); margin: 0; overflow: hidden; background: var(--color-surface); border: 1px solid var(--color-rule); }
+  .specs div { padding: .75rem .85rem; min-width: 0; margin: 0 -1px -1px 0; border-right: 1px solid var(--color-rule); border-bottom: 1px solid var(--color-rule); } .specs dt { font-size: .75rem; color: var(--color-muted); } .specs dd { margin: .15rem 0 0; font-weight: 600; font-size: .95rem; line-height: 1.35; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+  .jump { position: sticky; top: 0; z-index: 5; display: flex; gap: 1.5rem; overflow-x: auto; padding: .85rem 0; margin-bottom: 2rem; background: var(--color-paper); border-block: 1px solid var(--color-rule); scrollbar-width: none; }
+  .jump a { flex: none; font-size: .875rem; font-weight: 500; color: var(--color-muted); text-decoration: none; } .jump a:hover { color: var(--color-accent); }
+  @media (max-width: 1150px) { .hero { grid-template-columns: minmax(220px, 320px) minmax(0, 1fr); } .side { grid-column: 1 / -1; } }
+  @media (max-width: 700px) { .hero { grid-template-columns: 1fr; gap: 1.25rem; } .shot { max-width: 340px; } }
+</style>

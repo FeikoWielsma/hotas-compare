@@ -1,51 +1,103 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import PlatformCompatibility from '../../components/PlatformCompatibility.astro';
-import BrandMark from '../../components/BrandMark.svelte';
-import { productJsonLd } from '../../lib/structured-data';
-import { productImageSrc } from '../../lib/catalog-ui';
-import AddCompare from '../../components/AddCompare.svelte';
+import ProductHero from '../../components/detail/ProductHero.astro';
+import Verdict from '../../components/detail/Verdict.astro';
+import UseCaseFit from '../../components/detail/UseCaseFit.astro';
+import Reviews from '../../components/detail/Reviews.astro';
+import PriceTable from '../../components/detail/PriceTable.astro';
 import ControlInventory from '../../components/ControlInventory.svelte';
-import { deriveComponentStats } from '../../lib/derive';
-const [brands, mounts, reviewers] = await Promise.all([getCollection('brands'), getCollection('mount_standards'), getCollection('reviewers')]);
+import { productJsonLd } from '../../lib/structured-data';
+import { deriveComponentStats, deriveControlsSummary } from '../../lib/derive';
+import { inventoryComplete } from '../../lib/control-inventory';
+import { humanize, yesNoUnknown } from '../../lib/labels';
+import { overallVerdict, keySpecs, isDefaultFit } from '../../lib/detail';
+const [brands, mounts] = await Promise.all([getCollection('brands'), getCollection('mount_standards')]);
 const brandMap = new Map(brands.map(x => [x.id, x.data]));
 const mountMap = new Map(mounts.map(x => [x.id, x.data]));
-const reviewerMap = new Map(reviewers.map(x => [x.id, x.data]));
 export async function getStaticPaths() { const components = await getCollection('components'); return components.map(({id,data}) => ({params:{slug:id},props:{component:{id,data}}})); }
 const { component: entry } = Astro.props;
-const { id, data:c } = entry;
+const { id, data: c } = entry;
 const brand = brandMap.get(c.brand);
+const brandName = brand?.name ?? c.brand;
 const stats = deriveComponentStats(c);
-const money = (p:any) => new Intl.NumberFormat('en', {style:'currency',currency:p.currency}).format(p.amount);
-const sourceLabel = (source:string) => { try { return new URL(source).hostname.replace(/^www\./, ''); } catch { return 'Source'; } };
-const description = `${brand?.name ?? c.brand} ${c.name}: specifications, controls, compatibility and regional pricing.`;
-const jsonLd = productJsonLd(c, brand?.name ?? c.brand, new URL(Astro.url.pathname, Astro.site), description);
-const heroSrc = productImageSrc(c.images[0]?.file);
+const summary = deriveControlsSummary(c.controls);
+const sourceLabel = (source: string) => { try { return new URL(source).hostname.replace(/^www\./, ''); } catch { return 'Source'; } };
+const description = `${brandName} ${c.name}: specifications, controls, compatibility and regional pricing.`;
+const jsonLd = productJsonLd(c, brandName, new URL(Astro.url.pathname, Astro.site), description);
+const h = c.hardware;
+const axisCount = stats.totalAxes || h?.axis_count;
+const specs = keySpecs({
+  axes: axisCount ? String(axisCount) : h?.axis_count === 0 ? '0' : null,
+  inputs: summary.totalLogicalButtons || inventoryComplete([c]) ? String(summary.totalLogicalButtons) : null,
+  sensor: h?.sensor, gimbal: h?.gimbal, throw: h?.throw_deg, weight: c.physical?.weight_g,
+  connection: c.connectivity.standalone_usb == null ? null : c.connectivity.standalone_usb ? (c.connectivity.usb && c.connectivity.usb.length < 12 ? humanize(c.connectivity.usb) : 'Standalone USB') : 'Via compatible base',
+  verdict: c.verdict ? overallVerdict(c.verdict) : null,
+});
+const groups = [
+  { title: 'Mechanics', rows: [
+    ['Gimbal', humanize(h?.gimbal)], ['Primary sensor', humanize(h?.sensor)], ['Throw', h?.throw_deg != null ? `${h.throw_deg}°` : ''],
+    ['Force adjustable', yesNoUnknown(h?.force_adjustable)], ['Swappable cams', yesNoUnknown(h?.cams_swappable)],
+    ['Damping', humanize(h?.damping)], ['Extension support', yesNoUnknown(h?.extension_support)],
+  ] },
+  { title: 'Physical', rows: [
+    ['Weight', c.physical?.weight_g != null ? `${c.physical.weight_g.toLocaleString('en')} g` : ''],
+    ['Dimensions', c.physical?.dimensions_mm ? `${c.physical.dimensions_mm.join(' × ')} mm` : ''],
+    ['Materials', c.physical?.materials?.map(humanize).join(', ')],
+  ] },
+  { title: 'Connection & software', rows: [
+    ['USB', humanize(c.connectivity.usb)], ['Works standalone', yesNoUnknown(c.connectivity.standalone_usb)], ['Configuration software', c.software],
+  ] },
+].map(g => ({ ...g, known: g.rows.filter(([, v]) => v), missing: g.rows.filter(([, v]) => !v).map(([l]) => l) }));
+const provides = c.mount?.provides ? mountMap.get(c.mount.provides) : null;
+const accepts = (c.mount?.accepts ?? []).map(x => ({ id: x, data: mountMap.get(x) }));
+const showFit = !isDefaultFit(c.use_case_fit);
+const sections = [
+  c.verdict && { href: '#verdict', label: 'Verdict' }, { href: '#controls', label: 'Controls' }, showFit && { href: '#fit', label: 'Flying-style fit' },
+  { href: '#specs', label: 'Specifications' }, { href: '#pricing', label: 'Pricing' }, c.external_reviews.length && { href: '#reviews', label: 'Reviews' },
+].filter(Boolean) as { href: string; label: string }[];
 ---
 <BaseLayout title={c.name} description={description} image={c.images[0]?.file} jsonLd={jsonLd}>
 <div class="page">
-  <nav class="crumb"><a href="/">Home</a> / <a href="/#hardware">Components</a> / <a href={`/brands/${c.brand}`}>{brand?.name ?? c.brand}</a> / {c.name}</nav>
-  <header class="hero">{heroSrc && <figure class="shot"><img src={heroSrc} alt={c.images[0]?.caption ?? c.name} />{c.images[0]?.source && <figcaption><a href={c.images[0].source} rel="external noopener">Manufacturer photo</a></figcaption>}</figure>}<div><p class="eyebrow">{brand?.name ?? c.brand} / {c.category.replaceAll('_',' ')}</p><h1>{c.name}</h1><div class="pills"><a class="pill brand-pill" href={`/brands/${c.brand}`}><BrandMark brand={c.brand} name={brand?.name} size={26} />{brand?.name ?? c.brand}</a><span class="pill">{c.category.replaceAll('_',' ')}</span>{c.release_year && <span class="pill">Released {c.release_year}</span>}</div></div><div class="actions"><AddCompare id={id} client:load /></div></header>
-  <PlatformCompatibility compatibility={c.platform_compatibility} />
-  <ControlInventory sections={[c]} />
-  <div class="grid">
-    <section class="card"><h2>Hardware</h2><dl><dt>Gimbal</dt><dd>{c.hardware?.gimbal ?? 'Not specified'}</dd><dt>Sensor</dt><dd>{c.hardware?.sensor ?? 'Not specified'}</dd><dt>Axes</dt><dd>{c.hardware?.axis_count != null && <p>{c.hardware.axis_count} axes reported by the manufacturer.</p>}{c.hardware?.axes?.length ? <ul>{c.hardware.axes.map((a:any)=><li>{a.name}{a.resolution_bits ? ` — ${a.resolution_bits}-bit` : ''}{a.sensor ? `, ${a.sensor}` : ''}</li>)}</ul> : c.hardware?.axis_count != null ? 'Individual axis mapping not fully documented.' : stats.totalAxes ? `${stats.totalAxes} axes estimated` : 'Not specified'}</dd><dt>Force adjustable</dt><dd>{c.hardware?.force_adjustable == null ? 'Not specified' : c.hardware.force_adjustable ? 'Yes' : 'No'}</dd><dt>Swappable cams</dt><dd>{c.hardware?.cams_swappable == null ? 'Not specified' : c.hardware.cams_swappable ? 'Yes' : 'No'}</dd><dt>Damping</dt><dd>{c.hardware?.damping ?? 'Not specified'}</dd><dt>Extension support</dt><dd>{c.hardware?.extension_support == null ? 'Not specified' : c.hardware.extension_support ? 'Yes' : 'No'}</dd><dt>Throw</dt><dd>{c.hardware?.throw_deg != null ? `${c.hardware.throw_deg}°` : 'Not specified'}</dd></dl></section>
-
-    <section class="card"><h2>Mount compatibility</h2><p><b>Provides:</b> {c.mount?.provides ? (mountMap.get(c.mount.provides)?.name ?? c.mount.provides) : 'Not specified'}</p><p><b>Accepts:</b> {c.mount?.accepts?.length ? c.mount.accepts.map((x:string)=>mountMap.get(x)?.name ?? x).join(', ') : 'Not specified'}</p>{c.mount?.provides && <p>{mountMap.get(c.mount.provides)?.description ?? mountMap.get(c.mount.provides)?.physical_type}</p>}{c.mount?.accepts?.map((x:string)=><p>{mountMap.get(x)?.description}</p>)}</section>
-    <section class="card"><h2>Physical &amp; software</h2><dl><dt>Weight</dt><dd>{c.physical?.weight_g != null ? `${c.physical.weight_g} g` : 'Not specified'}</dd><dt>Materials</dt><dd>{c.physical?.materials?.join(', ') || 'Not specified'}</dd><dt>USB</dt><dd>{c.connectivity?.usb ?? 'Not specified'}</dd><dt>Standalone USB</dt><dd>{c.connectivity?.standalone_usb == null ? 'Not specified' : c.connectivity.standalone_usb ? 'Yes' : 'No'}</dd><dt>Configuration software</dt><dd>{c.software ?? 'Not specified'}</dd></dl></section>
-  </div>
-  <section class="card wide"><h2>Regional pricing</h2><div class="scroll"><table><thead><tr><th>Region</th><th>Currency</th><th>Price</th><th>VAT</th><th>Store</th><th>Price checked</th><th>Age</th></tr></thead><tbody>{(['EU','UK','US'] as const).map(region=>{const p=c.prices.find((x:any)=>x.region===region);const age=p?Math.floor((Date.now()-new Date(p.verified).getTime())/86400000):0;return <tr><td>{region}</td><td>{p?.currency ?? '—'}</td><td>{p ? money(p) : '—'}</td><td>{p ? p.incl_vat?'Included':'Excluded' : '—'}</td><td>{p?.url ? <a href={p.url} rel="external noopener">{p.store}</a> : p?.store ?? '—'}</td><td>{p?.verified ?? '—'}</td><td>{p ? age>90 ? `Over 90 days (${age}d)` : 'Recent' : '—'}</td></tr>})}</tbody></table></div>{brand?.landed_cost_notes && <div class="notes">{(['EU','UK','US'] as const).map(r=>brand.landed_cost_notes[r] && <p><b>{r}:</b> {brand.landed_cost_notes[r]}</p>)}</div>}</section>
-  {c.verdict && <section class="card wide"><h2>{c.verdict.hands_on ? 'Hands-on verdict' : 'From the specifications'}</h2><p><b>{c.verdict.author}</b> {c.verdict.hands_on && <span class="pill">Hands-on</span>} {c.verdict.owned_hours != null && `· ${c.verdict.owned_hours} hours owned`}</p><p>{c.verdict.take.replace(/^Draft assessment:\s*/i, '')}</p><div class="grid inner"><div><h3>Pros</h3><ul>{c.verdict.pros.map((x:string)=><li>{x}</li>)}</ul></div><div><h3>Cons</h3><ul>{c.verdict.cons.map((x:string)=><li>{x}</li>)}</ul></div></div><p>Great for: {c.verdict.great_for.map((x:string)=><span class="pill">{x}</span>)}</p><p>Skip if: {c.verdict.skip_if.map((x:string)=><span class="pill">{x}</span>)}</p><div class="scores">{Object.entries({Build:c.verdict.scores.build,Feel:c.verdict.scores.feel,Value:c.verdict.scores.value,Software:c.verdict.scores.software,'QC Support':c.verdict.scores.qc_support}).map(([label,value]:any)=><div><span>{label}</span><progress max="5" value={value}>{value}/5</progress><b>{value}/5</b></div>)}</div></section>}
-  {c.external_reviews.length>0 && <section class="card wide"><h2>External reviews</h2><ul class="reviewlist">{c.external_reviews.map((r:any)=><li><a href={r.url} rel="external noopener">{reviewerMap.get(r.reviewer)?.name ?? r.reviewer}</a> <span class="pill">{reviewerMap.get(r.reviewer)?.platform ?? 'External review'}</span><span class="pill">{r.tag}</span><small>{r.date}</small><p>{r.summary}</p></li>)}</ul></section>}
-  {c.sources.length>0 && <details class="card wide references"><summary>References</summary><ul>{c.sources.map((source:string)=><li><a href={source} rel="external noopener">{sourceLabel(source)}</a></li>)}</ul></details>}
+  <ProductHero id={id} name={c.name} brand={c.brand} brandName={brandName} category={c.category} status={c.status} verification={c.verification}
+    releaseYear={c.release_year} handedness={c.handedness} images={c.images} prices={c.prices} notes={brand?.landed_cost_notes} compatibility={c.platform_compatibility}
+    specs={specs} crumb={{ href: '/#hardware', label: 'Components' }} sections={sections} />
+  {c.verdict && <Verdict verdict={c.verdict} />}
+  <div id="controls" class="anchor"><ControlInventory sections={[c]} /></div>
+  {showFit && <UseCaseFit fit={c.use_case_fit} />}
+  <section id="specs" class="specs" aria-labelledby="specs-title">
+    <p class="kicker">Specifications</p><h2 id="specs-title">The details</h2>
+    <div class="sheet">
+      {groups.map(g => <div class="group"><h3>{g.title}</h3>{g.known.length ? <dl>{g.known.map(([l, v]) => <div><dt>{l}</dt><dd>{v}</dd></div>)}</dl> : <p class="none">Not yet documented.</p>}{g.known.length > 0 && g.missing.length > 0 && <p class="missing">Not documented: {g.missing.join(', ').toLowerCase()}</p>}</div>)}
+      <div class="group"><h3>Mounting</h3>
+        {provides || accepts.length ? <dl>
+          {provides && <div><dt>Provides</dt><dd>{provides.name}<small>{provides.description}</small></dd></div>}
+          {accepts.map(a => <div><dt>Accepts</dt><dd>{a.data?.name ?? a.id}{a.data?.description && <small>{a.data.description}</small>}</dd></div>)}
+        </dl> : <p class="none">No mount standard documented.</p>}
+      </div>
+    </div>
+    {h?.axes && h.axes.length > 0 && <div class="axes"><h3>Axes</h3><table><thead><tr><th>Axis</th><th>Sensor</th><th>Resolution</th></tr></thead><tbody>{h.axes.map(a => <tr><td>{humanize(a.name)}</td><td>{humanize(a.sensor) || '—'}</td><td>{a.resolution_bits ? `${a.resolution_bits}-bit` : '—'}</td></tr>)}</tbody></table>{h.axis_count != null && h.axis_count !== h.axes.length && <p class="missing">The manufacturer lists {h.axis_count} axes; {h.axes.length} are individually documented.</p>}</div>}
+  </section>
+  <PriceTable prices={c.prices} notes={brand?.landed_cost_notes} />
+  {c.external_reviews.length > 0 && <Reviews reviews={c.external_reviews} />}
+  {c.sources.length > 0 && <details class="references"><summary>References ({c.sources.length})</summary><ul>{c.sources.map((source: string) => <li><a href={source} rel="external noopener">{sourceLabel(source)}</a></li>)}</ul></details>}
 </div>
 </BaseLayout>
 <style>
-  .page{max-width:1180px;margin:auto;min-width:0}.crumb,.eyebrow{color:var(--color-muted,var(--text-secondary));font-size:.875rem}.crumb{margin-bottom:.75rem}.crumb a,.shot a{color:var(--color-accent,var(--accent-amber))}.hero{display:flex;align-items:flex-start;justify-content:space-between;gap:1.5rem;padding:1.5rem 0 2rem}.shot{flex:0 0 240px;margin:0;background:var(--color-photo,#e8e8de);border:1px solid var(--color-rule,var(--border-cockpit));overflow:hidden}.shot img{display:block;width:100%;aspect-ratio:1;object-fit:contain}.shot figcaption{padding:.55rem .7rem;background:var(--color-surface,var(--bg-panel));font-size:.8rem}.hero>div:first-of-type{flex:1;min-width:0}.hero h1,.page h2,.page h3{font-family:var(--font-display,'Barlow Condensed',sans-serif);color:var(--color-ink,var(--text-primary));font-weight:700}.hero h1{font-size:clamp(2.5rem,6vw,4rem);line-height:.98;margin:.4rem 0 1rem}.pills,.actions{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}.pill{display:inline-block;padding:.3rem .6rem;border:1px solid var(--color-rule,var(--border-cockpit));color:var(--color-muted,var(--text-secondary));font-size:.8rem;text-decoration:none}.button{padding:.7rem 1rem;border:1px solid var(--color-rule,var(--border-cockpit));text-decoration:none;font-size:.9rem}.secondary{color:var(--color-ink,var(--text-primary));background:var(--color-surface,var(--bg-panel))}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.card{min-width:0;padding:1.25rem;border:1px solid var(--color-rule,var(--border-cockpit));background:var(--color-surface,var(--bg-panel));margin-bottom:1rem}.card h2{font-size:1.8rem;margin:0 0 1rem}.card h3{font-size:1.3rem;margin:.5rem 0}.wide{margin-top:.5rem}.inner{grid-template-columns:1fr 1fr}.card dl{display:grid;grid-template-columns:minmax(130px,.7fr) 1.3fr;gap:.5rem 1rem;margin:0}.card dt{color:var(--color-muted,var(--text-secondary))}.card dd{margin:0;overflow-wrap:anywhere}.controls,.reviewlist{padding-left:1.2rem}.scroll{max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}table{width:100%;border-collapse:collapse;font-size:.9rem}th,td{text-align:left;padding:.7rem;border-bottom:1px solid var(--color-rule,var(--border-cockpit));white-space:nowrap}th{color:var(--color-muted,var(--text-secondary));font-size:.8rem;font-weight:600}.notes{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;color:var(--color-muted,var(--text-secondary))}.scores{display:grid;gap:.6rem}.scores div{display:grid;grid-template-columns:100px 1fr 45px;gap:.75rem;align-items:center}progress{width:100%;accent-color:var(--color-accent,var(--accent-amber))}small{margin-left:.5rem;color:var(--color-muted,var(--text-muted))}.page a:not(.pill):not(.button){overflow-wrap:anywhere}
-  @media(max-width:700px){.hero{align-items:flex-start;flex-direction:column}.shot{flex-basis:auto;width:min(100%,280px)}.grid,.notes{grid-template-columns:1fr}.card dl{grid-template-columns:1fr}.card dd{margin-bottom:.5rem}.actions{width:100%}}
-  .hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 700; line-height: .98; }
-  .references summary { cursor: pointer; font: 600 1.4rem var(--font-display); color: var(--color-ink); }
-  .grid > a h3 { font-family: var(--font-sans); font-size: 1.125rem; line-height: 1.45; }
-.brand-pill { display: inline-flex; align-items: center; gap: .5rem; }
+  .page { max-width: 1240px; margin: auto; min-width: 0; }
+  .anchor, section { scroll-margin-top: 4rem; }
+  .page > :global(section), .anchor { margin-bottom: 2.5rem; }
+  .kicker { margin: 0; color: var(--color-accent); font-size: .8rem; font-weight: 600; }
+  .specs h2 { margin: .25rem 0 1.25rem; font-size: clamp(1.9rem, 3vw, 2.5rem); text-transform: uppercase; }
+  .specs { padding-top: 1.5rem; border-top: 1px solid var(--color-rule); }
+  .sheet { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+  .group { padding: 1.25rem; border: 1px solid var(--color-rule); background: var(--color-surface); min-width: 0; }
+  h3 { margin: 0 0 .75rem; font: 700 .8rem var(--font-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--color-muted); }
+  dl { display: grid; margin: 0; } dl > div { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 1rem; padding: .55rem 0; border-top: 1px solid var(--color-rule); font-size: .9rem; } dl > div:first-child { border-top: 0; padding-top: 0; }
+  dt { color: var(--color-muted); } dd { margin: 0; overflow-wrap: anywhere; } dd small { display: block; margin-top: .25rem; color: var(--color-muted); font-size: .8rem; line-height: 1.55; }
+  .none, .missing { margin: .5rem 0 0; color: var(--color-muted); font-size: .8rem; } .none { margin: 0; }
+  .axes { margin-top: 1rem; padding: 1.25rem; border: 1px solid var(--color-rule); background: var(--color-surface); overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: .875rem; } th, td { text-align: left; padding: .55rem .75rem .55rem 0; border-bottom: 1px solid var(--color-rule); } th { font-size: .75rem; font-weight: 600; color: var(--color-muted); } tr:last-child td { border-bottom: 0; }
+  .references { padding: 1rem 1.25rem; border: 1px solid var(--color-rule); background: var(--color-surface); font-size: .875rem; } .references summary { cursor: pointer; font-weight: 600; } .references ul { columns: 2; margin: .75rem 0 0; } .references a { color: var(--color-accent); overflow-wrap: anywhere; }
+  @media (max-width: 800px) { .sheet { grid-template-columns: 1fr; } dl > div { grid-template-columns: 9rem minmax(0, 1fr); } .references ul { columns: 1; } }
 </style>

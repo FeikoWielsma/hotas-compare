@@ -1,0 +1,34 @@
+---
+import type { Price } from '../../lib/schema';
+interface Props { prices: Price[]; notes?: Record<string, string> }
+const { prices, notes = {} } = Astro.props;
+const money = (p: Price) => new Intl.NumberFormat('en', { style: 'currency', currency: p.currency }).format(p.amount);
+const rows = (['EU', 'UK', 'US'] as const).map(region => {
+  const p = prices.find(x => x.region === region);
+  const age = p ? Math.floor((Date.now() - new Date(p.verified).getTime()) / 86400000) : 0;
+  return { region, p, age };
+});
+---
+<section id="pricing" class="pricing" aria-labelledby="pricing-title">
+  <p class="kicker">Where to buy</p><h2 id="pricing-title">Regional pricing</h2>
+  <div class="regions">{rows.map(({ region, p, age }) => <article class:list={{ empty: !p }}>
+    <header><b>{region}</b>{p && <span class:list={['age', { stale: age > 90 }]}>{age > 90 ? `Checked ${age} days ago` : `Checked ${p.verified}`}</span>}</header>
+    {p ? <><p class="amount">{money(p)}</p><p class="vat">{p.incl_vat ? 'Includes VAT' : 'Excludes sales tax'}</p>{p.url ? <a href={p.url} rel="external noopener">{p.store} ↗</a> : <p class="vat">{p.store}</p>}</> : <p class="vat">No price listed for this region.</p>}
+    {notes[region] && <p class="note">{notes[region]}</p>}
+  </article>)}</div>
+  <p class="foot">Prices are recorded by hand from the listed store and exclude shipping and import charges unless the note says otherwise.</p>
+</section>
+<style>
+  .pricing { padding-top: 1.5rem; border-top: 1px solid var(--color-rule); scroll-margin-top: 4rem; }
+  .kicker { margin: 0; color: var(--color-accent); font-size: .8rem; font-weight: 600; }
+  h2 { margin: .25rem 0 1.25rem; font-size: clamp(1.9rem, 3vw, 2.5rem); text-transform: uppercase; }
+  .regions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+  article { display: grid; gap: .25rem; align-content: start; padding: 1.25rem; border: 1px solid var(--color-rule); background: var(--color-surface); min-width: 0; } article.empty { background: transparent; border-style: dashed; }
+  header { display: flex; justify-content: space-between; gap: .5rem; align-items: baseline; margin-bottom: .35rem; } header b { font-size: .875rem; }
+  .age { font-size: .75rem; color: var(--color-muted); } .age.stale { color: var(--color-danger); }
+  p { margin: 0; } .amount { font: 700 2rem/1.1 var(--font-display); font-variant-numeric: tabular-nums; } .vat { font-size: .8125rem; color: var(--color-muted); }
+  a { margin-top: .35rem; font-size: .875rem; font-weight: 600; color: var(--color-accent); overflow-wrap: anywhere; }
+  .note { margin-top: .75rem; padding-top: .75rem; border-top: 1px solid var(--color-rule); font-size: .8rem; line-height: 1.6; color: var(--color-muted); }
+  .foot { margin-top: .85rem; font-size: .8rem; color: var(--color-muted); }
+  @media (max-width: 800px) { .regions { grid-template-columns: 1fr; } }
+</style>

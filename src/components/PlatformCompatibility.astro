@@ -3,18 +3,21 @@ import type { PlatformCompatibility } from '../lib/schema';
 import { platforms, platformSupport } from '../lib/platforms';
 interface Props { compatibility?: PlatformCompatibility }
 const { compatibility } = Astro.props;
+const marks: Record<string, string> = { supported: '✓', unsupported: '✕', unknown: '?' };
 ---
-<section class="compatibility">
-  <h2>Platform compatibility</h2>
-  <dl>{platforms.map(({ key, label }) => <div><dt>{label}</dt><dd>{platformSupport(compatibility, key)}</dd></div>)}</dl>
-  {compatibility?.notes && <p>{compatibility.notes}</p>}
-  {compatibility?.sources.length ? <p class="sources">Sources: {compatibility.sources.map((url, i) => <><a href={url} rel="external noopener">Manufacturer{compatibility.sources.length > 1 ? ` ${i + 1}` : ''}</a>{i < compatibility.sources.length - 1 ? ' · ' : ''}</>)}</p> : <p>Platform support has not yet been verified.</p>}
-</section>
+<div class="compatibility">
+  <ul aria-label="Platform compatibility">{platforms.map(({ key, label }) => { const status = compatibility?.[key] ?? 'unknown'; return <li class={status} title={platformSupport(compatibility, key)}><span aria-hidden="true">{marks[status]}</span>{label}<span class="sr-only">: {platformSupport(compatibility, key)}</span></li>; })}</ul>
+  {compatibility?.notes || compatibility?.sources.length ? <details><summary>Compatibility notes</summary>{compatibility?.notes && <p>{compatibility.notes}</p>}{compatibility?.sources.length ? <p class="sources">Sources: {compatibility.sources.map((url, i) => <><a href={url} rel="external noopener">Manufacturer{compatibility.sources.length > 1 ? ` ${i + 1}` : ''}</a>{i < compatibility.sources.length - 1 ? ' · ' : ''}</>)}</p> : <p>Platform support has not yet been verified.</p>}</details> : <p class="unverified">Platform support not yet verified.</p>}
+</div>
 <style>
-  .compatibility { padding: 1.25rem; border: 1px solid var(--color-rule); background: var(--color-surface); margin-bottom: 1rem; }
-  h2 { font: 700 1.8rem var(--font-display); margin: 0 0 1rem; }
-  dl { display: flex; flex-wrap: wrap; gap: 1rem 3rem; margin: 0; }
-  dt { color: var(--color-muted); font-size: .875rem; } dd { margin: .3rem 0 0; }
-  p { font-size: .875rem; line-height: 1.6; color: var(--color-muted); margin-bottom: 0; }
-  a { color: var(--color-accent); }
+  .compatibility { display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem 1rem; }
+  ul { display: flex; gap: .4rem; list-style: none; margin: 0; padding: 0; }
+  li { display: inline-flex; align-items: center; gap: .35rem; padding: .25rem .6rem; border: 1px solid var(--color-rule); font-size: .8125rem; font-weight: 600; color: var(--color-muted); }
+  li.supported { color: var(--color-success); border-color: color-mix(in srgb, var(--color-success) 40%, transparent); background: color-mix(in srgb, var(--color-success) 7%, transparent); }
+  li.unsupported { text-decoration: line-through; text-decoration-color: color-mix(in srgb, currentColor 50%, transparent); font-weight: 500; }
+  summary { cursor: pointer; font-size: .8125rem; color: var(--color-accent); }
+  details { flex-basis: 100%; } details[open] { padding-top: .25rem; }
+  p { font-size: .8125rem; line-height: 1.6; color: var(--color-muted); margin: .4rem 0 0; max-width: 75ch; }
+  .unverified { margin: 0; } a { color: var(--color-accent); }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 </style>

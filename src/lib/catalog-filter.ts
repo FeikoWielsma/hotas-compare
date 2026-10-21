@@ -50,6 +50,12 @@ export function filterCatalog(items: CatalogItem[], filters: CatalogFilters = {}
     } else if (filters.sort === 'buttons') result = b.totalLogicalButtons - a.totalLogicalButtons;
     else if (filters.sort === 'axes') result = b.totalAxes - a.totalAxes;
     else if (filters.sort === 'score') result = (overallScore(b) ?? -1) - (overallScore(a) ?? -1);
+    else if (filters.sort === 'featured') {
+      // Reviewed, verified, currently sold and documented hardware first; the catalog stays complete.
+      const rank = (item: CatalogItem) => (overallScore(item) ?? 0) * 10 + (item.verification === 'verified' ? 5 : 0)
+        + (item.status === 'current' ? 2 : 0) + (item.images.length ? 1 : 0) + (item.totalLogicalButtons > 0 ? 1 : 0);
+      result = rank(b) - rank(a);
+    }
     return result || a.name.localeCompare(b.name);
   });
 }

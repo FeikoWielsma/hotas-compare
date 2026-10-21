@@ -1,10 +1,11 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import BrandMark from './BrandMark.svelte';
-  import { inventoryComplete, inventoryCount } from '../lib/control-inventory';
+  import { controlTypes, inventoryComplete } from '../lib/control-inventory';
   import type { CatalogItem } from '../lib/catalog';
   import { platforms } from '../lib/platforms';
-  import { categoryLabels, detailHref, formatAmount, productImageSrc, resolveItemRegion } from '../lib/catalog-ui';
+  import { categoryLabels, detailHref, formatAmount, overallScore, productImageSrc, resolveItemRegion } from '../lib/catalog-ui';
+  import { humanize, statusLabels } from '../lib/labels';
   import { regionStore } from '../lib/stores/region.svelte';
   import { compareStore, MAX_COMPARE_ITEMS } from '../lib/stores/compare.svelte';
   let { item, compact = false, row = false }: { item: CatalogItem; compact?: boolean; row?: boolean } = $props();
@@ -12,52 +13,84 @@
   const selected = $derived(compareStore.hasItem(item.id));
   const full = $derived(!selected && compareStore.items.length >= MAX_COMPARE_ITEMS);
   const photo = $derived(productImageSrc(item.images[0]?.file));
-  const countLabel = (type: 'hat' | 'analog_ministick') => inventoryCount(item.controlSections ?? [], type).replace('Not documented', '—').replace(' recorded', '+');
-  const inputs = $derived(item.totalLogicalButtons === 0 && !inventoryComplete(item.controlSections ?? []) ? 'Unknown' : item.totalLogicalButtons);
+  const complete = $derived(inventoryComplete(item.controlSections ?? []));
+  const score = $derived(overallScore(item));
+  const short: Partial<Record<string, string>> = { hat: 'Hats', analog_ministick: 'Ministicks', button: 'Buttons', trigger: 'Triggers', lever: 'Levers', slider: 'Sliders', encoder: 'Encoders', scroll_wheel: 'Wheels', rotary: 'Rotaries', toggle: 'Toggles', rocker: 'Rockers', switch: 'Switches' };
+  const priority = ['Hats', 'Ministicks', 'Encoders', 'Toggles', 'Levers', 'Triggers', 'Rotaries', 'Sliders', 'Wheels', 'Rockers', 'Switches', 'Buttons'];
+  /** Documented headline numbers first, then the most distinctive control families. Unknowns are left out. */
+  const highlights = $derived.by(() => {
+    const out: { label: string; value: string; title?: string }[] = [];
+    const plus = complete ? '' : '+';
+    if (item.totalAxes > 0 || item.axisCountKnown) out.push({ label: 'Axes', value: String(item.totalAxes) });
+    if (item.totalLogicalButtons > 0) out.push({ label: 'Inputs', value: `${item.totalLogicalButtons}${plus}`, title: 'Estimated button inputs, including hat directions and switch positions' });
+    const counts = controlTypes.filter((t) => short[t.type]).map((t) => ({
+      label: short[t.type]!,
+      n: (item.controlSections ?? []).reduce((sum, s) => sum + s.controls.filter((c) => c.type === t.type).reduce((m, c) => m + (c.count ?? 1), 0), 0),
+    })).filter((c) => c.n > 0).sort((a, b) => priority.indexOf(a.label) - priority.indexOf(b.label));
+    for (const c of counts) if (out.length < 4) out.push({ label: c.label, value: `${c.n}${plus}` });
+    return out;
+  });
+  const supported = $derived(platforms.filter(({ key }) => item.platform_compatibility?.[key] === 'supported').map(({ label }) => label));
+  const sensor = $derived(item.sensor && !/^none/i.test(item.sensor) ? humanize(item.sensor.split(', ')[0]) : null);
+  const hand = $derived(item.handedness.map((h) => h === 'ambi' ? 'Ambidextrous' : `${h === 'right' ? 'Right' : 'Left'} hand`).join(' / '));
+  const meta = $derived([hand, sensor && sensor.length <= 30 ? sensor : '', supported.join(' · ')].filter(Boolean));
   onMount(() => { regionStore.init(); compareStore.init(); });
 </script>
 
 <article class:selected class:compact class:row>
-  <a class="photo" href={detailHref(item)} aria-label={`View ${item.name}`}>{#if photo}<img src={photo} alt={item.name} loading="lazy" />{:else}<span>No photo available</span>{/if}</a>
+  <a class="photo" href={detailHref(item)} aria-label={`View ${item.name}`}>
+    {#if photo}<img src={photo} alt={item.name} loading="lazy" />{:else}<span class="nophoto">No photo available</span>{/if}
+    {#if item.status !== 'current'}<span class={`status ${item.status}`}>{statusLabels[item.status]}</span>{/if}
+    {#if score != null}<span class="score" title={`${item.verdict?.hands_on ? 'Hands-on' : 'Specification-based'} verdict score`}><b>{Number(score.toFixed(1))}</b>/5{item.verdict?.hands_on ? ' · tested' : ''}</span>{/if}
+  </a>
   <div class="identity">
-    <p class="category">{categoryLabels[item.category]}{item.item_type === 'bundle' ? ' · Bundle' : ''}</p>
-    <p class="brand"><BrandMark brand={item.brand} name={item.brandName} size={22} /><span>{item.brandName}</span></p>
+    <p class="brand"><BrandMark brand={item.brand} name={item.brandName} size={20} /><span>{item.brandName}</span><span class="category">{categoryLabels[item.category]}</span></p>
     <h3><a href={detailHref(item)}>{item.name}</a></h3>
-    <p class="hand">{item.handedness.map((hand) => hand === 'ambi' ? 'Ambidextrous' : `${hand === 'right' ? 'Right' : 'Left'} hand`).join(' / ') || 'Flight hardware'}</p>
-    {#if item.platform_compatibility}<p class="hand" title={item.platform_compatibility.notes}>Platforms: {platforms.filter(({key}) => item.platform_compatibility?.[key] === 'supported').map(({label}) => label).join(' · ') || 'Support unconfirmed'}</p>{/if}
+    <p class="meta">{meta.join(' · ')}</p>
   </div>
   <div class="specifications">
-    <dl><div><dt title="Estimated button inputs, including hat directions and switch positions">Est. button inputs</dt><dd>{inputs}</dd></div><div><dt>Axes</dt><dd>{item.totalAxes === 0 && !item.axisCountKnown ? 'Unknown' : item.totalAxes}</dd></div></dl>
-    <p class="features">{item.sensor?.replaceAll('_', ' ') || 'Sensor unspecified'}{#if item.hasMinistick}<span> · Ministick</span>{/if}{#if item.hasBrakeAxis}<span> · Brake axis</span>{/if}</p>
-    {#if !compact}<div class="control-preview" aria-label="Physical control highlights"><span>Hat switches <b>{countLabel('hat')}</b></span><span>Ministicks <b>{countLabel('analog_ministick')}</b></span></div>{/if}
+    {#if highlights.length}<dl>{#each highlights as h}<div title={h.title}><dt>{h.label}</dt><dd>{h.value}</dd></div>{/each}</dl>{:else}<p class="undocumented">Controls not yet documented</p>{/if}
   </div>
   <div class="purchase">
-    <div class="price"><strong>{formatAmount(active)}</strong><span>{regionStore.region} {active.resolvedPrice.price ? active.resolvedPrice.price.incl_vat ? '· incl. VAT' : '· excl. tax' : ''}</span></div>
+    <div class="price"><strong class:none={!active.resolvedPrice.price}>{active.resolvedPrice.price ? formatAmount(active) : `No ${regionStore.region} price listed`}</strong>{#if active.resolvedPrice.price}<span>{active.resolvedPrice.price.incl_vat ? 'incl. VAT' : 'excl. tax'}</span>{/if}</div>
     {#if active.resolvedPrice.isStale}<p class="stale" title={`Last checked ${active.resolvedPrice.price?.verified}`}>Price over 90 days old</p>{/if}
-    <div class="actions"><a href={detailHref(item)} aria-label={`View specs for ${item.name}`}>View specs</a><span title={full ? 'Comparison is full. Remove an item to add another (maximum 4).' : undefined}><button type="button" aria-label={`${selected ? 'Remove' : 'Add'} ${item.name} ${selected ? 'from' : 'to'} comparison`} aria-pressed={selected} disabled={full} onclick={() => selected ? compareStore.removeItem(item.id) : compareStore.addItem(item.id)}>{selected ? 'Comparing' : 'Compare'}</button></span></div>
+    <div class="actions"><a href={detailHref(item)} aria-label={`View details for ${item.name}`}>Details →</a><span title={full ? 'Comparison is full. Remove an item to add another (maximum 4).' : undefined}><button type="button" aria-label={`${selected ? 'Remove' : 'Add'} ${item.name} ${selected ? 'from' : 'to'} comparison`} aria-pressed={selected} disabled={full} onclick={() => selected ? compareStore.removeItem(item.id) : compareStore.addItem(item.id)}>{selected ? '✓ Comparing' : '+ Compare'}</button></span></div>
   </div>
 </article>
 
 <style>
-  article { display: flex; flex-direction: column; min-width: 0; padding: 1.25rem; color: var(--color-ink); font-family: var(--font-sans); background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: 2px; transition: border-color .2s; }
-  article:hover, article.selected { border-color: var(--color-accent); }
-  .photo { display: grid; place-items: center; aspect-ratio: 4 / 3; margin: -1.25rem -1.25rem 1rem; background: var(--color-photo); border-bottom: 1px solid var(--color-rule); overflow: hidden; text-decoration: none; }
-  .photo img { width: 100%; height: 100%; object-fit: contain; } .photo span { color: var(--color-muted); font-size: .8125rem; padding: 1rem; }
-  .category, .hand, dt, .features, .price span, .stale { font-size: .8125rem; line-height: 1.5; }
-  .category { color: var(--color-muted); margin: 0 0 .75rem; }
-  .brand { display: flex; align-items: center; gap: .45rem; margin: 0 0 .5rem; color: var(--color-accent); font-size: .8125rem; font-weight: 600; }
-  h3 { font: 600 1.125rem/1.4 var(--font-sans); letter-spacing: -.015em; margin: 0; overflow-wrap: anywhere; } h3 a { color: inherit; text-decoration: none; } h3 a:hover { color: var(--color-accent); }
-  .hand { color: var(--color-muted); margin: .5rem 0 1rem; }
-  dl { display: grid; grid-template-columns: 1.5fr 1fr; gap: .5rem; margin: 0; border-block: 1px solid var(--color-rule); padding: .85rem 0; } dt { color: var(--color-muted); } dd { font: 600 1.15rem/1.3 var(--font-sans); font-variant-numeric: tabular-nums; margin: .25rem 0 0; }
-  .control-preview { display: grid; gap: .35rem; margin: .6rem 0 1rem; font-size: .8125rem; color: var(--color-muted); } .control-preview > span { display: flex; justify-content: space-between; gap: .5rem; } .control-preview b { font-weight: 500; color: var(--color-ink); text-align: right; }
-  .features { margin: .75rem 0; color: var(--color-muted); text-transform: capitalize; }
-  .purchase { margin-top: auto; } .price { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .4rem; } .price strong { font-size: 1.15rem; font-variant-numeric: tabular-nums; } .price span { color: var(--color-muted); } .stale { color: var(--color-accent); margin: .4rem 0 0; }
-  .actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem; border-top: 1px solid var(--color-rule); margin-top: 1rem; padding-top: 1rem; font-size: .875rem; } .actions a { text-decoration: none; color: var(--color-ink); padding-block: .5rem; } .actions a:hover { color: var(--color-accent); } button { border: 1px solid var(--color-rule); border-radius: 2px; padding: .65rem .7rem; background: transparent; color: var(--color-accent); font: 600 .8125rem var(--font-sans); cursor: pointer; min-height: 44px; } button:hover, .selected button { border-color: var(--color-accent); background: color-mix(in srgb, var(--color-accent) 7%, var(--color-surface)); } button:disabled { opacity: .55; cursor: not-allowed; }
-  .compact { padding: 1rem; } .compact .photo { aspect-ratio: 16 / 9; margin: -1rem -1rem .85rem; } .compact h3 { font-size: 1rem; } .compact .hand { margin-bottom: .65rem; } .compact dl { padding: .6rem 0; } .compact .features { margin-bottom: 1rem; } .compact .actions { margin-top: .75rem; padding-top: .75rem; }
-  .row { display: grid; grid-template-columns: 130px minmax(0, 1.2fr) minmax(0, 1fr) 175px; gap: 1.25rem; align-items: center; }
-  .row .photo { margin: 0; border: 1px solid var(--color-rule); aspect-ratio: 1; } .row .category { margin-bottom: .5rem; } .row .hand { margin-bottom: 0; } .row dl { border-top: 0; padding-top: 0; } .row .control-preview { margin-bottom: 0; } .row .purchase { margin-top: 0; } .row .price { display: grid; } .row .actions { gap: .4rem; }
+  article { display: flex; flex-direction: column; min-width: 0; padding: 1.1rem; color: var(--color-ink); font-family: var(--font-sans); background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: 2px; transition: border-color .2s, box-shadow .2s; }
+  article:hover { border-color: color-mix(in srgb, var(--color-accent) 60%, var(--color-rule)); box-shadow: 0 6px 18px #172e4212; }
+  article.selected { border-color: var(--color-accent); box-shadow: inset 0 3px var(--color-accent); }
+  .photo { position: relative; display: grid; place-items: center; aspect-ratio: 4 / 3; margin: -1.1rem -1.1rem 1rem; background: #fff; border-bottom: 1px solid var(--color-rule); overflow: hidden; text-decoration: none; }
+  .photo img { width: 100%; height: 100%; object-fit: contain; padding: .75rem; transition: transform .3s; } article:hover .photo img { transform: scale(1.03); }
+  .nophoto { color: #586875; font-size: .8125rem; padding: 1rem; }
+  .status, .score { position: absolute; top: .6rem; font-size: .7rem; font-weight: 700; padding: .2rem .5rem; letter-spacing: .02em; }
+  .status { left: .6rem; background: var(--color-navy); color: var(--color-on-navy); } .status.discontinued { background: #7a2a22; }
+  .score { right: .6rem; background: #bf421f; color: #fff; font-weight: 500; } .score b { font-size: .85rem; }
+  .brand { display: flex; align-items: center; gap: .45rem; margin: 0 0 .4rem; color: var(--color-accent); font-size: .8125rem; font-weight: 600; min-width: 0; }
+  .category { margin-left: auto; color: var(--color-muted); font-weight: 500; font-size: .75rem; white-space: nowrap; }
+  h3 { font: 600 1.075rem/1.35 var(--font-sans); letter-spacing: -.01em; margin: 0; overflow-wrap: anywhere; text-wrap: balance; } h3 a { color: inherit; text-decoration: none; } h3 a:hover { color: var(--color-accent); }
+  .meta { color: var(--color-muted); font-size: .8rem; line-height: 1.5; margin: .4rem 0 .9rem; min-height: 1.2em; }
+  dl { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; overflow: hidden; border: 1px solid var(--color-rule); }
+  dl > div { padding: .5rem .5rem .45rem; min-width: 0; margin: 0 -1px -1px 0; border-right: 1px solid var(--color-rule); border-bottom: 1px solid var(--color-rule); }
+  dt { color: var(--color-muted); font-size: .7rem; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  dd { font: 600 1.05rem/1.3 var(--font-sans); font-variant-numeric: tabular-nums; margin: .1rem 0 0; }
+  .undocumented { margin: 0; padding: .7rem .6rem; border: 1px dashed var(--color-rule); color: var(--color-muted); font-size: .8rem; }
+  .purchase { margin-top: auto; padding-top: 1rem; }
+  .price { display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem; } .price strong { font-size: 1.2rem; font-variant-numeric: tabular-nums; } .price strong.none { font-size: .875rem; font-weight: 500; color: var(--color-muted); } .price span { color: var(--color-muted); font-size: .75rem; }
+  .stale { color: var(--color-danger); margin: .3rem 0 0; font-size: .75rem; }
+  .actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem; border-top: 1px solid var(--color-rule); margin-top: .85rem; padding-top: .85rem; font-size: .875rem; }
+  .actions a { text-decoration: none; color: var(--color-ink); font-weight: 500; padding-block: .5rem; } .actions a:hover { color: var(--color-accent); }
+  button { border: 1px solid var(--color-rule); border-radius: 2px; padding: .55rem .8rem; background: transparent; color: var(--color-accent); font: 600 .8125rem var(--font-sans); cursor: pointer; min-height: 44px; }
+  button:hover { border-color: var(--color-accent); } .selected button { border-color: var(--color-accent); background: var(--color-accent); color: var(--color-surface); } button:disabled { opacity: .55; cursor: not-allowed; }
+  .compact { padding: .9rem; } .compact .photo { aspect-ratio: 16 / 10; margin: -.9rem -.9rem .8rem; } .compact h3 { font-size: .975rem; } .compact .meta { margin-bottom: .7rem; } .compact dd { font-size: .95rem; } .compact .actions { margin-top: .65rem; padding-top: .65rem; }
+  .row { display: grid; grid-template-columns: 120px minmax(0, 1.2fr) minmax(0, 1fr) 190px; gap: 1.25rem; align-items: center; padding: 1rem; }
+  .row .photo { margin: 0; border: 1px solid var(--color-rule); aspect-ratio: 1; } .row .photo img { padding: .4rem; }
+  .row .status, .row .score { top: .3rem; font-size: .6rem; padding: .15rem .35rem; } .row .status { left: .3rem; } .row .score { right: .3rem; }
+  .row .meta { margin-bottom: 0; } .row .purchase { padding-top: 0; } .row .actions { margin-top: .6rem; padding-top: .6rem; }
   :is(a, button):focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
-  @media (max-width: 1200px) { .row { grid-template-columns: 110px minmax(0, 1fr) 175px; } .row .specifications { grid-column: 2; } .row .photo { grid-row: 1 / 3; } .row .purchase { grid-column: 3; grid-row: 1 / 3; } }
-  @media (max-width: 600px) { .row { grid-template-columns: 85px minmax(0, 1fr); gap: 1rem; padding: 1rem; } .row .photo { grid-row: 1; } .row .specifications { grid-column: 1 / -1; } .row .purchase { grid-column: 1 / -1; grid-row: auto; } .row .price { display: flex; } .row .control-preview { grid-template-columns: 1fr 1fr; gap: 1rem; } }
-  @media (prefers-reduced-motion: reduce) { article { transition: none; } }
+  @media (max-width: 1200px) { .row { grid-template-columns: 110px minmax(0, 1fr) 190px; } .row .specifications { grid-column: 2; } .row .photo { grid-row: 1 / 3; } .row .purchase { grid-column: 3; grid-row: 1 / 3; } }
+  @media (max-width: 600px) { .row { grid-template-columns: 85px minmax(0, 1fr); gap: 1rem; } .row .photo { grid-row: 1; } .row .specifications { grid-column: 1 / -1; } .row .purchase { grid-column: 1 / -1; grid-row: auto; } }
+  @media (prefers-reduced-motion: reduce) { article, .photo img { transition: none; } article:hover .photo img { transform: none; } }
 </style>

@@ -1,4 +1,5 @@
 import type { Component, ControlItem } from './schema';
+import { humanize } from './labels';
 
 export type ControlSection = Pick<Component, 'name' | 'category' | 'controls' | 'controls_evidence'>;
 export const controlTypes: { type: ControlItem['type']; label: string; icon: string }[] = [
@@ -32,14 +33,14 @@ export function controlFacts(control: ControlItem): { label: string; value: stri
     case 'encoder': case 'scroll_wheel': return [{ label: 'Input', value: 'Digital · bidirectional' }, { label: 'Pressable', value: yesNo(control.push) }, ...(control.push_stages ? [{ label: 'Push stages', value: String(control.push_stages) }] : [])];
     case 'button': return [{ label: 'Input', value: 'Momentary push' }, { label: 'Backlit', value: yesNo(control.backlit) }];
     case 'trigger': return [{ label: control.action === 'bidirectional' || control.action === 'flip' ? 'Inputs per trigger' : 'Stages per trigger', value: control.stages ? String(control.stages) : 'Unknown' }, { label: 'Action', value: control.action ?? (control.flip ? 'flip' : 'Unknown') }];
-    case 'lever': return [{ label: 'Function', value: control.kind.replaceAll('_', ' ') }, { label: 'Input', value: control.analog === true ? 'Analog axis' : control.analog === false ? 'Digital' : 'Unknown' }, { label: 'Extra button', value: yesNo(control.push) }, ...(control.button_contacts ? [{ label: 'Travel contacts per lever', value: String(control.button_contacts) }] : []), ...(control.positions ? [{ label: 'Positions', value: String(control.positions) }] : []), ...(control.momentary !== undefined ? [{ label: 'Momentary', value: yesNo(control.momentary) }] : [])];
+    case 'lever': return [{ label: 'Function', value: humanize(control.kind) }, { label: 'Input', value: control.analog === true ? 'Analog axis' : control.analog === false ? 'Digital' : 'Unknown' }, { label: 'Extra button', value: yesNo(control.push) }, ...(control.button_contacts ? [{ label: 'Travel contacts per lever', value: String(control.button_contacts) }] : []), ...(control.positions ? [{ label: 'Positions', value: String(control.positions) }] : []), ...(control.momentary !== undefined ? [{ label: 'Momentary', value: yesNo(control.momentary) }] : [])];
     case 'slider': return [{ label: 'Input', value: control.analog === false ? 'Digital switch' : control.analog === true ? 'Analog axis' : 'Unknown' }, { label: 'Positions', value: control.positions ? String(control.positions) : control.analog === true ? 'Continuous' : 'Unknown' }, { label: 'Center detent', value: yesNo(control.center_detent) }];
     case 'rotary': return [{ label: 'Input', value: control.mode === 'analog' ? 'Analog axis' : control.mode === 'selector' ? 'Discrete selector' : 'Unknown' }, { label: 'Positions', value: control.positions ? String(control.positions) : control.mode === 'analog' ? 'Continuous' : 'Unknown' }, { label: 'Pressable', value: yesNo(control.push) }];
     case 'toggle': return [{ label: 'Positions', value: control.ways ? String(control.ways) : 'Unknown' }, { label: 'Momentary', value: yesNo(control.momentary) }, { label: 'Pressable', value: yesNo(control.push) }];
     case 'rocker': return [{ label: 'Input', value: control.analog === true ? 'Analog axis' : control.analog === false ? '2 digital directions' : 'Unknown' }, { label: 'Pressable', value: yesNo(control.push) }];
     case 'detent': return [{ label: 'Customizable', value: yesNo(control.customizable) }];
     case 'switch': return [{ label: 'Mechanism', value: 'Unknown' }, { label: 'Positions', value: control.positions ? String(control.positions) : 'Unknown' }, { label: 'Pressable', value: yesNo(control.push) }, { label: 'Momentary', value: yesNo(control.momentary) }];
-    case 'axis': return [{ label: 'Function', value: control.kind.replaceAll('_', ' ') }, { label: 'Input', value: 'Analog axis' }];
+    case 'axis': return [{ label: 'Function', value: humanize(control.kind) }, { label: 'Input', value: 'Analog axis' }];
   }
 }
 

@@ -19,7 +19,7 @@
   let sensors = $state(false);
   let fit = $state('');
   let minimumFit = $state(4);
-  let sort = $state('name');
+  let sort = $state('featured');
   let handedness = $state('');
   let minimumAxes = $state<number | undefined>();
   let minimumInputs = $state<number | undefined>();
@@ -54,7 +54,7 @@
   }));
   function reset() {
     search = ''; category = 'All'; brands = []; minimum = undefined; maximum = undefined;
-    ministick = false; brake = false; sensors = false; fit = ''; minimumFit = 4; sort = 'name';
+    ministick = false; brake = false; sensors = false; fit = ''; minimumFit = 4; sort = 'featured';
     handedness = ''; minimumAxes = undefined; minimumInputs = undefined; itemType = ''; priceAvailability = '';
     platform = '';
   }
@@ -68,9 +68,9 @@
 </script>
 
 <section aria-label="Hardware catalog">
-  <div class="search-bar"><label class="search">Search catalog<input type="search" bind:value={search} placeholder="Search hardware, brands, sensors…" /></label><label>Sort by<select bind:value={sort}><option value="name">Name A–Z</option><option value="price-low">Price: Low–High</option><option value="price-high">Price: High–Low</option><option value="buttons">Estimated button inputs</option><option value="axes">Axes</option><option value="score">Overall Score</option></select></label></div>
+  <div class="search-bar"><label class="search">Search catalog<input type="search" bind:value={search} placeholder="Search hardware, brands, sensors…" /></label><label>Sort by<select bind:value={sort}><option value="featured">Recommended</option><option value="name">Name A–Z</option><option value="price-low">Price: Low–High</option><option value="price-high">Price: High–Low</option><option value="buttons">Estimated button inputs</option><option value="axes">Axes</option><option value="score">Overall Score</option></select></label></div>
   <fieldset class="categories"><legend>Hardware category</legend><div class="pills">{#each Object.keys(categories) as name}<button type="button" class:active={category === name} aria-pressed={category === name} onclick={() => category = name}><HardwareIcon name={categoryIcons[name]} size={30} /><span>{name}</span></button>{/each}</div></fieldset>
-  <div class="filter-toolbar"><button type="button" class="filter-toggle" aria-expanded={filtersOpen} aria-controls="catalog-filters" onclick={() => filtersOpen = !filtersOpen}>{filtersOpen ? 'Hide filters' : 'Show filters'}{activeCount ? ` (${activeCount} active)` : ''}</button><p class="active-count">{activeCount} active {activeCount === 1 ? 'filter' : 'filters'}</p><button type="button" class="reset" onclick={reset}>Reset all</button></div>
+  <div class="filter-toolbar"><button type="button" class="filter-toggle" aria-expanded={filtersOpen} aria-controls="catalog-filters" onclick={() => filtersOpen = !filtersOpen}>{filtersOpen ? 'Hide filters' : 'Show filters'}{activeCount ? ` (${activeCount} active)` : ''}</button><p class="active-count">{activeCount ? `${activeCount} active ${activeCount === 1 ? 'filter' : 'filters'}` : ''}</p>{#if activeCount}<button type="button" class="reset" onclick={reset}>Reset all</button>{/if}</div>
   <div class="workspace"><aside id="catalog-filters" class:filters-open={filtersOpen} aria-label="Catalog filters">
     <div class="filter-heading"><span>Refine the catalog</span><span class="filter-note">Find the right controls for your setup.</span></div>
     <fieldset><legend>Brand <small>· multi-select</small></legend><div class="pills brands">{#each brandOptions as [id, name]}<button type="button" class:active={brands.includes(id)} aria-pressed={brands.includes(id)} onclick={() => brands = brands.includes(id) ? brands.filter((brand) => brand !== id) : [...brands, id]}><BrandMark brand={id} name={name} size={23} />{name}</button>{/each}</div></fieldset>
