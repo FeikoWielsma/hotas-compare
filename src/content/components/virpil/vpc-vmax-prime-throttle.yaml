@@ -169,6 +169,6 @@ verification: verified
 sources:
   - https://virpil-controls.eu/vpc-vmax-prime-throttle.html
 images:
-  - file: /images/virpil/vpc-vmax-prime-throttle.jpg
+  - file: /images/virpil/vpc-vmax-prime-throttle.png
     source: https://virpil-controls.eu/vpc-vmax-prime-throttle.html
     caption: VPC VMAX Prime Throttle

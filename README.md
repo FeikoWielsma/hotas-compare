@@ -1,43 +1,58 @@
-# Astro Starter Kit: Minimal
+# HOTAS Compare
+
+Flight simulation hardware catalog, comparison tool and setup guide at
+[hotas.razortek.nl](https://hotas.razortek.nl).
+
+Built with Astro, Svelte, TypeScript, YAML collections, Keystatic and Pagefind.
+See [the site status report](docs/site-status.md) for remaining work.
+
+## Development
+
+Use Node >=26.12.0 (`.node-version`) and pnpm 10.33.2.
 
 ```sh
-pnpm create astro@latest -- --template minimal
+pnpm install --frozen-lockfile
+pnpm exec astro dev --background
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Manage the server with `pnpm exec astro dev status`, `pnpm exec astro dev logs`
+and `pnpm exec astro dev stop`.
 
-## 🚀 Project Structure
+Product YAML is in `src/content/components/` and `src/content/bundles/`.
+The validation schema is `src/lib/schema.ts`; the editor schema is
+`keystatic.config.ts`. Preserve unknown values and cite exact manufacturer
+sources. Research notes live in `docs/research/`.
 
-Inside of your Astro project, you'll see the following folders and files:
+## Release checks
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+Run sequentially:
+
+```sh
+pnpm check
+pnpm test
+pnpm build
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+The build creates public pages and `/api/catalog.json` in `dist/client`,
+server output in `dist/server`, and the public Pagefind search index.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Deployment
 
-Any static assets, like images, can be placed in the `public/` directory.
+The existing **Cloudflare Pages GitHub integration** builds pushes to `main`
+and publishes the public website. Push validated commits, inspect the commit's
+**Cloudflare Pages** check on GitHub, and verify the custom domain's catalog
+and assets after it succeeds.
 
-## 🧞 Commands
+```sh
+git push origin main
+```
 
-All commands are run from the root of the project, from a terminal:
+`pnpm deploy` runs `wrangler deploy`, targeting the **Worker** in
+`wrangler.json`. This separate deployment path requires Cloudflare
+authentication and is not the currently observed Pages release process.
+Unifying these paths and enabling production Keystatic server routes remain
+open work. A successful static Pages build does not enable the CMS.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+The [original plan](docs/implementation_plan.md) and
+[research handover](docs/handover-hillclimb.md) provide background. Their
+historical counts and hosting assumptions may differ from the current report.
