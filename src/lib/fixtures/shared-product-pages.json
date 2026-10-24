@@ -1,0 +1,219 @@
+[
+  {
+    "url": "https://eu.flyhoneycomb.com/products/foxtrot-takeoff-kit",
+    "ids": [
+      "honeycomb/foxtrot-throttle-box",
+      "honeycomb/foxtrot-takeoff-kit"
+    ],
+    "reason": "Shared system listing documents separately catalogued parts or bundle contents; not duplicate products."
+  },
+  {
+    "url": "https://www.logitechg.com/en-us/shop/p/x52-pro-space-flight-simulator-controller.945-000022",
+    "ids": [
+      "logitech/x52-pro-flight-stick",
+      "logitech/x52-pro-throttle"
+    ],
+    "reason": "Shared system listing documents separately catalogued parts or bundle contents; not duplicate products."
+  },
+  {
+    "url": "https://www.logitechg.com/en-us/shop/p/x56-space-flight-vr-simulator-controller",
+    "ids": [
+      "logitech/x56-rhino-stick",
+      "logitech/x56-rhino-throttle"
+    ],
+    "reason": "Shared system listing documents separately catalogued parts or bundle contents; not duplicate products."
+  },
+  {
+    "url": "https://mfg-sim.com/rudder-acessories/hydraulic-damper-universal-kit-for-v1-3-pedals.html",
+    "ids": [
+      "mfg/crosswind-hydraulic-damper",
+      "mfg/crosswind-v3-combo"
+    ],
+    "reason": "Shared system listing documents separately catalogued parts or bundle contents; not duplicate products."
+  },
+  {
+    "url": "https://mfg-sim.com/rudders/mfg-crosswind-v3-me109-rudder-pedals.html",
+    "ids": [
+      "mfg/crosswind-v3-graphite-pedals",
+      "mfg/crosswind-v3-combo"
+    ],
+    "reason": "Shared system listing documents separately catalogued parts or bundle contents; not duplicate products."
+  },
+  {
+    "url": "https://slawdevice.com/en/rudder-pedals/50-pre-order-rh-rotor-v2-rudder-pedals.html",
+    "ids": [
+      "slaw/rotor-pedals",
+      "slaw/slaw-damper-kit"
+    ],
+    "reason": "Shared system listing documents separately catalogued parts or bundle contents; not duplicate products."
+  },
+  {
+    "url": "https://www.thrustmaster.com/nl-nl/products/sol-r-4-hotas/",
+    "ids": [
+      "thrustmaster/sol-r-stick",
+      "thrustmaster/sol-r-4-hotas"
+    ],
+    "reason": "Shared system listing documents separately catalogued parts or bundle contents; not duplicate products."
+  },
+  {
+    "url": "https://virpil-controls.eu/cdt-aeromax-r-flightstick.html",
+    "ids": [
+      "virpil/cdt-aeromax-l-flightstick",
+      "virpil/cdt-aeromax-lz-flightstick",
+      "virpil/cdt-aeromax-r-flightstick",
+      "virpil/cdt-aeromax-rz-flightstick",
+      "virpil/cdt-aeromax-throttle-lever-module"
+    ],
+    "reason": "Shared system listing documents separately catalogued parts or bundle contents; not duplicate products."
+  },
+  {
+    "url": "https://vkbcontrollers.com/products/gladiator-nxt-evo-omni-throttle",
+    "ids": [
+      "vkb/gladiator-nxt-evo-omni-throttle-l",
+      "vkb/gladiator-nxt-evo-omni-throttle-r",
+      "vkb/gladiator-nxt-evo-hosas"
+    ],
+    "reason": "Shared system listing documents separately catalogued parts or bundle contents; not duplicate products."
+  },
+  {
+    "url": "https://vkbsimcontrollers.com/products/gnx-scg-premium-grip-with-ota-preinstalled-us",
+    "ids": [
+      "vkb/gnx-scg-premium-grip-with-ota-l",
+      "vkb/gnx-scg-premium-grip-with-ota-r"
+    ],
+    "reason": "Shared system listing documents separately catalogued parts or bundle contents; not duplicate products."
+  },
+  {
+    "url": "https://vkbcontrollers.com/products/scg-space-combat-grip",
+    "ids": [
+      "vkb/scg-space-combat-grip-l",
+      "vkb/scg-space-combat-grip-r"
+    ],
+    "reason": "Shared system listing documents separately catalogued parts or bundle contents; not duplicate products."
+  },
+  {
+    "url": "https://vkbsimcontrollers.com/products/gladiator-nxt-evo-space-combat-edition-left-hand-us",
+    "ids": [
+      "vkb/scg-standard-grip-gladiator-l",
+      "vkb/gladiator-nxt-evo-sce-standard-l"
+    ],
+    "reason": "Shared system listing documents separately catalogued parts or bundle contents; not duplicate products."
+  },
+  {
+    "url": "https://vkbsimcontrollers.com/products/gladiator-nxt-evo-space-combat-edition-right-hand-us",
+    "ids": [
+      "vkb/scg-standard-grip-gladiator-r",
+      "vkb/gladiator-nxt-evo-sce-standard-r"
+    ],
+    "reason": "Shared system listing documents separately catalogued parts or bundle contents; not duplicate products."
+  },
+  {
+    "url": "https://vkbsimcontrollers.com/products/scg-add-on-grip-for-gunfighter-iv-copy",
+    "ids": [
+      "vkb/scg-standard-grip-gunfighter-mk-iii-l",
+      "vkb/scg-standard-grip-gunfighter-mk-iii-r"
+    ],
+    "reason": "Shared system listing documents separately catalogued parts or bundle contents; not duplicate products."
+  },
+  {
+    "url": "https://vkbsimcontrollers.com/products/scg-add-on-grip-for-gunfighter-mk-iv-us",
+    "ids": [
+      "vkb/scg-standard-grip-gunfighter-mk-iv-l",
+      "vkb/scg-standard-grip-gunfighter-mk-iv-r"
+    ],
+    "reason": "Shared system listing documents separately catalogued parts or bundle contents; not duplicate products."
+  },
+  {
+    "url": "https://vkbsimcontrollers.com/products/stecs-space-throttle-system-max-us",
+    "ids": [
+      "vkb/stecs-space-throttle-system-max-r",
+      "vkb/stecs-space-throttle-system-max"
+    ],
+    "reason": "Shared system listing documents separately catalogued parts or bundle contents; not duplicate products."
+  },
+  {
+    "url": "https://vkbsimcontrollers.com/products/stecs-space-throttle-system-mini-plus-us",
+    "ids": [
+      "vkb/stecs-space-throttle-system-mini-plus-r",
+      "vkb/stecs-space-throttle-system-mini-plus"
+    ],
+    "reason": "Shared system listing documents separately catalogued parts or bundle contents; not duplicate products."
+  },
+  {
+    "url": "https://vkbsimcontrollers.com/products/stecs-space-throttle-system-mini-us",
+    "ids": [
+      "vkb/stecs-space-throttle-system-mini-r",
+      "vkb/stecs-space-throttle-system-mini",
+      "vkb/stecs-stg-grip-r"
+    ],
+    "reason": "Shared system listing documents separately catalogued parts or bundle contents; not duplicate products."
+  },
+  {
+    "url": "https://vkbsimcontrollers.com/products/stecs-space-throttle-system-standard-us",
+    "ids": [
+      "vkb/stecs-space-throttle-system-standard-r",
+      "vkb/stecs-space-throttle-system-standard",
+      "vkb/stecs-space-throttle-gladiator-hosas"
+    ],
+    "reason": "Shared system listing documents separately catalogued parts or bundle contents; not duplicate products."
+  },
+  {
+    "url": "https://eu.winctrl.com/view/goods-details.html?id=314",
+    "ids": [
+      "winctrl/f16-ex-viper-grip",
+      "winctrl/f18-hornet-grip",
+      "winctrl/super-libra-navyace-joystick"
+    ],
+    "reason": "Shared system listing documents separately catalogued parts or bundle contents; not duplicate products."
+  },
+  {
+    "url": "https://eu.winctrl.com/view/goods-details.html?id=340",
+    "ids": [
+      "winctrl/f16-ex-viper-grip",
+      "winctrl/orion-2-f16-throttle",
+      "winctrl/orion-2-f16-hotas"
+    ],
+    "reason": "Shared system listing documents separately catalogued parts or bundle contents; not duplicate products."
+  },
+  {
+    "url": "https://eu.winctrl.com/view/goods-details.html?id=559",
+    "ids": [
+      "winctrl/ursa-minor-airline-joystick-l",
+      "winctrl/ursa-minor-space-hosas"
+    ],
+    "reason": "Shared system listing documents separately catalogued parts or bundle contents; not duplicate products."
+  },
+  {
+    "url": "https://eu.winctrl.com/view/goods-details.html?id=551",
+    "ids": [
+      "winctrl/ursa-minor-fighter-joystick-r",
+      "winctrl/ursa-minor-space-hosas"
+    ],
+    "reason": "Shared system listing documents separately catalogued parts or bundle contents; not duplicate products."
+  },
+  {
+    "url": "https://vkbcontrollers.com/products/gladiator-nxt-evo-space-combat-edition",
+    "ids": [
+      "vkb/gladiator-nxt-evo-hosas",
+      "vkb/gladiator-nxt-evo-sce-r",
+      "vkb/stecs-standard-gladiator-hotas"
+    ],
+    "reason": "Shared system listing documents separately catalogued parts or bundle contents; not duplicate products."
+  },
+  {
+    "url": "https://eu.winctrl.com/view/goods-details.html?id=375",
+    "ids": [
+      "winctrl/orion-2-f18-hotas",
+      "winctrl/orion-2-navyace-throttle"
+    ],
+    "reason": "Shared system listing documents separately catalogued parts or bundle contents; not duplicate products."
+  },
+  {
+    "url": "https://eu.winctrl.com/view/goods-details.html?id=6485",
+    "ids": [
+      "winctrl/ursa-minor-combat-hotas-ex",
+      "winctrl/ursa-minor-combat-hotas"
+    ],
+    "reason": "Shared system listing documents separately catalogued parts or bundle contents; not duplicate products."
+  }
+]
