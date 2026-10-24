@@ -7,9 +7,13 @@ import { contentFiles, products, readContent, urls } from '../../scripts/content
 const catalog = products();
 const normalize = (value: string) => value.normalize('NFKD').toLowerCase().replace(/[^a-z0-9]/g, '');
 const variant = (name: string) => name.toLowerCase().match(/\b(left|right|standard|premium)\b/g)?.sort().join('/') ?? '';
+const variantFamily = (name: string) => normalize(name.replace(/\b(left|right|standard|premium)\b/gi, ''));
 const productPage = (value: string) => {
   const url = new URL(value);
-  return /\/products\/[^/]+|\/shop\/p\/|goods-details\.html|\/(rudders|rudder-pedals|rudder-acessories)\/|virpil-controls[^/]*\/.+\.html/.test(url.href) && !/\.(pdf|zip)$/i.test(url.pathname) && !/\/products\/flight\.html$/.test(url.pathname);
+  return !/^\/(?:[a-z]{2}(?:-[a-z]{2})?\/?)?$/i.test(url.pathname)
+    && !/\.(pdf|zip)$/i.test(url.pathname)
+    && !/\/(collections|pages|downloads?|static|articles)\//i.test(url.pathname)
+    && !/\/products\/(?:flight\.html)?$/.test(url.pathname);
 };
 const canonical = (value: string) => {
   const url = new URL(value);
@@ -24,7 +28,7 @@ describe('content correctness (offline)', () => {
       for (const b of catalog.slice(i + 1)) {
         const sameName = normalize(a.data.name) === normalize(b.data.name);
         const sameSource = a.data.sources.some(url => productPage(url) && b.data.sources.some(other => canonical(url) === canonical(other)) && !sharedProductPages.some(group => canonical(group.url) === canonical(url) && group.ids.includes(a.id) && group.ids.includes(b.id)));
-        const explicitVariants = variant(a.data.name) !== variant(b.data.name) && (variant(a.data.name) || variant(b.data.name));
+        const explicitVariants = variantFamily(a.data.name) === variantFamily(b.data.name) && variant(a.data.name) !== variant(b.data.name);
         if (sameName || (sameSource && !explicitVariants)) errors.push(`${a.file} / ${b.file}: ${sameName ? 'duplicate name' : 'shared source URL'}`);
       }
     }
