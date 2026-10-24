@@ -79,6 +79,12 @@ prices:
   verified: '2026-10-21'
   source: manual
 
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=527s
+  summary: "Angled space variant that can be locked into a throttle; the entry rung of his dual-stick space ladder."
+  tag: recommended
+  date: '2026-10-24'
 verification: draft
 sources: *id001
 images:

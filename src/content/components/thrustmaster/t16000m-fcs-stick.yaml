@@ -130,10 +130,10 @@ verdict:
     qc_support: 3
 external_reviews:
 - reviewer: mysh
-  url: https://youtube.com/watch?v=sample-t16000m
-  summary: Solid starter stick on main axes, let down by weak twist potentiometer longevity.
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=266s
+  summary: "Hall sensors on the main axes are a plus, but the ball-and-cup gimbal is mediocre and the potentiometer twist is a known weak point."
   tag: mixed
-  date: '2023-10-05'
+  date: '2026-10-24'
 verification: verified
 sources:
 - https://www.thrustmaster.com/en-gb/products/t-16000m-fcs/

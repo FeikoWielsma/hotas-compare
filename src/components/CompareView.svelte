@@ -32,7 +32,7 @@
     ] },
     { title: 'Pricing in active region', rows: [
       { label: 'Amount', value: formatAmount }, { label: 'Currency', value: (i) => i.resolvedPrice.price?.currency ?? 'Unavailable' },
-      { label: 'Tax', value: (i) => i.resolvedPrice.price ? i.resolvedPrice.price.incl_vat ? 'Includes VAT' : 'Excludes tax' : 'Unknown' },
+      { label: 'Tax', value: (i) => i.resolvedPrice.price ? i.resolvedPrice.price.vatEstimated ? 'Includes VAT (estimated)' : i.resolvedPrice.price.incl_vat ? 'Includes VAT' : 'Excludes tax' : 'Unknown' },
       { label: 'Price checked', value: (i) => i.resolvedPrice.price ? `${i.resolvedPrice.price.verified}${i.resolvedPrice.isStale ? ' · over 90 days old' : ''}` : 'No regional price' },
     ] },
     { title: 'Hardware & Mechanics', rows: [

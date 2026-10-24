@@ -86,6 +86,12 @@ prices:
   verified: '2026-10-21'
   source: manual
 
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2540s
+  summary: "Best value base in Europe: excellent pincer gimbal with dampers and good ergonomics; the hats are the weak point."
+  tag: recommended
+  date: '2026-10-24'
 verification: draft
 sources: *id001
 images:

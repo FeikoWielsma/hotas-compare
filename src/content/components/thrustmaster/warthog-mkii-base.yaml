@@ -70,6 +70,12 @@ controls_evidence:
   checked: '2026-10-20'
   notes: This base has two physical axes and no standalone push-button or hat controls; the 6-pin connector
     supports controls on a separately attached grip (up to 128 buttons and 8 axes), which are not counted here.
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1435s
+  summary: "Plastic ball-and-cup gimbal at a premium price; put the grip on an AVA, WarBRD-D or Orion2 base instead."
+  tag: avoid
+  date: '2026-10-24'
 verification: draft
 sources:
 - https://www.thrustmaster.com/nl-nl/products/hotas-warthog-mkii-base/

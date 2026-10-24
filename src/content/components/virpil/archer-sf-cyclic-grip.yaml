@@ -83,7 +83,7 @@ prices:
 - region: UK
   currency: GBP
   amount: 127.96
-  incl_vat: true
+  incl_vat: false
   store: virpil-controls.co.uk
   url: https://virpil-controls.co.uk/archer-sf-cyclic-grip.html
   verified: '2026-10-19'

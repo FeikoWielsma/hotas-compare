@@ -6,6 +6,7 @@
   import { platforms } from '../lib/platforms';
   import { categoryLabels, detailHref, formatAmount, overallScore, productImageSrc, resolveItemRegion } from '../lib/catalog-ui';
   import { humanize, statusLabels } from '../lib/labels';
+  import { vatLabel } from '../lib/derive';
   import { regionStore } from '../lib/stores/region.svelte';
   import { compareStore, MAX_COMPARE_ITEMS } from '../lib/stores/compare.svelte';
   let { item, compact = false, row = false }: { item: CatalogItem; compact?: boolean; row?: boolean } = $props();
@@ -52,7 +53,7 @@
     {#if highlights.length}<dl>{#each highlights as h}<div title={h.title}><dt>{h.label}</dt><dd>{h.value}</dd></div>{/each}</dl>{:else}<p class="undocumented">Controls not yet documented</p>{/if}
   </div>
   <div class="purchase">
-    <div class="price"><strong class:none={!active.resolvedPrice.price}>{active.resolvedPrice.price ? formatAmount(active) : `No ${regionStore.region} price listed`}</strong>{#if active.resolvedPrice.price}<span>{active.resolvedPrice.price.incl_vat ? 'incl. VAT' : 'excl. tax'}</span>{/if}</div>
+    <div class="price"><strong class:none={!active.resolvedPrice.price}>{active.resolvedPrice.price ? formatAmount(active) : `No ${regionStore.region} price listed`}</strong>{#if active.resolvedPrice.price}<span>{vatLabel(active.resolvedPrice.price)}</span>{/if}</div>
     {#if active.resolvedPrice.isStale}<p class="stale" title={`Last checked ${active.resolvedPrice.price?.verified}`}>Price over 90 days old</p>{/if}
     <div class="actions"><a href={detailHref(item)} aria-label={`View details for ${item.name}`}>Details →</a><span title={full ? 'Comparison is full. Remove an item to add another (maximum 4).' : undefined}><button type="button" aria-label={`${selected ? 'Remove' : 'Add'} ${item.name} ${selected ? 'from' : 'to'} comparison`} aria-pressed={selected} disabled={full} onclick={() => selected ? compareStore.removeItem(item.id) : compareStore.addItem(item.id)}>{selected ? '✓ Comparing' : '+ Compare'}</button></span></div>
   </div>

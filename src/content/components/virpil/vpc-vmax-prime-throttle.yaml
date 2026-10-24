@@ -123,7 +123,7 @@ prices:
   - region: UK
     currency: GBP
     amount: 449.95
-    incl_vat: true
+    incl_vat: false
     store: virpil-controls.co.uk
     url: https://virpil-controls.co.uk/vpc-vmax-prime-throttle.html
     verified: '2026-10-21'
@@ -161,10 +161,10 @@ verdict:
     qc_support: 5
 external_reviews:
   - reviewer: mysh
-    url: https://www.youtube.com/watch?v=sample-vmax-prime
-    summary: "The apex predator of flight sim throttles. Everything that was great about the CM3, but with swappable modules and an even better mechanical feel."
+    url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1855s
+    summary: "Precision throttles with split levers, contactless sensors, adjustable detents and an all-metal frame; half of his top high-end combo."
     tag: recommended
-    date: '2025-02-18'
+    date: '2026-10-24'
 verification: verified
 sources:
   - https://virpil-controls.eu/vpc-vmax-prime-throttle.html

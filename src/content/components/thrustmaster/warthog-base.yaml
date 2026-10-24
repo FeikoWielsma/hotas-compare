@@ -69,6 +69,12 @@ prices:
   verified: '2026-10-19'
   source: manual
   url: https://eshop.thrustmaster.com/en_us/hotas-magnetic-base.html
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1435s
+  summary: "Plastic ball-and-cup gimbal at a premium price; put the grip on an AVA, WarBRD-D or Orion2 base instead."
+  tag: avoid
+  date: '2026-10-24'
 verification: draft
 sources:
 - https://www.thrustmaster.com/en-ca/products/hotas-magnetic-base/

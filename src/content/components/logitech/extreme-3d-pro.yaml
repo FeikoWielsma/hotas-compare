@@ -74,6 +74,11 @@ verdict:
     qc_support: 3
 external_reviews:
   - reviewer: mysh
+    url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=176s
+    summary: "Workable first stick, but the old ball-and-cup gimbal and potentiometers drift over time and it appears discontinued; only worth it cheap or used."
+    tag: mixed
+    date: '2026-10-24'
+  - reviewer: mysh
     url: https://www.youtube.com/watch?v=2z54NHzy_Gc
     summary: "Testing the waters budget tier. It's ancient, runs on potentiometers and will develop drift eventually. But it flies, and if you're not sure the hobby sticks, don't spend more than that. Being phased out."
     tag: neutral

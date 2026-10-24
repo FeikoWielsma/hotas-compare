@@ -91,6 +91,12 @@ controls_evidence:
     Feature callout 18 is the rudder rocking button, and the PC map (printed page 23) draws it as Rocker Slider 0.
     The same map draws the hat as a POV cross and the mini-stick as Rx and Ry, without a center-push number or a
     4-way or 8-way label. Buttons 1-16 stay one aggregate. The pedal axes on that map belong to the optional TFRP.
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=266s
+  summary: "Adds rumble, a ministick and a hall-sensor twist, but pitch and roll still use potentiometers; you mostly pay for vibration and branding."
+  tag: mixed
+  date: '2026-10-24'
 verification: draft
 sources:
 - https://www.thrustmaster.com/nl-nl/products/thrustmaster-t-flight-hotas-neo-ace-combat-8-wings-of-theve-edition-xbox-pc/

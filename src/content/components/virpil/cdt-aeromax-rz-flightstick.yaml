@@ -115,7 +115,7 @@ prices:
 - region: UK
   currency: GBP
   amount: 219.95
-  incl_vat: true
+  incl_vat: false
   store: virpil-controls.co.uk
   url: https://virpil-controls.co.uk/cdt-aeromax-rz-flightstick-omnithrottle.html
   verified: '2026-10-19'
@@ -152,6 +152,11 @@ verdict:
     software: 4
     qc_support: 5
 external_reviews:
+  - reviewer: mysh
+    url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1033s
+    summary: "Compact all-metal cam gimbal between the Gladiator and full-size bases, with an excellent throttle module; a near all-in-one stick."
+    tag: recommended
+    date: '2026-10-24'
   - reviewer: mysh
     url: https://www.youtube.com/watch?v=2z54NHzy_Gc
     summary: "RZ version includes twist axis for pilots without rudder pedals. Compact all-metal cam and spring mechanism with dampers."

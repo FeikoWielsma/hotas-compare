@@ -56,7 +56,7 @@ prices:
 - region: UK
   currency: GBP
   amount: 49.95
-  incl_vat: true
+  incl_vat: false
   store: virpil-controls.co.uk
   url: https://virpil-controls.co.uk/vector-gmc-panel.html
   verified: '2026-10-21'

@@ -137,6 +137,12 @@ platform_compatibility:
   sources:
   - https://www.turtlebeach.com/products/velocity-one-flight-stick
   - https://uk.turtlebeach.com/products/velocity-one-flight-stick
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=397s
+  summary: "Feature-packed and now under 100 euros, but the stiff ball-and-cup gimbal is the weak spot and the trackpad is unreliable."
+  tag: mixed
+  date: '2026-10-24'
 verification: draft
 images:
 - file: /images/turtle-beach/velocityone-flightstick.png

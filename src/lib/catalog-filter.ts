@@ -23,6 +23,8 @@ export interface CatalogFilters {
 }
 
 /** Filter a regional catalog projection. Unknown counts cannot meet a positive minimum. */
+const reviewTagWeight: Record<string, number> = { recommended: 30, mixed: 0, neutral: 0, avoid: -40 };
+
 export function filterCatalog(items: CatalogItem[], filters: CatalogFilters = {}): CatalogItem[] {
   const query = (filters.search ?? '').trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
   const meetsMinimum = (count: number, minimum?: number) => minimum == null || minimum <= 0 || (Number.isFinite(count) && count > 0 && count >= minimum);
@@ -51,8 +53,10 @@ export function filterCatalog(items: CatalogItem[], filters: CatalogFilters = {}
     else if (filters.sort === 'axes') result = b.totalAxes - a.totalAxes;
     else if (filters.sort === 'score') result = (overallScore(b) ?? -1) - (overallScore(a) ?? -1);
     else if (filters.sort === 'featured') {
-      // Reviewed, verified, currently sold and documented hardware first; the catalog stays complete.
-      const rank = (item: CatalogItem) => (overallScore(item) ?? 0) * 10 + (item.verification === 'verified' ? 5 : 0)
+      // Known-good hardware first: our own verdict scores plus the latest external review tag
+      // (recommended lifts, avoid sinks below unreviewed items); then verified, current, documented.
+      const rank = (item: CatalogItem) => (overallScore(item) ?? 0) * 10 + (reviewTagWeight[item.reviewTag ?? ''] ?? 0)
+        + (item.verification === 'verified' ? 5 : 0)
         + (item.status === 'current' ? 2 : 0) + (item.images.length ? 1 : 0) + (item.totalLogicalButtons > 0 ? 1 : 0);
       result = rank(b) - rank(a);
     }

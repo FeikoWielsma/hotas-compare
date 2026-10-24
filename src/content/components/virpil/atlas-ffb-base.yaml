@@ -76,7 +76,7 @@ prices:
 - region: UK
   currency: GBP
   amount: 629.95
-  incl_vat: true
+  incl_vat: false
   store: virpil-controls.co.uk
   url: https://virpil-controls.co.uk/atlas-ffb-base.html
   verified: '2026-10-21'
@@ -89,6 +89,12 @@ prices:
   url: https://virpil-controls.us.com/atlas-ffb-base.html
   verified: '2026-10-21'
   source: manual
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1807s
+  summary: "Virpil's force-feedback base; pre-order only, so no verdict yet."
+  tag: neutral
+  date: '2026-10-24'
 verification: draft
 sources:
 - https://virpil-controls.eu/atlas-ffb-base.html

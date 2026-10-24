@@ -77,6 +77,12 @@ prices:
   url: https://eu.winctrl.com/view/goods-details.html?id=5705
   verified: '2026-10-21'
   source: manual
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1617s
+  summary: "Force-feedback bases announced; still pre-order, so no hands-on verdict yet."
+  tag: neutral
+  date: '2026-10-24'
 verification: draft
 sources: *id001
 images:

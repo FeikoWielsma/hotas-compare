@@ -6,6 +6,12 @@ components:
 - moza/ab9-force-feedback-base
 - moza/mh16-flight-grip
 prices: []
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=3139s
+  summary: "Solid FFB base with good out-of-box effects in DCS, IL-2 and MSFS; be aware of the controversy around parts of its FFB code."
+  tag: recommended
+  date: '2026-10-24'
 verification: draft
 sources:
 - https://mozaracing.com/collections/flight-series

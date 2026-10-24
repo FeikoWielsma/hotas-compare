@@ -5,7 +5,7 @@ platform_compatibility:
   pc: supported
   xbox: unknown
   ps5: unknown
-  notes: Shop default SKU 4961 is the Fighter R joystick plus Combat Throttle Metal 1.0 at €229.28. The store list also offers SKU 4981, the same joystick plus Combat Throttle Metal.EX, at €278.67. No exact source establishes Xbox or PS5 support.
+  notes: Shop default SKU 4961 is the Fighter R joystick plus Combat Throttle Metal 1.0 (EU €229.28, UK £246.00, US $238.83). SKU 4981 adds the Metal.EX throttle and is a separate bundle entry. No exact source establishes Xbox or PS5 support.
   sources: &id001
   - https://eu.winctrl.com/view/goods-details.html?id=6485
 status: current
@@ -23,20 +23,26 @@ prices:
   source: manual
 - region: UK
   currency: GBP
-  amount: 298.98
+  amount: 246.0
   incl_vat: true
   store: uk.winctrl.com
-  url: https://uk.winctrl.com/p/6485.html
-  verified: '2026-10-21'
+  url: https://uk.winctrl.com/view/goods-details.html?id=6485
+  verified: '2026-10-24'
   source: manual
 - region: US
   currency: USD
-  amount: 290.27
+  amount: 238.83
   incl_vat: false
-  store: us.winwingsim.com
-  url: https://us.winwingsim.com/p/6485.html
-  verified: '2026-10-21'
+  store: winctrl.com
+  url: https://winctrl.com/view/goods-details.html?id=6485
+  verified: '2026-10-24'
   source: manual
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2730s
+  summary: "Mid-range champion: pincer stick plus a metal-internal throttle with split levers, idle cutoff and afterburner detents. Bolt the throttle down; the EX module adds useful inputs."
+  tag: recommended
+  date: '2026-10-24'
 verification: draft
 sources: *id001
 images:

@@ -73,6 +73,12 @@ prices:
   verified: '2026-10-19'
   source: manual
   url: https://eshop.thrustmaster.com/en_us/ava-base.html
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1667s
+  summary: "Quality dual-cam metal base with useful deflection masks, but competitors offer better build and dampers for the same money or less."
+  tag: mixed
+  date: '2026-10-24'
 verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/ava-base/

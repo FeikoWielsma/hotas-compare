@@ -185,6 +185,12 @@ verdict:
     value: 4
     software: 4
     qc_support: 4
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2867s
+  summary: "Gladiator plus Omni-Throttle is his ultra-flexible combo, ideal for space sims and the top option for left-handers."
+  tag: recommended
+  date: '2026-10-24'
 verification: draft
 sources:
 - https://vkbcontrollers.com/products/gladiator-nxt-evo-omni-throttle

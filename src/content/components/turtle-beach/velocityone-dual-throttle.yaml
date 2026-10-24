@@ -147,6 +147,12 @@ platform_compatibility:
     II through its pass-through connection. Not compatible with Xbox Cloud streaming. PS5 is not mentioned.
   sources:
   - https://www.turtlebeach.com/products/velocity-one-dual-throttle?Title=Default+Title
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1125s
+  summary: "Hall sensors and a split lever, but the plastic click detents feel flimsy; as a set with the Flightstick II it is overpriced."
+  tag: mixed
+  date: '2026-10-24'
 verification: draft
 images:
 - file: /images/turtle-beach/velocityone-dual-throttle.png

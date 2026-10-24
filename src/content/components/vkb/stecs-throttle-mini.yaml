@@ -173,6 +173,12 @@ verdict:
     value: 4
     software: 4
     qc_support: 4
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2177s
+  summary: "High-quality modular throttles that can grow from Mini to Max; paired with the Gunfighter in his high-end pick."
+  tag: recommended
+  date: '2026-10-24'
 verification: draft
 sources:
 - https://vkbcontrollers.com/products/stecs-throttle-mini

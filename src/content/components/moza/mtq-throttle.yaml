@@ -60,6 +60,12 @@ controls_evidence:
     knobs, and 17 toggle switch inputs (EU spec table, Physical Toggle Switches 17). Itemized discrete total: 31 (10 + 3 + 17 + 1 gear lever).
     The EU product copy says 23 physical controls and breaks it down as 10 buttons, 3 rotaries, 3 toggles and 1 gear lever (17), so
     the 23 figure does not reconcile with its own breakdown or with the 17-toggle spec. Left unreconciled; the 31 total is the itemized count.
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2043s
+  summary: "Good modular ideas, but a hollow combat grip and potentiometer main axes at its price."
+  tag: mixed
+  date: '2026-10-24'
 verification: draft
 sources:
 - https://mozaracing.com

@@ -69,6 +69,12 @@ use_case_fit:
   airliner: 1
   space_hotas: 5
   space_hosas: 5
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2580s
+  summary: "Best value base in the US and his best long-term base everywhere: smooth pincer gimbal, great build and service, and an upgrade path to the Gunfighter."
+  tag: recommended
+  date: '2026-10-24'
 verification: draft
 sources:
 - https://vkbsimcontrollers.com/products/gladiator-nxt-evo-space-combat-edition-right-hand-us

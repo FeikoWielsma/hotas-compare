@@ -102,6 +102,12 @@ prices:
   store: amazon.com
   verified: '2026-10-01'
   source: manual
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=895s
+  summary: "Hybrid single-spring gimbal and low-end potentiometers wear out; costs more than the T.16000M FCS HOTAS without being better."
+  tag: avoid
+  date: '2026-10-24'
 verification: draft
 sources:
 - https://www.logitechg.com/en-us/products/flight.html

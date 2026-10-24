@@ -63,10 +63,10 @@ verdict:
     qc_support: 3
 external_reviews:
 - reviewer: mysh
-  url: https://youtube.com/watch?v=sample-t16000m-hotas
-  summary: The starter kit that launched thousands of sim pilots. Great first step into HOTAS.
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2442s
+  summary: "Cheapest full HOTAS he still calls viable, mainly for the versatile throttle (grease and mod it); plan to replace the stick later."
   tag: recommended
-  date: '2023-11-20'
+  date: '2026-10-24'
 verification: verified
 sources:
 - https://www.thrustmaster.com/en-us/products/t-16000m-fcs-hotas/

@@ -120,6 +120,12 @@ prices:
   verified: '2026-10-21'
   source: manual
 
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2395s
+  summary: "His budget pick under 100 euros: a glass-fibre pincer gimbal copied from the Gladiator, far better than anything else in its range."
+  tag: recommended
+  date: '2026-10-24'
 verification: draft
 sources:
 - https://eu.winctrl.com/view/goods-details.html?id=559

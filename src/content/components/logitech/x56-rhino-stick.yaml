@@ -104,6 +104,12 @@ prices:
   store: amazon.com
   verified: '2026-10-01'
   source: manual
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=984s
+  summary: "Lots of controls and RGB, but awkward ergonomics, creaks, ghost inputs and drifting ministicks."
+  tag: avoid
+  date: '2026-10-24'
 verification: draft
 sources:
 - https://www.logitechg.com/en-us/products/flight.html

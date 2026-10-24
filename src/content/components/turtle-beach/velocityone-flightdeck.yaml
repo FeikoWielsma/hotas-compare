@@ -233,6 +233,12 @@ platform_compatibility:
   notes: Official page lists Windows 10/11 PC compatibility only; Xbox and PS5 are not mentioned.
   sources:
   - https://www.turtlebeach.com/products/velocity-one-flight-deck
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1346s
+  summary: "Ball-and-cup gimbal at this price, shaky build and no physical throttle detents; a hard pass."
+  tag: avoid
+  date: '2026-10-24'
 verification: draft
 images:
 - file: /images/turtle-beach/velocityone-flightdeck.png

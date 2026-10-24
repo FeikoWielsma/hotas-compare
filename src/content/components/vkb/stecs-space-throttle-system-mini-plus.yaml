@@ -140,6 +140,12 @@ prices:
   url: https://flightsimcontrols.co.uk/product/stecs-space-throttle-system-mini-plus-left-hand/
   verified: '2026-10-21'
   source: manual
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2177s
+  summary: "High-quality modular throttles that can grow from Mini to Max; paired with the Gunfighter in his high-end pick."
+  tag: recommended
+  date: '2026-10-24'
 verification: draft
 sources:
 - https://vkbsimcontrollers.com/products/stecs-space-throttle-system-mini-plus-us

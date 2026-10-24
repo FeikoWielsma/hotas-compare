@@ -108,6 +108,12 @@ prices:
   verified: '2026-10-19'
   source: manual
   url: https://eshop.thrustmaster.com/en_us/tca-sidestick-airbus-edition.html
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=266s
+  summary: "Hall sensors on the main axes are a plus, but the ball-and-cup gimbal is mediocre and the potentiometer twist is a known weak point."
+  tag: mixed
+  date: '2026-10-24'
 verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/tca-sidestick-airbus-edition/

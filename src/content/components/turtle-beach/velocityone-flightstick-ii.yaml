@@ -147,6 +147,12 @@ platform_compatibility:
     USB-A connection; Xbox Cloud is not supported. PS5 is not mentioned.
   sources:
   - https://www.turtlebeach.com/products/velocity-one-flight-stick-ii?Platform=Xbox
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=704s
+  summary: "Big improvements (hall sensors, weight, encoder, display), but keeps a stiff ball-and-cup gimbal; Ursa Minor or Gladiator are better at its price."
+  tag: mixed
+  date: '2026-10-24'
 verification: draft
 images:
 - file: /images/turtle-beach/velocityone-flightstick-ii.png

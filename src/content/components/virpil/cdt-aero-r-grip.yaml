@@ -117,7 +117,7 @@ prices:
 - region: UK
   currency: GBP
   amount: 129.95
-  incl_vat: true
+  incl_vat: false
   store: virpil-controls.co.uk
   url: https://virpil-controls.co.uk/cdt-aero-r-grip.html
   verified: '2026-10-19'

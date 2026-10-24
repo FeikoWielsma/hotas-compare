@@ -1,10 +1,12 @@
 ---
 import type { Price } from '../../lib/schema';
+import { displayPrice } from '../../lib/derive';
 interface Props { prices: Price[]; notes?: Record<string, string> }
 const { prices, notes = {} } = Astro.props;
 const money = (p: Price) => new Intl.NumberFormat('en', { style: 'currency', currency: p.currency }).format(p.amount);
 const rows = (['EU', 'UK', 'US'] as const).map(region => {
-  const p = prices.find(x => x.region === region);
+  const listed = prices.find(x => x.region === region);
+  const p = listed ? displayPrice(listed) : undefined;
   const age = p ? Math.floor((Date.now() - new Date(p.verified).getTime()) / 86400000) : 0;
   return { region, p, age };
 });
@@ -13,7 +15,7 @@ const rows = (['EU', 'UK', 'US'] as const).map(region => {
   <p class="kicker">Where to buy</p><h2 id="pricing-title">Regional pricing</h2>
   <div class="regions">{rows.map(({ region, p, age }) => <article class:list={{ empty: !p }}>
     <header><b>{region}</b>{p && <span class:list={['age', { stale: age > 90 }]}>{age > 90 ? `Checked ${age} days ago` : `Checked ${p.verified}`}</span>}</header>
-    {p ? <><p class="amount">{money(p)}</p><p class="vat">{p.incl_vat ? 'Includes VAT' : 'Excludes sales tax'}</p>{p.url ? <a href={p.url} rel="external noopener">{p.store} ↗</a> : <p class="vat">{p.store}</p>}</> : <p class="vat">No price listed for this region.</p>}
+    {p ? <><p class="amount">{money(p)}</p><p class="vat">{p.vatEstimated ? `Includes VAT (estimated; store lists ${money({ ...p, amount: p.listedAmount })} ex VAT)` : p.incl_vat ? 'Includes VAT' : 'Excludes sales tax'}</p>{p.url ? <a href={p.url} rel="external noopener">{p.store} ↗</a> : <p class="vat">{p.store}</p>}</> : <p class="vat">No price listed for this region.</p>}
     {notes[region] && <p class="note">{notes[region]}</p>}
   </article>)}</div>
   <p class="foot">Prices are recorded by hand from the listed store and exclude shipping and import charges unless the note says otherwise.</p>

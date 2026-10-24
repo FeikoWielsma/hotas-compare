@@ -67,4 +67,15 @@ describe('catalog filters', () => {
     expect(filterCatalog([ambi], { search: 'old brand', handedness: 'ambi', fit: 'ga_airliner', minimumFit: 4 })).toEqual([ambi]);
     expect(filterCatalog([ambi], { handedness: 'right' })).toEqual([]);
   });
+
+  it('ranks Recommended by review consensus: recommended first, avoid below unreviewed, own scores still count', () => {
+    const scores = (n: number) => ({ build: n, feel: n, value: n, software: n, qc_support: n });
+    const recommended = item({ id: 'rec', name: 'Rec', reviewTag: 'recommended' });
+    const unreviewed = item({ id: 'none', name: 'None' });
+    const avoided = item({ id: 'avoid', name: 'Avoid', reviewTag: 'avoid' });
+    const ownedTop = item({ id: 'owned', name: 'Owned', scores: scores(5) });
+    const both = item({ id: 'both', name: 'Both', reviewTag: 'recommended', scores: scores(5) });
+    const order = filterCatalog([avoided, unreviewed, recommended, ownedTop, both], { sort: 'featured' }).map((i) => i.id);
+    expect(order).toEqual(['both', 'owned', 'rec', 'none', 'avoid']);
+  });
 });

@@ -140,6 +140,12 @@ prices:
   url: https://us.winwingsim.com/view/goods-details.html?id=1965
   verified: '2026-10-21'
   source: manual
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2730s
+  summary: "Mid-range champion: pincer stick plus a metal-internal throttle with split levers, idle cutoff and afterburner detents. Bolt the throttle down; the EX module adds useful inputs."
+  tag: recommended
+  date: '2026-10-24'
 verification: draft
 sources: *id001
 images:

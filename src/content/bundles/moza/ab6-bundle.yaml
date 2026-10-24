@@ -30,6 +30,12 @@ prices:
   url: https://us.mozaracing.com/products/ab6-bundle
   verified: '2026-10-20'
   source: manual
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=3183s
+  summary: "Half the torque of the AB9 and still some cogging; no longer his affordable FFB entry pick."
+  tag: mixed
+  date: '2026-10-24'
 verification: draft
 sources:
 - https://mozaracing.com/products/ab6-bundle

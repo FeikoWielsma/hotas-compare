@@ -38,6 +38,12 @@ prices:
   url: https://uk.winctrl.com/p/342.html
   verified: '2026-10-21'
   source: manual
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=3046s
+  summary: "Best value high-end entry: all-metal dual-cam gimbal and a light cast-aluminium ViperAce grip. No twist, so budget for pedals."
+  tag: recommended
+  date: '2026-10-24'
 verification: draft
 sources: *id001
 images:

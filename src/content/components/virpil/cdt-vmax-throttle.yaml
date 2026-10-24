@@ -93,7 +93,7 @@ prices:
 - region: UK
   currency: GBP
   amount: 239.95
-  incl_vat: true
+  incl_vat: false
   store: virpil-controls.co.uk
   url: https://virpil-controls.co.uk/vpc-cdt-vmax-throttle.html
   verified: '2026-10-21'

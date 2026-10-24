@@ -35,6 +35,12 @@ prices:
   url: https://eshop.thrustmaster.com/en_us/sol-r-6-throttle.html
   verified: '2026-10-20'
   source: manual
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=838s
+  summary: "Sliding throttle that is good value once greased, with a rudder rocker and ministick. The Sol-R 6 adds USB-C and an adjustable detent."
+  tag: recommended
+  date: '2026-10-24'
 verification: draft
 sources:
 - https://www.thrustmaster.com/nl-nl/products/sol-r-6-throttle/

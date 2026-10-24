@@ -1,6 +1,6 @@
 import { deriveComponentStats, deriveControlsSummary, resolvePrice } from './derive';
 import type { ControlsSummary, ResolvedPrice } from './derive';
-import type { Component, Bundle, Region, UseCaseFit, Verdict } from './schema';
+import type { Component, Bundle, Region, UseCaseFit, Verdict, ReviewTag } from './schema';
 import type { ControlSection } from './control-inventory';
 
 export interface CatalogItem {
@@ -31,6 +31,8 @@ export interface CatalogItem {
   use_case_fit: UseCaseFit;
   verdict: Verdict | null;
   scores: Verdict['scores'] | null;
+  /** Tag of the most recent external review (e.g. Mysh's latest roundup), if any. */
+  reviewTag?: ReviewTag | null;
   images: Component['images'];
   componentIds: string[];
   formerBrandNames: string[];
@@ -93,6 +95,7 @@ export async function loadCatalog(region: Region = 'EU', now = new Date()) {
       controlsSummary, sensor: hardwareValues('sensor'), gimbal: hardwareValues('gimbal'),
       controlSections: members.map(({ name, category, controls, controls_evidence }) => ({ name, category, controls, ...(controls_evidence ? { controls_evidence } : {}) })),
       use_case_fit, verdict: data.verdict ?? null, scores: data.verdict?.scores ?? null,
+      reviewTag: [...data.external_reviews].sort((a, b) => b.date.localeCompare(a.date))[0]?.tag ?? null,
       images: data.images, componentIds: 'components' in data ? data.components : [],
       formerBrandNames: brand.former_names,
       handedness: [...new Set(members.map((member) => member.handedness).filter((hand) => hand !== 'n/a'))],
