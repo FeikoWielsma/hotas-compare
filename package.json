@@ -14,6 +14,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "test": "vitest run",
+    "audit:bundles": "node scripts/audit-bundles.ts",
+    "audit:links": "node scripts/audit-links.ts",
     "check": "astro check"
   },
   "dependencies": {
