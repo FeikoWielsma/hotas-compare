@@ -35,6 +35,7 @@ controls_evidence:
   notes: SKU VPC-115-002. Pre-order base, shipping estimate late Q4 2026. Same cord-drive gimbal description as ATLAS, with the Pro motor rating of 45 nm, stated as over 22 kg at the stick. Bare base has two gimbal axes and the included remote emergency stop. No grip is installed. Axis range is stated as 18 degrees without a total-versus-per-side definition, so throw_deg is unset. Cart price is a 50 percent deposit of the stated €749.95 pre-order price.
 hardware:
   gimbal: cord_drive
+  gimbal_type: force_feedback
   sensor: contactless_magnetic
   axes:
   - name: X

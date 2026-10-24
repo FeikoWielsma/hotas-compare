@@ -43,6 +43,7 @@ controls:
   label: Official action-button total; individual physical mechanisms/layout not mapped
   source: https://www.thrustmaster.com/en-ie/products/t-flight-hotas-neo-ace-combat-8-wings-of-theve-edition-ps/
 hardware:
+  gimbal_type: ball_and_cup
   axis_count: 7
   sensor: 16-bit axes; H.E.A.R.T. Hall effect magnetic technology on Z axis
   axes:

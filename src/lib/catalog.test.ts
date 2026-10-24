@@ -9,6 +9,7 @@ beforeEach(() => {
   collections.values = {
     brands: [{ id: 'test', data: BrandSchema.parse({ name: 'Test Flight' }) }],
     mount_standards: [],
+    reviewers: [],
     components: [
       { id: 'test/base', data: ComponentSchema.parse({ brand: 'test', name: 'Base', category: 'base', hardware: { axes: [{ name: 'x' }, { name: 'y' }], gimbal: 'cam', sensor: 'hall' } }) },
       { id: 'test/grip', data: ComponentSchema.parse({ brand: 'test', name: 'Grip', category: 'grip', controls: [{ type: 'analog_ministick' }, { type: 'lever', kind: 'brake', analog: true }] }) },

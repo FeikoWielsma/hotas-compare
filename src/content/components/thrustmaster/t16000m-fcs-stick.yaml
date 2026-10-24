@@ -42,6 +42,7 @@ controls_evidence:
     plus three grip buttons and trigger. Hat push is not stated and remains unknown.
 hardware:
   gimbal: ball_joint
+  gimbal_type: ball_and_cup
   sensor: hall
   axes:
   - name: X

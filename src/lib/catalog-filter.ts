@@ -20,6 +20,7 @@ export interface CatalogFilters {
   priceAvailability?: string;
   sort?: string;
   platform?: Platform | '';
+  gimbalTypes?: string[];
 }
 
 /** Filter a regional catalog projection. Unknown counts cannot meet a positive minimum. */
@@ -34,6 +35,7 @@ export function filterCatalog(items: CatalogItem[], filters: CatalogFilters = {}
     const fit = filters.fit === 'ga_airliner' ? Math.max(item.use_case_fit.ga, item.use_case_fit.airliner) : item.use_case_fit[filters.fit as keyof CatalogItem['use_case_fit']] ?? 0;
     return query.every((word) => text.includes(word))
       && (!filters.categories?.length || filters.categories.includes(item.category))
+      && (!filters.gimbalTypes?.length || (item.gimbalType != null && filters.gimbalTypes.includes(item.gimbalType)))
       && (!filters.brands?.length || filters.brands.includes(item.brand))
       && (filters.minimum == null || (amount != null && amount >= filters.minimum))
       && (filters.maximum == null || (amount != null && amount <= filters.maximum))
@@ -55,11 +57,27 @@ export function filterCatalog(items: CatalogItem[], filters: CatalogFilters = {}
     else if (filters.sort === 'featured') {
       // Known-good hardware first: our own verdict scores plus the latest external review tag
       // (recommended lifts, avoid sinks below unreviewed items); then verified, current, documented.
-      const rank = (item: CatalogItem) => (overallScore(item) ?? 0) * 10 + (reviewTagWeight[item.reviewTag ?? ''] ?? 0)
-        + (item.verification === 'verified' ? 5 : 0)
-        + (item.status === 'current' ? 2 : 0) + (item.images.length ? 1 : 0) + (item.totalLogicalButtons > 0 ? 1 : 0);
-      result = rank(b) - rank(a);
+      result = featuredRank(b) - featuredRank(a);
     }
     return result || a.name.localeCompare(b.name);
   });
+}
+
+/** Recommended-sort weight: our verdict scores, the latest review tag, then data quality. */
+export function featuredRank(item: CatalogItem) {
+  return (overallScore(item) ?? 0) * 10 + (reviewTagWeight[item.reviewTag ?? ''] ?? 0)
+    + (item.verification === 'verified' ? 5 : 0)
+    + (item.status === 'current' ? 2 : 0) + (item.images.length ? 1 : 0) + (item.totalLogicalButtons > 0 ? 1 : 0);
+}
+
+/** Human-readable reasons behind featuredRank, strongest first. */
+export function rankReasons(item: CatalogItem): string[] {
+  const out: string[] = [];
+  const review = item.latestReview;
+  if (review) out.push(`${review.reviewerName}: ${review.tag}${review.tag === 'avoid' ? ' (ranked lower)' : ''}`);
+  const score = overallScore(item);
+  if (score != null) out.push(`Our verdict ${Number(score.toFixed(1))}/5`);
+  if (item.verification === 'verified') out.push('Specs verified');
+  if (item.status === 'current') out.push('Currently sold');
+  return out;
 }

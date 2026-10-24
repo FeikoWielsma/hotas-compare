@@ -92,6 +92,7 @@ controls_evidence:
     sensor type, click force, backlight and trigger stages are not published. End-detent contacts are
     attached to their lever records and excluded from standalone push-button counts.
 hardware:
+  gimbal_type: ball_and_cup
   force_adjustable: true
   sensor: contactless_magnetic
   axes:

@@ -37,6 +37,7 @@ controls_evidence:
     tilting rudder alternative; hat directions and push behavior remain unconfirmed. Coverage remains partial.
 hardware:
   gimbal: ball_joint
+  gimbal_type: ball_and_cup
   sensor: potentiometer
   axes:
   - name: X

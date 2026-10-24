@@ -26,6 +26,7 @@ controls_evidence:
 
 hardware:
   gimbal: cam
+  gimbal_type: cam_and_spring
   sensor: hall
   axes:
     - name: X

@@ -31,6 +31,7 @@ controls_evidence:
 hardware:
   axis_count: 2
   gimbal: force_feedback
+  gimbal_type: force_feedback
   sensor: magnetic_encoder
   axes:
   - name: X

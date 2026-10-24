@@ -59,6 +59,7 @@ controls_evidence:
     totals are not treated as physical button counts.
 hardware:
   gimbal: ball_joint
+  gimbal_type: other
   axes:
   - name: X
     sensor: contactless

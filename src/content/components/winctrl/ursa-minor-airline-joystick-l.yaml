@@ -59,6 +59,7 @@ controls_evidence:
     action. Trigger is shown without a documented stage count. Diagram key indices are not treated as physical counts.
 hardware:
   gimbal: pincer
+  gimbal_type: pincer
   sensor: hall
   axes:
   - name: X

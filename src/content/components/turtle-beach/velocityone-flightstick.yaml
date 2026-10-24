@@ -60,6 +60,7 @@ controls_evidence:
     as a count of standalone physical buttons.
 hardware:
   gimbal: null
+  gimbal_type: ball_and_cup
   sensor: contactless_magnetic
   axes:
   - name: Pitch

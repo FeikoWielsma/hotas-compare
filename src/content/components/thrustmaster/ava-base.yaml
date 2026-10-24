@@ -21,6 +21,7 @@ controls_evidence:
     button, which is not a flight input.
 hardware:
   gimbal: modular_cam_gimbal
+  gimbal_type: cam_and_spring
   sensor: hall
   axes: []
   force_adjustable: false

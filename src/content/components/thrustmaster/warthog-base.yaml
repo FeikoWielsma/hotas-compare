@@ -16,6 +16,7 @@ controls_evidence:
     axes are recorded under hardware.
 hardware:
   gimbal: ball_joint
+  gimbal_type: ball_and_cup
   sensor: hall
   axes:
   - name: X

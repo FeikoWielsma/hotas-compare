@@ -20,6 +20,7 @@ controls_evidence:
   notes: 'Bare flightstick gimbal/base; manufacturer describes two sensor axes and mechanical adjustment, with no installed standalone buttons, hats, switches, or controls panel.'
 hardware:
   gimbal: dual_cam
+  gimbal_type: cam_and_spring
   sensor: contactless_magnetic
   axes:
   - name: X

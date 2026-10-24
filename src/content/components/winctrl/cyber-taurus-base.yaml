@@ -32,6 +32,7 @@ controls_evidence:
     code and is not a second chassis.
 hardware:
   gimbal: force_feedback
+  gimbal_type: force_feedback
   axes:
   - name: X
   - name: Y

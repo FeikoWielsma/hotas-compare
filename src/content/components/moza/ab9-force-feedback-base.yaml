@@ -17,6 +17,7 @@ controls_evidence:
 hardware:
   axis_count: 2
   gimbal: force_feedback
+  gimbal_type: force_feedback
   sensor: encoder
   axes:
   - name: Pitch

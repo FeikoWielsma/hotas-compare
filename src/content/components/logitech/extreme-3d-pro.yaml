@@ -23,6 +23,7 @@ controls_evidence:
   notes: >-
     Official Logitech G product page states 12 programmable buttons and an 8-way hat switch. Individual button locations, trigger stages, and throttle details are not stated, so coverage stays partial.
 hardware:
+  gimbal_type: ball_and_cup
   axes:
     - name: X
     - name: Y

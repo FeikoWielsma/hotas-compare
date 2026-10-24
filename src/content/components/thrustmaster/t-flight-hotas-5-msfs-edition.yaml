@@ -55,6 +55,7 @@ controls:
   label: Lockable twist rudder (RZ axis)
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TFH5/T.Flight_Hotas_5_user_manual.pdf
 hardware:
+  gimbal_type: ball_and_cup
   axis_count: 5
   axes:
   - name: X

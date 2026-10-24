@@ -33,6 +33,7 @@ controls_evidence:
     are the same chassis.'
 hardware:
   gimbal: force_feedback
+  gimbal_type: force_feedback
   axes:
   - name: X
   - name: Y

@@ -53,6 +53,7 @@ controls_evidence:
     handedness selector is a two-position switch.
 hardware:
   gimbal: ball_joint
+  gimbal_type: ball_and_cup
   sensor: hall
   axes:
   - name: X

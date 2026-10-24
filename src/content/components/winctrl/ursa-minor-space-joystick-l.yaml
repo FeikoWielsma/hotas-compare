@@ -52,6 +52,7 @@ controls_evidence:
   notes: Exact left-hand manual diagram inspected. HAT is four-way; the diagram does not document a center press.
     Trigger has separate 1st/2nd stages shown. Diagram key indices are not treated as physical counts.
 hardware:
+  gimbal_type: pincer
   throw_deg: 30
   axes:
   - name: X

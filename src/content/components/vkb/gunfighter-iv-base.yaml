@@ -23,6 +23,7 @@ controls_evidence:
   notes: "Base-only package explicitly excludes the grip; manufacturer lists only gimbal, cams, springs, controller, cables and tabletop plate, with no installed buttons, hats, switches or wheels on the bare mechanical base. Thus physical standalone base controls: none. Grip controls are separate and must not be attributed to this base."
 hardware:
   gimbal: dual_cam
+  gimbal_type: cam_and_spring
   sensor: contactless_magnetic
   axes:
   - name: X

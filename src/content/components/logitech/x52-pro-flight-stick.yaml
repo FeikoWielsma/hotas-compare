@@ -59,6 +59,7 @@ controls_evidence:
     images/mapping are ambiguous.
 hardware:
   gimbal: ball_joint
+  gimbal_type: other
   axes:
   - name: X
     sensor: contactless

@@ -28,6 +28,7 @@ hardware:
     sensor: H.E.A.R.T. Hall effect
     resolution_bits: 16
   gimbal: Re-engineered metal gimbal with anti-stiction ball bearings
+  gimbal_type: ball_and_cup
 connectivity:
   usb: Detachable USB-C cable
   standalone_usb: true

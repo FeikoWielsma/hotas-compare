@@ -183,6 +183,7 @@ controls_evidence:
     return behavior and undocumented click/backlight properties remain unknown. Combined mass is stick
     1460 g plus throttle 1510 g; no single overall assembled dimension is published.
 hardware:
+  gimbal_type: ball_and_cup
   sensor: contactless_magnetic
   axes: []
   axis_count: 15

@@ -7,9 +7,14 @@
   import { categoryLabels, detailHref, formatAmount, overallScore, productImageSrc, resolveItemRegion } from '../lib/catalog-ui';
   import { humanize, statusLabels } from '../lib/labels';
   import { vatLabel } from '../lib/derive';
+  import Explain from './Explain.svelte';
+  import { gimbalGlossaryKey, gimbalLabels } from '../lib/glossary';
+  import { rankReasons } from '../lib/catalog-filter';
   import { regionStore } from '../lib/stores/region.svelte';
   import { compareStore, MAX_COMPARE_ITEMS } from '../lib/stores/compare.svelte';
-  let { item, compact = false, row = false }: { item: CatalogItem; compact?: boolean; row?: boolean } = $props();
+  let { item, compact = false, row = false, rankInfo = false }: { item: CatalogItem; compact?: boolean; row?: boolean; rankInfo?: boolean } = $props();
+  const review = $derived(item.latestReview);
+  const tagLabels: Record<string, string> = { recommended: 'Recommended', mixed: 'Mixed', avoid: 'Avoid', neutral: 'Not yet rated' };
   const active = $derived(resolveItemRegion(item, regionStore.region));
   const selected = $derived(compareStore.hasItem(item.id));
   const full = $derived(!selected && compareStore.items.length >= MAX_COMPARE_ITEMS);
@@ -48,6 +53,12 @@
     <p class="brand"><BrandMark brand={item.brand} name={item.brandName} size={20} /><span>{item.brandName}</span><span class="category">{categoryLabels[item.category]}</span></p>
     <h3><a href={detailHref(item)}>{item.name}</a></h3>
     <p class="meta">{meta.join(' · ')}</p>
+    {#if review || item.gimbalType || item.needsPedals}<div class="badges">
+      {#if review}<a class={`review ${review.tag}`} href={review.url} rel="external noopener" title={review.summary}>{review.reviewerName}: {tagLabels[review.tag]}</a>{/if}
+      {#if item.gimbalType}<span class={`gimbal ${item.gimbalType}`}>{gimbalLabels[item.gimbalType]}<Explain term={gimbalGlossaryKey[item.gimbalType]} /></span>{/if}
+      {#if item.needsPedals}<span class="pedals">No twist · add pedals<Explain term="pedals" /></span>{/if}
+      {#if rankInfo && rankReasons(item).length}<span class="why">Why here<Explain title="Why it's ranked here" text={rankReasons(item)} label={`Why ${item.name} is ranked here`} /></span>{/if}
+    </div>{/if}
   </div>
   <div class="specifications">
     {#if highlights.length}<dl>{#each highlights as h}<div title={h.title}><dt>{h.label}</dt><dd>{h.value}</dd></div>{/each}</dl>{:else}<p class="undocumented">Controls not yet documented</p>{/if}
@@ -73,6 +84,12 @@
   .category { margin-left: auto; color: var(--color-muted); font-weight: 500; font-size: .75rem; white-space: nowrap; }
   h3 { font: 600 1.075rem/1.35 var(--font-sans); letter-spacing: -.01em; margin: 0; overflow-wrap: anywhere; text-wrap: balance; } h3 a { color: inherit; text-decoration: none; } h3 a:hover { color: var(--color-accent); }
   .meta { color: var(--color-muted); font-size: .8rem; line-height: 1.5; margin: .4rem 0 .9rem; min-height: 1.2em; }
+  .badges { display: flex; flex-wrap: wrap; gap: .35rem; margin: -.4rem 0 .9rem; font-size: .72rem; font-weight: 600; }
+  .badges > * { display: inline-flex; align-items: center; padding: .15rem .45rem; border: 1px solid var(--color-rule); border-radius: 2px; color: var(--color-muted); text-decoration: none; }
+  .review.recommended { color: #1d6b3a; border-color: #1d6b3a55; background: #1d6b3a0d; } .review.avoid { color: #9b2c1f; border-color: #9b2c1f55; background: #9b2c1f0d; } .review.mixed { color: #8a5a00; border-color: #8a5a0055; }
+  a.review:hover { text-decoration: underline; }
+  .gimbal.ball_and_cup { color: #8a5a00; } .gimbal.pincer, .gimbal.cam_and_spring, .gimbal.force_feedback { color: var(--color-ink); }
+  .pedals { border-style: dashed; } .why { border: 0; padding-left: 0; }
   dl { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; overflow: hidden; border: 1px solid var(--color-rule); }
   dl > div { padding: .5rem .5rem .45rem; min-width: 0; margin: 0 -1px -1px 0; border-right: 1px solid var(--color-rule); border-bottom: 1px solid var(--color-rule); }
   dt { color: var(--color-muted); font-size: .7rem; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }

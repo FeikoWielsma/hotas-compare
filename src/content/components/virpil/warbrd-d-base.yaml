@@ -24,6 +24,7 @@ controls_evidence:
   notes: 'Bare VPC-106-001 base has two analog X/Y axes and adjustable gimbal hardware but no installed grip or standalone buttons/switches; compatible grips are sold separately.'
 hardware:
   gimbal: dual_spring
+  gimbal_type: cam_and_spring
   sensor: contactless_magnetic
   axes:
     - name: X

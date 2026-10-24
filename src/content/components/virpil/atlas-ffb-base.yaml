@@ -35,6 +35,7 @@ controls_evidence:
   notes: SKU VPC-115-001. Pre-order base, shipping estimate late Q4 2026. Bare base has two gimbal axes and the included remote emergency stop. No grip is installed. The page states an axis range of 18 degrees without saying whether that is total travel or travel each side of center, so throw_deg is unset. Cart price is a 50 percent deposit of the stated €599.95 pre-order price; the deposit is not recorded as the product price. Motors are 25 nm, stated as over 12 kg at the stick.
 hardware:
   gimbal: cord_drive
+  gimbal_type: force_feedback
   sensor: contactless_magnetic
   axes:
   - name: X

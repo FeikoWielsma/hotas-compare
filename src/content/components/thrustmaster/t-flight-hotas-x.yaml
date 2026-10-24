@@ -83,6 +83,7 @@ external_reviews:
   date: '2026-10-24'
 verification: draft
 hardware:
+  gimbal_type: ball_and_cup
   axis_count: 5
   force_adjustable: true
   axes:

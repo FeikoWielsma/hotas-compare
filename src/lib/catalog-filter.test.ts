@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import type { CatalogItem } from './catalog';
 import { deriveControlsSummary, resolvePrice } from './derive';
 import { resolveCatalogRegion } from './catalog';
-import { filterCatalog } from './catalog-filter';
+import { filterCatalog, rankReasons } from './catalog-filter';
 
 function item(overrides: Partial<CatalogItem> = {}): CatalogItem {
   return {
@@ -77,5 +77,20 @@ describe('catalog filters', () => {
     const both = item({ id: 'both', name: 'Both', reviewTag: 'recommended', scores: scores(5) });
     const order = filterCatalog([avoided, unreviewed, recommended, ownedTop, both], { sort: 'featured' }).map((i) => i.id);
     expect(order).toEqual(['both', 'owned', 'rec', 'none', 'avoid']);
+  });
+
+  it('filters by gimbal family and leaves undocumented gimbals out of a gimbal filter', () => {
+    const pincer = item({ id: 'p', gimbalType: 'pincer' });
+    const cam = item({ id: 'c', gimbalType: 'cam_and_spring' });
+    const unknown = item({ id: 'u' });
+    expect(filterCatalog([pincer, cam, unknown], { gimbalTypes: ['pincer', 'cam_and_spring'] }).map((i) => i.id).sort()).toEqual(['c', 'p']);
+    expect(filterCatalog([pincer, cam, unknown], {})).toHaveLength(3);
+  });
+
+  it('explains the Recommended rank in plain words', () => {
+    const scores = { build: 4, feel: 5, value: 4, software: 4, qc_support: 5 };
+    const reasons = rankReasons(item({ reviewTag: 'recommended', latestReview: { reviewer: 'mysh', reviewerName: 'Mysh', tag: 'recommended', url: 'https://x.test', summary: '', date: '2026-10-24' }, scores, verification: 'verified' }));
+    expect(reasons).toEqual(['Mysh: recommended', 'Our verdict 4.4/5', 'Specs verified', 'Currently sold']);
+    expect(rankReasons(item({ reviewTag: 'avoid', latestReview: { reviewer: 'mysh', reviewerName: 'Mysh', tag: 'avoid', url: 'https://x.test', summary: '', date: '2026-10-24' } }))[0]).toBe('Mysh: avoid (ranked lower)');
   });
 });

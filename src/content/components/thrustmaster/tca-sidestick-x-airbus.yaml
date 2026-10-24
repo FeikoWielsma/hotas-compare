@@ -67,6 +67,7 @@ controls_evidence:
     throttle button 17 as the extra event. Hat direction count is not stated. Four axes are stick X, stick Y, twist,
     and the throttle.
 hardware:
+  gimbal_type: ball_and_cup
   axis_count: 4
   sensor: hall
   axes:

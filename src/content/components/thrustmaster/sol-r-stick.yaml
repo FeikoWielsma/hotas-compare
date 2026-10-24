@@ -96,6 +96,7 @@ controls_evidence:
     separate analog mechanisms.
 hardware:
   gimbal: ball_joint
+  gimbal_type: ball_and_cup
   sensor: hall
   axes:
   - name: X

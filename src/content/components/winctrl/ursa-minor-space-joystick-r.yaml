@@ -44,6 +44,7 @@ controls_evidence:
   notes: V1.3 space-right manual states 14 button switches, a HAT and a 38 mm slider. Mini-joystick calibration
     is in the same manual family. Published mass is 0.98 kg.
 hardware:
+  gimbal_type: pincer
   throw_deg: 30
   axes:
   - name: X

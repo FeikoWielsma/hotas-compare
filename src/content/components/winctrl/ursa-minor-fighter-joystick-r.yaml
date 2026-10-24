@@ -56,6 +56,7 @@ controls_evidence:
     Exact right-hand V1.3 manual (2025.07.08) inspected. Physical inventory confirms 2-stage trigger, HAT switch, Rx/Ry mini-joystick, 14 base button switches, and 38mm potentiometer throttle slider.
 hardware:
   gimbal: pincer
+  gimbal_type: pincer
   sensor: contactless_magnetic
   axes:
   - name: X

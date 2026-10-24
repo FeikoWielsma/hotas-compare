@@ -324,11 +324,16 @@ export const ReviewerSchema = z.object({
 });
 export type Reviewer = z.infer<typeof ReviewerSchema>;
 
+/** Stick gimbal families, as used by reviewers to judge quality; null = not a stick or not documented. */
+export const GimbalTypeEnum = z.enum(['ball_and_cup', 'pincer', 'cam_and_spring', 'force_feedback', 'other']);
+export type GimbalType = z.infer<typeof GimbalTypeEnum>;
+
 // Component Collection Schema
 export const HardwareSchema = z.object({
   /** Manufacturer's total, when the full individual axis mapping is unavailable. */
   axis_count: z.number().int().nonnegative().optional(),
   gimbal: z.string().nullable().optional(),
+  gimbal_type: GimbalTypeEnum.nullable().optional(),
   sensor: z.string().nullable().optional(),
   axes: z.array(
     z.object({
