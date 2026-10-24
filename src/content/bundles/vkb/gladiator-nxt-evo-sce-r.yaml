@@ -1,5 +1,5 @@
 brand: vkb
-name: Gladiator NXT EVO 'Space Combat Edition' (Right)
+name: Gladiator NXT EVO 'Space Combat Edition' Premium (Right)
 category: stick_combo
 platform_compatibility:
   pc: supported
@@ -16,10 +16,10 @@ components:
 prices:
   - region: EU
     currency: EUR
-    amount: 195
+    amount: 201
     incl_vat: true
     store: flightsimcontrols.com
-    verified: '2026-10-01'
+    verified: '2026-10-24'
     source: manual
   - region: UK
     currency: GBP

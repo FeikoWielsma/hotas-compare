@@ -113,7 +113,7 @@ prices:
 - region: EU
   currency: EUR
   amount: 314.95
-  incl_vat: true
+  incl_vat: false
   store: virpil-controls.eu
   url: https://virpil-controls.eu/mongoost-50cm4-throttle.html
   verified: '2026-10-19'

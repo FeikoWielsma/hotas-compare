@@ -1,0 +1,30 @@
+brand: winctrl
+name: URSA MINOR Combat HOTAS + EX Module
+category: hotas_bundle
+platform_compatibility:
+  pc: supported
+  xbox: unknown
+  ps5: unknown
+  notes: Store SKU 4981 is the Fighter R joystick plus Combat Throttle Metal.EX (Combat Throttle with the EX side module) at €278.69; SKU 4961 without the EX module is €229.28. No exact source establishes Xbox or PS5 support.
+  sources: &id001
+  - https://eu.winctrl.com/view/goods-details.html?id=6485
+status: current
+components:
+- winctrl/ursa-minor-fighter-joystick-r
+- winctrl/ursa-minor-combat-throttle
+- winctrl/ursa-minor-combat-t-ex
+prices:
+- region: EU
+  currency: EUR
+  amount: 278.69
+  incl_vat: true
+  store: eu.winctrl.com
+  url: https://eu.winctrl.com/view/goods-details.html?id=6485
+  verified: '2026-10-24'
+  source: manual
+verification: draft
+sources: *id001
+images:
+- file: /images/winctrl/ursa-minor-combat-hotas.jpg
+  source: https://eu.winctrl.com/view/goods-details.html?id=6485
+  caption: URSA MINOR Combat HOTAS (base set shown)

@@ -195,6 +195,13 @@ physical:
 software: Turtle Beach Flight Hangar (Windows 10/11) for profiles, RGB settings and firmware updates
 use_case_fit: {}
 prices:
+- region: EU
+  currency: EUR
+  amount: 383
+  incl_vat: true
+  store: Street price (fluctuates)
+  verified: '2026-10-24'
+  source: manual
 - region: US
   currency: USD
   amount: 429.99

@@ -96,6 +96,14 @@ physical:
 use_case_fit: {}
 software: Turtle Beach Flightstick Companion App for iOS and Android
 prices:
+- region: EU
+  currency: EUR
+  amount: 99
+  incl_vat: true
+  store: Tweakers Pricewatch (lowest)
+  url: https://tweakers.net/pricewatch/1904256/turtle-beach-velocityone-flight-stick.html
+  verified: '2026-10-24'
+  source: manual
 - region: US
   currency: USD
   amount: 139.99

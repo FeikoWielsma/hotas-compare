@@ -68,7 +68,7 @@ prices:
 - region: EU
   currency: EUR
   amount: 749.95
-  incl_vat: true
+  incl_vat: false
   store: virpil-controls.eu
   url: https://virpil-controls.eu/atlas-pro-ffb-base.html
   verified: '2026-10-21'

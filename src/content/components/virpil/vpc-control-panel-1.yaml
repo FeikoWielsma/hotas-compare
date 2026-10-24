@@ -94,7 +94,7 @@ prices:
 - region: EU
   currency: EUR
   amount: 229.95
-  incl_vat: true
+  incl_vat: false
   store: virpil-controls.eu
   url: https://virpil-controls.eu/vpc-control-panel-1.html
   verified: '2026-10-19'

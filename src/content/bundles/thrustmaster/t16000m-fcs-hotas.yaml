@@ -8,6 +8,13 @@ components:
 prices:
 - region: EU
   currency: EUR
+  amount: 132
+  incl_vat: true
+  store: Street price
+  verified: '2026-10-24'
+  source: manual
+- region: EU
+  currency: EUR
   amount: 149.99
   incl_vat: true
   store: Thrustmaster EU eshop

@@ -18,7 +18,7 @@ prices:
   - region: EU
     currency: EUR
     amount: 934.66
-    incl_vat: true
+    incl_vat: false
     store: virpil-controls.eu
     url: https://virpil-controls.eu/warbrd-d-hosas-bundle-alpha-prime-edition.html
     verified: '2026-10-19'

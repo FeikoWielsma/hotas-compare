@@ -105,7 +105,7 @@ prices:
 - region: EU
   currency: EUR
   amount: 249.95
-  incl_vat: true
+  incl_vat: false
   store: virpil-controls.eu
   url: https://virpil-controls.eu/vpc-constellation-alpha-prime-r.html
   verified: '2026-10-19'

@@ -46,7 +46,7 @@ prices:
 - region: EU
   currency: EUR
   amount: 12.95
-  incl_vat: true
+  incl_vat: false
   store: virpil-controls.eu
   url: https://virpil-controls.eu/prm-hes-module.html
   verified: '2026-10-20'

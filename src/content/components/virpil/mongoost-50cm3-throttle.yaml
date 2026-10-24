@@ -154,7 +154,7 @@ prices:
   - region: EU
     currency: EUR
     amount: 369.95
-    incl_vat: true
+    incl_vat: false
     store: virpil-controls.eu
     verified: '2026-10-01'
     source: manual

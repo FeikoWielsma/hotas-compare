@@ -77,7 +77,7 @@ prices:
 - region: EU
   currency: EUR
   amount: 269.95
-  incl_vat: true
+  incl_vat: false
   store: virpil-controls.eu
   url: https://virpil-controls.eu/vpc-dual-sf-collective-grip.html
   verified: '2026-10-20'
