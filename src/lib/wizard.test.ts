@@ -51,6 +51,18 @@ describe('loadout rules', () => {
     expect(recommendLoadout([hardware('stick', 'stick_fixed', 20)], answers, 'UK').complete).toBe(false);
     expect(recommendLoadout([base, { ...grip, mount: { provides: 'A' } }], answers, 'EU').totalPrice).toBe(50);
   });
+  it('never offers a yoke handle on its own and pairs it with a base that accepts it', () => {
+    const handle = hardware('handle', 'yoke', 140, { mount: { provides: 'yoke-qr' } });
+    const base = hardware('yoke-base', 'base', 400, { mount: { accepts: ['yoke-qr'] } });
+    const complete = hardware('desk-yoke', 'yoke', 250, { mount: { provides: 'desk' } });
+    const answers = normalizeWizardAnswers({ piecesNeeded: ['yoke'], budgetMax: 1000 });
+    expect(recommendLoadout([handle], answers, 'EU').complete).toBe(false);
+    const paired = recommendLoadout([handle, base], answers, 'EU');
+    expect(paired.complete).toBe(true);
+    expect(paired.items.map((i) => i.id).sort()).toEqual(['handle', 'yoke-base']);
+    expect(paired.totalPrice).toBe(540);
+    expect(recommendLoadout([complete], answers, 'EU').items.map((i) => i.id)).toEqual(['desk-yoke']);
+  });
   it('requires primary twist without pedals and does not claim non-twist yaw', () => {
     const stick = hardware('stick', 'stick_fixed', 50, { axes: [{ name: 'X' }, { name: 'Y' }] });
     expect(recommendLoadout([stick], normalizeWizardAnswers({ piecesNeeded: ['stick'] }), 'EU').complete).toBe(false);

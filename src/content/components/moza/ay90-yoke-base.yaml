@@ -3,6 +3,10 @@ name: MOZA AY90 Yoke Base
 category: base
 status: current
 handedness: n/a
+mount:
+  provides: null
+  accepts:
+  - moza-yoke
 controls:
 - type: hat
   location: base

@@ -1,0 +1,4 @@
+name: MOZA Yoke Quick Release
+description: Quick-release coupling between MOZA MFY yoke handles and the AY90 / AY210 yoke bases. The handle has no USB of its own and needs one of these bases.
+physical_type: quick_release
+compatible_with: []

@@ -1,6 +1,6 @@
 brand: virpil
 name: VPC Constellation VEGA Yoke Handle
-category: grip
+category: yoke
 platform_compatibility:
   pc: supported
   xbox: unsupported
@@ -11,7 +11,9 @@ platform_compatibility:
 status: announced
 release_year: 2026
 handedness: n/a
-mount: null
+mount:
+  provides: virpil-yoke
+  accepts: []
 controls:
 - type: lever
   kind: other

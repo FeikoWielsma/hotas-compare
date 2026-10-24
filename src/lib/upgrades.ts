@@ -19,19 +19,26 @@ export function resolveUpgradePaths(
   });
 }
 
+/** Grips and yoke handles that need a base; a desk-mounted yoke is complete on its own. */
+const mountsOnBase = (item: Component) => (item.category === 'grip' || item.category === 'yoke') && !!item.mount?.provides && item.mount.provides !== 'desk';
+
 const tagOrder: Record<string, number> = { recommended: 0, mixed: 2, neutral: 2, avoid: 3 };
 
 /** Grips that fit a base, or bases that fit a grip, via documented mount standards. Recommended first. */
 export function compatibleParts(
   item: Component, components: Map<string, Component>, standards: Map<string, MountStandard>,
-): { kind: 'grips' | 'bases'; items: LinkedItem[] } | null {
+): { kind: 'grips' | 'handles' | 'bases'; items: LinkedItem[] } | null {
   const isBase = item.category === 'base' && (item.mount?.accepts?.length ?? 0) > 0;
-  const isGrip = item.category === 'grip' && !!item.mount?.provides;
+  const isGrip = mountsOnBase(item);
   if (!isBase && !isGrip) return null;
+  // checkMountCompatibility only knows sticks, so compare yoke handles' mounts directly.
+  const fits = (base: Component, handle: Component) => handle.category === 'grip'
+    ? checkMountCompatibility(base, handle, standards).compatible
+    : !!handle.mount?.provides && (base.mount?.accepts ?? []).includes(handle.mount.provides);
   const items = [...components].filter(([, other]) => other.status !== 'discontinued' && (isBase
-    ? other.category === 'grip' && checkMountCompatibility(item, other, standards).compatible
-    : other.category === 'base' && checkMountCompatibility(other, item, standards).compatible))
+    ? mountsOnBase(other) && fits(item, other)
+    : other.category === 'base' && fits(other, item)))
     .map(([id, data]) => ({ id, name: data.name, href: `/components/${id}`, reviewTag: latestTag(data) }))
     .sort((a, b) => (tagOrder[a.reviewTag ?? ''] ?? 1) - (tagOrder[b.reviewTag ?? ''] ?? 1) || a.name.localeCompare(b.name));
-  return { kind: isBase ? 'grips' : 'bases', items };
+  return { kind: isBase ? (items.every(({ id }) => components.get(id)?.category === 'yoke') && items.length ? 'handles' : 'grips') : 'bases', items };
 }

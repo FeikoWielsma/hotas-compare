@@ -1,6 +1,6 @@
 ---
 import type { LinkedItem, ResolvedUpgrade } from '../../lib/upgrades';
-interface Props { upgrades: ResolvedUpgrade[]; fits?: { kind: 'grips' | 'bases'; items: LinkedItem[] } | null; needsPedals?: boolean }
+interface Props { upgrades: ResolvedUpgrade[]; fits?: { kind: 'grips' | 'handles' | 'bases'; items: LinkedItem[] } | null; needsPedals?: boolean }
 const { upgrades, fits, needsPedals = false } = Astro.props;
 const shown = fits?.items.slice(0, 12) ?? [];
 const more = (fits?.items.length ?? 0) - shown.length;
@@ -13,7 +13,7 @@ const tagLabel: Record<string, string> = { recommended: 'Recommended', avoid: 'A
     <a class="target" href={u.href}>{u.name}</a>{u.reviewTag && tagLabel[u.reviewTag] && <span class={`tag ${u.reviewTag}`}>{tagLabel[u.reviewTag]}</span>}
     <p>{u.note}{u.source && <> <a class="src" href={u.source} rel="external noopener">Source ↗</a></>}</p>
   </li>)}</ol>}
-  {shown.length > 0 && <div class="fits"><h3>{fits!.kind === 'grips' ? 'Grips that fit this base' : 'Bases this grip fits'}</h3>
+  {shown.length > 0 && <div class="fits"><h3>{fits!.kind === 'grips' ? 'Grips that fit this base' : fits!.kind === 'handles' ? 'Yoke handles for this base' : 'Bases this fits on'}</h3>
     <ul>{shown.map(f => <li><a href={f.href}>{f.name}</a>{f.reviewTag && tagLabel[f.reviewTag] && <span class={`tag ${f.reviewTag}`}>{tagLabel[f.reviewTag]}</span>}</li>)}</ul>
     {more > 0 && <p class="more">and {more} more with the same mount.</p>}
     <p class="more">Based on documented mount standards; some pairings need an adapter or firmware setup.</p>
