@@ -223,6 +223,7 @@ export type ControlItem = z.infer<typeof ControlItemSchema>;
 
 // Price Schema
 export const PriceSchema = z.object({
+  kind: z.enum(['official', 'street']).default('official'),
   region: RegionEnum,
   currency: CurrencyEnum,
   amount: z.number().nonnegative(),

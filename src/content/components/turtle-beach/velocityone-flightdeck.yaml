@@ -200,6 +200,7 @@ prices:
   currency: EUR
   amount: 383
   incl_vat: true
+  kind: street
   store: Street price (fluctuates)
   verified: '2026-10-24'
   source: manual

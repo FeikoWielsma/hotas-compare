@@ -17,7 +17,7 @@ function item(overrides: Partial<CatalogItem> = {}): CatalogItem {
     ...overrides,
   };
 }
-const price = (amount: number) => resolvePrice([{ region: 'EU', currency: 'EUR', amount, store: 'Test', verified: '2026-10-01', incl_vat: true, source: 'manual' }], 'EU');
+const price = (amount: number) => resolvePrice([{ region: 'EU', currency: 'EUR', amount, store: 'Test', verified: '2026-10-01', incl_vat: true, kind: 'official', source: 'manual' }], 'EU');
 
 describe('catalog filters', () => {
   it('requires confirmed platform support and excludes unknown or unsupported devices', () => {
@@ -57,7 +57,7 @@ describe('catalog filters', () => {
     expect(filterCatalog(items, { sort: 'price-low' })).toEqual([low, high, unknown]);
     expect(items).toEqual([unknown, high, low]);
     expect(filterCatalog([unknown], { maximum: 1000 })).toEqual([]);
-    const euItem = item({ prices: [{ region: 'EU', currency: 'EUR', amount: 100, store: 'Test', verified: '2026-10-01', incl_vat: true, source: 'manual' }], resolvedPrice: price(100) });
+    const euItem = item({ prices: [{ region: 'EU', currency: 'EUR', amount: 100, store: 'Test', verified: '2026-10-01', incl_vat: true, kind: 'official', source: 'manual' }], resolvedPrice: price(100) });
     expect(filterCatalog([resolveCatalogRegion(euItem, 'US')], { priceAvailability: 'available' })).toEqual([]);
     expect(filterCatalog([euItem], { priceAvailability: 'available' })).toEqual([euItem]);
   });

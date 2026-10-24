@@ -101,6 +101,7 @@ prices:
   currency: EUR
   amount: 99
   incl_vat: true
+  kind: street
   store: Tweakers Pricewatch (lowest)
   url: https://tweakers.net/pricewatch/1904256/turtle-beach-velocityone-flight-stick.html
   verified: '2026-10-24'
