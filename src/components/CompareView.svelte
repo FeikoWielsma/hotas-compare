@@ -7,8 +7,10 @@
   import { compareStore, MAX_COMPARE_ITEMS } from '../lib/stores/compare.svelte';
   import { regionStore } from '../lib/stores/region.svelte';
   import { humanize, statusLabels } from '../lib/labels';
+  import { gimbalLabels } from '../lib/glossary';
   let { initialItems }: { initialItems: CatalogItem[] } = $props();
   let highlight = $state(false);
+  let onlyDifferences = $state(false);
   let message = $state('');
   const selected = $derived(compareStore.items.map((id) => {
     const item = initialItems.find((entry) => entry.id === id);
@@ -25,6 +27,8 @@
       { label: 'Handedness', value: (i) => i.handedness.map(humanize).join(' / ') || 'Not applicable' },
       { label: 'Availability', value: (i) => statusLabels[i.status] },
       { label: 'Data status', value: (i) => i.verification === 'verified' ? 'Editor verified' : 'Draft specifications' },
+      { label: 'Latest review', value: (i) => i.latestReview ? `${i.latestReview.reviewerName}: ${i.latestReview.tag}
+${i.latestReview.summary}` : 'Not reviewed' },
     ] },
     { title: 'Platform compatibility', rows: [
       ...platforms.map(({ key, label }) => ({ label, value: (i: CatalogItem) => platformSupport(i.platform_compatibility, key) })),
@@ -36,7 +40,9 @@
       { label: 'Price checked', value: (i) => i.resolvedPrice.price ? `${i.resolvedPrice.price.verified}${i.resolvedPrice.isStale ? ' · over 90 days old' : ''}` : 'No regional price' },
     ] },
     { title: 'Hardware & Mechanics', rows: [
+      { label: 'Gimbal type', value: (i) => i.gimbalType ? gimbalLabels[i.gimbalType] : 'Unknown' },
       { label: 'Gimbal', value: (i) => i.gimbal?.split(', ').map(humanize).join(', ') ?? 'Unknown' },
+      { label: 'Rudder', value: (i) => i.needsPedals ? 'No twist axis · needs pedals' : 'Twist or rudder axis, or not a complete stick' },
       { label: 'Primary Sensor', value: (i) => i.sensor?.split(', ').map(humanize).join(', ') ?? 'Unknown' },
       { label: 'Axes', value: (i) => i.totalAxes === 0 && !i.axisCountKnown ? 'Unknown' : i.totalAxes }, { label: 'Force Adjustable', value: (i) => i.mechanics.forceAdjustable },
       { label: 'Swappable Cams', value: (i) => i.mechanics.cams }, { label: 'Clutches / Damping', value: (i) => i.mechanics.damping },
@@ -60,6 +66,10 @@
     const values = selected.flatMap(({ item }) => item ? [row.value(item)] : []);
     return values.length > 1 && new Set(values).size > 1;
   }
+  /** With "Only differences" on, drop rows where every compared item has the same value, and empty groups. */
+  const visibleGroups = $derived(onlyDifferences && selected.length > 1
+    ? groups.map((group) => ({ ...group, rows: group.rows.filter(differs) })).filter((group) => group.rows.length)
+    : groups);
   async function copyLink() {
     const url = new URL('/compare', location.origin);
     url.searchParams.set('items', compareStore.items.join(','));
@@ -69,7 +79,7 @@
   onMount(() => { regionStore.init(); compareStore.init(); });
 </script>
 
-<div class="toolbar"><button type="button" class:active={highlight} aria-pressed={highlight} onclick={() => highlight = !highlight}>Highlight differences</button><button type="button" onclick={copyLink}>↗ Copy share link</button><span>{regionStore.region} / {regionStore.currency} · {selected.length} of 4 products</span></div>
+<div class="toolbar"><button type="button" class:active={highlight} aria-pressed={highlight} onclick={() => highlight = !highlight}>Highlight differences</button><button type="button" class:active={onlyDifferences} aria-pressed={onlyDifferences} disabled={selected.length < 2} onclick={() => onlyDifferences = !onlyDifferences}>Only differences</button><button type="button" onclick={copyLink}>↗ Copy share link</button><span>{regionStore.region} / {regionStore.currency} · {selected.length} of 4 products</span></div>
 {#if message}<p class="message" role="status">{message}</p>{/if}
 {#if !selected.length}<div class="empty"><h2>Your comparison starts here.</h2><p>Add hardware below, or <a href="/">explore the catalog</a> and select “+ Compare”.</p></div>{/if}
 <div class="matrix" role="region" aria-label="Hardware comparison matrix, scroll horizontally to see all four slots" tabindex="0">
@@ -78,7 +88,7 @@
       {#each selected as { id, item } (id)}<th scope="col"><div class="column-head"><span class="brand">{item?.brandName ?? 'Unavailable item'}</span><button type="button" class="remove" aria-label={`Remove ${item?.name ?? id} from comparison`} onclick={() => compareStore.removeItem(id)}>×</button></div>{#if item}{@const photo = productImageSrc(item.images[0]?.file)}{#if photo}<img class="column-photo" src={photo} alt="" />{/if}<a class="product" href={detailHref(item)}>{item.name} ↗</a><span class="badge">{categoryLabels[item.category]}</span>{:else}<p class="unknown">This item is no longer in the catalog: {id}</p>{/if}</th>{/each}
       {#each Array(emptySlots) as _, index}<th scope="col" class="slot"><label for={`slot-${index}`}>Add hardware<select id={`slot-${index}`} value="" onchange={(event) => { const id = event.currentTarget.value; if (id) compareStore.addItem(id); event.currentTarget.value = ''; }}><option value="">Choose an item…</option>{#each available as item}<option value={item.id}>{item.brandName} · {item.name}</option>{/each}</select></label><p>Product {selected.length + index + 1} of 4</p></th>{/each}
     </tr></thead>
-    {#each groups as group}<tbody><tr class="group"><th colspan="5" scope="colgroup">{group.title}</th></tr>{#each group.rows as row}<tr class:different={highlight && differs(row)}><th scope="row">{row.label}{#if highlight && differs(row)}<span class="difference-mark" aria-label="Different values"> ●</span>{/if}</th>{#each selected as { id, item } (id)}<td>{item ? row.value(item) : 'Unavailable'}</td>{/each}{#each Array(emptySlots) as _}<td class="placeholder">—</td>{/each}</tr>{/each}</tbody>{/each}
+    {#each visibleGroups as group}<tbody><tr class="group"><th colspan="5" scope="colgroup">{group.title}</th></tr>{#each group.rows as row}<tr class:different={highlight && differs(row)}><th scope="row">{row.label}{#if highlight && differs(row)}<span class="difference-mark" aria-label="Different values"> ●</span>{/if}</th>{#each selected as { id, item } (id)}<td>{item ? row.value(item) : 'Unavailable'}</td>{/each}{#each Array(emptySlots) as _}<td class="placeholder">—</td>{/each}</tr>{/each}</tbody>{/each}
   </table>
 </div>
 <p class="footnote">Control counts reflect documented hardware; missing details may be unlisted. Logical inputs are estimates, and software mappings vary. Ratings run from 1 (limited fit) to 5 (excellent fit); bundle fit averages its components. Prices last checked over 90 days ago are marked.</p>
