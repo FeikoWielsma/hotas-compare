@@ -100,7 +100,7 @@ describe('resolvePrice', () => {
         incl_vat: true,
         store: 'virpil-controls.eu',
         verified: '2026-10-01',
-        source: 'manual' as const,
+        kind: 'official' as const, source: 'manual' as const,
       },
       {
         region: 'US' as const,
@@ -109,7 +109,7 @@ describe('resolvePrice', () => {
         incl_vat: false,
         store: 'virpil-controls.us',
         verified: '2026-05-01', // Stale! (> 90 days before Oct 2026)
-        source: 'manual' as const,
+        kind: 'official' as const, source: 'manual' as const,
       },
     ];
 
@@ -288,7 +288,7 @@ describe('scoreItemForUseCase', () => {
 });
 
 describe('displayPrice', () => {
-  const base = { currency: 'EUR' as const, store: 'virpil-controls.eu', verified: '2026-10-24', source: 'manual' as const };
+  const base = { currency: 'EUR' as const, store: 'virpil-controls.eu', verified: '2026-10-24', kind: 'official' as const, source: 'manual' as const };
 
   it('adds estimated VAT to ex-VAT EU and UK prices', () => {
     const eu = displayPrice({ ...base, region: 'EU', amount: 199.95, incl_vat: false });

@@ -187,6 +187,15 @@ export function displayPrice(price: Price): DisplayPrice {
   return { ...price, amount: Math.round(price.amount * (1 + rate) * 100) / 100, incl_vat: true, vatEstimated: true, listedAmount: price.amount };
 }
 
+export function regionalPrices(prices: Price[], region: Region): DisplayPrice[] {
+  return prices.filter(price => price.region === region).map(displayPrice).sort((a, b) => a.amount - b.amount);
+}
+
+export function priceOfferLabel(price: Price): string {
+  const amount = new Intl.NumberFormat('en', { style: 'currency', currency: price.currency }).format(price.amount);
+  return price.kind === 'street' ? `${amount} street · ${price.store}` : `${amount} official · ${price.store}`;
+}
+
 /** Short tax label for a displayed price. */
 export function vatLabel(price: DisplayPrice): string {
   return price.vatEstimated ? 'incl. VAT, est.' : price.incl_vat ? 'incl. VAT' : 'excl. tax';
@@ -204,11 +213,10 @@ export function resolvePrice(
   targetRegion: Region = 'EU',
   referenceDate: Date = new Date()
 ): ResolvedPrice {
-  const listed = prices.find((p) => p.region === targetRegion);
-  if (!listed) {
+  const match = regionalPrices(prices, targetRegion)[0];
+  if (!match) {
     return { isStale: false };
   }
-  const match = displayPrice(listed);
 
   const verifiedDate = new Date(match.verified);
   const diffTime = Math.abs(referenceDate.getTime() - verifiedDate.getTime());

@@ -10,6 +10,7 @@ prices:
   currency: EUR
   amount: 132
   incl_vat: true
+  kind: street
   store: Street price
   verified: '2026-10-24'
   source: manual
