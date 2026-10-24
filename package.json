@@ -16,6 +16,7 @@
     "test": "vitest run",
     "audit:bundles": "node scripts/audit-bundles.ts",
     "audit:links": "node scripts/audit-links.ts",
+    "prices:refresh": "node scripts/refresh-prices.ts",
     "check": "astro check"
   },
   "dependencies": {

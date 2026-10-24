@@ -1,0 +1,44 @@
+# Weekly price check against store feeds (VKB US, flightsimcontrols, WINCTRL, VIRPIL EU).
+# Opens or updates a pull request with the changed prices and the full report; nothing is
+# merged automatically. Big moves and announced products are held for review in the report.
+name: Price refresh
+
+on:
+  schedule:
+    - cron: '0 6 * * 1' # Mondays 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: price-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Check store prices
+        run: pnpm prices:refresh --write --report=price-report.md
+      - name: Validate content
+        run: pnpm test
+      - name: Open pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: automation/price-refresh
+          delete-branch: true
+          commit-message: 'chore(prices): weekly store price refresh'
+          title: 'Weekly price refresh'
+          body-path: price-report.md
+          add-paths: src/content/**
+          labels: needs-triage

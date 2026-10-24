@@ -26,12 +26,12 @@ prices:
   source: manual
 - region: US
   currency: USD
-  amount: 551.83
+  amount: 573.46
   incl_vat: false
   store: us.winwingsim.com
   url: https://us.winwingsim.com/view/goods-details.html?id=1825
-  verified: '2026-10-21'
-  source: manual
+  verified: '2026-10-24'
+  source: feed
 - region: UK
   currency: GBP
   amount: 543.67

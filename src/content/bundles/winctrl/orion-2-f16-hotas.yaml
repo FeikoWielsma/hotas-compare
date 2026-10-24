@@ -33,12 +33,12 @@ prices:
     source: manual
   - region: UK
     currency: GBP
-    amount: 536.30
+    amount: 483.3
     incl_vat: true
     store: uk.winctrl.com
     url: https://uk.winctrl.com/p/340.html
-    verified: '2026-10-21'
-    source: manual
+    verified: '2026-10-24'
+    source: feed
 verification: draft
 sources:
   - https://eu.winctrl.com/view/goods-details.html?id=340
