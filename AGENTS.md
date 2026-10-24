@@ -1,3 +1,11 @@
+## Working agreement
+
+For implementation, fixes, verification, or PR work, read [the delivery workflow](docs/agents/delivery.md) before changing files. It defines task boundaries, proportionate checks, browser evidence, and the solo-maintainer PR workflow.
+
+For catalog additions, specification research, price refreshes, or audit work, also read [the catalog research workflow](docs/agents/catalog-research.md).
+
+When a user correction reveals a recurring failure, prefer a schema constraint, regression test, or focused workflow update that prevents the next occurrence. Keep this entry point short; put task-specific procedures in the linked documents.
+
 ## Development
 
 When starting the dev server, use background mode:
