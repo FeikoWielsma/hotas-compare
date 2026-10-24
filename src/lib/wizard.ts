@@ -207,5 +207,5 @@ export function matchCuratedSetups(setups: WizardSetup[], items: CatalogItem[], 
     if (bases !== grips) warnings.push('This reference includes an unpaired base or grip. Additional compatible hardware is required and is not included in the listed total.');
     if (answers.needsTwist && !members.some((item) => hasTwist(item) && ['grip', 'stick_fixed'].includes(item.category)) && !members.some((item) => item.category === 'pedals')) warnings.push('This reference has no documented twist or pedal yaw control. Plan an additional yaw input.');
     return { ...setup, included, totalPrice, warnings, currency: currencies[region], withinBudget: totalPrice !== null && totalPrice <= answers.budgetMax };
-  }).sort((a, b) => Number(b.withinBudget) - Number(a.withinBudget) || (a.totalPrice ?? Infinity) - (b.totalPrice ?? Infinity));
+  }).sort((a, b) => Number(b.withinBudget) - Number(a.withinBudget) || Number(b.data.pick) - Number(a.data.pick) || (a.totalPrice ?? Infinity) - (b.totalPrice ?? Infinity));
 }

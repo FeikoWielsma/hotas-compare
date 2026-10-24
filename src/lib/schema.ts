@@ -437,5 +437,7 @@ export const SetupSchema = z.object({
     })
   ),
   notes: z.string().optional(),
+  /** Our opinionated first choice for this flying style and budget tier; listed before alternatives. */
+  pick: z.boolean().default(false),
 });
 export type Setup = z.infer<typeof SetupSchema>;

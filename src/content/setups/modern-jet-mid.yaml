@@ -1,10 +1,14 @@
-title: Mid-Range Strike Fighter HOTAS
+title: High-End Entry Metal HOTAS
 use_case: modern_jet
 budget_tier: mid
-description: WinCtrl Orion 2 F-16 HOTAS suite featuring an F-16EX grip with extensive hat switches and an authentic single-engine throttle with radar controls.
-reasoning: High button density, full metal construction, and dedicated avionics switches give genuine modern fighter ergonomics without high boutique custom prices.
+pick: true
+description: WINCTRL Orion2 HOTAS Metal - an all-metal dual-cam gimbal with the light cast-aluminium ViperAce grip and the Orion2 throttle, plus pedals for rudder.
+reasoning: Mysh's best value high-end entry for 2026, with no competition at its price. The stick does not twist, so rudder pedals are part of the setup rather than an optional extra.
 items:
   - item_type: bundle
-    id: winctrl/orion-2-f16-hotas
-    role: Viper HOTAS Flight Suite
-notes: Ready for DCS F-16C Viper and Falcon BMS.
+    id: winctrl/orion-2-hotas-metal-warthog
+    role: Stick and throttle
+  - item_type: component
+    id: vkb/t-rudder-mk5
+    role: Rudder pedals
+notes: The VKB T-Rudder is the cheapest pedal Mysh considers worth buying; anything below it tends to be plasticky and imprecise.

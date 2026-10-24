@@ -1,10 +1,10 @@
-title: Entry-Level DCS Modern Jet HOTAS
+title: Tightest-Budget Starter HOTAS
 use_case: modern_jet
 budget_tier: budget
-description: Thrustmaster T.16000M FCS HOTAS bundle paired with desktop layout. An affordable all-in-one pack to get airborne in DCS World, BMS, and MSFS.
-reasoning: Delivers a full HOTAS layout with plenty of hats and an analog ministick for TDC radar slewing at minimal initial cost.
+description: Thrustmaster T.16000M FCS HOTAS - the cheapest full HOTAS that is still viable, mainly for its versatile throttle.
+reasoning: The stick's ball-and-cup gimbal and potentiometer twist are weak, but the throttle is a good deal and gets much better when greased. Treat the stick as temporary and replace it when it wears out.
 items:
   - item_type: bundle
     id: thrustmaster/t16000m-fcs-hotas
     role: Primary Stick and Throttle Suite
-notes: We recommend applying Nyogel 767A damping grease to the throttle rails for buttery smooth carrier traps.
+notes: Grease the throttle rail (e.g. Nyogel 767A). If you can stretch the budget, the Ursa Minor Combat HOTAS is the far better buy.

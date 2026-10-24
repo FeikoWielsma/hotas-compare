@@ -134,7 +134,7 @@
           <div class="result-title"><h3>Curated reference setup</h3><button class="text-button" onclick={() => goTo(2)}>Adjust budget ↗</button></div>
           {#each curated as setup}
             <article class="reference">
-              <p class="eyebrow">{setup.data.budget_tier.replaceAll('_', ' ')} / {regionStore.region}</p><h3>{setup.data.title}</h3><p>{setup.data.description}</p><p class="reason">{setup.data.reasoning}</p>
+              <p class="eyebrow">{#if setup.data.pick}<strong class="pick">Our pick</strong> · {/if}{setup.data.budget_tier.replaceAll('_', ' ')} / {regionStore.region}</p><h3>{setup.data.title}</h3><p>{setup.data.description}</p><p class="reason">{setup.data.reasoning}</p>
               <ul>{#each setup.included as included}<li>{#if included.item}{@const photo = productImageSrc(included.item.images[0]?.file)}<span class="gear">{#if photo}<img src={photo} alt="" />{/if}<span><a href={detailHref(included.item)}>{included.item.name}</a><small>{included.role}</small></span></span>{:else}{included.id} (not in catalog)<small>{included.role}</small>{/if}</li>{/each}</ul>
               <p class="reference-price">{setup.totalPrice === null ? 'Regional total unavailable' : money(setup.totalPrice)} <span>{setup.totalPrice === null ? '· One or more prices missing' : setup.withinBudget ? '· Listed items within budget' : '· Above selected budget'}</span></p>
               {#each setup.warnings as warning}<p class="notice">{warning}</p>{/each}
@@ -287,4 +287,5 @@
     .totals > div:first-child { grid-column: 1 / -1; }
     .manifest dl { grid-template-columns: 1fr; }
   }
+  .pick { color: var(--color-accent); }
 </style>

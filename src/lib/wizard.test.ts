@@ -82,7 +82,7 @@ describe('loadout rules', () => {
 
 describe('curated reference matching', () => {
   it('matches discipline and tier while honestly marking unknown and over-budget totals', () => {
-    const setups: WizardSetup[] = [{ id: 'reference', data: { title: 'Reference', description: 'Reference', reasoning: 'Reason', use_case: 'modern_jet', budget_tier: 'mid', items: [{ item_type: 'component', id: 'stick', role: 'Primary' }] } }];
+    const setups: WizardSetup[] = [{ id: 'reference', data: { title: 'Reference', description: 'Reference', reasoning: 'Reason', use_case: 'modern_jet', budget_tier: 'mid', pick: false, items: [{ item_type: 'component', id: 'stick', role: 'Primary' }] } }];
     const answers = normalizeWizardAnswers({ budgetMax: 500 });
     expect(budgetTier(500)).toBe('mid');
     expect(matchCuratedSetups(setups, [hardware('stick', 'stick_fixed', 600)], answers, 'EU')[0]).toMatchObject({ totalPrice: 600, withinBudget: false });
@@ -90,7 +90,7 @@ describe('curated reference matching', () => {
     expect(matchCuratedSetups(setups, [], { ...answers, useCase: 'heli' }, 'EU')).toEqual([]);
   });
   it('flags an incomplete reference instead of suggesting its listed price buys a complete stick', () => {
-    const setups: WizardSetup[] = [{ id: 'incomplete', data: { title: 'Incomplete', description: 'Reference', reasoning: 'Reason', use_case: 'space_hosas', budget_tier: 'mid', items: [{ item_type: 'component', id: 'base', role: 'Second stick' }] } }];
+    const setups: WizardSetup[] = [{ id: 'incomplete', data: { title: 'Incomplete', description: 'Reference', reasoning: 'Reason', use_case: 'space_hosas', budget_tier: 'mid', pick: false, items: [{ item_type: 'component', id: 'base', role: 'Second stick' }] } }];
     const result = matchCuratedSetups(setups, [hardware('base', 'base', 100)], normalizeWizardAnswers({ useCase: 'space_hosas', budgetMax: 500 }), 'EU');
     expect(result[0].warnings.some((warning) => warning.includes('unpaired'))).toBe(true);
   });
