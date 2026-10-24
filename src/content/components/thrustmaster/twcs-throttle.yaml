@@ -160,6 +160,10 @@ external_reviews:
     it goes from okay to good. Aftermarket slider and detent mods exist.
   tag: recommended
   date: '2026-09-15'
+upgrade_paths:
+- to: winctrl/ursa-minor-combat-throttle
+  note: "Grease it rather than modding heavily: by then you are close to the Ursa Minor Combat throttle, which is miles ahead out of the box."
+  source: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2680s
 verification: verified
 sources:
 - https://www.thrustmaster.com/en-us/products/twcs-throttle/

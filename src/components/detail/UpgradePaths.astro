@@ -1,0 +1,38 @@
+---
+import type { LinkedItem, ResolvedUpgrade } from '../../lib/upgrades';
+interface Props { upgrades: ResolvedUpgrade[]; fits?: { kind: 'grips' | 'bases'; items: LinkedItem[] } | null; needsPedals?: boolean }
+const { upgrades, fits, needsPedals = false } = Astro.props;
+const shown = fits?.items.slice(0, 12) ?? [];
+const more = (fits?.items.length ?? 0) - shown.length;
+const tagLabel: Record<string, string> = { recommended: 'Recommended', avoid: 'Avoid', mixed: 'Mixed' };
+---
+{(upgrades.length > 0 || shown.length > 0 || needsPedals) && <section id="upgrades" class="upgrades" aria-labelledby="upgrades-title">
+  <p class="kicker">Where to go next</p><h2 id="upgrades-title">Upgrade paths</h2>
+  {needsPedals && <p class="callout"><strong>No twist axis.</strong> Rudder needs pedals with this stick. Mysh's minimum worth buying: <a href="/components/vkb/t-rudder-mk5">VKB T-Rudder</a> or <a href="/components/winctrl/orion-metal-rudder-pedals-damper">WINCTRL Orion pedals</a>.</p>}
+  {upgrades.length > 0 && <ol class="paths">{upgrades.map(u => <li>
+    <a class="target" href={u.href}>{u.name}</a>{u.reviewTag && tagLabel[u.reviewTag] && <span class={`tag ${u.reviewTag}`}>{tagLabel[u.reviewTag]}</span>}
+    <p>{u.note}{u.source && <> <a class="src" href={u.source} rel="external noopener">Source ↗</a></>}</p>
+  </li>)}</ol>}
+  {shown.length > 0 && <div class="fits"><h3>{fits!.kind === 'grips' ? 'Grips that fit this base' : 'Bases this grip fits'}</h3>
+    <ul>{shown.map(f => <li><a href={f.href}>{f.name}</a>{f.reviewTag && tagLabel[f.reviewTag] && <span class={`tag ${f.reviewTag}`}>{tagLabel[f.reviewTag]}</span>}</li>)}</ul>
+    {more > 0 && <p class="more">and {more} more with the same mount.</p>}
+    <p class="more">Based on documented mount standards; some pairings need an adapter or firmware setup.</p>
+  </div>}
+</section>}
+<style>
+  .upgrades { padding-top: 1.5rem; border-top: 1px solid var(--color-rule); scroll-margin-top: 4rem; }
+  .kicker { margin: 0; color: var(--color-accent); font-size: .8rem; font-weight: 600; }
+  h2 { margin: .25rem 0 1.25rem; font-size: clamp(1.9rem, 3vw, 2.5rem); text-transform: uppercase; }
+  h3 { margin: 0 0 .75rem; font: 700 .8rem var(--font-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--color-muted); }
+  .callout { margin: 0 0 1rem; padding: .9rem 1.1rem; border-left: 3px solid var(--color-accent); background: var(--color-surface); font-size: .9rem; }
+  .paths { display: grid; gap: .75rem; margin: 0 0 1rem; padding: 0; list-style: none; }
+  .paths li { padding: 1rem 1.25rem; border: 1px solid var(--color-rule); background: var(--color-surface); }
+  .paths p { margin: .35rem 0 0; color: var(--color-muted); font-size: .9rem; line-height: 1.55; }
+  .target { font-weight: 700; color: var(--color-ink); } a { color: var(--color-accent); } .src { font-size: .8rem; }
+  .fits { padding: 1.25rem; border: 1px solid var(--color-rule); background: var(--color-surface); }
+  .fits ul { columns: 2; margin: 0; padding-left: 1.1rem; font-size: .9rem; } .fits li { margin-bottom: .35rem; break-inside: avoid; }
+  .more { margin: .6rem 0 0; color: var(--color-muted); font-size: .8rem; }
+  .tag { margin-left: .5rem; padding: .05rem .4rem; border: 1px solid var(--color-rule); border-radius: 2px; font-size: .7rem; font-weight: 600; color: var(--color-muted); }
+  .tag.recommended { color: #1d6b3a; border-color: #1d6b3a55; } .tag.avoid { color: #9b2c1f; border-color: #9b2c1f55; } .tag.mixed { color: #8a5a00; border-color: #8a5a0055; }
+  @media (max-width: 800px) { .fits ul { columns: 1; } }
+</style>

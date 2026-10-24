@@ -43,6 +43,10 @@ external_reviews:
   summary: "Mid-range champion: pincer stick plus a metal-internal throttle with split levers, idle cutoff and afterburner detents. Bolt the throttle down; the EX module adds useful inputs."
   tag: recommended
   date: '2026-10-24'
+upgrade_paths:
+- to: winctrl/orion-2-viperace-joystick
+  note: "The next step up is the Orion2 base with the ViperAce grip, his best value high-end entry; the Combat throttle is good enough to keep."
+  source: https://www.youtube.com/watch?v=p_OwPVv_gog&t=3046s
 verification: draft
 sources: *id001
 images:

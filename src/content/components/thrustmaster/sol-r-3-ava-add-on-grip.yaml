@@ -44,6 +44,9 @@ images:
   source: https://www.thrustmaster.com/nl-nl/products/sol-r-3-ava-add-on-grip/
   caption: Sol-R 3 AVA Add-On Grip
 handedness: ambi
+mount:
+  provides: tm-din5
+  accepts: []
 controls:
 - type: trigger
   count: 1

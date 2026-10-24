@@ -40,6 +40,10 @@ external_reviews:
   summary: "Too expensive for a ball-and-cup stick; the Ursa Minor Combat HOTAS beats it for similar money."
   tag: avoid
   date: '2026-10-24'
+upgrade_paths:
+- to: winctrl/ursa-minor-combat-hotas
+  note: "The Ursa Minor Combat HOTAS costs about the same or less and plays in a different league."
+  source: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1214s
 verification: draft
 sources:
 - https://www.thrustmaster.com/nl-nl/products/sol-r-4-hotas/

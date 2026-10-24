@@ -6,13 +6,20 @@ import Verdict from '../../components/detail/Verdict.astro';
 import UseCaseFit from '../../components/detail/UseCaseFit.astro';
 import Reviews from '../../components/detail/Reviews.astro';
 import PriceTable from '../../components/detail/PriceTable.astro';
+import UpgradePaths from '../../components/detail/UpgradePaths.astro';
+import Explain from '../../components/Explain.svelte';
+import { compatibleParts, resolveUpgradePaths } from '../../lib/upgrades';
+import { needsPedals } from '../../lib/catalog';
+import { gimbalGlossaryKey, gimbalLabels } from '../../lib/glossary';
 import ControlInventory from '../../components/ControlInventory.svelte';
 import { productJsonLd } from '../../lib/structured-data';
 import { deriveComponentStats, deriveControlsSummary } from '../../lib/derive';
 import { inventoryComplete } from '../../lib/control-inventory';
 import { humanize, yesNoUnknown } from '../../lib/labels';
 import { overallVerdict, keySpecs, isDefaultFit } from '../../lib/detail';
-const [brands, mounts] = await Promise.all([getCollection('brands'), getCollection('mount_standards')]);
+const [brands, mounts, allComponents, allBundles] = await Promise.all([getCollection('brands'), getCollection('mount_standards'), getCollection('components'), getCollection('bundles')]);
+const componentMap = new Map(allComponents.map(x => [x.id, x.data]));
+const bundleMap = new Map(allBundles.map(x => [x.id, x.data]));
 const brandMap = new Map(brands.map(x => [x.id, x.data]));
 const mountMap = new Map(mounts.map(x => [x.id, x.data]));
 export async function getStaticPaths() { const components = await getCollection('components'); return components.map(({id,data}) => ({params:{slug:id},props:{component:{id,data}}})); }
@@ -36,7 +43,7 @@ const specs = keySpecs({
 });
 const groups = [
   { title: 'Mechanics', rows: [
-    ['Gimbal', humanize(h?.gimbal)], ['Primary sensor', humanize(h?.sensor)], ['Throw', h?.throw_deg != null ? `${h.throw_deg}°` : ''],
+    ['Gimbal type', h?.gimbal_type ? gimbalLabels[h.gimbal_type] : ''], ['Gimbal', humanize(h?.gimbal)], ['Primary sensor', humanize(h?.sensor)], ['Throw', h?.throw_deg != null ? `${h.throw_deg}°` : ''],
     ['Force adjustable', yesNoUnknown(h?.force_adjustable)], ['Swappable cams', yesNoUnknown(h?.cams_swappable)],
     ['Damping', humanize(h?.damping)], ['Extension support', yesNoUnknown(h?.extension_support)],
   ] },
@@ -52,9 +59,13 @@ const groups = [
 const provides = c.mount?.provides ? mountMap.get(c.mount.provides) : null;
 const accepts = (c.mount?.accepts ?? []).map(x => ({ id: x, data: mountMap.get(x) }));
 const showFit = !isDefaultFit(c.use_case_fit);
+const upgrades = resolveUpgradePaths(id, c.upgrade_paths, componentMap, bundleMap);
+const fits = compatibleParts(c, componentMap, mountMap);
+const pedals = needsPedals(c.category, [c]);
+const showUpgrades = upgrades.length > 0 || (fits?.items.length ?? 0) > 0 || pedals;
 const sections = [
   c.verdict && { href: '#verdict', label: 'Verdict' }, { href: '#controls', label: 'Controls' }, showFit && { href: '#fit', label: 'Flying-style fit' },
-  { href: '#specs', label: 'Specifications' }, { href: '#pricing', label: 'Pricing' }, c.external_reviews.length && { href: '#reviews', label: 'Reviews' },
+  { href: '#specs', label: 'Specifications' }, showUpgrades && { href: '#upgrades', label: 'Upgrade paths' }, { href: '#pricing', label: 'Pricing' }, c.external_reviews.length && { href: '#reviews', label: 'Reviews' },
 ].filter(Boolean) as { href: string; label: string }[];
 ---
 <BaseLayout title={c.name} description={description} image={c.images[0]?.file} jsonLd={jsonLd}>
@@ -68,7 +79,7 @@ const sections = [
   <section id="specs" class="specs" aria-labelledby="specs-title">
     <p class="kicker">Specifications</p><h2 id="specs-title">The details</h2>
     <div class="sheet">
-      {groups.map(g => <div class="group"><h3>{g.title}</h3>{g.known.length ? <dl>{g.known.map(([l, v]) => <div><dt>{l}</dt><dd>{v}</dd></div>)}</dl> : <p class="none">Not yet documented.</p>}{g.known.length > 0 && g.missing.length > 0 && <p class="missing">Not documented: {g.missing.join(', ').toLowerCase()}</p>}</div>)}
+      {groups.map(g => <div class="group"><h3>{g.title}</h3>{g.known.length ? <dl>{g.known.map(([l, v]) => <div><dt>{l}</dt><dd>{v}{l === 'Gimbal type' && h?.gimbal_type && <Explain term={gimbalGlossaryKey[h.gimbal_type]} />}</dd></div>)}</dl> : <p class="none">Not yet documented.</p>}{g.known.length > 0 && g.missing.length > 0 && <p class="missing">Not documented: {g.missing.join(', ').toLowerCase()}</p>}</div>)}
       <div class="group"><h3>Mounting</h3>
         {provides || accepts.length ? <dl>
           {provides && <div><dt>Provides</dt><dd>{provides.name}<small>{provides.description}</small></dd></div>}
@@ -78,6 +89,7 @@ const sections = [
     </div>
     {h?.axes && h.axes.length > 0 && <div class="axes"><h3>Axes</h3><table><thead><tr><th>Axis</th><th>Sensor</th><th>Resolution</th></tr></thead><tbody>{h.axes.map(a => <tr><td>{humanize(a.name)}</td><td>{humanize(a.sensor) || '—'}</td><td>{a.resolution_bits ? `${a.resolution_bits}-bit` : '—'}</td></tr>)}</tbody></table>{h.axis_count != null && h.axis_count !== h.axes.length && <p class="missing">The manufacturer lists {h.axis_count} axes; {h.axes.length} are individually documented.</p>}</div>}
   </section>
+  <UpgradePaths upgrades={upgrades} fits={fits} needsPedals={pedals} />
   <PriceTable prices={c.prices} notes={brand?.landed_cost_notes} />
   {c.external_reviews.length > 0 && <Reviews reviews={c.external_reviews} />}
   {c.sources.length > 0 && <details class="references"><summary>References ({c.sources.length})</summary><ul>{c.sources.map((source: string) => <li><a href={source} rel="external noopener">{sourceLabel(source)}</a></li>)}</ul></details>}

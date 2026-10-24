@@ -4,8 +4,9 @@ category: base
 status: current
 handedness: n/a
 mount:
-  provides: moza-flight-qr
-  accepts: []
+  provides: null
+  accepts:
+  - moza-flight-qr
 controls: []
 controls_evidence:
   coverage: complete

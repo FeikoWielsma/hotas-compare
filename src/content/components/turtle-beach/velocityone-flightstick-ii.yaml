@@ -154,6 +154,10 @@ external_reviews:
   summary: "Big improvements (hall sensors, weight, encoder, display), but keeps a stiff ball-and-cup gimbal; Ursa Minor or Gladiator are better at its price."
   tag: mixed
   date: '2026-10-24'
+upgrade_paths:
+- to: winctrl/ursa-minor-fighter-joystick-r
+  note: "For similar money the Ursa Minor Fighter gives you a much better gimbal; gimbal quality beats feature count."
+  source: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2580s
 verification: draft
 images:
 - file: /images/turtle-beach/velocityone-flightstick-ii.png

@@ -266,6 +266,14 @@ export const ExternalReviewSchema = z.object({
 });
 export type ExternalReview = z.infer<typeof ExternalReviewSchema>;
 
+/** An opinionated next step from this item, e.g. a better base for the same grip. `to` is a component or bundle id. */
+export const UpgradePathSchema = z.object({
+  to: z.string(),
+  note: z.string(),
+  source: z.string().url().optional(),
+});
+export type UpgradePath = z.infer<typeof UpgradePathSchema>;
+
 // Use Case Fit Schema
 export const UseCaseFitSchema = z.object({
   modern_jet: z.number().min(1).max(5).default(3),
@@ -389,6 +397,7 @@ export const ComponentSchema = z.object({
   prices: z.array(PriceSchema).default([]),
   verdict: VerdictSchema.nullable().optional(),
   external_reviews: z.array(ExternalReviewSchema).default([]),
+  upgrade_paths: z.array(UpgradePathSchema).default([]),
   verification: VerificationStatusEnum.default('draft'),
   sources: z.array(z.string()).default([]),
   images: z.array(ImageSchema).default([]),
@@ -406,6 +415,7 @@ export const BundleSchema = z.object({
   prices: z.array(PriceSchema).default([]),
   verdict: VerdictSchema.nullable().optional(),
   external_reviews: z.array(ExternalReviewSchema).default([]),
+  upgrade_paths: z.array(UpgradePathSchema).default([]),
   verification: VerificationStatusEnum.default('draft'),
   sources: z.array(z.string()).default([]),
   images: z.array(ImageSchema).default([]),

@@ -13,8 +13,9 @@ status: current
 release_year: 2024
 handedness: n/a
 mount:
-  provides: vkb-rev-c
-  accepts: []
+  provides: null
+  accepts:
+  - vkb-rev-c
 controls: []
 controls_evidence:
   coverage: complete

@@ -67,6 +67,13 @@ external_reviews:
   summary: "Cheapest full HOTAS he still calls viable, mainly for the versatile throttle (grease and mod it); plan to replace the stick later."
   tag: recommended
   date: '2026-10-24'
+upgrade_paths:
+- to: winctrl/ursa-minor-fighter-joystick-r
+  note: "Keep the throttle and replace the stick when it wears out; the Ursa Minor Fighter has a far better pincer gimbal."
+  source: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2442s
+- to: vkb/gladiator-nxt-evo-sce-r
+  note: "In the US the Gladiator NXT EVO is the better stick to move to for similar money."
+  source: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2580s
 verification: verified
 sources:
 - https://www.thrustmaster.com/en-us/products/t-16000m-fcs-hotas/

@@ -43,6 +43,10 @@ platform_compatibility:
   - https://www.turtlebeach.com/products/velocity-one-hotas?Platform=Xbox
   - https://eu.turtlebeach.com/products/velocity-one-hotas
   - https://uk.turtlebeach.com/products/velocity-one-hotas
+upgrade_paths:
+- to: winctrl/ursa-minor-combat-hotas
+  note: "The Ursa Minor Combat HOTAS costs about the same or less and plays in a different league."
+  source: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1214s
 verification: draft
 images:
 - file: /images/turtle-beach/velocityone-hotas.png

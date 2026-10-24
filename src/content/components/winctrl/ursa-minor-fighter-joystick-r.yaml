@@ -146,6 +146,10 @@ external_reviews:
   summary: "Best value base in Europe: excellent pincer gimbal with dampers and good ergonomics; the hats are the weak point."
   tag: recommended
   date: '2026-10-24'
+upgrade_paths:
+- to: winctrl/orion-2-viperace-joystick
+  note: "The next step up is the Orion2 base with the ViperAce grip, his best value high-end entry; the Combat throttle is good enough to keep."
+  source: https://www.youtube.com/watch?v=p_OwPVv_gog&t=3046s
 verification: verified
 sources:
   - https://eu.winctrl.com/view/goods-details.html?id=551

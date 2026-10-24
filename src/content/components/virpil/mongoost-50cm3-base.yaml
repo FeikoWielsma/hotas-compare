@@ -11,7 +11,11 @@ platform_compatibility:
 status: current
 release_year: 2021
 handedness: n/a
-mount: null
+mount:
+  provides: null
+  accepts:
+  - virpil-grip
+  - tm-din5
 controls: []
 controls_evidence:
   coverage: complete

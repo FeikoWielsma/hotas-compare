@@ -144,6 +144,10 @@ external_reviews:
   summary: "Feature-packed and now under 100 euros, but the stiff ball-and-cup gimbal is the weak spot and the trackpad is unreliable."
   tag: mixed
   date: '2026-10-24'
+upgrade_paths:
+- to: winctrl/ursa-minor-fighter-joystick-r
+  note: "For similar money the Ursa Minor Fighter gives you a much better gimbal; gimbal quality beats feature count."
+  source: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2580s
 verification: draft
 images:
 - file: /images/turtle-beach/velocityone-flightstick.png

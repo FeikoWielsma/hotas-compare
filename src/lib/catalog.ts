@@ -53,6 +53,13 @@ export interface CatalogItem {
 const completeStickCategories = new Set(['stick_fixed', 'stick_combo', 'hotas_bundle', 'system']);
 const twistAxis = /twist|(^|[ _-])r?z($|[ _-])|rudder/i;
 
+/** A complete stick with a documented gimbal and axes but no twist/rudder axis. Never guessed from missing data. */
+export function needsPedals(category: string, members: Pick<Component, 'hardware'>[]) {
+  return completeStickCategories.has(category)
+    && members.some((member) => member.hardware?.gimbal_type != null && member.hardware.axes.length > 0)
+    && !members.some((member) => member.hardware?.axes.some((axis) => twistAxis.test(axis.name)));
+}
+
 /** Resolve a serialized item without requiring another content query. */
 export function resolveCatalogRegion(item: CatalogItem, region: Region, now = new Date()): CatalogItem {
   return { ...item, region, resolvedPrice: resolvePrice(item.prices, region, now) };
@@ -110,10 +117,7 @@ export async function loadCatalog(region: Region = 'EU', now = new Date()) {
         return { reviewTag: review?.tag ?? null, latestReview: review ? { ...review, reviewerName: reviewerNames.get(review.reviewer) ?? review.reviewer } : null };
       })(),
       gimbalType: members.map((member) => member.hardware?.gimbal_type).find((type) => type != null) ?? null,
-      // Only for complete sticks whose gimbal and axes are documented; never guess from missing data.
-      needsPedals: completeStickCategories.has(data.category)
-        && members.some((member) => member.hardware?.gimbal_type != null && member.hardware.axes.length > 0)
-        && !members.some((member) => member.hardware?.axes.some((axis) => twistAxis.test(axis.name))),
+      needsPedals: needsPedals(data.category, members),
       images: data.images, componentIds: 'components' in data ? data.components : [],
       formerBrandNames: brand.former_names,
       handedness: [...new Set(members.map((member) => member.handedness).filter((hand) => hand !== 'n/a'))],

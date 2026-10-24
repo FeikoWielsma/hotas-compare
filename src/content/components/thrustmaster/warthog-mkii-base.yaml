@@ -10,6 +10,10 @@ platform_compatibility:
     support listed.
   sources:
   - https://www.thrustmaster.com/nl-nl/products/hotas-warthog-mkii-base/
+mount:
+  provides: null
+  accepts:
+  - tm-din5
 controls:
 - type: axis
   count: 2
@@ -77,6 +81,13 @@ external_reviews:
   summary: "Plastic ball-and-cup gimbal at a premium price; put the grip on an AVA, WarBRD-D or Orion2 base instead."
   tag: avoid
   date: '2026-10-24'
+upgrade_paths:
+- to: thrustmaster/ava-base
+  note: "Keep the Warthog grip but put it on Thrustmaster's dual-cam AVA base instead of the ball-and-cup base."
+  source: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1435s
+- to: virpil/warbrd-d-base
+  note: "Or use a Virpil WarBRD-D: it takes Thrustmaster grips without an adapter and has better integrated dampers."
+  source: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1435s
 verification: draft
 sources:
 - https://www.thrustmaster.com/nl-nl/products/hotas-warthog-mkii-base/
