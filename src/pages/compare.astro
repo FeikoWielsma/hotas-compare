@@ -1,13 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import JournalHeader from '../components/JournalHeader.astro';
-import HardwareIcon from '../components/HardwareIcon.svelte';
+import CompareArt from '../components/CompareArt.astro';
 import CompareView from '../components/CompareView.svelte';
 import { getCatalogItems } from '../lib/catalog';
 const items = await getCatalogItems();
 ---
 <BaseLayout title="Compare hardware" noindex>
-  <JournalHeader eyebrow="Hardware, side by side" title="The details matter." emphasis="Find your fit." description="Up to four pieces of hardware. Every axis, every input, side by side."><div class="compare-art" slot="art" aria-hidden="true"><HardwareIcon name="stick" size={60} /><span>↔</span><HardwareIcon name="throttle" size={60} /></div></JournalHeader>
+  <JournalHeader eyebrow="Hardware, side by side" title="The details matter." emphasis="Find your fit." description="Up to four pieces of hardware. Every axis, every input, side by side."><CompareArt slot="art" /></JournalHeader>
   <CompareView client:load initialItems={items} />
 </BaseLayout>
-<style>.compare-art { display: flex; gap: 1.2rem; align-items: center; padding: 1.2rem; border: 1px solid #768896; transform: rotate(-5deg); color: #f69b70; } .compare-art span { font-size: 1.75rem; color: #c1cbd3; }</style>
