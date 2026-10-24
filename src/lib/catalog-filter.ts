@@ -81,3 +81,31 @@ export function rankReasons(item: CatalogItem): string[] {
   if (item.status === 'current') out.push('Currently sold');
   return out;
 }
+
+const handPatterns: [RegExp, string][] = [
+  [/\s*\((left|right)(?:[- ]hand(?:ed)?)?\)/i, ''], [/\s*-\s*(left|right)[- ]hand(?:ed)?$/i, ''],
+  [/\s+(left|right)[- ]hand(?:ed)?$/i, ''], [/\s+(left|right)$/i, ''], [/\[(l|r)(z?)\]/i, '[$2]'],
+];
+
+/** The handedness of a mirrored product variant and the name it shares with its twin, if any. */
+export function handVariant(name: string): { key: string; hand: 'left' | 'right' } | null {
+  for (const [pattern, replacement] of handPatterns) {
+    const match = name.match(pattern);
+    if (!match) continue;
+    const hand = match[1].toLowerCase().startsWith('l') ? 'left' : 'right';
+    return { key: name.replace(pattern, replacement).replace(/\[\]\s*/, '').trim().toLocaleLowerCase(), hand };
+  }
+  return null;
+}
+
+/** Collapse left/right twins (same brand, category and base name) into one entry, keeping sort order; right hand first. */
+export function groupHandVariants(items: CatalogItem[]): CatalogItem[][] {
+  const groups = new Map<string, CatalogItem[]>();
+  for (const item of items) {
+    const variant = handVariant(item.name);
+    const key = variant ? `${item.brand}|${item.category}|${variant.key}` : `id|${item.id}`;
+    const group = groups.get(key);
+    if (group) group.push(item); else groups.set(key, [item]);
+  }
+  return [...groups.values()].map((group) => group.sort((a, b) => (handVariant(a.name)?.hand === 'right' ? 0 : 1) - (handVariant(b.name)?.hand === 'right' ? 0 : 1)));
+}

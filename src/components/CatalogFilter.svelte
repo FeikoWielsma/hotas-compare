@@ -7,7 +7,7 @@
   import BrandMark from './BrandMark.svelte';
   import type { CatalogItem } from '../lib/catalog';
   import { resolveItemRegion } from '../lib/catalog-ui';
-  import { filterCatalog } from '../lib/catalog-filter';
+  import { filterCatalog, groupHandVariants } from '../lib/catalog-filter';
   import { platforms, type Platform } from '../lib/platforms';
   import { regionStore } from '../lib/stores/region.svelte';
   let { initialItems }: { initialItems: CatalogItem[] } = $props();
@@ -55,6 +55,7 @@
     search, categories: categories[category], brands, minimum, maximum, ministick, brake, sensors,
     fit, minimumFit, handedness, minimumAxes, minimumInputs, itemType, priceAvailability, sort, platform, gimbalTypes,
   }));
+  const grouped = $derived(groupHandVariants(filtered));
   function reset() {
     search = ''; category = 'All'; brands = []; minimum = undefined; maximum = undefined;
     ministick = false; brake = false; sensors = false; fit = ''; minimumFit = 4; sort = 'featured';
@@ -83,8 +84,8 @@
     <fieldset><legend>Platform compatibility</legend><label class="fit-label">Platform<select bind:value={platform}><option value="">All platforms</option>{#each platforms as {key, label}}<option value={key}>{label}</option>{/each}</select></label><p class="note">Shows confirmed support. Check product notes for required accessories and supported console generations.</p></fieldset>
     <fieldset class="checks"><legend>Features</legend><label><input type="checkbox" bind:checked={ministick} /> Has ministick</label><label><input type="checkbox" bind:checked={brake} /> Has brake axis</label><label><input type="checkbox" bind:checked={sensors} /> Contactless sensors</label></fieldset>
     <fieldset><legend>Primary fit</legend><label class="fit-label">Use case<select bind:value={fit}><option value="">Any flying style</option><option value="modern_jet">Modern Jet</option><option value="space_hosas">Space HOSAS</option><option value="space_hotas">Space HOTAS</option><option value="heli">Helicopter</option><option value="ga_airliner">GA / Airliner</option><option value="ww2">WWII</option></select></label><label class="fit-label">Minimum fit<select bind:value={minimumFit} disabled={!fit}>{#each [1, 2, 3, 4, 5] as score}<option value={score}>{score} / 5</option>{/each}</select></label></fieldset>
-  </aside><div class="results"><div class="results-toolbar"><p class="counter" role="status">Showing <strong>{filtered.length}</strong> of {initialItems.length} items <span>{regionStore.region} prices</span></p><div class="layouts" role="group" aria-label="Catalog layout">{#each layouts as view}<button type="button" class:active={layout === view.value} aria-pressed={layout === view.value} onclick={() => chooseLayout(view.value)}><HardwareIcon name={view.icon} size={19} /><span>{view.label}</span></button>{/each}</div></div>
-    {#if filtered.length}<div class="grid" class:compact-grid={layout === 'compact'} class:rows={layout === 'rows'}>{#each filtered as item (item.id)}<ProductCard {item} compact={layout === 'compact'} row={layout === 'rows'} rankInfo={sort === 'featured'} />{/each}</div>{:else}<div class="empty"><h2>No hardware matches your filters.</h2><p>{activeCount} active {activeCount === 1 ? 'filter is' : 'filters are'} narrowing the catalog. Try fewer requirements or a broader search. Price filters use {regionStore.region} listings only.</p><button type="button" onclick={reset}>Reset all filters</button></div>{/if}
+  </aside><div class="results"><div class="results-toolbar"><p class="counter" role="status">Showing <strong>{grouped.length}</strong> {grouped.length === 1 ? 'product' : 'products'}{grouped.length !== filtered.length ? ` (${filtered.length} variants)` : ''} of {initialItems.length} items <span>{regionStore.region} prices</span></p><div class="layouts" role="group" aria-label="Catalog layout">{#each layouts as view}<button type="button" class:active={layout === view.value} aria-pressed={layout === view.value} onclick={() => chooseLayout(view.value)}><HardwareIcon name={view.icon} size={19} /><span>{view.label}</span></button>{/each}</div></div>
+    {#if filtered.length}<div class="grid" class:compact-grid={layout === 'compact'} class:rows={layout === 'rows'}>{#each grouped as group (group[0].id)}<ProductCard item={group[0]} variants={group} compact={layout === 'compact'} row={layout === 'rows'} rankInfo={sort === 'featured'} />{/each}</div>{:else}<div class="empty"><h2>No hardware matches your filters.</h2><p>{activeCount} active {activeCount === 1 ? 'filter is' : 'filters are'} narrowing the catalog. Try fewer requirements or a broader search. Price filters use {regionStore.region} listings only.</p><button type="button" onclick={reset}>Reset all filters</button></div>{/if}
   </div></div>
 </section>
 

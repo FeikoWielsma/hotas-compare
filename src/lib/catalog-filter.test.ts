@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import type { CatalogItem } from './catalog';
 import { deriveControlsSummary, resolvePrice } from './derive';
 import { resolveCatalogRegion } from './catalog';
-import { filterCatalog, rankReasons } from './catalog-filter';
+import { filterCatalog, groupHandVariants, handVariant, rankReasons } from './catalog-filter';
 
 function item(overrides: Partial<CatalogItem> = {}): CatalogItem {
   return {
@@ -92,5 +92,25 @@ describe('catalog filters', () => {
     const reasons = rankReasons(item({ reviewTag: 'recommended', latestReview: { reviewer: 'mysh', reviewerName: 'Mysh', tag: 'recommended', url: 'https://x.test', summary: '', date: '2026-10-24' }, scores, verification: 'verified' }));
     expect(reasons).toEqual(['Mysh: recommended', 'Our verdict 4.4/5', 'Specs verified', 'Currently sold']);
     expect(rankReasons(item({ reviewTag: 'avoid', latestReview: { reviewer: 'mysh', reviewerName: 'Mysh', tag: 'avoid', url: 'https://x.test', summary: '', date: '2026-10-24' } }))[0]).toBe('Mysh: avoid (ranked lower)');
+  });
+
+  it('recognises left/right naming styles and keeps non-hand variants apart', () => {
+    expect(handVariant('Constellation Alpha Prime (Left)')).toEqual({ key: 'constellation alpha prime', hand: 'left' });
+    expect(handVariant('STECS Space Throttle System - Max (Right-Hand)')).toEqual({ key: 'stecs space throttle system - max', hand: 'right' });
+    expect(handVariant("Gunfighter Mk.IV 'Space Combat Edition' - Tabletop - Left Hand")?.key).toBe("gunfighter mk.iv 'space combat edition' - tabletop");
+    expect(handVariant('STECS Space Throttle Add-On Grip (STG) Right-Hand')?.hand).toBe('right');
+    expect(handVariant('Ursa Minor Fighter Joystick Left')).toEqual({ key: 'ursa minor fighter joystick', hand: 'left' });
+    expect(handVariant('VPC CDT-Aeromax [LZ] Flightstick')).toEqual({ key: 'vpc cdt-aeromax [z] flightstick', hand: 'left' });
+    expect(handVariant('VPC CDT-Aeromax [R] Flightstick')?.key).not.toBe(handVariant('VPC CDT-Aeromax [RZ] Flightstick')?.key);
+    expect(handVariant('Gladiator NXT EVO Base')).toBeNull();
+  });
+
+  it('groups mirrored variants of the same brand and category into one entry, right hand first', () => {
+    const l = item({ id: 'l', name: 'Grip (Left)', category: 'grip' });
+    const r = item({ id: 'r', name: 'Grip (Right)', category: 'grip' });
+    const other = item({ id: 'o', name: 'Other (Left)', category: 'grip' });
+    const otherBrand = item({ id: 'x', name: 'Grip (Right)', category: 'grip', brand: 'else' });
+    const groups = groupHandVariants([l, other, r, otherBrand]);
+    expect(groups.map((g) => g.map((i) => i.id))).toEqual([['r', 'l'], ['o'], ['x']]);
   });
 });
