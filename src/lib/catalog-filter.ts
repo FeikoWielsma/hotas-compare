@@ -114,7 +114,7 @@ export function groupHandVariants(items: CatalogItem[]): CatalogItem[][] {
 }
 
 /** The hand a mirrored variant is for: its single documented handedness, else its name. */
-export function handOf(item: CatalogItem): 'left' | 'right' | null {
+export function handOf(item: Pick<CatalogItem, 'handedness' | 'name'>): 'left' | 'right' | null {
   const [only, ...rest] = item.handedness;
   if (!rest.length && (only === 'left' || only === 'right')) return only;
   return handVariant(item.name)?.hand ?? null;
