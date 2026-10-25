@@ -3,11 +3,12 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BrandMark from '../../components/BrandMark.svelte';
 import JournalHeader from '../../components/JournalHeader.astro';
+import { isListed } from '../../lib/visibility';
 import { categoryLabels } from '../../lib/catalog-ui';
 const [brands, components, bundles] = await Promise.all([getCollection('brands'), getCollection('components'), getCollection('bundles')]);
 const countries: Record<string, string> = { US: 'United States', CH: 'Switzerland', HR: 'Croatia', CN: 'China', PL: 'Poland', FR: 'France', BY: 'Belarus' };
 const sorted = brands.toSorted((a, b) => a.data.name.localeCompare(b.data.name));
-const categories = (id: string) => [...new Set(components.filter(x => x.data.brand === id).map(x => categoryLabels[x.data.category]))].slice(0, 4).join(' · ');
+const categories = (id: string) => [...new Set(components.filter(x => x.data.brand === id && isListed(x.data)).map(x => categoryLabels[x.data.category]))].slice(0, 4).join(' · ');
 ---
 <BaseLayout title="Flight sim brands" description="Meet the makers behind your next flight sim setup. Explore brands, flight controls and regional buying information.">
   <JournalHeader eyebrow="Meet the makers" title="The names behind" emphasis="the feel." description="From your first flight stick to a setup built around you. Get to know the makers, explore their hardware, and find your next favorite.">
@@ -15,8 +16,8 @@ const categories = (id: string) => [...new Set(components.filter(x => x.data.bra
   </JournalHeader>
   <div class="directory-heading"><h2>Find your kind of hardware.</h2><span>{brands.length} specialist brands</span></div>
   <div class="brand-grid">{sorted.map(({id,data:b}) => {
-    const componentCount = components.filter(x => x.data.brand === id).length;
-    const bundleCount = bundles.filter(x => x.data.brand === id).length;
+    const componentCount = components.filter(x => x.data.brand === id && isListed(x.data)).length;
+    const bundleCount = bundles.filter(x => x.data.brand === id && isListed(x.data)).length;
     return <a class="brand-card" href={`/brands/${id}`}><div class="brand-top"><BrandMark brand={id} name={b.name} size={64} /><div><h2>{b.name}</h2><p class="country">{b.country ? countries[b.country] ?? b.country : 'Flight sim hardware'}</p></div></div><p class="hardware-types">{categories(id) || 'Flight sim controls and accessories'}</p><div class="card-footer"><span>{componentCount + bundleCount} products</span><strong>Explore hardware ↗</strong></div></a>;
   })}</div>
 </BaseLayout>

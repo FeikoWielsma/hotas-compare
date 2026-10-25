@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { productPaths, isListed } from '../../lib/visibility';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SuccessorBanner from '../../components/detail/SuccessorBanner.astro';
 import { resolveSuccessor } from '../../lib/successors';
@@ -19,7 +20,7 @@ import { cardItem } from '../../lib/catalog-ui';
 import { overallVerdict, keySpecs, isDefaultFit } from '../../lib/detail';
 const [components, bundles, brands, catalog] = await Promise.all([getCollection('components'), getCollection('bundles'), getCollection('brands'), getCatalogItems()]);
 const brandMap = new Map(brands.map(x => [x.id, x.data]));
-export async function getStaticPaths() { const bundles = await getCollection('bundles'); return bundles.map(({id,data}) => ({params:{slug:id},props:{bundle:{id,data}}})); }
+export async function getStaticPaths() { const bundles = await getCollection('bundles'); return productPaths(bundles, 'bundle'); }
 const { bundle: entry } = Astro.props;
 const { id, data: b } = entry;
 const brand = brandMap.get(b.brand);
@@ -56,6 +57,7 @@ const sections = [
   {b.verdict && <Verdict verdict={b.verdict} />}
   <section id="included" class="included" aria-labelledby="included-title">
     <p class="kicker">In the box</p><h2 id="included-title">What’s included</h2>
+    {included.filter(member => !isListed(member)).map(member => <p>{member.name} (included)</p>)}
     <div class="cards">{memberCards.map(member => <ProductCard client:visible item={cardItem(member!)} compact />)}</div>
   </section>
   <div id="controls" class="anchor"><ControlInventory sections={included} /></div>

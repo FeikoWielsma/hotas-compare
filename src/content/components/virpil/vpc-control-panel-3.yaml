@@ -1,6 +1,7 @@
 brand: virpil
 name: 'VPC Universal Control Panel #3'
 category: module
+catalog_kind: panel
 platform_compatibility:
   pc: supported
   xbox: unsupported

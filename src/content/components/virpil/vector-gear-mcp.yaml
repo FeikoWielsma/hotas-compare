@@ -1,6 +1,7 @@
 brand: virpil
 name: VPC Vector Gear MCP
 category: module
+catalog_kind: panel
 platform_compatibility:
   pc: supported
   xbox: unsupported

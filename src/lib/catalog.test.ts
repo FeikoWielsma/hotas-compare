@@ -41,6 +41,19 @@ describe('catalog serialization', () => {
     collections.values.bundles = [];
     await expect(loadCatalog()).rejects.toThrow(/successor.*current item/);
   });
+  it('validates families against retained hidden products and removes hidden successor IDs from public items', async () => {
+    const hidden = ComponentSchema.parse({ brand: 'test', name: 'Hidden', category: 'module', catalog_kind: 'panel' });
+    const old = ComponentSchema.parse({ brand: 'test', name: 'Old', category: 'stick_fixed', status: 'discontinued', successor: 'test/hidden' });
+    collections.values.components.push({ id: 'test/hidden', data: hidden }, { id: 'test/old', data: old });
+    collections.values.families = [{ id: 'test/line', data: FamilySchema.parse({ name: 'Line', brand: 'test', axis: 'Size', members: [{ id: 'test/base', label: 'Small' }, { id: 'test/hidden', label: 'Large' }] }) }];
+    const catalog = await loadCatalog();
+    expect(catalog.items.find(item => item.id === 'test/hidden')).toBeUndefined();
+    expect(catalog.items.find(item => item.id === 'test/old')?.successor).toBeUndefined();
+    expect(catalog.items.find(item => item.id === 'test/base')?.family?.id).toBe('test/line');
+    expect(catalog.components.find(entry => entry.id === 'test/hidden')).toBeDefined();
+    (collections.values.families[0] as { data: { members: { label: string }[] } }).data.members[1].label = 'Small';
+    await expect(loadCatalog()).rejects.toThrow('needs at least two distinct labels');
+  });
   it('distinguishes a documented zero-axis accessory from an unknown axis inventory', async () => {
     collections.values.components = [
       { id: 'test/passive', data: ComponentSchema.parse({ brand: 'test', name: 'Passive accessory', category: 'module', hardware: { axis_count: 0 } }) },

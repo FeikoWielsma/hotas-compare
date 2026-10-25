@@ -1,3 +1,4 @@
+import { isListed } from './visibility';
 import { resolveSuccessor } from './successors';
 import { deriveComponentStats, deriveControlsSummary, resolvePrice } from './derive';
 import type { ControlsSummary, ResolvedPrice } from './derive';
@@ -89,6 +90,8 @@ export async function loadCatalog(region: Region = 'EU', now = new Date()) {
   const familyMembership = familyIndex(families);
   const reviewerNames = new Map(reviewers.map((entry) => [entry.id, entry.data.name.split(' (')[0]]));
   const componentMap = new Map(components.map((entry) => [entry.id, entry.data]));
+  const bundleMap = new Map(bundles.map((entry) => [entry.id, entry.data]));
+  const successors = new Map([...components, ...bundles].map(({ id, data }) => [id, resolveSuccessor(id, data, componentMap, bundleMap)]));
   const brandMap = new Map(brands.map((entry) => [entry.id, entry.data]));
 
   function makeItem(id: string, data: Component | Bundle, item_type: CatalogItem['item_type']): CatalogItem {
@@ -118,7 +121,7 @@ export async function loadCatalog(region: Region = 'EU', now = new Date()) {
     };
     return {
       id, slug: id, name: data.name, brand: data.brand, brandName: brand.name,
-      category: data.category, item_type, status: data.status, successor: data.successor, verification: data.verification,
+      category: data.category, item_type, status: data.status, successor: successors.get(id)?.id, verification: data.verification,
       ...(data.platform_compatibility ? { platform_compatibility: data.platform_compatibility } : {}),
       prices: data.prices, region, resolvedPrice: resolvePrice(data.prices, region, now),
       totalAxes: stats.reduce((sum, stat) => sum + stat.totalAxes, 0),
@@ -148,17 +151,18 @@ export async function loadCatalog(region: Region = 'EU', now = new Date()) {
       })(),
     };
   }
-  const items = [
+  const allItems = [
     ...components.map(({ id, data }) => makeItem(id, data, 'component')),
     ...bundles.map(({ id, data }) => makeItem(id, data, 'bundle')),
   ].sort((a, b) => a.name.localeCompare(b.name) || a.id.localeCompare(b.id));
-  if (new Set(items.map((item) => item.id)).size !== items.length) {
+  if (new Set(allItems.map((item) => item.id)).size !== allItems.length) {
     throw new Error('Catalog IDs must be unique across components and bundles.');
   }
-  const bundleMap = new Map(bundles.map((entry) => [entry.id, entry.data]));
-  for (const { id, data } of [...components, ...bundles]) resolveSuccessor(id, data, componentMap, bundleMap);
-  const familyErrors = validateFamilies(families, items);
+  // Validate every record, including retained hidden family members.
+  const familyErrors = validateFamilies(families, allItems);
   if (familyErrors.length) throw new Error(`Invalid product families:\n${familyErrors.join('\n')}`);
+  const listedIds = new Set([...components, ...bundles].filter(({ data }) => isListed(data)).map(({ id }) => id));
+  const items = allItems.filter((item) => listedIds.has(item.id));
   return { items, components, bundles, brands, mount_standards, families };
 }
 

@@ -1,6 +1,7 @@
 brand: logitech
 name: Logitech G Flight Multi Panel
 category: module
+catalog_kind: panel
 status: current
 handedness: n/a
 mount: null

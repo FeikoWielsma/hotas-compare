@@ -1,6 +1,7 @@
 brand: logitech
 name: Logitech G Flight Instrument Panel
 category: module
+catalog_kind: panel
 status: discontinued
 handedness: n/a
 mount: null
