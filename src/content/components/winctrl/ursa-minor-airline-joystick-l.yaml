@@ -88,13 +88,14 @@ physical:
   - glass_fiber_nylon
   - abs
 use_case_fit:
-  modern_jet: 4
+  modern_jet: 3
   heli: 3
   ww2: 3
   ga: 3
-  airliner: 3
-  space_hotas: 4
+  airliner: 5
+  space_hotas: 2
   space_hosas: 3
+use_case_fit_source: baseline
 prices:
 - region: US
   currency: USD

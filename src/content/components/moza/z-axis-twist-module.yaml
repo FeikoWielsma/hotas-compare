@@ -48,13 +48,14 @@ physical:
   materials:
   - aerospace-grade aluminum alloy
 use_case_fit:
-  modern_jet: 4
+  modern_jet: 3
   heli: 3
   ww2: 3
   ga: 3
   airliner: 3
-  space_hotas: 4
-  space_hosas: 3
+  space_hotas: 3
+  space_hosas: 4
+use_case_fit_source: baseline
 prices:
 - region: EU
   currency: EUR

@@ -113,7 +113,15 @@ physical:
   - 158
   - 256
   materials: []
-use_case_fit: {}
+use_case_fit:
+  modern_jet: 4
+  heli: 3
+  ww2: 3
+  ga: 3
+  airliner: 4
+  space_hotas: 4
+  space_hosas: 2
+use_case_fit_source: baseline
 prices:
 - region: US
   currency: USD

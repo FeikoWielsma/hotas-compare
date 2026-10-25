@@ -80,6 +80,15 @@ connectivity:
 physical:
   materials:
   - abs
+use_case_fit:
+  modern_jet: 4
+  heli: 3
+  ww2: 4
+  ga: 2
+  airliner: 2
+  space_hotas: 4
+  space_hosas: 4
+use_case_fit_source: baseline
 prices:
 - region: US
   currency: USD

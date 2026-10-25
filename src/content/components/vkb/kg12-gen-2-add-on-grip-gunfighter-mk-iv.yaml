@@ -69,6 +69,15 @@ connectivity:
   usb: none as supplied; connects through the Gunfighter Mk.IV base
   standalone_usb: false
 software: VKBDevCfg
+use_case_fit:
+  modern_jet: 2
+  heli: 3
+  ww2: 5
+  ga: 2
+  airliner: 2
+  space_hotas: 3
+  space_hosas: 3
+use_case_fit_source: baseline
 prices:
 - region: US
   currency: USD

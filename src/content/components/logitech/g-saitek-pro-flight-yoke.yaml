@@ -63,6 +63,15 @@ physical:
   materials:
   - metal
   - abs
+use_case_fit:
+  modern_jet: 1
+  heli: 1
+  ww2: 1
+  ga: 5
+  airliner: 5
+  space_hotas: 1
+  space_hosas: 1
+use_case_fit_source: baseline
 prices:
 - region: EU
   currency: EUR

@@ -69,6 +69,15 @@ platform_compatibility:
   sources:
   - https://support.thrustmaster.com/en/product/tflighthotasx-en/
   - https://www.thrustmaster.com/products/t-flight-hotas-x/
+use_case_fit:
+  modern_jet: 2
+  heli: 2
+  ww2: 2
+  ga: 2
+  airliner: 2
+  space_hotas: 3
+  space_hosas: 3
+use_case_fit_source: baseline
 sources:
 - https://support.thrustmaster.com/en/product/tflighthotasx-en/
 - https://www.thrustmaster.com/products/t-flight-hotas-x/

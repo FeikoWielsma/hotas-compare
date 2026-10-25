@@ -45,6 +45,15 @@ connectivity:
   usb: none as supplied; GNX BUS, optional GNX USB Controller (HID-Main) for standalone USB
   standalone_usb: false
 software: VKBDevCfg
+use_case_fit:
+  modern_jet: 3
+  heli: 3
+  ww2: 3
+  ga: 3
+  airliner: 3
+  space_hotas: 3
+  space_hosas: 3
+use_case_fit_source: baseline
 prices:
 - region: US
   currency: USD

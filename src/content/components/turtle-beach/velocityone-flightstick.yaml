@@ -94,7 +94,15 @@ physical:
   - 216.84
   - 230.47
   materials: []
-use_case_fit: {}
+use_case_fit:
+  modern_jet: 2
+  heli: 2
+  ww2: 2
+  ga: 2
+  airliner: 2
+  space_hotas: 4
+  space_hosas: 4
+use_case_fit_source: baseline
 software: Turtle Beach Flightstick Companion App for iOS and Android
 prices:
 - region: EU
