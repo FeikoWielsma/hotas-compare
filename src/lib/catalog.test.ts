@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { ComponentSchema, BundleSchema, BrandSchema } from './schema';
+import { ComponentSchema, BundleSchema, BrandSchema, FamilySchema } from './schema';
 import { getCatalogItems, loadCatalog, resolveCatalogRegion } from './catalog';
 
 const collections = vi.hoisted(() => ({ values: {} as Record<string, unknown[]> }));
@@ -9,7 +9,7 @@ beforeEach(() => {
   collections.values = {
     brands: [{ id: 'test', data: BrandSchema.parse({ name: 'Test Flight' }) }],
     mount_standards: [],
-    reviewers: [],
+    reviewers: [], families: [],
     components: [
       { id: 'test/base', data: ComponentSchema.parse({ brand: 'test', name: 'Base', category: 'base', hardware: { axes: [{ name: 'x' }, { name: 'y' }], gimbal: 'cam', sensor: 'hall' } }) },
       { id: 'test/grip', data: ComponentSchema.parse({ brand: 'test', name: 'Grip', category: 'grip', controls: [{ type: 'analog_ministick' }, { type: 'lever', kind: 'brake', analog: true }] }) },
@@ -67,5 +67,14 @@ describe('catalog serialization', () => {
     const entry = collections.values.bundles[0] as { id: string };
     entry.id = 'test/base';
     await expect(getCatalogItems()).rejects.toThrow('must be unique');
+  });
+
+  it('records family membership on serialized items and rejects unknown members', async () => {
+    collections.values.families = [{ id: 'test/line', data: FamilySchema.parse({ name: 'Line', brand: 'test', axis: 'Size', members: [{ id: 'test/base', label: 'Small' }, { id: 'test/combo', label: 'Large' }] }) }];
+    const items = await getCatalogItems();
+    expect(items.find((item) => item.id === 'test/combo')?.family).toEqual({ id: 'test/line', name: 'Line', label: 'Large', tier: 1 });
+    expect(items.find((item) => item.id === 'test/grip')?.family).toBeNull();
+    (collections.values.families[0] as { data: { members: { id: string }[] } }).data.members[0].id = 'test/missing';
+    await expect(getCatalogItems()).rejects.toThrow('unknown member test/missing');
   });
 });

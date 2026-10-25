@@ -1,0 +1,12 @@
+name: GNX THQ Throttle Combos
+brand: vkb
+axis: Module layout
+description: Factory combinations of GNX THQ quadrants with SEM, SEM-V, THQ-V and FSM-GA modules, ordered by list price.
+members:
+- { id: vkb/gnx-wwii-throttle-combo, label: WWII single THQ }
+- { id: vkb/gnx-dual-thq-sem-v-combo, label: Dual THQ + SEM-V }
+- { id: vkb/gnx-dual-thq-fsm-ga-combo, label: Dual THQ + FSM-GA }
+- { id: vkb/gnx-triple-thq-sem-v-combo, label: Triple THQ + SEM-V }
+- { id: vkb/gnx-triple-thq-fsm-ga-combo, label: Triple THQ + FSM-GA }
+- { id: vkb/gnx-dual-thq-sem-v-thq-v-combo, label: Dual THQ + SEM-V + THQ-V }
+- { id: vkb/gnx-dual-thq-sem-fsm-ga-combo, label: Dual THQ + SEM + FSM-GA }

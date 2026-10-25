@@ -445,3 +445,22 @@ export const SetupSchema = z.object({
   pick: z.boolean().default(false),
 });
 export type Setup = z.infer<typeof SetupSchema>;
+
+// Family Collection Schema
+/** Related variants of one product line, ordered along the axis that differentiates them. */
+export const FamilySchema = z.object({
+  name: z.string(),
+  brand: z.string(),
+  /** What changes from one member to the next, e.g. "Size" or "Edition". */
+  axis: z.string(),
+  description: z.string().optional(),
+  /**
+   * Component or bundle IDs in display order, smallest/cheapest first. Mirrored hand twins share a
+   * label and form one tier, so switchers and diff tables show one column per label.
+   */
+  members: z.array(z.object({
+    id: z.string(),
+    label: z.string(),
+  })).min(2),
+});
+export type Family = z.infer<typeof FamilySchema>;

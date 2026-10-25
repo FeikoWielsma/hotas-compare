@@ -7,6 +7,7 @@ import {
   ComponentSchema,
   BundleSchema,
   SetupSchema,
+  FamilySchema,
 } from './lib/schema';
 
 export const collections = {
@@ -33,5 +34,9 @@ export const collections = {
   setups: defineCollection({
     loader: glob({ pattern: '**/*.{yaml,yml}', base: './src/content/setups' }),
     schema: SetupSchema,
+  }),
+  families: defineCollection({
+    loader: glob({ pattern: '**/*.{yaml,yml}', base: './src/content/families' }),
+    schema: FamilySchema,
   }),
 };
