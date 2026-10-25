@@ -16,6 +16,7 @@ mount:
   provides: null
   accepts:
   - winctrl-grip
+placement: both
 controls:
 - type: button
   count: 1

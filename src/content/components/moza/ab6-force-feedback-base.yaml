@@ -8,6 +8,7 @@ mount:
   provides: null
   accepts:
   - moza-flight-qr
+placement: mount_only
 controls:
 - type: button
   location: base

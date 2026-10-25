@@ -6,7 +6,7 @@
   import { categoryLabels, detailHref, formatAmount, productImageSrc, useCases, resolveItemRegion } from '../lib/catalog-ui';
   import { compareStore, MAX_COMPARE_ITEMS } from '../lib/stores/compare.svelte';
   import { regionStore } from '../lib/stores/region.svelte';
-  import { humanize, statusLabels } from '../lib/labels';
+  import { humanize, placementLabels, statusLabels } from '../lib/labels';
   import { gimbalLabels } from '../lib/glossary';
   let { initialItems }: { initialItems: CatalogItem[] } = $props();
   let highlight = $state(false);
@@ -40,6 +40,7 @@ ${i.latestReview.summary}` : 'Not reviewed' },
       { label: 'Price checked', value: (i) => i.resolvedPrice.price ? `${i.resolvedPrice.price.verified}${i.resolvedPrice.isStale ? ' · over 90 days old' : ''}` : 'No regional price' },
     ] },
     { title: 'Hardware & Mechanics', rows: [
+      { label: 'Placement', value: (i) => i.placement ? placementLabels[i.placement] : 'Unknown' },
       { label: 'Gimbal type', value: (i) => i.gimbalType ? gimbalLabels[i.gimbalType] : 'Unknown' },
       { label: 'Gimbal', value: (i) => i.gimbal?.split(', ').map(humanize).join(', ') ?? 'Unknown' },
       { label: 'Rudder', value: (i) => i.needsPedals ? 'No twist axis · needs pedals' : 'Twist or rudder axis, or not a complete stick' },

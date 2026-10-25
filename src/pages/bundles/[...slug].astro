@@ -46,7 +46,7 @@ const sections = [
 <BaseLayout title={b.name} description={description} image={b.images[0]?.file} jsonLd={jsonLd}>
 <div class="page">
   <ProductHero id={id} name={b.name} brand={b.brand} brandName={brandName} category={b.category} status={b.status} verification={b.verification}
-    images={b.images} prices={b.prices} notes={brand?.landed_cost_notes} compatibility={b.platform_compatibility}
+    placement={item.placement} images={b.images} prices={b.prices} notes={brand?.landed_cost_notes} compatibility={b.platform_compatibility}
     specs={specs} crumb={{ href: '/#hardware', label: 'Bundles' }} sections={sections} />
   {b.verdict && <Verdict verdict={b.verdict} />}
   <section id="included" class="included" aria-labelledby="included-title">

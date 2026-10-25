@@ -15,6 +15,7 @@ handedness: n/a
 mount:
   provides: null
   accepts: []
+placement: both
 controls:
 - type: lever
   kind: throttle_single

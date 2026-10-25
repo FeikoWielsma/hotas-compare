@@ -15,6 +15,7 @@ mount:
   provides: null
   accepts:
   - virpil-grip
+placement: mount_only
 controls:
 - type: button
   count: 1

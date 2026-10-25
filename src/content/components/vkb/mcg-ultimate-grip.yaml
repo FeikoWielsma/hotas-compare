@@ -17,6 +17,7 @@ handedness: right
 mount:
   provides: vkb-rev-c
   accepts: []
+placement: mount_only
 controls:
 - type: trigger
   count: 1

@@ -14,6 +14,7 @@ export const glossary = {
   detent: { term: 'Detent', text: 'A physical notch in the throttle travel, for example idle cut-off or afterburner, so you can feel where you are without looking.' },
   twist: { term: 'Twist axis', text: 'Rotating the grip to steer the rudder. Handy without pedals, but often the first axis to break on cheap sticks. Sticks without twist need rudder pedals.' },
   pedals: { term: 'Rudder pedals', text: 'Foot control for rudder and toe brakes. Essential for helicopters and WWII planes, and the only rudder option for sticks without a twist axis.' },
+  mount_only: { term: 'Mount required', text: 'Designed to bolt to a desk mount, cockpit rig or compatible base rather than sit loose on a desktop.' },
 } as const;
 
 export type GlossaryKey = keyof typeof glossary;

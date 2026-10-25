@@ -12,6 +12,7 @@ status: announced
 release_year: 2026
 handedness: n/a
 mount: null
+placement: mount_only
 controls:
 - type: rotary
   mode: selector

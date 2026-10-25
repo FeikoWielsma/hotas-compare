@@ -47,6 +47,7 @@ handedness: ambi
 mount:
   provides: tm-din5
   accepts: []
+placement: mount_only
 controls:
 - type: trigger
   count: 1

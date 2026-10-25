@@ -16,6 +16,7 @@ mount:
   provides: winctrl-super-libra-base
   accepts:
   - winctrl-grip
+placement: both
 controls:
 - type: axis
   count: 1

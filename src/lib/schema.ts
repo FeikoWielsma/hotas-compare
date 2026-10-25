@@ -363,6 +363,9 @@ export const MountSchema = z.object({
   accepts: z.array(z.string()).default([]).optional(),
 }).nullable().optional();
 
+export const PlacementEnum = z.enum(['desk', 'mount_only', 'both']);
+export type Placement = z.infer<typeof PlacementEnum>;
+
 export const ConnectivitySchema = z.object({
   usb: z.string().nullable().optional(),
   standalone_usb: z.boolean().nullable().default(null),
@@ -383,6 +386,7 @@ export const ComponentSchema = z.object({
   release_year: z.number().int().optional(),
   handedness: HandednessEnum.default('n/a'),
   mount: MountSchema,
+  placement: PlacementEnum.nullable().optional(),
   controls: z.array(ControlItemSchema).default([]),
   controls_evidence: z.object({
     coverage: z.enum(['partial', 'complete']),

@@ -13,6 +13,7 @@ handedness: right
 mount:
   provides: winctrl-grip
   accepts: []
+placement: mount_only
 controls:
   - type: trigger
     stages: 2
