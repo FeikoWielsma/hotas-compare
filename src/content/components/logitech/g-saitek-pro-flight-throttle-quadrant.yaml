@@ -35,6 +35,8 @@ controls_evidence:
   notes: Logitech Flight Throttle Quadrant manual product-tour page 4 labels three analog levers with 0-button detents and three 2-way rocker switches. The six rocker directions are represented as three physical switches, not six pushbuttons. Coverage applies to this exact quadrant.
 hardware:
   gimbal: null
+  # Maintainer-confirmed 2026-10-25: potentiometers.
+  sensor: potentiometer
   axes:
   - name: Throttle_1
   - name: Throttle_2
