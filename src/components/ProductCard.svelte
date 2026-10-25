@@ -55,10 +55,11 @@
     <h3><a href={detailHref(item)}>{item.name}</a></h3>
     {@render picker?.()}
     <p class="meta">{meta.join(' · ')}</p>
-    {#if review || item.gimbalType || item.needsPedals || item.usesPotentiometers}<div class="badges">
+    {#if review || item.gimbalType || item.needsPedals || item.usesPotentiometers || item.placement === 'mount_only'}<div class="badges">
       {#if review}<a class={`review ${review.tag}`} href={review.url} rel="external noopener" title={review.summary}>{review.reviewerName}: {tagLabels[review.tag]}</a>{/if}
       {#if item.usesPotentiometers}<span class="potentiometer">Potentiometer<Explain title="Potentiometer axes" label={`Why ${item.name} uses potentiometers`} text="Potentiometers use physical contacts that can wear, causing jitter or drift over time. Hall and other contactless sensors avoid that contact and are generally preferred for long-term consistency." /></span>{/if}
       {#if item.gimbalType}<span class={`gimbal ${item.gimbalType}`}>{gimbalLabels[item.gimbalType]}<Explain term={gimbalGlossaryKey[item.gimbalType]} /></span>{/if}
+      {#if item.placement === 'mount_only'}<span class="mount-only">Mount required<Explain term="mount_only" /></span>{/if}
       {#if item.needsPedals}<span class="pedals">No twist · add pedals<Explain term="pedals" /></span>{/if}
       {#if rankInfo && rankReasons(item).length}<span class="why">Why here<Explain title="Why it's ranked here" text={rankReasons(item)} label={`Why ${item.name} is ranked here`} /></span>{/if}
     </div>{/if}
@@ -93,6 +94,7 @@
   .potentiometer { color: #8a5a00 !important; border-color: #8a5a0055 !important; background: #8a5a000d; }
   a.review:hover { text-decoration: underline; }
   .gimbal.ball_and_cup { color: #8a5a00; } .gimbal.pincer, .gimbal.cam_and_spring, .gimbal.force_feedback { color: var(--color-ink); }
+  .mount-only { color: #8a5a00; border-color: #8a5a0055; background: #8a5a000d; }
   .pedals { border-style: dashed; } .why { border: 0; padding-left: 0; }
   dl { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; overflow: hidden; border: 1px solid var(--color-rule); }
   dl > div { padding: .5rem .5rem .45rem; min-width: 0; margin: 0 -1px -1px 0; border-right: 1px solid var(--color-rule); border-bottom: 1px solid var(--color-rule); }

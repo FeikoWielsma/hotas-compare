@@ -2,7 +2,7 @@ import { isListed } from './visibility';
 import { resolveSuccessor } from './successors';
 import { deriveComponentStats, deriveControlsSummary, resolvePrice } from './derive';
 import type { ControlsSummary, ResolvedPrice } from './derive';
-import type { Component, Bundle, Region, UseCaseFit, Verdict, ReviewTag, GimbalType } from './schema';
+import type { Component, Bundle, Region, UseCaseFit, Verdict, ReviewTag, GimbalType, Placement } from './schema';
 import type { ControlSection } from './control-inventory';
 import { familyIndex, validateFamilies } from './families';
 
@@ -47,6 +47,8 @@ export interface CatalogItem {
   gimbalType?: GimbalType | null;
   /** A complete stick with no twist axis: rudder needs pedals. */
   needsPedals?: boolean;
+  /** Desk vs mount-only placement; for bundles, derived from the surface-bearing members. */
+  placement?: Placement | null;
   images: Component['images'];
   componentIds: string[];
   formerBrandNames: string[];
@@ -76,6 +78,27 @@ export function needsPedals(category: string, members: Pick<Component, 'hardware
   return completeStickCategories.has(category)
     && members.some((member) => member.hardware?.gimbal_type != null && member.hardware.axes.length > 0)
     && !members.some((member) => member.hardware?.axes.some((axis) => twistAxis.test(axis.name)));
+}
+
+/** Derive desk vs mount placement. In multi-part bundles, grips/handles that mount onto an included base follow that base. */
+export function derivePlacement(
+  members: Pick<Component, 'category' | 'placement' | 'mount' | 'connectivity'>[],
+): Placement | null {
+  if (members.length === 1) return members[0].placement ?? null;
+  const accepted = new Set(members.flatMap((member) => member.mount?.accepts ?? []));
+  const surface = members.filter(
+    (member) =>
+      member.category !== 'grip'
+      && member.category !== 'module'
+      && member.connectivity?.standalone_usb !== false
+      && !(member.mount?.provides && accepted.has(member.mount.provides)),
+  );
+  const relevant = surface.length > 0 ? surface : members;
+  const documented = relevant.map((member) => member.placement).filter((placement): placement is Placement => placement != null);
+  if (!documented.length) return null;
+  if (documented.includes('mount_only')) return 'mount_only';
+  if (documented.includes('desk')) return 'desk';
+  return 'both';
 }
 
 /** Resolve a serialized item without requiring another content query. */
@@ -141,6 +164,7 @@ export async function loadCatalog(region: Region = 'EU', now = new Date()) {
       })(),
       gimbalType: members.map((member) => member.hardware?.gimbal_type).find((type) => type != null) ?? null,
       needsPedals: needsPedals(data.category, members),
+      placement: derivePlacement(members),
       images: data.images, componentIds: 'components' in data ? data.components : [],
       formerBrandNames: brand.former_names,
       handedness: [...new Set(members.map((member) => member.handedness).filter((hand) => hand !== 'n/a'))],

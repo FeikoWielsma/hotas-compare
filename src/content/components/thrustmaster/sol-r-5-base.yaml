@@ -2,6 +2,7 @@ brand: thrustmaster
 name: Sol-R 5 Base
 category: base
 status: current
+placement: both
 platform_compatibility:
   pc: supported
   xbox: unsupported

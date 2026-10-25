@@ -3,6 +3,7 @@ name: MOZA MA3X Side Stick
 category: grip
 status: current
 handedness: right
+placement: mount_only
 controls_evidence:
   coverage: complete
   source: https://support.mozaracing.com/en/support/solutions/articles/70000679588-moza-ma3x-side-stick-support

@@ -15,6 +15,7 @@ handedness: n/a
 mount:
   provides: null
   accepts: []
+placement: mount_only
 controls:
 - type: hat
   count: 1

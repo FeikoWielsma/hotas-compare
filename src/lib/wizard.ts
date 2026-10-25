@@ -166,7 +166,8 @@ function needsBase(item: CatalogItem) {
 function candidates(items: CatalogItem[], answers: WizardAnswers, region: Region): RecommendedPiece[] {
   const map = new Map(items.map((item) => [item.id, item]));
   // Parts only sold inside a bundle cannot be bought on their own; the bundle is offered instead.
-  const buyable = items.filter((item) => item.status === 'current' && item.soldStandalone !== false);
+  // On a desk setup, surface-sitting controls marked mount_only cannot sit loose on the desktop.
+  const buyable = items.filter((item) => item.status === 'current' && item.soldStandalone !== false && (answers.mountType !== 'desk' || needsBase(item) || item.placement !== 'mount_only'));
   const groups = buyable.filter((item) => !['base', 'module'].includes(item.category) && !needsBase(item)).map((item) => [item]);
   for (const base of buyable.filter((item) => item.category === 'base')) {
     for (const handle of buyable.filter(needsBase)) {
@@ -179,6 +180,12 @@ function candidates(items: CatalogItem[], answers: WizardAnswers, region: Region
     const leaves = group.flatMap((item) => item.item_type === 'bundle' ? item.componentIds.map((id) => map.get(id)) : [item]);
     if (leaves.some((item) => !item || item.status !== 'current')) continue;
     const members = leaves as CatalogItem[];
+    const surfaceMembers = members.filter((item) => !needsBase(item) && item.category !== 'module');
+    if (
+      answers.mountType === 'desk'
+      && (group.some((item) => !needsBase(item) && item.placement === 'mount_only')
+        || group.some((item) => item.item_type === 'bundle' && item.placement == null && surfaceMembers.some((member) => member.placement === 'mount_only')))
+    ) continue;
     const grips = members.filter((item) => item.category === 'grip');
     const bases = members.filter((item) => item.category === 'base');
     if (members.filter(needsBase).length !== bases.length) continue;
@@ -257,8 +264,9 @@ function search(options: RecommendedPiece[], answers: WizardAnswers, seed: Recom
 /** Names the first new constraint a pinned pick breaks, checking the broadest cause first. */
 function pickMismatch(ids: WizardPick, items: CatalogItem[], answers: WizardAnswers, region: Region): string {
   const offered = (relaxed: WizardAnswers) => candidates(items, relaxed, region).some((option) => sameIds(idsOf(option), ids));
-  if (!offered({ ...answers, piecesNeeded: [...PIECES], needsTwist: false })) return `Not sold on its own with a current ${region} price.`;
-  if (!offered({ ...answers, needsTwist: false })) return 'No longer one of your selected controls.';
+  if (!offered({ ...answers, mountType: 'clamp', piecesNeeded: [...PIECES], needsTwist: false })) return `Not sold on its own with a current ${region} price.`;
+  if (!offered({ ...answers, mountType: 'clamp', needsTwist: false })) return 'No longer one of your selected controls.';
+  if (answers.mountType === 'desk' && !offered({ ...answers, needsTwist: false })) return 'Requires a desk mount or cockpit rig and cannot sit loose on a desk.';
   return 'Has no twist axis, and without pedals the stick must now provide yaw.';
 }
 function subsets<T>(list: T[], size: number): T[][] {
@@ -317,8 +325,16 @@ export function matchCuratedSetups(setups: WizardSetup[], items: CatalogItem[], 
     const members = included.flatMap(({ item }) => !item ? [] : item.item_type === 'bundle' ? item.componentIds.flatMap((id) => map.get(id) ? [map.get(id)!] : []) : [item]);
     const bases = members.filter((item) => item.category === 'base').length;
     const grips = members.filter((item) => item.category === 'grip').length;
+    const surfaceMembers = members.filter((item) => !needsBase(item) && item.category !== 'module');
     const warnings: string[] = [];
     if (bases !== grips) warnings.push('This reference includes an unpaired base or grip. Additional compatible hardware is required and is not included in the listed total.');
+    if (
+      answers.mountType === 'desk'
+      && (included.some(({ item }) => item && !needsBase(item) && item.placement === 'mount_only')
+        || included.some(({ item }) => item?.item_type === 'bundle' && item.placement == null && surfaceMembers.some((member) => member.placement === 'mount_only')))
+    ) {
+      warnings.push('This reference includes mount-only hardware that cannot sit loose on a desk.');
+    }
     if (answers.needsTwist && !members.some((item) => hasTwist(item) && ['grip', 'stick_fixed'].includes(item.category)) && !members.some((item) => item.category === 'pedals')) warnings.push('This reference has no documented twist or pedal yaw control. Plan an additional yaw input.');
     return { ...setup, included, totalPrice, warnings, currency: currencies[region], withinBudget: totalPrice !== null && totalPrice <= answers.budgetMax };
   }).sort((a, b) => Number(b.withinBudget) - Number(a.withinBudget) || Number(b.data.pick) - Number(a.data.pick) || (a.totalPrice ?? Infinity) - (b.totalPrice ?? Infinity));

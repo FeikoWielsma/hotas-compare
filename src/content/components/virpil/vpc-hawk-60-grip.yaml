@@ -15,6 +15,7 @@ handedness: ambi
 mount:
   provides: virpil-rotor-grip
   accepts: []
+placement: mount_only
 controls:
 - type: trigger
   location: grip

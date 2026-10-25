@@ -6,6 +6,7 @@ handedness: right
 mount:
   provides: moza-flight-qr
   accepts: []
+placement: mount_only
 controls:
 - type: trigger
   location: grip

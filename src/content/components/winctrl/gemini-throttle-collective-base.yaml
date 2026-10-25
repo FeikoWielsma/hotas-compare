@@ -16,6 +16,7 @@ mount:
   provides: winctrl-gemini-base
   accepts:
   - winctrl-grip
+placement: mount_only
 controls:
 - type: lever
   kind: throttle_dual

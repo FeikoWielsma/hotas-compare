@@ -8,6 +8,7 @@ mount:
   provides: null
   accepts:
   - tm-din5
+placement: both
 controls: []
 controls_evidence:
   coverage: complete

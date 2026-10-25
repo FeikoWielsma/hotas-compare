@@ -6,6 +6,7 @@ handedness: n/a
 mount:
   provides: moza-yoke
   accepts: []
+placement: mount_only
 controls:
 - type: analog_ministick
   location: handle

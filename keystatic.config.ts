@@ -135,6 +135,15 @@ export default config({
             label: 'Accepts Mount Standards',
           }),
         }),
+        placement: fields.select({
+          label: 'Placement',
+          options: [
+            { label: 'Desk or mount', value: 'both' },
+            { label: 'Desk only', value: 'desk' },
+            { label: 'Mount required', value: 'mount_only' },
+          ],
+          defaultValue: 'both',
+        }),
         controls: fields.array(
           fields.object({
             type: fields.select({

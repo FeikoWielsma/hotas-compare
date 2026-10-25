@@ -2,6 +2,7 @@ brand: thrustmaster
 name: OMNI Extension
 category: module
 status: current
+placement: mount_only
 platform_compatibility:
   pc: supported
   xbox: unsupported

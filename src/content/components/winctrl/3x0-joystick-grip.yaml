@@ -17,6 +17,7 @@ mount:
   accepts:
   - winctrl-super-libra-base
   - winctrl-orion-2-base
+placement: mount_only
 controls:
 - type: trigger
   count: 1
