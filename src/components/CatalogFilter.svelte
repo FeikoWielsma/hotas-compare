@@ -58,7 +58,7 @@
     showIndividualParts, showDiscontinued, search, categories: categories[category], brands, minimum, maximum, ministick, brake, sensors,
     fit, minimumFit, handedness, minimumAxes, minimumInputs, itemType, priceAvailability, sort, platform, gimbalTypes,
   }));
-  const grouped = $derived(groupCatalog(filtered));
+  const grouped = $derived(groupCatalog(filtered, sort));
   function reset() {
     search = ''; category = 'All'; brands = []; minimum = undefined; maximum = undefined;
     ministick = false; brake = false; sensors = false; fit = ''; minimumFit = 4; sort = 'featured';

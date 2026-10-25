@@ -113,7 +113,7 @@ describe('catalog filters', () => {
   it('explains the Recommended rank in plain words', () => {
     const scores = { build: 4, feel: 5, value: 4, software: 4, qc_support: 5 };
     const reasons = rankReasons(item({ reviewTag: 'recommended', latestReview: { reviewer: 'mysh', reviewerName: 'Mysh', tag: 'recommended', url: 'https://x.test', summary: '', date: '2026-10-24' }, scores, verification: 'verified' }));
-    expect(reasons).toEqual(['Mysh: recommended', 'Our verdict 4.4/5', 'Specs verified', 'Currently sold']);
+    expect(reasons).toEqual(['Mysh: recommended', 'Our verdict 4.4/5', 'Main flight control', 'Specs verified', 'Currently sold', 'First 12 cards balance categories and brands; family variants share one place']);
     expect(rankReasons(item({ reviewTag: 'avoid', latestReview: { reviewer: 'mysh', reviewerName: 'Mysh', tag: 'avoid', url: 'https://x.test', summary: '', date: '2026-10-24' } }))[0]).toBe('Mysh: avoid (ranked lower)');
   });
 
@@ -139,6 +139,49 @@ describe('catalog filters', () => {
 });
 
 describe('catalog family grouping', () => {
+  it('diversifies a representative first page by cards while keeping hidden parts and avoid out', () => {
+    const scores = { build: 5, feel: 5, value: 5, software: 5, qc_support: 5 };
+    const fixture = [
+      ...Array.from({ length: 10 }, (_, i) => item({ id: `family-${i}`, name: `Family ${i}`, category: 'throttle', brand: 'alpha', reviewTag: 'recommended', family: { id: 'alpha/throttle', name: 'Throttle', axis: 'Size', label: `${i}`, tier: i } })),
+      ...Array.from({ length: 8 }, (_, i) => item({ id: `stick-${i}`, name: `Stick ${i}`, brand: 'alpha', reviewTag: 'recommended' })),
+      item({ id: 'hotas', name: 'HOTAS', category: 'hotas_bundle', item_type: 'bundle', brand: 'bravo', reviewTag: 'recommended' }),
+      item({ id: 'yoke', name: 'Yoke', category: 'yoke', brand: 'charlie', reviewTag: 'recommended' }),
+      item({ id: 'pedals', name: 'Pedals', category: 'pedals', brand: 'delta', reviewTag: 'recommended' }),
+      item({ id: 'quadrant', name: 'Quadrant', category: 'quadrant', brand: 'echo', reviewTag: 'recommended' }),
+      item({ id: 'module', name: 'Module', category: 'module' }),
+      item({ id: 'avoid', name: 'Avoid', category: 'system', item_type: 'bundle', brand: 'unique', reviewTag: 'avoid', scores }),
+      item({ id: 'old', status: 'discontinued', successor: 'hotas', scores }),
+      item({ id: 'combo-part', soldStandalone: false, scores }),
+      item({ id: 'curated-part', soldMainlyInBundle: true, scores }),
+    ];
+    const cards = (items: CatalogItem[]) => groupCatalog(filterCatalog(items, { sort: 'featured' }), 'featured');
+    const result = cards(fixture);
+    const firstPage = result.slice(0, 12);
+    expect(new Set(firstPage.map((g) => g.lead.category)).size).toBeGreaterThanOrEqual(5);
+    expect(new Set(firstPage.slice(0, 6).map((g) => g.lead.brand)).size).toBeGreaterThanOrEqual(4);
+    expect(firstPage[0].lead.id).toBe('hotas');
+    expect(firstPage.some((g) => g.lead.category === 'module')).toBe(false);
+    expect(result.at(-1)?.lead.id).toBe('avoid');
+    const ids = result.flatMap((g) => g.options.flatMap((o) => o.variants.map((v) => v.id)));
+    expect(ids).not.toContain('old');
+    expect(ids).not.toContain('combo-part');
+    expect(ids).not.toContain('curated-part');
+    // Ten family variants must consume exactly the same diversity budget as one.
+    expect(cards(fixture.filter((i) => !i.family || i.id === 'family-0')).map((g) => g.key)).toEqual(result.map((g) => g.key));
+    expect(cards([...fixture].reverse()).map((g) => g.key)).toEqual(result.map((g) => g.key));
+    expect(groupCatalog(filterCatalog(fixture, { sort: 'name' }), 'name')[0].lead.name).toBe('Avoid');
+  });
+
+  it('prefers complete setups at equal review strength but lets strong reviews lift separate parts', () => {
+    const bundle = item({ id: 'bundle', category: 'hotas_bundle', item_type: 'bundle' });
+    const stick = item({ id: 'stick' });
+    const part = item({ id: 'part', category: 'grip' });
+    const reviewedPart = item({ id: 'reviewed-part', category: 'base', reviewTag: 'recommended', scores: { build: 5, feel: 5, value: 5, software: 5, qc_support: 5 } });
+    expect(filterCatalog([part, stick, bundle, reviewedPart], { sort: 'featured' }).map((i) => i.id)).toEqual(['reviewed-part', 'bundle', 'stick', 'part']);
+    expect(rankReasons(bundle)).toContain('Complete setup bundle');
+    expect(rankReasons(part)).toContain('Separate part or module (lower setup priority)');
+  });
+
   const family = (label: string, tier: number) => ({ id: 'test/stecs', name: 'STECS', axis: 'Size', label, tier });
   const mini = item({ id: 'mini-l', name: 'STECS Mini', handedness: ['left'], family: family('Mini', 0), resolvedPrice: price(300) });
   const miniR = item({ id: 'mini-r', name: 'STECS Mini R', handedness: ['right'], family: family('Mini', 0), resolvedPrice: price(310) });
