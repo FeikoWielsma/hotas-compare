@@ -33,7 +33,7 @@ describe('Honeycomb sensor provenance and catalog projection', () => {
     }
     for (const slug of ['alpha-flight-controls-lite', 'bravo-throttle-quadrant-lite']) {
       const item = items.find(item => item.id === `honeycomb/${slug}`)!;
-      expect(item.sensor).toBeNull();
+      expect(item.sensor).toBe('potentiometer');
       expect(contactless(item)).toBe(false);
     }
   });

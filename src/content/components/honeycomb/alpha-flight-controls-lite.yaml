@@ -33,9 +33,9 @@ controls_evidence:
     programmable buttons. No other installed switch types are described;
     button-mapping totals are not used as physical counts.
 hardware:
-  # Unknown from manufacturer documentation; photographed teardown reports pots.
-  # See docs/research/issue-10-honeycomb-sensors.md (checked 2026-10-25).
-  sensor: null
+  # Maintainer-confirmed 2026-10-25: potentiometers (like the Alpha yoke).
+  # See docs/research/issue-10-honeycomb-sensors.md.
+  sensor: potentiometer
   axes:
     - name: Aileron
     - name: Elevator

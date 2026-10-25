@@ -52,9 +52,9 @@ controls_evidence:
     counts are specified.
 hardware:
   gimbal: null
-  # Manufacturer page does not identify the sensor; do not inherit from full Bravo.
-  # Checked 2026-10-25; see docs/research/issue-10-honeycomb-sensors.md.
-  sensor: null
+  # Maintainer-confirmed 2026-10-25: potentiometers (like the full Bravo).
+  # See docs/research/issue-10-honeycomb-sensors.md.
+  sensor: potentiometer
   axes:
   - name: Lever 1
   - name: Lever 2
