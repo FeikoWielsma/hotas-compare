@@ -54,6 +54,7 @@ physical:
   - 342
   materials:
   - metal
+tier_line: Cyber Taurus Joystick Base
 prices:
 - region: UK
   currency: GBP

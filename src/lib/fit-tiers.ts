@@ -3,8 +3,9 @@
  * A list travels as a share link (/tiers?uc=…&g=…&r=…), so the site needs no backend;
  * scripts/tiers-import.ts combines collected links into proposed fit scores.
  */
-import { fitGroupIds, toFitScore, type FitGroup } from './fit-groups.ts';
-import { UseCaseEnum, type UseCase, type UseCaseFit } from './schema.ts';
+import { baselineFit } from './fit-baseline.ts';
+import { fitGroupIds, groupOf, isPlaceholderFit, isUnreviewedFit, tierLineName, toFitScore, type FitGroup } from './fit-groups.ts';
+import { UseCaseEnum, type Component, type UseCase, type UseCaseFit } from './schema.ts';
 
 export const TIERS = [5, 4, 3, 2, 1] as const;
 export type Tier = (typeof TIERS)[number];
@@ -19,10 +20,50 @@ export function itemCode(id: string): string {
 }
 
 /**
- * What the tier list page needs per part. `fit` is the editorial score, or the spec baseline when `estimated`;
- * `scored` is false when even that is an uninformative placeholder, so the part starts unranked.
+ * One tile on the tier list page: a part, or several parts ranked as one (see tierLineName). `id` is the first
+ * member's id. `fit` is the editorial score, or the spec baseline when `estimated`; `scored` is false when even
+ * that is an uninformative placeholder, so the entry starts unranked.
  */
-export interface TierItem { id: string; name: string; brandName: string; image: string | null; group: FitGroup; fit: UseCaseFit; estimated: boolean; scored: boolean }
+export interface TierItem { id: string; members: string[]; name: string; brandName: string; image: string | null; group: FitGroup; fit: UseCaseFit; estimated: boolean; scored: boolean }
+
+export interface TierPart { id: string; brandName: string; image: string | null; data: Component; familyName?: string }
+
+const median = (values: number[]) => {
+  const sorted = values.toSorted((a, b) => a - b), mid = sorted.length / 2;
+  return sorted.length % 2 ? sorted[Math.floor(mid)] : (sorted[mid - 1] + sorted[mid]) / 2;
+};
+
+/**
+ * Tier list tiles: parts of one brand and group that share a tier line become one entry. Its starting fit is
+ * the median of the members' editorial scores, or of their spec baselines when none is reviewed.
+ */
+export function buildTierItems(parts: TierPart[]): TierItem[] {
+  const entries = Map.groupBy(parts, (p) => `${groupOf(p.data.category, p.data.name)}|${p.data.brand}|${tierLineName(p.data, p.familyName)}`);
+  return [...entries.values()].map((members) => {
+    const first = members[0];
+    const reviewed = members.filter((m) => !isUnreviewedFit(m.data.use_case_fit, m.data.use_case_fit_source));
+    const fits = reviewed.length ? reviewed.map((m) => m.data.use_case_fit) : members.map((m) => baselineFit(m.data).fit);
+    const fit = Object.fromEntries(UseCaseEnum.options.map((u) => [u, median(fits.map((f) => f[u]))])) as UseCaseFit;
+    return {
+      id: first.id, members: members.map((m) => m.id), name: members.length > 1 ? tierLineName(first.data, first.familyName) : first.data.name,
+      brandName: first.brandName, image: members.find((m) => m.image)?.image ?? null,
+      group: groupOf(first.data.category, first.data.name), fit, estimated: !reviewed.length, scored: !isPlaceholderFit(fit),
+    };
+  });
+}
+
+/** Links store every member, so combining lists and later regrouping both keep working per part. */
+export function expandTiers(items: TierItem[], tiers: Map<string, Tier>): Map<string, Tier> {
+  return new Map(items.flatMap((item) => (tiers.has(item.id) ? item.members.map((id) => [id, tiers.get(item.id)!] as const) : [])));
+}
+
+/** Entry tiers from a link's per-part tiers; an entry takes the tier of its first ranked member. */
+export function collapseTiers(items: TierItem[], memberTiers: Map<string, Tier>): Map<string, Tier> {
+  return new Map(items.flatMap((item) => {
+    const tier = item.members.map((id) => memberTiers.get(id)).find((t) => t != null);
+    return tier ? [[item.id, tier] as const] : [];
+  }));
+}
 
 export interface TierList { useCase: UseCase; group: FitGroup; by?: string; tiers: Map<string, Tier> }
 

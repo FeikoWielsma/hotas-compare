@@ -64,6 +64,7 @@ use_case_fit:
   airliner: 4
   space_hotas: 3
   space_hosas: 3
+tier_line: Orion Metal Flight Rudder Pedals
 prices:
 - region: UK
   currency: GBP

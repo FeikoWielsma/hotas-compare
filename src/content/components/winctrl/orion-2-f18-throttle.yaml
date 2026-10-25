@@ -67,6 +67,7 @@ connectivity:
 physical:
   materials:
   - aluminium
+tier_line: Orion 2 Throttle
 prices:
 - region: EU
   currency: EUR

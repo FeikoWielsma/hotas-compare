@@ -417,6 +417,7 @@ export default config({
           { label: 'Baseline from specs', value: 'baseline' },
           { label: 'Community tier lists', value: 'community' },
         ]),
+        tier_line: fields.text({ label: 'Tier line', description: 'Parts of this brand with the same tier line are ranked as one entry in community tier lists, e.g. "Orion 2 Throttle" for a base and its grips.' }),
         prices: pricesField(),
         verdict: verdictField(),
         external_reviews: externalReviewsField(),

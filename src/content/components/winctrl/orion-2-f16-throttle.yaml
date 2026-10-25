@@ -88,6 +88,7 @@ use_case_fit:
   space_hotas: 4
   space_hosas: 3
 use_case_fit_source: seeded
+tier_line: Orion 2 Throttle
 prices:
   - region: US
     currency: USD

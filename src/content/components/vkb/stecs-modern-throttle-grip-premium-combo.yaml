@@ -84,6 +84,7 @@ hardware:
 connectivity:
   usb: none as supplied; connects through the STECS left-hand base
   standalone_usb: false
+tier_line: STECS Modern Throttle System Mk.II
 prices:
 - region: US
   currency: USD

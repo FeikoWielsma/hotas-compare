@@ -95,6 +95,7 @@ use_case_fit:
   airliner: 4
   space_hotas: 2
   space_hosas: 3
+tier_line: TCA Sidestick Airbus Edition
 prices:
 - region: EU
   currency: EUR

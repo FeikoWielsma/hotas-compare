@@ -432,6 +432,8 @@ export const ComponentSchema = z.object({
    * seeding and never reviewed, `baseline` = derived from specs (scripts/fit-baseline.ts), `community` = tier lists.
    */
   use_case_fit_source: FitSourceEnum.optional(),
+  /** Parts of one brand with the same tier line are ranked as one entry on /tiers: editions, sizes, or a base and its grips. */
+  tier_line: z.string().min(1).optional(),
   prices: z.array(PriceSchema).default([]),
   verdict: VerdictSchema.nullable().optional(),
   external_reviews: z.array(ExternalReviewSchema).default([]),

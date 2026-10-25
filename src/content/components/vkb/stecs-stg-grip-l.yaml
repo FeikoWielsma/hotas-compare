@@ -75,6 +75,7 @@ hardware:
 connectivity:
   usb: none as supplied; connects through the STECS base
   standalone_usb: false
+tier_line: STECS Space Throttle System
 prices:
 - region: US
   currency: USD

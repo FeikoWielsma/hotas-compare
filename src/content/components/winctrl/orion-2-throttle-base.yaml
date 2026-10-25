@@ -50,6 +50,7 @@ hardware:
   extension_support: false
 connectivity:
   standalone_usb: true
+tier_line: Orion 2 Throttle
 prices:
 - region: EU
   currency: EUR

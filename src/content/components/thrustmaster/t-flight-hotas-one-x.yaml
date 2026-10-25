@@ -72,6 +72,7 @@ use_case_fit:
   airliner: 3
   space_hotas: 2
   space_hosas: 3
+tier_line: T.Flight HOTAS One
 prices:
 - region: EU
   currency: EUR

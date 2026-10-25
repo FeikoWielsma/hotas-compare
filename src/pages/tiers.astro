@@ -3,26 +3,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import TierList from '../components/TierList.svelte';
 import { getCollection } from 'astro:content';
 import { getCatalogItems } from '../lib/catalog';
-import { baselineFit } from '../lib/fit-baseline';
 import { productImageSrc } from '../lib/catalog-ui';
-import { groupOf, isPlaceholderFit, isUnreviewedFit } from '../lib/fit-groups';
-import type { TierItem } from '../lib/fit-tiers';
-import type { ComponentCategory } from '../lib/schema';
+import { buildTierItems } from '../lib/fit-tiers';
 
-const components = new Map((await getCollection('components')).map((entry) => [entry.id, entry.data]));
-// Unreviewed parts start from the spec baseline, so nobody has to rank placeholder or seeded guesses.
-const items: TierItem[] = (await getCatalogItems())
+const [catalog, components, families] = await Promise.all([getCatalogItems(), getCollection('components'), getCollection('families')]);
+const data = new Map(components.map((entry) => [entry.id, entry.data]));
+const familyOf = new Map(families.flatMap((family) => family.data.members.map((member) => [member.id, family.data.name] as const)));
+// Variants are ranked as one entry; unreviewed parts start from the spec baseline.
+const items = buildTierItems(catalog
   .filter((item) => item.item_type === 'component' && item.status !== 'discontinued')
-  .map((item) => {
-    const data = components.get(item.id)!;
-    const estimated = isUnreviewedFit(data.use_case_fit, data.use_case_fit_source);
-    const fit = estimated ? baselineFit(data).fit : data.use_case_fit;
-    return {
-      id: item.id, name: item.name, brandName: item.brandName, image: productImageSrc(item.images[0]?.file),
-      group: groupOf(item.category as ComponentCategory, item.name), fit, estimated,
-      scored: !isPlaceholderFit(fit),
-    };
-  });
+  .map((item) => ({ id: item.id, brandName: item.brandName, image: productImageSrc(item.images[0]?.file), data: data.get(item.id)!, familyName: familyOf.get(item.id) })));
 ---
 <BaseLayout title="Rank the hardware" description="Make a tier list of flight sim sticks, throttles, yokes and pedals for your kind of flying, and share it to help tune our fit scores.">
   <header class="guide-header">

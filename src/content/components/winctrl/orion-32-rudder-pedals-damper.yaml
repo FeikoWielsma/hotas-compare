@@ -66,6 +66,7 @@ use_case_fit:
   airliner: 4.5
   space_hotas: 3
   space_hosas: 3
+tier_line: Orion 32 Rudder Pedals Metal
 prices:
 - region: UK
   currency: GBP

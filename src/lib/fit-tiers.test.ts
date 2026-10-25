@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { combineTierLists, findTierLinks, itemCode, parseTierList, serializeTierList, tierListText, type TierList } from './fit-tiers';
+import { buildTierItems, collapseTiers, combineTierLists, expandTiers, findTierLinks, itemCode, parseTierList, serializeTierList, tierListText, type TierList } from './fit-tiers';
 import { products } from '../../scripts/content';
+import { variantName } from './fit-groups';
+import { ComponentSchema } from './schema';
 
 const ids = ['vkb/gladiator-nxt-evo', 'virpil/vpc-mongoost-50cm3-base', 'thrustmaster/t-16000m'];
 const list = (tiers: [string, 1 | 2 | 3 | 4 | 5][], by?: string): TierList => ({ useCase: 'airliner', group: 'sticks', by, tiers: new Map(tiers) });
@@ -68,5 +70,42 @@ describe('findTierLinks', () => {
   it('finds links with or without the trailing slash and strips surrounding punctuation', () => {
     const text = 'Mine: https://hotas.razortek.nl/tiers/?uc=heli&g=throttles&r=5abcde. Also <https://hotas.razortek.nl/tiers?uc=ga&g=yokes> and (https://hotas.razortek.nl/compare?x=1)';
     expect(findTierLinks(text)).toEqual(['https://hotas.razortek.nl/tiers/?uc=heli&g=throttles&r=5abcde', 'https://hotas.razortek.nl/tiers?uc=ga&g=yokes']);
+  });
+});
+
+describe('tier entries', () => {
+  const part = (id: string, data: Record<string, unknown>, familyName?: string) => ({
+    id, brandName: 'Brand', image: null, familyName,
+    data: ComponentSchema.parse({ brand: 'b', mount: {}, category: 'grip', ...data }),
+  });
+
+  it('merges hand and mount twins by name', () => {
+    expect(variantName('SCG Standard Add-On Grip for Gunfighter Mk.IV (Left)')).toBe('SCG Standard Add-On Grip');
+    expect(variantName('VPC CDT-Aeromax [LZ] Flightstick')).toBe('VPC CDT-Aeromax Flightstick');
+    expect(variantName('CDT-AERO-R Grip')).toBe('CDT-AERO Grip');
+    expect(variantName('Ursa Minor Airline Joystick Left')).toBe('Ursa Minor Airline Joystick');
+  });
+
+  it('ranks a tier line, family or twin set as one entry with a median starting fit', () => {
+    const items = buildTierItems([
+      part('b/base', { name: 'Orion 2 Throttle Base', category: 'base', tier_line: 'Orion 2 Throttle', use_case_fit: { modern_jet: 3, airliner: 1 } }),
+      part('b/grip', { name: 'Orion 2 F-16 Throttle', category: 'throttle', tier_line: 'Orion 2 Throttle', use_case_fit: { modern_jet: 5 } }),
+      part('b/l', { name: 'Grip (Left)', use_case_fit: { airliner: 5 } }),
+      part('b/r', { name: 'Grip (Right)', use_case_fit: { airliner: 5 } }),
+      part('b/mini', { name: 'Throttle Mini', category: 'throttle' }, 'Throttle System'),
+      part('b/max', { name: 'Throttle Max', category: 'throttle' }, 'Throttle System'),
+    ]);
+    expect(items.map((i) => [i.name, i.members])).toEqual([
+      ['Orion 2 Throttle', ['b/base', 'b/grip']], ['Grip', ['b/l', 'b/r']], ['Throttle System', ['b/mini', 'b/max']],
+    ]);
+    expect(items[0].fit.modern_jet).toBe(4);
+    expect(items[2].estimated).toBe(true);
+  });
+
+  it('links carry every member and read back to one tier per entry', () => {
+    const items = buildTierItems([part('b/l', { name: 'Grip (Left)' }), part('b/r', { name: 'Grip (Right)' })]);
+    const members = expandTiers(items, new Map([['b/l', 4]]));
+    expect([...members]).toEqual([['b/l', 4], ['b/r', 4]]);
+    expect([...collapseTiers(items, new Map([['b/r', 2]]))]).toEqual([['b/l', 2]]);
   });
 });

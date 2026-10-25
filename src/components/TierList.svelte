@@ -1,14 +1,14 @@
 <script lang="ts">
   import { onMount, tick } from 'svelte';
   import { fitGroupIds, fitGroupLabels, toFitScore, type FitGroup } from '../lib/fit-groups';
-  import { TIERS, parseTierList, serializeTierList, tierLabels, tierListText, type Tier, type TierItem } from '../lib/fit-tiers';
+  import { TIERS, collapseTiers, expandTiers, parseTierList, serializeTierList, tierLabels, tierListText, type Tier, type TierItem } from '../lib/fit-tiers';
   import { useCases } from '../lib/catalog-ui';
   import type { UseCase } from '../lib/schema';
 
   let { items }: { items: TierItem[] } = $props();
 
   const NAME_KEY = 'hotas-tier-name';
-  const ids = items.map((item) => item.id);
+  const ids = items.flatMap((item) => item.members);
   const caseLabel = (u: UseCase) => useCases.find((c) => c.key === u)!.label;
   const groupsWithItems = fitGroupIds.filter((g) => items.filter((i) => i.group === g).length >= 2);
 
@@ -71,7 +71,7 @@
     // An unedited shared list is passed on as-is, keeping its author.
     if (sharedBy) return location.href;
     const url = new URL('/tiers', location.origin);
-    url.search = serializeTierList({ useCase, group, by, tiers }).toString();
+    url.search = serializeTierList({ useCase, group, by, tiers: expandTiers(items, tiers) }).toString();
     return url.href;
   }
   async function copy(text: string, done: string) {
@@ -92,7 +92,7 @@
       const shared = parseTierList(location.search, ids);
       if (shared && groupsWithItems.includes(shared.group)) {
         useCase = shared.useCase; group = shared.group; selected = null;
-        if (new URLSearchParams(location.search).has('r')) { tiers = shared.tiers; sharedBy = shared.by ?? 'someone'; }
+        if (new URLSearchParams(location.search).has('r')) { tiers = collapseTiers(items, shared.tiers); sharedBy = shared.by ?? 'someone'; }
         else { sharedBy = null; fromSite(); }
       } else fromSite();
     };
@@ -104,7 +104,7 @@
     if (!ready) return;
     // While viewing someone's list, keep their link intact until it is edited.
     if (sharedBy) return;
-    history.replaceState(history.state, '', `${location.pathname}?${serializeTierList({ useCase, group, by, tiers })}`);
+    history.replaceState(history.state, '', `${location.pathname}?${serializeTierList({ useCase, group, by, tiers: expandTiers(items, tiers) })}`);
   });
   $effect(() => { if (ready) localStorage.setItem(NAME_KEY, by); });
 </script>
@@ -183,6 +183,7 @@
     <span class="img">{#if item.image}<img src={item.image} alt="" loading="lazy" />{/if}</span>
     <span class="brand">{item.brandName}</span>
     <span class="name">{item.name}</span>
+    {#if item.members.length > 1}<span class="variants">{item.members.length} variants</span>{/if}
     {#if showSite}<span class="site">{item.scored ? `${item.estimated ? 'estimate' : 'site'} ${item.fit[useCase]}` : 'unscored'}</span>{/if}
   </button>
 {/snippet}
@@ -226,6 +227,7 @@
   .brand { color: var(--color-muted); font-size: .6875rem; text-transform: uppercase; letter-spacing: .03em; }
   .name { font-weight: 600; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; overflow-wrap: anywhere; }
   .site { color: var(--color-accent); font-weight: 600; }
+  .variants { color: var(--color-muted); font-size: .6875rem; }
   .pool { border: 1px dashed var(--color-rule); padding: .75rem; display: grid; gap: .5rem; }
   .pool-head { display: flex; flex-wrap: wrap; gap: .5rem 1rem; align-items: center; }
   .pool-head input { flex: 0 1 16rem; }

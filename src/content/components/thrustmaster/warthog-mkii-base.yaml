@@ -45,6 +45,7 @@ physical:
   - 94
   materials:
   - metal
+tier_line: HOTAS Warthog Flight Base
 prices:
 - region: EU
   currency: EUR

@@ -55,6 +55,28 @@ export function isUnreviewedFit(fit: UseCaseFit, source?: FitSource): boolean {
   return isPlaceholderFit(fit) || source === 'seeded' || source === 'baseline';
 }
 
+/**
+ * Name with hand, mount and generation variants removed, so twins such as "SCG Standard Add-On Grip for
+ * Gunfighter Mk.IV (Left)" and "(Right)" rank as one entry: "SCG Standard Add-On Grip".
+ */
+export function variantName(name: string): string {
+  return name
+    .replace(/\s*\((left|right)[^)]*\)/gi, '')
+    .replace(/\s*-\s*(left|right)-hand(ed)?/gi, '')
+    .replace(/\s+(left|right)(-hand(ed)?)?\b/gi, '')
+    .replace(/\s*\[(l|r|lz|rz)\]/gi, '')
+    .replace(/-(l|r)\b/gi, '')
+    .replace(/\s+for\s+gunfighter.*$/i, '')
+    .replace(/\s+gf\b/gi, '')
+    .replace(/\s*\(gen\.?\s*\d\)/gi, '')
+    .trim();
+}
+
+/** Which parts are ranked together on /tiers: an explicit tier line, then a product family, then hand/mount twins. */
+export function tierLineName(part: { name: string; tier_line?: string }, familyName?: string): string {
+  return part.tier_line ?? familyName ?? variantName(part.name);
+}
+
 /** Stored fit scores are whole numbers from 1 to 5. */
 export const toFitScore = (score: number) => Math.min(5, Math.max(1, Math.round(score)));
 

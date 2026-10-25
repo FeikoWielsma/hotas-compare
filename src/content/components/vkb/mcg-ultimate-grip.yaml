@@ -106,6 +106,7 @@ use_case_fit:
   space_hotas: 3
   space_hosas: 2
 use_case_fit_source: seeded
+tier_line: Modern Combat Grip Ultimate
 prices:
 - region: EU
   currency: EUR
