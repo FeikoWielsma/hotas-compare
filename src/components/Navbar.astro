@@ -48,10 +48,9 @@ const links = [{ href: '/', label: 'Catalog' }, { href: '/compare', label: 'Comp
 
 <style>
   .navbar { background: var(--color-paper); }
-  /* Navy variant: re-point the tokens for the header's own controls; the search dialog keeps the page theme. */
+  /* Navy variant: re-point the tokens for the header's own controls (islands sit inside astro-island wrappers), so the search dialog keeps the page theme. */
   .navy { background: var(--color-navy); }
-  .navy .nav-inner { border-bottom-color: #2a4258; }
-  .navy .brand, .navy nav, .navy .tools > :global(:not(dialog)) { --color-ink: #f8f2e6; --color-muted: #c9d3da; --color-rule: #36506a; --color-accent: #f69b70; --color-paper: #192f43; --color-surface: #22394f; --color-accent-soft: #2a4258; color: var(--color-ink); }
+  .navy .brand, .navy nav, .navy #theme-toggle, .navy .tools :global(.region-switcher) { --color-ink: #f8f2e6; --color-muted: #c9d3da; --color-rule: #36506a; --color-accent: #f69b70; --color-paper: #192f43; --color-surface: #22394f; --color-accent-soft: #2a4258; color: var(--color-ink); }
   .nav-inner { max-width: 1240px; margin: auto; padding: 1.5rem 0; display: flex; align-items: center; flex-wrap: wrap; gap: 1.5rem; border-bottom: 1px solid var(--color-ink); }
   .brand { display: flex; flex-direction: column; gap: .35rem; text-decoration: none; flex: none; }
   .wordmark { font: 700 2rem/.95 var(--font-display); letter-spacing: -.01em; }
@@ -68,4 +67,15 @@ const links = [{ href: '/', label: 'Catalog' }, { href: '/compare', label: 'Comp
   @media (max-width: 1100px) { nav { order: 3; flex-basis: 100%; margin: 0; } .tools { margin-left: auto; } }
   @media (max-width: 640px) { .nav-inner { margin-inline: 1rem; padding: 1.1rem 0; gap: 1rem; } .wordmark { font-size: 1.8rem; } nav { gap: 1.25rem; } .brand-note { font-size: .6rem; } }
   @media (max-width: 480px) { .brand { width: 100%; } .tools { margin-left: 0; gap: .5rem; } nav { order: 2; } .tools { order: 3; } }
+  /* Navy variant: one compact row with no divider, so the header runs into the page hero. The page carries its own search box. */
+  .navy .nav-inner { padding: .7rem 0; gap: .5rem 2rem; flex-wrap: nowrap; border-bottom: 0; }
+  .navy .brand { width: auto; } .navy .brand-note { display: none; } .navy .wordmark { font-size: 1.6rem; }
+  .navy nav { order: 0; flex-basis: auto; margin: 0; gap: 1.4rem; flex-wrap: nowrap; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+  .navy nav a[aria-current='page'] { text-underline-offset: .4rem; }
+  .navy .tools { order: 0; margin-left: auto; flex-wrap: nowrap; gap: .4rem; }
+  .navy .tools :global(.search-trigger) { display: none; }
+  .navy .tools :global(.region-switcher) { padding: 2px; }
+  .navy .tools :global(.region-switcher button) { padding: .3rem .45rem; font-size: .7rem; }
+  .navy #theme-toggle { padding: .35rem .5rem; font-size: .7rem; white-space: nowrap; }
+  @media (max-width: 640px) { .navy .nav-inner { flex-wrap: wrap; padding: .6rem 0; gap: .4rem 1rem; } .navy nav { order: 3; flex-basis: 100%; } .navy .tools { order: 2; } }
 </style>

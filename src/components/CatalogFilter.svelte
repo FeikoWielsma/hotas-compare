@@ -182,7 +182,7 @@
 
 <style>
   /* Full-bleed navy without 100vw (which overflows next to a scrollbar). */
-  .hero { position: relative; margin-top: -2rem; background: var(--color-navy); color: var(--color-on-navy); box-shadow: 0 0 0 100vmax var(--color-navy); clip-path: inset(0 -100vmax); }
+  .hero { position: relative; margin-top: -2rem; background: var(--color-navy); color: var(--color-on-navy); box-shadow: 0 0 0 100vmax var(--color-navy); clip-path: inset(-4px -100vmax 0); }
   /* border-image outset paints the stripe edge to edge without adding scrollable overflow. */
   .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 6px; border-image: repeating-linear-gradient(120deg, var(--color-highlight) 0 28px, #f5f2e9 28px 33px, var(--color-navy) 33px 45px) fill 0 / 0 / 0 100vmax; }
   .hero-inner { display: flex; flex-wrap: wrap; align-items: end; gap: 1.25rem 2.5rem; padding-top: 1.75rem; }
