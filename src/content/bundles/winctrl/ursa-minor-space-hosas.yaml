@@ -47,3 +47,7 @@ verification: draft
 sources:
   - https://eu.winctrl.com/view/goods-details.html?id=551
   - https://eu.winctrl.com/view/goods-details.html?id=559
+images:
+  - file: /images/winctrl/ursa-minor-space-hosas.jpg
+    source: https://eu.winctrl.com/view/goods-details.html?id=725
+    caption: URSA MINOR Space/Fighter HOSAS with Space Joystick L and Fighter Joystick R
