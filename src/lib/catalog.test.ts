@@ -25,11 +25,12 @@ describe('catalog serialization', () => {
       { id: 'test/axis-pot', data: ComponentSchema.parse({ brand: 'test', name: 'Axis pot', category: 'stick_fixed', hardware: { sensor: 'hall', axes: [{ name: 'Pitch', sensor: 'potentiometer' }, { name: 'Roll', sensor: 'hall' }] } }) },
       { id: 'test/secondary-pot', data: ComponentSchema.parse({ brand: 'test', name: 'Secondary pot', category: 'stick_fixed', hardware: { sensor: 'hall', axes: [{ name: 'X', sensor: 'hall' }, { name: 'Y', sensor: 'hall' }, { name: 'Twist_Z', sensor: 'potentiometer' }] } }) },
     ];
-    collections.values.bundles = [];
+    collections.values.bundles = [{ id: 'test/pot-combo', data: BundleSchema.parse({ brand: 'test', name: 'Pot combo', category: 'hotas_bundle', components: ['test/declared-pot'] }) }];
     const items = await getCatalogItems();
     expect(items.find(item => item.id === 'test/declared-pot')?.usesPotentiometers).toBe(true);
     expect(items.find(item => item.id === 'test/axis-pot')?.usesPotentiometers).toBe(true);
     expect(items.find(item => item.id === 'test/secondary-pot')?.usesPotentiometers).toBe(false);
+    expect(items.find(item => item.id === 'test/pot-combo')?.usesPotentiometers).toBe(true);
   });
 
   it('preserves successor IDs and rejects unresolved or non-current successors during loading', async () => {
