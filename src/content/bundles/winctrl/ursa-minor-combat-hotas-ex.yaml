@@ -51,6 +51,6 @@ upgrade_paths:
 verification: draft
 sources: *id001
 images:
-- file: /images/winctrl/ursa-minor-combat-hotas.jpg
+- file: /images/winctrl/ursa-minor-combat-hotas-ex.jpg
   source: https://eu.winctrl.com/view/goods-details.html?id=6485
-  caption: URSA MINOR Combat HOTAS (base set shown)
+  caption: URSA MINOR Combat HOTAS with Metal.EX module
