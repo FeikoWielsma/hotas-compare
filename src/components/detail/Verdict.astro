@@ -9,10 +9,9 @@ const overall = scores.length ? scores.reduce((n, [, s]) => n + s, 0) / scores.l
 ---
 <section id="verdict" class="verdict" class:list={{ unscored: !v.scores }} aria-labelledby="verdict-title">
   <div class="take">
-    <p class="kicker">{v.hands_on ? 'Hands-on verdict' : 'Assessment from the specifications'}</p>
     <h2 id="verdict-title">The verdict</h2>
     <blockquote>{v.take.replace(/^Draft assessment:\s*/i, '')}</blockquote>
-    <p class="byline">— {v.author}{v.hands_on && v.owned_hours != null && ` · ${v.owned_hours} hours owned`}{!v.hands_on && ' · not tested in person'}</p>
+    <p class="byline">— {v.author}</p>
     {(v.pros.length > 0 || v.cons.length > 0) && <div class="pc">
       {v.pros.length > 0 && <div><h3>What’s good</h3><ul class="pros">{v.pros.map(x => <li>{x}</li>)}</ul></div>}
       {v.cons.length > 0 && <div><h3>Watch out for</h3><ul class="cons">{v.cons.map(x => <li>{x}</li>)}</ul></div>}
@@ -30,7 +29,6 @@ const overall = scores.length ? scores.reduce((n, [, s]) => n + s, 0) / scores.l
 <style>
   .verdict { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 2.5rem; padding: 2rem; background: var(--color-surface); border: 1px solid var(--color-rule); }
   .verdict.unscored { grid-template-columns: 1fr; }
-  .kicker { margin: 0; color: var(--color-accent); font-size: .8rem; font-weight: 600; }
   h2 { margin: .25rem 0 1rem; font-size: clamp(1.9rem, 3vw, 2.5rem); text-transform: uppercase; }
   blockquote { margin: 0; font-size: 1.15rem; line-height: 1.6; text-wrap: pretty; }
   .byline { margin: .75rem 0 0; color: var(--color-muted); font-size: .875rem; }

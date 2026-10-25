@@ -48,7 +48,7 @@ export function cardItem(item: CatalogItem): CatalogItem {
       controls: section.controls.map(({ type, count }) => ({ type, count })) as typeof section.controls,
       ...(section.controls_evidence ? { controls_evidence: { coverage: section.controls_evidence.coverage } as typeof section.controls_evidence } : {}),
     })),
-    verdict: item.verdict ? ({ hands_on: item.verdict.hands_on } as CatalogItem['verdict']) : null,
+    verdict: null,
     ...(item.platform_compatibility ? { platform_compatibility: { pc: item.platform_compatibility.pc, xbox: item.platform_compatibility.xbox, ps5: item.platform_compatibility.ps5, sources: [] } } : {}),
     images: item.images.slice(0, 1),
     axes: undefined, mount: undefined,

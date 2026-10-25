@@ -284,7 +284,6 @@ export default config({
         verdict: fields.object({
           author: fields.text({ label: 'Reviewer' }),
           hands_on: fields.checkbox({ label: 'Hands-on Experience' }),
-          owned_hours: fields.integer({ label: 'Hours Owned' }),
           take: fields.text({ label: 'Verdict', multiline: true }),
           pros: fields.array(fields.text({ label: 'Pro' }), { label: 'Pros' }),
           cons: fields.array(fields.text({ label: 'Con' }), { label: 'Cons' }),

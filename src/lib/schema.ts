@@ -257,7 +257,6 @@ export const VerdictScoreSchema = z.object({
 export const VerdictSchema = z.object({
   author: z.string(),
   hands_on: z.boolean().default(false),
-  owned_hours: z.number().int().nonnegative().optional(),
   take: z.string(),
   pros: z.array(z.string()).default([]),
   cons: z.array(z.string()).default([]),

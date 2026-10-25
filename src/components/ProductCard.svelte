@@ -54,7 +54,7 @@
   <a class="photo" href={detailHref(item)} aria-label={`View ${item.name}`}>
     {#if photo}<img src={photo} alt={item.name} loading="lazy" />{:else}<span class="nophoto">No photo available</span>{/if}
     {#if item.status !== 'current'}<span class={`status ${item.status}`}>{statusLabels[item.status]}</span>{/if}
-    {#if score != null}<span class="score" title={`${item.verdict?.hands_on ? 'Hands-on' : 'Specification-based'} verdict score`}><b>{Number(score.toFixed(1))}</b>/5{item.verdict?.hands_on ? ' · tested' : ''}</span>{/if}
+    {#if score != null}<span class="score" title="Verdict score"><b>{Number(score.toFixed(1))}</b>/5</span>{/if}
   </a>
   <div class="identity">
     <p class="brand"><BrandMark brand={item.brand} name={item.brandName} size={20} /><span>{item.brandName}</span><span class="category">{categoryLabels[item.category]}</span></p>

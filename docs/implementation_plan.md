@@ -141,7 +141,6 @@ prices:
 verdict:
   author: feiko
   hands_on: true
-  owned_hours: 400
   take: "The best 'one grip does everything' ..."
   pros: [...]
   cons: [...]
