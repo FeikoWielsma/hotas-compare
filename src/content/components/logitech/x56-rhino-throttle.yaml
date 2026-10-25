@@ -2,6 +2,7 @@ brand: logitech
 name: X56 Rhino Throttle
 category: throttle
 status: current
+sold_standalone: false
 handedness: n/a
 mount: null
 controls:

@@ -18,8 +18,12 @@
   let shareFallback = $state('');
   let heading: HTMLHeadingElement;
   let budgetSlider = $state<HTMLInputElement>();
-  /** Picks currently on screen; kept across live edits while they still fit. */
-  let picks = $state<WizardPick[]>([]);
+  /** Picks the user pinned; every other pick re-optimises with the settings. */
+  let pinned = $state<WizardPick[]>([]);
+  /** Picks on screen, used only to break exact ties so equal alternatives do not churn. */
+  let previous: WizardPick[] = [];
+  /** Pieces that differ from the result before the last live edit. */
+  let changed = $state<string[]>([]);
   let loadout = $state<WizardLoadout | null>(null);
   let curated = $state<ReturnType<typeof matchCuratedSetups>>([]);
   let updating = $state(false);
@@ -53,12 +57,17 @@
   function togglePiece(piece: WizardPiece) {
     answers = normalizeWizardAnswers({ ...answers, ...(piece === 'pedals' ? { hasExistingPedals: false } : {}), piecesNeeded: answers.piecesNeeded.includes(piece) ? answers.piecesNeeded.filter((p) => p !== piece) : [...answers.piecesNeeded, piece] });
   }
+  const pickKey = (ids: WizardPick) => ids.join('~');
+  const isPinned = (ids: WizardPick) => pinned.some((pin) => pickKey(pin) === pickKey(ids));
   function recompute(next: WizardAnswers, region: Region) {
-    const result = recommendLoadout(items, next, region, { keep: picks });
+    const result = recommendLoadout(items, next, region, { pinned, prefer: previous });
     loadout = result;
     curated = matchCuratedSetups(setups, items, next, region);
-    // An infeasible edit keeps the old picks, so undoing it restores the same setup.
-    if (result.complete) picks = picksOf(result);
+    if (result.complete) {
+      const before = new Set(previous.map(pickKey));
+      changed = previous.length ? picksOf(result).map(pickKey).filter((key) => !before.has(key)) : [];
+      previous = picksOf(result);
+    }
     return result;
   }
   /** Recommendations follow the live settings, debounced so a slider drag recomputes once it settles. */
@@ -71,12 +80,16 @@
     const timer = setTimeout(() => {
       const result = recompute(next, region);
       updating = false; edited = true;
-      liveStatus = result.complete ? `Recommendations updated · ${money(result.totalPrice)}${result.dropped.length ? ` · ${result.dropped.length} earlier pick${result.dropped.length === 1 ? '' : 's'} replaced` : ''}` : 'No complete setup fits these settings.';
+      liveStatus = result.complete ? `Recommendations updated · ${money(result.totalPrice)}${changed.length ? ` · ${changed.length} pick${changed.length === 1 ? '' : 's'} changed` : ''}` : 'No complete setup fits these settings.';
     }, LIVE_DELAY);
     return () => clearTimeout(timer);
   });
-  function findBestMatch() {
-    picks = []; edited = false;
+  function togglePin(ids: WizardPick) {
+    pinned = isPinned(ids) ? pinned.filter((pin) => pickKey(pin) !== pickKey(ids)) : [...pinned, ids];
+    if (validBudget) recompute(normalized, regionStore.region);
+  }
+  function unpinAll() {
+    pinned = [];
     const result = recompute(normalized, regionStore.region);
     liveStatus = result.complete ? `Best match for these settings · ${money(result.totalPrice)}` : 'No complete setup fits these settings.';
   }
@@ -96,8 +109,10 @@
       const params = new URLSearchParams(location.search);
       if (isRegion(params.get('region'))) regionStore.setRegion(params.get('region') as 'EU' | 'UK' | 'US');
       answers = deserializeWizardState(params);
-      picks = deserializePicks(params.get('picks'));
-      loadout = null; edited = false; liveStatus = '';
+      pinned = deserializePicks(params.get('pinned'));
+      // Links from before pinning carried every pick; use them only to break ties.
+      previous = deserializePicks(params.get('picks'));
+      loadout = null; edited = false; changed = []; liveStatus = '';
       step = params.has('useCase') && answers.piecesNeeded.length > 0 ? 4 : 0;
       visited = step;
     };
@@ -107,14 +122,14 @@
   });
   $effect(() => {
     if (!ready || !validBudget) return;
-    const params = new URLSearchParams(serializeWizardState(normalized, step === 4 ? picks : []));
+    const params = new URLSearchParams(serializeWizardState(normalized, step === 4 ? pinned : []));
     params.set('region', regionStore.region);
     history.replaceState(history.state, '', `${location.pathname}?${params}${location.hash}`);
   });
   async function copyShareLink() {
     if (updating && validBudget) { recompute(normalized, regionStore.region); updating = false; }
     const url = new URL('/wizard', location.origin);
-    url.search = serializeWizardState(normalized, picks);
+    url.search = serializeWizardState(normalized, pinned);
     url.searchParams.set('region', regionStore.region);
     try { await navigator.clipboard.writeText(url.href); shareStatus = 'Share link copied.'; shareFallback = ''; }
     catch { shareStatus = 'Copy the link below.'; shareFallback = url.href; }
@@ -193,15 +208,16 @@
           {/each}
           <div class="result-title"><h3>Your custom recommendation</h3><span>Based on your control selection</span></div>
           {#if loadout?.dropped.length}
-            <div class="notice dropped" role="note"><strong>Earlier picks that no longer fit</strong>
-              <ul>{#each loadout.dropped as pick}<li><span>{pick.items.map((item) => item.name).join(' + ') || pick.ids.join(' + ')}</span> <small>{pick.reason}</small></li>{/each}</ul>
+            <div class="notice dropped" role="note"><strong>Pinned picks that don't fit these settings</strong>
+              <ul>{#each loadout.dropped as pick}<li><span>{pick.items.map((item) => item.name).join(' + ') || pick.ids.join(' + ')}</span> <small>{pick.reason} It comes back if the settings allow it again.</small><button class="text-button" onclick={() => togglePin(pick.ids)}>Unpin</button></li>{/each}</ul>
             </div>
           {/if}
           {#if loadout}
             {#if loadout.complete}
               <p class="success">All selected controls fit within your regional budget.</p>
               {#each loadout.pieces as piece, index}
-                <article class="piece" class:kept={edited && piece.kept}><div class="piece-heading"><span class="eyebrow">{String(index + 1).padStart(2, '0')} / {piece.roles.map((role) => labels[role]).join(' + ')}{#if edited && piece.kept}<span class="kept-badge">Kept</span>{/if}</span><strong>{money(piece.price)}</strong></div>
+                {@const ids = piece.items.map((item) => item.id)}
+                <article class="piece" class:pinned={piece.pinned}><div class="piece-heading"><span class="eyebrow">{String(index + 1).padStart(2, '0')} / {piece.roles.map((role) => labels[role]).join(' + ')}{#if edited && changed.includes(pickKey(ids))}<span class="badge">Changed</span>{/if}</span><span class="piece-meta"><strong>{money(piece.price)}</strong><button class="pin" aria-pressed={!!piece.pinned} title={piece.pinned ? 'Unpin: let this pick change with your settings' : 'Pin: keep this pick while it fits your settings'} onclick={() => togglePin(ids)}>{piece.pinned ? 'Pinned' : 'Pin'}</button></span></div>
                   {#each piece.items as item}{@const photo = productImageSrc(item.images[0]?.file)}<div class="piece-product">{#if photo}<img src={photo} alt="" />{/if}<h3><a href={detailHref(item)}>{item.name} ↗</a></h3></div>{/each}
                   <ul class="pills">{#each piece.explanations as explanation}<li>{explanation}</li>{/each}</ul>
                 </article>
@@ -226,7 +242,7 @@
         <div id="settings-body" class="settings-body">
         <p class="eyebrow">Live settings</p>
         <h3 id="settings-heading">Adjust your setup</h3>
-        <p class="setting-note">Results update as you change these. Picks that still fit are kept.</p>
+        <p class="setting-note">Results re-optimise as you change these. Pin a pick to keep it while it fits.</p>
         <div class="setting">
           <label for="budget-slider" class="setting-label">Total budget <span>{regionStore.currency}</span></label>
           <p class="budget-readout"><strong>{validBudget ? budgetMoney(answers.budgetMax) : 'Set a budget'}</strong>{#if validBudget}<span>{tierLabels[budgetTier(answers.budgetMax)]}</span>{/if}</p>
@@ -252,8 +268,10 @@
           <label for="setting-mount" class="setting-label">Your space</label>
           <select id="setting-mount" bind:value={answers.mountType}>{#each mounts as mount}<option value={mount.key}>{mount.label}</option>{/each}</select>
         </div>
-        <button class="reset" onclick={findBestMatch} disabled={updating || !validBudget || !answers.piecesNeeded.length}>Find the best match again</button>
-        <p class="setting-note">Replaces kept picks with the top match for these settings.</p>
+        {#if pinned.length}
+          <button class="reset" onclick={unpinAll} disabled={updating || !validBudget || !answers.piecesNeeded.length}>Unpin all ({pinned.length})</button>
+          <p class="setting-note">Pinned picks stay through setting changes while they fit; everything else re-optimises.</p>
+        {/if}
         </div>
         <p class="live-status" role="status" aria-live="polite">{updating ? 'Updating recommendations…' : liveStatus}</p>
       </aside>
@@ -376,7 +394,12 @@
   .live-status { font-size: .8125rem; color: var(--color-muted); min-height: 1.5em; margin: .5rem 0; }
   .reset { width: 100%; font-size: .875rem; margin-top: .5rem; }
   .settings-toggle { display: none; }
-  .kept-badge { margin-left: .6rem; padding: .05rem .4rem; border: 1px solid var(--color-accent); border-radius: 2px; font-size: .75rem; font-weight: 600; }
+  .piece-meta { display: flex; align-items: center; gap: .75rem; }
+  .pin { min-height: 36px; padding: .3rem .7rem; font-size: .8125rem; }
+  .pin[aria-pressed='true'] { border-color: var(--color-accent); color: var(--color-accent); font-weight: 600; background: color-mix(in srgb, var(--color-accent) 7%, var(--color-surface)); }
+  .piece.pinned { border-color: var(--color-accent); }
+  .dropped .text-button { min-height: 0; padding: .1rem 0; }
+  .badge { margin-left: .6rem; padding: .05rem .4rem; border: 1px solid var(--color-accent); border-radius: 2px; font-size: .75rem; font-weight: 600; }
   .dropped strong { display: block; }
   .dropped ul { margin: .4rem 0 0; padding-left: 1.1rem; }
   .dropped li { margin-block: .25rem; }

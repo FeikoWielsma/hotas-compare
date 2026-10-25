@@ -2,6 +2,7 @@ brand: logitech
 name: Logitech G Flight Yoke System - Yoke
 category: yoke
 status: current
+sold_standalone: false
 handedness: n/a
 mount: null
 controls:

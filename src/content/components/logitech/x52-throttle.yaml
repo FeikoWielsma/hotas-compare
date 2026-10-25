@@ -2,6 +2,7 @@ brand: logitech
 name: X52 Throttle
 category: throttle
 status: current
+sold_standalone: false
 handedness: n/a
 mount: null
 controls:
