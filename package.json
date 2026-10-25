@@ -21,6 +21,7 @@
     "fit:retune": "node scripts/fit-retune.ts",
     "tiers:import": "node scripts/tiers-import.ts",
     "fit:baseline": "node scripts/fit-baseline.ts",
+    "social:cards": "node scripts/social-cards.ts",
     "check": "astro check"
   },
   "dependencies": {

@@ -14,7 +14,7 @@ const items = buildTierItems(catalog
   .filter((item) => item.item_type === 'component' && item.status !== 'discontinued')
   .map((item) => ({ id: item.id, brandName: item.brandName, image: productImageSrc(item.images[0]?.file), data: data.get(item.id)!, familyName: familyOf.get(item.id) })));
 ---
-<BaseLayout title="Rank the hardware" description="Make a tier list of flight sim sticks, throttles, yokes and pedals for your kind of flying, and share it to help tune our fit scores.">
+<BaseLayout title="Rank the hardware" image="/social/tiers.png" description="Make a tier list of flight sim sticks, throttles, yokes and pedals for your kind of flying, and share it to help tune our fit scores.">
   <header class="guide-header">
     <p class="eyebrow">The independent sim hardware guide / Tier lists</p>
     <h1>Which hardware<br /><span>suits which flying?</span></h1>
