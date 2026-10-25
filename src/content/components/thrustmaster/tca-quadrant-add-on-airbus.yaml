@@ -94,6 +94,7 @@ physical:
   - 50
   - 235
   - 130
+airliner_family: airbus
 prices:
 - region: EU
   currency: EUR

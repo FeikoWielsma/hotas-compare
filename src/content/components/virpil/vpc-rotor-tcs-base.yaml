@@ -12,7 +12,9 @@ platform_compatibility:
 status: current
 release_year: 2021
 handedness: n/a
-mount: null
+mount:
+  accepts:
+  - virpil-rotor-grip
 placement: mount_only
 controls:
 - type: lever
@@ -70,13 +72,13 @@ physical:
   - aluminium
   - steel
 use_case_fit:
-  modern_jet: 3
+  modern_jet: 1
   heli: 5
-  ww2: 4
-  ga: 5
-  airliner: 2
-  space_hotas: 3
-  space_hosas: 3
+  ww2: 1
+  ga: 1
+  airliner: 1
+  space_hotas: 1
+  space_hosas: 1
 prices:
 - region: EU
   currency: EUR

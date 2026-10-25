@@ -53,6 +53,14 @@ physical:
   dimensions_mm: [175, 175, 90]
   materials:
   - abs
+use_case_fit:
+  modern_jet: 1
+  heli: 1
+  ww2: 1
+  ga: 1
+  airliner: 1
+  space_hotas: 1
+  space_hosas: 1
 prices:
 - region: EU
   currency: EUR

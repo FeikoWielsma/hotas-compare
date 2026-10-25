@@ -47,6 +47,10 @@ export interface CatalogItem {
   /** Tag of the most recent external review (e.g. Mysh's latest roundup), if any. */
   reviewTag?: ReviewTag | null;
   /** The most recent external review, for review chips and rank explanations. */
+  /** Airbus or Boeing replica; for bundles, set when the members agree. */
+  airlinerFamily?: 'airbus' | 'boeing';
+  /** Date no independent reviews could be found, for products still awaiting them. */
+  reviewsPending?: string;
   latestReview?: { reviewer: string; reviewerName: string; tag: ReviewTag; url: string; summary: string; date: string } | null;
   /** Stick gimbal family of the member that carries the stick gimbal, if documented. */
   gimbalType?: GimbalType | null;
@@ -195,6 +199,11 @@ export async function loadCatalog(region: Region = 'EU', now = new Date()) {
       controlsSummary, sensor: hardwareValues('sensor'), gimbal: hardwareValues('gimbal'),
       usesPotentiometers: members.some((member) => usesPotentiometerPrimaryAxes(member.hardware)),
       controlSections: members.map(({ name, category, controls, controls_evidence }) => ({ name, category, controls, ...(controls_evidence ? { controls_evidence } : {}) })),
+      ...('reviews_pending' in data && data.reviews_pending ? { reviewsPending: data.reviews_pending.checked } : {}),
+      ...(() => {
+        const families = [...new Set(members.map((member) => member.airliner_family).filter((family) => family != null))];
+        return families.length === 1 ? { airlinerFamily: families[0] } : {};
+      })(),
       use_case_fit, verdict: data.verdict ?? null, scores: data.verdict?.scores ?? null,
       ...(() => {
         const review = [...data.external_reviews].sort((a, b) => b.date.localeCompare(a.date))[0];

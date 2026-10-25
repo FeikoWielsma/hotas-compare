@@ -124,7 +124,14 @@ physical:
   - 483
   - 183
   materials: []
-use_case_fit: {}
+use_case_fit:
+  modern_jet: 1
+  heli: 1
+  ww2: 2
+  ga: 4
+  airliner: 4
+  space_hotas: 1
+  space_hosas: 1
 software: SIP Connect for VelocityOne
 prices:
 - region: US
