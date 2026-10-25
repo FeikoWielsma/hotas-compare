@@ -1,3 +1,5 @@
+import { parse, stringify } from 'yaml';
+import { PriceSchema } from './schema';
 import { describe, expect, it } from 'vitest';
 import { feedRequest, parseFeed, updatePriceText } from './price-feeds';
 
@@ -68,11 +70,35 @@ describe('updatePriceText', () => {
   it('rewrites only the matching entry and keeps everything else byte-for-byte', () => {
     const out = updatePriceText(yaml, 'UK', 'https://uk.winctrl.com/p/1.html', 246, '2026-10-24')!;
     expect(out.split('\n').slice(0, 10)).toEqual(yaml.split('\n').slice(0, 10));
-    expect(out).toContain("  amount: 246\n  url: https://uk.winctrl.com/p/1.html\n  verified: '2026-10-24'\n  source: feed\nverification: draft");
+    expect(out).toContain("  amount: 246\n  url: https://uk.winctrl.com/p/1.html\n  verified: '2026-10-24'");
   });
   it('handles indented lists and returns null when the entry is missing', () => {
     const indented = yaml.replaceAll(/^(- |  )/gm, '  $1');
     expect(updatePriceText(indented, 'EU', 'https://eu.winctrl.com/p/1.html', 229.28, '2026-10-24')).toContain('    amount: 229.28');
     expect(updatePriceText(yaml, 'US', 'https://eu.winctrl.com/p/1.html', 1, '2026-10-24')).toBeNull();
+  });
+});
+
+
+describe('price history', () => {
+  const price = { region: 'EU', currency: 'EUR', amount: 100, store: 'test', url: 'https://eu.winctrl.com/p/1.html', verified: '2026-10-01' };
+  const apply = (entry: object, amount = 110) => parse(updatePriceText(stringify({ prices: [entry] }), 'EU', price.url, amount, '2026-10-25')!).prices[0];
+  it('keeps existing entries optional and validates history values, cap and uniqueness', () => {
+    expect(PriceSchema.parse(price).history).toBeUndefined();
+    for (const history of [[{ amount: -1, verified: '2026-10-01' }], [{ amount: 1, verified: 'yesterday' }], Array(11).fill({ amount: 1, verified: '2026-10-01' }), Array(2).fill({ amount: 1, verified: '2026-10-01' })]) {
+      expect(PriceSchema.safeParse({ ...price, history }).success).toBe(false);
+    }
+    expect(PriceSchema.parse(apply(price)).history).toEqual([{ amount: 100, verified: '2026-10-01' }]);
+  });
+  it('retains the last 10 observations oldest first and does not duplicate pairs', () => {
+    const history = Array.from({ length: 10 }, (_, i) => ({ amount: i, verified: '2026-09-01' }));
+    expect(apply({ ...price, history }).history).toEqual([...history.slice(1), { amount: 100, verified: price.verified }]);
+    expect(apply({ ...price, history: [{ amount: 100, verified: price.verified }] }).history).toEqual([{ amount: 100, verified: price.verified }]);
+    expect(apply({ ...price, history: [{ amount: 100, verified: '2026-09-01' }] }).history).toHaveLength(2);
+  });
+  it('does not record unchanged amounts, including repeated runs and touches', () => {
+    expect(apply(price, 100).history).toBeUndefined();
+    const changed = apply(price);
+    expect(apply(changed).history).toEqual(changed.history);
   });
 });
