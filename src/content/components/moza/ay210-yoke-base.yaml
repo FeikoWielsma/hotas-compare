@@ -33,6 +33,14 @@ images:
 - file: /images/moza/ay210-yoke-base.webp
   source: https://us.mozaracing.com/products/ay210-yoke-base
   caption: MOZA AY210 Yoke Base
+use_case_fit:
+  modern_jet: 1
+  heli: 1
+  ww2: 2
+  ga: 4
+  airliner: 5
+  space_hotas: 1
+  space_hosas: 1
 prices:
 - region: EU
   currency: EUR

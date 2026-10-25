@@ -1,0 +1,4 @@
+name: WINCTRL Second-Generation Grip Mount
+description: WINCTRL's second-generation grip mounting structure, used by the 32 Sidestick Controller L.Metal 2.0. The listing names only the Orion 2 and Cyber Taurus FFB bases as compatible and excludes the Libra, Orion 1.0 and Orion 2.0 MFSSB bases, so it is kept separate from the generic winctrl-grip standard.
+physical_type: thread_collar
+compatible_with: []

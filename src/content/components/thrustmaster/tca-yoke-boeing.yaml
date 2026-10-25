@@ -73,14 +73,15 @@ physical:
   - metal
   - abs
   dimensions_mm: [300, 390, 380]
+airliner_family: boeing
 use_case_fit:
-  modern_jet: 4
-  heli: 3
-  ww2: 3
+  modern_jet: 1
+  heli: 1
+  ww2: 2
   ga: 3
-  airliner: 3
-  space_hotas: 4
-  space_hosas: 3
+  airliner: 4
+  space_hotas: 1
+  space_hosas: 1
 prices:
 - region: EU
   currency: EUR

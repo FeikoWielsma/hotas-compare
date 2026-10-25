@@ -33,13 +33,13 @@ export function filterCatalog(items: CatalogItem[], filters: CatalogFilters = {}
   const query = (filters.search ?? '').trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
   const meetsMinimum = (count: number, minimum?: number) => minimum == null || minimum <= 0 || (Number.isFinite(count) && count > 0 && count >= minimum);
   return items.filter((item) => {
-    const text = [item.name, item.brandName, item.brand, ...item.formerBrandNames, item.category.replaceAll('_', ' '), item.sensor ?? '', item.gimbal ?? '', item.item_type, item.hasMinistick ? 'ministick' : '', item.hasBrakeAxis ? 'brake' : ''].join(' ').toLocaleLowerCase();
+    const text = [item.name, item.brandName, item.brand, ...item.formerBrandNames, item.category.replaceAll('_', ' '), item.yokePart ? `yoke ${item.yokePart}` : '', item.sensor ?? '', item.gimbal ?? '', item.item_type, item.hasMinistick ? 'ministick' : '', item.hasBrakeAxis ? 'brake' : ''].join(' ').toLocaleLowerCase();
     const amount = item.resolvedPrice.price?.amount;
     const fit = filters.fit === 'ga_airliner' ? Math.max(item.use_case_fit.ga, item.use_case_fit.airliner) : item.use_case_fit[filters.fit as keyof CatalogItem['use_case_fit']] ?? 0;
     return (filters.showDiscontinued || !isSuperseded(item))
       && (filters.showIndividualParts || item.item_type !== 'component' || (item.soldStandalone !== false && !item.soldMainlyInBundle))
       && query.every((word) => text.includes(word))
-      && (!filters.categories?.length || filters.categories.includes(item.category))
+      && (!filters.categories?.length || filters.categories.includes(item.category) || (item.yokePart === 'base' && filters.categories.includes('yoke')))
       && (!filters.gimbalTypes?.length || (item.gimbalType != null && filters.gimbalTypes.includes(item.gimbalType)))
       && (!filters.brands?.length || filters.brands.includes(item.brand))
       && (filters.minimum == null || (amount != null && amount >= filters.minimum))

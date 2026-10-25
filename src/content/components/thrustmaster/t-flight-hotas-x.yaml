@@ -102,6 +102,14 @@ physical:
 connectivity:
   standalone_usb: true
   usb: USB (PC; set USB selector to PC)
+use_case_fit:
+  modern_jet: 2
+  heli: 3
+  ww2: 2
+  ga: 3
+  airliner: 3
+  space_hotas: 2
+  space_hosas: 3
 prices:
 - region: EU
   currency: EUR

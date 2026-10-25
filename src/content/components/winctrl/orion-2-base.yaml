@@ -16,6 +16,7 @@ mount:
   accepts:
     - winctrl-grip
     - tm-din5
+    - winctrl-grip-gen2
 placement: both
 controls: []
 controls_evidence:

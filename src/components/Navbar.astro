@@ -6,7 +6,7 @@ import { detailHref } from '../lib/catalog-ui';
 import type { Region } from '../lib/schema';
 interface Props { initialRegion?: Region }
 const { initialRegion } = Astro.props;
-const searchItems = (await getCatalogItems()).map(item => ({ name: item.name, brandName: item.brandName, category: item.category, prices: item.prices, formerBrandNames: item.formerBrandNames, image: item.images[0]?.file, url: detailHref(item) }));
+const searchItems = (await getCatalogItems()).map(item => ({ name: item.name, brandName: item.brandName, category: item.category, yokePart: item.yokePart, prices: item.prices, formerBrandNames: item.formerBrandNames, image: item.images[0]?.file, url: detailHref(item) }));
 const links = [{ href: '/', label: 'Catalog' }, { href: '/compare', label: 'Compare' }, { href: '/brands', label: 'Brands' }, { href: '/wizard', label: 'Setup guide' }];
 ---
 

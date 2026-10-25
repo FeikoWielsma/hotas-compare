@@ -52,6 +52,7 @@ controls_evidence:
   notes: Manufacturer lists 5 buttons, a trigger configurable as button or axis, four total axes including lockable
     Z, and Hall-sensor ministick. Button total may include the trigger; no additional trigger stages are counted.
     Only the named Z axis is listed individually; unnamed axis mapping remains unresolved.
+airliner_family: airbus
 prices:
 - region: EU
   currency: EUR

@@ -3,7 +3,7 @@
   import { controlTypes, inventoryCount, inventoryDetail } from '../lib/control-inventory';
   import type { CatalogItem } from '../lib/catalog';
   import { platforms, platformSupport } from '../lib/platforms';
-  import { categoryLabels, detailHref, formatAmount, productImageSrc, useCases, resolveItemRegion } from '../lib/catalog-ui';
+  import { itemCategoryLabel, detailHref, formatAmount, productImageSrc, useCases, resolveItemRegion } from '../lib/catalog-ui';
   import { compareStore, MAX_COMPARE_ITEMS } from '../lib/stores/compare.svelte';
   import { regionStore } from '../lib/stores/region.svelte';
   import { humanize, placementLabels, statusLabels } from '../lib/labels';
@@ -23,7 +23,7 @@
   const groups: { title: string; rows: Row[] }[] = [
     { title: 'Overview', rows: [
       { label: 'Brand', value: (i) => i.brandName }, { label: 'Name', value: (i) => i.name },
-      { label: 'Category', value: (i) => categoryLabels[i.category] },
+      { label: 'Category', value: (i) => itemCategoryLabel(i) },
       { label: 'Handedness', value: (i) => i.handedness.map(humanize).join(' / ') || 'Not applicable' },
       { label: 'Availability', value: (i) => statusLabels[i.status] },
       { label: 'Data status', value: (i) => i.verification === 'verified' ? 'Editor verified' : 'Draft specifications' },
@@ -86,7 +86,7 @@ ${i.latestReview.summary}` : 'Not reviewed' },
 <div class="matrix" role="region" aria-label="Hardware comparison matrix, scroll horizontally to see all four slots" tabindex="0">
   <table><caption class="sr-only">Hardware comparison in {regionStore.region}. Unknown specifications are not confirmed. Use case and editorial ratings are out of five.</caption>
     <thead><tr><th scope="col" class="corner"><span>Specifications</span><p>Flight hardware<br />at a glance.</p></th>
-      {#each selected as { id, item } (id)}<th scope="col"><div class="column-head"><span class="brand">{item?.brandName ?? 'Unavailable item'}</span><button type="button" class="remove" aria-label={`Remove ${item?.name ?? id} from comparison`} onclick={() => compareStore.removeItem(id)}>×</button></div>{#if item}{@const photo = productImageSrc(item.images[0]?.file)}{#if photo}<img class="column-photo" src={photo} alt="" />{/if}<a class="product" href={detailHref(item)}>{item.name} ↗</a><span class="badge">{categoryLabels[item.category]}</span>{:else}<p class="unknown">This item is no longer in the catalog: {id}</p>{/if}</th>{/each}
+      {#each selected as { id, item } (id)}<th scope="col"><div class="column-head"><span class="brand">{item?.brandName ?? 'Unavailable item'}</span><button type="button" class="remove" aria-label={`Remove ${item?.name ?? id} from comparison`} onclick={() => compareStore.removeItem(id)}>×</button></div>{#if item}{@const photo = productImageSrc(item.images[0]?.file)}{#if photo}<img class="column-photo" src={photo} alt="" />{/if}<a class="product" href={detailHref(item)}>{item.name} ↗</a><span class="badge">{itemCategoryLabel(item)}</span>{:else}<p class="unknown">This item is no longer in the catalog: {id}</p>{/if}</th>{/each}
       {#each Array(emptySlots) as _, index}<th scope="col" class="slot"><label for={`slot-${index}`}>Add hardware<select id={`slot-${index}`} value="" onchange={(event) => { const id = event.currentTarget.value; if (id) compareStore.addItem(id); event.currentTarget.value = ''; }}><option value="">Choose an item…</option>{#each available as item}<option value={item.id}>{item.brandName} · {item.name}</option>{/each}</select></label><p>Product {selected.length + index + 1} of 4</p></th>{/each}
     </tr></thead>
     {#each visibleGroups as group}<tbody><tr class="group"><th colspan="5" scope="colgroup">{group.title}</th></tr>{#each group.rows as row}<tr class:different={highlight && differs(row)}><th scope="row">{row.label}{#if highlight && differs(row)}<span class="difference-mark" aria-label="Different values"> ●</span>{/if}</th>{#each selected as { id, item } (id)}<td>{item ? row.value(item) : 'Unavailable'}</td>{/each}{#each Array(emptySlots) as _}<td class="placeholder">—</td>{/each}</tr>{/each}</tbody>{/each}

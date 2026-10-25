@@ -5,6 +5,8 @@ import type { ControlsSummary, ResolvedPrice } from './derive';
 import type { Component, Bundle, Region, UseCaseFit, Verdict, ReviewTag, GimbalType, DamperType, ControlItem, Placement } from './schema';
 import type { ControlSection } from './control-inventory';
 import { familyIndex, validateFamilies } from './families';
+import { yokePart, yokeStandards } from './yoke-parts';
+import type { YokePart } from './yoke-parts';
 
 export type PedalBrakes = 'toe_brakes' | 'rudder_only' | 'unknown';
 
@@ -45,6 +47,10 @@ export interface CatalogItem {
   /** Tag of the most recent external review (e.g. Mysh's latest roundup), if any. */
   reviewTag?: ReviewTag | null;
   /** The most recent external review, for review chips and rank explanations. */
+  /** Airbus or Boeing replica; for bundles, set when the members agree. */
+  airlinerFamily?: 'airbus' | 'boeing';
+  /** Date no independent reviews could be found, for products still awaiting them. */
+  reviewsPending?: string;
   latestReview?: { reviewer: string; reviewerName: string; tag: ReviewTag; url: string; summary: string; date: string } | null;
   /** Stick gimbal family of the member that carries the stick gimbal, if documented. */
   gimbalType?: GimbalType | null;
@@ -71,6 +77,8 @@ export interface CatalogItem {
   /** Evidence used by the wizard; absent values remain unknown. */
   axes?: { name: string; sensor?: string }[];
   mount?: Component['mount'];
+  /** Set on components that are only half of a yoke: a handle without gimbal/USB, or a base without a handle. */
+  yokePart?: YokePart;
   /** Product family membership; resolve siblings with familyOf. */
   family?: { id: string; name: string; axis: string; label: string; tier: number } | null;
 }
@@ -140,6 +148,7 @@ export async function loadCatalog(region: Region = 'EU', now = new Date()) {
   const bundleMap = new Map(bundles.map((entry) => [entry.id, entry.data]));
   const successors = new Map([...components, ...bundles].map(({ id, data }) => [id, resolveSuccessor(id, data, componentMap, bundleMap)]));
   const brandMap = new Map(brands.map((entry) => [entry.id, entry.data]));
+  const yokeMounts = yokeStandards(components.map(({ data }) => data));
 
   function makeItem(id: string, data: Component | Bundle, item_type: CatalogItem['item_type']): CatalogItem {
     const brand = brandMap.get(data.brand);
@@ -190,6 +199,11 @@ export async function loadCatalog(region: Region = 'EU', now = new Date()) {
       controlsSummary, sensor: hardwareValues('sensor'), gimbal: hardwareValues('gimbal'),
       usesPotentiometers: members.some((member) => usesPotentiometerPrimaryAxes(member.hardware)),
       controlSections: members.map(({ name, category, controls, controls_evidence }) => ({ name, category, controls, ...(controls_evidence ? { controls_evidence } : {}) })),
+      ...('reviews_pending' in data && data.reviews_pending ? { reviewsPending: data.reviews_pending.checked } : {}),
+      ...(() => {
+        const families = [...new Set(members.map((member) => member.airliner_family).filter((family) => family != null))];
+        return families.length === 1 ? { airlinerFamily: families[0] } : {};
+      })(),
       use_case_fit, verdict: data.verdict ?? null, scores: data.verdict?.scores ?? null,
       ...(() => {
         const review = [...data.external_reviews].sort((a, b) => b.date.localeCompare(a.date))[0];
@@ -212,6 +226,10 @@ export async function loadCatalog(region: Region = 'EU', now = new Date()) {
       leverCount: members.flatMap((member) => member.controls).reduce((sum, control) => sum + (control.type === 'lever' ? control.count : 0), 0),
       axes: members.flatMap((member) => member.hardware?.axes ?? []),
       mount: 'components' in data ? null : data.mount ?? null,
+      ...(() => {
+        const part = 'components' in data ? null : yokePart(data, yokeMounts);
+        return part ? { yokePart: part } : {};
+      })(),
       family: (() => {
         const membership = familyMembership.get(id);
         return membership ? { id: membership.family.id, name: membership.family.data.name, axis: membership.family.data.axis, label: membership.label, tier: membership.tier } : null;
