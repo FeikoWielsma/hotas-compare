@@ -25,7 +25,7 @@ const velocityOne = 'turtle-beach/velocityone-flight-yoke-system';
 describe('airliner and GA picks', () => {
   it('recommends the VelocityOne all-in-one when a budget buyer has no pedals', () => {
     for (const useCase of ['airliner', 'ga'] as const) {
-      for (const budgetMax of [350, 400]) {
+      for (const budgetMax of useCase === 'airliner' ? [350, 400, 450, 500] : [350, 400, 450]) {
         const result = recommend({ useCase, budgetMax });
         expect(picksOf(result), `${useCase} ${budgetMax}`).toEqual([[velocityOne]]);
         expect(result.pieces[0].roles.sort()).toEqual(['pedals', 'quadrant', 'yoke']);
@@ -33,6 +33,14 @@ describe('airliner and GA picks', () => {
       }
     }
     expect(picksOf(recommend({ useCase: 'airliner', budgetMax: 450 }, 'EU'))).toEqual([[velocityOne]]);
+  });
+  it('shows the VelocityOne slightly over budget when nothing acceptable fits a tight airliner or GA budget', () => {
+    for (const useCase of ['airliner', 'ga'] as const) {
+      const result = recommend({ useCase, budgetMax: 300 });
+      expect(picksOf(result), useCase).toEqual([[velocityOne]]);
+      expect(result.overBudget).toBeCloseTo(29.99);
+    }
+    expect(recommend({ useCase: 'airliner', budgetMax: 400 }).overBudget).toBeUndefined();
   });
   it('never pairs a yoke that has its own quadrant with a second quadrant', () => {
     for (const region of ['US', 'EU'] as const) {
@@ -137,17 +145,21 @@ describe('helicopter picks', () => {
 });
 
 describe('avoided hardware', () => {
-  it('picks Logitech yokes, quadrants or pedals, or T.Flight pedals, only when nothing else fits', () => {
+  it('never picks Logitech yokes, quadrants or pedals, or T.Flight pedals (alone or in a pack)', () => {
+    const avoidedOrPack = (item: CatalogItem) => avoided.includes(item.id) || item.componentIds.some((id) => avoided.includes(id));
     for (const region of ['US', 'EU'] as const) {
       for (const useCase of ['airliner', 'ga', 'heli', 'ww2', 'modern_jet'] as const) {
-        for (const budgetMax of [250, 350, 500, 750, 1500, 3000]) {
+        for (const budgetMax of [150, 250, 300, 350, 500, 750, 1500, 3000]) {
           for (const mountType of ['desk', 'clamp'] as const) {
-            const answers = normalizeWizardAnswers({ useCase, budgetMax, mountType, piecesNeeded: ['heli', 'airliner', 'ga'].includes(useCase) ? undefined : ['stick', 'throttle', 'pedals'] });
-            const picked = recommendLoadout(catalogs[region], answers, region).items.map((item) => item.id);
-            if (!picked.some((id) => avoided.includes(id))) continue;
-            // Allowed only as a last resort: without the avoided hardware, nothing complete fits.
-            const without = recommendLoadout(catalogs[region].filter((item) => !avoided.includes(item.id)), answers, region);
-            expect(without.complete, `${region} ${useCase} ${budgetMax} ${mountType} picked ${picked}`).toBe(false);
+            for (const hasExistingPedals of [false, true]) {
+              const fixedWing: WizardAnswers['piecesNeeded'] | undefined = hasExistingPedals ? ['yoke', 'quadrant'] : undefined;
+              const combat: WizardAnswers['piecesNeeded'] = hasExistingPedals ? ['stick', 'throttle'] : ['stick', 'throttle', 'pedals'];
+              const piecesNeeded = useCase === 'heli' ? undefined : useCase === 'airliner' || useCase === 'ga' ? fixedWing : combat;
+              const result = recommendLoadout(catalogs[region], normalizeWizardAnswers({ useCase, budgetMax, mountType, hasExistingPedals, piecesNeeded }), region);
+              const context = `${region} ${useCase} ${budgetMax} ${mountType} ${hasExistingPedals}`;
+              expect(result.items.filter(avoidedOrPack).map((item) => item.id), context).toEqual([]);
+              if (useCase === 'airliner' || useCase === 'ga') expect(result.complete, context).toBe(true);
+            }
           }
         }
       }

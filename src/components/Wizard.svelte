@@ -237,7 +237,11 @@
           {/if}
           {#if loadout}
             {#if loadout.complete}
-              <p class="success">All selected controls fit within your regional budget.</p>
+              {#if loadout.overBudget !== undefined}
+                <p class="notice over-budget"><strong>{money(loadout.overBudget)} over your budget.</strong> Nothing we recommend for these controls fits {budgetMoney(answers.budgetMax)}, so this is the cheapest setup we would recommend.</p>
+              {:else}
+                <p class="success">All selected controls fit within your regional budget.</p>
+              {/if}
               {#each loadout.pieces as piece, index}
                 {@const ids = piece.items.map((item) => item.id)}
                 <article class="piece" class:pinned={piece.pinned}><div class="piece-heading"><span class="eyebrow">{String(index + 1).padStart(2, '0')} / {piece.roles.map((role) => label(role) + (piece.standIns.includes(role) ? ' (stand-in)' : '')).join(' + ')}{#if edited && changed.includes(pickKey(ids))}<span class="badge">Changed</span>{/if}</span><span class="piece-meta"><strong>{money(piece.price)}</strong><button class="pin" aria-pressed={!!piece.pinned} title={piece.pinned ? 'Unpin: let this pick change with your settings' : 'Pin: keep this pick while it fits your settings'} onclick={() => togglePin(ids)}>{piece.pinned ? 'Pinned' : 'Pin'}</button></span></div>

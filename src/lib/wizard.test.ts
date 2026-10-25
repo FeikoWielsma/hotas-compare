@@ -233,10 +233,13 @@ describe('live editing', () => {
     expect(deskRecompute.items.map((item) => item.id)).toContain('cheap-stick');
     expect(deskRecompute.items.map((item) => item.id)).not.toContain('vkb/stecs-throttle-mini');
   });
-  it('does not blame pins when no setup fits the settings at all', () => {
+  it('does not blame pins when no setup fits the budget, and shows the cheapest setup with them over budget', () => {
     const result = recommendLoadout(catalog(), normalizeWizardAnswers({ piecesNeeded: ['stick', 'throttle'], budgetMax: 100 }), 'EU', { pinned: [['cheap-stick'], ['throttle']] });
-    expect(result.complete).toBe(false);
     expect(result.dropped).toEqual([]);
+    expect(picksOf(result)).toEqual([['cheap-stick'], ['throttle']]);
+    expect(result.overBudget).toBe(80);
+    // Nothing can complete the setup at any price: an honest empty result.
+    expect(recommendLoadout(catalog(), normalizeWizardAnswers({ piecesNeeded: ['yoke'] }), 'EU').complete).toBe(false);
   });
 });
 
@@ -319,12 +322,25 @@ describe('stand-ins and suitability', () => {
     expect(result.pieces.find((piece) => piece.items[0].id === 'all-in-one')?.roles).not.toContain('pedals');
     expect(result.items.map((item) => item.id)).toContain('pedals');
   });
-  it('picks a 1/5 fit only when nothing else completes the setup', () => {
+  it('never picks a 1/5 fit, even inside a bundle, and shows the cheapest acceptable setup over budget instead', () => {
     const poor = hardware('poor-pedals', 'pedals', 50, { use_case_fit: fit({ airliner: 1 }) });
     const ok = hardware('ok-pedals', 'pedals', 250, { use_case_fit: fit({ airliner: 3 }) });
+    const pack = hardware('pack', 'system', 60, { item_type: 'bundle', componentIds: ['poor-pedals'], use_case_fit: fit({ airliner: 3 }) });
     const answers = airliner(600, { piecesNeeded: ['pedals'] });
-    expect(picksOf(recommendLoadout([poor, ok], answers, 'EU'))).toEqual([['ok-pedals']]);
-    expect(picksOf(recommendLoadout([poor, ok], { ...answers, budgetMax: 100 }, 'EU'))).toEqual([['poor-pedals']]);
+    const fits = recommendLoadout([poor, ok], answers, 'EU');
+    expect(picksOf(fits)).toEqual([['ok-pedals']]);
+    expect(fits.overBudget).toBeUndefined();
+    const tight = recommendLoadout([poor, ok, pack], { ...answers, budgetMax: 100 }, 'EU');
+    expect(picksOf(tight)).toEqual([['ok-pedals']]);
+    expect(tight.overBudget).toBe(150);
+    expect(recommendLoadout([poor, ok], answers, 'EU', { pinned: [['poor-pedals']] }).dropped[0].reason).toMatch(/Rated limited/);
+  });
+  it('makes an unreviewed product win only when it is clearly better', () => {
+    const reviewed = hardware('reviewed-yoke', 'yoke', 200, { use_case_fit: fit({ airliner: 4 }) });
+    const pending = hardware('pending-yoke', 'yoke', 200, { use_case_fit: fit({ airliner: 4 }), reviewsPending: '2026-10-25' });
+    const answers = airliner(400, { piecesNeeded: ['yoke'] });
+    expect(picksOf(recommendLoadout([pending, reviewed], answers, 'EU'))).toEqual([['reviewed-yoke']]);
+    expect(picksOf(recommendLoadout([{ ...pending, use_case_fit: fit({ airliner: 5 }) }, reviewed], answers, 'EU'))).toEqual([['pending-yoke']]);
   });
   it('marks products awaiting reviews as tentative', () => {
     const result = recommendLoadout([hardware('new-yoke', 'yoke', 200, { reviewsPending: '2026-10-25' })], airliner(400, { piecesNeeded: ['yoke'] }), 'EU');

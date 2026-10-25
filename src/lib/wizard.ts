@@ -50,6 +50,8 @@ export interface WizardLoadout {
   warnings: string[];
   /** Pinned picks that do not fit these answers, with the constraint each one breaks. */
   dropped: DroppedPick[];
+  /** Set when nothing acceptable fits the budget: the cheapest recommended setup, and by how much it exceeds it. */
+  overBudget?: number;
 }
 const currencies: Record<Region, Currency> = { EU: 'EUR', UK: 'GBP', US: 'USD' };
 const disciplines: UseCase[] = ['modern_jet', 'space_hosas', 'space_hotas', 'heli', 'ga', 'airliner', 'ww2'];
@@ -203,8 +205,11 @@ function roleVariants(roles: WizardPiece[], primary: CatalogItem[], answers: Wiz
   }
   return variants;
 }
+/** A 1/5 fit marks hardware the wizard never recommends for that flying style. */
 const LAST_RESORT_FIT = 1;
-const LAST_RESORT_PENALTY = 50;
+const isLastResort = (item: CatalogItem, useCase: UseCase) => item.use_case_fit[useCase] <= LAST_RESORT_FIT;
+/** Unreviewed hardware must be clearly better than a reviewed alternative before it is recommended. */
+const REVIEWS_PENDING_PENALTY = 12;
 export function scoreWizardItem(item: CatalogItem, answers: WizardAnswers, region: Region) {
   const fit = scoreItemForUseCase(item.use_case_fit, item.verdict, answers.useCase);
   let score = fit.score;
@@ -228,10 +233,7 @@ export function scoreWizardItem(item: CatalogItem, answers: WizardAnswers, regio
   if (answers.useCase === 'heli' && /dry.clutch/i.test(item.mechanics.damping)) {
     score += 10; explanations.push('+ Dry clutch damping supports a cyclic setup; check spring removal instructions');
   }
-  // A 1/5 fit marks hardware that should only fill a slot when nothing better fits the budget.
-  if (item.use_case_fit[answers.useCase] <= LAST_RESORT_FIT) {
-    score -= LAST_RESORT_PENALTY; explanations.push('- Rated limited for this flying style: picked only when nothing better fits');
-  }
+  if (item.reviewsPending) { score -= REVIEWS_PENDING_PENALTY; explanations.push('- No published reviews yet'); }
   const family = airlinerFamily(answers);
   if (family && item.airlinerFamily) {
     const name = item.airlinerFamily === 'airbus' ? 'Airbus' : 'Boeing';
@@ -331,8 +333,8 @@ function overlaps(pieces: RecommendedPiece[], option: RecommendedPiece) {
     return shared && !(isSingleStick(piece) && isSingleStick(option) && piece.roles[0] !== option.roles[0]);
   });
 }
-/** Best complete loadout that contains every seed piece, or undefined when none fits. */
-function search(options: RecommendedPiece[], answers: WizardAnswers, seed: RecommendedPiece[], prefer: WizardPick[] = []) {
+/** Best complete loadout that contains every seed piece (or the cheapest one with `cheapest`), or undefined when none fits. */
+function search(options: RecommendedPiece[], answers: WizardAnswers, seed: RecommendedPiece[], prefer: WizardPick[] = [], cheapest = false) {
   type State = { pieces: RecommendedPiece[]; roles: WizardPiece[]; price: number; score: number };
   let states: State[] = [{ pieces: seed, roles: seed.flatMap((piece) => piece.roles), price: seed.reduce((sum, piece) => sum + piece.price, 0),
     score: seed.reduce((sum, piece) => sum + piece.value, 0) }];
@@ -360,6 +362,7 @@ function search(options: RecommendedPiece[], answers: WizardAnswers, seed: Recom
   }
   const complete = states.filter((state) => answers.piecesNeeded.length > 0 && answers.piecesNeeded.every((role) => state.roles.includes(role)));
   if (!complete.length) return undefined;
+  if (cheapest) return complete.sort((a, b) => a.price - b.price || b.score - a.score)[0];
   // Among equally scored setups, keep the one sharing most picks with the current result, then the cheapest.
   const top = Math.max(...complete.map((state) => state.score));
   const shared = (state: State) => state.pieces.filter((piece) => prefer.some((ids) => sameIds(ids, idsOf(piece)))).length;
@@ -368,6 +371,9 @@ function search(options: RecommendedPiece[], answers: WizardAnswers, seed: Recom
 /** Names the first new constraint a pinned pick breaks, checking the broadest cause first. */
 function pickMismatch(ids: WizardPick, items: CatalogItem[], answers: WizardAnswers, region: Region): string {
   const offered = (relaxed: WizardAnswers) => candidates(items, relaxed, region).some((option) => sameIds(idsOf(option), ids));
+  const byId = new Map(items.map((item) => [item.id, item]));
+  const limited = (id: string): boolean => { const item = byId.get(id); return !!item && (isLastResort(item, answers.useCase) || item.componentIds.some(limited)); };
+  if (ids.some(limited)) return 'Rated limited for this flying style, so the wizard does not recommend it.';
   if (!offered({ ...answers, mountType: 'clamp', piecesNeeded: [...PIECES], needsTwist: false })) return `Not sold on its own with a current ${region} price.`;
   if (!offered({ ...answers, mountType: 'clamp', needsTwist: false })) return 'No longer one of your selected controls.';
   if (answers.mountType === 'desk' && !offered({ ...answers, needsTwist: false })) return 'Requires a desk mount or cockpit rig and cannot sit loose on a desk.';
@@ -389,8 +395,10 @@ function subsets<T>(list: T[], size: number): T[][] {
  */
 export function recommendLoadout(items: CatalogItem[], input: WizardAnswers, region: Region, { pinned = [], prefer = [] }: RecommendOptions = {}): WizardLoadout {
   const answers = normalizeWizardAnswers(input);
-  const options = candidates(items, answers, region);
   const map = new Map(items.map((item) => [item.id, item]));
+  // Bundles average their members' fit, so check each member: a pack must not slip in rejected pedals.
+  const rejected = (item: CatalogItem): boolean => isLastResort(item, answers.useCase) || item.componentIds.some((id) => { const member = map.get(id); return !!member && rejected(member); });
+  const options = candidates(items, answers, region).filter((option) => !option.items.some(rejected));
   const dropped: DroppedPick[] = [];
   const drop = (ids: WizardPick, reason: string) => dropped.push({ ids, reason, items: ids.flatMap((id) => map.get(id) ? [map.get(id)!] : []) });
   // A pin fixes the hardware, not its roles: each pin keeps every role variant (e.g. a yoke with or without
@@ -422,7 +430,18 @@ export function recommendLoadout(items: CatalogItem[], input: WizardAnswers, reg
       drop(idsOf(pin[0]), pin[0].price > answers.budgetMax ? 'Over the new budget on its own.' : 'Does not fit the new budget alongside your other controls.');
     }
   }
+  // Rather than an empty result or rejected hardware, show the cheapest recommended setup over budget.
+  let overBudget: number | undefined;
+  if (!best) {
+    const relaxed = { ...answers, budgetMax: Infinity };
+    const cheapest = seeds(pins).map((seed) => search(options, relaxed, seed, prefer, true)).find(Boolean) ?? search(options, relaxed, [], prefer, true);
+    if (cheapest) {
+      best = search(options, { ...answers, budgetMax: cheapest.price }, cheapest.pieces.filter((piece) => piece.pinned), prefer) ?? cheapest;
+      overBudget = Math.round((best.price - answers.budgetMax) * 100) / 100;
+    }
+  }
   const loadout = makeLoadout(best?.pieces ?? [], region, !!best, dropped);
+  if (overBudget !== undefined) loadout.overBudget = overBudget;
   loadout.warnings.push(answers.mountType === 'desk' ? 'Desktop stability and included base plates need checking against manufacturer specifications.' : 'Mount hardware, brackets and cockpit compatibility need checking; mount costs are not included.');
   if (!best) loadout.warnings.unshift('No complete loadout meets these pieces, yaw requirements and regional budget. Increase the budget or revise your controls.');
   return loadout;
