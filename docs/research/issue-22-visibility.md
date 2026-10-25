@@ -82,7 +82,7 @@ Panel-only bundles also hidden: `winctrl/efis-combo`, `winctrl/glareshield-3`, `
 ## Verification
 
 - `pnpm check`: 0 errors, 0 warnings; 5 existing Zod deprecation hints.
-- `pnpm test`: 16 files / 104 tests passed, including real-YAML route/listing and hidden-reference regressions.
+- `pnpm test`: 16 files / 109 tests passed, including real-YAML route/listing and hidden-reference regressions.
 - `pnpm build`: production build and Pagefind index passed (288 indexed pages); existing large-chunk warning remains.
 - Generated-output audit: all 51 hidden records have no detail HTML route, catalog API entry, or internal HTML link; 274 public products remain.
 - Browser: BlackBox catalog search gives zero cards; Crosswind Combo retains damper as plain text and pedal card; production MRP page retains damper upgrade text with only an external manufacturer source link; hidden BlackBox Mk3 URL returns 404. Production Pagefind BlackBox search returns no hidden product URL.
@@ -96,4 +96,6 @@ Family validation now uses the full derived inventory before public visibility f
 
 Successor resolution validates all retained records before suppressing links involving hidden products. Public catalog serialization omits hidden successor IDs, preventing them from affecting discontinued filtering or wizard recommendations. Upgrade targets with a hidden replacement remain available; their hidden targets render as plain text. Regression tests cover hidden component/bundle successors, invalid hidden successor records, family exclusion, and validation with hidden members.
 
-Post-merge checks: `pnpm check` passes (0 errors/warnings; 5 existing hints), `pnpm test` passes (104 tests), and `pnpm build` plus Pagefind passes (288 pages). The first build attempt encountered a Windows directory lock held by the previous static server; stopping that server resolved it. The fresh production-output audit confirms 51 hidden records have no generated route, catalog API entry, or internal HTML link; the visible CM3 successor remains intact.
+Post-merge checks: `pnpm check` passes (0 errors/warnings; 5 existing hints), `pnpm test` passes (109 tests), and `pnpm build` plus Pagefind passes (288 pages). The first build attempt encountered a Windows directory lock held by the previous static server; stopping that server resolved it. The fresh production-output audit confirms 51 hidden records have no generated route, catalog API entry, or internal HTML link; the visible CM3 successor remains intact.
+
+A final fetch found #27 (live-editable wizard results) had merged while this integration was in progress. Merged that update too (`origin/main` at `b0e679c`); the final full suite passes with 109 tests.
