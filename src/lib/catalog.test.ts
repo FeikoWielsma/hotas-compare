@@ -19,6 +19,14 @@ beforeEach(() => {
 });
 
 describe('catalog serialization', () => {
+  it('preserves successor IDs and rejects unresolved or non-current successors during loading', async () => {
+    collections.values.components.push({ id: 'test/old', data: ComponentSchema.parse({
+      brand: 'test', name: 'Old', category: 'stick_fixed', status: 'discontinued', successor: 'test/combo',
+    }) });
+    expect((await getCatalogItems()).find(item => item.id === 'test/old')?.successor).toBe('test/combo');
+    collections.values.bundles = [];
+    await expect(loadCatalog()).rejects.toThrow(/successor.*current item/);
+  });
   it('distinguishes a documented zero-axis accessory from an unknown axis inventory', async () => {
     collections.values.components = [
       { id: 'test/passive', data: ComponentSchema.parse({ brand: 'test', name: 'Passive accessory', category: 'module', hardware: { axis_count: 0 } }) },

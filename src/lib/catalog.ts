@@ -1,3 +1,4 @@
+import { resolveSuccessor } from './successors';
 import { deriveComponentStats, deriveControlsSummary, resolvePrice } from './derive';
 import type { ControlsSummary, ResolvedPrice } from './derive';
 import type { Component, Bundle, Region, UseCaseFit, Verdict, ReviewTag, GimbalType } from './schema';
@@ -14,6 +15,7 @@ export interface CatalogItem {
   category: Component['category'] | Bundle['category'];
   item_type: 'component' | 'bundle';
   status: Component['status'];
+  successor?: string;
   platform_compatibility?: Component['platform_compatibility'];
   verification: Component['verification'];
   prices: Component['prices'];
@@ -106,7 +108,7 @@ export async function loadCatalog(region: Region = 'EU', now = new Date()) {
     };
     return {
       id, slug: id, name: data.name, brand: data.brand, brandName: brand.name,
-      category: data.category, item_type, status: data.status, verification: data.verification,
+      category: data.category, item_type, status: data.status, successor: data.successor, verification: data.verification,
       ...(data.platform_compatibility ? { platform_compatibility: data.platform_compatibility } : {}),
       prices: data.prices, region, resolvedPrice: resolvePrice(data.prices, region, now),
       totalAxes: stats.reduce((sum, stat) => sum + stat.totalAxes, 0),
@@ -142,6 +144,8 @@ export async function loadCatalog(region: Region = 'EU', now = new Date()) {
   if (new Set(items.map((item) => item.id)).size !== items.length) {
     throw new Error('Catalog IDs must be unique across components and bundles.');
   }
+  const bundleMap = new Map(bundles.map((entry) => [entry.id, entry.data]));
+  for (const { id, data } of [...components, ...bundles]) resolveSuccessor(id, data, componentMap, bundleMap);
   const familyErrors = validateFamilies(families, items);
   if (familyErrors.length) throw new Error(`Invalid product families:\n${familyErrors.join('\n')}`);
   return { items, components, bundles, brands, mount_standards, families };

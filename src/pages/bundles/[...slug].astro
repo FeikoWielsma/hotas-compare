@@ -1,6 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import SuccessorBanner from '../../components/detail/SuccessorBanner.astro';
+import { resolveSuccessor } from '../../lib/successors';
 import ProductHero from '../../components/detail/ProductHero.astro';
 import Verdict from '../../components/detail/Verdict.astro';
 import UseCaseFit from '../../components/detail/UseCaseFit.astro';
@@ -35,6 +37,7 @@ const specs = keySpecs({
 });
 specs.splice(b.verdict ? 1 : 0, 0, { label: 'In the box', value: `${b.components.length} component${b.components.length === 1 ? '' : 's'}` });
 if (item.controlsSummary.ministickCount) specs.push({ label: 'Ministicks', value: String(item.controlsSummary.ministickCount) });
+const successor = b.status === 'discontinued' ? resolveSuccessor(id, b, new Map(components.map(x => [x.id, x.data])), new Map(bundles.map(x => [x.id, x.data]))) : null;
 const showFit = !isDefaultFit(item.use_case_fit);
 const upgrades = resolveUpgradePaths(id, b.upgrade_paths, new Map(components.map(x => [x.id, x.data])), new Map(bundles.map(x => [x.id, x.data])));
 const showUpgrades = upgrades.length > 0 || !!item.needsPedals;
@@ -48,6 +51,7 @@ const sections = [
   <ProductHero id={id} name={b.name} brand={b.brand} brandName={brandName} category={b.category} status={b.status} verification={b.verification}
     images={b.images} prices={b.prices} notes={brand?.landed_cost_notes} compatibility={b.platform_compatibility}
     specs={specs} crumb={{ href: '/#hardware', label: 'Bundles' }} sections={sections} />
+  <SuccessorBanner successor={successor} />
   {b.verdict && <Verdict verdict={b.verdict} />}
   <section id="included" class="included" aria-labelledby="included-title">
     <p class="kicker">In the box</p><h2 id="included-title">What’s included</h2>

@@ -20,6 +20,16 @@ function item(overrides: Partial<CatalogItem> = {}): CatalogItem {
 const price = (amount: number) => resolvePrice([{ region: 'EU', currency: 'EUR', amount, store: 'Test', verified: '2026-10-01', incl_vat: true, kind: 'official', source: 'manual' }], 'EU');
 
 describe('catalog filters', () => {
+  it('hides only discontinued products with successors and allows opting in alongside other filters', () => {
+    for (const item_type of ['component', 'bundle'] as const) {
+      const old = item({ id: 'old', status: 'discontinued', successor: 'new', item_type });
+      const unsupported = item({ id: 'no-successor', status: 'discontinued' });
+      const current = item({ id: 'new' });
+      expect(filterCatalog([old, unsupported, current])).toEqual([unsupported, current]);
+      expect(filterCatalog([old], { showDiscontinued: true })).toEqual([old]);
+      expect(filterCatalog([old], { showDiscontinued: true, search: 'nonexistent' })).toEqual([]);
+    }
+  });
   it('requires confirmed platform support and excludes unknown or unsupported devices', () => {
     const supported = item({ platform_compatibility: { pc: 'supported', xbox: 'supported', ps5: 'unknown', sources: [] } });
     const unsupported = item({ id: 'unsupported', platform_compatibility: { pc: 'supported', xbox: 'unsupported', ps5: 'unknown', sources: [] } });
