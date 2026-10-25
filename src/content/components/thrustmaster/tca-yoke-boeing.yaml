@@ -73,6 +73,7 @@ physical:
   - metal
   - abs
   dimensions_mm: [300, 390, 380]
+airliner_family: boeing
 use_case_fit:
   modern_jet: 1
   heli: 1

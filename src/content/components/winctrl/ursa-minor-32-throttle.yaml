@@ -73,6 +73,7 @@ hardware:
 connectivity:
   usb: c
   standalone_usb: true
+airliner_family: airbus
 use_case_fit:
   modern_jet: 1
   heli: 1

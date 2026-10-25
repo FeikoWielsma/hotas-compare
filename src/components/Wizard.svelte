@@ -66,7 +66,7 @@
   function pieceDescription(piece: WizardPiece) {
     if (piece === 'second_stick') return 'Left-hand strafe control for HOSAS';
     if (piece === 'pedals') return 'Dedicated yaw and optional toe brakes';
-    if (piece === 'collective') return 'Helicopter lift lever; a throttle or left-hand stick can stand in';
+    if (piece === 'collective') return 'Helicopter lift lever; a throttle, left-hand stick or stick throttle axis can stand in';
     if (piece === 'stick' && answers.useCase === 'heli') return 'Cyclic for pitch and roll';
     return 'Add to your recommended package';
   }
@@ -183,10 +183,10 @@
             <fieldset class="primary-control">
               <legend>Main flight control</legend>
               <div class="segmented">
-                <button aria-pressed={answers.piecesNeeded.includes('yoke')} onclick={() => choosePrimary('yoke')}>Yoke</button>
-                <button aria-pressed={answers.piecesNeeded.includes('stick') && !answers.piecesNeeded.includes('yoke')} onclick={() => choosePrimary('stick')}>{answers.useCase === 'airliner' ? 'Sidestick' : 'Stick'}</button>
+                <button aria-pressed={answers.piecesNeeded.includes('yoke')} onclick={() => choosePrimary('yoke')}>{answers.useCase === 'airliner' ? 'Yoke · Boeing' : 'Yoke'}</button>
+                <button aria-pressed={answers.piecesNeeded.includes('stick') && !answers.piecesNeeded.includes('yoke')} onclick={() => choosePrimary('stick')}>{answers.useCase === 'airliner' ? 'Sidestick · Airbus' : 'Stick'}</button>
               </div>
-              <p class="hint">{answers.useCase === 'airliner' ? 'Yoke for Boeing and most regional airliners; sidestick for the Airbus family.' : 'Yoke for Cessna, Piper twins and most tourers; stick for Cubs, Diamonds, Cirrus, gliders and aerobatic aircraft.'} Without pedals, a yoke with rudder triggers or a twist stick can cover yaw on a tighter budget.</p>
+              <p class="hint">{answers.useCase === 'airliner' ? 'Pick the cockpit you fly most: Boeing and most regional airliners use a yoke, the Airbus family a sidestick. Recommendations favour matching replica quadrants.' : 'Yoke for Cessna, Piper twins and most tourers; stick for Cubs, Diamonds, Cirrus, gliders and aerobatic aircraft.'} Without pedals, a yoke with rudder triggers or a twist stick can cover yaw on a tighter budget.</p>
             </fieldset>
           {/if}
           <div class="choice-grid">

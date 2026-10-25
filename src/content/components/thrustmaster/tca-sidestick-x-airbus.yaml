@@ -86,6 +86,7 @@ physical:
   - 195
   - 195
   - 225
+airliner_family: airbus
 use_case_fit:
   modern_jet: 3
   heli: 3

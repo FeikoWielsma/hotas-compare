@@ -76,6 +76,7 @@ physical:
   - abs
   weight_g: 920
   dimensions_mm: [195, 195, 225]
+airliner_family: airbus
 use_case_fit:
   modern_jet: 4
   heli: 3

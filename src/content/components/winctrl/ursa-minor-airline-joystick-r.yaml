@@ -57,6 +57,7 @@ hardware:
   - name: Ry
   - name: Slider
   standalone_usb: true
+airliner_family: airbus
 use_case_fit:
   modern_jet: 2
   heli: 2

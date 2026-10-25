@@ -75,6 +75,7 @@ physical:
   - abs
   weight_g: 600
   dimensions_mm: [130, 195, 150]
+airliner_family: boeing
 use_case_fit:
   modern_jet: 1
   heli: 1

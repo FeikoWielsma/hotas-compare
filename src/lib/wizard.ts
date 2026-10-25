@@ -146,6 +146,20 @@ function hasThrottleAxis(item: CatalogItem) {
 function isCollective(item: CatalogItem) {
   return controlsOf(item).some((control) => control.type === 'lever' && control.kind === 'collective');
 }
+/** A yoke with two or more throttle levers carries its own quadrant; buying another would duplicate it. */
+function hasIntegratedQuadrant(item: CatalogItem) {
+  return item.category === 'yoke' && controlsOf(item)
+    .filter((control) => control.type === 'lever' && (control.analog || /^throttle/.test(control.kind ?? '')))
+    .reduce((sum, control) => sum + (control.count ?? 1), 0) >= 2;
+}
+/** Airbus flies a sidestick and Boeing a yoke, so the chosen airliner control implies the cockpit family. */
+export function airlinerFamily(answers: Pick<WizardAnswers, 'useCase' | 'piecesNeeded'>): 'airbus' | 'boeing' | undefined {
+  if (answers.useCase !== 'airliner') return undefined;
+  if (answers.piecesNeeded.includes('yoke')) return 'boeing';
+  return answers.piecesNeeded.includes('stick') ? 'airbus' : undefined;
+}
+const FAMILY_MATCH_BONUS = 5;
+const FAMILY_MISMATCH_PENALTY = 15;
 
 /**
  * Where a flying style accepts one control covering another selected piece. Each stand-in costs
@@ -166,18 +180,25 @@ export const STAND_INS: Partial<Record<UseCase, StandIn[]>> = {
   heli: [
     { role: 'collective', via: 'throttle', penalty: 15, note: 'Throttle lever doubles as the collective; a dedicated collective adds a longer, friction-held stroke' },
     { role: 'collective', via: 'second_stick', penalty: 15, note: 'Left-hand stick doubles as the collective; centring spring removal or a dry clutch helps it hold position' },
+    // On a tight budget one stick with twist and a throttle axis covers the whole helicopter.
+    { role: 'collective', via: 'throttle_axis', penalty: 20, note: 'Stick throttle axis doubles as the collective on a budget; a separate lever gives a longer, steadier stroke' },
+    { role: 'pedals', via: 'yaw_axis', penalty: 20, note: 'Twist axis stands in for anti-torque pedals on a budget; pedals free the cyclic hand for precise hovering' },
   ],
 };
-function roleVariants(roles: WizardPiece[], primary: CatalogItem[], useCase: UseCase) {
+function roleVariants(roles: WizardPiece[], primary: CatalogItem[], answers: WizardAnswers) {
   let variants: { roles: WizardPiece[]; standIns: StandIn[] }[] = [{ roles, standIns: [] }];
-  for (const standIn of STAND_INS[useCase] ?? []) {
+  for (const standIn of STAND_INS[answers.useCase] ?? []) {
+    if (!answers.piecesNeeded.includes(standIn.role)) continue;
     variants = variants.flatMap((variant) => {
       if (variant.roles.includes(standIn.role) || variant.standIns.some((used) => used.via === standIn.via)) return [variant];
       const next = { standIns: [...variant.standIns, standIn] };
       if (standIn.via === 'throttle' || standIn.via === 'second_stick') {
         return variant.roles.includes(standIn.via) ? [variant, { ...next, roles: variant.roles.map((role) => role === standIn.via ? standIn.role : role) }] : [variant];
       }
-      return primary.some(standIn.via === 'yaw_axis' ? hasYawAxis : hasThrottleAxis) ? [variant, { ...next, roles: [...variant.roles, standIn.role] }] : [variant];
+      if (!primary.some(standIn.via === 'yaw_axis' ? hasYawAxis : hasThrottleAxis)) return [variant];
+      const covered = { ...next, roles: [...variant.roles, standIn.role] };
+      // A yoke's own quadrant always covers the quadrant role rather than sitting next to a second one.
+      return standIn.role === 'quadrant' && primary.some(hasIntegratedQuadrant) ? [covered] : [variant, covered];
     });
   }
   return variants;
@@ -210,6 +231,12 @@ export function scoreWizardItem(item: CatalogItem, answers: WizardAnswers, regio
   // A 1/5 fit marks hardware that should only fill a slot when nothing better fits the budget.
   if (item.use_case_fit[answers.useCase] <= LAST_RESORT_FIT) {
     score -= LAST_RESORT_PENALTY; explanations.push('- Rated limited for this flying style: picked only when nothing better fits');
+  }
+  const family = airlinerFamily(answers);
+  if (family && item.airlinerFamily) {
+    const name = item.airlinerFamily === 'airbus' ? 'Airbus' : 'Boeing';
+    if (item.airlinerFamily === family) { score += FAMILY_MATCH_BONUS; explanations.push(`+ ${name} replica matches your ${family === 'airbus' ? 'sidestick' : 'yoke'} cockpit`); }
+    else { score -= FAMILY_MISMATCH_PENALTY; explanations.push(`- ${name} replica; your ${family === 'airbus' ? 'sidestick suits an Airbus' : 'yoke suits a Boeing'} cockpit`); }
   }
   if ((answers.useCase === 'ga' || answers.useCase === 'airliner') && item.pedalBrakes === 'rudder_only') {
     score -= 10; explanations.push('- No toe brakes; wheel brakes go on a button');
@@ -273,7 +300,7 @@ function candidates(items: CatalogItem[], answers: WizardAnswers, region: Region
       if (answers.needsTwist && !answers.piecesNeeded.includes('stick') && assignment.includes('second_stick') && !hasTwist(sticks[assignment.indexOf('second_stick')])) continue;
       const scores = group.map((item) => scoreWizardItem(item, answers, region));
       const score = scores.reduce((sum, item) => sum + item.score, 0) / scores.length;
-      for (const { roles, standIns } of roleVariants([...assignment, ...otherRoles], primary, answers.useCase)) {
+      for (const { roles, standIns } of roleVariants([...assignment, ...otherRoles], primary, answers)) {
         if (!roles.length || roles.some((role) => !answers.piecesNeeded.includes(role))) continue;
         result.push({ items: group, roles, price: group.reduce((sum, item) => sum + priceOf(item, region)!, 0), score,
           value: score * roles.length - standIns.reduce((sum, standIn) => sum + standIn.penalty, 0), standIns: standIns.map((standIn) => standIn.role),

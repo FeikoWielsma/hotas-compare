@@ -279,6 +279,35 @@ describe('stand-ins and suitability', () => {
   it('prefers dedicated hardware once the budget allows it', () => {
     expect(picksOf(recommendLoadout([allInOne(), ...dedicated()], airliner(700), 'EU')).flat().sort()).toEqual(['pedals', 'quadrant', 'yoke']);
   });
+  it('makes a yoke with its own quadrant cover the quadrant role instead of buying a second one', () => {
+    const levers = [{ name: 'Yoke', category: 'yoke' as const, controls: [{ type: 'lever' as const, kind: 'other' as const, analog: true, count: 4 }] }];
+    const yoke = hardware('lever-yoke', 'yoke', 330, { use_case_fit: fit({ airliner: 4 }), controlSections: levers, axes: [{ name: 'Pitch' }, { name: 'Roll' }, { name: 'Quadrant lever 1' }] });
+    const quadrant = hardware('great-quadrant', 'quadrant', 100, { use_case_fit: fit({ airliner: 5 }) });
+    const result = recommendLoadout([yoke, quadrant], airliner(1000, { piecesNeeded: ['yoke', 'quadrant'] }), 'EU');
+    expect(picksOf(result)).toEqual([['lever-yoke']]);
+    expect(result.pieces[0].standIns).toEqual(['quadrant']);
+    // A single throttle lever is not a quadrant, so a dedicated one may still join it.
+    const single = { ...yoke, controlSections: [{ ...levers[0], controls: [{ type: 'lever' as const, kind: 'throttle_single' as const, analog: true, count: 1 }] }] };
+    expect(picksOf(recommendLoadout([single, quadrant], airliner(1000, { piecesNeeded: ['yoke', 'quadrant'] }), 'EU'))).toEqual([['lever-yoke'], ['great-quadrant']]);
+  });
+  it('matches Airbus and Boeing replicas to a sidestick or yoke airliner setup', () => {
+    const airbus = hardware('airbus-quadrant', 'quadrant', 130, { use_case_fit: fit({ airliner: 5 }), airlinerFamily: 'airbus' });
+    const boeing = hardware('boeing-quadrant', 'quadrant', 170, { use_case_fit: fit({ airliner: 4 }), airlinerFamily: 'boeing' });
+    const quadrants = [airbus, boeing];
+    const stick = hardware('stick', 'stick_fixed', 60);
+    const yoke = hardware('yoke', 'yoke', 200, { axes: [{ name: 'Pitch' }, { name: 'Roll' }] });
+    expect(recommendLoadout([...quadrants, stick], airliner(1000, { piecesNeeded: ['stick', 'quadrant'], hasExistingPedals: true }), 'EU').items.map((item) => item.id)).toContain('airbus-quadrant');
+    const boeingSetup = recommendLoadout([...quadrants, yoke], airliner(1000, { piecesNeeded: ['yoke', 'quadrant'], hasExistingPedals: true }), 'EU');
+    expect(boeingSetup.items.map((item) => item.id)).toContain('boeing-quadrant');
+    expect(boeingSetup.pieces.find((piece) => piece.items[0].id === 'boeing-quadrant')?.explanations).toContain('+ Boeing replica matches your yoke cockpit');
+  });
+  it('lets one helicopter stick with twist and a throttle axis cover collective and pedals on a budget', () => {
+    const stick = hardware('budget-stick', 'stick_fixed', 120, { axes: [{ name: 'X' }, { name: 'Y' }, { name: 'Twist' }, { name: 'Throttle' }] });
+    const heli = (budgetMax: number) => normalizeWizardAnswers({ useCase: 'heli', budgetMax });
+    const budget = recommendLoadout([stick, hardware('pedals', 'pedals', 200), hardware('throttle', 'throttle', 150)], heli(150), 'EU');
+    expect(budget.pieces).toMatchObject([{ roles: ['stick', 'collective', 'pedals'], standIns: ['collective', 'pedals'] }]);
+    expect(recommendLoadout([stick, hardware('pedals', 'pedals', 200)], heli(400), 'EU').pieces.find((piece) => piece.roles.includes('pedals'))?.items[0].id).toBe('pedals');
+  });
   it('only uses stand-ins for flying styles that accept them', () => {
     const jet = normalizeWizardAnswers({ useCase: 'modern_jet', piecesNeeded: ['yoke', 'pedals'], budgetMax: 400 });
     expect(recommendLoadout([allInOne()], jet, 'EU').complete).toBe(false);

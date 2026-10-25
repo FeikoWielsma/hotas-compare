@@ -87,6 +87,7 @@ physical:
   materials:
   - glass_fiber_nylon
   - abs
+airliner_family: airbus
 use_case_fit:
   modern_jet: 2
   heli: 2

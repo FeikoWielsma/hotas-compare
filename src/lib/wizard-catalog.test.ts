@@ -32,21 +32,38 @@ describe('airliner and GA picks', () => {
         expect(result.pieces[0].standIns.sort()).toEqual(['pedals', 'quadrant']);
       }
     }
-    // A little more budget adds a dedicated airliner quadrant; the triggers still cover rudder.
-    const more = recommend({ useCase: 'airliner', budgetMax: 500 });
-    expect(more.pieces.find((piece) => piece.items[0].id === velocityOne)?.standIns).toEqual(['pedals']);
     expect(picksOf(recommend({ useCase: 'airliner', budgetMax: 450 }, 'EU'))).toEqual([[velocityOne]]);
   });
-  it('moves to a dedicated yoke, quadrant and pedals once the budget allows', () => {
-    const airliner = recommend({ useCase: 'airliner', budgetMax: 750 });
-    expect(airliner.pieces.map((piece) => piece.roles)).toEqual([['pedals'], ['yoke'], ['quadrant']]);
-    expect(airliner.pieces.every((piece) => piece.standIns.length === 0)).toBe(true);
-    expect(airliner.items.find((item) => item.category === 'quadrant')?.id).toBe('winctrl/ursa-minor-32-throttle');
+  it('never pairs a yoke that has its own quadrant with a second quadrant', () => {
+    for (const region of ['US', 'EU'] as const) {
+      for (const budgetMax of [400, 500, 600, 750, 1000, 1500]) {
+        for (const useCase of ['airliner', 'ga'] as const) {
+          const result = recommend({ useCase, budgetMax }, region);
+          const yoke = result.pieces.find((piece) => piece.roles.includes('yoke'));
+          if (yoke?.items.some((item) => item.id === velocityOne || item.id === 'thrustmaster/tca-yoke-boeing')) {
+            expect(yoke.roles, `${region} ${useCase} ${budgetMax}`).toContain('quadrant');
+          }
+        }
+      }
+    }
+  });
+  it('moves a Boeing (yoke) airliner to a dedicated yoke, Boeing-style quadrant and pedals once the budget allows', () => {
+    const mid = recommend({ useCase: 'airliner', budgetMax: 750 });
+    expect(mid.pieces.map((piece) => piece.roles)).toEqual([['pedals'], ['yoke'], ['quadrant']]);
+    expect(mid.pieces.every((piece) => piece.standIns.length === 0)).toBe(true);
+    expect(mid.items.map((item) => item.id)).toEqual(expect.arrayContaining(['winctrl/orion-32-rudder-pedals', 'thrustmaster/tca-quadrant-boeing']));
+    expect(ids({ useCase: 'airliner', budgetMax: 1500 })).toContain('honeycomb/bravo-throttle-quadrant');
     expect(ids({ useCase: 'ga', budgetMax: 750 })).toContain('honeycomb/bravo-throttle-quadrant-lite');
   });
-  it('pairs the Ursa Minor 32 airliner quadrant or a Bravo with a yoke when pedals are already owned', () => {
-    expect(ids({ useCase: 'airliner', budgetMax: 400, piecesNeeded: ['yoke', 'quadrant'], hasExistingPedals: true }))
-      .toEqual(['honeycomb/alpha-flight-controls-lite', 'winctrl/ursa-minor-32-throttle']);
+  it('keeps Airbus replicas out of a Boeing yoke setup and vice versa', () => {
+    for (const budgetMax of [400, 750, 1500, 3000]) {
+      const boeing = recommend({ useCase: 'airliner', budgetMax, piecesNeeded: ['yoke', 'quadrant'], hasExistingPedals: true });
+      expect(boeing.items.some((item) => item.airlinerFamily === 'airbus'), `boeing ${budgetMax}`).toBe(false);
+      const airbus = recommend({ useCase: 'airliner', budgetMax, piecesNeeded: ['stick', 'quadrant'], hasExistingPedals: true });
+      expect(airbus.items.map((item) => item.id), `airbus ${budgetMax}`).toEqual(['winctrl/ursa-minor-airline-joystick-r', 'winctrl/ursa-minor-32-throttle']);
+    }
+    expect(ids({ useCase: 'airliner', budgetMax: 500, piecesNeeded: ['yoke', 'quadrant'], hasExistingPedals: true }))
+      .toEqual(['honeycomb/alpha-flight-controls-lite', 'honeycomb/bravo-throttle-quadrant']);
     expect(ids({ useCase: 'ga', budgetMax: 400, piecesNeeded: ['yoke', 'quadrant'], hasExistingPedals: true }))
       .toEqual(['honeycomb/alpha-flight-controls-lite', 'honeycomb/bravo-throttle-quadrant-lite']);
   });
@@ -56,8 +73,7 @@ describe('airliner and GA picks', () => {
     expect(entry.pieces[0].standIns).toEqual(['pedals']);
     // With room for pedals, the twist stand-in gives way to dedicated pedals.
     const full = recommend({ useCase: 'airliner', budgetMax: 1500, piecesNeeded: ['stick', 'quadrant', 'pedals'] });
-    expect(full.items.map((item) => item.id)).toContain('winctrl/ursa-minor-airline-joystick-r');
-    expect(full.pieces.find((piece) => piece.roles.includes('pedals'))?.items[0].category).toBe('pedals');
+    expect(full.items.map((item) => item.id)).toEqual(['winctrl/ursa-minor-airline-joystick-r', 'winctrl/orion-32-rudder-pedals', 'winctrl/ursa-minor-32-throttle']);
   });
   it('recommends the Foxtrot stick for GA pilots who fly a stick', () => {
     for (const budgetMax of [250, 400, 1500]) {
@@ -89,6 +105,13 @@ describe('helicopter picks', () => {
     // Collective bases clamp to a desk or rig, so a desktop setup falls back to a left-hand stick.
     const desk = recommend({ useCase: 'heli', budgetMax: 750 });
     expect(desk.pieces.find((piece) => piece.roles.includes('collective'))?.standIns).toEqual(['collective']);
+  });
+  it('lets one stick with twist and a throttle axis cover a very low budget', () => {
+    for (const region of ['US', 'EU'] as const) {
+      const result = recommend({ useCase: 'heli', budgetMax: 250 }, region);
+      expect(result.pieces, region).toHaveLength(1);
+      expect(result.pieces[0].standIns.sort()).toEqual(['collective', 'pedals']);
+    }
   });
   it('never offers a collective head as a cyclic stick', () => {
     for (const mountType of ['clamp', 'chair_pit'] as const) {
