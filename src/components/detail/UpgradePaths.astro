@@ -1,19 +1,21 @@
 ---
 import type { LinkedItem, ResolvedUpgrade } from '../../lib/upgrades';
-interface Props { upgrades: ResolvedUpgrade[]; fits?: { kind: 'grips' | 'handles' | 'bases'; items: LinkedItem[] } | null; needsPedals?: boolean }
-const { upgrades, fits, needsPedals = false } = Astro.props;
+import type { YokePart } from '../../lib/yoke-parts';
+interface Props { upgrades: ResolvedUpgrade[]; fits?: { kind: 'grips' | 'handles' | 'bases' | 'yoke_bases'; items: LinkedItem[] } | null; needsPedals?: boolean; yokePart?: YokePart | null }
+const { upgrades, fits, needsPedals = false, yokePart = null } = Astro.props;
 const shown = fits?.items.slice(0, 12) ?? [];
 const more = (fits?.items.length ?? 0) - shown.length;
 const tagLabel: Record<string, string> = { recommended: 'Recommended', avoid: 'Avoid', mixed: 'Mixed' };
 ---
-{(upgrades.length > 0 || shown.length > 0 || needsPedals) && <section id="upgrades" class="upgrades" aria-labelledby="upgrades-title">
+{(upgrades.length > 0 || shown.length > 0 || needsPedals || yokePart) && <section id="upgrades" class="upgrades" aria-labelledby="upgrades-title">
   <p class="kicker">Where to go next</p><h2 id="upgrades-title">Upgrade paths</h2>
+  {yokePart && <p class="callout"><strong>Half of a yoke.</strong> {yokePart === 'handle' ? 'This handle has no gimbal or USB of its own; it only works on a compatible yoke base, bought separately.' : 'This base has no handle; add a compatible yoke handle, bought separately.'}</p>}
   {needsPedals && <p class="callout"><strong>No twist axis.</strong> Rudder needs pedals with this stick. Mysh's minimum worth buying: <a href="/components/vkb/t-rudder-mk5">VKB T-Rudder</a> or <a href="/components/winctrl/orion-metal-rudder-pedals-damper">WINCTRL Orion pedals</a>.</p>}
   {upgrades.length > 0 && <ol class="paths">{upgrades.map(u => <li>
     {u.href ? <a class="target" href={u.href}>{u.name}</a> : <span class="target">{u.name}</span>}{u.reviewTag && tagLabel[u.reviewTag] && <span class={`tag ${u.reviewTag}`}>{tagLabel[u.reviewTag]}</span>}
     <p>{u.note}{u.source && <> <a class="src" href={u.source} rel="external noopener">Source ↗</a></>}</p>
   </li>)}</ol>}
-  {shown.length > 0 && <div class="fits"><h3>{fits!.kind === 'grips' ? 'Grips that fit this base' : fits!.kind === 'handles' ? 'Yoke handles for this base' : 'Bases this fits on'}</h3>
+  {shown.length > 0 && <div class="fits"><h3>{fits!.kind === 'grips' ? 'Grips that fit this base' : fits!.kind === 'handles' ? 'Yoke handles for this base' : fits!.kind === 'yoke_bases' ? 'Yoke bases for this handle' : 'Bases this fits on'}</h3>
     <ul>{shown.map(f => <li><a href={f.href}>{f.name}</a>{f.reviewTag && tagLabel[f.reviewTag] && <span class={`tag ${f.reviewTag}`}>{tagLabel[f.reviewTag]}</span>}</li>)}</ul>
     {more > 0 && <p class="more">and {more} more with the same mount.</p>}
     <p class="more">Based on documented mount standards; some pairings need an adapter or firmware setup.</p>

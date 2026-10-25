@@ -2,12 +2,12 @@
   import { onMount, tick } from 'svelte';
   import { fade, fly } from 'svelte/transition';
   import type { CatalogItem } from '../lib/catalog';
-  import { categoryLabels, productImageSrc } from '../lib/catalog-ui';
+  import { itemCategoryLabel, productImageSrc } from '../lib/catalog-ui';
   import { resolvePrice } from '../lib/derive';
   import { regionStore } from '../lib/stores/region.svelte';
   import type { Region } from '../lib/schema';
 
-  type SearchItem = Pick<CatalogItem, 'name' | 'brandName' | 'category' | 'prices' | 'formerBrandNames'> & { url: string; image?: string };
+  type SearchItem = Pick<CatalogItem, 'name' | 'brandName' | 'category' | 'yokePart' | 'prices' | 'formerBrandNames'> & { url: string; image?: string };
   type Result = { url: string; title: string; item?: SearchItem };
   type Pagefind = { search: (query: string) => Promise<{ results: { data: () => Promise<{ url: string; meta: { title?: string } }> }[] }> };
   let { initialItems = [], initialRegion }: { initialItems?: SearchItem[]; initialRegion?: Region } = $props();
@@ -25,7 +25,7 @@
 
   function fallback(term: string): Result[] {
     const words = term.toLowerCase().split(/\s+/).filter(Boolean);
-    return initialItems.filter(item => words.every(word => `${item.name} ${item.brandName} ${item.formerBrandNames.join(' ')} ${categoryLabels[item.category]}`.toLowerCase().includes(word)))
+    return initialItems.filter(item => words.every(word => `${item.name} ${item.brandName} ${item.formerBrandNames.join(' ')} ${itemCategoryLabel(item)}`.toLowerCase().includes(word)))
       .slice(0, 12).map(item => ({ url: item.url, title: item.name, item }));
   }
   async function search(term: string, version: number) {
@@ -99,7 +99,7 @@
       <p class="readout" role="status">{busy ? 'Searching…' : `${results.length} results${results.length === 12 ? ' · top matches' : ''}`} <span>{regionStore.region} prices</span></p>
       <ul id="search-results" aria-busy={busy}>
         {#each results as result (result.url)}
-          <li><a href={result.url}>{#if result.item}{@const photo = productImageSrc(result.item.image)}{#if photo}<img class="thumb" src={photo} alt="" />{/if}{/if}<span class="result-copy"><span class="category">{result.item ? categoryLabels[result.item.category] : 'Guide / page'}</span><strong>{result.title}</strong><span class="brand">{result.item?.brandName ?? 'HOTAS Compare'}</span></span>{#if result.item}{@const price = resolvePrice(result.item.prices, regionStore.region)}<span class="price">{price.formatted ?? 'Price unavailable'}{#if price.isStale}<small>Verify store price</small>{/if}</span>{/if}<span class="arrow" aria-hidden="true">↗</span></a></li>
+          <li><a href={result.url}>{#if result.item}{@const photo = productImageSrc(result.item.image)}{#if photo}<img class="thumb" src={photo} alt="" />{/if}{/if}<span class="result-copy"><span class="category">{result.item ? itemCategoryLabel(result.item) : 'Guide / page'}</span><strong>{result.title}</strong><span class="brand">{result.item?.brandName ?? 'HOTAS Compare'}</span></span>{#if result.item}{@const price = resolvePrice(result.item.prices, regionStore.region)}<span class="price">{price.formatted ?? 'Price unavailable'}{#if price.isStale}<small>Verify store price</small>{/if}</span>{/if}<span class="arrow" aria-hidden="true">↗</span></a></li>
         {:else}
           <li class="empty">{busy ? 'Searching the catalog…' : 'No results found. Try a product name, brand or category.'}</li>
         {/each}

@@ -1,6 +1,7 @@
 import { isListed } from './visibility';
 import { checkMountCompatibility } from './derive';
 import { isSuperseded, resolveSuccessor } from './successors';
+import { isYokeHandle } from './yoke-parts';
 import type { Bundle, Component, MountStandard, ReviewTag, UpgradePath } from './schema';
 
 export interface LinkedItem { id: string; name: string; href: string; reviewTag: ReviewTag | null }
@@ -25,14 +26,14 @@ export function resolveUpgradePaths(
 }
 
 /** Grips and yoke handles that need a base; a desk-mounted yoke is complete on its own. */
-const mountsOnBase = (item: Component) => (item.category === 'grip' || item.category === 'yoke') && !!item.mount?.provides && item.mount.provides !== 'desk';
+const mountsOnBase = (item: Component) => (item.category === 'grip' && !!item.mount?.provides) || isYokeHandle(item);
 
 const tagOrder: Record<string, number> = { recommended: 0, mixed: 2, neutral: 2, avoid: 3 };
 
 /** Grips that fit a base, or bases that fit a grip, via documented mount standards. Recommended first. */
 export function compatibleParts(
   item: Component, components: Map<string, Component>, standards: Map<string, MountStandard>,
-): { kind: 'grips' | 'handles' | 'bases'; items: LinkedItem[] } | null {
+): { kind: 'grips' | 'handles' | 'bases' | 'yoke_bases'; items: LinkedItem[] } | null {
   const isBase = item.category === 'base' && (item.mount?.accepts?.length ?? 0) > 0;
   const isGrip = mountsOnBase(item);
   if (!isBase && !isGrip) return null;
@@ -45,5 +46,5 @@ export function compatibleParts(
     : other.category === 'base' && fits(other, item)))
     .map(([id, data]) => ({ id, name: data.name, href: `/components/${id}`, reviewTag: latestTag(data) }))
     .sort((a, b) => (tagOrder[a.reviewTag ?? ''] ?? 1) - (tagOrder[b.reviewTag ?? ''] ?? 1) || a.name.localeCompare(b.name));
-  return { kind: isBase ? (items.every(({ id }) => components.get(id)?.category === 'yoke') && items.length ? 'handles' : 'grips') : 'bases', items };
+  return { kind: isBase ? (items.every(({ id }) => components.get(id)?.category === 'yoke') && items.length ? 'handles' : 'grips') : isYokeHandle(item) ? 'yoke_bases' : 'bases', items };
 }

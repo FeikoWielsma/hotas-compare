@@ -24,6 +24,7 @@ import { deriveComponentStats, deriveControlsSummary } from '../../lib/derive';
 import { inventoryComplete } from '../../lib/control-inventory';
 import { humanize, placementLabels, yesNoUnknown } from '../../lib/labels';
 import { overallVerdict, keySpecs, isDefaultFit } from '../../lib/detail';
+import { yokePart, yokePartLabels, yokeStandards } from '../../lib/yoke-parts';
 const familyCatalog = await loadCatalog();
 const { brands, mount_standards: mounts, components: allComponents, bundles: allBundles } = familyCatalog;
 const componentMap = new Map(allComponents.map(x => [x.id, x.data]));
@@ -76,8 +77,10 @@ const successor = c.status === 'discontinued' ? resolveSuccessor(id, c, componen
 const showFit = !isDefaultFit(c.use_case_fit);
 const upgrades = resolveUpgradePaths(id, c.upgrade_paths, componentMap, bundleMap);
 const fits = compatibleParts(c, componentMap, mountMap);
+const part = yokePart(c, yokeStandards(componentMap.values()));
+const yokeLabel = part ? yokePartLabels[part] : undefined;
 const pedals = needsPedals(c.category, [c]);
-const showUpgrades = upgrades.length > 0 || (fits?.items.length ?? 0) > 0 || pedals;
+const showUpgrades = upgrades.length > 0 || (fits?.items.length ?? 0) > 0 || pedals || !!part;
 const sections = [
   family && { href: '#family', label: 'Family differences' },
   containingBundles.length > 0 && { href: '#combos', label: 'Combos' },
@@ -87,7 +90,7 @@ const sections = [
 ---
 <BaseLayout title={c.name} description={description} image={c.images[0]?.file} jsonLd={jsonLd}>
 <div class="page">
-  <ProductHero id={id} name={c.name} brand={c.brand} brandName={brandName} category={c.category} status={c.status} verification={c.verification}
+  <ProductHero id={id} name={c.name} brand={c.brand} brandName={brandName} category={c.category} categoryLabel={yokeLabel} status={c.status} verification={c.verification}
     potentiometer={usesPotentiometerPrimaryAxes(c.hardware)}
     releaseYear={c.release_year} handedness={c.handedness} placement={c.placement} images={c.images} prices={c.prices} notes={brand?.landed_cost_notes} compatibility={c.platform_compatibility}
     specs={specs} crumb={{ href: '/#hardware', label: 'Components' }} sections={sections}>
@@ -113,7 +116,7 @@ const sections = [
     </div>
     {h?.axes && h.axes.length > 0 && <div class="axes"><h3>Axes</h3><table><thead><tr><th>Axis</th><th>Sensor</th><th>Resolution</th></tr></thead><tbody>{h.axes.map(a => <tr><td>{humanize(a.name)}</td><td>{humanize(a.sensor) || '\u2014'}</td><td>{a.resolution_bits ? `${a.resolution_bits}-bit` : '\u2014'}</td></tr>)}</tbody></table>{h.axis_count != null && h.axis_count !== h.axes.length && <p class="missing">The manufacturer lists {h.axis_count} axes; {h.axes.length} are individually documented.</p>}</div>}
   </section>
-  <UpgradePaths upgrades={upgrades} fits={fits} needsPedals={pedals} />
+  <UpgradePaths upgrades={upgrades} fits={fits} needsPedals={pedals} yokePart={part} />
   <PriceTable prices={c.prices} notes={brand?.landed_cost_notes} />
   {c.external_reviews.length > 0 && <Reviews reviews={c.external_reviews} />}
   {c.sources.length > 0 && <details class="references"><summary>References ({c.sources.length})</summary><ul>{c.sources.map((source: string) => <li><a href={source} rel="external noopener">{sourceLabel(source)}</a></li>)}</ul></details>}

@@ -20,6 +20,15 @@ function item(overrides: Partial<CatalogItem> = {}): CatalogItem {
 const price = (amount: number) => resolvePrice([{ region: 'EU', currency: 'EUR', amount, store: 'Test', verified: '2026-10-01', incl_vat: true, kind: 'official', source: 'manual' }], 'EU');
 
 describe('catalog filters', () => {
+  it('lists yoke bases under the Yoke filter as well as Base, and finds yoke parts by name', () => {
+    const handle = item({ id: 'handle', category: 'yoke', yokePart: 'handle' });
+    const yokeBase = item({ id: 'yoke-base', category: 'base', yokePart: 'base' });
+    const stickBase = item({ id: 'stick-base', category: 'base' });
+    const ids = (filters: Parameters<typeof filterCatalog>[1]) => filterCatalog([handle, yokeBase, stickBase], filters).map(({ id }) => id);
+    expect(ids({ categories: ['yoke'] })).toEqual(['handle', 'yoke-base']);
+    expect(ids({ categories: ['base'] })).toEqual(['yoke-base', 'stick-base']);
+    expect(ids({ search: 'yoke base' })).toEqual(['yoke-base']);
+  });
   it('hides curated and strictly bundle-only parts, with independent opt-ins and normal filters', () => {
     const soft = item({ id: 'soft', soldMainlyInBundle: true });
     const strict = item({ id: 'strict', soldStandalone: false });

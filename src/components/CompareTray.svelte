@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { productImageSrc } from '../lib/catalog-ui';
+  import { categoryLabels, itemCategoryLabel, productImageSrc } from '../lib/catalog-ui';
   import { compareStore } from '../lib/stores/compare.svelte';
   import type { CatalogItem } from '../lib/catalog';
   let { items = [] }: { items?: CatalogItem[] } = $props();
@@ -28,7 +28,7 @@
           {@const photo = productImageSrc(item.images[0]?.file)}
           <li>
             {#if photo}<img src={photo} alt="" onerror={(event) => { event.currentTarget.hidden = true; }} />{/if}
-            <div><span class="item-name">{item.name}</span><span class="badge">{item.category.replaceAll('_', ' ')}</span></div>
+            <div><span class="item-name">{item.name}</span><span class="badge">{item.category in categoryLabels ? itemCategoryLabel(item as CatalogItem) : item.category.replaceAll('_', ' ')}</span></div>
             <button type="button" class="remove" aria-label={`Remove ${item.name} from comparison`} onclick={() => compareStore.removeItem(item.id)}>×</button>
           </li>
         {/each}

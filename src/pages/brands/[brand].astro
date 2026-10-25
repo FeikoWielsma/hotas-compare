@@ -12,7 +12,7 @@ const own = (await getCatalogItems()).filter(x => x.brand === id);
 // Group by hardware type so a large range (VKB, Virpil) is scannable; bundles get their own group.
 const order = ['stick_fixed', 'base', 'grip', 'throttle', 'pedals', 'yoke', 'quadrant', 'module', 'hotas_bundle', 'hosas_bundle', 'stick_combo', 'yoke_bundle', 'system'] as const;
 const plural: Record<string, string> = { stick_fixed: 'Sticks', base: 'Bases', grip: 'Grips', throttle: 'Throttles', pedals: 'Pedals', yoke: 'Yokes', quadrant: 'Quadrants', module: 'Modules & panels', hotas_bundle: 'HOTAS bundles', hosas_bundle: 'HOSAS bundles', stick_combo: 'Stick combos', yoke_bundle: 'Yoke bundles', system: 'Systems' };
-const groups = order.map(cat => ({ cat, label: plural[cat] ?? categoryLabels[cat], items: own.filter(x => x.category === cat) })).filter(g => g.items.length);
+const groups = order.map(cat => ({ cat, label: plural[cat] ?? categoryLabels[cat], items: own.filter(x => (x.yokePart ? 'yoke' : x.category) === cat) })).filter(g => g.items.length);
 const countries: Record<string, string> = { US: 'United States', CH: 'Switzerland', HR: 'Croatia', CN: 'China', PL: 'Poland', FR: 'France', BY: 'Belarus' };
 const reviewed = own.filter(x => x.verdict).length;
 const jsonLd = { '@context': 'https://schema.org', '@type': 'Brand', name: b.name, url: b.website ?? new URL(Astro.url.pathname, Astro.site).href, ...(b.website ? { sameAs: b.website } : {}) };

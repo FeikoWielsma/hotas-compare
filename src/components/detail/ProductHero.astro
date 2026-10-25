@@ -7,7 +7,7 @@ import { productImageSrc, categoryLabels } from '../../lib/catalog-ui';
 import { placementLabels, statusLabels } from '../../lib/labels';
 import type { Component, Placement, Price, PlatformCompatibility as Compat, ProductImage } from '../../lib/schema';
 interface Props {
-  id: string; name: string; brand: string; brandName: string; category: keyof typeof categoryLabels;
+  id: string; name: string; brand: string; brandName: string; category: keyof typeof categoryLabels; categoryLabel?: string;
   status: Component['status']; verification: Component['verification']; releaseYear?: number; handedness?: string;
   placement?: Placement | null;
   potentiometer?: boolean;
@@ -27,7 +27,7 @@ const hand = p.handedness && p.handedness !== 'n/a' ? (p.handedness === 'ambi' ?
     <h1>{p.name}</h1>
     <slot name="family" />
     <ul class="tags">
-      <li>{categoryLabels[p.category]}</li>
+      <li>{p.categoryLabel ?? categoryLabels[p.category]}</li>
       {p.potentiometer && <li class="potentiometer">Potentiometer<Explain title="Potentiometer axes" label={`Why ${p.name} uses potentiometers`} text="Potentiometers use physical contacts that can wear, causing jitter or drift over time. Hall and other contactless sensors avoid that contact and are generally preferred for long-term consistency." /></li>}
       {p.status !== 'current' && <li class={`status ${p.status}`}>{statusLabels[p.status]}</li>}
       {p.releaseYear && <li>Released {p.releaseYear}</li>}
