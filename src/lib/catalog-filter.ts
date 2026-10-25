@@ -112,3 +112,51 @@ export function groupHandVariants(items: CatalogItem[]): CatalogItem[][] {
   }
   return [...groups.values()].map((group) => group.sort((a, b) => (handVariant(a.name)?.hand === 'right' ? 0 : 1) - (handVariant(b.name)?.hand === 'right' ? 0 : 1)));
 }
+
+/** The hand a mirrored variant is for: its single documented handedness, else its name. */
+export function handOf(item: CatalogItem): 'left' | 'right' | null {
+  const [only, ...rest] = item.handedness;
+  if (!rest.length && (only === 'left' || only === 'right')) return only;
+  return handVariant(item.name)?.hand ?? null;
+}
+
+export interface CatalogGroup {
+  /** Stable across filter changes for a family, so a card keeps its picked variant. */
+  key: string;
+  family: NonNullable<CatalogItem['family']> | null;
+  /** Picker options: family labels in family order (one unlabelled option otherwise), each with its hand twins, right hand first. */
+  options: { label: string; variants: CatalogItem[] }[];
+  /** The member placed first by the current sort; the card shows it until another is picked. */
+  lead: CatalogItem;
+}
+
+/**
+ * One grid entry per family (members collapsed under their labels) or per left/right twin pair.
+ * Run after filtering: a group appears if any member matched and lists only matching members.
+ * Groups keep the sort position of their best-placed member.
+ */
+export function groupCatalog(items: CatalogItem[]): CatalogGroup[] {
+  const position = new Map(items.map((item, index) => [item.id, index]));
+  const families = new Map<string, CatalogItem[]>();
+  const loose: CatalogItem[] = [];
+  for (const item of items) {
+    if (!item.family) { loose.push(item); continue; }
+    const members = families.get(item.family.id);
+    if (members) members.push(item); else families.set(item.family.id, [item]);
+  }
+  const handRank = (item: CatalogItem) => handOf(item) === 'right' ? 0 : 1;
+  const groups: CatalogGroup[] = [...families.values()].map((members) => {
+    const labels = new Map<string, CatalogItem[]>();
+    for (const member of [...members].sort((a, b) => a.family!.tier - b.family!.tier)) {
+      const twins = labels.get(member.family!.label);
+      if (twins) twins.push(member); else labels.set(member.family!.label, [member]);
+    }
+    return {
+      key: `family|${members[0].family!.id}`, family: members[0].family!, lead: members[0],
+      options: [...labels].map(([label, variants]) => ({ label, variants: variants.sort((a, b) => handRank(a) - handRank(b)) })),
+    };
+  });
+  for (const twins of groupHandVariants(loose)) groups.push({ key: `item|${twins[0].id}`, family: null, lead: twins[0], options: [{ label: '', variants: twins }] });
+  const first = (group: CatalogGroup) => Math.min(...group.options.flatMap((option) => option.variants.map((item) => position.get(item.id)!)));
+  return groups.sort((a, b) => first(a) - first(b));
+}

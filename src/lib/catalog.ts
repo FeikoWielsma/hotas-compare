@@ -55,7 +55,7 @@ export interface CatalogItem {
   axes?: { name: string; sensor?: string }[];
   mount?: Component['mount'];
   /** Product family membership; resolve siblings with familyOf. */
-  family?: { id: string; name: string; label: string; tier: number } | null;
+  family?: { id: string; name: string; axis: string; label: string; tier: number } | null;
 }
 
 const completeStickCategories = new Set(['stick_fixed', 'stick_combo', 'hotas_bundle', 'system']);
@@ -147,7 +147,7 @@ export async function loadCatalog(region: Region = 'EU', now = new Date()) {
       mount: 'components' in data ? null : data.mount ?? null,
       family: (() => {
         const membership = familyMembership.get(id);
-        return membership ? { id: membership.family.id, name: membership.family.data.name, label: membership.label, tier: membership.tier } : null;
+        return membership ? { id: membership.family.id, name: membership.family.data.name, axis: membership.family.data.axis, label: membership.label, tier: membership.tier } : null;
       })(),
     };
   }
