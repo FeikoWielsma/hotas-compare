@@ -297,6 +297,9 @@ export const UseCaseFitSchema = z.object({
 });
 export type UseCaseFit = z.infer<typeof UseCaseFitSchema>;
 
+export const FitSourceEnum = z.enum(['baseline', 'community']);
+export type FitSource = z.infer<typeof FitSourceEnum>;
+
 export const defaultUseCaseFit: UseCaseFit = {
   modern_jet: 3,
   heli: 3,
@@ -424,6 +427,8 @@ export const ComponentSchema = z.object({
   software: z.string().optional(),
   physical: PhysicalSchema,
   use_case_fit: UseCaseFitSchema.default(defaultUseCaseFit),
+  /** Where the fit came from: `baseline` = derived from specs (scripts/fit-baseline.ts), `community` = tier lists. Absent = editorial. */
+  use_case_fit_source: FitSourceEnum.optional(),
   prices: z.array(PriceSchema).default([]),
   verdict: VerdictSchema.nullable().optional(),
   external_reviews: z.array(ExternalReviewSchema).default([]),

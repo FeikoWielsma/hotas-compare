@@ -98,7 +98,7 @@ const sections = [
   {family && <FamilyDiff client:load family={family} mountNames={familyMountNames} physical={familyPhysical} />}
   {c.verdict && <Verdict verdict={c.verdict} />}
   <div id="controls" class="anchor"><ControlInventory sections={[c]} /></div>
-  {showFit && <UseCaseFit fit={c.use_case_fit} />}
+  {showFit && <UseCaseFit fit={c.use_case_fit} source={c.use_case_fit_source} />}
   <section id="specs" class="specs" aria-labelledby="specs-title">
     <p class="kicker">Specifications</p><h2 id="specs-title">The details</h2>
     <div class="sheet">
