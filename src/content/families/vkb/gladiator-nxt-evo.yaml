@@ -1,0 +1,11 @@
+name: Gladiator NXT EVO
+brand: vkb
+axis: Edition
+description: The Gladiator NXT EVO base sold with different grips, ordered by list price.
+members:
+- { id: vkb/gladiator-nxt-evo-wwii-combat-edition, label: WWII Combat Edition }
+- { id: vkb/gladiator-nxt-evo-f-14-combat-edition, label: F-14 Combat Edition }
+- { id: vkb/gladiator-nxt-evo-sce-standard-l, label: Space Combat Edition Standard }
+- { id: vkb/gladiator-nxt-evo-sce-standard-r, label: Space Combat Edition Standard }
+- { id: vkb/gladiator-nxt-evo-sce-l, label: Space Combat Edition Premium }
+- { id: vkb/gladiator-nxt-evo-sce-r, label: Space Combat Edition Premium }

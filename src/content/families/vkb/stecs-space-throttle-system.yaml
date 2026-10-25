@@ -1,0 +1,13 @@
+name: STECS Space Throttle System
+brand: vkb
+axis: Size
+description: The same space throttle in four sizes, smallest first.
+members:
+- { id: vkb/stecs-space-throttle-system-mini, label: Mini }
+- { id: vkb/stecs-space-throttle-system-mini-r, label: Mini }
+- { id: vkb/stecs-space-throttle-system-mini-plus, label: Mini Plus }
+- { id: vkb/stecs-space-throttle-system-mini-plus-r, label: Mini Plus }
+- { id: vkb/stecs-space-throttle-system-standard, label: Standard }
+- { id: vkb/stecs-space-throttle-system-standard-r, label: Standard }
+- { id: vkb/stecs-space-throttle-system-max, label: Max }
+- { id: vkb/stecs-space-throttle-system-max-r, label: Max }

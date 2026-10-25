@@ -1,7 +1,7 @@
 import { readdirSync, readFileSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import { parse } from 'yaml';
-import { BundleSchema, ComponentSchema } from '../src/lib/schema.ts';
+import { BundleSchema, ComponentSchema, FamilySchema } from '../src/lib/schema.ts';
 
 export function contentFiles(dir = 'src/content'): string[] {
   return readdirSync(dir, { withFileTypes: true }).flatMap(entry => {
@@ -21,6 +21,14 @@ export function products() {
     id: relative(`src/content/${collection}`, file).replaceAll('\\', '/').replace(/\.ya?ml$/, ''),
     data: (collection === 'components' ? ComponentSchema : BundleSchema).parse(readContent(file)),
   })));
+}
+
+export function families() {
+  return contentFiles('src/content/families').map(file => ({
+    file,
+    id: relative('src/content/families', file).replaceAll('\\', '/').replace(/\.ya?ml$/, ''),
+    data: FamilySchema.parse(readContent(file)),
+  }));
 }
 
 export function urls(value: unknown): string[] {

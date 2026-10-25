@@ -2,6 +2,7 @@ import { deriveComponentStats, deriveControlsSummary, resolvePrice } from './der
 import type { ControlsSummary, ResolvedPrice } from './derive';
 import type { Component, Bundle, Region, UseCaseFit, Verdict, ReviewTag, GimbalType } from './schema';
 import type { ControlSection } from './control-inventory';
+import { familyIndex, validateFamilies } from './families';
 
 export interface CatalogItem {
   /** Collection ID, including the brand path; stable across region changes. */
@@ -48,6 +49,8 @@ export interface CatalogItem {
   /** Evidence used by the wizard; absent values remain unknown. */
   axes?: { name: string; sensor?: string }[];
   mount?: Component['mount'];
+  /** Product family membership; resolve siblings with familyOf. */
+  family?: { id: string; name: string; label: string; tier: number } | null;
 }
 
 const completeStickCategories = new Set(['stick_fixed', 'stick_combo', 'hotas_bundle', 'system']);
@@ -67,10 +70,11 @@ export function resolveCatalogRegion(item: CatalogItem, region: Region, now = ne
 
 export async function loadCatalog(region: Region = 'EU', now = new Date()) {
   const { getCollection } = await import('astro:content');
-  const [components, bundles, brands, mount_standards, reviewers] = await Promise.all([
+  const [components, bundles, brands, mount_standards, reviewers, families] = await Promise.all([
     getCollection('components'), getCollection('bundles'),
-    getCollection('brands'), getCollection('mount_standards'), getCollection('reviewers'),
+    getCollection('brands'), getCollection('mount_standards'), getCollection('reviewers'), getCollection('families'),
   ]);
+  const familyMembership = familyIndex(families);
   const reviewerNames = new Map(reviewers.map((entry) => [entry.id, entry.data.name.split(' (')[0]]));
   const componentMap = new Map(components.map((entry) => [entry.id, entry.data]));
   const brandMap = new Map(brands.map((entry) => [entry.id, entry.data]));
@@ -125,6 +129,10 @@ export async function loadCatalog(region: Region = 'EU', now = new Date()) {
       leverCount: members.flatMap((member) => member.controls).reduce((sum, control) => sum + (control.type === 'lever' ? control.count : 0), 0),
       axes: members.flatMap((member) => member.hardware?.axes ?? []),
       mount: 'components' in data ? null : data.mount ?? null,
+      family: (() => {
+        const membership = familyMembership.get(id);
+        return membership ? { id: membership.family.id, name: membership.family.data.name, label: membership.label, tier: membership.tier } : null;
+      })(),
     };
   }
   const items = [
@@ -134,7 +142,9 @@ export async function loadCatalog(region: Region = 'EU', now = new Date()) {
   if (new Set(items.map((item) => item.id)).size !== items.length) {
     throw new Error('Catalog IDs must be unique across components and bundles.');
   }
-  return { items, components, bundles, brands, mount_standards };
+  const familyErrors = validateFamilies(families, items);
+  if (familyErrors.length) throw new Error(`Invalid product families:\n${familyErrors.join('\n')}`);
+  return { items, components, bundles, brands, mount_standards, families };
 }
 
 export async function getCatalogItems(region: Region = 'EU', now = new Date()) {
