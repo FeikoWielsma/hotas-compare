@@ -60,7 +60,14 @@ physical:
   - 173
   - 83
   materials: []
-use_case_fit: {}
+use_case_fit:
+  modern_jet: 1
+  heli: 1
+  ww2: 2
+  ga: 4
+  airliner: 2
+  space_hotas: 1
+  space_hosas: 1
 software: Throttle Box firmware update
 prices: []
 verification: draft

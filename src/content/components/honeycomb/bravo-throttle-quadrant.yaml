@@ -101,7 +101,14 @@ physical:
   - 382
   - 198
   materials: []
-use_case_fit: {}
+use_case_fit:
+  modern_jet: 1
+  heli: 1
+  ww2: 2
+  ga: 4
+  airliner: 5
+  space_hotas: 1
+  space_hosas: 1
 software: Honeycomb landing-gear LED driver for Microsoft Flight Simulator 2020/2024
 prices:
 - region: EU

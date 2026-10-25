@@ -98,7 +98,14 @@ physical:
   - 233
   materials:
   - metal
-use_case_fit: {}
+use_case_fit:
+  modern_jet: 2
+  heli: 2
+  ww2: 3
+  ga: 5
+  airliner: 3
+  space_hotas: 2
+  space_hosas: 2
 software: Foxtrot Aviation Stick firmware update
 prices:
 - region: EU

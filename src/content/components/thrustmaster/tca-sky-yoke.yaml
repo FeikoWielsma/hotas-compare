@@ -65,6 +65,17 @@ physical:
   - 344
   - 440
   - 180
+reviews_pending:
+  checked: '2026-10-25'
+  notes: Maintainer guidance in issue 35 - no published reviews yet, so treat as tentative.
+use_case_fit:
+  modern_jet: 1
+  heli: 1
+  ww2: 2
+  ga: 3.5
+  airliner: 3.5
+  space_hotas: 1
+  space_hosas: 1
 prices:
 - region: EU
   currency: EUR

@@ -3,7 +3,7 @@ import type { CatalogItem } from './catalog';
 import { deriveComponentStats, resolvePrice } from './derive';
 import { ComponentSchema } from './schema';
 import { BUDGET_RANGES, budgetStops, budgetTier, deserializePicks, deserializeWizardState, matchCuratedSetups, nearestBudgetStop, normalizeWizardAnswers, picksOf, recommendLoadout, serializeWizardState } from './wizard';
-import type { WizardSetup } from './wizard';
+import type { WizardAnswers, WizardSetup } from './wizard';
 
 function hardware(id: string, category: CatalogItem['category'], amount: number, overrides: Partial<CatalogItem> = {}): CatalogItem {
   const component = ComponentSchema.parse({ brand: 'test', name: id, category: 'stick_fixed', controls: [{ type: 'button', count: 4 }], hardware: { axes: [{ name: 'X' }, { name: 'Y' }, { name: 'twist', sensor: 'hall' }] } });
@@ -257,6 +257,73 @@ describe('bundle-only parts', () => {
     const base = hardware('base', 'base', 100, { mount: { accepts: ['A'] } });
     const grip = hardware('grip', 'grip', 100, { mount: { provides: 'A' }, soldStandalone: false });
     expect(recommendLoadout([base, grip], normalizeWizardAnswers({ piecesNeeded: ['stick'], budgetMax: 500 }), 'EU').complete).toBe(false);
+  });
+});
+
+describe('stand-ins and suitability', () => {
+  const fit = (overrides: Partial<CatalogItem['use_case_fit']>) => ({ ...ComponentSchema.parse({ brand: 'test', name: 'x', category: 'yoke' }).use_case_fit, ...overrides });
+  const allInOne = () => hardware('all-in-one', 'yoke', 330, { use_case_fit: fit({ airliner: 4 }), axes: [{ name: 'Pitch' }, { name: 'Roll' }, { name: 'Left trigger (rudder)' }, { name: 'Quadrant lever 1' }] });
+  const dedicated = () => [
+    hardware('yoke', 'yoke', 200, { use_case_fit: fit({ airliner: 5 }), axes: [{ name: 'Pitch' }, { name: 'Roll' }] }),
+    hardware('quadrant', 'quadrant', 130, { use_case_fit: fit({ airliner: 5 }) }),
+    hardware('pedals', 'pedals', 300, { use_case_fit: fit({ airliner: 4 }) }),
+  ];
+  const airliner = (budgetMax: number, extra: Partial<WizardAnswers> = {}) => normalizeWizardAnswers({ useCase: 'airliner', budgetMax, ...extra });
+  it('lets built-in rudder and throttle axes cover pedals and a quadrant on a budget', () => {
+    const result = recommendLoadout([allInOne(), ...dedicated()], airliner(400), 'EU');
+    expect(picksOf(result)).toEqual([['all-in-one']]);
+    expect(result.pieces[0].roles).toEqual(['yoke', 'pedals', 'quadrant']);
+    expect(result.pieces[0].standIns).toEqual(['pedals', 'quadrant']);
+    expect(result.pieces[0].explanations.some((line) => /stands in for pedals/.test(line))).toBe(true);
+  });
+  it('prefers dedicated hardware once the budget allows it', () => {
+    expect(picksOf(recommendLoadout([allInOne(), ...dedicated()], airliner(700), 'EU')).flat().sort()).toEqual(['pedals', 'quadrant', 'yoke']);
+  });
+  it('only uses stand-ins for flying styles that accept them', () => {
+    const jet = normalizeWizardAnswers({ useCase: 'modern_jet', piecesNeeded: ['yoke', 'pedals'], budgetMax: 400 });
+    expect(recommendLoadout([allInOne()], jet, 'EU').complete).toBe(false);
+  });
+  it('keeps a pinned all-in-one and lets it give up a stand-in role to pinned pedals', () => {
+    const items = [allInOne(), ...dedicated()];
+    const result = recommendLoadout(items, airliner(1000), 'EU', { pinned: [['all-in-one'], ['pedals']] });
+    expect(result.dropped).toEqual([]);
+    expect(result.pieces.find((piece) => piece.items[0].id === 'all-in-one')?.roles).not.toContain('pedals');
+    expect(result.items.map((item) => item.id)).toContain('pedals');
+  });
+  it('picks a 1/5 fit only when nothing else completes the setup', () => {
+    const poor = hardware('poor-pedals', 'pedals', 50, { use_case_fit: fit({ airliner: 1 }) });
+    const ok = hardware('ok-pedals', 'pedals', 250, { use_case_fit: fit({ airliner: 3 }) });
+    const answers = airliner(600, { piecesNeeded: ['pedals'] });
+    expect(picksOf(recommendLoadout([poor, ok], answers, 'EU'))).toEqual([['ok-pedals']]);
+    expect(picksOf(recommendLoadout([poor, ok], { ...answers, budgetMax: 100 }, 'EU'))).toEqual([['poor-pedals']]);
+  });
+  it('marks products awaiting reviews as tentative', () => {
+    const result = recommendLoadout([hardware('new-yoke', 'yoke', 200, { reviewsPending: '2026-10-25' })], airliner(400, { piecesNeeded: ['yoke'] }), 'EU');
+    expect(result.warnings).toContain('new-yoke has no published reviews yet: treat it as a tentative pick.');
+  });
+});
+
+describe('helicopter collective', () => {
+  const lever = (kind: 'collective' | 'throttle_single') => [{ name: 'Lever', category: 'base' as const, controls: [{ type: 'lever' as const, kind, count: 1, analog: true }] }];
+  const heli = (extra: Partial<WizardAnswers> = {}) => normalizeWizardAnswers({ useCase: 'heli', budgetMax: 2000, mountType: 'clamp', ...extra });
+  const cyclic = () => hardware('cyclic', 'stick_fixed', 200);
+  const pedals = () => hardware('pedals', 'pedals', 200);
+  it('treats grips on a collective base as a collective, never as a cyclic', () => {
+    const base = hardware('collective-base', 'base', 500, { mount: { accepts: ['rotor'] }, controlSections: lever('collective') });
+    const head = hardware('collective-head', 'grip', 200, { mount: { provides: 'rotor' } });
+    const result = recommendLoadout([base, head, cyclic(), pedals()], heli(), 'EU');
+    expect(result.complete).toBe(true);
+    expect(result.pieces.find((piece) => piece.roles.includes('collective'))).toMatchObject({ standIns: [] });
+    expect(result.pieces.find((piece) => piece.roles.includes('collective'))?.items.map((item) => item.id)).toEqual(['collective-base', 'collective-head']);
+    expect(recommendLoadout([base, head, pedals()], heli(), 'EU').complete).toBe(false);
+  });
+  it('lets a throttle or a left-hand stick stand in for the collective', () => {
+    const throttle = hardware('throttle', 'throttle', 100, { controlSections: lever('throttle_single') });
+    const viaThrottle = recommendLoadout([cyclic(), throttle, pedals()], heli(), 'EU');
+    expect(viaThrottle.pieces.find((piece) => piece.items[0].id === 'throttle')).toMatchObject({ roles: ['collective'], standIns: ['collective'] });
+    const left = hardware('left-stick', 'stick_fixed', 150, { handedness: ['left'] });
+    const viaStick = recommendLoadout([cyclic(), left, pedals()], heli(), 'EU');
+    expect(viaStick.pieces.find((piece) => piece.items[0].id === 'left-stick')).toMatchObject({ roles: ['collective'], standIns: ['collective'] });
   });
 });
 

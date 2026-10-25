@@ -10,7 +10,9 @@ platform_compatibility:
   - https://virpil-controls.eu/vpc-rotor-tcs-base-upgraded.html
 status: current
 handedness: n/a
-mount: null
+mount:
+  accepts:
+  - virpil-rotor-grip
 placement: mount_only
 controls:
 - type: lever
@@ -39,6 +41,14 @@ software: VPC Configuration Tool
 physical:
   materials:
   - metal
+use_case_fit:
+  modern_jet: 1
+  heli: 5
+  ww2: 1
+  ga: 1
+  airliner: 1
+  space_hotas: 1
+  space_hosas: 1
 prices:
 - region: EU
   currency: EUR

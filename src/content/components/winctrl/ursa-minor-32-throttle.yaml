@@ -1,6 +1,6 @@
 brand: winctrl
 name: URSA MINOR 32 Throttle Metal
-category: throttle
+category: quadrant
 platform_compatibility:
   pc: supported
   xbox: unknown
@@ -73,6 +73,14 @@ hardware:
 connectivity:
   usb: c
   standalone_usb: true
+use_case_fit:
+  modern_jet: 1
+  heli: 1
+  ww2: 2
+  ga: 2
+  airliner: 5
+  space_hotas: 1
+  space_hosas: 1
 prices:
 - region: EU
   currency: EUR

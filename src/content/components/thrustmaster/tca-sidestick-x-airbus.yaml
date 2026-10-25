@@ -86,6 +86,14 @@ physical:
   - 195
   - 195
   - 225
+use_case_fit:
+  modern_jet: 3
+  heli: 3
+  ww2: 3
+  ga: 3
+  airliner: 4
+  space_hotas: 3
+  space_hosas: 3
 prices:
 - region: EU
   currency: EUR

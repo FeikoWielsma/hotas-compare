@@ -79,7 +79,14 @@ physical:
   - 208
   materials:
   - steel shaft
-use_case_fit: {}
+use_case_fit:
+  modern_jet: 1
+  heli: 1
+  ww2: 2
+  ga: 5
+  airliner: 4
+  space_hotas: 1
+  space_hosas: 1
 prices:
 - region: EU
   currency: EUR
