@@ -165,7 +165,7 @@
       <label class="sort"><span class="sr-only">Sort by</span><select bind:value={sort}>
         <option value="featured">{styles.length ? 'Best match' : 'Recommended'}</option>
         {#if fitSortLabel}<option value={sort}>Best for {fitSortLabel}</option>{/if}
-        <option value="price-low">Price: low–high</option><option value="price-high">Price: high–low</option><option value="name">Name A–Z</option><option value="buttons">Most inputs</option><option value="axes">Most axes</option><option value="score">Verdict score</option>
+        <option value="price-low">Price: low–high</option><option value="price-high">Price: high–low</option><option value="name">Name A–Z</option><option value="buttons">Most inputs</option><option value="axes">Most axes</option>
       </select></label>
       <div class="layouts" role="group" aria-label="Catalog layout">
         <button type="button" class:active={layout === 'grid'} aria-pressed={layout === 'grid'} aria-label="Grid" title="Grid" onclick={() => chooseLayout('grid')}><HardwareIcon name="grid" size={18} /></button>

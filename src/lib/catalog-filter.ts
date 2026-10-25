@@ -1,7 +1,8 @@
 import { isSuperseded } from './successors';
 import { toFitScore } from './fit-groups';
 import type { CatalogItem } from './catalog';
-import { contactless, overallScore } from './catalog-ui';
+import { contactless } from './catalog-ui';
+import { bestFits } from './catalog-columns';
 import type { Platform } from './platforms';
 import type { UseCase } from './schema';
 
@@ -36,7 +37,8 @@ export function matchScore(item: Pick<CatalogItem, 'use_case_fit'>, fits: UseCas
 }
 
 /** Filter a regional catalog projection. Unknown counts cannot meet a positive minimum. */
-const reviewTagWeight: Record<string, number> = { recommended: 60, mixed: 0, neutral: 0, avoid: -300 };
+/** A review nudges the order; fit decides it. Avoid stays below everything unreviewed. */
+const reviewTagWeight: Record<string, number> = { recommended: 10, mixed: 0, neutral: 0, avoid: -300 };
 
 export function filterCatalog(items: CatalogItem[], filters: CatalogFilters = {}): CatalogItem[] {
   const query = (filters.search ?? '').trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
@@ -67,7 +69,6 @@ export function filterCatalog(items: CatalogItem[], filters: CatalogFilters = {}
       result = ap == null ? bp == null ? 0 : 1 : bp == null ? -1 : filters.sort === 'price-low' ? ap - bp : bp - ap;
     } else if (filters.sort === 'buttons') result = b.totalLogicalButtons - a.totalLogicalButtons;
     else if (filters.sort === 'axes') result = b.totalAxes - a.totalAxes;
-    else if (filters.sort === 'score') result = (overallScore(b) ?? -1) - (overallScore(a) ?? -1);
     else if (filters.sort === 'match' && filters.fits?.length) result = matchScore(b, filters.fits)! - matchScore(a, filters.fits)! || featuredRank(b) - featuredRank(a);
     else if (filters.sort?.startsWith('fit:')) {
       const key = filters.sort.slice(4) as UseCase;
@@ -82,33 +83,41 @@ export function filterCatalog(items: CatalogItem[], filters: CatalogFilters = {}
 
 /** Shopping readiness, independent of whether the catalog stores a product as a bundle. */
 function setupWeight(item: CatalogItem): number {
-  if (['hotas_bundle', 'hosas_bundle', 'system', 'yoke_bundle'].includes(item.category)) return 80;
-  if (['stick_fixed', 'stick_combo', 'throttle', 'yoke'].includes(item.category)) return 60;
-  if (['pedals', 'quadrant'].includes(item.category)) return 20;
+  if (['hotas_bundle', 'hosas_bundle', 'system', 'yoke_bundle'].includes(item.category)) return 32;
+  if (['stick_fixed', 'stick_combo', 'throttle', 'yoke'].includes(item.category)) return 24;
+  if (['pedals', 'quadrant'].includes(item.category)) return 8;
   return 0;
 }
 
-/** Review signals outweigh documentation bonuses; avoid remains below unreviewed setups. */
+/** Mean of the item's two strongest flying-style fits: the two meters its card shows. */
+export function topFit(item: Pick<CatalogItem, 'use_case_fit'>): number {
+  const best = bestFits(item);
+  return best.reduce((sum, key) => sum + item.use_case_fit[key], 0) / best.length;
+}
+
+/**
+ * Fit leads: a 4.5 fit outranks a 3.5 fit whatever the setup type or review.
+ * Editorial verdict scores are paused until there is enough data, so they do not count.
+ */
 export function featuredRank(item: CatalogItem) {
-  return setupWeight(item) + (overallScore(item) ?? 0) * 20 + (reviewTagWeight[item.reviewTag ?? ''] ?? 0)
-    + (item.verification === 'verified' ? 5 : 0)
+  return topFit(item) * 40 + setupWeight(item) + (reviewTagWeight[item.reviewTag ?? ''] ?? 0)
+    + (item.verification === 'verified' ? 3 : 0)
     + (item.status === 'current' ? 2 : 0) + (item.images.length ? 1 : 0) + (item.totalLogicalButtons > 0 ? 1 : 0);
 }
 
 /** Human-readable factors behind the base rank and the card diversity pass. */
 export function rankReasons(item: CatalogItem): string[] {
   const out: string[] = [];
+  out.push(`Best fit ${Number(topFit(item).toFixed(1))}/5`);
   const review = item.latestReview;
   if (review) out.push(`${review.reviewerName}: ${review.tag}${review.tag === 'avoid' ? ' (ranked lower)' : ''}`);
-  const score = overallScore(item);
-  if (score != null) out.push(`Our verdict ${Number(score.toFixed(1))}/5`);
   const setup = setupWeight(item);
-  out.push(setup === 80 ? 'Complete setup bundle' : setup === 60 ? 'Main flight control' : setup === 20 ? 'Additional flight control' : 'Separate part or module (lower setup priority)');
+  out.push(setup === 32 ? 'Complete setup bundle' : setup === 24 ? 'Main flight control' : setup === 8 ? 'Additional flight control' : 'Separate part or module (lower setup priority)');
   if (item.verification === 'verified') out.push('Specs verified');
   if (item.status === 'current') out.push('Currently sold');
   if (item.images.length) out.push('Product photo available');
   if (item.totalLogicalButtons > 0) out.push('Inputs documented');
-  out.push('First 12 cards balance categories and brands; family variants share one place');
+  out.push('First 12 cards spread across flying styles, categories, brands and gimbal types; family variants share one place');
   return out;
 }
 
@@ -190,24 +199,25 @@ export function groupCatalog(items: CatalogItem[], sort?: string): CatalogGroup[
 }
 
 /** Soft repetition penalties applied to cards, never individual family members.
- * No quotas: a weak part cannot earn a place merely by being a new category.
- * After the first 12 cards the remaining results keep their base ranking.
+ * Spreading the strongest style keeps the first rows from being all jet sticks; spreading gimbal
+ * types keeps them from being all force feedback. No quotas: a weak item cannot earn a place
+ * merely by being different. After the first 12 cards the remaining results keep their base ranking.
  */
 function diversifyFeatured(groups: CatalogGroup[]): CatalogGroup[] {
   const remaining = [...groups];
   const selected: CatalogGroup[] = [];
-  const categories = new Map<string, number>();
-  const brands = new Map<string, number>();
+  const seen = new Map<string, number>();
+  const keys = (item: CatalogItem) => [`style:${bestFits(item, 1)[0]}`, `category:${item.category}`, `brand:${item.brand}`, item.gimbalType ? `gimbal:${item.gimbalType}` : null].filter((key) => key != null);
+  const weights: Record<string, number> = { style: 14, category: 12, brand: 10, gimbal: 14 };
   const score = ({ lead }: CatalogGroup) => featuredRank(lead)
-    - Math.min(80, 35 * (categories.get(lead.category) ?? 0) + 20 * (brands.get(lead.brand) ?? 0));
+    - Math.min(60, keys(lead).reduce((sum, key) => sum + weights[key.split(':')[0]] * (seen.get(key) ?? 0), 0));
   while (remaining.length && selected.length < 12) {
     const eligible = remaining.filter((group) => group.lead.reviewTag !== 'avoid');
     const pool = eligible.length ? eligible : remaining;
     const best = pool.reduce((a, b) => score(b) > score(a) ? b : a);
     selected.push(best);
     remaining.splice(remaining.indexOf(best), 1);
-    categories.set(best.lead.category, (categories.get(best.lead.category) ?? 0) + 1);
-    brands.set(best.lead.brand, (brands.get(best.lead.brand) ?? 0) + 1);
+    for (const key of keys(best.lead)) seen.set(key, (seen.get(key) ?? 0) + 1);
   }
   return [...selected, ...remaining];
 }
