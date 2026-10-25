@@ -8,6 +8,165 @@ const platformCompatibilityField = () => fields.object({
   sources: fields.array(fields.url({ label: 'Manufacturer URL' }), { label: 'Compatibility sources' }),
 }, { label: 'Platform compatibility' });
 
+const UNSET = 'unset';
+
+/**
+ * Keystatic selects and checkboxes always serialize a value, so an untouched default would be
+ * written into every saved record. These wrappers add a "Not set" choice that is omitted from the
+ * YAML, so absent facts stay absent (and stay distinct from an explicit false or default).
+ */
+function optionalSelect(label: string, options: { label: string; value: string }[], description?: string) {
+  const field = fields.select({
+    label,
+    description,
+    options: [{ label: 'Not set', value: UNSET }, ...options],
+    defaultValue: UNSET,
+  });
+  return {
+    ...field,
+    parse: (value: unknown) => (value === undefined || value === null ? UNSET : field.parse(value as string)),
+    serialize: (value: string) => ({ value: value === UNSET ? undefined : value }),
+  } as typeof field;
+}
+
+function optionalBoolean(label: string, description?: string) {
+  const field = fields.select({
+    label,
+    description,
+    options: [
+      { label: 'Not set', value: UNSET },
+      { label: 'Yes', value: 'yes' },
+      { label: 'No', value: 'no' },
+    ],
+    defaultValue: UNSET,
+  });
+  return {
+    ...field,
+    parse: (value: unknown) => {
+      if (value === undefined || value === null) return UNSET;
+      if (typeof value !== 'boolean') throw new Error('Must be a boolean');
+      return value ? 'yes' : 'no';
+    },
+    serialize: (value: string) => ({ value: value === UNSET ? undefined : value === 'yes' }),
+  } as typeof field;
+}
+
+const catalogKindOptions = ['core', 'panel', 'accessory', 'controller_board'].map((value) => ({ label: value, value }));
+
+const priceHistoryField = () => fields.array(
+  fields.object({
+    amount: fields.number({ label: 'Previous amount' }),
+    verified: fields.text({ label: 'Checked (YYYY-MM-DD)' }),
+  }),
+  {
+    label: 'Price history (oldest first, max 10)',
+    itemLabel: (props) => `${props.fields.amount.value ?? '?'} on ${props.fields.verified.value}`,
+  },
+);
+
+const pricesField = () => fields.array(
+  fields.object({
+    kind: fields.select({
+      label: 'Price kind',
+      options: [
+        { label: 'Official', value: 'official' },
+        { label: 'Street', value: 'street' },
+      ],
+      defaultValue: 'official',
+    }),
+    region: fields.select({
+      label: 'Region',
+      options: [
+        { label: 'EU', value: 'EU' },
+        { label: 'UK', value: 'UK' },
+        { label: 'US', value: 'US' },
+      ],
+      defaultValue: 'EU',
+    }),
+    currency: fields.select({
+      label: 'Currency',
+      options: [
+        { label: 'EUR', value: 'EUR' },
+        { label: 'GBP', value: 'GBP' },
+        { label: 'USD', value: 'USD' },
+      ],
+      defaultValue: 'EUR',
+    }),
+    amount: fields.number({ label: 'Amount', defaultValue: 0 }),
+    history: priceHistoryField(),
+    incl_vat: fields.checkbox({ label: 'Includes VAT', defaultValue: true }),
+    store: fields.text({ label: 'Store' }),
+    url: fields.url({ label: 'Product URL' }),
+    verified: fields.text({ label: 'Price Checked (YYYY-MM-DD)' }),
+    source: fields.select({
+      label: 'Source Type',
+      options: [
+        { label: 'Manual', value: 'manual' },
+        { label: 'Feed', value: 'feed' },
+      ],
+      defaultValue: 'manual',
+    }),
+  }),
+  { label: 'Prices' },
+);
+
+const verdictField = () => fields.object({
+  author: fields.text({ label: 'Reviewer' }),
+  hands_on: fields.checkbox({ label: 'Hands-on Experience' }),
+  take: fields.text({ label: 'Verdict', multiline: true }),
+  pros: fields.array(fields.text({ label: 'Pro' }), { label: 'Pros' }),
+  cons: fields.array(fields.text({ label: 'Con' }), { label: 'Cons' }),
+  great_for: fields.array(fields.text({ label: 'Use Case' }), { label: 'Great For' }),
+  skip_if: fields.array(fields.text({ label: 'Caveat' }), { label: 'Skip If' }),
+  scores: fields.object({
+    build: fields.integer({ label: 'Build (1–5)' }),
+    feel: fields.integer({ label: 'Feel (1–5)' }),
+    value: fields.integer({ label: 'Value (1–5)' }),
+    software: fields.integer({ label: 'Software (1–5)' }),
+    qc_support: fields.integer({ label: 'QC & Support (1–5)' }),
+  }),
+});
+
+const externalReviewsField = () => fields.array(
+  fields.object({
+    reviewer: fields.text({ label: 'Reviewer' }),
+    url: fields.url({ label: 'Review URL' }),
+    summary: fields.text({ label: 'Summary', multiline: true }),
+    tag: fields.select({
+      label: 'Sentiment',
+      options: [
+        { label: 'Recommended', value: 'recommended' },
+        { label: 'Mixed', value: 'mixed' },
+        { label: 'Avoid', value: 'avoid' },
+        { label: 'Neutral', value: 'neutral' },
+      ],
+      defaultValue: 'neutral',
+    }),
+    date: fields.text({ label: 'Review Date (YYYY-MM-DD)' }),
+  }),
+  { label: 'External Reviews' },
+);
+
+const upgradePathsField = () => fields.array(
+  fields.object({
+    to: fields.text({ label: 'Component or Bundle ID' }),
+    note: fields.text({ label: 'Why upgrade', multiline: true }),
+    source: fields.url({ label: 'Evidence URL' }),
+  }),
+  { label: 'Upgrade Paths', itemLabel: (props) => props.fields.to.value },
+);
+
+const imagesField = () => fields.array(
+  fields.object({
+    file: fields.text({ label: 'Image Path' }),
+    source: fields.text({ label: 'Image Source URL' }),
+    caption: fields.text({ label: 'Caption' }),
+  }),
+  { label: 'Images' },
+);
+
+const successorField = () => fields.text({ label: 'Successor ID (component or bundle that replaces this)' });
+
 function platformSupportField(label: string) {
   return fields.select({ label, defaultValue: 'unknown', options: [
     { label: 'Unknown', value: 'unknown' },
@@ -103,12 +262,9 @@ export default config({
           ],
           defaultValue: 'grip',
         }),
-        sold_mainly_in_bundle: fields.checkbox({ label: 'Usually bought in a combo (hidden by default in catalog)' }),
-        catalog_kind: fields.select({
-          label: 'Catalog kind (non-core hardware is hidden)',
-          options: ['core', 'panel', 'accessory', 'controller_board'].map(value => ({ label: value, value })),
-          defaultValue: 'core',
-        }),
+        sold_standalone: optionalBoolean('Sold on its own', 'Set to No only when the part is sold exclusively inside a bundle; leave unset otherwise.'),
+        sold_mainly_in_bundle: optionalBoolean('Usually bought in a combo (hidden by default in catalog)'),
+        catalog_kind: optionalSelect('Catalog kind (non-core hardware is hidden)', catalogKindOptions),
         platform_compatibility: platformCompatibilityField(),
         status: fields.select({
           label: 'Status',
@@ -119,6 +275,7 @@ export default config({
           ],
           defaultValue: 'current',
         }),
+        successor: successorField(),
         release_year: fields.integer({ label: 'Release Year' }),
         handedness: fields.select({
           label: 'Handedness',
@@ -136,15 +293,11 @@ export default config({
             label: 'Accepts Mount Standards',
           }),
         }),
-        placement: fields.select({
-          label: 'Placement',
-          options: [
-            { label: 'Desk or mount', value: 'both' },
-            { label: 'Desk only', value: 'desk' },
-            { label: 'Mount required', value: 'mount_only' },
-          ],
-          defaultValue: 'both',
-        }),
+        placement: optionalSelect('Placement (leave unset when undocumented)', [
+          { label: 'Desk or mount', value: 'both' },
+          { label: 'Desk only', value: 'desk' },
+          { label: 'Mount required', value: 'mount_only' },
+        ]),
         controls: fields.array(
           fields.object({
             type: fields.select({
@@ -172,16 +325,17 @@ export default config({
             location: fields.text({ label: 'Location (grip, base, handle, panel, other)' }),
             ways: fields.integer({ label: 'Directions / Ways' }),
             stages: fields.integer({ label: 'Trigger Stages' }),
-            push: fields.checkbox({ label: 'Pressable / Pushable' }),
-            analog: fields.checkbox({ label: 'Analog' }),
+            push: optionalBoolean('Pressable / Pushable'),
+            analog: optionalBoolean('Analog'),
             positions: fields.integer({ label: 'Positions' }),
+            center_detent: optionalBoolean('Centre detent'),
             kind: fields.text({ label: 'Kind (e.g. brake, twist)' }),
             action: fields.text({ label: 'Action' }),
             mode: fields.text({ label: 'Mode' }),
-            momentary: fields.checkbox({ label: 'Momentary' }),
-            flip: fields.checkbox({ label: 'Flip' }),
-            backlit: fields.checkbox({ label: 'Backlit' }),
-            customizable: fields.checkbox({ label: 'Customizable' }),
+            momentary: optionalBoolean('Momentary'),
+            flip: optionalBoolean('Flip'),
+            backlit: optionalBoolean('Backlit'),
+            customizable: optionalBoolean('Customizable'),
             push_stages: fields.integer({ label: 'Push Stages' }),
             button_contacts: fields.integer({ label: 'Contacts actuated by each lever' }),
             notes: fields.text({ label: 'Notes', multiline: true }),
@@ -209,6 +363,13 @@ export default config({
         hardware: fields.object({
           axis_count: fields.integer({ label: 'Manufacturer total axes (if documented)' }),
           gimbal: fields.text({ label: 'Gimbal Type' }),
+          gimbal_type: optionalSelect('Gimbal family', [
+            { label: 'Ball and cup', value: 'ball_and_cup' },
+            { label: 'Pincer', value: 'pincer' },
+            { label: 'Cam and spring', value: 'cam_and_spring' },
+            { label: 'Force feedback', value: 'force_feedback' },
+            { label: 'Other', value: 'other' },
+          ]),
           sensor: fields.text({ label: 'Sensor Type' }),
           axes: fields.array(
             fields.object({
@@ -218,10 +379,16 @@ export default config({
             }),
             { label: 'Axes' },
           ),
-          force_adjustable: fields.checkbox({ label: 'Adjustable Force' }),
-          cams_swappable: fields.checkbox({ label: 'Swappable Cams' }),
+          force_adjustable: optionalBoolean('Adjustable Force'),
+          cams_swappable: optionalBoolean('Swappable Cams'),
           damping: fields.text({ label: 'Damping' }),
-          extension_support: fields.checkbox({ label: 'Extension Support' }),
+          damper: optionalSelect('Pedal damper (pedals only)', [
+            { label: 'Built in', value: 'built_in' },
+            { label: 'Optional add-on', value: 'optional' },
+            { label: 'None', value: 'none' },
+          ]),
+          damper_addon: fields.text({ label: 'Damper add-on (name or ID)' }),
+          extension_support: optionalBoolean('Extension Support'),
           throw_deg: fields.number({ label: 'Throw (degrees)' }),
         }),
         connectivity: fields.object({
@@ -245,77 +412,10 @@ export default config({
           space_hotas: fields.integer({ label: 'Space HOTAS (1–5)', defaultValue: 3 }),
           space_hosas: fields.integer({ label: 'Space HOSAS (1–5)', defaultValue: 3 }),
         }),
-        prices: fields.array(
-          fields.object({
-            region: fields.select({
-              label: 'Region',
-              options: [
-                { label: 'EU', value: 'EU' },
-                { label: 'UK', value: 'UK' },
-                { label: 'US', value: 'US' },
-              ],
-              defaultValue: 'EU',
-            }),
-            currency: fields.select({
-              label: 'Currency',
-              options: [
-                { label: 'EUR', value: 'EUR' },
-                { label: 'GBP', value: 'GBP' },
-                { label: 'USD', value: 'USD' },
-              ],
-              defaultValue: 'EUR',
-            }),
-            amount: fields.number({ label: 'Amount', defaultValue: 0 }),
-            incl_vat: fields.checkbox({ label: 'Includes VAT', defaultValue: true }),
-            store: fields.text({ label: 'Store' }),
-            url: fields.url({ label: 'Product URL' }),
-            verified: fields.text({ label: 'Price Checked (YYYY-MM-DD)' }),
-            source: fields.select({
-              label: 'Source Type',
-              options: [
-                { label: 'Manual', value: 'manual' },
-                { label: 'Feed', value: 'feed' },
-              ],
-              defaultValue: 'manual',
-            }),
-          }),
-          { label: 'Prices' },
-        ),
-        verdict: fields.object({
-          author: fields.text({ label: 'Reviewer' }),
-          hands_on: fields.checkbox({ label: 'Hands-on Experience' }),
-          take: fields.text({ label: 'Verdict', multiline: true }),
-          pros: fields.array(fields.text({ label: 'Pro' }), { label: 'Pros' }),
-          cons: fields.array(fields.text({ label: 'Con' }), { label: 'Cons' }),
-          great_for: fields.array(fields.text({ label: 'Use Case' }), { label: 'Great For' }),
-          skip_if: fields.array(fields.text({ label: 'Caveat' }), { label: 'Skip If' }),
-          scores: fields.object({
-            build: fields.integer({ label: 'Build (1–5)' }),
-            feel: fields.integer({ label: 'Feel (1–5)' }),
-            value: fields.integer({ label: 'Value (1–5)' }),
-            software: fields.integer({ label: 'Software (1–5)' }),
-            qc_support: fields.integer({ label: 'QC & Support (1–5)' }),
-          }),
-        }),
-        external_reviews: fields.array(
-          fields.object({
-            reviewer: fields.text({ label: 'Reviewer' }),
-            url: fields.url({ label: 'Review URL' }),
-            summary: fields.text({ label: 'Summary', multiline: true }),
-            tag: fields.select({
-              label: 'Sentiment',
-              options: [
-                { label: 'Recommended', value: 'recommended' },
-                { label: 'Mixed', value: 'mixed' },
-                { label: 'Avoid', value: 'avoid' },
-                { label: 'Neutral', value: 'neutral' },
-              ],
-              defaultValue: 'neutral',
-            }),
-            date: fields.text({ label: 'Review Date (YYYY-MM-DD)' }),
-          }),
-          { label: 'External Reviews' },
-        ),
+        prices: pricesField(),
+        verdict: verdictField(),
+        external_reviews: externalReviewsField(),
+        upgrade_paths: upgradePathsField(),
         verification: fields.select({
           label: 'Verification Status',
           options: [
@@ -325,14 +425,7 @@ export default config({
           defaultValue: 'draft',
         }),
         sources: fields.array(fields.text({ label: 'Source URL' }), { label: 'Sources' }),
-        images: fields.array(
-          fields.object({
-            file: fields.text({ label: 'Image Path' }),
-            source: fields.text({ label: 'Image Source URL' }),
-            caption: fields.text({ label: 'Caption' }),
-          }),
-          { label: 'Images' },
-        ),
+        images: imagesField(),
       },
     }),
 
@@ -355,11 +448,7 @@ export default config({
           ],
           defaultValue: 'hotas_bundle',
         }),
-        catalog_kind: fields.select({
-          label: 'Catalog kind (non-core hardware is hidden)',
-          options: ['core', 'panel', 'accessory', 'controller_board'].map(value => ({ label: value, value })),
-          defaultValue: 'core',
-        }),
+        catalog_kind: optionalSelect('Catalog kind (non-core hardware is hidden)', catalogKindOptions),
         platform_compatibility: platformCompatibilityField(),
         status: fields.select({
           label: 'Status',
@@ -370,9 +459,14 @@ export default config({
           ],
           defaultValue: 'current',
         }),
+        successor: successorField(),
         components: fields.array(fields.text({ label: 'Component ID' }), {
           label: 'Included Components',
         }),
+        prices: pricesField(),
+        verdict: verdictField(),
+        external_reviews: externalReviewsField(),
+        upgrade_paths: upgradePathsField(),
         verification: fields.select({
           label: 'Verification Status',
           options: [
@@ -382,6 +476,7 @@ export default config({
           defaultValue: 'draft',
         }),
         sources: fields.array(fields.text({ label: 'Source URL' }), { label: 'Sources' }),
+        images: imagesField(),
       },
     }),
 
@@ -435,6 +530,7 @@ export default config({
           },
         ),
         notes: fields.text({ label: 'Additional Notes', multiline: true }),
+        pick: fields.checkbox({ label: 'Our pick for this flying style and budget tier' }),
       },
     }),
 
