@@ -35,8 +35,11 @@ controls:
   source: https://support.turtlebeach.com/articles/en_US/Knowledge/4409140258715-VelocityOne-Flight-Features-And-Controls
 - type: trigger
   count: 2
+  analog: true
   location: grip
-  label: LT and RT rudder controls
+  label: LT and RT analog trigger axes, used for rudder
+  notes: Maintainer-confirmed 2026-10-25 - the two triggers are analog axes and work
+    well as a rudder. No toe brakes; use the LB/RB bumpers (buttons) for brakes.
   source: https://support.turtlebeach.com/articles/en_US/Knowledge/4409140258715-VelocityOne-Flight-Features-And-Controls
 - type: button
   count: 2
@@ -47,6 +50,7 @@ controls:
   count: 2
   location: grip
   label: LB and RB yoke bumpers
+  notes: Digital buttons, commonly bound to wheel brakes.
   source: https://support.turtlebeach.com/articles/en_US/Knowledge/4409140258715-VelocityOne-Flight-Features-And-Controls
 - type: button
   count: 10
@@ -88,6 +92,8 @@ hardware:
   axes:
   - name: Pitch
   - name: Roll
+  - name: Left trigger (rudder)
+  - name: Right trigger (rudder)
   - name: Quadrant lever 1
     sensor: potentiometer
   - name: Quadrant lever 2

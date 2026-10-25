@@ -13,6 +13,7 @@ handedness: n/a
 mount:
   provides: virpil-rotor-grip
   accepts: []
+placement: mount_only
 controls:
 - type: trigger
   stages: 1

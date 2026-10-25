@@ -18,6 +18,7 @@ mount:
   provides: null
   accepts:
   - vkb-rev-b
+placement: both
 controls:
 - type: toggle
   count: 1

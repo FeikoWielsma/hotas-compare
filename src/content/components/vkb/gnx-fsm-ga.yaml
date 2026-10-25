@@ -12,6 +12,7 @@ platform_compatibility:
 status: current
 handedness: n/a
 mount: null
+placement: mount_only
 controls:
 - type: encoder
   count: 2

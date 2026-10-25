@@ -25,6 +25,7 @@ export function humanize(value: string | null | undefined): string {
 }
 
 export const statusLabels = { current: 'Available', discontinued: 'Discontinued', announced: 'Announced' } as const;
+export const placementLabels = { desk: 'Desk only', mount_only: 'Mount required', both: 'Desk or mount' } as const;
 
 export function yesNoUnknown(value: boolean | null | undefined) {
   return value == null ? null : value ? 'Yes' : 'No';

@@ -98,6 +98,35 @@ describe('loadout rules', () => {
     expect(result.totalPrice).toBe(150);
     expect(result.totalLogicalButtons).toBe(8);
   });
+  it('excludes mount-only hardware like VKB STECS Mini on desk setups while allowing it on mounts', () => {
+    const stick = hardware('vkb/gladiator-nxt-evo-space-combat-edition-right', 'stick_fixed', 180, { placement: 'both' });
+    const stecsMini = hardware('vkb/stecs-throttle-mini', 'throttle', 219, {
+      placement: 'mount_only',
+      use_case_fit: { ...ComponentSchema.parse({ brand: 'vkb', name: 'mini', category: 'throttle' }).use_case_fit, modern_jet: 5 },
+    });
+    const stecsMiniPlus = hardware('vkb/stecs-throttle-mini-plus', 'throttle', 239, {
+      placement: 'both',
+      use_case_fit: { ...ComponentSchema.parse({ brand: 'vkb', name: 'plus', category: 'throttle' }).use_case_fit, modern_jet: 4 },
+    });
+    const deskResult = recommendLoadout([stick, stecsMini, stecsMiniPlus], normalizeWizardAnswers({ mountType: 'desk', budgetMax: 500 }), 'EU');
+    expect(deskResult.complete).toBe(true);
+    expect(deskResult.items.map((item) => item.id)).toEqual([
+      'vkb/gladiator-nxt-evo-space-combat-edition-right',
+      'vkb/stecs-throttle-mini-plus',
+    ]);
+    const onlyMiniOnDesk = recommendLoadout([stick, stecsMini], normalizeWizardAnswers({ mountType: 'desk', budgetMax: 500 }), 'EU');
+    expect(onlyMiniOnDesk.complete).toBe(false);
+    const clampResult = recommendLoadout([stick, stecsMini, stecsMiniPlus], normalizeWizardAnswers({ mountType: 'clamp', budgetMax: 500 }), 'EU');
+    expect(clampResult.complete).toBe(true);
+    expect(clampResult.items.map((item) => item.id)).toContain('vkb/stecs-throttle-mini');
+
+    // Grips have placement: 'mount_only' standalone, but can sit on a desk when paired with a desk-capable base.
+    const deskBase = hardware('desk-base', 'base', 150, { mount: { accepts: ['A'] }, placement: 'both' });
+    const mountBase = hardware('mount-base', 'base', 150, { mount: { accepts: ['A'] }, placement: 'mount_only' });
+    const grip = hardware('grip', 'grip', 100, { mount: { provides: 'A' }, placement: 'mount_only' });
+    expect(recommendLoadout([deskBase, grip], normalizeWizardAnswers({ piecesNeeded: ['stick'], mountType: 'desk' }), 'EU').complete).toBe(true);
+    expect(recommendLoadout([mountBase, grip], normalizeWizardAnswers({ piecesNeeded: ['stick'], mountType: 'desk' }), 'EU').complete).toBe(false);
+  });
 });
 
 describe('curated reference matching', () => {
@@ -122,6 +151,14 @@ describe('curated reference matching', () => {
     const setups: WizardSetup[] = [{ id: 'incomplete', data: { title: 'Incomplete', description: 'Reference', reasoning: 'Reason', use_case: 'space_hosas', budget_tier: 'mid', pick: false, items: [{ item_type: 'component', id: 'base', role: 'Second stick' }] } }];
     const result = matchCuratedSetups(setups, [hardware('base', 'base', 100)], normalizeWizardAnswers({ useCase: 'space_hosas', budgetMax: 500 }), 'EU');
     expect(result[0].warnings.some((warning) => warning.includes('unpaired'))).toBe(true);
+  });
+  it('warns when a curated setup includes mount-only hardware for a desk user', () => {
+    const setups: WizardSetup[] = [{ id: 'mini-ref', data: { title: 'Mini Reference', description: 'Reference', reasoning: 'Reason', use_case: 'modern_jet', budget_tier: 'mid', pick: false, items: [{ item_type: 'component', id: 'vkb/stecs-throttle-mini', role: 'Throttle' }] } }];
+    const stecsMini = hardware('vkb/stecs-throttle-mini', 'throttle', 219, { placement: 'mount_only' });
+    const deskRef = matchCuratedSetups(setups, [stecsMini], normalizeWizardAnswers({ mountType: 'desk', budgetMax: 500 }), 'EU');
+    expect(deskRef[0].warnings.some((warning) => warning.includes('mount-only'))).toBe(true);
+    const clampRef = matchCuratedSetups(setups, [stecsMini], normalizeWizardAnswers({ mountType: 'clamp', budgetMax: 500 }), 'EU');
+    expect(clampRef[0].warnings.some((warning) => warning.includes('mount-only'))).toBe(false);
   });
 });
 
@@ -180,6 +217,21 @@ describe('live editing', () => {
     const twist = recommendLoadout(catalog(), normalizeWizardAnswers({ piecesNeeded: ['stick'], budgetMax: 1000 }), 'EU', { pinned: [['plain-stick']] });
     expect(twist.dropped[0].reason).toMatch(/twist/);
     expect(recommendLoadout(catalog(), normalizeWizardAnswers({ piecesNeeded: ['stick'] }), 'EU', { pinned: [['gone']] }).dropped[0].reason).toMatch(/EU price/);
+
+    const stecsMini = hardware('vkb/stecs-throttle-mini', 'throttle', 219, { placement: 'mount_only' });
+    const stecsMiniPlus = hardware('vkb/stecs-throttle-mini-plus', 'throttle', 239, { placement: 'both' });
+    const deskRecompute = recommendLoadout(
+      [...catalog(), stecsMini, stecsMiniPlus],
+      normalizeWizardAnswers({ piecesNeeded: ['stick', 'throttle'], mountType: 'desk', budgetMax: 600 }),
+      'EU',
+      { pinned: [['cheap-stick'], ['vkb/stecs-throttle-mini']] },
+    );
+    expect(deskRecompute.complete).toBe(true);
+    expect(deskRecompute.dropped).toMatchObject([
+      { ids: ['vkb/stecs-throttle-mini'], reason: 'Requires a desk mount or cockpit rig and cannot sit loose on a desk.' },
+    ]);
+    expect(deskRecompute.items.map((item) => item.id)).toContain('cheap-stick');
+    expect(deskRecompute.items.map((item) => item.id)).not.toContain('vkb/stecs-throttle-mini');
   });
   it('does not blame pins when no setup fits the settings at all', () => {
     const result = recommendLoadout(catalog(), normalizeWizardAnswers({ piecesNeeded: ['stick', 'throttle'], budgetMax: 100 }), 'EU', { pinned: [['cheap-stick'], ['throttle']] });

@@ -16,6 +16,7 @@ mount:
   provides: null
   accepts:
   - vkb-rev-c
+placement: both
 controls: []
 controls_evidence:
   coverage: complete

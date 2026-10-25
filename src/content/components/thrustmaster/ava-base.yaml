@@ -8,6 +8,7 @@ mount:
   provides: null
   accepts:
   - tm-din5
+placement: mount_only
 controls:
 - type: button
   count: 1

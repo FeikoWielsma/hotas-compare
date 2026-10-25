@@ -22,7 +22,7 @@ import ControlInventory from '../../components/ControlInventory.svelte';
 import { productJsonLd } from '../../lib/structured-data';
 import { deriveComponentStats, deriveControlsSummary } from '../../lib/derive';
 import { inventoryComplete } from '../../lib/control-inventory';
-import { humanize, yesNoUnknown } from '../../lib/labels';
+import { humanize, placementLabels, yesNoUnknown } from '../../lib/labels';
 import { overallVerdict, keySpecs, isDefaultFit } from '../../lib/detail';
 const familyCatalog = await loadCatalog();
 const { brands, mount_standards: mounts, components: allComponents, bundles: allBundles } = familyCatalog;
@@ -56,13 +56,13 @@ const specs = keySpecs({
 });
 const groups = [
   { title: 'Mechanics', rows: [
-    ['Gimbal type', h?.gimbal_type ? gimbalLabels[h.gimbal_type] : ''], ['Gimbal', humanize(h?.gimbal)], ['Primary sensor', humanize(h?.sensor)], ['Throw', h?.throw_deg != null ? `${h.throw_deg}°` : ''],
+    ['Gimbal type', h?.gimbal_type ? gimbalLabels[h.gimbal_type] : ''], ['Gimbal', humanize(h?.gimbal)], ['Primary sensor', humanize(h?.sensor)], ['Throw', h?.throw_deg != null ? `${h.throw_deg}\u00b0` : ''],
     ['Force adjustable', yesNoUnknown(h?.force_adjustable)], ['Swappable cams', yesNoUnknown(h?.cams_swappable)],
     ['Damping', humanize(h?.damping) || damperText], ['Extension support', yesNoUnknown(h?.extension_support)],
   ] },
   { title: 'Physical', rows: [
     ['Weight', c.physical?.weight_g != null ? `${c.physical.weight_g.toLocaleString('en')} g` : ''],
-    ['Dimensions', c.physical?.dimensions_mm ? `${c.physical.dimensions_mm.join(' × ')} mm` : ''],
+    ['Dimensions', c.physical?.dimensions_mm ? `${c.physical.dimensions_mm.join(' \u00d7 ')} mm` : ''],
     ['Materials', c.physical?.materials?.map(humanize).join(', ')],
   ] },
   { title: 'Connection & software', rows: [
@@ -87,7 +87,7 @@ const sections = [
 <div class="page">
   <ProductHero id={id} name={c.name} brand={c.brand} brandName={brandName} category={c.category} status={c.status} verification={c.verification}
     potentiometer={usesPotentiometerPrimaryAxes(c.hardware)}
-    releaseYear={c.release_year} handedness={c.handedness} images={c.images} prices={c.prices} notes={brand?.landed_cost_notes} compatibility={c.platform_compatibility}
+    releaseYear={c.release_year} handedness={c.handedness} placement={c.placement} images={c.images} prices={c.prices} notes={brand?.landed_cost_notes} compatibility={c.platform_compatibility}
     specs={specs} crumb={{ href: '/#hardware', label: 'Components' }} sections={sections}>
     {family && <FamilySwitcher slot="family" family={family} />}
   </ProductHero>
@@ -101,13 +101,14 @@ const sections = [
     <div class="sheet">
       {groups.map(g => <div class="group"><h3>{g.title}</h3>{g.known.length ? <dl>{g.known.map(([l, v]) => <div><dt>{l}</dt><dd>{v}{l === 'Gimbal type' && h?.gimbal_type && <Explain term={gimbalGlossaryKey[h.gimbal_type]} />}{l === 'Damping' && h?.damper_addon && damperAddon && <> ({isListed(damperAddon) ? <a href={`/components/${h.damper_addon}`}>{damperAddon.name}</a> : damperAddon.name})</>}</dd></div>)}</dl> : <p class="none">Not yet documented.</p>}{g.known.length > 0 && g.missing.length > 0 && <p class="missing">Not documented: {g.missing.join(', ').toLowerCase()}</p>}</div>)}
       <div class="group"><h3>Mounting</h3>
-        {provides || accepts.length ? <dl>
+        {c.placement || provides || accepts.length ? <dl>
+          {c.placement && <div><dt>Placement</dt><dd>{placementLabels[c.placement]}{c.placement === 'mount_only' && <Explain term="mount_only" />}</dd></div>}
           {provides && <div><dt>Provides</dt><dd>{provides.name}<small>{provides.description}</small></dd></div>}
           {accepts.map(a => <div><dt>Accepts</dt><dd>{a.data?.name ?? a.id}{a.data?.description && <small>{a.data.description}</small>}</dd></div>)}
         </dl> : <p class="none">No mount standard documented.</p>}
       </div>
     </div>
-    {h?.axes && h.axes.length > 0 && <div class="axes"><h3>Axes</h3><table><thead><tr><th>Axis</th><th>Sensor</th><th>Resolution</th></tr></thead><tbody>{h.axes.map(a => <tr><td>{humanize(a.name)}</td><td>{humanize(a.sensor) || '—'}</td><td>{a.resolution_bits ? `${a.resolution_bits}-bit` : '—'}</td></tr>)}</tbody></table>{h.axis_count != null && h.axis_count !== h.axes.length && <p class="missing">The manufacturer lists {h.axis_count} axes; {h.axes.length} are individually documented.</p>}</div>}
+    {h?.axes && h.axes.length > 0 && <div class="axes"><h3>Axes</h3><table><thead><tr><th>Axis</th><th>Sensor</th><th>Resolution</th></tr></thead><tbody>{h.axes.map(a => <tr><td>{humanize(a.name)}</td><td>{humanize(a.sensor) || '\u2014'}</td><td>{a.resolution_bits ? `${a.resolution_bits}-bit` : '\u2014'}</td></tr>)}</tbody></table>{h.axis_count != null && h.axis_count !== h.axes.length && <p class="missing">The manufacturer lists {h.axis_count} axes; {h.axes.length} are individually documented.</p>}</div>}
   </section>
   <UpgradePaths upgrades={upgrades} fits={fits} needsPedals={pedals} />
   <PriceTable prices={c.prices} notes={brand?.landed_cost_notes} />

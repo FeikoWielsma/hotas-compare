@@ -13,6 +13,7 @@ platform_compatibility:
 mount:
   provides: moza-yoke
   accepts: []
+placement: mount_only
 controls:
 - type: hat
   count: 2

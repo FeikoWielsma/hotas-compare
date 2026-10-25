@@ -2,7 +2,7 @@ import { isListed } from './visibility';
 import { resolveSuccessor } from './successors';
 import { deriveComponentStats, deriveControlsSummary, resolvePrice } from './derive';
 import type { ControlsSummary, ResolvedPrice } from './derive';
-import type { Component, Bundle, Region, UseCaseFit, Verdict, ReviewTag, GimbalType, DamperType, ControlItem } from './schema';
+import type { Component, Bundle, Region, UseCaseFit, Verdict, ReviewTag, GimbalType, DamperType, ControlItem, Placement } from './schema';
 import type { ControlSection } from './control-inventory';
 import { familyIndex, validateFamilies } from './families';
 
@@ -59,6 +59,8 @@ export interface CatalogItem {
   damperAddon?: { id: string; name: string; href: string | null } | null;
   /** Documented mechanical throw in degrees for pedals. */
   throwDeg?: number | null;
+  /** Desk vs mount-only placement; for bundles, derived from the surface-bearing members. */
+  placement?: Placement | null;
   images: Component['images'];
   componentIds: string[];
   formerBrandNames: string[];
@@ -97,6 +99,27 @@ export function derivePedalBrakes(members: Pick<Component, 'controls'>[]): { sta
   if (toeBrakeAxes > 0) return { status: 'toe_brakes', toeBrakeAxes };
   if (axes.some((axis) => axis.kind === 'rudder') && !axes.some((axis) => axis.kind === 'other')) return { status: 'rudder_only', toeBrakeAxes: 0 };
   return { status: 'unknown', toeBrakeAxes: null };
+}
+
+/** Derive desk vs mount placement. In multi-part bundles, grips/handles that mount onto an included base follow that base. */
+export function derivePlacement(
+  members: Pick<Component, 'category' | 'placement' | 'mount' | 'connectivity'>[],
+): Placement | null {
+  if (members.length === 1) return members[0].placement ?? null;
+  const accepted = new Set(members.flatMap((member) => member.mount?.accepts ?? []));
+  const surface = members.filter(
+    (member) =>
+      member.category !== 'grip'
+      && member.category !== 'module'
+      && member.connectivity?.standalone_usb !== false
+      && !(member.mount?.provides && accepted.has(member.mount.provides)),
+  );
+  const relevant = surface.length > 0 ? surface : members;
+  const documented = relevant.map((member) => member.placement).filter((placement): placement is Placement => placement != null);
+  if (!documented.length) return null;
+  if (documented.includes('mount_only')) return 'mount_only';
+  if (documented.includes('desk')) return 'desk';
+  return 'both';
 }
 
 /** Resolve a serialized item without requiring another content query. */
@@ -179,6 +202,7 @@ export async function loadCatalog(region: Region = 'EU', now = new Date()) {
         damperAddon: addonId && addon ? { id: addonId, name: addon.name, href: isListed(addon) ? `/components/${addonId}` : null } : null,
         throwDeg: members.map((member) => member.hardware?.throw_deg).find((t) => t != null) ?? null,
       } : {}),
+      placement: derivePlacement(members),
       images: data.images, componentIds: 'components' in data ? data.components : [],
       formerBrandNames: brand.former_names,
       handedness: [...new Set(members.map((member) => member.handedness).filter((hand) => hand !== 'n/a'))],

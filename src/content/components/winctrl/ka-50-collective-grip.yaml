@@ -17,6 +17,7 @@ mount:
   accepts:
   - winctrl-gemini-base
   - winctrl-orion-2-throttle-base
+placement: mount_only
 controls:
 - type: switch
   count: 3

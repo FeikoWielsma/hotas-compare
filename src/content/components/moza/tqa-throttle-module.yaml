@@ -3,6 +3,7 @@ name: MOZA TQA Throttle Module
 category: module
 status: current
 handedness: n/a
+placement: mount_only
 controls:
 - type: lever
   location: handle

@@ -16,6 +16,7 @@ mount:
   accepts:
     - virpil-grip
     - tm-din5
+placement: both
 controls: []
 controls_evidence:
   coverage: complete

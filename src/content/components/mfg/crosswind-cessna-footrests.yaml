@@ -5,6 +5,7 @@ catalog_kind: accessory
 status: current
 handedness: n/a
 mount: null
+placement: mount_only
 controls: []
 controls_evidence:
   coverage: complete

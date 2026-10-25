@@ -16,6 +16,7 @@ handedness: right
 mount:
   provides: vkb-rev-b
   accepts: []
+placement: mount_only
 controls:
 - type: button
   count: 24

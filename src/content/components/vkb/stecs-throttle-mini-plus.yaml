@@ -12,6 +12,7 @@ platform_compatibility:
 status: current
 handedness: ambi
 mount: null
+placement: both
 controls:
 - type: lever
   kind: throttle_dual

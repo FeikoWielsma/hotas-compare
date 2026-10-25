@@ -15,6 +15,7 @@ status: current
 release_year: 2023
 handedness: ambi
 mount: null
+placement: mount_only
 controls:
 - type: lever
   kind: throttle_dual
@@ -157,15 +158,17 @@ verdict:
     pilots who value precise inputs and configurable controls. Confirm regional configuration
     and included accessories before purchase.'
   pros:
-  - Compact STECS control unit for desk setups
+  - Compact STECS control unit for mounted setups
   - Modular throttle grip and tactile controls
   - Integrated base control options
   cons:
   - Less panel area and fewer controls than larger STECS editions
   - Compact base lacks MFH expansion rails
+  - Lightweight plastic baseplate requires mounting; not suitable for loose desktop use
   great_for:
   - ww2
   skip_if:
+  - You want an unmounted desktop throttle (choose Mini Plus or Standard instead)
   - Less panel area and fewer controls than larger STECS editions
   scores:
     build: 4

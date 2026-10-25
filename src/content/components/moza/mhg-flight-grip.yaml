@@ -3,6 +3,7 @@ name: MOZA MHG Flight Grip
 category: grip
 status: current
 handedness: right
+placement: mount_only
 controls:
 - type: trigger
   location: grip

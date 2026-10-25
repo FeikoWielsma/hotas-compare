@@ -14,6 +14,7 @@ status: current
 release_year: 2020
 handedness: n/a
 mount: null
+placement: mount_only
 controls:
 - type: button
   location: panel

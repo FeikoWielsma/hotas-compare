@@ -5,6 +5,7 @@ status: current
 mount:
   accepts:
   - tm-din5
+placement: mount_only
 platform_compatibility:
   pc: supported
   xbox: unsupported

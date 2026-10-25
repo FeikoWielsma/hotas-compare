@@ -13,6 +13,7 @@ platform_compatibility:
 status: current
 handedness: right
 mount: null
+placement: mount_only
 controls:
 - type: lever
   kind: throttle_single
@@ -134,6 +135,7 @@ external_reviews:
   date: '2026-10-24'
 verification: draft
 sources:
+- https://flightsimcontrols.com/product/stecs-space-throttle-system-mini/
 - https://vkbsimcontrollers.com/products/stecs-space-throttle-system-mini-us
 images:
 - file: /images/vkb/stecs-space-throttle-system-mini-r.jpg

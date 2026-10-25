@@ -15,6 +15,7 @@ mount:
   provides: null
   accepts:
   - virpil-yoke
+placement: both
 controls:
 - type: axis
   kind: pitch

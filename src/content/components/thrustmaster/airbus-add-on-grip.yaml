@@ -3,6 +3,7 @@ name: AIRBUS Add-On Grip
 category: grip
 status: current
 handedness: left
+placement: mount_only
 platform_compatibility:
   pc: supported
   xbox: unsupported
