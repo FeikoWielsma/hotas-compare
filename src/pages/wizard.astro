@@ -6,7 +6,7 @@ import { getCatalogItems } from '../lib/catalog';
 const [items, entries] = await Promise.all([getCatalogItems(), getCollection('setups')]);
 const setups = entries.map(({ id, data }) => ({ id, data }));
 ---
-<BaseLayout title="Find your flight sim setup" description="Find flight simulator controls for your flying style, space and budget, with curated setups and explained hardware recommendations.">
+<BaseLayout title="Find your flight sim setup" image="/social/wizard.png" description="Find flight simulator controls for your flying style, space and budget, with curated setups and explained hardware recommendations.">
   <header class="guide-header">
     <h1>Find your setup</h1>
     <p>Four answers. Your setup updates as you change them.</p>

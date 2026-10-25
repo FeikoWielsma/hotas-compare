@@ -8,6 +8,7 @@ import { isRegion, regionFromCountry } from '../lib/stores/region.svelte';
 interface Props {
   title?: string;
   description?: string;
+  /** Open Graph image; the generated cards live in public/social/ (`pnpm social:cards`). */
   image?: string;
   canonical?: string;
   canonicalUrl?: string | URL;
@@ -19,9 +20,10 @@ interface Props {
 const {
   title = 'Flight sim hardware, compared',
   description = 'Compare flight sticks, throttles, yokes and rudder pedals. Independent specs, regional prices and community verdicts for your next cockpit.',
-  image = '/social-card.png', canonical, canonicalUrl: suppliedCanonical, jsonLd, noindex = false, pageSearch = false,
+  image = '/social/default.png', canonical, canonicalUrl: suppliedCanonical, jsonLd, noindex = false, pageSearch = false,
 } = Astro.props;
 const pageTitle = `${title} | HOTAS Compare`;
+const socialCard = image.startsWith('/social/');
 const canonicalUrl = new URL(suppliedCanonical ?? canonical ?? Astro.url.pathname, Astro.site ?? 'https://hotas.razortek.nl');
 // Escape HTML-sensitive characters so catalog text cannot terminate the script element.
 const structuredData = jsonLd == null ? undefined : JSON.stringify(typeof jsonLd === 'string' ? JSON.parse(jsonLd) : jsonLd).replace(/</g, '\\u003c');
@@ -44,13 +46,15 @@ const initialRegion = isRegion(cookieRegion) ? cookieRegion : regionFromCountry(
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
-    {image && <meta property="og:image" content={new URL(image, canonicalUrl)} />}
+    <meta property="og:image" content={new URL(image, canonicalUrl)} />
+    {socialCard && <><meta property="og:image:width" content="1200" /><meta property="og:image:height" content="630" /></>}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL(image, canonicalUrl)} />
     {structuredData && <script type="application/ld+json" set:html={structuredData} />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#bf421f" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />

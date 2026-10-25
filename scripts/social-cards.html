@@ -1,0 +1,79 @@
+<!doctype html>
+<!-- Source for the 1200x630 Open Graph cards in public/social/. Rebuild with `pnpm social:cards`. -->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=block" rel="stylesheet" />
+<style>
+  :root { --paper: #f5f2e9; --ink: #172e42; --muted: #586875; --accent: #bf421f; --rule: #d6d8d2; --surface: #fffdf7; --navy: #192f43; --highlight: #ed7044; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
+  body { background: var(--paper); color: var(--ink); font-family: 'DM Sans', sans-serif; }
+  .card { position: relative; display: grid; grid-template-columns: 520px 1fr; gap: 48px; width: 1200px; height: 630px; padding: 56px 64px 64px; }
+  .card::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 14px; background: var(--highlight); }
+  .copy { display: flex; flex-direction: column; min-width: 0; }
+  .brand { display: flex; align-items: center; gap: 14px; }
+  .brand svg { width: 52px; height: 52px; }
+  .wordmark { font: 700 40px/.95 'Barlow Condensed', sans-serif; letter-spacing: -.01em; }
+  .wordmark span { color: var(--accent); }
+  .eyebrow { margin: 56px 0 14px; font-size: 19px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+  h1 { margin: 0; font: 700 88px/.92 'Barlow Condensed', sans-serif; letter-spacing: -.015em; text-transform: uppercase; }
+  p { margin: 24px 0 0; font-size: 26px; line-height: 1.35; color: var(--muted); max-width: 30ch; }
+  .foot { margin-top: auto; padding-top: 24px; font-size: 20px; font-weight: 600; color: var(--muted); }
+  .foot b { color: var(--ink); }
+  .art { align-self: center; min-width: 0; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .tile { background: var(--surface); border: 1px solid var(--rule); padding: 10px; }
+  .tile .img { display: grid; place-items: center; height: 170px; background: #fff; }
+  .tile img { max-width: 100%; max-height: 170px; object-fit: contain; }
+  .tile .cat { display: flex; justify-content: space-between; align-items: baseline; margin-top: 10px; font: 700 24px/1 'Barlow Condensed', sans-serif; text-transform: uppercase; letter-spacing: .02em; }
+  .tile .cat::after { content: ''; width: 34px; height: 3px; background: var(--accent); }
+
+  .board { display: grid; gap: 2px; background: var(--rule); border: 1px solid var(--rule); }
+  .row { display: grid; grid-template-columns: 96px 1fr; height: 124px; background: var(--surface); }
+  .label { display: grid; place-content: center; text-align: center; color: var(--navy); }
+  .label b { font: 700 46px/1 'Barlow Condensed', sans-serif; }
+  .label span { font-size: 13px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+  .t6 .label { background: #b9a4e0; } .t5 .label { background: #7fbf7f; } .t4 .label { background: #bfdf7f; } .t3 .label { background: #f5df80; }
+  .tiles { display: flex; gap: 8px; padding: 8px; }
+  .thumb { display: grid; place-items: center; width: 116px; background: #fff; border: 1px solid var(--rule); }
+  .thumb img { max-width: 104px; max-height: 98px; object-fit: contain; }
+  .thumb.empty { background: none; border-style: dashed; }
+</style>
+</head>
+<body>
+<main class="card">
+  <section class="copy">
+    <div class="brand">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="4" fill="#192f43"/><path d="M11 10h7v10h12V10h7v28h-7V26H18v12h-7Z" fill="#f5f2e9"/><path d="M0 43h48v5H0z" fill="#ed7044"/></svg>
+      <span class="wordmark">HOTAS <span>COMPARE</span></span>
+    </div>
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1 id="title"></h1>
+    <p id="lede"></p>
+    <div class="foot"><b>EU · UK · US</b> prices &nbsp;/&nbsp; independent specs</div>
+  </section>
+  <section class="art" id="art"></section>
+</main>
+<script>
+  const img = (path) => `../public/images/${path}`;
+  const grid = (tiles) => `<div class="grid">${tiles.map(([cat, path]) => `<div class="tile"><div class="img"><img src="${img(path)}" alt=""></div><div class="cat">${cat}</div></div>`).join('')}</div>`;
+  const board = (rows) => `<div class="board">${rows.map(([tier, badge, name, paths]) => `<div class="row t${tier}"><div class="label"><b>${badge}</b><span>${name}</span></div><div class="tiles">${paths.map((p) => p ? `<div class="thumb"><img src="${img(p)}" alt=""></div>` : '<div class="thumb empty"></div>').join('')}</div></div>`).join('')}</div>`;
+  const hardware = [['Sticks', 'virpil/cdt-aeromax-l-flightstick.jpg'], ['Throttles', 'winctrl/ursa-minor-combat-throttle.jpg'], ['Yokes', 'moza/mfy-yoke-pro.webp'], ['Pedals', 'moza/mrp-rudder-pedals.webp']];
+  const cards = {
+    default: { eyebrow: 'Flight control database', title: 'Flight sim hardware, compared', lede: 'Sticks, throttles, yokes and rudder pedals, side by side.', art: grid(hardware) },
+    tiers: { eyebrow: 'Community tier list', title: 'Rank the hardware', lede: 'Make a tier list for your kind of flying and share it to tune our fit scores.', art: board([
+      [6, 'S', 'Best', ['virpil/cdt-aeromax-l-flightstick.jpg', 'winctrl/ursa-minor-combat-throttle.jpg', 'moza/mrp-rudder-pedals.webp']],
+      [5, '5', 'Excellent', ['winctrl/orion-2-viperace-joystick.jpg', 'moza/mtp-throttle.webp', 'moza/mfy-yoke-pro.webp']],
+      [4, '4', 'Good', ['winctrl/ursa-minor-fighter-joystick-r.jpg', 'winctrl/orion-2-strikeace-throttle.jpg', null]],
+      [3, '3', 'Fine', [null, null, null]],
+    ]) },
+    wizard: { eyebrow: 'Setup guide', title: 'Find your flight sim setup', lede: 'Answer a few questions about how you fly, your space and your budget.', art: grid(hardware) },
+  };
+  const card = cards[new URLSearchParams(location.search).get('card') ?? 'default'];
+  for (const key of ['eyebrow', 'title', 'lede']) document.getElementById(key).textContent = card[key];
+  document.getElementById('art').innerHTML = card.art;
+</script>
+</body>
+</html>
