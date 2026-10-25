@@ -62,4 +62,10 @@ verification: draft
 sources:
   - https://vkbcontrollers.com/products/stecs-throttle-system-standard
   - https://vkbcontrollers.com/products/gladiator-nxt-evo-space-combat-edition
-images: []
+images:
+  - file: /images/vkb/stecs-standard-gladiator-hotas-stecs.webp
+    source: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-standard-us
+    caption: STECS Modern Throttle System Mk.II Standard
+  - file: /images/vkb/stecs-standard-gladiator-hotas-stick.webp
+    source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-space-combat-edition-right-hand-us
+    caption: Gladiator NXT EVO Space Combat Edition, right hand
