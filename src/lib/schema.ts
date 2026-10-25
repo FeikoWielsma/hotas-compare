@@ -253,7 +253,8 @@ export const VerdictSchema = z.object({
   cons: z.array(z.string()).default([]),
   great_for: z.array(z.string()).default([]),
   skip_if: z.array(z.string()).default([]),
-  scores: VerdictScoreSchema,
+  // Evidence-based commentary can exist before the maintainer assigns scores.
+  scores: VerdictScoreSchema.optional(),
 });
 export type Verdict = z.infer<typeof VerdictSchema>;
 

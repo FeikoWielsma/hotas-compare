@@ -56,7 +56,8 @@ controls_evidence:
     the handle buttons.'
 hardware:
   gimbal: dual linear ball bearings
-  sensor: null
+  # Checked 2026-10-25: Aerosoft internal comparison; see docs/research/issue-10-honeycomb-sensors.md.
+  sensor: potentiometer
   axes:
   - name: Elevator (pitch)
   - name: Aileron (roll)
@@ -115,6 +116,7 @@ verdict:
   - Integrated switches and buttons reduce reliance on keyboard commands
   - Straightforward USB setup and broad simulator compatibility
   cons:
+  - Potentiometer wear and input jitter are a longevity concern; a 2018 forum report attributes Honeycomb's choice to quality potentiometers and the cost of Hall sensors (original statement not independently verified)
   - Requires a sizeable, secure desk mounting area
   - No throttle quadrant included
   - Price is high for users who mainly fly with a joystick
@@ -136,7 +138,7 @@ images:
   source: https://flyhoneycomb.com/products/alpha-flight-controls
   caption: Alpha Flight Controls Yoke
 sources:
-- https://honeycomb.com
+- https://forum.aerosoft.com/index.php?/topic/174750-behind-the-scene%C2%A0-main-differences-between-the-alpha-yoke-and-the-alpha-yoke-xpc-internals/
 - https://flyhoneycomb.com/products/alpha-flight-controls
 - https://flyhoneycomb.com/pages/downloads
 platform_compatibility:
@@ -144,7 +146,6 @@ platform_compatibility:
   xbox: unsupported
   ps5: unknown
   notes: Official product page lists PC and Mac only; XPC is the Xbox variant. PS5
-    is not mentioned. Sensor technology is not identified by the manufacturer and
-    is left unknown.
+    is not mentioned.
   sources:
   - https://flyhoneycomb.com/products/alpha-flight-controls
