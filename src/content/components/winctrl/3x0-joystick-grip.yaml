@@ -10,7 +10,7 @@ platform_compatibility:
   sources:
   - https://eu.winctrl.com/mobileview/goods-details.html?id=335
   - https://eu.winctrl.com/static/download/QmQK51quPeFthZY6Qy3R46LtyS5wv6XPhco4nkYQbW66CA?filename=JOYSTICK-GRIP-OF-3XX-User-Manual-EN-V1.0.pdf
-status: current
+status: discontinued
 handedness: right
 mount:
   provides: null
