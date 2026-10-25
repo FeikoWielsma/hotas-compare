@@ -7,6 +7,6 @@ const items = await getCatalogItems();
 const brandCount = new Set(items.map((item) => item.brand)).size;
 ---
 
-<BaseLayout title="Flight sim hardware, compared" navyHeader>
+<BaseLayout title="Flight sim hardware, compared" pageSearch>
   <CatalogFilter client:load initialItems={items.map(cardItem)} {brandCount} />
 </BaseLayout>
