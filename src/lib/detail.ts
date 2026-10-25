@@ -2,6 +2,7 @@ import type { UseCaseFit, Verdict } from './schema';
 import { humanize } from './labels';
 
 export function overallVerdict(verdict: Verdict) {
+  if (!verdict.scores) return null;
   const values = Object.values(verdict.scores);
   return `${Number((values.reduce((a, b) => a + b, 0) / values.length).toFixed(1))} / 5`;
 }

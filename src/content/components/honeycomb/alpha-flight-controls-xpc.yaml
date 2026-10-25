@@ -64,6 +64,7 @@ controls_evidence:
     red LED backlighting for the switch panel. That does not establish backlight
     on the handle buttons.'
 hardware:
+  # Manufacturer explicitly states upgraded Hall Effect Sensors; checked 2026-10-25.
   sensor: hall_effect
   axes:
   - name: Elevator (pitch)
