@@ -72,8 +72,8 @@ use_case_fit:
   modern_jet: 1
   heli: 1
   ww2: 2
-  ga: 3.5
-  airliner: 4
+  ga: 3
+  airliner: 3
   space_hotas: 1
   space_hosas: 1
 use_case_fit_source: community
