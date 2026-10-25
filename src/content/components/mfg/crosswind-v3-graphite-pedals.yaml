@@ -37,7 +37,9 @@ hardware:
     sensor: contactless_magnetic
   force_adjustable: true
   cams_swappable: true
-  damping: null
+  damping: optional_damper
+  damper: optional
+  damper_addon: mfg/crosswind-hydraulic-damper
   extension_support: null
   throw_deg: null
 connectivity:

@@ -30,6 +30,7 @@ hardware:
   - name: Brake_Right
   force_adjustable: true
   cams_swappable: false
+  damper: none
   extension_support: false
 connectivity:
   usb: a_cable

@@ -21,22 +21,23 @@ controls:
     label: Main yaw axis
     source: https://eu.winctrl.com/view/goods-details.html?id=543
   - type: axis
-    kind: other
+    kind: toe_brake
     count: 2
     location: other
-    label: Left and right pedal pitch axes (brake function not specified)
-    source: https://eu.winctrl.com/view/goods-details.html?id=543
+    label: Pedal pitch, 30°
+    source: https://eu.winctrl.com/static/download/Qmcuf2Z4sK1fhbBHysbeCX94yxL9HHS2QPERHpYXpW4hxR?filename=R1-Metal-Base-DAMPER1-User-Manual-EN-V2.1.pdf
 controls_evidence:
   coverage: complete
   source: https://eu.winctrl.com/view/goods-details.html?id=543
   checked: '2026-10-19'
   notes: >-
-    Current EU goods 543 is titled Orion Metal Flight Rudder Pedals (Standard Edition), goods code R1X1. The R1+DAMPER1 manual gives yaw 38°, pedal pitch 30°, 542×320×224 mm and 8.4 kg. That manual is also the damper-edition manual, so the mass is not split between bare and damper-equipped units. The damper-included listing is a separate record. Orion 32 (goods O.32.R.MET.1) is a different pedal. The file id remains skywalker-rudder-pedals.
+    Current EU goods 543 is titled Orion Metal Flight Rudder Pedals (Standard Edition), goods code R1X1. The R1+DAMPER1 manual gives yaw 38°, pedal pitch 30° (left and right toe-brake axes, matching goods 546), 542×320×224 mm and 8.4 kg. That manual is also the damper-edition manual, so the mass is not split between bare and damper-equipped units. The damper-included listing is a separate record. Orion 32 (goods O.32.R.MET.1) is a different pedal. The file id remains skywalker-rudder-pedals.
 hardware:
   gimbal: pendular
   force_adjustable: true
   cams_swappable: true
   damping: optional_damper
+  damper: optional
   extension_support: false
   throw_deg: 38
   axes:

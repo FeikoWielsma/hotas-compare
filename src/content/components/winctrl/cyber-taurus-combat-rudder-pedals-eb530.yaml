@@ -48,6 +48,8 @@ hardware:
   - name: Rudder
   - name: Left brake
   - name: Right brake
+  damping: active_motor
+  damper: built_in
   throw_deg: 76
   extension_support: false
 connectivity:

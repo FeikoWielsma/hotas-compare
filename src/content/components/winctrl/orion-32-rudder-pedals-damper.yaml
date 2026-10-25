@@ -46,6 +46,7 @@ hardware:
     sensor: hall
   throw_deg: 76
   damping: damper
+  damper: built_in
   extension_support: false
 connectivity:
   standalone_usb: true

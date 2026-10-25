@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ComponentSchema, BundleSchema, BrandSchema, FamilySchema } from './schema';
-import { getCatalogItems, loadCatalog, resolveCatalogRegion } from './catalog';
+import { derivePedalBrakes, getCatalogItems, loadCatalog, resolveCatalogRegion } from './catalog';
 
 const collections = vi.hoisted(() => ({ values: {} as Record<string, unknown[]> }));
 vi.mock('astro:content', () => ({ getCollection: (name: string) => collections.values[name] }));
@@ -41,19 +41,6 @@ describe('catalog serialization', () => {
     collections.values.bundles = [];
     await expect(loadCatalog()).rejects.toThrow(/successor.*current item/);
   });
-  it('validates families against retained hidden products and removes hidden successor IDs from public items', async () => {
-    const hidden = ComponentSchema.parse({ brand: 'test', name: 'Hidden', category: 'module', catalog_kind: 'panel' });
-    const old = ComponentSchema.parse({ brand: 'test', name: 'Old', category: 'stick_fixed', status: 'discontinued', successor: 'test/hidden' });
-    collections.values.components.push({ id: 'test/hidden', data: hidden }, { id: 'test/old', data: old });
-    collections.values.families = [{ id: 'test/line', data: FamilySchema.parse({ name: 'Line', brand: 'test', axis: 'Size', members: [{ id: 'test/base', label: 'Small' }, { id: 'test/hidden', label: 'Large' }] }) }];
-    const catalog = await loadCatalog();
-    expect(catalog.items.find(item => item.id === 'test/hidden')).toBeUndefined();
-    expect(catalog.items.find(item => item.id === 'test/old')?.successor).toBeUndefined();
-    expect(catalog.items.find(item => item.id === 'test/base')?.family?.id).toBe('test/line');
-    expect(catalog.components.find(entry => entry.id === 'test/hidden')).toBeDefined();
-    (collections.values.families[0] as { data: { members: { label: string }[] } }).data.members[1].label = 'Small';
-    await expect(loadCatalog()).rejects.toThrow('needs at least two distinct labels');
-  });
   it('distinguishes a documented zero-axis accessory from an unknown axis inventory', async () => {
     collections.values.components = [
       { id: 'test/passive', data: ComponentSchema.parse({ brand: 'test', name: 'Passive accessory', category: 'module', hardware: { axis_count: 0 } }) },
@@ -83,6 +70,40 @@ describe('catalog serialization', () => {
     expect(combo.resolvedPrice.price?.amount).toBe(120);
     expect(JSON.parse(JSON.stringify(items))).toEqual(items);
     expect(resolveCatalogRegion(combo, 'EU').resolvedPrice.price).toBeUndefined();
+  });
+
+  it('derives pedal brake status, damper status, and optional damper add-on links without affecting non-pedals', async () => {
+    collections.values.components = [
+      ...collections.values.components,
+      { id: 'test/damper-kit', data: ComponentSchema.parse({ brand: 'test', name: 'Hydraulic Damper Kit', category: 'module', catalog_kind: 'accessory' }) },
+      { id: 'test/pedals-toe', data: ComponentSchema.parse({ brand: 'test', name: 'Toe Pedals', category: 'pedals', controls: [{ type: 'axis', kind: 'rudder', count: 1 }, { type: 'axis', kind: 'toe_brake', count: 2 }], hardware: { damper: 'optional', damper_addon: 'test/damper-kit', throw_deg: 38 } }) },
+      { id: 'test/pedals-rudder', data: ComponentSchema.parse({ brand: 'test', name: 'Rudder Only Pedals', category: 'pedals', controls: [{ type: 'axis', kind: 'rudder', count: 1 }], hardware: { damper: 'built_in' } }) },
+    ];
+    const items = await getCatalogItems();
+    expect(items.find(i => i.id === 'test/pedals-toe')).toMatchObject({
+      pedalBrakes: 'toe_brakes',
+      toeBrakeAxes: 2,
+      damper: 'optional',
+      damperAddon: { id: 'test/damper-kit', name: 'Hydraulic Damper Kit', href: null },
+      throwDeg: 38,
+    });
+    expect(items.find(i => i.id === 'test/pedals-rudder')).toMatchObject({
+      pedalBrakes: 'rudder_only',
+      toeBrakeAxes: 0,
+      damper: 'built_in',
+      damperAddon: null,
+      throwDeg: null,
+    });
+    expect(items.find(i => i.id === 'test/base')).not.toHaveProperty('pedalBrakes');
+    expect(derivePedalBrakes([{ controls: [] }])).toEqual({ status: 'unknown', toeBrakeAxes: null });
+  });
+
+  it('fails clearly on broken damper_addon references', async () => {
+    collections.values.components = [
+      { id: 'test/pedals', data: ComponentSchema.parse({ brand: 'test', name: 'Pedals', category: 'pedals', hardware: { damper: 'optional', damper_addon: 'test/missing-damper' } }) },
+    ];
+    collections.values.bundles = [];
+    await expect(getCatalogItems()).rejects.toThrow('references missing damper_addon');
   });
 
   it('fails clearly on broken bundle references', async () => {

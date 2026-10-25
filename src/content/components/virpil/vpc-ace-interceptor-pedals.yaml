@@ -47,7 +47,8 @@ hardware:
     sensor: contactless_magnetic
   force_adjustable: false
   cams_swappable: false
-  damping: null
+  damping: optional_damper
+  damper: optional
   extension_support: false
   throw_deg: null
 connectivity:

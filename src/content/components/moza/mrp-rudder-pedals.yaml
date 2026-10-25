@@ -41,6 +41,8 @@ hardware:
   force_adjustable: true
   cams_swappable: false
   damping: optional adjustable damper (sold separately)
+  damper: optional
+  damper_addon: moza/mrp-adjustable-damper
   extension_support: false
   throw_deg: null
 connectivity:

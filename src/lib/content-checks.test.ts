@@ -2,6 +2,7 @@ import { existsSync } from 'node:fs';
 import { resolve, sep } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import sharedProductPages from './fixtures/shared-product-pages.json';
+import { derivePedalBrakes } from './catalog';
 import { contentFiles, products, readContent, urls } from '../../scripts/content';
 import { resolveSuccessor } from './successors';
 
@@ -77,7 +78,20 @@ describe('content correctness (offline)', () => {
         if (!target.startsWith(publicDir + sep) || !existsSync(target)) errors.push(`${file}: missing public image ${image.file}`);
       }
       if ('components' in data) for (const id of data.components) if (!ids.has(id)) errors.push(`${file}: missing component ${id}`);
+      if ('hardware' in data && data.hardware?.damper_addon && !ids.has(data.hardware.damper_addon)) {
+        errors.push(`${file}: missing damper_addon component ${data.hardware.damper_addon}`);
+      }
       for (const review of data.external_reviews) if (!existsSync(`src/content/reviewers/${review.reviewer}.yaml`)) errors.push(`${file}: missing reviewer ${review.reviewer}`);
+    }
+    expect(errors).toEqual([]);
+  });
+
+  it('documents brake and damper status for every pedal component', () => {
+    const errors: string[] = [];
+    for (const { file, collection, data } of catalog) {
+      if (collection !== 'components' || data.category !== 'pedals' || !('controls' in data)) continue;
+      if (!data.hardware?.damper) errors.push(`${file}: missing hardware.damper`);
+      if (derivePedalBrakes([data]).status === 'unknown') errors.push(`${file}: unresolved pedal brake status`);
     }
     expect(errors).toEqual([]);
   });
