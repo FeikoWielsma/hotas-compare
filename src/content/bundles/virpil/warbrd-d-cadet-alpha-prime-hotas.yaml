@@ -47,4 +47,7 @@ external_reviews:
 verification: draft
 sources:
 - https://virpil-controls.eu/warbrd-d-cadet-hotas-bundle-alpha-prime-edition.html
-images: []
+images:
+- file: /images/virpil/warbrd-d-cadet-alpha-prime-hotas.jpg
+  source: https://virpil-controls.eu/warbrd-d-cadet-hotas-bundle-alpha-prime-edition.html
+  caption: WarBRD-D CADET H.O.T.A.S Bundle - ALPHA Prime Edition
