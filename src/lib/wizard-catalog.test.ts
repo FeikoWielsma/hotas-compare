@@ -134,7 +134,7 @@ describe('helicopter picks', () => {
   });
   it('lets one stick with twist and a throttle axis cover a very low budget', () => {
     for (const region of ['US', 'EU'] as const) {
-      const result = recommend({ useCase: 'heli', budgetMax: 250 }, region);
+      const result = recommend({ useCase: 'heli', budgetMax: 120 }, region);
       expect(result.pieces, region).toHaveLength(1);
       expect(result.pieces[0].standIns.sort()).toEqual(['collective', 'pedals']);
     }

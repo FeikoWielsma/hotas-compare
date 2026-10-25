@@ -198,6 +198,11 @@ export const STAND_INS: Partial<Record<UseCase, StandIn[]>> = {
     { role: 'pedals', via: 'yaw_axis', penalty: 20, note: 'Twist axis stands in for anti-torque pedals on a budget; pedals free the cyclic hand for precise hovering' },
   ],
 };
+/**
+ * A stand-in role earns at most a middling dedicated piece's score (fit 3/5 with a good review), however good
+ * its host is: a great stick's throttle levers are not a great quadrant, so an affordable dedicated piece wins.
+ */
+const STAND_IN_CREDIT = 68;
 function roleVariants(roles: WizardPiece[], primary: CatalogItem[], answers: WizardAnswers) {
   let variants: { roles: WizardPiece[]; standIns: StandIn[] }[] = [{ roles, standIns: [] }];
   for (const standIn of STAND_INS[answers.useCase] ?? []) {
@@ -208,7 +213,8 @@ function roleVariants(roles: WizardPiece[], primary: CatalogItem[], answers: Wiz
       if (standIn.via === 'throttle' || standIn.via === 'second_stick') {
         return variant.roles.includes(standIn.via) ? [variant, { ...next, roles: variant.roles.map((role) => role === standIn.via ? standIn.role : role) }] : [variant];
       }
-      if (!primary.some(standIn.via === 'yaw_axis' ? hasYawAxis : hasThrottleAxis)) return [variant];
+      // Built-in axes stand in only on the main stick or yoke, not on a left-hand stick serving as the collective.
+      if (!variant.roles.some((role) => role === 'stick' || role === 'yoke') || !primary.some(standIn.via === 'yaw_axis' ? hasYawAxis : hasThrottleAxis)) return [variant];
       const covered = { ...next, roles: [...variant.roles, standIn.role] };
       // A yoke's own quadrant always covers the quadrant role rather than sitting next to a second one.
       return standIn.role === 'quadrant' && primary.some(hasIntegratedQuadrant) ? [covered] : [variant, covered];
@@ -342,7 +348,7 @@ function candidates(items: CatalogItem[], answers: WizardAnswers, region: Region
       for (const { roles, standIns } of roleVariants([...assignment, ...otherRoles], primary, answers)) {
         if (!roles.length || roles.some((role) => !answers.piecesNeeded.includes(role))) continue;
         result.push({ items: group, roles, price: group.reduce((sum, item) => sum + priceOf(item, region)!, 0), score,
-          value: score * roles.length - standIns.reduce((sum, standIn) => sum + standIn.penalty, 0), standIns: standIns.map((standIn) => standIn.role),
+          value: score * (roles.length - standIns.length) + standIns.reduce((sum, standIn) => sum + Math.min(score, STAND_IN_CREDIT) - standIn.penalty, 0), standIns: standIns.map((standIn) => standIn.role),
           explanations: [...new Set(scores.flatMap((item) => item.explanations)), ...(group.length === 2 ? [`+ Base and ${group[1].category === 'yoke' ? 'yoke handle' : 'grip'} share a direct mount standard`] : []),
             ...(roles.includes('second_stick') ? ['+ Left-hand or ambidextrous control supplies the second stick'] : []),
             ...(collective ? ['+ Dedicated collective with a long, friction-held stroke'] : []),

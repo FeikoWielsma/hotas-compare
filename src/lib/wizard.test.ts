@@ -291,6 +291,13 @@ describe('stand-ins and suitability', () => {
   it('prefers dedicated hardware once the budget allows it', () => {
     expect(picksOf(recommendLoadout([allInOne(), ...dedicated()], airliner(700), 'EU')).flat().sort()).toEqual(['pedals', 'quadrant', 'yoke']);
   });
+  it('buys an affordable dedicated quadrant rather than crediting top stick levers as a top quadrant', () => {
+    const stick = hardware('great-stick', 'stick_fixed', 60, { use_case_fit: fit({ ga: 5 }), axes: [{ name: 'X' }, { name: 'Y' }, { name: 'Throttle lever' }] });
+    const quadrant = hardware('good-quadrant', 'quadrant', 170, { use_case_fit: fit({ ga: 4 }) });
+    const ga = normalizeWizardAnswers({ useCase: 'ga', piecesNeeded: ['stick', 'quadrant'], hasExistingPedals: true, budgetMax: 750 });
+    expect(picksOf(recommendLoadout([stick, quadrant], ga, 'EU'))).toEqual([['great-stick'], ['good-quadrant']]);
+    expect(recommendLoadout([stick, quadrant], { ...ga, budgetMax: 150 }, 'EU').pieces[0].standIns).toEqual(['quadrant']);
+  });
   it('makes a yoke with its own quadrant cover the quadrant role instead of buying a second one', () => {
     const levers = [{ name: 'Yoke', category: 'yoke' as const, controls: [{ type: 'lever' as const, kind: 'other' as const, analog: true, count: 4 }] }];
     const yoke = hardware('lever-yoke', 'yoke', 330, { use_case_fit: fit({ airliner: 4 }), controlSections: levers, axes: [{ name: 'Pitch' }, { name: 'Roll' }, { name: 'Quadrant lever 1' }] });
