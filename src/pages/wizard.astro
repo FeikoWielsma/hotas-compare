@@ -8,18 +8,14 @@ const setups = entries.map(({ id, data }) => ({ id, data }));
 ---
 <BaseLayout title="Find your flight sim setup" description="Find flight simulator controls for your flying style, space and budget, with curated setups and explained hardware recommendations.">
   <header class="guide-header">
-    <p class="eyebrow">The independent sim hardware guide / Help me choose</p>
-    <h1>Your kind of flying.<br /><span>Your kind of setup.</span></h1>
-    <p class="intro">From your first stick to a dedicated cockpit. Five steps to find the controls that fit your flying, your space and your budget.</p>
+    <h1>Find your setup</h1>
+    <p>Four answers. Your setup updates as you change them.</p>
   </header>
   <Wizard client:load {items} {setups} />
   <noscript>Enable JavaScript to find your setup. You can also <a href="/">browse the hardware catalog</a>.</noscript>
 </BaseLayout>
 <style>
-  .guide-header { position: relative; margin-top: 1rem; padding: clamp(1.5rem, 4vw, 3rem); padding-bottom: clamp(2rem, 4vw, 3.5rem); background: var(--color-navy); color: var(--color-on-navy); }
-  .guide-header::after { content: ''; position: absolute; inset: auto 0 0; height: 7px; background: repeating-linear-gradient(120deg, var(--color-highlight) 0 26px, var(--color-on-navy) 26px 30px, var(--color-navy) 30px 40px); }
-  .eyebrow { font: 600 .8125rem/1.6 var(--font-sans); margin: 0 0 1.25rem; }
-  h1 { font: 700 clamp(2.75rem, 6vw, 5.5rem)/.98 var(--font-display); letter-spacing: .01em; text-transform: uppercase; margin: 0; }
-  h1 span { color: var(--color-highlight); }
-  .intro { font: 1rem/1.8 var(--font-sans); max-width: 62ch; margin: 1.5rem 0 0; }
+  .guide-header { margin-top: 1.25rem; }
+  h1 { font: 700 clamp(2rem, 4vw, 2.5rem)/1 var(--font-display); letter-spacing: .01em; text-transform: uppercase; margin: 0; }
+  p { margin: .4rem 0 0; color: var(--color-muted); }
 </style>

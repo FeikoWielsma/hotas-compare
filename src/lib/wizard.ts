@@ -223,6 +223,9 @@ const LIMITED_FIT = 2;
 /** Unreviewed hardware must be clearly better than a reviewed alternative before it is recommended. */
 const REVIEWS_PENDING_PENALTY = 12;
 const NO_STICK: CatalogItem['category'][] = ['throttle', 'pedals', 'quadrant', 'module', 'base'];
+/** Per-item warnings; the wizard groups these by count instead of repeating them. */
+export const DRAFT_SPECS_WARNING = 'Draft specifications: verify before buying.';
+export const STALE_PRICE_WARNING = 'Regional price is over 90 days old.';
 /** How well one control suits the answers, before its price is weighed against the budget. */
 function qualityOf(item: CatalogItem, answers: WizardAnswers) {
   const fit = scoreItemForUseCase(item.use_case_fit, item.verdict, answers.useCase);
@@ -257,7 +260,7 @@ function qualityOf(item: CatalogItem, answers: WizardAnswers) {
     score += 6; explanations.push('+ Rudder and toe-brake axes support taildragger ground handling');
   }
   if (item.reviewsPending) warnings.push(`${item.name} has no published reviews yet: treat it as a tentative pick.`);
-  if (item.verification !== 'verified') warnings.push('Draft specifications: verify before buying.');
+  if (item.verification !== 'verified') warnings.push(DRAFT_SPECS_WARNING);
   return { score, explanations, warnings };
 }
 /**
@@ -279,7 +282,7 @@ export function scoreWizardItem(item: CatalogItem, answers: WizardAnswers, regio
     score += 5 * (1 - price / answers.budgetMax);
     explanations.push('+ Regional price fits within the total budget; package cost checked separately');
   }
-  if (resolvePrice(item.prices, region).isStale) warnings.push('Regional price is over 90 days old.');
+  if (resolvePrice(item.prices, region).isStale) warnings.push(STALE_PRICE_WARNING);
   return { score, explanations, warnings };
 }
 

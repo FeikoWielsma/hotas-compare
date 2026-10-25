@@ -1,23 +1,19 @@
 <script lang="ts">
-  import { onMount, tick, untrack } from 'svelte';
+  import { onMount, untrack } from 'svelte';
   import HardwareIcon from './HardwareIcon.svelte';
   import type { CatalogItem } from '../lib/catalog';
   import { detailHref, itemCategoryLabel, productImageSrc, useCases } from '../lib/catalog-ui';
   import { regionStore, isRegion } from '../lib/stores/region.svelte';
   import { MAX_COMPARE_ITEMS } from '../lib/stores/compare.svelte';
-  import { budgetStops, budgetTier, defaultPieces, deserializePicks, deserializeWizardState, matchCuratedSetups, nearestBudgetStop, normalizeWizardAnswers, picksOf, recommendLoadout, serializeWizardState, PIECES } from '../lib/wizard';
+  import { budgetStops, budgetTier, defaultPieces, deserializePicks, deserializeWizardState, matchCuratedSetups, nearestBudgetStop, normalizeWizardAnswers, picksOf, recommendLoadout, serializeWizardState, DRAFT_SPECS_WARNING, PIECES, STALE_PRICE_WARNING } from '../lib/wizard';
   import type { WizardAnswers, WizardLoadout, WizardPick, WizardPiece, WizardSetup } from '../lib/wizard';
   import type { Region, UseCase } from '../lib/schema';
 
   let { items, setups }: { items: CatalogItem[]; setups: WizardSetup[] } = $props();
   let answers = $state<WizardAnswers>(normalizeWizardAnswers());
-  let step = $state(0);
-  let visited = $state(0);
   let ready = $state(false);
   let shareStatus = $state('');
   let shareFallback = $state('');
-  let heading: HTMLHeadingElement;
-  let budgetSlider = $state<HTMLInputElement>();
   /** Picks the user pinned; every other pick re-optimises with the settings. */
   let pinned = $state<WizardPick[]>([]);
   /** Picks on screen, used only to break exact ties so equal alternatives do not churn. */
@@ -29,29 +25,65 @@
   let updating = $state(false);
   let edited = $state(false);
   let liveStatus = $state('');
+  let tab = $state<'match' | 'curated'>('match');
+  let setupPanel = $state<HTMLElement>();
+  /** On narrow screens a bottom bar links to the setup until the setup itself is in view. */
+  let setupVisible = $state(false);
   const LIVE_DELAY = 300;
-  const steps = ['Flying style', 'Controls', 'Budget', 'Your space', 'Recommendations'];
   const labels: Record<WizardPiece, string> = { stick: 'Primary stick', second_stick: 'Secondary stick', throttle: 'Throttle', collective: 'Collective', pedals: 'Rudder pedals', yoke: 'Flight yoke', quadrant: 'Throttle quadrant' };
   const label = (piece: WizardPiece) => answers.useCase === 'heli' && piece === 'stick' ? 'Cyclic stick' : labels[piece];
   const aircraftIcons: Record<UseCase, string> = { modern_jet: 'jet', space_hosas: 'hosas', space_hotas: 'space', heli: 'heli', ga: 'ga', airliner: 'airliner', ww2: 'warbird' };
   const pieceIcons: Record<WizardPiece, string> = { stick: 'stick', second_stick: 'grip', throttle: 'throttle', collective: 'control-lever', pedals: 'pedals', yoke: 'yoke', quadrant: 'quadrant' };
-  const mountIcons: Record<string, string> = { desk: 'desk', clamp: 'clamp', chair_pit: 'cockpit' };
-  const descriptions: Record<UseCase, string> = {
-    modern_jet: 'Precision, avionics and combat systems.', space_hosas: 'Two sticks. Six degrees of freedom.',
-    space_hotas: 'Classic throttle control beyond the atmosphere.', heli: 'Cyclic control and anti-torque precision.',
-    ga: 'From the traffic pattern to cross-country.', airliner: 'Multi-engine control for the flight deck.', ww2: 'Warbird handling and taildragger authority.',
-  };
-  const sims = [{ id: 'dcs', label: 'DCS World' }, { id: 'star_citizen', label: 'Star Citizen' }, { id: 'msfs', label: 'Microsoft Flight Simulator' }, { id: 'elite', label: 'Elite Dangerous' }, { id: 'il2', label: 'IL-2 Sturmovik' }, { id: 'xplane', label: 'X-Plane' }];
+  const mounts = [{ key: 'desk', label: 'On the desk', icon: 'desk', detail: 'Controls sit on the desk; check base plates and stability.' }, { key: 'clamp', label: 'Desk clamp mounts', icon: 'clamp', detail: 'Controls sit at desk height or below; allow for brackets.' }, { key: 'chair_pit', label: 'Chair or cockpit', icon: 'cockpit', detail: 'A dedicated flying position; check plates and bolt patterns.' }] as const;
+  const presets = [150, 350, 750, 1500];
   const normalized = $derived(normalizeWizardAnswers(answers));
   const validBudget = $derived(Number.isFinite(answers.budgetMax) && answers.budgetMax > 0 && answers.budgetMax <= 100000);
-  const canContinue = $derived(step === 1 ? answers.piecesNeeded.length > 0 : step === 2 ? validBudget : step === 3 ? validBudget && answers.piecesNeeded.length > 0 : true);
+  const hasPieces = $derived(answers.piecesNeeded.length > 0);
   const stops = $derived(budgetStops(regionStore.currency));
   const tierLabels = { budget: 'Entry level', mid: 'Mid range', high_end: 'High end', enthusiast: 'Enthusiast' } as const;
-  const mounts = [{ key: 'desk', label: 'Desktop flat base' }, { key: 'clamp', label: 'Desk clamp mounts' }, { key: 'chair_pit', label: 'Chair / sim cockpit' }] as const;
   const compareIds = $derived([...new Set(loadout?.items.map((item) => item.id) ?? [])]);
+  const showSetup = $derived(hasPieces && validBudget && !!loadout?.complete);
+  const flightDeck = $derived(answers.useCase === 'ga' || answers.useCase === 'airliner');
+  const yawNote = $derived(!hasPieces ? 'Choose at least one control.' : answers.hasExistingPedals ? 'Your pedals handle yaw.' : answers.piecesNeeded.includes('pedals') ? 'Pedals handle yaw.' : normalized.needsTwist ? 'No pedals, so the stick must twist for yaw.' : 'Without pedals, yoke rudder triggers or another yaw input stand in.');
+  /** One line of guidance under the controls for the styles whose choice is not obvious. */
+  const controlNote = $derived(answers.useCase === 'airliner' ? 'Boeing and most regional airliners use a yoke, the Airbus family a sidestick; we favour matching replica quadrants.'
+    : answers.useCase === 'ga' ? 'Yoke for Cessna, Piper twins and most tourers; stick for Cubs, Diamonds, Cirrus, gliders and aerobatics.'
+    : answers.useCase === 'heli' && answers.piecesNeeded.includes('collective') ? 'A throttle, left-hand stick or stick throttle axis can stand in for a collective.' : '');
+  /** Per-item warnings collapse to one line each; setup-wide warnings pass through. */
+  const checks = $derived.by(() => {
+    if (!loadout?.complete) return [];
+    const count = (warning: string) => loadout!.pieces.filter((piece) => piece.warnings.includes(warning)).length;
+    const plural = (n: number) => `${n} pick${n === 1 ? '' : 's'}`;
+    const draft = count(DRAFT_SPECS_WARNING), stale = count(STALE_PRICE_WARNING);
+    return [
+      ...(draft ? [`Specifications for ${plural(draft)} are not editor-verified yet.`] : []),
+      ...(stale ? [`Prices for ${plural(stale)} are over 90 days old.`] : []),
+      ...loadout.warnings.filter((warning) => warning !== DRAFT_SPECS_WARNING && warning !== STALE_PRICE_WARNING),
+      ...(compareIds.length < loadout.items.length ? ['Two copies of the same stick count twice in the total and once in compare.'] : []),
+    ];
+  });
   function money(amount: number) { return new Intl.NumberFormat('en', { style: 'currency', currency: regionStore.currency, maximumFractionDigits: 2 }).format(amount); }
   /** Budget figures are whole amounts; item prices keep cents. */
   function budgetMoney(amount: number) { return new Intl.NumberFormat('en', { style: 'currency', currency: regionStore.currency, maximumFractionDigits: 0 }).format(amount); }
+  const styleLabel = (label: string) => label === 'WWII' ? 'Warbird WWII' : label;
+  /**
+   * Specific reasons first, then fit and review scores in short form (a range when a pick has several parts).
+   * The budget-fit reason holds for every pick, so it is left out.
+   */
+  function reasons(explanations: string[]) {
+    const fits: number[] = [], verdicts: number[] = [];
+    let unreviewed = false;
+    const specific = explanations.flatMap((explanation) => {
+      const fit = explanation.match(/Use-case fit for \w+: ([\d.]+)\/5$/), verdict = explanation.match(/Editorial verdict average: ([\d.]+)\/5$/);
+      if (fit) fits.push(Number(fit[1]));
+      else if (verdict) verdicts.push(Number(verdict[1]));
+      else if (/No editorial review yet/.test(explanation)) unreviewed = true;
+      else if (!explanation.includes('fits within the total budget')) return [explanation.replace(/^[+-]\s*/, '')];
+      return [];
+    });
+    const span = (values: number[]) => Math.min(...values) === Math.max(...values) ? `${values[0]}` : `${Math.min(...values)}–${Math.max(...values)}`;
+    return [...new Set(specific), ...(fits.length ? [`Fit ${span(fits)}/5`] : []), ...(verdicts.length ? [`Reviews ${span(verdicts)}/5`] : unreviewed ? ['No review yet'] : [])].join(' · ');
+  }
   function chooseDiscipline(useCase: UseCase) {
     if (answers.useCase !== useCase) answers = normalizeWizardAnswers({ ...answers, useCase, piecesNeeded: defaultPieces(useCase) });
   }
@@ -63,12 +95,8 @@
     const other = primary === 'yoke' ? 'stick' : 'yoke';
     answers = normalizeWizardAnswers({ ...answers, piecesNeeded: [...answers.piecesNeeded.filter((piece) => piece !== other && piece !== primary), primary] });
   }
-  function pieceDescription(piece: WizardPiece) {
-    if (piece === 'second_stick') return 'Left-hand strafe control for HOSAS';
-    if (piece === 'pedals') return 'Dedicated yaw and optional toe brakes';
-    if (piece === 'collective') return 'Helicopter lift lever; a throttle, left-hand stick or stick throttle axis can stand in';
-    if (piece === 'stick' && answers.useCase === 'heli') return 'Cyclic for pitch and roll';
-    return 'Add to your recommended package';
+  function setOwnPedals(owned: boolean) {
+    answers = normalizeWizardAnswers({ ...answers, hasExistingPedals: owned, piecesNeeded: owned ? answers.piecesNeeded.filter((piece) => piece !== 'pedals') : answers.piecesNeeded });
   }
   const pickKey = (ids: WizardPick) => ids.join('~');
   const isPinned = (ids: WizardPick) => pinned.some((pin) => pickKey(pin) === pickKey(ids));
@@ -83,9 +111,9 @@
     }
     return result;
   }
-  /** Recommendations follow the live settings, debounced so a slider drag recomputes once it settles. */
+  /** Recommendations follow the answers, debounced so a slider drag recomputes once it settles. */
   $effect(() => {
-    if (step !== 4 || !validBudget) { updating = false; return; }
+    if (!ready || !validBudget) { updating = false; return; }
     const next = normalized;
     const region = regionStore.region;
     if (!untrack(() => loadout)) { untrack(() => recompute(next, region)); return; }
@@ -93,7 +121,7 @@
     const timer = setTimeout(() => {
       const result = recompute(next, region);
       updating = false; edited = true;
-      liveStatus = result.complete ? `Recommendations updated · ${money(result.totalPrice)}${changed.length ? ` · ${changed.length} pick${changed.length === 1 ? '' : 's'} changed` : ''}` : 'No complete setup fits these settings.';
+      liveStatus = result.complete ? `Setup updated · ${money(result.totalPrice)}${changed.length ? ` · ${changed.length} pick${changed.length === 1 ? '' : 's'} changed` : ''}` : 'No complete setup fits these answers.';
     }, LIVE_DELAY);
     return () => clearTimeout(timer);
   });
@@ -104,17 +132,13 @@
   function unpinAll() {
     pinned = [];
     const result = recompute(normalized, regionStore.region);
-    liveStatus = result.complete ? `Best match for these settings · ${money(result.totalPrice)}` : 'No complete setup fits these settings.';
+    liveStatus = result.complete ? `Best match for these answers · ${money(result.totalPrice)}` : 'No complete setup fits these answers.';
   }
   function setBudgetStop(index: number) { answers.budgetMax = stops[index]; }
-  /** On narrow screens the settings collapse to a summary bar above the results. */
-  let settingsOpen = $state(false);
-  async function focusBudget() { settingsOpen = true; await tick(); budgetSlider?.focus(); }
-  async function goTo(next: number) {
-    if (next > step && !canContinue) return;
-    if (next === 4 && step !== 4) { loadout = null; liveStatus = ''; }
-    step = next; visited = Math.max(visited, next); shareStatus = '';
-    await tick(); heading?.focus();
+  function clearResults() { loadout = null; previous = []; edited = false; changed = []; liveStatus = ''; }
+  function startOver() {
+    answers = normalizeWizardAnswers(); pinned = []; tab = 'match'; shareStatus = ''; shareFallback = '';
+    clearResults();
   }
   onMount(() => {
     regionStore.init();
@@ -123,19 +147,19 @@
       if (isRegion(params.get('region'))) regionStore.setRegion(params.get('region') as 'EU' | 'UK' | 'US');
       answers = deserializeWizardState(params);
       pinned = deserializePicks(params.get('pinned'));
+      clearResults();
       // Links from before pinning carried every pick; use them only to break ties.
       previous = deserializePicks(params.get('picks'));
-      loadout = null; edited = false; changed = []; liveStatus = '';
-      step = params.has('useCase') && answers.piecesNeeded.length > 0 ? 4 : 0;
-      visited = step;
     };
     restore(); ready = true;
     window.addEventListener('popstate', restore);
-    return () => window.removeEventListener('popstate', restore);
+    const observer = new IntersectionObserver(([entry]) => { setupVisible = entry.isIntersecting; }, { threshold: 0.15 });
+    if (setupPanel) observer.observe(setupPanel);
+    return () => { window.removeEventListener('popstate', restore); observer.disconnect(); };
   });
   $effect(() => {
     if (!ready || !validBudget) return;
-    const params = new URLSearchParams(serializeWizardState(normalized, step === 4 ? pinned : []));
+    const params = new URLSearchParams(serializeWizardState(normalized, pinned));
     params.set('region', regionStore.region);
     history.replaceState(history.state, '', `${location.pathname}?${params}${location.hash}`);
   });
@@ -150,329 +174,287 @@
 </script>
 
 <div class="wizard">
-  <nav class="stepper" aria-label="Wizard steps">
-    {#each steps as label, index}
-      <button class:active={step === index} class:done={index < step} disabled={index > visited || (index > step && (!validBudget || answers.piecesNeeded.length === 0))} aria-current={step === index ? 'step' : undefined} onclick={() => goTo(index)}>
-        <span class="number">{String(index + 1).padStart(2, '0')}</span><span>{label}</span>
-      </button>
-    {/each}
-  </nav>
-
-  <div class="workspace">
-    <section class="screen" aria-labelledby="step-heading">
-      <div class="screen-bar"><span>Your setup guide</span><span>{step === 4 ? 'Recommendations ready' : `Step ${step + 1} of 5`}</span></div>
-      <div class="screen-content">
-        <p class="eyebrow">{step === 4 ? 'Made for your kind of flying' : 'A little about your setup'}</p>
-        <h2 id="step-heading" bind:this={heading} tabindex="-1">{['What do you fly?', 'Which controls do you need?', 'What’s your budget?', 'Make room for your setup.', 'Your next setup.'][step]}</h2>
-        {#if step === 0}
-          <p class="intro">Choose your primary flying style. We’ll tailor the controls and explain every recommendation.</p>
-          <div class="choice-grid">
-            {#each useCases as discipline}
-              <button class="choice" class:chosen={answers.useCase === discipline.key} aria-pressed={answers.useCase === discipline.key} onclick={() => chooseDiscipline(discipline.key)}>
-                <span class="choice-art"><HardwareIcon name={aircraftIcons[discipline.key]} size={38} /></span><span class="choice-top"><strong>{discipline.label === 'WWII' ? 'Warbird WWII' : discipline.label}</strong><span aria-hidden="true">{answers.useCase === discipline.key ? '◉' : '○'}</span></span>
-                <span class="description">{descriptions[discipline.key]}</span>
-              </button>
-            {/each}
-          </div>
-          <label class="field" for="sim">Your simulator <span>Optional</span></label>
-          <select id="sim" bind:value={answers.targetSim}><option value="">Any simulation</option>{#each sims as sim}<option value={sim.id}>{sim.label}</option>{/each}{#if answers.targetSim && !sims.some((sim) => sim.id === answers.targetSim)}<option value={answers.targetSim}>{answers.targetSim}</option>{/if}</select>
-          <p class="hint">Recommendations use flying style and hardware specifications; the sim choice is saved with your setup.</p>
-        {:else if step === 1}
-          <p class="intro">Select only the controls you need to buy. Leave out equipment you already own.</p>
-          {#if answers.useCase === 'ga' || answers.useCase === 'airliner'}
-            <fieldset class="primary-control">
-              <legend>Main flight control</legend>
-              <div class="segmented">
-                <button aria-pressed={answers.piecesNeeded.includes('yoke')} onclick={() => choosePrimary('yoke')}>{answers.useCase === 'airliner' ? 'Yoke · Boeing' : 'Yoke'}</button>
-                <button aria-pressed={answers.piecesNeeded.includes('stick') && !answers.piecesNeeded.includes('yoke')} onclick={() => choosePrimary('stick')}>{answers.useCase === 'airliner' ? 'Sidestick · Airbus' : 'Stick'}</button>
-              </div>
-              <p class="hint">{answers.useCase === 'airliner' ? 'Pick the cockpit you fly most: Boeing and most regional airliners use a yoke, the Airbus family a sidestick. Recommendations favour matching replica quadrants.' : 'Yoke for Cessna, Piper twins and most tourers; stick for Cubs, Diamonds, Cirrus, gliders and aerobatic aircraft.'} Without pedals, a yoke with rudder triggers or a twist stick can cover yaw on a tighter budget.</p>
-            </fieldset>
-          {/if}
-          <div class="choice-grid">
-            {#each PIECES as piece}
-              <button class="choice" class:chosen={answers.piecesNeeded.includes(piece)} aria-pressed={answers.piecesNeeded.includes(piece)} onclick={() => togglePiece(piece)}><span class="choice-art"><HardwareIcon name={pieceIcons[piece]} size={38} /></span><span class="choice-top"><strong>{label(piece)}</strong><span aria-hidden="true">{answers.piecesNeeded.includes(piece) ? '☑' : '□'}</span></span><span class="description">{pieceDescription(piece)}</span></button>
-            {/each}
-          </div>
-          {#if !answers.piecesNeeded.length}<p class="notice">Choose at least one control to continue.</p>{/if}
-          {#if normalized.needsTwist}<p class="notice">Without pedals, you’ll need a stick with twist for yaw control. Tell us about pedals you already own in the Your space step.</p>{/if}
-        {:else if step === 2}
-          <p class="intro">Your total hardware budget in {regionStore.currency}. Change region in the navigation to use local prices.</p>
-          <label class="field" for="budget">Total budget · {regionStore.currency}</label>
-          <div class="budget-input"><span>{regionStore.currency}</span><input id="budget" type="number" min="1" max="100000" step="any" bind:value={answers.budgetMax} aria-invalid={!validBudget} /></div>
-          <div class="presets">{#each [150, 350, 750, 1500] as preset}<button class:chosen={answers.budgetMax === preset} onclick={() => answers.budgetMax = preset}>{money(preset)}{preset === 1500 ? '+' : ''}</button>{/each}</div>
-          {#if !validBudget}<p class="notice">Enter a budget between 1 and 100,000.</p>{/if}
-          <p class="hint">Use the field for budgets above 1,500. Totals use listed regional prices; shipping, import charges and separate mounts are excluded. Tax treatment follows each store’s listing.</p>
-        {:else if step === 3}
-          <p class="intro">Pick where your controls will live. Allow room for mounts and check that they fit your desk or cockpit.</p>
-          <div class="mounts">
-            {#each [{ key: 'desk', title: 'Desktop flat base', detail: 'Controls sit on the desk. Check base plates and stability.' }, { key: 'clamp', title: 'Desk clamp mounts', detail: 'Controls sit at desk height or below. Allow for brackets.' }, { key: 'chair_pit', title: 'Chair / sim cockpit', detail: 'A dedicated flying position. Check plates and bolt patterns.' }] as mount}
-              <button class="choice" class:chosen={answers.mountType === mount.key} aria-pressed={answers.mountType === mount.key} onclick={() => answers.mountType = mount.key as WizardAnswers['mountType']}><span class="choice-art"><HardwareIcon name={mountIcons[mount.key]} size={38} /></span><span class="choice-top"><strong>{mount.title}</strong><span aria-hidden="true">{answers.mountType === mount.key ? '◉' : '○'}</span></span><span class="description">{mount.detail}</span></button>
-            {/each}
-          </div>
-          <label class="pedal-toggle"><input type="checkbox" checked={answers.piecesNeeded.includes('pedals')} onchange={() => togglePiece('pedals')} /><span><strong>Include rudder pedals in this purchase</strong><small>Dedicated yaw control; their price is included in the budget.</small></span></label>
-          <label class="pedal-toggle"><input type="checkbox" checked={answers.hasExistingPedals ?? false} onchange={(event) => answers = normalizeWizardAnswers({ ...answers, hasExistingPedals: event.currentTarget.checked, piecesNeeded: event.currentTarget.checked ? answers.piecesNeeded.filter((piece) => piece !== 'pedals') : answers.piecesNeeded })} /><span><strong>I already own pedals</strong><small>Keep their yaw control without spending this budget on another set.</small></span></label>
-          <p class="notice">{normalized.needsTwist ? 'No pedals selected → a stick must provide twist yaw.' : answers.piecesNeeded.includes('pedals') || answers.hasExistingPedals ? 'Pedal yaw available → a twist axis is optional.' : 'Yoke-only configurations may need existing pedals or another yaw input.'}</p>
-          {#if !answers.piecesNeeded.length}<p class="notice">No new controls selected. Return to Controls to choose the equipment you want to buy.</p>{/if}
-        {:else}
-          <p class="intro">Start with a curated reference setup, then explore a custom recommendation based on the controls you chose and your regional budget.</p>
-          <div class="result-title"><h3>Curated reference setup</h3><button class="text-button" onclick={focusBudget}>Adjust budget</button></div>
-          {#each curated as setup}
-            <article class="reference">
-              <p class="eyebrow">{#if setup.data.pick}<strong class="pick">Our pick</strong> · {/if}{setup.data.budget_tier.replaceAll('_', ' ')} / {regionStore.region}</p><h3>{setup.data.title}</h3><p>{setup.data.description}</p><p class="reason">{setup.data.reasoning}</p>
-              <ul>{#each setup.included as included}<li>{#if included.item}{@const photo = productImageSrc(included.item.images[0]?.file)}<span class="gear">{#if photo}<img src={photo} alt="" />{/if}<span><a href={detailHref(included.item)}>{included.item.name}</a><small>{included.role}</small></span></span>{:else}{included.id} (not in catalog)<small>{included.role}</small>{/if}</li>{/each}</ul>
-              <p class="reference-price">{setup.totalPrice === null ? 'Regional total unavailable' : money(setup.totalPrice)} <span>{setup.totalPrice === null ? '· One or more prices missing' : setup.withinBudget ? '· Listed items within budget' : '· Above selected budget'}</span></p>
-              {#each setup.warnings as warning}<p class="notice">{warning}</p>{/each}
-              <p class="hint">Reference setups may include different controls from your selection. Check completeness, yaw control and mount requirements before buying.</p>
-              {#if setup.data.notes}<p class="hint">{setup.data.notes}</p>{/if}
-            </article>
-          {:else}
-            <div class="empty">No curated reference is published for this flying style and budget tier yet. Your custom match is below.</div>
-          {/each}
-          <div class="result-title"><h3>Your custom recommendation</h3><span>Based on your control selection</span></div>
-          {#if loadout?.dropped.length}
-            <div class="notice dropped" role="note"><strong>Pinned picks that don't fit these settings</strong>
-              <ul>{#each loadout.dropped as pick}<li><span>{pick.items.map((item) => item.name).join(' + ') || pick.ids.join(' + ')}</span> <small>{pick.reason} It comes back if the settings allow it again.</small><button class="text-button" onclick={() => togglePin(pick.ids)}>Unpin</button></li>{/each}</ul>
-            </div>
-          {/if}
-          {#if loadout}
-            {#if loadout.complete}
-              {#if loadout.overBudget !== undefined}
-                <p class="notice over-budget"><strong>{money(loadout.overBudget)} over your budget.</strong> Nothing we recommend for these controls fits {budgetMoney(answers.budgetMax)}, so this is the setup we would recommend if you can stretch it.</p>
-              {:else}
-                <p class="success">All selected controls fit within your regional budget.</p>
-              {/if}
-              {#each loadout.pieces as piece, index}
-                {@const ids = piece.items.map((item) => item.id)}
-                <article class="piece" class:pinned={piece.pinned}><div class="piece-heading"><span class="eyebrow">{String(index + 1).padStart(2, '0')} / {piece.roles.map((role) => label(role) + (piece.standIns.includes(role) ? ' (stand-in)' : '')).join(' + ')}{#if piece.items.length > 1}<span class="badge">{piece.items.length} parts, bought separately</span>{/if}{#if edited && changed.includes(pickKey(ids))}<span class="badge">Changed</span>{/if}</span><span class="piece-meta"><strong>{money(piece.price)}</strong><button class="pin" aria-pressed={!!piece.pinned} title={piece.pinned ? 'Unpin: let this pick change with your settings' : 'Pin: keep this pick while it fits your settings'} onclick={() => togglePin(ids)}>{piece.pinned ? 'Pinned' : 'Pin'}</button></span></div>
-                  {#each piece.items as item}{@const photo = productImageSrc(item.images[0]?.file)}<div class="piece-product">{#if photo}<img src={photo} alt="" />{/if}<div>{#if piece.items.length > 1}<span class="part">{itemCategoryLabel(item)}</span>{/if}<h3><a href={detailHref(item)}>{item.name} ↗</a></h3></div></div>{/each}
-                  <ul class="pills">{#each piece.explanations as explanation}<li>{explanation}</li>{/each}</ul>
-                </article>
-              {/each}
-              <dl class="totals"><div><dt>Setup total</dt><dd>{money(loadout.totalPrice)}</dd></div><div><dt>Estimated logical inputs</dt><dd>{loadout.totalLogicalButtons}</dd></div><div><dt>Analog axes</dt><dd>{loadout.totalAxes}</dd></div></dl>
-              <p class="hint">Listed {regionStore.region} prices; tax treatment varies by store. Shipping and separate mounts excluded. Two copies of the same ambidextrous stick count twice in totals and once in compare.</p>
-              {#if compareIds.length <= MAX_COMPARE_ITEMS}<a class="primary action-link" href={`/compare?${new URLSearchParams({ items: compareIds.join(',') })}`}>Compare this setup ↗</a>{:else}<p class="notice">This package has {compareIds.length} distinct products. Compare supports four at a time:</p><div class="presets">{#each Array.from({ length: Math.ceil(compareIds.length / MAX_COMPARE_ITEMS) }, (_, index) => index) as batch}<a href={`/compare?${new URLSearchParams({ items: compareIds.slice(batch * MAX_COMPARE_ITEMS, (batch + 1) * MAX_COMPARE_ITEMS).join(',') })}`}>Compare setup · part {batch + 1} ↗</a>{/each}</div>{/if}
-            {/if}
-            {#each loadout.warnings as warning}<p class="notice">{warning}</p>{/each}
-          {/if}
-          <div class="result-actions"><button class="primary" onclick={copyShareLink}>Copy share link</button><button onclick={() => goTo(0)}>Walk through the steps again</button></div>
-          <p role="status" class="hint">{shareStatus}</p>{#if shareFallback}<label class="field" for="share-url">Share URL</label><input id="share-url" readonly value={shareFallback} onclick={(event) => event.currentTarget.select()} />{/if}
-        {/if}
+  <section class="answers" aria-label="Your answers">
+    <div class="row">
+      <h2 class="label" id="q-style"><span>01</span>What you fly</h2>
+      <div class="control tiles" role="group" aria-labelledby="q-style">
+        {#each useCases as discipline}
+          <button class="tile" aria-pressed={answers.useCase === discipline.key} onclick={() => chooseDiscipline(discipline.key)}><HardwareIcon name={aircraftIcons[discipline.key]} size={30} /><span>{styleLabel(discipline.label)}</span></button>
+        {/each}
       </div>
-      {#if step < 4}<div class="screen-footer"><button disabled={step === 0} onclick={() => goTo(step - 1)}>← Back</button><span>{String(step + 1).padStart(2, '0')} / 05</span><button class="primary" disabled={!canContinue} onclick={() => goTo(step + 1)}>{step === 3 ? 'See recommendations' : 'Continue'} →</button></div>{/if}
-    </section>
-    {#if step === 4}
-      <aside class="manifest settings" class:open={settingsOpen} aria-labelledby="settings-heading">
-        <button class="settings-toggle" aria-expanded={settingsOpen} aria-controls="settings-body" onclick={() => settingsOpen = !settingsOpen}>
-          <span><strong>Adjust your setup</strong><small>{validBudget ? budgetMoney(answers.budgetMax) : 'No budget'} · {useCases.find((useCase) => useCase.key === answers.useCase)?.label} · {answers.piecesNeeded.length} control{answers.piecesNeeded.length === 1 ? '' : 's'}</small></span><span aria-hidden="true">{settingsOpen ? '▴' : '▾'}</span>
-        </button>
-        <div id="settings-body" class="settings-body">
-        <p class="eyebrow">Live settings</p>
-        <h3 id="settings-heading">Adjust your setup</h3>
-        <p class="setting-note">Results re-optimise as you change these. Pin a pick to keep it while it fits.</p>
-        <div class="setting">
-          <label for="budget-slider" class="setting-label">Total budget <span>{regionStore.currency}</span></label>
-          <p class="budget-readout"><strong>{validBudget ? budgetMoney(answers.budgetMax) : 'Set a budget'}</strong>{#if validBudget}<span>{tierLabels[budgetTier(answers.budgetMax)]}</span>{/if}</p>
-          <input id="budget-slider" class="slider" type="range" min="0" max={stops.length - 1} step="1" bind:this={budgetSlider}
+    </div>
+
+    <div class="row">
+      <h2 class="label" id="q-controls"><span>02</span>Controls to buy</h2>
+      <div class="control">
+        {#if flightDeck}
+          <div class="primary-control" role="group" aria-label="Main flight control">
+            <span>Main control</span>
+            <button class="chip" aria-pressed={answers.piecesNeeded.includes('yoke')} onclick={() => choosePrimary('yoke')}>{answers.useCase === 'airliner' ? 'Yoke · Boeing' : 'Yoke'}</button>
+            <button class="chip" aria-pressed={answers.piecesNeeded.includes('stick') && !answers.piecesNeeded.includes('yoke')} onclick={() => choosePrimary('stick')}>{answers.useCase === 'airliner' ? 'Sidestick · Airbus' : 'Stick'}</button>
+          </div>
+        {/if}
+        <div class="toggles" role="group" aria-labelledby="q-controls">
+          {#each PIECES as piece}
+            <button class="toggle" aria-pressed={answers.piecesNeeded.includes(piece)} onclick={() => togglePiece(piece)}><HardwareIcon name={pieceIcons[piece]} size={24} /><span>{label(piece)}</span><span class="box" aria-hidden="true"></span></button>
+          {/each}
+        </div>
+        {#if controlNote}<p class="line">{controlNote}</p>{/if}
+        <div class="line">
+          <label class="check"><input type="checkbox" checked={answers.hasExistingPedals ?? false} onchange={(event) => setOwnPedals(event.currentTarget.checked)} />I already own pedals</label>
+          <span class:alert={!hasPieces}>{yawNote}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <h2 class="label" id="q-budget"><span>03</span>Budget</h2>
+      <div class="control">
+        <div class="budget">
+          <p class="readout"><strong>{validBudget ? budgetMoney(answers.budgetMax) : '–'}</strong><span class:alert={!validBudget}>{validBudget ? tierLabels[budgetTier(answers.budgetMax)] : 'Enter 1 to 100,000'}</span></p>
+          <input class="slider" type="range" min="0" max={stops.length - 1} step="1" aria-labelledby="q-budget"
             value={nearestBudgetStop(stops, validBudget ? answers.budgetMax : stops[0])} aria-valuetext={validBudget ? `${budgetMoney(answers.budgetMax)}, ${tierLabels[budgetTier(answers.budgetMax)]}` : 'No budget set'}
             oninput={(event) => setBudgetStop(Number(event.currentTarget.value))} />
-          <div class="slider-scale" aria-hidden="true"><span>{budgetMoney(stops[0])}</span><span>{budgetMoney(stops[stops.length - 1])}+</span></div>
-          <label class="exact" for="budget-exact">Exact amount<input id="budget-exact" type="number" min="1" max="100000" step="any" bind:value={answers.budgetMax} aria-invalid={!validBudget} /></label>
-          {#if !validBudget}<p class="notice">Enter a budget between 1 and 100,000.</p>{/if}
+          <label class="exact">Exact <span class="exact-field"><span>{regionStore.currency}</span><input type="number" min="1" max="100000" step="any" bind:value={answers.budgetMax} aria-invalid={!validBudget} /></span></label>
         </div>
-        <div class="setting">
-          <label for="setting-style" class="setting-label">Flying style</label>
-          <select id="setting-style" value={answers.useCase} onchange={(event) => chooseDiscipline(event.currentTarget.value as UseCase)}>{#each useCases as discipline}<option value={discipline.key}>{discipline.label === 'WWII' ? 'Warbird WWII' : discipline.label}</option>{/each}</select>
-          <p class="setting-note">Resets controls to the usual set for that style.</p>
+        <div class="line">
+          {#each presets as preset}<button class="chip" aria-pressed={answers.budgetMax === preset} onclick={() => answers.budgetMax = preset}>{budgetMoney(preset)}</button>{/each}
+          <span>Listed {regionStore.region} prices; shipping and mounts not included.</span>
         </div>
-        <fieldset class="setting">
-          <legend class="setting-label">Controls to buy</legend>
-          <div class="piece-toggles">{#each PIECES as piece}<label><input type="checkbox" checked={answers.piecesNeeded.includes(piece)} onchange={() => togglePiece(piece)} />{label(piece)}</label>{/each}</div>
-          <label class="owned"><input type="checkbox" checked={answers.hasExistingPedals ?? false} onchange={(event) => answers = normalizeWizardAnswers({ ...answers, hasExistingPedals: event.currentTarget.checked, piecesNeeded: event.currentTarget.checked ? answers.piecesNeeded.filter((piece) => piece !== 'pedals') : answers.piecesNeeded })} />I already own pedals</label>
-          {#if !answers.piecesNeeded.length}<p class="notice">Choose at least one control.</p>{:else if normalized.needsTwist}<p class="setting-note">No pedals, so the stick must provide twist yaw.</p>{/if}
-        </fieldset>
-        <div class="setting">
-          <label for="setting-mount" class="setting-label">Your space</label>
-          <select id="setting-mount" bind:value={answers.mountType}>{#each mounts as mount}<option value={mount.key}>{mount.label}</option>{/each}</select>
+      </div>
+    </div>
+
+    <div class="row">
+      <h2 class="label" id="q-space"><span>04</span>Your space</h2>
+      <div class="control">
+        <div class="mounts" role="group" aria-labelledby="q-space">
+          {#each mounts as mount}
+            <button class="mount" aria-pressed={answers.mountType === mount.key} onclick={() => answers.mountType = mount.key}><HardwareIcon name={mount.icon} size={24} /><span>{mount.label}</span></button>
+          {/each}
         </div>
-        {#if pinned.length}
-          <button class="reset" onclick={unpinAll} disabled={updating || !validBudget || !answers.piecesNeeded.length}>Unpin all ({pinned.length})</button>
-          <p class="setting-note">Pinned picks stay through setting changes while they fit; everything else re-optimises.</p>
+        <p class="line">{mounts.find((mount) => mount.key === answers.mountType)?.detail}</p>
+      </div>
+    </div>
+  </section>
+
+  <aside class="setup" id="setup" aria-labelledby="setup-heading" bind:this={setupPanel}>
+    <h2 id="setup-heading" class="visually-hidden">Your setup</h2>
+    <div class="tabs" role="tablist" aria-label="Setup source">
+      <button role="tab" id="tab-match" aria-selected={tab === 'match'} aria-controls="panel-match" onclick={() => tab = 'match'}>Best match</button>
+      <button role="tab" id="tab-curated" aria-selected={tab === 'curated'} aria-controls="panel-curated" onclick={() => tab = 'curated'}>Editor's pick{curated.length ? ` (${curated.length})` : ''}</button>
+    </div>
+    <p class="visually-hidden" role="status" aria-live="polite">{updating ? 'Updating your setup…' : liveStatus}</p>
+
+    {#if tab === 'match'}
+      <div id="panel-match" role="tabpanel" aria-labelledby="tab-match" class="panel" class:updating>
+        {#if loadout?.dropped.length}
+          <div class="dropped" role="note"><strong>Pinned picks that no longer fit</strong>
+            <ul>{#each loadout.dropped as pick}<li><span>{pick.items.map((item) => item.name).join(' + ') || pick.ids.join(' + ')}</span> <small>{pick.reason} It comes back if your answers allow it again.</small> <button class="text-button" onclick={() => togglePin(pick.ids)}>Unpin</button></li>{/each}</ul>
+          </div>
         {/if}
-        </div>
-        <p class="live-status" role="status" aria-live="polite">{updating ? 'Updating recommendations…' : liveStatus}</p>
-      </aside>
+        {#if !hasPieces}
+          <p class="empty">Choose at least one control to see a setup.</p>
+        {:else if !validBudget}
+          <p class="empty">Enter a budget to see a setup.</p>
+        {:else if loadout?.complete}
+          {#if loadout.overBudget !== undefined}
+            <p class="over-budget"><strong>{money(loadout.overBudget)} over your budget.</strong> Nothing we recommend for these controls fits {budgetMoney(answers.budgetMax)}; this is the setup to stretch for.</p>
+          {/if}
+          <ul class="picks">
+            {#each loadout.pieces as piece}
+              {@const ids = piece.items.map((item) => item.id)}
+              {@const photo = productImageSrc(piece.items[0]?.images[0]?.file)}
+              <li class="pick" class:pinned={piece.pinned}>
+                <span class="thumb">{#if photo}<img src={photo} alt="" />{:else}<HardwareIcon name={pieceIcons[piece.roles[0]]} size={26} />{/if}</span>
+                <div class="pick-body">
+                  <p class="role">{piece.roles.map((role) => label(role) + (piece.standIns.includes(role) ? ' (stand-in)' : '')).join(' + ')}{#if piece.items.length > 1}<span class="badge">{piece.items.length} parts, bought separately</span>{/if}{#if edited && changed.includes(pickKey(ids))}<span class="badge">Changed</span>{/if}</p>
+                  {#each piece.items as item}<a class="name" href={detailHref(item)}>{#if piece.items.length > 1}<span class="part">{itemCategoryLabel(item)}</span>{/if}{item.name}</a>{/each}
+                  {#if reasons(piece.explanations)}<p class="why">{reasons(piece.explanations)}</p>{/if}
+                </div>
+                <div class="pick-side">
+                  <strong>{money(piece.price)}</strong>
+                  <button class="pin" aria-pressed={!!piece.pinned} aria-label={`${piece.pinned ? 'Unpin' : 'Pin'} ${piece.items.map((item) => item.name).join(' + ')}`} title={piece.pinned ? 'Unpin: let this pick change with your answers' : 'Pin: keep this pick while it fits your answers'} onclick={() => togglePin(ids)}>{piece.pinned ? 'Pinned' : 'Pin'}</button>
+                </div>
+              </li>
+            {/each}
+          </ul>
+          <div class="total">
+            <p><span>Setup total</span><strong>{money(loadout.totalPrice)}</strong></p>
+            <div class="meter" class:over={loadout.overBudget !== undefined} aria-hidden="true"><span style:width={`${Math.min(100, loadout.totalPrice / answers.budgetMax * 100)}%`}></span></div>
+            <p class="budget-line"><span>{loadout.overBudget !== undefined ? `${budgetMoney(loadout.overBudget)} over ${budgetMoney(answers.budgetMax)}` : `${budgetMoney(answers.budgetMax - loadout.totalPrice)} left of ${budgetMoney(answers.budgetMax)}`}</span><span>≈ {loadout.totalLogicalButtons} inputs · {loadout.totalAxes} axes</span></p>
+            {#if compareIds.length <= MAX_COMPARE_ITEMS}
+              <a class="primary" href={`/compare?${new URLSearchParams({ items: compareIds.join(',') })}`}>Compare {compareIds.length === 1 ? 'this pick' : `these ${compareIds.length}`} side by side</a>
+            {:else}
+              <div class="compare-parts">{#each Array.from({ length: Math.ceil(compareIds.length / MAX_COMPARE_ITEMS) }, (_, index) => index) as batch}<a class="primary" href={`/compare?${new URLSearchParams({ items: compareIds.slice(batch * MAX_COMPARE_ITEMS, (batch + 1) * MAX_COMPARE_ITEMS).join(',') })}`}>Compare part {batch + 1}</a>{/each}</div>
+            {/if}
+            {#if pinned.length}<button class="text-button" onclick={unpinAll} disabled={updating}>Unpin all ({pinned.length})</button>{/if}
+          </div>
+          {#if checks.length}
+            <details class="checks">
+              <summary>{checks.length} thing{checks.length === 1 ? '' : 's'} to check before buying</summary>
+              <ul>{#each checks as check}<li>{check}</li>{/each}</ul>
+            </details>
+          {/if}
+        {:else if loadout}
+          {#each loadout.warnings.slice(0, 1) as warning}<p class="empty alert">{warning}</p>{/each}
+        {/if}
+      </div>
     {:else}
-    <aside class="manifest" aria-label="Your setup summary"><p class="eyebrow">Your setup at a glance</p><div class="summary-art" aria-hidden="true"><HardwareIcon name={aircraftIcons[answers.useCase]} size={58} /></div><h3>{useCases.find((useCase) => useCase.key === answers.useCase)?.label}</h3><p class="hint">{answers.targetSim ? sims.find((sim) => sim.id === answers.targetSim)?.label ?? answers.targetSim : 'Simulation independent'}</p><dl><div><dt>Controls to buy</dt><dd>{answers.piecesNeeded.map((piece) => label(piece)).join(' / ') || 'None selected'}</dd></div><div><dt>Your budget</dt><dd>{validBudget ? money(answers.budgetMax) : 'Set a budget'} <small>{regionStore.region}</small></dd></div><div><dt>Your space</dt><dd>{answers.mountType === 'desk' ? 'Desktop' : answers.mountType === 'clamp' ? 'Desk mounts' : 'Chair / cockpit'}</dd></div><div><dt>Yaw control</dt><dd>{answers.hasExistingPedals ? 'Existing pedals' : answers.piecesNeeded.includes('pedals') ? 'Dedicated pedals' : normalized.needsTwist ? 'Stick twist required' : 'Existing / external input'}</dd></div></dl><p class="manifest-note">Recommendations explained.<br />Prices for your region.<br />A setup that fits you.</p></aside>
+      <div id="panel-curated" role="tabpanel" aria-labelledby="tab-curated" class="panel">
+        {#each curated as setup}
+          <article class="reference">
+            <p class="role">{#if setup.data.pick}<strong>Our pick</strong> · {/if}{tierLabels[setup.data.budget_tier]}</p>
+            <h3>{setup.data.title}</h3>
+            <p class="why">{setup.data.description}</p>
+            <ul class="picks">{#each setup.included as included}{@const photo = included.item ? productImageSrc(included.item.images[0]?.file) : null}<li class="pick"><span class="thumb">{#if photo}<img src={photo} alt="" />{/if}</span><div class="pick-body"><p class="role">{included.role}</p>{#if included.item}<a class="name" href={detailHref(included.item)}>{included.item.name}</a>{:else}<span class="name">{included.id} (not in catalog)</span>{/if}</div></li>{/each}</ul>
+            <p class="reference-total"><span>{setup.totalPrice === null ? 'Total unavailable: a price is missing' : setup.withinBudget ? 'Within your budget' : 'Above your budget'}</span>{#if setup.totalPrice !== null}<strong>{money(setup.totalPrice)}</strong>{/if}</p>
+            <p class="note">{setup.data.reasoning}{setup.data.notes ? ` ${setup.data.notes}` : ''}</p>
+            {#each setup.warnings as warning}<p class="note alert">{warning}</p>{/each}
+          </article>
+        {:else}
+          <p class="empty">No editor's pick for this flying style at this budget yet. Best match builds one from your answers.</p>
+        {/each}
+        {#if curated.length}<p class="note">Editor's picks may include different controls from the ones you chose.</p>{/if}
+      </div>
     {/if}
-  </div>
+
+    <div class="share">
+      <button onclick={copyShareLink}>Copy share link</button>
+      <button class="text-button" onclick={startOver}>Start over</button>
+      <p role="status" class="note">{shareStatus}</p>
+      {#if shareFallback}<input aria-label="Share URL" readonly value={shareFallback} onclick={(event) => event.currentTarget.select()} />{/if}
+    </div>
+  </aside>
+
+  {#if showSetup && loadout}
+    <a class="setup-bar" class:hidden={setupVisible} href="#setup"><span><strong>{money(loadout.totalPrice)}</strong><small>{loadout.pieces.length} pick{loadout.pieces.length === 1 ? '' : 's'} · {loadout.overBudget !== undefined ? `${budgetMoney(loadout.overBudget)} over budget` : `${budgetMoney(answers.budgetMax - loadout.totalPrice)} left`}</small></span><span class="go">See setup</span></a>
+  {/if}
 </div>
 
 <style>
-  .wizard { margin-block: 2rem 3rem; color: var(--color-ink); font: 1rem/1.6 var(--font-sans); }
-  button, select, input, .presets a { font: inherit; color: var(--color-ink); background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: 3px; }
-  button, .presets a { cursor: pointer; padding: .75rem 1rem; min-height: 44px; }
-  button:hover, .presets a:hover { border-color: var(--color-accent); }
+  .wizard { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 1.25rem; margin-block: 1.25rem 3rem; color: var(--color-ink); font: .9375rem/1.5 var(--font-sans); }
+  button, input { font: inherit; color: var(--color-ink); background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: 3px; }
+  button { cursor: pointer; }
+  button:hover { border-color: var(--color-accent); }
   button:disabled { cursor: not-allowed; opacity: .55; }
-  button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 3px; }
-  button.chosen, .choice.chosen { border-color: var(--color-accent); background: color-mix(in srgb, var(--color-accent) 7%, var(--color-surface)); box-shadow: inset 3px 0 var(--color-accent); }
-  .primary { background: var(--color-accent); color: var(--color-paper); border-color: var(--color-accent); font-weight: 700; }
-  .primary:hover { background: color-mix(in srgb, var(--color-accent) 88%, var(--color-ink)); }
-  .stepper { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin-bottom: 1.5rem; border-block: 1px solid var(--color-rule); }
-  .stepper button { display: flex; align-items: center; gap: .65rem; text-align: left; border: 0; border-bottom: 3px solid transparent; border-radius: 0; padding: 1rem .8rem; font-size: .875rem; background: transparent; overflow-wrap: anywhere; }
-  .number { color: var(--color-muted); font-size: .875rem; }
-  .stepper .active { border-bottom-color: var(--color-accent); color: var(--color-accent); font-weight: 700; }
-  .active .number, .done .number { color: var(--color-accent); }
-  .workspace { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 1.5rem; align-items: start; }
-  .screen, .manifest { min-width: 0; background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: 3px; }
-  .screen-bar { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem 1rem; padding: .85rem 2rem; border-bottom: 1px solid var(--color-rule); font-size: .8125rem; color: var(--color-muted); }
-  .screen-content { padding: 2rem; min-height: 510px; }
-  .eyebrow { color: var(--color-accent); font-size: .8125rem; font-weight: 600; margin: 0 0 .6rem; }
-  h2 { font: 600 clamp(2rem, 4vw, 3rem)/1.05 var(--font-display); text-transform: uppercase; margin: .5rem 0 1rem; letter-spacing: .01em; }
-  h2:focus { outline: none; }
-  .intro { color: var(--color-muted); font-size: 1rem; margin-bottom: 1.75rem; max-width: 65ch; }
-  .choice-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem; }
-  .choice { padding: 1.2rem; text-align: left; min-width: 0; }
-  .choice-art { display: flex; align-items: center; margin-bottom: 1rem; color: var(--color-ink); }
-  .chosen .choice-art, .choice:hover .choice-art { color: var(--color-accent); }
-  .choice-top { display: flex; justify-content: space-between; align-items: start; gap: .75rem; }
-  .choice-top strong { font-size: 1rem; font-weight: 700; }
-  .chosen .choice-top > span { color: var(--color-accent); }
-  .description { display: block; color: var(--color-muted); font-size: .875rem; margin-top: .5rem; line-height: 1.6; }
-  .field { display: block; margin: 1.75rem 0 .6rem; font-size: .9375rem; font-weight: 600; }
-  .field span { font-size: .8125rem; color: var(--color-muted); margin-left: .5rem; font-weight: 400; }
-  select, input:not([type='checkbox']) { padding: .9rem; width: 100%; min-width: 0; }
-  .hint { font-size: .875rem; color: var(--color-muted); line-height: 1.7; }
-  .notice { border-left: 3px solid var(--color-accent); padding: .85rem 1rem; background: var(--color-paper); font-size: .875rem; line-height: 1.65; margin-block: 1rem; }
-  .budget-input { display: flex; align-items: center; border: 1px solid var(--color-rule); border-bottom: 2px solid var(--color-accent); background: var(--color-paper); }
-  .budget-input span { padding-left: 1rem; color: var(--color-accent); font-weight: 600; }
-  .budget-input input { font-size: 2rem; border: 0; background: transparent; }
-  .primary-control { border: 0; padding: 0; margin: 0 0 1.5rem; }
-  .primary-control legend { font-size: .9375rem; font-weight: 600; margin-bottom: .6rem; }
-  .segmented { display: flex; gap: .6rem; }
-  .segmented button[aria-pressed='true'] { border-color: var(--color-accent); background: color-mix(in srgb, var(--color-accent) 7%, var(--color-surface)); box-shadow: inset 3px 0 var(--color-accent); }
-  .presets { display: flex; flex-wrap: wrap; gap: .6rem; margin-block: 1.25rem; }
-  .presets button, .presets a { font-size: .875rem; text-decoration: none; }
-  .mounts { display: grid; gap: .85rem; }
-  .pedal-toggle { display: flex; gap: .8rem; padding: 1.2rem 0 .5rem; align-items: start; font-size: .9375rem; cursor: pointer; }
-  input[type='checkbox'] { accent-color: var(--color-accent); width: 1.2rem; height: 1.2rem; flex: none; margin-top: .2rem; }
-  .pedal-toggle small { display: block; font-size: .875rem; color: var(--color-muted); margin-top: .35rem; }
-  .screen-footer { border-top: 1px solid var(--color-rule); padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; gap: .75rem; }
-  .screen-footer > span { font-size: .8125rem; color: var(--color-muted); white-space: nowrap; }
-  .screen-footer button { font-size: .9375rem; }
-  .manifest { padding: 1.5rem; border-top: 4px solid var(--color-accent); }
-  .summary-art { margin: 1.25rem 0; padding: 1.5rem; display: grid; place-items: center; background: var(--color-photo); color: var(--color-ink); border: 6px solid var(--color-paper); outline: 1px solid var(--color-rule); }
-  h3 { margin: .7rem 0; font: 600 1.125rem/1.4 var(--font-sans); }
-  .manifest h3, .reference > h3, .result-title h3 { font: 600 1.75rem/1.1 var(--font-display); text-transform: uppercase; letter-spacing: .01em; }
-  .manifest dl > div { border-top: 1px solid var(--color-rule); padding-block: .9rem; }
-  dt { color: var(--color-muted); font-size: .8125rem; }
-  dd { margin: .3rem 0 0; font-size: .9375rem; overflow-wrap: anywhere; }
-  dd small { color: var(--color-accent); font-size: .8125rem; }
-  .manifest-note { font-size: .875rem; line-height: 1.9; color: var(--color-muted); border-top: 1px solid var(--color-rule); padding-top: 1rem; }
-  .result-title { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .75rem; align-items: center; margin: 2rem 0 1rem; }
-  .result-title h3 { margin: 0; }
-  .result-title > span { font-size: .8125rem; color: var(--color-muted); }
-  .text-button { padding: .4rem 0; font-size: .875rem; border: 0; color: var(--color-accent); background: transparent; text-decoration: underline; text-underline-offset: .2em; }
-  .reference { padding: 1.5rem; border: 1px solid var(--color-rule); border-top: 3px solid var(--color-accent); background: var(--color-paper); }
-  .reference p, .reference ul { font-size: .9375rem; }
-  .reference .reason { color: var(--color-muted); line-height: 1.8; }
-  .reference ul { padding-left: 0; list-style: none; }
-  .reference li { margin: .85rem 0; }
-  .gear, .piece-product { display: flex; align-items: center; gap: 1rem; min-width: 0; }
-  .gear > span { min-width: 0; }
-  .gear a, .piece h3 a { overflow-wrap: anywhere; }
-  .gear img, .piece-product img { width: 76px; height: 76px; object-fit: contain; background: var(--color-photo); border: 4px solid var(--color-surface); flex: none; }
-  .reference li small { display: block; color: var(--color-muted); margin-top: .25rem; font-size: .8125rem; }
-  .reference-price { color: var(--color-accent); font-weight: 700; }
-  .reference-price span { color: var(--color-muted); font-size: .875rem; font-weight: 400; }
-  .empty { padding: 1.25rem; border: 1px dashed var(--color-rule); font-size: .9375rem; color: var(--color-muted); }
-  .piece { border: 1px solid var(--color-rule); padding: 1.25rem; margin-bottom: 1rem; background: var(--color-surface); }
-  .piece-heading { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: .5rem 1rem; margin-bottom: .8rem; }
-  .piece-heading .eyebrow { margin: 0; }
-  .piece-heading > strong { font-size: 1rem; white-space: nowrap; }
-  .piece h3 { font-size: 1rem; margin: 0; }
-  .piece .part { display: block; font-size: .75rem; color: var(--color-muted); }
-  .piece-product + .piece-product { margin-top: .75rem; }
-  .piece h3 a { text-decoration: none; }
-  .piece h3 a:hover { color: var(--color-accent); text-decoration: underline; }
-  .pills { display: flex; flex-wrap: wrap; list-style: none; gap: .5rem; padding: 0; margin: 1rem 0 0; }
-  .pills li { background: var(--color-paper); border: 1px solid var(--color-rule); border-radius: 2px; padding: .4rem .6rem; font-size: .8125rem; line-height: 1.6; color: var(--color-muted); }
-  .success { color: var(--color-ink); padding: .9rem 1rem; background: var(--color-paper); border-left: 3px solid var(--color-accent); font-size: .9375rem; }
-  .totals { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 1rem; padding-block: 1.25rem; border-block: 1px solid var(--color-rule); margin-block: 1.5rem; }
-  .totals dd { font-size: 1.5rem; font-weight: 600; margin-top: .5rem; }
-  .totals > div:first-child dd { color: var(--color-accent); }
-  .action-link { display: inline-block; text-decoration: none; padding: .8rem 1rem; border-radius: 3px; font-size: .9375rem; }
-  .result-actions { display: flex; gap: .75rem; margin-top: 1.5rem; flex-wrap: wrap; font-size: .9375rem; }
-  .settings { position: sticky; top: 1rem; max-height: calc(100vh - 2rem); overflow-y: auto; }
-  .settings h3 { margin: 0 0 .25rem; }
-  .settings > .setting-note:first-of-type { margin-bottom: .75rem; }
-  .setting { border: 0; border-top: 1px solid var(--color-rule); margin: 0; padding: 1rem 0; min-width: 0; }
-  .setting-label { display: flex; justify-content: space-between; font-size: .875rem; font-weight: 600; padding: 0; margin-bottom: .5rem; }
-  .setting-label span { color: var(--color-muted); font-weight: 400; }
-  .setting select { padding: .6rem; }
-  .setting-note { font-size: .8125rem; color: var(--color-muted); margin: .5rem 0 0; line-height: 1.5; }
-  .budget-readout { display: flex; justify-content: space-between; align-items: baseline; gap: .5rem; flex-wrap: wrap; margin: 0 0 .4rem; }
-  .budget-readout strong { font-size: 1.5rem; color: var(--color-accent); }
-  .budget-readout span { font-size: .8125rem; color: var(--color-muted); }
-  .slider { width: 100%; padding: 0; border: 0; background: transparent; accent-color: var(--color-accent); min-height: 44px; cursor: pointer; }
-  .slider-scale { display: flex; justify-content: space-between; font-size: .75rem; color: var(--color-muted); margin-top: -.4rem; }
-  .exact { display: flex; align-items: center; justify-content: space-between; gap: .75rem; font-size: .8125rem; color: var(--color-muted); margin-top: .75rem; }
-  .settings .exact input { width: 8rem; padding: .45rem .6rem; }
-  fieldset.setting legend { float: left; width: 100%; }
-  .piece-toggles { display: grid; gap: .1rem; clear: both; }
-  .piece-toggles label, .owned { display: flex; align-items: center; gap: .6rem; font-size: .875rem; min-height: 32px; cursor: pointer; }
-  .piece-toggles input, .owned input { margin-top: 0; }
-  .owned { border-top: 1px dashed var(--color-rule); margin-top: .4rem; padding-top: .4rem; }
-  .live-status { font-size: .8125rem; color: var(--color-muted); min-height: 1.5em; margin: .5rem 0; }
-  .reset { width: 100%; font-size: .875rem; margin-top: .5rem; }
-  .settings-toggle { display: none; }
-  .piece-meta { display: flex; align-items: center; gap: .75rem; }
-  .pin { min-height: 36px; padding: .3rem .7rem; font-size: .8125rem; }
-  .pin[aria-pressed='true'] { border-color: var(--color-accent); color: var(--color-accent); font-weight: 600; background: color-mix(in srgb, var(--color-accent) 7%, var(--color-surface)); }
-  .piece.pinned { border-color: var(--color-accent); }
-  .dropped .text-button { min-height: 0; padding: .1rem 0; }
-  .badge { margin-left: .6rem; padding: .05rem .4rem; border: 1px solid var(--color-accent); border-radius: 2px; font-size: .75rem; font-weight: 600; }
-  .dropped strong { display: block; }
-  .dropped ul { margin: .4rem 0 0; padding-left: 1.1rem; }
-  .dropped li { margin-block: .25rem; }
-  .dropped small { display: block; color: var(--color-muted); font-size: .8125rem; }
-  @media (max-width: 1080px) {
-    .workspace { grid-template-columns: minmax(0, 1fr) 240px; gap: 1rem; }
-    .screen-content { padding: 1.5rem; }
-    .stepper button { flex-direction: column; align-items: start; padding: .9rem .6rem; gap: .3rem; }
+  button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; }
+  [aria-pressed='true'] { border-color: var(--color-accent); background: var(--color-accent-soft); }
+  .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .alert { color: var(--color-accent); font-weight: 600; }
+
+  .answers, .setup { min-width: 0; background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: 4px; }
+  .answers { flex: 999 1 600px; }
+  .row { display: flex; flex-wrap: wrap; gap: .75rem 1.25rem; padding: 1rem 1.25rem; }
+  .row + .row { border-top: 1px solid var(--color-rule); }
+  .label { flex: 0 0 8.5rem; margin: 0; padding-top: .2rem; font: 700 .9375rem/1.3 var(--font-sans); }
+  .label span { display: block; color: var(--color-accent); font-size: .75rem; }
+  .control { flex: 999 1 420px; min-width: 0; }
+  .line { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem 1.25rem; min-height: 1.5rem; margin: .6rem 0 0; font-size: .8125rem; color: var(--color-muted); }
+
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: .5rem; }
+  .tile { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .35rem; min-height: 76px; padding: .6rem .25rem; font-size: .8125rem; font-weight: 600; line-height: 1.2; text-align: center; }
+  .tile[aria-pressed='true'] { box-shadow: inset 0 -3px var(--color-accent); }
+  .tile[aria-pressed='true'] :global(svg), .toggle[aria-pressed='true'] :global(svg), .mount[aria-pressed='true'] :global(svg) { color: var(--color-accent); }
+  .toggles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: .5rem; }
+  .toggle { display: flex; align-items: center; gap: .6rem; min-height: 52px; padding: .5rem .65rem; font-size: .8125rem; font-weight: 600; line-height: 1.2; text-align: left; }
+  .box { position: relative; flex: none; width: 18px; height: 18px; margin-left: auto; border: 1.5px solid var(--color-muted); border-radius: 3px; }
+  .toggle[aria-pressed='true'] .box { background: var(--color-accent); border-color: var(--color-accent); }
+  .toggle[aria-pressed='true'] .box::after { content: ''; position: absolute; left: 5px; top: 1px; width: 5px; height: 10px; border: solid var(--color-surface); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+  .check { display: inline-flex; align-items: center; gap: .5rem; font-weight: 600; color: var(--color-ink); cursor: pointer; }
+  input[type='checkbox'] { accent-color: var(--color-accent); width: 18px; height: 18px; margin: 0; }
+
+  .budget { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.1rem; }
+  .readout { display: flex; flex-direction: column; min-width: 7.5rem; margin: 0; }
+  .readout strong { font: 700 1.875rem/1 var(--font-display); color: var(--color-accent); }
+  .readout span { font-size: .75rem; color: var(--color-muted); }
+  .readout span.alert { color: var(--color-accent); }
+  .slider { flex: 1 1 200px; min-width: 150px; min-height: 36px; padding: 0; border: 0; background: transparent; accent-color: var(--color-accent); cursor: pointer; }
+  .exact { display: inline-flex; align-items: center; gap: .4rem; font-size: .8125rem; color: var(--color-muted); }
+  .exact-field { display: inline-flex; align-items: center; border: 1px solid var(--color-rule); border-radius: 3px; background: var(--color-paper); padding-left: .5rem; color: var(--color-ink); font-weight: 600; }
+  .exact-field input { width: 5.5rem; min-height: 34px; padding: 0 .5rem; border: 0; background: transparent; }
+  .chip { min-height: 36px; padding: 0 .9rem; border-radius: 18px; font-size: .8125rem; font-weight: 600; color: var(--color-ink); }
+
+  .mounts { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: .5rem; }
+  .mount { display: flex; align-items: center; gap: .6rem; min-height: 48px; padding: 0 .8rem; font-size: .875rem; font-weight: 600; text-align: left; }
+  .mount[aria-pressed='true'] { box-shadow: inset 0 -3px var(--color-accent); }
+
+  .setup { flex: 1 1 360px; position: sticky; top: 1rem; border-top: 4px solid var(--color-accent); }
+  .tabs { display: flex; padding: 0 .75rem; border-bottom: 1px solid var(--color-rule); }
+  .tabs button { flex: 1; min-height: 44px; border: 0; border-bottom: 3px solid transparent; border-radius: 0; background: transparent; font-size: .875rem; font-weight: 600; color: var(--color-muted); }
+  .tabs [aria-selected='true'] { color: var(--color-ink); border-bottom-color: var(--color-accent); }
+  .panel { transition: opacity .15s; }
+  .panel.updating { opacity: .6; }
+  .empty { margin: 0; padding: 1.25rem 1rem; font-size: .875rem; color: var(--color-muted); }
+  .picks { list-style: none; margin: 0; padding: 0; }
+  .pick { display: flex; align-items: center; gap: .75rem; padding: .75rem 1rem; border-bottom: 1px solid var(--color-rule); }
+  .pick.pinned { background: var(--color-accent-soft); }
+  .thumb { display: grid; place-items: center; flex: none; width: 52px; height: 52px; background: var(--color-photo); border-radius: 3px; color: var(--color-muted); overflow: hidden; }
+  .thumb img { width: 100%; height: 100%; object-fit: contain; }
+  .pick-body { flex: 1; min-width: 0; }
+  .role { margin: 0; font-size: .6875rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--color-muted); }
+  .role strong { color: var(--color-accent); }
+  .name { display: block; font-size: .875rem; font-weight: 600; line-height: 1.3; text-decoration: none; overflow-wrap: anywhere; }
+  .name:hover { color: var(--color-accent); text-decoration: underline; }
+  .why { margin: .15rem 0 0; font-size: .75rem; line-height: 1.4; color: var(--color-muted); display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .badge { margin-left: .5rem; padding: 0 .35rem; border: 1px solid var(--color-accent); border-radius: 2px; color: var(--color-accent); letter-spacing: 0; text-transform: none; }
+  .pick-side { display: flex; flex-direction: column; align-items: flex-end; gap: .3rem; flex: none; }
+  .pick-side strong { font-size: .9375rem; font-variant-numeric: tabular-nums; }
+  .pin { min-height: 32px; padding: 0 .55rem; font-size: .75rem; font-weight: 600; color: var(--color-muted); }
+  .pin[aria-pressed='true'] { color: var(--color-accent); }
+  .total { padding: .9rem 1rem 1rem; }
+  .total > p:first-child { display: flex; align-items: baseline; justify-content: space-between; gap: .75rem; margin: 0; font-size: .8125rem; font-weight: 600; color: var(--color-muted); }
+  .total > p:first-child strong { font: 700 2rem/1 var(--font-display); color: var(--color-accent); font-variant-numeric: tabular-nums; }
+  .meter { height: 6px; margin-top: .6rem; background: var(--color-photo); border-radius: 3px; overflow: hidden; }
+  .meter span { display: block; height: 100%; background: var(--color-accent); }
+  .meter.over span { background: repeating-linear-gradient(135deg, var(--color-accent) 0 6px, color-mix(in srgb, var(--color-accent) 60%, var(--color-ink)) 6px 12px); }
+  .over-budget { margin: .75rem 1rem 0; padding: .6rem .8rem; border-left: 3px solid var(--color-accent); background: var(--color-paper); font-size: .8125rem; line-height: 1.5; }
+  .part { display: block; font-size: .75rem; font-weight: 400; color: var(--color-muted); }
+  .primary-control { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-bottom: .6rem; font-size: .8125rem; font-weight: 600; }
+  .budget-line { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .25rem 1rem; margin: .35rem 0 0; font-size: .75rem; color: var(--color-muted); }
+  .primary { display: flex; align-items: center; justify-content: center; min-height: 44px; margin-top: .85rem; padding: 0 1rem; background: var(--color-accent); color: var(--color-paper); border-radius: 3px; font-size: .875rem; font-weight: 700; text-decoration: none; }
+  .primary:hover { color: var(--color-paper); background: color-mix(in srgb, var(--color-accent) 88%, var(--color-ink)); }
+  .compare-parts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; }
+  .text-button { min-height: 36px; padding: 0 .25rem; border: 0; background: transparent; font-size: .8125rem; color: var(--color-accent); text-decoration: underline; text-underline-offset: .2em; }
+  .total .text-button { margin-top: .4rem; }
+  .checks { margin: 0 1rem; border-top: 1px solid var(--color-rule); font-size: .8125rem; }
+  .checks summary { display: flex; align-items: center; min-height: 40px; font-weight: 600; cursor: pointer; }
+  .checks ul { margin: 0 0 .5rem; padding-left: 1.1rem; color: var(--color-muted); }
+  .checks li + li { margin-top: .25rem; }
+  .dropped { margin: .75rem 1rem 0; padding: .6rem .8rem; border-left: 3px solid var(--color-accent); background: var(--color-paper); font-size: .8125rem; }
+  .dropped ul { margin: .3rem 0 0; padding-left: 1rem; }
+  .dropped small { color: var(--color-muted); }
+  .dropped .text-button { min-height: 0; padding: 0; }
+  .reference { padding: .9rem 1rem 0; }
+  .reference h3 { margin: .15rem 0 .25rem; font: 700 1.5rem/1.05 var(--font-display); text-transform: uppercase; letter-spacing: .01em; }
+  .reference .why { -webkit-line-clamp: unset; line-clamp: unset; display: block; font-size: .8125rem; }
+  .reference .picks { margin-top: .5rem; border-top: 1px solid var(--color-rule); }
+  .reference .pick { padding-inline: 0; }
+  .reference-total { display: flex; align-items: baseline; justify-content: space-between; gap: .75rem; margin: .6rem 0 0; font-size: .8125rem; font-weight: 600; color: var(--color-muted); }
+  .reference-total strong { font: 700 1.625rem/1 var(--font-display); color: var(--color-accent); }
+  .note { margin: .5rem 0 0; font-size: .75rem; line-height: 1.5; color: var(--color-muted); }
+  #panel-curated > .note, #panel-curated > .empty { padding-inline: 1rem; }
+  .share { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-top: .75rem; padding: .75rem 1rem 1rem; border-top: 1px solid var(--color-rule); }
+  .share > button:first-child { min-height: 40px; padding: 0 .9rem; font-size: .8125rem; font-weight: 600; }
+  .share .note { flex-basis: 100%; margin: 0; }
+  .share .note:empty { display: none; }
+  .share input { flex-basis: 100%; padding: .5rem; font-size: .8125rem; }
+  .setup-bar { display: none; }
+
+  @media (max-width: 1000px) {
+    .setup { position: static; }
   }
-  @media (max-width: 800px) {
-    .workspace { grid-template-columns: minmax(0, 1fr); }
-    .settings { order: -1; position: static; max-height: none; overflow: visible; padding-block: .75rem; }
-    .settings-toggle { display: flex; width: 100%; justify-content: space-between; align-items: center; gap: 1rem; text-align: left; border: 0; padding: .25rem 0; background: transparent; }
-    .settings-toggle strong, .settings-toggle small { display: block; }
-    .settings-toggle small { color: var(--color-muted); font-size: .8125rem; }
-    .settings:not(.open) .settings-body { display: none; }
-    .settings.open .settings-body { margin-top: .75rem; }
-    .settings-body > .eyebrow { display: none; }
-    .settings-body > h3 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-    .settings .live-status { margin-bottom: 0; }
-    .settings .live-status:empty { display: none; }
-    .settings .piece-toggles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .manifest dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 1.5rem; }
-    .summary-art { width: 120px; padding: 1rem; }
-    .screen-content { min-height: 400px; }
+  @media (max-width: 640px) {
+    .wizard { padding-bottom: 4.5rem; }
+    .row { padding: .9rem 1rem; }
+    .label { flex-basis: 100%; display: flex; align-items: baseline; gap: .5rem; padding: 0; }
+    .label span { display: inline; }
+    .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .tile { flex-direction: row; justify-content: flex-start; gap: .5rem; min-height: 48px; padding: .4rem .6rem; text-align: left; }
+    .toggles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .setup-bar { position: fixed; inset: auto 0 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .75rem 1rem calc(.75rem + env(safe-area-inset-bottom)); background: var(--color-surface); border-top: 1px solid var(--color-rule); box-shadow: 0 -6px 16px color-mix(in srgb, var(--color-ink) 10%, transparent); color: var(--color-ink); text-decoration: none; }
+    .setup-bar.hidden { display: none; }
+    .setup-bar strong { display: block; font: 700 1.625rem/1 var(--font-display); color: var(--color-accent); }
+    .setup-bar small { font-size: .75rem; color: var(--color-muted); }
+    .setup-bar .go { display: inline-flex; align-items: center; min-height: 44px; padding: 0 1.1rem; background: var(--color-accent); color: var(--color-paper); border-radius: 3px; font-size: .875rem; font-weight: 700; }
   }
-  @media (max-width: 540px) {
-    .stepper { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .stepper button { flex-direction: row; align-items: center; padding: .8rem .5rem; gap: .5rem; }
-    .stepper button:last-child { grid-column: 1 / -1; }
-    .choice-grid { grid-template-columns: 1fr; }
-    .screen-content, .manifest { padding: 1.25rem; }
-    .screen-bar { padding: .75rem 1.25rem; }
-    .screen-footer { padding: 1rem; flex-wrap: wrap; }
-    .screen-footer > span { display: none; }
-    .screen-footer button { padding-inline: .75rem; font-size: .875rem; }
-    .reference, .piece { padding: 1rem; }
-    .gear img, .piece-product img { width: 60px; height: 60px; }
-    .totals { grid-template-columns: 1fr 1fr; }
-    .totals > div:first-child { grid-column: 1 / -1; }
-    .manifest dl { grid-template-columns: 1fr; }
-  }
-  .pick { color: var(--color-accent); }
 </style>
