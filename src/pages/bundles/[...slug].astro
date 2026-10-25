@@ -1,8 +1,13 @@
 ---
 import { getCollection } from 'astro:content';
+import { productPaths, isListed } from '../../lib/visibility';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SuccessorBanner from '../../components/detail/SuccessorBanner.astro';
 import { resolveSuccessor } from '../../lib/successors';
+import FamilySwitcher from '../../components/detail/FamilySwitcher.astro';
+import FamilyDiff from '../../components/detail/FamilyDiff.svelte';
+import { detailFamily } from '../../lib/family-detail';
+import { loadCatalog } from '../../lib/catalog';
 import ProductHero from '../../components/detail/ProductHero.astro';
 import Verdict from '../../components/detail/Verdict.astro';
 import UseCaseFit from '../../components/detail/UseCaseFit.astro';
@@ -12,16 +17,19 @@ import UpgradePaths from '../../components/detail/UpgradePaths.astro';
 import { resolveUpgradePaths } from '../../lib/upgrades';
 import ProductCard from '../../components/ProductCard.svelte';
 import ControlInventory from '../../components/ControlInventory.svelte';
-import { getCatalogItems } from '../../lib/catalog';
 import { productJsonLd } from '../../lib/structured-data';
 import { inventoryComplete } from '../../lib/control-inventory';
 import { cardItem } from '../../lib/catalog-ui';
 import { overallVerdict, keySpecs, isDefaultFit } from '../../lib/detail';
-const [components, bundles, brands, catalog] = await Promise.all([getCollection('components'), getCollection('bundles'), getCollection('brands'), getCatalogItems()]);
+const familyCatalog = await loadCatalog();
+const { components, bundles, brands, items: catalog } = familyCatalog;
 const brandMap = new Map(brands.map(x => [x.id, x.data]));
-export async function getStaticPaths() { const bundles = await getCollection('bundles'); return bundles.map(({id,data}) => ({params:{slug:id},props:{bundle:{id,data}}})); }
+export async function getStaticPaths() { const bundles = await getCollection('bundles'); return productPaths(bundles, 'bundle'); }
 const { bundle: entry } = Astro.props;
 const { id, data: b } = entry;
+const family = detailFamily(familyCatalog.items.find(item => item.id === id)!, familyCatalog.families, familyCatalog.items);
+const familyMountNames = Object.fromEntries(familyCatalog.mount_standards.map(entry => [entry.id, entry.data.name]));
+const familyPhysical = Object.fromEntries(familyCatalog.components.filter(entry => family?.lineup.some(member => member.id === entry.id)).map(entry => [entry.id, entry.data.physical]));
 const brand = brandMap.get(b.brand);
 const brandName = brand?.name ?? b.brand;
 const included = b.components.map(ref => components.find(x => x.id === ref)).filter(Boolean).map(x => x!.data);
@@ -42,6 +50,7 @@ const showFit = !isDefaultFit(item.use_case_fit);
 const upgrades = resolveUpgradePaths(id, b.upgrade_paths, new Map(components.map(x => [x.id, x.data])), new Map(bundles.map(x => [x.id, x.data])));
 const showUpgrades = upgrades.length > 0 || !!item.needsPedals;
 const sections = [
+  family && { href: '#family', label: 'Family differences' },
   b.verdict && { href: '#verdict', label: 'Verdict' }, { href: '#included', label: 'What’s included' }, { href: '#controls', label: 'Controls' },
   showFit && { href: '#fit', label: 'Flying-style fit' }, showUpgrades && { href: '#upgrades', label: 'Upgrade paths' }, { href: '#pricing', label: 'Pricing' }, b.external_reviews.length && { href: '#reviews', label: 'Reviews' },
 ].filter(Boolean) as { href: string; label: string }[];
@@ -49,12 +58,17 @@ const sections = [
 <BaseLayout title={b.name} description={description} image={b.images[0]?.file} jsonLd={jsonLd}>
 <div class="page">
   <ProductHero id={id} name={b.name} brand={b.brand} brandName={brandName} category={b.category} status={b.status} verification={b.verification}
+    potentiometer={item.usesPotentiometers}
     images={b.images} prices={b.prices} notes={brand?.landed_cost_notes} compatibility={b.platform_compatibility}
-    specs={specs} crumb={{ href: '/#hardware', label: 'Bundles' }} sections={sections} />
+    specs={specs} crumb={{ href: '/#hardware', label: 'Bundles' }} sections={sections}>
+    {family && <FamilySwitcher slot="family" family={family} />}
+  </ProductHero>
   <SuccessorBanner successor={successor} />
+  {family && <FamilyDiff client:load family={family} mountNames={familyMountNames} physical={familyPhysical} />}
   {b.verdict && <Verdict verdict={b.verdict} />}
   <section id="included" class="included" aria-labelledby="included-title">
     <p class="kicker">In the box</p><h2 id="included-title">What’s included</h2>
+    {included.filter(member => !isListed(member)).map(member => <p>{member.name} (included)</p>)}
     <div class="cards">{memberCards.map(member => <ProductCard client:visible item={cardItem(member!)} compact />)}</div>
   </section>
   <div id="controls" class="anchor"><ControlInventory sections={included} /></div>

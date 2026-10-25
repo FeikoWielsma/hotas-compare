@@ -81,3 +81,8 @@ platform_compatibility:
   notes: Manufacturer provides dedicated rudder calibration software (Slaw Device Rudder calibration software) for these pedals; the downloads page does not state an operating system. No Xbox or PS5 statement appears.
   sources:
   - https://slawdevice.com/en/content/7-downloads
+
+upgrade_paths:
+- to: slaw/slaw-damper-kit
+  note: Optional damper add-on, sold separately. See the manufacturer for availability and fitting details.
+  source: https://slawdevice.com/en/glowna/45-pre-order-rx-viper-v3-rudder-pedals-dark-metalic.html

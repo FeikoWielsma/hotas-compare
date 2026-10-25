@@ -10,7 +10,7 @@ const tagLabel: Record<string, string> = { recommended: 'Recommended', avoid: 'A
   <p class="kicker">Where to go next</p><h2 id="upgrades-title">Upgrade paths</h2>
   {needsPedals && <p class="callout"><strong>No twist axis.</strong> Rudder needs pedals with this stick. Mysh's minimum worth buying: <a href="/components/vkb/t-rudder-mk5">VKB T-Rudder</a> or <a href="/components/winctrl/orion-metal-rudder-pedals-damper">WINCTRL Orion pedals</a>.</p>}
   {upgrades.length > 0 && <ol class="paths">{upgrades.map(u => <li>
-    <a class="target" href={u.href}>{u.name}</a>{u.reviewTag && tagLabel[u.reviewTag] && <span class={`tag ${u.reviewTag}`}>{tagLabel[u.reviewTag]}</span>}
+    {u.href ? <a class="target" href={u.href}>{u.name}</a> : <span class="target">{u.name}</span>}{u.reviewTag && tagLabel[u.reviewTag] && <span class={`tag ${u.reviewTag}`}>{tagLabel[u.reviewTag]}</span>}
     <p>{u.note}{u.source && <> <a class="src" href={u.source} rel="external noopener">Source ↗</a></>}</p>
   </li>)}</ol>}
   {shown.length > 0 && <div class="fits"><h3>{fits!.kind === 'grips' ? 'Grips that fit this base' : fits!.kind === 'handles' ? 'Yoke handles for this base' : 'Bases this fits on'}</h3>

@@ -103,6 +103,11 @@ export default config({
           ],
           defaultValue: 'grip',
         }),
+        catalog_kind: fields.select({
+          label: 'Catalog kind (non-core hardware is hidden)',
+          options: ['core', 'panel', 'accessory', 'controller_board'].map(value => ({ label: value, value })),
+          defaultValue: 'core',
+        }),
         platform_compatibility: platformCompatibilityField(),
         status: fields.select({
           label: 'Status',
@@ -340,6 +345,11 @@ export default config({
             { label: 'System', value: 'system' },
           ],
           defaultValue: 'hotas_bundle',
+        }),
+        catalog_kind: fields.select({
+          label: 'Catalog kind (non-core hardware is hidden)',
+          options: ['core', 'panel', 'accessory', 'controller_board'].map(value => ({ label: value, value })),
+          defaultValue: 'core',
         }),
         platform_compatibility: platformCompatibilityField(),
         status: fields.select({

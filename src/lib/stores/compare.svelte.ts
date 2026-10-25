@@ -1,4 +1,5 @@
-export const MAX_COMPARE_ITEMS = 4;
+import { MAX_COMPARE_ITEMS } from '../compare-constants';
+export { MAX_COMPARE_ITEMS } from '../compare-constants';
 const STORAGE_KEY = 'hotas_compare';
 function normalize(value: unknown): string[] {
   if (!Array.isArray(value)) return [];

@@ -1,6 +1,7 @@
 brand: winctrl
 name: 32 RMP
 category: module
+catalog_kind: panel
 platform_compatibility:
   pc: supported
   xbox: unknown

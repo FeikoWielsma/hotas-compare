@@ -34,3 +34,7 @@ prices:
 verification: draft
 sources:
   - https://eu.winctrl.com/view/goods-details.html?id=375
+images:
+  - file: /images/winctrl/orion-2-f18-hotas.jpg
+    source: https://eu.winctrl.com/view/goods-details.html?id=369
+    caption: Orion 2 NavyAce HOTAS with NavyAce joystick and throttle grips
