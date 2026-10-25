@@ -10,7 +10,7 @@ function item(overrides: Partial<CatalogItem> = {}): CatalogItem {
     category: 'stick_fixed', item_type: 'component', status: 'current', verification: 'draft',
     prices: [], region: 'EU', resolvedPrice: resolvePrice([], 'EU'),
     totalAxes: 0, totalLogicalButtons: 0, hasMinistick: false, hasBrakeAxis: false,
-    controlsSummary: deriveControlsSummary([]), sensor: null, gimbal: null,
+    controlsSummary: deriveControlsSummary([]), sensor: null, usesPotentiometers: false, gimbal: null,
     use_case_fit: { modern_jet: 1, space_hosas: 1, space_hotas: 1, heli: 1, ga: 1, airliner: 1, ww2: 1 },
     verdict: null, scores: null, images: [], componentIds: [], formerBrandNames: [], handedness: [],
     mechanics: { forceAdjustable: 'Unknown', cams: 'Unknown', damping: 'Unknown' }, leverCount: 0,
