@@ -26,6 +26,8 @@ Choose checks from the current `package.json` and existing tests. Match verifica
 - **UI changes:** run the relevant code checks and exercise the changed behavior in the browser at desktop and narrow widths. Check affected states such as unknown values, empty results, and long product names.
 - **Documentation only:** check the diff, referenced paths, and consistency with actual commands and tools. Application tests are unnecessary unless executable behavior changed.
 
+Schema additions in `src/lib/schema.ts` must also get a widget in `keystatic.config.ts`; `src/lib/keystatic-config.test.ts` fails on drift, because Keystatic drops fields it has no widget for when a product is saved.
+
 Use these journeys as applicable to the changed area: catalog filtering and region switching; comparison add/remove and navigation; product details and store links; wizard completion and shared-state restoration. Verify the visible outcome, not just a successful click or page load. Confirm the browser serves current data when the dev server may be stale.
 
 Record what was actually checked and its result. Distinguish local verification, CI results, and deployed behavior. Identify preexisting failures separately and explain their effect on confidence. After the final edit, rerun checks affected by that edit.
