@@ -168,39 +168,55 @@ describe('live editing', () => {
     hardware('cheap-stick', 'stick_fixed', 80), hardware('great-stick', 'stick_fixed', 400, { use_case_fit: fit(5) }),
     hardware('throttle', 'throttle', 100), hardware('pedals', 'pedals', 150), hardware('plain-stick', 'stick_fixed', 60, { axes: [{ name: 'X' }, { name: 'Y' }] }),
   ];
-  it('round-trips picks with the answers and ignores malformed ids', () => {
+  it('round-trips pins with the answers and ignores malformed ids', () => {
     const answers = normalizeWizardAnswers({ budgetMax: 600 });
     const query = serializeWizardState(answers, [['vkb/base', 'vkb/grip'], ['throttle']]);
-    expect(deserializePicks(new URLSearchParams(query).get('picks'))).toEqual([['vkb/base', 'vkb/grip'], ['throttle']]);
+    expect(deserializePicks(new URLSearchParams(query).get('pinned'))).toEqual([['vkb/base', 'vkb/grip'], ['throttle']]);
     expect(deserializeWizardState(query)).toEqual(answers);
     expect(deserializePicks('ok,<script>,a~b~c')).toEqual([['ok'], ['a', 'b']]);
-    expect(serializeWizardState(answers)).not.toContain('picks');
+    expect(serializeWizardState(answers)).not.toContain('pinned');
   });
-  it('keeps picks that still fit when the budget rises and fills only the new roles', () => {
-    const first = recommendLoadout(catalog(), normalizeWizardAnswers({ piecesNeeded: ['stick', 'throttle'], budgetMax: 200 }), 'EU');
+  it('upgrades unpinned picks when the budget rises', () => {
+    const answers = normalizeWizardAnswers({ piecesNeeded: ['stick', 'throttle'], budgetMax: 200 });
+    const first = recommendLoadout(catalog(), answers, 'EU');
     expect(picksOf(first)).toEqual([['cheap-stick'], ['throttle']]);
-    const next = recommendLoadout(catalog(), normalizeWizardAnswers({ piecesNeeded: ['stick', 'throttle', 'pedals'], budgetMax: 1000 }), 'EU', { keep: picksOf(first) });
-    expect(next.complete).toBe(true);
-    expect(picksOf(next)).toEqual([['cheap-stick'], ['throttle'], ['pedals']]);
-    expect(next.pieces.map((piece) => !!piece.kept)).toEqual([true, true, false]);
-    expect(next.dropped).toEqual([]);
-    // Without picks, the same settings pick the higher-rated stick.
-    expect(recommendLoadout(catalog(), normalizeWizardAnswers({ piecesNeeded: ['stick', 'throttle', 'pedals'], budgetMax: 1000 }), 'EU').items[0].id).toBe('great-stick');
+    const raised = recommendLoadout(catalog(), { ...answers, budgetMax: 1000 }, 'EU', { prefer: picksOf(first) });
+    expect(picksOf(raised)).toEqual([['great-stick'], ['throttle']]);
+    expect(raised.dropped).toEqual([]);
+    // A pinned stick stays, and the extra budget goes to the open roles only.
+    const pinned = recommendLoadout(catalog(), { ...answers, piecesNeeded: ['stick', 'throttle', 'pedals'], budgetMax: 1000 }, 'EU', { pinned: [['cheap-stick']] });
+    expect(picksOf(pinned)).toEqual([['cheap-stick'], ['throttle'], ['pedals']]);
+    expect(pinned.pieces.map((piece) => !!piece.pinned)).toEqual([true, false, false]);
   });
-  it('flags picks that no longer fit with the constraint they break', () => {
-    const keep = [['great-stick'], ['throttle']];
-    const cheaper = recommendLoadout(catalog(), normalizeWizardAnswers({ piecesNeeded: ['stick', 'throttle'], budgetMax: 450 }), 'EU', { keep });
-    expect(cheaper.complete).toBe(true);
-    expect(picksOf(cheaper)).toEqual([['throttle'], ['cheap-stick']]);
-    expect(cheaper.dropped).toMatchObject([{ ids: ['great-stick'], reason: 'Leaves too little budget for your other controls.' }]);
-    const overBudget = recommendLoadout(catalog(), normalizeWizardAnswers({ piecesNeeded: ['stick'], budgetMax: 300 }), 'EU', { keep: [['great-stick']] });
-    expect(overBudget.dropped[0].reason).toBe('Over the new budget on its own.');
-    const fewer = recommendLoadout(catalog(), normalizeWizardAnswers({ piecesNeeded: ['stick'], budgetMax: 1000 }), 'EU', { keep });
+  it('re-optimises on a budget cut instead of dropping the priciest pin', () => {
+    const items = [...catalog(), hardware('cheap-pedals', 'pedals', 50)];
+    const answers = normalizeWizardAnswers({ piecesNeeded: ['stick', 'pedals'], budgetMax: 1000 });
+    const pinned = [['great-stick'], ['pedals']];
+    expect(picksOf(recommendLoadout(items, answers, 'EU', { pinned }))).toEqual([['great-stick'], ['pedals']]);
+    // Both pins (550) exceed 460; the higher-scoring pin survives and the pedals are re-chosen.
+    const cut = recommendLoadout(items, { ...answers, budgetMax: 460 }, 'EU', { pinned });
+    expect(picksOf(cut)).toEqual([['great-stick'], ['cheap-pedals']]);
+    expect(cut.dropped).toMatchObject([{ ids: ['pedals'], reason: 'Does not fit the new budget alongside your other controls.' }]);
+    // Unpinned picks simply re-optimise to the best setup under the new budget.
+    const low = recommendLoadout(items, { ...answers, budgetMax: 200 }, 'EU', { prefer: [['great-stick'], ['pedals']] });
+    expect(low.complete).toBe(true);
+    expect(low.totalPrice).toBeLessThanOrEqual(200);
+    expect(low.dropped).toEqual([]);
+  });
+  it('keeps the current pick when an alternative scores exactly the same', () => {
+    const items = [hardware('stick-a', 'stick_fixed', 90), hardware('stick-b', 'stick_fixed', 90)];
+    const answers = normalizeWizardAnswers({ piecesNeeded: ['stick'], budgetMax: 500 });
+    expect(picksOf(recommendLoadout(items, answers, 'EU', { prefer: [['stick-a']] }))).toEqual([['stick-a']]);
+    expect(picksOf(recommendLoadout(items, answers, 'EU', { prefer: [['stick-b']] }))).toEqual([['stick-b']]);
+  });
+  it('flags pins that no longer fit with the constraint they break', () => {
+    expect(recommendLoadout(catalog(), normalizeWizardAnswers({ piecesNeeded: ['stick'], budgetMax: 300 }), 'EU', { pinned: [['great-stick']] }).dropped[0].reason).toBe('Over the new budget on its own.');
+    const fewer = recommendLoadout(catalog(), normalizeWizardAnswers({ piecesNeeded: ['stick'], budgetMax: 1000 }), 'EU', { pinned: [['great-stick'], ['throttle']] });
     expect(fewer.dropped).toMatchObject([{ ids: ['throttle'], reason: 'No longer one of your selected controls.' }]);
     expect(picksOf(fewer)).toEqual([['great-stick']]);
-    const twist = recommendLoadout(catalog(), normalizeWizardAnswers({ piecesNeeded: ['stick'], budgetMax: 1000 }), 'EU', { keep: [['plain-stick']] });
+    const twist = recommendLoadout(catalog(), normalizeWizardAnswers({ piecesNeeded: ['stick'], budgetMax: 1000 }), 'EU', { pinned: [['plain-stick']] });
     expect(twist.dropped[0].reason).toMatch(/twist/);
-    expect(recommendLoadout(catalog(), normalizeWizardAnswers({ piecesNeeded: ['stick'] }), 'EU', { keep: [['gone']] }).dropped[0].reason).toMatch(/EU price/);
+    expect(recommendLoadout(catalog(), normalizeWizardAnswers({ piecesNeeded: ['stick'] }), 'EU', { pinned: [['gone']] }).dropped[0].reason).toMatch(/EU price/);
 
     const stecsMini = hardware('vkb/stecs-throttle-mini', 'throttle', 219, { placement: 'mount_only' });
     const stecsMiniPlus = hardware('vkb/stecs-throttle-mini-plus', 'throttle', 239, { placement: 'both' });
@@ -208,7 +224,7 @@ describe('live editing', () => {
       [...catalog(), stecsMini, stecsMiniPlus],
       normalizeWizardAnswers({ piecesNeeded: ['stick', 'throttle'], mountType: 'desk', budgetMax: 600 }),
       'EU',
-      { keep: [['cheap-stick'], ['vkb/stecs-throttle-mini']] },
+      { pinned: [['cheap-stick'], ['vkb/stecs-throttle-mini']] },
     );
     expect(deskRecompute.complete).toBe(true);
     expect(deskRecompute.dropped).toMatchObject([
@@ -217,10 +233,30 @@ describe('live editing', () => {
     expect(deskRecompute.items.map((item) => item.id)).toContain('cheap-stick');
     expect(deskRecompute.items.map((item) => item.id)).not.toContain('vkb/stecs-throttle-mini');
   });
-  it('does not blame picks when no setup fits the settings at all', () => {
-    const result = recommendLoadout(catalog(), normalizeWizardAnswers({ piecesNeeded: ['stick', 'throttle'], budgetMax: 100 }), 'EU', { keep: [['cheap-stick'], ['throttle']] });
+  it('does not blame pins when no setup fits the settings at all', () => {
+    const result = recommendLoadout(catalog(), normalizeWizardAnswers({ piecesNeeded: ['stick', 'throttle'], budgetMax: 100 }), 'EU', { pinned: [['cheap-stick'], ['throttle']] });
     expect(result.complete).toBe(false);
     expect(result.dropped).toEqual([]);
+  });
+});
+
+describe('bundle-only parts', () => {
+  it('never recommends the X52 throttle on its own and offers the X52 HOTAS instead', () => {
+    const stick = hardware('logitech/x52-space-flight-stick', 'stick_fixed', 100, { soldStandalone: false });
+    const throttle = hardware('logitech/x52-throttle', 'throttle', 100, { soldStandalone: false });
+    const hotas = hardware('logitech/x52-hotas-system', 'hotas_bundle', 180, { item_type: 'bundle', componentIds: [stick.id, throttle.id] });
+    const otherStick = hardware('other-stick', 'stick_fixed', 60);
+    const items = [stick, throttle, hotas, otherStick];
+    const throttleOnly = recommendLoadout(items, normalizeWizardAnswers({ piecesNeeded: ['throttle'], budgetMax: 500 }), 'EU');
+    expect(throttleOnly.complete).toBe(false);
+    const hotasResult = recommendLoadout(items, normalizeWizardAnswers({ piecesNeeded: ['stick', 'throttle'], budgetMax: 500 }), 'EU');
+    expect(picksOf(hotasResult)).toEqual([['logitech/x52-hotas-system']]);
+    expect(recommendLoadout(items, normalizeWizardAnswers({ piecesNeeded: ['stick', 'throttle'], budgetMax: 500 }), 'EU', { pinned: [['logitech/x52-throttle']] }).dropped[0].reason).toMatch(/Not sold on its own/);
+  });
+  it('excludes a bundle-only grip from base + grip pairs', () => {
+    const base = hardware('base', 'base', 100, { mount: { accepts: ['A'] } });
+    const grip = hardware('grip', 'grip', 100, { mount: { provides: 'A' }, soldStandalone: false });
+    expect(recommendLoadout([base, grip], normalizeWizardAnswers({ piecesNeeded: ['stick'], budgetMax: 500 }), 'EU').complete).toBe(false);
   });
 });
 

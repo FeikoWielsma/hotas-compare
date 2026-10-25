@@ -23,15 +23,17 @@ export interface RecommendedPiece {
   score: number;
   explanations: string[];
   warnings: string[];
-  /** Carried over from the previous recommendation because it still fits. */
-  kept?: boolean;
+  /** Pinned by the user, so live re-optimisation keeps it while it fits. */
+  pinned?: boolean;
 }
 /** Item ids of one recommended piece, as shown to the user (base before handle). */
 export type WizardPick = string[];
 export interface DroppedPick { ids: WizardPick; items: CatalogItem[]; reason: string }
 export interface RecommendOptions {
-  /** The user's current picks; each is kept while it still fits the new answers. */
-  keep?: WizardPick[];
+  /** Picks the user pinned; kept while they fit, otherwise reported in `dropped`. */
+  pinned?: WizardPick[];
+  /** Picks currently on screen; break ties so an equally good pick is not swapped out. */
+  prefer?: WizardPick[];
 }
 export interface WizardLoadout {
   pieces: RecommendedPiece[];
@@ -42,7 +44,7 @@ export interface WizardLoadout {
   totalAxes: number;
   complete: boolean;
   warnings: string[];
-  /** Previous picks that no longer fit, with the constraint each one breaks. */
+  /** Pinned picks that do not fit these answers, with the constraint each one breaks. */
   dropped: DroppedPick[];
 }
 const currencies: Record<Region, Currency> = { EU: 'EUR', UK: 'GBP', US: 'USD' };
@@ -78,12 +80,13 @@ export function deserializePicks(value: string | null | undefined): WizardPick[]
 export function picksOf(loadout: Pick<WizardLoadout, 'pieces'>): WizardPick[] {
   return loadout.pieces.map((piece) => piece.items.map((item) => item.id));
 }
-export function serializeWizardState(answers: WizardAnswers, picks: WizardPick[] = []): string {
+/** Shared state carries only pins; everything else is re-derived from the answers. */
+export function serializeWizardState(answers: WizardAnswers, pinned: WizardPick[] = []): string {
   const a = normalizeWizardAnswers(answers);
   const params = new URLSearchParams({ useCase: a.useCase, piecesNeeded: a.piecesNeeded.join(','), budgetMax: String(a.budgetMax), mountType: a.mountType, needsTwist: String(a.needsTwist) });
   if (a.targetSim) params.set('targetSim', a.targetSim);
   if (a.hasExistingPedals) params.set('hasExistingPedals', 'true');
-  if (picks.length) params.set('picks', serializePicks(picks));
+  if (pinned.length) params.set('pinned', serializePicks(pinned));
   return params.toString();
 }
 export function deserializeWizardState(searchParams: URLSearchParams | string): WizardAnswers {
@@ -162,9 +165,12 @@ function needsBase(item: CatalogItem) {
 }
 function candidates(items: CatalogItem[], answers: WizardAnswers, region: Region): RecommendedPiece[] {
   const map = new Map(items.map((item) => [item.id, item]));
-  const groups = items.filter((item) => item.status === 'current' && !['base', 'module'].includes(item.category) && !needsBase(item)).map((item) => [item]);
-  for (const base of items.filter((item) => item.category === 'base' && item.status === 'current')) {
-    for (const handle of items.filter((item) => needsBase(item) && item.status === 'current')) {
+  // Parts only sold inside a bundle cannot be bought on their own; the bundle is offered instead.
+  // On a desk setup, surface-sitting controls marked mount_only cannot sit loose on the desktop.
+  const buyable = items.filter((item) => item.status === 'current' && item.soldStandalone !== false && (answers.mountType !== 'desk' || needsBase(item) || item.placement !== 'mount_only'));
+  const groups = buyable.filter((item) => !['base', 'module'].includes(item.category) && !needsBase(item)).map((item) => [item]);
+  for (const base of buyable.filter((item) => item.category === 'base')) {
+    for (const handle of buyable.filter(needsBase)) {
       if (handle.mount?.provides && base.mount?.accepts?.includes(handle.mount.provides)) groups.push([base, handle]);
     }
   }
@@ -226,7 +232,7 @@ function overlaps(pieces: RecommendedPiece[], option: RecommendedPiece) {
   });
 }
 /** Best complete loadout that contains every seed piece, or undefined when none fits. */
-function search(options: RecommendedPiece[], answers: WizardAnswers, seed: RecommendedPiece[]) {
+function search(options: RecommendedPiece[], answers: WizardAnswers, seed: RecommendedPiece[], prefer: WizardPick[] = []) {
   type State = { pieces: RecommendedPiece[]; roles: WizardPiece[]; price: number; score: number };
   let states: State[] = [{ pieces: seed, roles: seed.flatMap((piece) => piece.roles), price: seed.reduce((sum, piece) => sum + piece.price, 0),
     score: seed.reduce((sum, piece) => sum + piece.score * piece.roles.length, 0) }];
@@ -248,39 +254,54 @@ function search(options: RecommendedPiece[], answers: WizardAnswers, seed: Recom
     states = [...new Set([...quality, ...cheap])];
     if (!states.length) break;
   }
-  const best = states.sort((a, b) => b.score - a.score || a.price - b.price)[0];
-  return best && answers.piecesNeeded.length > 0 && answers.piecesNeeded.every((role) => best.roles.includes(role)) ? best : undefined;
+  const complete = states.filter((state) => answers.piecesNeeded.length > 0 && answers.piecesNeeded.every((role) => state.roles.includes(role)));
+  if (!complete.length) return undefined;
+  // Among equally scored setups, keep the one sharing most picks with the current result, then the cheapest.
+  const top = Math.max(...complete.map((state) => state.score));
+  const shared = (state: State) => state.pieces.filter((piece) => prefer.some((ids) => sameIds(ids, idsOf(piece)))).length;
+  return complete.filter((state) => top - state.score < 1e-6).sort((a, b) => shared(b) - shared(a) || a.price - b.price)[0];
 }
-/** Names the first new constraint a previous pick breaks, checking the broadest cause first. */
+/** Names the first new constraint a pinned pick breaks, checking the broadest cause first. */
 function pickMismatch(ids: WizardPick, items: CatalogItem[], answers: WizardAnswers, region: Region): string {
   const offered = (relaxed: WizardAnswers) => candidates(items, relaxed, region).some((option) => sameIds(idsOf(option), ids));
-  if (!offered({ ...answers, mountType: 'clamp', piecesNeeded: [...PIECES], needsTwist: false })) return `No longer listed with a current ${region} price.`;
+  if (!offered({ ...answers, mountType: 'clamp', piecesNeeded: [...PIECES], needsTwist: false })) return `Not sold on its own with a current ${region} price.`;
   if (!offered({ ...answers, mountType: 'clamp', needsTwist: false })) return 'No longer one of your selected controls.';
   if (answers.mountType === 'desk' && !offered({ ...answers, needsTwist: false })) return 'Requires a desk mount or cockpit rig and cannot sit loose on a desk.';
   return 'Has no twist axis, and without pedals the stick must now provide yaw.';
 }
-export function recommendLoadout(items: CatalogItem[], input: WizardAnswers, region: Region, { keep = [] }: RecommendOptions = {}): WizardLoadout {
+function subsets<T>(list: T[], size: number): T[][] {
+  if (size === 0) return [[]];
+  return list.flatMap((head, index) => subsets(list.slice(index + 1), size - 1).map((rest) => [head, ...rest]));
+}
+/**
+ * Re-optimises for the answers on every call. Pinned picks are kept when they fit; when the budget
+ * cannot hold all of them, the largest, best-scoring set of pins that still completes the setup wins.
+ */
+export function recommendLoadout(items: CatalogItem[], input: WizardAnswers, region: Region, { pinned = [], prefer = [] }: RecommendOptions = {}): WizardLoadout {
   const answers = normalizeWizardAnswers(input);
   const options = candidates(items, answers, region);
   const map = new Map(items.map((item) => [item.id, item]));
   const dropped: DroppedPick[] = [];
   const drop = (ids: WizardPick, reason: string) => dropped.push({ ids, reason, items: ids.flatMap((id) => map.get(id) ? [map.get(id)!] : []) });
-  const kept: RecommendedPiece[] = [];
-  for (const ids of keep) {
+  const pins: RecommendedPiece[] = [];
+  for (const ids of pinned) {
     const matches = options.filter((option) => sameIds(idsOf(option), ids));
-    const option = matches.find((option) => !option.roles.some((role) => kept.some((piece) => piece.roles.includes(role))) && !overlaps(kept, option));
-    if (option) kept.push({ ...option, kept: true });
-    else drop(ids, matches.length ? 'Overlaps another control already in this setup.' : pickMismatch(ids, items, answers, region));
+    const option = matches.find((option) => !option.roles.some((role) => pins.some((piece) => piece.roles.includes(role))) && !overlaps(pins, option));
+    if (option) pins.push({ ...option, pinned: true });
+    else drop(ids, matches.length ? 'Overlaps another pinned control.' : pickMismatch(ids, items, answers, region));
   }
-  // Release the most expensive kept pick until the rest of the setup fits around the ones that remain.
-  let best = search(options, answers, kept);
-  // When nothing fits at all, the kept picks are not to blame; the caller can retain them for a later change.
-  const feasible = !!best || !kept.length || !!search(options, answers, []);
-  while (!best && feasible && kept.length) {
-    const priciest = kept.reduce((top, piece) => piece.price > top.price ? piece : top);
-    kept.splice(kept.indexOf(priciest), 1);
-    drop(idsOf(priciest), priciest.price > answers.budgetMax ? 'Over the new budget on its own.' : 'Leaves too little budget for your other controls.');
-    best = search(options, answers, kept);
+  let best = search(options, answers, pins, prefer);
+  // When nothing fits at all, the pins are not to blame; they stay pinned for a later change.
+  if (!best && pins.length && search(options, answers, [])) {
+    for (let size = pins.length - 1; size >= 0 && !best; size--) {
+      for (const subset of subsets(pins, size)) {
+        const found = search(options, answers, subset, prefer);
+        if (found && (!best || found.score > best.score)) best = found;
+      }
+    }
+    for (const pin of pins.filter((pin) => !best!.pieces.includes(pin))) {
+      drop(idsOf(pin), pin.price > answers.budgetMax ? 'Over the new budget on its own.' : 'Does not fit the new budget alongside your other controls.');
+    }
   }
   const loadout = makeLoadout(best?.pieces ?? [], region, !!best, dropped);
   loadout.warnings.push(answers.mountType === 'desk' ? 'Desktop stability and included base plates need checking against manufacturer specifications.' : 'Mount hardware, brackets and cockpit compatibility need checking; mount costs are not included.');

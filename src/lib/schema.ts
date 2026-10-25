@@ -389,6 +389,8 @@ export const ComponentSchema = z.object({
   platform_compatibility: PlatformCompatibilitySchema.optional(),
   status: ProductStatusEnum.default('current'),
   successor: z.string().min(1).optional(),
+  /** False when the part is only sold inside a bundle; absent means sold on its own (or not yet checked). */
+  sold_standalone: z.boolean().optional(),
   release_year: z.number().int().optional(),
   handedness: HandednessEnum.default('n/a'),
   mount: MountSchema,
