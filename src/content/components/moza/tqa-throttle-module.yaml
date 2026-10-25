@@ -25,6 +25,15 @@ controls_evidence:
   checked: '2026-10-20'
   notes: Replaces MTQ default TQF grips. Features dual A3X Airbus-style throttle levers with authentic detent structure
     (IDLE, CL, FLX/MCT, TOGA) and dual physical reverse-thrust latches.
+use_case_fit:
+  modern_jet: 3
+  heli: 3
+  ww2: 3
+  ga: 4
+  airliner: 4
+  space_hotas: 3
+  space_hosas: 3
+use_case_fit_source: community
 verification: draft
 sources:
 - https://mozaracing.com

@@ -132,6 +132,7 @@ use_case_fit:
   airliner: 4
   space_hotas: 1
   space_hosas: 1
+use_case_fit_source: community
 software: SIP Connect for VelocityOne
 prices:
 - region: US

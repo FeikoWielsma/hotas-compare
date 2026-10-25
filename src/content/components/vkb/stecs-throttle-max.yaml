@@ -178,13 +178,13 @@ physical:
   - steel
 use_case_fit:
   modern_jet: 5
-  heli: 4
-  ww2: 4
-  ga: 4
-  airliner: 4
+  heli: 2
+  ww2: 3
+  ga: 3
+  airliner: 3
   space_hotas: 5
-  space_hosas: 2
-use_case_fit_source: seeded
+  space_hosas: 3
+use_case_fit_source: community
 prices:
 - region: EU
   currency: EUR
@@ -228,12 +228,6 @@ verdict:
   - space_hotas
   skip_if:
   - Largest footprint and highest price in STECS range
-  scores:
-    build: 4
-    feel: 4
-    value: 4
-    software: 4
-    qc_support: 4
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2177s

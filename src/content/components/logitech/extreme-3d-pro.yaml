@@ -37,11 +37,11 @@ use_case_fit:
   modern_jet: 2
   heli: 2
   ww2: 2
-  ga: 3
+  ga: 2
   airliner: 2
   space_hotas: 2
   space_hosas: 2
-use_case_fit_source: seeded
+use_case_fit_source: baseline
 prices:
   - region: US
     currency: USD
@@ -67,12 +67,6 @@ verdict:
     - ga
   skip_if:
     - "You know you love flight sims and can invest $90-$160 for contactless pincer gimbals (Ursa Minor or Gladiator)"
-  scores:
-    build: 2
-    feel: 2
-    value: 4
-    software: 2
-    qc_support: 3
 external_reviews:
   - reviewer: mysh
     url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=176s

@@ -102,9 +102,9 @@ use_case_fit:
   ww2: 5
   ga: 4
   airliner: 3
-  space_hotas: 5
-  space_hosas: 5
-use_case_fit_source: seeded
+  space_hotas: 4
+  space_hosas: 4
+use_case_fit_source: community
 prices:
 - region: EU
   currency: EUR
@@ -147,12 +147,6 @@ verdict:
     - modern_jet
   skip_if:
     - "You already own high-end rudder pedals and prefer a locked rigid stick"
-  scores:
-    build: 5
-    feel: 5
-    value: 5
-    software: 4
-    qc_support: 5
 external_reviews:
   - reviewer: mysh
     url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1033s

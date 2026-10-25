@@ -16,7 +16,7 @@ status: current
 release_year: 2020
 handedness: right
 mount:
-  provides: vkb-rev-b
+  provides: vkb-gnx
   accepts: []
 placement: mount_only
 controls:
@@ -84,13 +84,14 @@ physical:
   - abs
 use_case_fit:
   modern_jet: 4
-  heli: 3
-  ww2: 3
-  ga: 2
-  airliner: 1
+  heli: 4
+  ww2: 4
+  ga: 4
+  airliner: 3
   space_hotas: 5
   space_hosas: 5
-use_case_fit_source: seeded
+use_case_fit_source: community
+tier_line: SCG Premium
 prices:
 - region: EU
   currency: EUR
@@ -109,10 +110,14 @@ prices:
   source: manual
 - region: US
   currency: USD
-  amount: 90
+  amount: 80.75
+  history:
+  - amount: 90
+    verified: '2026-10-01'
   incl_vat: false
-  store: vkbcontrollers.com
-  verified: '2026-10-01'
+  store: vkbsimcontrollers.com
+  url: https://vkbsimcontrollers.com/products/gnx-scg-add-on-grip-us
+  verified: '2026-10-25'
   source: manual
 verdict:
   author: feiko
@@ -133,12 +138,6 @@ verdict:
   - modern_jet
   skip_if:
   - You want a strict 1:1 replica of an F-16 or F/A-18 stick
-  scores:
-    build: 4
-    feel: 5
-    value: 5
-    software: 4
-    qc_support: 5
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2580s

@@ -55,12 +55,6 @@ verdict:
   - space_hotas
   skip_if:
   - You can stretch budget to VKB Gladiator EVO
-  scores:
-    build: 3
-    feel: 3
-    value: 4
-    software: 2
-    qc_support: 3
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2442s

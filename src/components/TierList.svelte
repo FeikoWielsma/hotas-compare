@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount, tick } from 'svelte';
-  import { fitGroupIds, fitGroupLabels, toFitScore, type FitGroup } from '../lib/fit-groups';
-  import { TIERS, collapseTiers, expandTiers, parseTierList, serializeTierList, tierLabels, tierListText, type Tier, type TierItem } from '../lib/fit-tiers';
+  import { fitGroupIds, fitGroupLabels, type FitGroup } from '../lib/fit-groups';
+  import { TIERS, collapseTiers, expandOrder, expandTiers, parseTierList, serializeTierList, tierBadge, tierLabels, tierListText, tierOfFit, type Tier, type TierItem } from '../lib/fit-tiers';
   import { useCases } from '../lib/catalog-ui';
   import type { UseCase } from '../lib/schema';
 
@@ -9,11 +9,13 @@
 
   const NAME_KEY = 'hotas-tier-name';
   const ids = items.flatMap((item) => item.members);
+  const itemById = new Map(items.map((item) => [item.id, item]));
   const caseLabel = (u: UseCase) => useCases.find((c) => c.key === u)!.label;
   const groupsWithItems = fitGroupIds.filter((g) => items.filter((i) => i.group === g).length >= 2);
 
   let useCase = $state<UseCase>('airliner');
   let group = $state<FitGroup>('sticks');
+  /** Ranked entries; insertion order is the order within each tier, best first. */
   let tiers = $state(new Map<string, Tier>());
   let by = $state('');
   let sharedBy = $state<string | null>(null);
@@ -26,23 +28,42 @@
   let ready = false;
 
   const groupItems = $derived(items.filter((item) => item.group === group).toSorted((a, b) => `${a.brandName} ${a.name}`.localeCompare(`${b.brandName} ${b.name}`)));
-  const inTier = (tier: Tier | null) => groupItems.filter((item) => (tiers.get(item.id) ?? null) === tier);
+  const inTier = (tier: Tier | null) => tier == null
+    ? groupItems.filter((item) => !tiers.has(item.id))
+    : [...tiers].flatMap(([id, t]) => { const item = itemById.get(id); return t === tier && item?.group === group ? [item] : []; });
   const unranked = $derived(inTier(null).filter((item) => !filter || `${item.brandName} ${item.name}`.toLowerCase().includes(filter.toLowerCase())));
   const rankedCount = $derived(groupItems.filter((item) => tiers.has(item.id)).length);
   const title = $derived(`${fitGroupLabels[group].plural} for ${caseLabel(useCase)}`);
 
-  /** Site scores (or the spec baseline for unreviewed parts) as a starting point; half points round to a tier. */
+  /** Site scores (or the spec baseline for unreviewed parts) as a starting point, best first within each tier. */
   function fromSite() {
-    tiers = new Map(groupItems.filter((item) => item.scored).map((item) => [item.id, toFitScore(item.fit[useCase]) as Tier]));
+    const scored = groupItems.filter((item) => item.scored).toSorted((a, b) => b.fit[useCase] - a.fit[useCase]);
+    tiers = new Map(scored.map((item) => [item.id, tierOfFit(item.fit[useCase])]));
   }
   function choose(nextCase: UseCase, nextGroup: FitGroup) {
     useCase = nextCase; group = nextGroup; sharedBy = null; selected = null; filter = ''; status = '';
     fromSite();
   }
-  function move(id: string, tier: Tier | null) {
-    const next = new Map(tiers);
-    if (tier) next.set(id, tier); else next.delete(id);
-    tiers = next; status = ''; sharedBy = null;
+  /** Put a part at the end of a tier, or just before another ranked part. */
+  function move(id: string, tier: Tier | null, before: string | null = null) {
+    const entries = [...tiers].filter(([key]) => key !== id);
+    if (tier) {
+      const at = before ? entries.findIndex(([key]) => key === before) : -1;
+      entries.splice(at < 0 ? entries.length : at, 0, [id, tier]);
+    }
+    tiers = new Map(entries); status = ''; sharedBy = null;
+  }
+  /** Move a ranked part one place up (-1) or down (1) within its tier. */
+  function nudge(id: string, step: -1 | 1) {
+    const tier = tiers.get(id);
+    if (!tier) return;
+    const same = [...tiers].filter(([, t]) => t === tier).map(([key]) => key);
+    const target = same[same.indexOf(id) + step];
+    if (!target) return;
+    const entries = [...tiers];
+    const a = entries.findIndex(([key]) => key === id), b = entries.findIndex(([key]) => key === target);
+    [entries[a], entries[b]] = [entries[b], entries[a]];
+    tiers = new Map(entries); status = ''; sharedBy = null;
   }
   async function place(tier: Tier | null) {
     if (!selected) return;
@@ -56,22 +77,26 @@
   }
   function onKey(event: KeyboardEvent) {
     if (!selected || (event.target instanceof Element && event.target.matches('input, select, textarea'))) return;
-    if (/^[1-5]$/.test(event.key)) { event.preventDefault(); place(Number(event.key) as Tier); }
+    if (/^[1-6]$/.test(event.key)) { event.preventDefault(); place(Number(event.key) as Tier); }
+    else if (event.key === 's' || event.key === 'S') { event.preventDefault(); place(6); }
+    else if ((event.key === 'ArrowLeft' || event.key === 'ArrowRight') && tiers.has(selected)) { event.preventDefault(); nudge(selected, event.key === 'ArrowLeft' ? -1 : 1); }
     else if (event.key === '0' || event.key === 'Delete' || event.key === 'Backspace') { event.preventDefault(); place(null); }
     else if (event.key === 'Escape') selected = null;
   }
-  function drop(event: DragEvent, tier: Tier | null) {
+  function drop(event: DragEvent, tier: Tier | null, before: string | null = null) {
     event.preventDefault();
+    event.stopPropagation();
     const id = event.dataTransfer?.getData('text/plain') || dragging;
-    if (id) move(id, tier);
+    if (id && id !== before) move(id, tier, before);
     dragging = null;
   }
 
+  const memberList = () => ({ useCase, group, by, tiers: expandTiers(items, tiers), order: expandOrder(items, tiers) });
   function shareUrl() {
     // An unedited shared list is passed on as-is, keeping its author.
     if (sharedBy) return location.href;
     const url = new URL('/tiers', location.origin);
-    url.search = serializeTierList({ useCase, group, by, tiers: expandTiers(items, tiers) }).toString();
+    url.search = serializeTierList(memberList()).toString();
     return url.href;
   }
   async function copy(text: string, done: string) {
@@ -79,7 +104,7 @@
     catch { status = 'Copy the text below.'; fallback = text; }
   }
   const names = $derived(new Map(groupItems.map((item) => [item.id, `${item.brandName} ${item.name}`])));
-  const shareText = () => `${tierListText({ useCase, group, tiers }, names, `${title}${by ? ` — by ${by}` : ''}`)}\n${shareUrl()}`;
+  const shareText = () => `${tierListText({ useCase, group, tiers, order: expandOrder(items, tiers) }, names, `${title}${by ? ` — by ${by}` : ''}`)}\n${shareUrl()}`;
 
   function submitOnGitHub() {
     const query = new URLSearchParams({ title: `Tier list: ${title}`, body: `${shareText()}\n\nNotes:\n` });
@@ -92,7 +117,7 @@
       const shared = parseTierList(location.search, ids);
       if (shared && groupsWithItems.includes(shared.group)) {
         useCase = shared.useCase; group = shared.group; selected = null;
-        if (new URLSearchParams(location.search).has('r')) { tiers = collapseTiers(items, shared.tiers); sharedBy = shared.by ?? 'someone'; }
+        if (new URLSearchParams(location.search).has('r')) { tiers = collapseTiers(items, shared.tiers, shared.order); sharedBy = shared.by ?? 'someone'; }
         else { sharedBy = null; fromSite(); }
       } else fromSite();
     };
@@ -104,7 +129,7 @@
     if (!ready) return;
     // While viewing someone's list, keep their link intact until it is edited.
     if (sharedBy) return;
-    history.replaceState(history.state, '', `${location.pathname}?${serializeTierList({ useCase, group, by, tiers: expandTiers(items, tiers) })}`);
+    history.replaceState(history.state, '', `${location.pathname}?${serializeTierList(memberList())}`);
   });
   $effect(() => { if (ready) localStorage.setItem(NAME_KEY, by); });
 </script>
@@ -137,13 +162,13 @@
     <button type="button" class="link" onclick={() => { tiers = new Map(); sharedBy = null; }}>Start blank</button>
   </div>
 
-  <p class="hint">Click a part, then click a tier, or press <kbd>5</kbd>–<kbd>1</kbd> (<kbd>0</kbd> to unrank). You can also drag. Leave parts you don't know unranked.</p>
+  <p class="hint">Click a part, then click a tier, or press <kbd>S</kbd> or <kbd>5</kbd>–<kbd>1</kbd> (<kbd>0</kbd> to unrank). Order counts: best first within a tier. Drag a part onto another to put it in front, or use <kbd>←</kbd> <kbd>→</kbd> on a selected part. Leave parts you don't know unranked.</p>
 
   <div class="board">
     {#each TIERS as tier (tier)}
       <!-- svelte-ignore a11y_click_events_have_key_events -->
       <div class="row t{tier}" class:target={!!selected} role="listitem" ondragover={(e) => e.preventDefault()} ondrop={(e) => drop(e, tier)} onclick={(e) => { if (e.target === e.currentTarget) place(tier); }}>
-        <button type="button" class="label" onclick={() => place(tier)} disabled={!selected} aria-label={`Move to ${tier} ${tierLabels[tier]}`}><b>{tier}</b><span>{tierLabels[tier]}</span></button>
+        <button type="button" class="label" onclick={() => place(tier)} disabled={!selected} aria-label={`Move to ${tierBadge(tier)} ${tierLabels[tier]}`}><b>{tierBadge(tier)}</b><span>{tierLabels[tier]}</span></button>
         <div class="tiles">
           {#each inTier(tier) as item (item.id)}{@render tile(item)}{/each}
         </div>
@@ -179,12 +204,13 @@
   <button type="button" class="tile" class:selected={selected === item.id} class:dragging={dragging === item.id} data-id={item.id}
     draggable="true" title={`${item.brandName} ${item.name}`}
     ondragstart={(e) => { dragging = item.id; e.dataTransfer?.setData('text/plain', item.id); }} ondragend={() => (dragging = null)}
+    ondragover={(e) => e.preventDefault()} ondrop={(e) => drop(e, tiers.get(item.id) ?? null, tiers.has(item.id) ? item.id : null)}
     onclick={() => (selected = selected === item.id ? null : item.id)} aria-pressed={selected === item.id}>
     <span class="img">{#if item.image}<img src={item.image} alt="" loading="lazy" />{/if}</span>
     <span class="brand">{item.brandName}</span>
     <span class="name">{item.name}</span>
     {#if item.members.length > 1}<span class="variants">{item.members.length} variants</span>{/if}
-    {#if showSite}<span class="site">{item.scored ? `${item.estimated ? 'estimate' : 'site'} ${item.fit[useCase]}` : 'unscored'}</span>{/if}
+    {#if showSite}<span class="site">{item.scored ? `${item.estimated ? 'estimate' : 'site'} ${Number(item.fit[useCase].toFixed(1))}` : 'unscored'}</span>{/if}
   </button>
 {/snippet}
 
@@ -217,7 +243,7 @@
   .label:disabled { cursor: default; opacity: 1; }
   .label b { font: 700 2rem/1 var(--font-display); }
   .label span { font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
-  .t5 .label { background: #7fbf7f; } .t4 .label { background: #bfdf7f; } .t3 .label { background: #f5df80; } .t2 .label { background: #f5bf7f; } .t1 .label { background: #f08f7f; }
+  .t6 .label { background: #b9a4e0; } .t5 .label { background: #7fbf7f; } .t4 .label { background: #bfdf7f; } .t3 .label { background: #f5df80; } .t2 .label { background: #f5bf7f; } .t1 .label { background: #f08f7f; }
   .tiles { display: flex; flex-wrap: wrap; gap: .4rem; padding: .4rem; align-content: flex-start; min-width: 0; }
   .tile { display: grid; grid-template-rows: 4.5rem auto auto auto; width: 7.25rem; padding: .3rem; gap: .1rem; text-align: left; font-size: .75rem; line-height: 1.25; background: var(--color-paper); }
   .tile.selected { border-color: var(--color-accent); box-shadow: 0 0 0 2px var(--color-accent); }

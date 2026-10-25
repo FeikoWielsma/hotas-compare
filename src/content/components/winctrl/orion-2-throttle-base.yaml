@@ -51,6 +51,15 @@ hardware:
 connectivity:
   standalone_usb: true
 tier_line: Orion 2 Throttle
+use_case_fit:
+  modern_jet: 3
+  heli: 1
+  ww2: 2
+  ga: 3
+  airliner: 3
+  space_hotas: 1
+  space_hosas: 3
+use_case_fit_source: community
 prices:
 - region: EU
   currency: EUR

@@ -60,6 +60,7 @@ use_case_fit:
   airliner: 1
   space_hotas: 1
   space_hosas: 1
+use_case_fit_source: community
 prices:
 - region: EU
   currency: EUR

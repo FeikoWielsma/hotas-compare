@@ -79,6 +79,7 @@ use_case_fit:
   airliner: 1
   space_hotas: 1
   space_hosas: 1
+use_case_fit_source: community
 prices:
 - region: EU
   currency: EUR
@@ -122,12 +123,6 @@ verdict:
   - ga
   skip_if:
   - Grip sold separately
-  scores:
-    build: 4
-    feel: 4
-    value: 4
-    software: 4
-    qc_support: 4
 verification: draft
 sources:
 - https://virpil-controls.eu/products/vpc-rotor-tcs-plus-base

@@ -1,11 +1,17 @@
 import { describe, expect, it } from 'vitest';
-import { buildTierItems, collapseTiers, combineTierLists, expandTiers, findTierLinks, itemCode, parseTierList, serializeTierList, tierListText, type TierList } from './fit-tiers';
+import { buildTierItems, collapseTiers, combineTierLists, expandOrder, expandTiers, findTierLinks, fineScores, itemCode, parseTierList, serializeTierList, tierListText, tierOfFit, type TierList } from './fit-tiers';
 import { products } from '../../scripts/content';
 import { variantName } from './fit-groups';
 import { ComponentSchema } from './schema';
 
 const ids = ['vkb/gladiator-nxt-evo', 'virpil/vpc-mongoost-50cm3-base', 'thrustmaster/t-16000m'];
-const list = (tiers: [string, 1 | 2 | 3 | 4 | 5][], by?: string): TierList => ({ useCase: 'airliner', group: 'sticks', by, tiers: new Map(tiers) });
+const list = (tiers: [string, 1 | 2 | 3 | 4 | 5 | 6][], by?: string): TierList => ({ useCase: 'airliner', group: 'sticks', by, tiers: new Map(tiers) });
+/** An ordered list: positions follow the order given, per tier. */
+const ordered = (tiers: [string, 1 | 2 | 3 | 4 | 5 | 6][], by?: string): TierList => {
+  const seen = new Map<number, number>();
+  const order = new Map(tiers.map(([id, tier]) => { const p = seen.get(tier) ?? 0; seen.set(tier, p + 1); return [id, p]; }));
+  return { ...list(tiers, by), order };
+};
 
 describe('itemCode', () => {
   it('gives every catalog component a distinct five-character code', () => {
@@ -24,6 +30,15 @@ describe('share links', () => {
     const parsed = parseTierList(`https://hotas.razortek.nl/tiers?${params}`, ids)!;
     expect(parsed).toMatchObject({ useCase: 'airliner', group: 'sticks', by: 'Feiko' });
     expect([...parsed.tiers].sort()).toEqual([...original.tiers].sort());
+  });
+
+  it('round-trips the S tier and the order within each tier', () => {
+    const original = ordered([[ids[2], 6], [ids[1], 4], [ids[0], 4]]);
+    const params = serializeTierList(original);
+    expect(params.get('o')).toBe('1');
+    expect(params.get('r')).toBe(`6${itemCode(ids[2])}.4${itemCode(ids[1])}-${itemCode(ids[0])}`);
+    const parsed = parseTierList(params, ids)!;
+    expect([...parsed.order!]).toEqual([[ids[2], 0], [ids[1], 0], [ids[0], 1]]);
   });
 
   it('drops codes for products that are no longer in the catalog', () => {
@@ -45,7 +60,12 @@ describe('tierListText', () => {
   it('writes one line per tier for forum posts', () => {
     const names = new Map([[ids[0], 'Gladiator'], [ids[2], 'T.16000M']]);
     expect(tierListText(list([[ids[0], 5], [ids[2], 5]]), names, 'Sticks for airliner'))
-      .toBe('Sticks for airliner\n5 Excellent: Gladiator, T.16000M\n4 Good: —\n3 Fine: —\n2 Weak: —\n1 Poor: —');
+      .toBe('Sticks for airliner\nS Best: —\n5 Excellent: Gladiator, T.16000M\n4 Good: —\n3 Fine: —\n2 Weak: —\n1 Poor: —');
+  });
+
+  it('keeps the ranked order of an ordered list', () => {
+    const names = new Map([[ids[0], 'Gladiator'], [ids[2], 'T.16000M']]);
+    expect(tierListText(ordered([[ids[2], 4], [ids[0], 4]]), names, 'T').split('\n')[3]).toBe('4 Good: T.16000M, Gladiator');
   });
 });
 
@@ -61,8 +81,34 @@ describe('combineTierLists', () => {
     expect(verdicts.find((v) => v.id === ids[1])).toMatchObject({ median: 3, proposed: 3 });
   });
 
-  it('rounds an even split up to the higher whole score', () => {
-    expect(combineTierLists([list([[ids[0], 2]]), list([[ids[0], 3]])])[0]).toMatchObject({ median: 2.5, proposed: 3 });
+  it('keeps the median of an even split', () => {
+    expect(combineTierLists([list([[ids[0], 2]]), list([[ids[0], 3]])])[0]).toMatchObject({ median: 2.5, proposed: 2.5 });
+  });
+
+  it('lets an author replace an unordered list with an ordered one', () => {
+    const [verdict] = combineTierLists([list([[ids[0], 4]], 'ann'), ordered([[ids[0], 6]], 'ann')]);
+    expect(verdict.scores).toEqual([4.88]);
+  });
+});
+
+describe('fineScores', () => {
+  it('spreads an ordered tier across its band, best first, and rounds back to the tier', () => {
+    const scores = fineScores(ordered([[ids[0], 4], [ids[1], 4], [ids[2], 4]]));
+    expect([...scores.values()]).toEqual([4.33, 4, 3.67]);
+    expect([...scores.values()].every((s) => Math.round(s) === 4)).toBe(true);
+  });
+
+  it('puts S above Excellent, both on the 5 band', () => {
+    const scores = fineScores(ordered([[ids[0], 6], [ids[1], 5], [ids[2], 1]]));
+    expect(scores.get(ids[0])).toBeGreaterThan(scores.get(ids[1])!);
+    expect(Math.round(scores.get(ids[0])!)).toBe(5);
+    expect(Math.round(scores.get(ids[1])!)).toBe(5);
+    expect(Math.round(scores.get(ids[2])!)).toBe(1);
+    expect([tierOfFit(scores.get(ids[0])!), tierOfFit(scores.get(ids[1])!), tierOfFit(scores.get(ids[2])!), tierOfFit(5)]).toEqual([6, 5, 1, 5]);
+  });
+
+  it('gives an unordered list whole tier scores', () => {
+    expect([...fineScores(list([[ids[0], 4], [ids[1], 4]])).values()]).toEqual([4, 4]);
   });
 });
 
@@ -107,5 +153,12 @@ describe('tier entries', () => {
     const members = expandTiers(items, new Map([['b/l', 4]]));
     expect([...members]).toEqual([['b/l', 4], ['b/r', 4]]);
     expect([...collapseTiers(items, new Map([['b/r', 2]]))]).toEqual([['b/l', 2]]);
+  });
+
+  it('gives every member of an entry the same position and restores entry order from a link', () => {
+    const items = buildTierItems([part('b/l', { name: 'Grip (Left)' }), part('b/r', { name: 'Grip (Right)' }), part('b/x', { name: 'Other' })]);
+    const entries = new Map<string, 4>([['b/x', 4], ['b/l', 4]]);
+    expect([...expandOrder(items, entries)]).toEqual([['b/x', 0], ['b/l', 1], ['b/r', 1]]);
+    expect([...collapseTiers(items, expandTiers(items, entries), expandOrder(items, entries)).keys()]).toEqual(['b/x', 'b/l']);
   });
 });

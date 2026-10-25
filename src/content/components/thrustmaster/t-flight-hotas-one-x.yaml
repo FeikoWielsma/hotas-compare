@@ -66,12 +66,13 @@ physical:
   - abs
 use_case_fit:
   modern_jet: 2
-  heli: 3
+  heli: 2
   ww2: 2
-  ga: 3
-  airliner: 3
+  ga: 2
+  airliner: 2
   space_hotas: 2
-  space_hosas: 3
+  space_hosas: 2
+use_case_fit_source: community
 tier_line: T.Flight HOTAS One
 prices:
 - region: EU

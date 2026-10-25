@@ -1,3 +1,4 @@
+import { fitCap } from './fit-baseline';
 import { isListed } from './visibility';
 import { resolveSuccessor } from './successors';
 import { deriveComponentStats, deriveControlsSummary, resolvePrice } from './derive';
@@ -42,6 +43,8 @@ export interface CatalogItem {
   usesPotentiometers: boolean;
   gimbal: string | null;
   use_case_fit: UseCaseFit;
+  /** Some part is under a maintainer hard cap (budget gear to avoid), so the wizard never recommends it. */
+  budgetGear?: true;
   verdict: Verdict | null;
   scores: Verdict['scores'] | null;
   /** Tag of the most recent external review (e.g. Mysh's latest roundup), if any. */
@@ -204,6 +207,7 @@ export async function loadCatalog(region: Region = 'EU', now = new Date()) {
         const families = [...new Set(members.map((member) => member.airliner_family).filter((family) => family != null))];
         return families.length === 1 ? { airlinerFamily: families[0] } : {};
       })(),
+      ...(members.some((member) => fitCap(member).reasons.length) ? { budgetGear: true as const } : {}),
       use_case_fit, verdict: data.verdict ?? null, scores: data.verdict?.scores ?? null,
       ...(() => {
         const review = [...data.external_reviews].sort((a, b) => b.date.localeCompare(a.date))[0];

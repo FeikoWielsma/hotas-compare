@@ -51,7 +51,15 @@ physical:
   materials:
   - steel
   - aluminium
-use_case_fit: {}
+use_case_fit:
+  modern_jet: 3
+  heli: 4
+  ww2: 4
+  ga: 4
+  airliner: 3
+  space_hotas: 3
+  space_hosas: 3
+use_case_fit_source: community
 prices:
 - region: EU
   currency: EUR

@@ -102,10 +102,11 @@ use_case_fit:
   modern_jet: 2
   heli: 2
   ww2: 3
-  ga: 5
-  airliner: 3
+  ga: 3
+  airliner: 2
   space_hotas: 2
   space_hosas: 2
+use_case_fit_source: community
 software: Foxtrot Aviation Stick firmware update
 prices:
 - region: EU

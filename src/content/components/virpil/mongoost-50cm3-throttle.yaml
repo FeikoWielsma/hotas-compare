@@ -177,12 +177,6 @@ verdict:
     - space_hotas
   skip_if:
     - "You want a simple plug-and-play desktop throttle without complex profile mapping"
-  scores:
-    build: 5
-    feel: 5
-    value: 4
-    software: 4
-    qc_support: 5
 external_reviews:
   - reviewer: mysh
     url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1855s

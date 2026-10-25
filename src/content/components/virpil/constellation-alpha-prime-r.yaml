@@ -98,11 +98,11 @@ use_case_fit:
   modern_jet: 5
   heli: 4
   ww2: 4
-  ga: 2
-  airliner: 1
-  space_hotas: 5
+  ga: 4
+  airliner: 3
+  space_hotas: 4
   space_hosas: 5
-use_case_fit_source: seeded
+use_case_fit_source: community
 prices:
 - region: EU
   currency: EUR
@@ -147,12 +147,6 @@ verdict:
   skip_if:
   - You want a compact, desktop-only stick without mounting
   - Budget is under €200 for a complete setup
-  scores:
-    build: 5
-    feel: 5
-    value: 4
-    software: 4
-    qc_support: 5
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1757s

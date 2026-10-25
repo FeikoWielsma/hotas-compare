@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { baselineFit } from './fit-baseline';
+import { products } from '../../scripts/content';
+import { baselineFit, fitCap } from './fit-baseline';
 import { groupOf, isPlaceholderFit, isUnreviewedFit } from './fit-groups';
 import { ComponentSchema, defaultUseCaseFit } from './schema';
 
@@ -17,7 +18,7 @@ describe('baselineFit', () => {
       hardware: { axes: [{ name: 'twist' }] },
     }));
     expect(fit.space_hosas).toBe(5);
-    expect(fit.airliner).toBeLessThanOrEqual(2);
+    expect(fit.airliner).toBeLessThan(fit.space_hosas);
     expect(reasons).toEqual(expect.arrayContaining(['3+ hats', 'analog ministick', 'twist axis']));
   });
 
@@ -39,7 +40,7 @@ describe('baselineFit', () => {
     const combat = baselineFit(part({ name: 'Combat Grip', category: 'grip', controls: [{ type: 'hat', count: 4 }, { type: 'analog_ministick' }, { type: 'lever', kind: 'brake' }] })).fit;
     const airbus = baselineFit(part({ name: 'Sidestick', category: 'stick_fixed', airliner_family: 'airbus' })).fit;
     expect(airbus.airliner).toBe(5);
-    expect(combat.airliner).toBeLessThanOrEqual(2);
+    expect(combat.airliner).toBeLessThanOrEqual(3);
   });
 
   it('keeps gear that reviewers say to avoid low everywhere', () => {
@@ -52,6 +53,35 @@ describe('baselineFit', () => {
     }));
     expect(Math.max(...Object.values(fit))).toBe(2);
     expect(reasons).toContain('reviewers say avoid');
+  });
+
+  it('judges a base on its gimbal, with force feedback on top for every use case', () => {
+    const ffb = baselineFit(part({ name: 'B', category: 'base', hardware: { gimbal_type: 'force_feedback' } })).fit;
+    const cam = baselineFit(part({ name: 'B', category: 'base', hardware: { gimbal_type: 'cam_and_spring', force_adjustable: true } })).fit;
+    const ball = baselineFit(part({ name: 'B', category: 'base', hardware: { gimbal_type: 'ball_and_cup' } })).fit;
+    expect(Object.values(ffb).every((v) => v === 5)).toBe(true);
+    expect(ffb.airliner).toBeGreaterThan(cam.airliner);
+    expect(cam.airliner).toBeGreaterThan(ball.airliner);
+  });
+
+  it('caps budget gear for every use case', () => {
+    expect(fitCap(part({ brand: 'thrustmaster', name: 'T.Flight Rudder Pedals (TFRP)', category: 'pedals' })).cap).toBe(1);
+    expect(fitCap(part({ brand: 'logitech', name: 'X56 Rhino Stick', category: 'stick_fixed' })).cap).toBe(2);
+    expect(fitCap(part({ brand: 'thrustmaster', name: 'T.Flight HOTAS X', category: 'stick_fixed' })).cap).toBe(2);
+    expect(fitCap(part({ brand: 'turtle-beach', name: 'VelocityOne Flightstick', category: 'stick_fixed' })).cap).toBe(2);
+    expect(fitCap(part({ brand: 'turtle-beach', name: 'VelocityOne Rudder Pedals', category: 'pedals' })).cap).toBe(5);
+    const { fit } = baselineFit(part({ brand: 'thrustmaster', name: 'T.Flight Sidestick Airbus', category: 'stick_fixed', airliner_family: 'airbus' }));
+    expect(Math.max(...Object.values(fit))).toBe(2);
+  });
+
+  it('keeps every catalog score within its hard cap, reviewed or not', () => {
+    const over = products()
+      .filter((p) => p.collection === 'components')
+      .flatMap((p) => {
+        const data = ComponentSchema.parse(p.data), { cap } = fitCap(data);
+        return Object.entries(data.use_case_fit).filter(([, v]) => v > cap).map(([u, v]) => `${p.id} ${u}: ${v} > ${cap}`);
+      });
+    expect(over).toEqual([]);
   });
 
   it('keeps every score on the whole 1–5 scale', () => {

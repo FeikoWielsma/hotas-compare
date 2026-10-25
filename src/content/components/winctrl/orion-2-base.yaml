@@ -53,14 +53,14 @@ physical:
     - aluminium
     - steel
 use_case_fit:
-  modern_jet: 5
+  modern_jet: 4
   heli: 4
   ww2: 4
-  ga: 3
-  airliner: 2
+  ga: 4
+  airliner: 4
   space_hotas: 4
   space_hosas: 4
-use_case_fit_source: seeded
+use_case_fit_source: community
 prices:
   - region: EU
     currency: EUR
@@ -103,12 +103,6 @@ verdict:
     - heli
   skip_if:
     - "You need a small, low-profile desktop base without clamp mounts"
-  scores:
-    build: 4
-    feel: 4
-    value: 5
-    software: 3
-    qc_support: 4
 external_reviews:
   - reviewer: mysh
     url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=3046s

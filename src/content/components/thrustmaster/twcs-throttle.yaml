@@ -91,14 +91,14 @@ physical:
   - abs
   dimensions_mm: [152, 229, 264]
 use_case_fit:
-  modern_jet: 4
-  heli: 3
-  ww2: 4
+  modern_jet: 3
+  heli: 2
+  ww2: 3
   ga: 3
-  airliner: 2
-  space_hotas: 4
-  space_hosas: 1
-use_case_fit_source: seeded
+  airliner: 3
+  space_hotas: 5
+  space_hosas: 2
+use_case_fit_source: community
 prices:
 - region: EU
   currency: EUR
@@ -142,12 +142,6 @@ verdict:
   - ww2
   skip_if:
   - You want a dual-engine split throttle or heavy metal base
-  scores:
-    build: 3
-    feel: 3
-    value: 4
-    software: 2
-    qc_support: 3
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=838s

@@ -52,12 +52,6 @@ verdict:
   - modern_jet
   skip_if:
   - You already own one or more of the included components
-  scores:
-    build: 4
-    feel: 4
-    value: 4
-    software: 4
-    qc_support: 4
 verification: draft
 sources:
 - https://vkbsimcontrollers.com/products/gladiator-nxt-evo-f-14-combat-edition-us

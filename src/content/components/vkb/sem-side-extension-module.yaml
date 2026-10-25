@@ -86,12 +86,12 @@ physical:
 use_case_fit:
   modern_jet: 3
   heli: 3
-  ww2: 5
-  ga: 4
+  ww2: 3
+  ga: 3
   airliner: 4
   space_hotas: 3
-  space_hosas: 2
-use_case_fit_source: seeded
+  space_hosas: 3
+use_case_fit_source: community
 tier_line: GNX SEM Side Extension Module
 prices:
 - region: EU
@@ -135,12 +135,6 @@ verdict:
   - ww2
   skip_if:
   - Requires a compatible GNX controller and physical mounting
-  scores:
-    build: 4
-    feel: 4
-    value: 4
-    software: 4
-    qc_support: 4
 verification: draft
 sources:
 - https://vkbcontrollers.com/products/gnx-sem-side-extension-module

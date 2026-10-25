@@ -61,14 +61,14 @@ physical:
   - aluminium
   - steel
 use_case_fit:
-  modern_jet: 5
+  modern_jet: 4
   heli: 4
-  ww2: 5
-  ga: 5
+  ww2: 4
+  ga: 4
   airliner: 4
   space_hotas: 3
   space_hosas: 3
-use_case_fit_source: seeded
+use_case_fit_source: community
 prices:
 - region: EU
   currency: EUR
@@ -112,12 +112,6 @@ verdict:
   - ga
   skip_if:
   - Requires floor space and a suitable chair or cockpit
-  scores:
-    build: 4
-    feel: 4
-    value: 4
-    software: 4
-    qc_support: 4
 verification: draft
 sources:
 - https://virpil-controls.eu/products/vpc-ace-interceptor-pedals

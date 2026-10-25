@@ -15,7 +15,7 @@ status: current
 release_year: 2016
 handedness: right
 mount:
-  provides: vkb-rev-b
+  provides: vkb-gnx
   accepts: []
 placement: mount_only
 controls:
@@ -83,14 +83,14 @@ physical:
   materials:
   - abs
 use_case_fit:
-  modern_jet: 3
+  modern_jet: 1
   heli: 3
   ww2: 5
   ga: 4
-  airliner: 1
-  space_hotas: 2
-  space_hosas: 2
-use_case_fit_source: seeded
+  airliner: 3
+  space_hotas: 1
+  space_hosas: 1
+use_case_fit_source: community
 prices:
 - region: EU
   currency: EUR
@@ -131,12 +131,6 @@ verdict:
   - ww2
   skip_if:
   - Very few controls compared with modern grips
-  scores:
-    build: 4
-    feel: 4
-    value: 4
-    software: 4
-    qc_support: 4
 verification: draft
 sources:
 - https://vkbcontrollers.com/products/kg12-grip

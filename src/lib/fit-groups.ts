@@ -29,9 +29,11 @@ export const fitGroupLabels: Record<FitGroup, { plural: string; singular: string
 const THROTTLE_HAND = /throttle|collective|\bTHQ\b|rotor tcs/i;
 const YOKE = /yoke/i;
 const TILLER = /tiller|handwheel/i;
+/** Nose-wheel tillers are catalogued as fixed sticks but steer on the ground; they never fill a stick role. */
+export const isTiller = (name: string) => TILLER.test(name);
 
 export function groupOf(category: ComponentCategory, name = ''): FitGroup {
-  if (TILLER.test(name)) return 'modules';
+  if (isTiller(name)) return 'modules';
   if (category === 'grip' || category === 'base') {
     if (THROTTLE_HAND.test(name)) return 'throttles';
     if (YOKE.test(name)) return 'yokes';

@@ -76,9 +76,10 @@ use_case_fit:
   heli: 3
   ww2: 2
   ga: 3
-  airliner: 3
+  airliner: 2
   space_hotas: 2
-  space_hosas: 4
+  space_hosas: 2
+use_case_fit_source: community
 prices:
 - region: EU
   currency: EUR
@@ -122,12 +123,6 @@ verdict:
   - modern_jet
   skip_if:
   - You have a budget over €150 and want durable contactless twist or modular cams
-  scores:
-    build: 3
-    feel: 3
-    value: 4
-    software: 2
-    qc_support: 3
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=266s

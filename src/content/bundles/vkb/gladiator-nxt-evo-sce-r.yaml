@@ -54,12 +54,6 @@ verdict:
     - space_hotas
   skip_if:
     - "You already own a high-end metal cam base like WarBRD or Gunfighter"
-  scores:
-    build: 4
-    feel: 5
-    value: 5
-    software: 4
-    qc_support: 5
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2580s

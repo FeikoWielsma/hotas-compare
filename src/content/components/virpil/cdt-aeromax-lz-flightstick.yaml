@@ -97,14 +97,14 @@ physical:
     - steel
     - composite
 use_case_fit:
-  modern_jet: 4
+  modern_jet: 5
   heli: 4
-  ww2: 4
-  ga: 3
-  airliner: 4
+  ww2: 5
+  ga: 4
+  airliner: 3
   space_hotas: 4
-  space_hosas: 5
-use_case_fit_source: seeded
+  space_hosas: 4
+use_case_fit_source: community
 prices:
 - region: EU
   currency: EUR
@@ -145,12 +145,6 @@ verdict:
     - airliner
   skip_if:
     - "You use foot pedals for vertical/lateral strafe"
-  scores:
-    build: 5
-    feel: 5
-    value: 5
-    software: 4
-    qc_support: 5
 external_reviews:
   - reviewer: mysh
     url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1033s
