@@ -13,11 +13,13 @@ interface Props {
   canonicalUrl?: string | URL;
   jsonLd?: string | object;
   noindex?: boolean;
+  /** Navy site header that runs into a navy page hero (the catalog home). */
+  navyHeader?: boolean;
 }
 const {
   title = 'Flight sim hardware, compared',
   description = 'Compare flight sticks, throttles, yokes and rudder pedals. Independent specs, regional prices and community verdicts for your next cockpit.',
-  image = '/social-card.png', canonical, canonicalUrl: suppliedCanonical, jsonLd, noindex = false,
+  image = '/social-card.png', canonical, canonicalUrl: suppliedCanonical, jsonLd, noindex = false, navyHeader = false,
 } = Astro.props;
 const pageTitle = `${title} | HOTAS Compare`;
 const canonicalUrl = new URL(suppliedCanonical ?? canonical ?? Astro.url.pathname, Astro.site ?? 'https://hotas.razortek.nl');
@@ -59,7 +61,7 @@ const initialRegion = isRegion(cookieRegion) ? cookieRegion : regionFromCountry(
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
-    <Navbar initialRegion={initialRegion} />
+    <Navbar initialRegion={initialRegion} navy={navyHeader} />
     <main id="main-content" tabindex="-1" data-pagefind-body data-pagefind-ignore={noindex ? 'all' : undefined}><slot /></main>
     <Footer />
     <CompareTray client:load />

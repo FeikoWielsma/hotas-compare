@@ -53,7 +53,7 @@ export function cardFacts(item: CatalogItem): string {
     case 'pedals': parts = [brakes(item), item.damper === 'built_in' && 'Damper', item.damper === 'optional' && 'Damper optional', item.throwDeg != null && `${item.throwDeg}° throw`, sensor]; break;
     case 'throttle': case 'quadrant': parts = [levers(item), inputs, sensor]; break;
     case 'grip': parts = [inputs, item.hasMinistick && 'Ministick', onlyLeft(item) && 'Left hand']; break;
-    case 'base': parts = [sensor, item.placement === 'mount_only' && 'Mount required']; break;
+    case 'base': parts = [sensor]; break;
     case 'module': parts = [inputs]; break;
     default: parts = [axes, inputs, item.needsPedals && 'No twist', sensor, onlyLeft(item) && 'Left hand'];
   }

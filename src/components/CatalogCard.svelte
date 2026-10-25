@@ -1,25 +1,16 @@
 <script lang="ts">
   import ProductCard from './ProductCard.svelte';
   import { handOf, type CatalogGroup } from '../lib/catalog-filter';
-  import type { CatalogItem } from '../lib/catalog';
   import type { UseCase } from '../lib/schema';
-  import { familyCompareLineup, familyCompareTarget } from '../lib/family-compare';
-  let { group, familyItems = [], styles = [] }: { group: CatalogGroup; familyItems?: CatalogItem[]; styles?: UseCase[] } = $props();
+  let { group, styles = [] }: { group: CatalogGroup; styles?: UseCase[] } = $props();
   /** The variant the visitor picked. When filters remove it, the card keeps its label if that still matches, else shows the group's lead. */
   let picked = $state<{ id: string; label: string } | null>(null);
   const items = $derived(group.options.flatMap((option) => option.variants));
   const item = $derived(items.find((variant) => variant.id === picked?.id) ?? group.options.find((candidate) => candidate.label === picked?.label)?.variants[0] ?? group.lead);
   const option = $derived(group.options.find((candidate) => candidate.variants.some((variant) => variant.id === item.id))!);
-  /** One hand-matched item per family tier, just like the family detail lineup. */
-  const compareTarget = $derived.by(() => {
-    if (!group.family) return null;
-    const lineup = familyCompareLineup(familyItems, group.family!.id, item.id);
-    return familyCompareTarget(lineup.map((member) => member.id));
-  });
   /** Short label sets fit as a segmented switch; long ones (module layouts, editions) use a menu. */
   const segmented = $derived(group.options.length <= 4 && group.options.reduce((sum, { label }) => sum + label.length, 0) <= 28);
-  const handLabel = (variant: typeof item) => handOf(variant) === 'left' ? 'Left' : 'Right';
-  /** Switching label keeps the current hand where that label offers it. */
+  /** Switching label keeps the current hand (the lead's, on catalog cards) where that label offers it. */
   const pick = (id: string, label = option.label) => { picked = { id, label }; };
   function chooseOption(label: string) {
     const target = group.options.find((candidate) => candidate.label === label);
@@ -33,8 +24,6 @@
       {#if segmented}<div class="switch" role="group" aria-label={`${group.family.name} ${group.family.axis.toLocaleLowerCase()}`}>{#each group.options as candidate (candidate.label)}<button type="button" class:active={candidate === option} aria-pressed={candidate === option} onclick={() => chooseOption(candidate.label)}>{candidate.label}</button>{/each}</div>
       {:else}<label class="menu"><span>{group.family.axis}</span><select value={option.label} onchange={(event) => chooseOption(event.currentTarget.value)}>{#each group.options as candidate (candidate.label)}<option value={candidate.label}>{candidate.label}</option>{/each}</select></label>{/if}
     {/if}
-    {#if option.variants.length > 1}<div class="switch" role="group" aria-label="Hand">{#each option.variants as variant (variant.id)}<button type="button" class:active={item.id === variant.id} aria-pressed={item.id === variant.id} onclick={() => pick(variant.id)}>{handLabel(variant)}</button>{/each}</div>{/if}
-    {#if compareTarget}<a class="family-compare" href={compareTarget.href} title={compareTarget.included < compareTarget.total ? `Compares the first ${compareTarget.included} of ${compareTarget.total} versions` : undefined}>Compare family <span aria-hidden="true">↗</span></a>{/if}
   {/snippet}
 </ProductCard>
 
@@ -46,7 +35,5 @@
   .menu { display: flex; align-items: center; gap: .45rem; color: var(--color-muted); font: 600 .72rem/1.4 var(--font-sans); }
   .menu span { white-space: nowrap; }
   .menu select { flex: 1; min-width: 0; max-width: 100%; padding: .25rem .4rem; border: 1px solid var(--color-rule); border-radius: 2px; background: var(--color-surface); color: var(--color-ink); font: .78rem/1.4 var(--font-sans); }
-  .family-compare { align-self: flex-start; color: var(--color-accent); font: 600 .72rem/1.4 var(--font-sans); text-decoration: none; padding-block: .15rem; }
-  .family-compare:hover { text-decoration: underline; }
   :is(a, button, select):focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
 </style>

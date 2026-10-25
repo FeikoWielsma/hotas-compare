@@ -4,7 +4,7 @@
   import type { UseCase } from '../lib/schema';
   import { detailHref, formatAmount, productImageSrc } from '../lib/catalog-ui';
   import { flyingStyles, tableColumns } from '../lib/catalog-columns';
-  import { gimbalGlossaryKey, glossary } from '../lib/glossary';
+  import GimbalBadge from './GimbalBadge.svelte';
   import { regionStore } from '../lib/stores/region.svelte';
   import { compareStore, MAX_COMPARE_ITEMS } from '../lib/stores/compare.svelte';
   /** One row per catalog card (its lead variant). Spec columns follow the category tab; fit columns follow the visitor's flying styles. */
@@ -48,7 +48,7 @@
           </td>
           {#each columns as column (column.label)}
             {@const value = column.value(item)}
-            <td class:unknown={value == null || value === 'No' || value === 'None'}>{#if column.gimbal && item.gimbalType}<span class={`gimbal ${item.gimbalType}`} title={glossary[gimbalGlossaryKey[item.gimbalType]].text}>{value}</span>{:else}{value ?? '—'}{/if}</td>
+            <td class:unknown={value == null || value === 'No' || value === 'None'}>{#if column.gimbal && item.gimbalType}<GimbalBadge type={item.gimbalType} variant="pill" />{:else}{value ?? '—'}{/if}</td>
           {/each}
           {#if showMatch}{@const match = matchScore(item, styles)!}<td class="fit"><span class={`heat ${heat(match)}`} class:ring={sort === 'match'} title="Average fit across your flying styles">{round(match)}</span></td>{/if}
           {#each fitColumns as style (style.key)}
@@ -79,8 +79,6 @@
   .brand { color: var(--color-accent); font-size: .75rem; font-weight: 600; } .versions { color: var(--color-muted); font-weight: 400; }
   td.unknown { color: var(--color-muted); }
   td.price { font-weight: 700; font-variant-numeric: tabular-nums; }
-  .gimbal { display: inline-block; padding: .15rem .5rem; border: 1px solid currentColor; font-size: .75rem; font-weight: 700; color: #586875; background: #fff; }
-  .gimbal.pincer { color: #172e42; } .gimbal.cam_and_spring { color: #fff; background: #bf421f; border-color: #bf421f; } .gimbal.force_feedback { color: #fff; background: #192f43; border-color: #192f43; }
   .heat { display: inline-grid; place-items: center; min-width: 2.1rem; height: 1.6rem; font-weight: 700; font-variant-numeric: tabular-nums; }
   .h0, .h1 { background: #f3f1ea; color: #586875; } .h2 { background: #ebe7dc; color: #586875; } .h3 { background: #f2e2d7; color: #8f2f15; } .h4 { background: #e9a98b; color: #4d1a0b; } .h5 { background: #bf421f; color: #fff; }
   .ring { box-shadow: 0 0 0 2px var(--color-navy); }

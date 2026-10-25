@@ -4,13 +4,13 @@ import SearchModal from './SearchModal.svelte';
 import { getCatalogItems } from '../lib/catalog';
 import { detailHref } from '../lib/catalog-ui';
 import type { Region } from '../lib/schema';
-interface Props { initialRegion?: Region }
-const { initialRegion } = Astro.props;
+interface Props { initialRegion?: Region; navy?: boolean }
+const { initialRegion, navy = false } = Astro.props;
 const searchItems = (await getCatalogItems()).map(item => ({ name: item.name, brandName: item.brandName, category: item.category, yokePart: item.yokePart, prices: item.prices, formerBrandNames: item.formerBrandNames, image: item.images[0]?.file, url: detailHref(item) }));
 const links = [{ href: '/', label: 'Catalog' }, { href: '/compare', label: 'Compare' }, { href: '/brands', label: 'Brands' }, { href: '/wizard', label: 'Setup guide' }];
 ---
 
-<header class="navbar">
+<header class:list={["navbar", { navy }]}>
   <div class="nav-inner">
     <a class="brand" href="/" aria-label="HOTAS Compare home"><span class="wordmark">HOTAS<span>COMPARE</span></span><span class="brand-note">The independent sim hardware guide</span></a>
     <nav aria-label="Main navigation">
@@ -48,6 +48,10 @@ const links = [{ href: '/', label: 'Catalog' }, { href: '/compare', label: 'Comp
 
 <style>
   .navbar { background: var(--color-paper); }
+  /* Navy variant: re-point the tokens for the header's own controls; the search dialog keeps the page theme. */
+  .navy { background: var(--color-navy); }
+  .navy .nav-inner { border-bottom-color: #2a4258; }
+  .navy .brand, .navy nav, .navy .tools > :global(:not(dialog)) { --color-ink: #f8f2e6; --color-muted: #c9d3da; --color-rule: #36506a; --color-accent: #f69b70; --color-paper: #192f43; --color-surface: #22394f; --color-accent-soft: #2a4258; color: var(--color-ink); }
   .nav-inner { max-width: 1240px; margin: auto; padding: 1.5rem 0; display: flex; align-items: center; flex-wrap: wrap; gap: 1.5rem; border-bottom: 1px solid var(--color-ink); }
   .brand { display: flex; flex-direction: column; gap: .35rem; text-decoration: none; flex: none; }
   .wordmark { font: 700 2rem/.95 var(--font-display); letter-spacing: -.01em; }

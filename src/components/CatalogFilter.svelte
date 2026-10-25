@@ -177,7 +177,7 @@
   {#if !filtered.length}<div class="empty"><h2>No hardware matches your filters.</h2><p>{activeCount} active {activeCount === 1 ? 'filter is' : 'filters are'} narrowing the catalog. Try fewer requirements or a broader search. Price filters use {regionStore.region} listings only.</p><button type="button" onclick={reset}>Reset all filters</button></div>
   {:else if layout === 'table'}<CatalogTable groups={grouped} {category} {styles} sort={effectiveSort} onsort={(value) => sort = value === 'match' ? 'featured' : value} />
     <p class="fit-note">{styles.length ? 'Showing fit for your flying styles only. Pick Anything to see all seven.' : 'Fit is 1–5 per flying style. Pick what you fly to narrow these columns and rank by match.'}</p>
-  {:else}<div class="grid">{#each grouped as group (group.key)}<CatalogCard {group} familyItems={items} {styles} />{/each}</div>{/if}
+  {:else}<div class="grid">{#each grouped as group (group.key)}<CatalogCard {group} {styles} />{/each}</div>{/if}
 </section>
 
 <style>
