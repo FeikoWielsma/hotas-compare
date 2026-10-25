@@ -1,0 +1,18 @@
+---
+import type { FamilyView } from '../../lib/families';
+import type { CatalogItem } from '../../lib/catalog';
+import { detailHref } from '../../lib/catalog-ui';
+interface Props { family: FamilyView<CatalogItem> }
+const { family } = Astro.props;
+---
+<nav aria-label={`${family.name} ${family.axis.toLowerCase()}`}>
+  <p>{family.name} · {family.axis}</p>
+  <div>{family.lineup.map(member => <a href={detailHref(member.item)} aria-current={member.id === family.current.id ? 'page' : undefined} title={member.item.name}>{member.label}{member.item.status === 'discontinued' && <small> (discontinued)</small>}</a>)}</div>
+</nav>
+<style>
+  p { margin: 0 0 .5rem; color: var(--color-muted); font-size: .8rem; }
+  div { display: flex; flex-wrap: wrap; gap: .4rem; }
+  a { padding: .5rem .8rem; border: 1px solid var(--color-rule); border-radius: 2rem; color: var(--color-ink); font-size: .875rem; text-decoration: none; }
+  a:hover, a:focus-visible { border-color: var(--color-accent); color: var(--color-accent); }
+  a[aria-current] { background: var(--color-accent); border-color: var(--color-accent); color: var(--color-paper); font-weight: 600; }
+</style>

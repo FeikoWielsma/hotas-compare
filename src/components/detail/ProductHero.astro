@@ -22,6 +22,7 @@ const hand = p.handedness && p.handedness !== 'n/a' ? (p.handedness === 'ambi' ?
   <div class="info">
     <a class="maker" href={`/brands/${p.brand}`}><BrandMark brand={p.brand} name={p.brandName} size={28} />{p.brandName}</a>
     <h1>{p.name}</h1>
+    <slot name="family" />
     <ul class="tags">
       <li>{categoryLabels[p.category]}</li>
       {p.status !== 'current' && <li class={`status ${p.status}`}>{statusLabels[p.status]}</li>}
