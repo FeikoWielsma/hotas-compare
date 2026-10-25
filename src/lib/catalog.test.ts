@@ -72,7 +72,7 @@ describe('catalog serialization', () => {
   it('records family membership on serialized items and rejects unknown members', async () => {
     collections.values.families = [{ id: 'test/line', data: FamilySchema.parse({ name: 'Line', brand: 'test', axis: 'Size', members: [{ id: 'test/base', label: 'Small' }, { id: 'test/combo', label: 'Large' }] }) }];
     const items = await getCatalogItems();
-    expect(items.find((item) => item.id === 'test/combo')?.family).toEqual({ id: 'test/line', name: 'Line', label: 'Large', tier: 1 });
+    expect(items.find((item) => item.id === 'test/combo')?.family).toEqual({ id: 'test/line', name: 'Line', axis: 'Size', label: 'Large', tier: 1 });
     expect(items.find((item) => item.id === 'test/grip')?.family).toBeNull();
     (collections.values.families[0] as { data: { members: { id: string }[] } }).data.members[0].id = 'test/missing';
     await expect(getCatalogItems()).rejects.toThrow('unknown member test/missing');

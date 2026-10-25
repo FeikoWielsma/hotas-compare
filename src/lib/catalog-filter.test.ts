@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import type { CatalogItem } from './catalog';
 import { deriveControlsSummary, resolvePrice } from './derive';
 import { resolveCatalogRegion } from './catalog';
-import { filterCatalog, groupHandVariants, handVariant, rankReasons } from './catalog-filter';
+import { filterCatalog, groupCatalog, groupHandVariants, handVariant, rankReasons, type CatalogGroup } from './catalog-filter';
 
 function item(overrides: Partial<CatalogItem> = {}): CatalogItem {
   return {
@@ -122,5 +122,51 @@ describe('catalog filters', () => {
     const otherBrand = item({ id: 'x', name: 'Grip (Right)', category: 'grip', brand: 'else' });
     const groups = groupHandVariants([l, other, r, otherBrand]);
     expect(groups.map((g) => g.map((i) => i.id))).toEqual([['r', 'l'], ['o'], ['x']]);
+  });
+});
+
+describe('catalog family grouping', () => {
+  const family = (label: string, tier: number) => ({ id: 'test/stecs', name: 'STECS', axis: 'Size', label, tier });
+  const mini = item({ id: 'mini-l', name: 'STECS Mini', handedness: ['left'], family: family('Mini', 0), resolvedPrice: price(300) });
+  const miniR = item({ id: 'mini-r', name: 'STECS Mini R', handedness: ['right'], family: family('Mini', 0), resolvedPrice: price(310) });
+  const max = item({ id: 'max', name: 'STECS Max', handedness: ['left'], family: family('Max', 1), hasMinistick: true, resolvedPrice: price(500) });
+  const stick = item({ id: 'stick', name: 'Stick', resolvedPrice: price(400) });
+  const twinL = item({ id: 'grip-l', name: 'Grip (Left)', category: 'grip', resolvedPrice: price(200) });
+  const twinR = item({ id: 'grip-r', name: 'Grip (Right)', category: 'grip', resolvedPrice: price(200) });
+  const all = [max, stick, mini, twinL, miniR, twinR];
+  const shape = (groups: CatalogGroup[]) => groups.map((g) => [g.key, g.lead.id, g.options.map((o) => [o.label, o.variants.map((v) => v.id)])]);
+
+  it('collapses a family into one entry with options in family order and hand twins right first', () => {
+    expect(shape(groupCatalog(filterCatalog(all, { sort: 'name' })))).toEqual([
+      ['item|grip-r', 'grip-r', [['', ['grip-r', 'grip-l']]]],
+      ['family|test/stecs', 'max', [['Mini', ['mini-r', 'mini-l']], ['Max', ['max']]]],
+      ['item|stick', 'stick', [['', ['stick']]]],
+    ]);
+  });
+
+  it('places a family at its best-sorted member and leads with that member', () => {
+    const groups = groupCatalog(filterCatalog(all, { sort: 'price-low' }));
+    expect(groups.map((g) => g.lead.id)).toEqual(['grip-r', 'mini-l', 'stick']);
+    expect(groupCatalog(filterCatalog(all, { sort: 'price-high' }))[0].lead.id).toBe('max');
+  });
+
+  it('shows a family when any member matches and lists only matching members', () => {
+    expect(shape(groupCatalog(filterCatalog(all, { ministick: true })))).toEqual([['family|test/stecs', 'max', [['Max', ['max']]]]]);
+    expect(shape(groupCatalog(filterCatalog(all, { handedness: 'right', maximum: 350 })))).toEqual([['family|test/stecs', 'mini-r', [['Mini', ['mini-r']]]]]);
+    expect(groupCatalog(filterCatalog(all, { search: 'nothing' }))).toEqual([]);
+  });
+
+  it('keeps a family key stable as filters change the lead', () => {
+    const keys = [{}, { sort: 'price-high' }, { handedness: 'right' }].map((filters) => groupCatalog(filterCatalog(all, filters)).find((g) => g.family)?.key);
+    expect(keys).toEqual(['family|test/stecs', 'family|test/stecs', 'family|test/stecs']);
+  });
+
+  it('does not pair a family member with a same-named twin outside the family', () => {
+    const loose = item({ id: 'loose', name: 'STECS Mini Left', handedness: ['left'] });
+    const looseR = item({ id: 'loose-r', name: 'STECS Mini Right', handedness: ['right'], family: family('Mini', 0) });
+    expect(shape(groupCatalog([loose, looseR]))).toEqual([
+      ['item|loose', 'loose', [['', ['loose']]]],
+      ['family|test/stecs', 'loose-r', [['Mini', ['loose-r']]]],
+    ]);
   });
 });
