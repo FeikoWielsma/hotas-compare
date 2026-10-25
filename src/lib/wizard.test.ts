@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import type { CatalogItem } from './catalog';
 import { deriveComponentStats, resolvePrice } from './derive';
 import { ComponentSchema } from './schema';
-import { budgetTier, deserializeWizardState, matchCuratedSetups, normalizeWizardAnswers, recommendLoadout, serializeWizardState } from './wizard';
+import { BUDGET_RANGES, budgetStops, budgetTier, deserializePicks, deserializeWizardState, matchCuratedSetups, nearestBudgetStop, normalizeWizardAnswers, picksOf, recommendLoadout, serializeWizardState } from './wizard';
 import type { WizardSetup } from './wizard';
 
 function hardware(id: string, category: CatalogItem['category'], amount: number, overrides: Partial<CatalogItem> = {}): CatalogItem {
@@ -122,5 +122,70 @@ describe('curated reference matching', () => {
     const setups: WizardSetup[] = [{ id: 'incomplete', data: { title: 'Incomplete', description: 'Reference', reasoning: 'Reason', use_case: 'space_hosas', budget_tier: 'mid', pick: false, items: [{ item_type: 'component', id: 'base', role: 'Second stick' }] } }];
     const result = matchCuratedSetups(setups, [hardware('base', 'base', 100)], normalizeWizardAnswers({ useCase: 'space_hosas', budgetMax: 500 }), 'EU');
     expect(result[0].warnings.some((warning) => warning.includes('unpaired'))).toBe(true);
+  });
+});
+
+describe('live editing', () => {
+  const fit = (modern_jet: number) => ({ ...ComponentSchema.parse({ brand: 'test', name: 'x', category: 'stick_fixed' }).use_case_fit, modern_jet });
+  const catalog = () => [
+    hardware('cheap-stick', 'stick_fixed', 80), hardware('great-stick', 'stick_fixed', 400, { use_case_fit: fit(5) }),
+    hardware('throttle', 'throttle', 100), hardware('pedals', 'pedals', 150), hardware('plain-stick', 'stick_fixed', 60, { axes: [{ name: 'X' }, { name: 'Y' }] }),
+  ];
+  it('round-trips picks with the answers and ignores malformed ids', () => {
+    const answers = normalizeWizardAnswers({ budgetMax: 600 });
+    const query = serializeWizardState(answers, [['vkb/base', 'vkb/grip'], ['throttle']]);
+    expect(deserializePicks(new URLSearchParams(query).get('picks'))).toEqual([['vkb/base', 'vkb/grip'], ['throttle']]);
+    expect(deserializeWizardState(query)).toEqual(answers);
+    expect(deserializePicks('ok,<script>,a~b~c')).toEqual([['ok'], ['a', 'b']]);
+    expect(serializeWizardState(answers)).not.toContain('picks');
+  });
+  it('keeps picks that still fit when the budget rises and fills only the new roles', () => {
+    const first = recommendLoadout(catalog(), normalizeWizardAnswers({ piecesNeeded: ['stick', 'throttle'], budgetMax: 200 }), 'EU');
+    expect(picksOf(first)).toEqual([['cheap-stick'], ['throttle']]);
+    const next = recommendLoadout(catalog(), normalizeWizardAnswers({ piecesNeeded: ['stick', 'throttle', 'pedals'], budgetMax: 1000 }), 'EU', { keep: picksOf(first) });
+    expect(next.complete).toBe(true);
+    expect(picksOf(next)).toEqual([['cheap-stick'], ['throttle'], ['pedals']]);
+    expect(next.pieces.map((piece) => !!piece.kept)).toEqual([true, true, false]);
+    expect(next.dropped).toEqual([]);
+    // Without picks, the same settings pick the higher-rated stick.
+    expect(recommendLoadout(catalog(), normalizeWizardAnswers({ piecesNeeded: ['stick', 'throttle', 'pedals'], budgetMax: 1000 }), 'EU').items[0].id).toBe('great-stick');
+  });
+  it('flags picks that no longer fit with the constraint they break', () => {
+    const keep = [['great-stick'], ['throttle']];
+    const cheaper = recommendLoadout(catalog(), normalizeWizardAnswers({ piecesNeeded: ['stick', 'throttle'], budgetMax: 450 }), 'EU', { keep });
+    expect(cheaper.complete).toBe(true);
+    expect(picksOf(cheaper)).toEqual([['throttle'], ['cheap-stick']]);
+    expect(cheaper.dropped).toMatchObject([{ ids: ['great-stick'], reason: 'Leaves too little budget for your other controls.' }]);
+    const overBudget = recommendLoadout(catalog(), normalizeWizardAnswers({ piecesNeeded: ['stick'], budgetMax: 300 }), 'EU', { keep: [['great-stick']] });
+    expect(overBudget.dropped[0].reason).toBe('Over the new budget on its own.');
+    const fewer = recommendLoadout(catalog(), normalizeWizardAnswers({ piecesNeeded: ['stick'], budgetMax: 1000 }), 'EU', { keep });
+    expect(fewer.dropped).toMatchObject([{ ids: ['throttle'], reason: 'No longer one of your selected controls.' }]);
+    expect(picksOf(fewer)).toEqual([['great-stick']]);
+    const twist = recommendLoadout(catalog(), normalizeWizardAnswers({ piecesNeeded: ['stick'], budgetMax: 1000 }), 'EU', { keep: [['plain-stick']] });
+    expect(twist.dropped[0].reason).toMatch(/twist/);
+    expect(recommendLoadout(catalog(), normalizeWizardAnswers({ piecesNeeded: ['stick'] }), 'EU', { keep: [['gone']] }).dropped[0].reason).toMatch(/EU price/);
+  });
+  it('does not blame picks when no setup fits the settings at all', () => {
+    const result = recommendLoadout(catalog(), normalizeWizardAnswers({ piecesNeeded: ['stick', 'throttle'], budgetMax: 100 }), 'EU', { keep: [['cheap-stick'], ['throttle']] });
+    expect(result.complete).toBe(false);
+    expect(result.dropped).toEqual([]);
+  });
+});
+
+describe('budget slider scale', () => {
+  it('spans entry level to high end with rounded, increasing, log-spaced stops per currency', () => {
+    for (const currency of ['EUR', 'GBP', 'USD'] as const) {
+      const stops = budgetStops(currency);
+      expect(stops[0]).toBe(BUDGET_RANGES[currency].min);
+      expect(stops.at(-1)).toBe(BUDGET_RANGES[currency].max);
+      expect(stops.every((stop, index) => index === 0 || stop > stops[index - 1])).toBe(true);
+      expect(stops.filter((stop) => stop >= 2000).every((stop) => stop % 100 === 0)).toBe(true);
+      // Notches below the mid tier are much finer than near the top.
+      expect(stops.filter((stop) => stop <= 350).length).toBeGreaterThan(stops.filter((stop) => stop >= 2500).length);
+    }
+    const stops = budgetStops('EUR');
+    expect(stops[nearestBudgetStop(stops, 750)]).toBe(750);
+    expect(nearestBudgetStop(stops, 20000)).toBe(stops.length - 1);
+    expect(nearestBudgetStop(stops, 1)).toBe(0);
   });
 });
