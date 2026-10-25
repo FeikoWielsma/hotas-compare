@@ -51,9 +51,23 @@ describe('airliner and GA picks', () => {
     const mid = recommend({ useCase: 'airliner', budgetMax: 750 });
     expect(mid.pieces.map((piece) => piece.roles)).toEqual([['pedals'], ['yoke'], ['quadrant']]);
     expect(mid.pieces.every((piece) => piece.standIns.length === 0)).toBe(true);
-    expect(mid.items.map((item) => item.id)).toEqual(expect.arrayContaining(['winctrl/orion-32-rudder-pedals', 'thrustmaster/tca-quadrant-boeing']));
-    expect(ids({ useCase: 'airliner', budgetMax: 1500 })).toContain('honeycomb/bravo-throttle-quadrant');
+    expect(mid.items.map((item) => item.id)).toEqual(['winctrl/orion-32-rudder-pedals', 'honeycomb/alpha-flight-controls-lite', 'honeycomb/bravo-throttle-quadrant-lite']);
+    // Maintainer: the Bravo's reverser, spoiler, flap and autopilot features make it the Boeing quadrant.
+    for (const budgetMax of [1000, 1500]) {
+      expect(ids({ useCase: 'airliner', budgetMax }), String(budgetMax)).toEqual(['winctrl/orion-32-rudder-pedals', 'honeycomb/alpha-flight-controls-lite', 'honeycomb/bravo-throttle-quadrant']);
+    }
     expect(ids({ useCase: 'ga', budgetMax: 750 })).toContain('honeycomb/bravo-throttle-quadrant-lite');
+  });
+  it('never offers the generic VKB GNX THQ as an airliner quadrant while a Bravo or replica fits', () => {
+    for (const region of ['US', 'EU'] as const) {
+      for (const budgetMax of [300, 400, 500, 600, 750, 1000]) {
+        for (const extra of [{}, { piecesNeeded: ['yoke', 'quadrant'] as WizardAnswers['piecesNeeded'], hasExistingPedals: true }]) {
+          expect(ids({ useCase: 'airliner', budgetMax, ...extra }, region).filter((id) => id.startsWith('vkb/gnx-thq')), `${region} ${budgetMax}`).toEqual([]);
+        }
+      }
+    }
+    expect(ids({ useCase: 'airliner', budgetMax: 400, piecesNeeded: ['yoke', 'quadrant'], hasExistingPedals: true }))
+      .toEqual(['honeycomb/alpha-flight-controls-lite', 'honeycomb/bravo-throttle-quadrant-lite']);
   });
   it('keeps Airbus replicas out of a Boeing yoke setup and vice versa', () => {
     for (const budgetMax of [400, 750, 1500, 3000]) {

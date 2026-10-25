@@ -81,7 +81,7 @@ use_case_fit:
   heli: 1
   ww2: 2
   ga: 2
-  airliner: 4
+  airliner: 3.5
   space_hotas: 1
   space_hosas: 1
 prices:

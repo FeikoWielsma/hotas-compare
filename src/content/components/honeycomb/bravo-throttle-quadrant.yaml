@@ -101,6 +101,7 @@ physical:
   - 382
   - 198
   materials: []
+airliner_family: boeing
 use_case_fit:
   modern_jet: 1
   heli: 1
