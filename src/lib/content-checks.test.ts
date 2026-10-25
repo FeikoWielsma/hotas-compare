@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest';
 import sharedProductPages from './fixtures/shared-product-pages.json';
 import { derivePedalBrakes } from './catalog';
 import { contentFiles, products, readContent, urls } from '../../scripts/content';
+import { resolveSuccessor } from './successors';
 
 const catalog = products();
 const normalize = (value: string) => value.normalize('NFKD').toLowerCase().replace(/[^a-z0-9]/g, '');
@@ -22,6 +23,11 @@ const canonical = (value: string) => {
 };
 
 describe('content correctness (offline)', () => {
+  it('resolves every successor to a different current component or bundle', () => {
+    const components = new Map(catalog.filter(p => p.collection === 'components').map(p => [p.id, p.data]));
+    const bundles = new Map(catalog.filter(p => p.collection === 'bundles').map(p => [p.id, p.data]));
+    for (const { id, data } of catalog) expect(() => resolveSuccessor(id, data, components, bundles)).not.toThrow();
+  });
   it('has no duplicate names or manufacturer product URLs except explicit variants', () => {
     const errors: string[] = [];
     for (let i = 0; i < catalog.length; i++) {

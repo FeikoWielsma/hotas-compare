@@ -64,8 +64,9 @@
     <h3><a href={detailHref(item)}>{item.name}</a></h3>
     {#if variants.length > 1}<div class="hands" role="group" aria-label="Hand">{#each variants as v, i}<button type="button" class:active={item.id === v.id} aria-pressed={item.id === v.id} onclick={() => pick = i}>{handLabel(v)}</button>{/each}</div>{/if}
     <p class="meta">{meta.join(' · ')}</p>
-    {#if review || item.gimbalType || item.needsPedals || hasPedalBadges}<div class="badges">
+    {#if review || item.gimbalType || item.needsPedals || item.usesPotentiometers || hasPedalBadges}<div class="badges">
       {#if review}<a class={`review ${review.tag}`} href={review.url} rel="external noopener" title={review.summary}>{review.reviewerName}: {tagLabels[review.tag]}</a>{/if}
+      {#if item.usesPotentiometers}<span class="potentiometer">Potentiometer<Explain title="Potentiometer axes" label={`Why ${item.name} uses potentiometers`} text="Potentiometers use physical contacts that can wear, causing jitter or drift over time. Hall and other contactless sensors avoid that contact and are generally preferred for long-term consistency." /></span>{/if}
       {#if item.gimbalType}<span class={`gimbal ${item.gimbalType}`}>{gimbalLabels[item.gimbalType]}<Explain term={gimbalGlossaryKey[item.gimbalType]} /></span>{/if}
       {#if item.needsPedals}<span class="pedals">No twist · add pedals<Explain term="pedals" /></span>{/if}
       {#if item.pedalBrakes}<span class={`brakes ${item.pedalBrakes}`}>{item.pedalBrakes === 'toe_brakes' ? 'Toe brakes' : item.pedalBrakes === 'rudder_only' ? 'Rudder only' : 'Brakes: unknown'}</span>{/if}
@@ -101,6 +102,7 @@
   .badges { display: flex; flex-wrap: wrap; gap: .35rem; margin: -.4rem 0 .9rem; font-size: .72rem; font-weight: 600; }
   .badges > * { display: inline-flex; align-items: center; padding: .15rem .45rem; border: 1px solid var(--color-rule); border-radius: 2px; color: var(--color-muted); text-decoration: none; }
   .review.recommended { color: #1d6b3a; border-color: #1d6b3a55; background: #1d6b3a0d; } .review.avoid { color: #9b2c1f; border-color: #9b2c1f55; background: #9b2c1f0d; } .review.mixed { color: #8a5a00; border-color: #8a5a0055; }
+  .potentiometer { color: #8a5a00 !important; border-color: #8a5a0055 !important; background: #8a5a000d; }
   a.review:hover { text-decoration: underline; }
   .gimbal.ball_and_cup { color: #8a5a00; } .gimbal.pincer, .gimbal.cam_and_spring, .gimbal.force_feedback { color: var(--color-ink); }
   .brakes.toe_brakes, .damper.built_in { color: var(--color-ink); }

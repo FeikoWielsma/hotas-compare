@@ -24,7 +24,8 @@ controls_evidence:
   notes: Three analog axes are rudder plus left and right toe brakes; the two brakes are axis inputs, not standalone buttons. Official page lists no physical switches, hats, or buttons. Pedal movements are represented explicitly as axes; they are not hand-operated levers or rocker switches.
 hardware:
   gimbal: cam
-  sensor: contactless_magnetic
+  # Manufacturer Hall-Effect Sensors section, checked 2026-10-25.
+  sensor: hall_effect
   axes:
   - name: Rudder
   - name: Left brake
@@ -79,7 +80,6 @@ images:
     source: https://flyhoneycomb.com/products/charlie-rudder-pedals
     caption: Charlie Rudder Pedals
 sources:
-- https://honeycomb.com
 - https://flyhoneycomb.com/products/charlie-rudder-pedals
 platform_compatibility:
   pc: supported

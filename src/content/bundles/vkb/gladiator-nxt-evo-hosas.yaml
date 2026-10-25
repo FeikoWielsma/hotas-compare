@@ -68,4 +68,10 @@ verification: draft
 sources:
   - https://vkbcontrollers.com/products/gladiator-nxt-evo-space-combat-edition
   - https://vkbcontrollers.com/products/gladiator-nxt-evo-omni-throttle
-images: []
+images:
+  - file: /images/vkb/gladiator-nxt-evo-hosas-stick.webp
+    source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-space-combat-edition-right-hand-us
+    caption: Gladiator NXT EVO Space Combat Edition, right hand
+  - file: /images/vkb/gladiator-nxt-evo-hosas-omni.webp
+    source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-omni-throttle-left-hand-us
+    caption: Gladiator NXT EVO Omni-Throttle, left hand

@@ -253,7 +253,8 @@ export const VerdictSchema = z.object({
   cons: z.array(z.string()).default([]),
   great_for: z.array(z.string()).default([]),
   skip_if: z.array(z.string()).default([]),
-  scores: VerdictScoreSchema,
+  // Evidence-based commentary can exist before the maintainer assigns scores.
+  scores: VerdictScoreSchema.optional(),
 });
 export type Verdict = z.infer<typeof VerdictSchema>;
 
@@ -386,6 +387,7 @@ export const ComponentSchema = z.object({
   category: ComponentCategoryEnum,
   platform_compatibility: PlatformCompatibilitySchema.optional(),
   status: ProductStatusEnum.default('current'),
+  successor: z.string().min(1).optional(),
   release_year: z.number().int().optional(),
   handedness: HandednessEnum.default('n/a'),
   mount: MountSchema,
@@ -418,6 +420,7 @@ export const BundleSchema = z.object({
   category: BundleCategoryEnum,
   platform_compatibility: PlatformCompatibilitySchema.optional(),
   status: ProductStatusEnum.default('current'),
+  successor: z.string().min(1).optional(),
   components: z.array(z.string()).min(1),
   prices: z.array(PriceSchema).default([]),
   verdict: VerdictSchema.nullable().optional(),
@@ -448,3 +451,22 @@ export const SetupSchema = z.object({
   pick: z.boolean().default(false),
 });
 export type Setup = z.infer<typeof SetupSchema>;
+
+// Family Collection Schema
+/** Related variants of one product line, ordered along the axis that differentiates them. */
+export const FamilySchema = z.object({
+  name: z.string(),
+  brand: z.string(),
+  /** What changes from one member to the next, e.g. "Size" or "Edition". */
+  axis: z.string(),
+  description: z.string().optional(),
+  /**
+   * Component or bundle IDs in display order, smallest/cheapest first. Mirrored hand twins share a
+   * label and form one tier, so switchers and diff tables show one column per label.
+   */
+  members: z.array(z.object({
+    id: z.string(),
+    label: z.string(),
+  })).min(2),
+});
+export type Family = z.infer<typeof FamilySchema>;

@@ -1,8 +1,10 @@
+import { isSuperseded } from './successors';
 import type { CatalogItem } from './catalog';
 import { contactless, overallScore } from './catalog-ui';
 import type { Platform } from './platforms';
 
 export interface CatalogFilters {
+  showDiscontinued?: boolean;
   search?: string;
   categories?: string[];
   brands?: string[];
@@ -33,7 +35,8 @@ export function filterCatalog(items: CatalogItem[], filters: CatalogFilters = {}
     const text = [item.name, item.brandName, item.brand, ...item.formerBrandNames, item.category.replaceAll('_', ' '), item.sensor ?? '', item.gimbal ?? '', item.item_type, item.hasMinistick ? 'ministick' : '', item.hasBrakeAxis ? 'brake' : ''].join(' ').toLocaleLowerCase();
     const amount = item.resolvedPrice.price?.amount;
     const fit = filters.fit === 'ga_airliner' ? Math.max(item.use_case_fit.ga, item.use_case_fit.airliner) : item.use_case_fit[filters.fit as keyof CatalogItem['use_case_fit']] ?? 0;
-    return query.every((word) => text.includes(word))
+    return (filters.showDiscontinued || !isSuperseded(item))
+      && query.every((word) => text.includes(word))
       && (!filters.categories?.length || filters.categories.includes(item.category))
       && (!filters.gimbalTypes?.length || (item.gimbalType != null && filters.gimbalTypes.includes(item.gimbalType)))
       && (!filters.brands?.length || filters.brands.includes(item.brand))

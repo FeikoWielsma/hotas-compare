@@ -27,6 +27,10 @@ describe('compatibleParts', () => {
 });
 
 describe('resolveUpgradePaths', () => {
+  it('omits superseded upgrade targets', () => {
+    const old = c({ name: 'Old', category: 'grip', status: 'discontinued', successor: 't/grip-good' });
+    expect(resolveUpgradePaths('t/x', [{ to: 'old', note: 'Old option' }], new Map([['old', old]]), new Map())).toEqual([]);
+  });
   const bundles = new Map([['t/set', BundleSchema.parse({ brand: 'test', name: 'Set', category: 'hotas_bundle', components: ['t/base'] })]]);
   it('links components and bundles and keeps the note', () => {
     const paths = resolveUpgradePaths('t/x', [{ to: 't/grip-good', note: 'Better.' }, { to: 't/set', note: 'Whole set.', source: 'https://v.test' }], components, bundles);
