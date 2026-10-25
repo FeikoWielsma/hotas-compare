@@ -415,6 +415,15 @@ export default config({
         prices: pricesField(),
         verdict: verdictField(),
         external_reviews: externalReviewsField(),
+        airliner_family: optionalSelect('Airliner family (replica cockpit controls only)', [
+          { label: 'Airbus', value: 'airbus' },
+          { label: 'Boeing', value: 'boeing' },
+        ]),
+        // Keystatic cannot omit an untouched object, so it writes `{}`; the schema reads that as unset.
+        reviews_pending: fields.object({
+          checked: fields.text({ label: 'Reviews checked (YYYY-MM-DD)', description: 'Fill in only when no independent reviews could be found; leave empty otherwise.' }),
+          notes: fields.text({ label: 'Notes', multiline: true }),
+        }, { label: 'Reviews pending' }),
         upgrade_paths: upgradePathsField(),
         verification: fields.select({
           label: 'Verification Status',

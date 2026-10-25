@@ -430,10 +430,14 @@ export const ComponentSchema = z.object({
   /** Replica of an Airbus or Boeing cockpit control; the wizard matches it to a sidestick or yoke setup. */
   airliner_family: z.enum(['airbus', 'boeing']).optional(),
   /** No independent reviews could be found when checked; the setup wizard marks the product as a tentative pick. */
-  reviews_pending: z.object({
-    checked: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
-    notes: z.string().optional(),
-  }).optional(),
+  reviews_pending: z.union([
+    z.object({
+      checked: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+      notes: z.string().optional(),
+    }),
+    // Keystatic writes an untouched object widget as `{}`; read that as "not set".
+    z.strictObject({}).transform(() => undefined),
+  ]).optional(),
   upgrade_paths: z.array(UpgradePathSchema).default([]),
   verification: VerificationStatusEnum.default('draft'),
   sources: z.array(z.string()).default([]),

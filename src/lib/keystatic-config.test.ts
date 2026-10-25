@@ -188,4 +188,11 @@ describe('Keystatic config matches the content schemas', () => {
     expect(placement.serialize(placement.parse(undefined))).toEqual({ value: undefined });
     expect(placement.serialize(placement.parse('desk'))).toEqual({ value: 'desk' });
   });
+
+  it('reads the empty reviews_pending object Keystatic writes for an untouched widget as unset', () => {
+    const base = { brand: 'test', name: 'X', category: 'base' };
+    expect(ComponentSchema.parse({ ...base, reviews_pending: {} }).reviews_pending).toBeUndefined();
+    expect(ComponentSchema.parse({ ...base, reviews_pending: { checked: '2026-01-02' } }).reviews_pending).toEqual({ checked: '2026-01-02' });
+    expect(() => ComponentSchema.parse({ ...base, reviews_pending: { notes: 'no date' } })).toThrow();
+  });
 });
