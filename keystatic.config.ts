@@ -103,6 +103,11 @@ export default config({
           ],
           defaultValue: 'grip',
         }),
+        catalog_kind: fields.select({
+          label: 'Catalog kind (non-core hardware is hidden)',
+          options: ['core', 'panel', 'accessory', 'controller_board'].map(value => ({ label: value, value })),
+          defaultValue: 'core',
+        }),
         platform_compatibility: platformCompatibilityField(),
         status: fields.select({
           label: 'Status',
@@ -350,6 +355,11 @@ export default config({
           ],
           defaultValue: 'hotas_bundle',
         }),
+        catalog_kind: fields.select({
+          label: 'Catalog kind (non-core hardware is hidden)',
+          options: ['core', 'panel', 'accessory', 'controller_board'].map(value => ({ label: value, value })),
+          defaultValue: 'core',
+        }),
         platform_compatibility: platformCompatibilityField(),
         status: fields.select({
           label: 'Status',
@@ -425,6 +435,27 @@ export default config({
           },
         ),
         notes: fields.text({ label: 'Additional Notes', multiline: true }),
+      },
+    }),
+
+    families: collection({
+      label: 'Product Families',
+      slugField: 'name',
+      path: 'src/content/families/**',
+      format: { data: 'yaml' },
+      columns: ['brand', 'axis'],
+      schema: {
+        name: fields.slug({ name: { label: 'Family Name' } }),
+        brand: fields.text({ label: 'Brand Slug' }),
+        axis: fields.text({ label: 'Differentiating Axis (e.g. Size, Edition)' }),
+        description: fields.text({ label: 'Description', multiline: true }),
+        members: fields.array(
+          fields.object({
+            id: fields.text({ label: 'Component or Bundle ID' }),
+            label: fields.text({ label: 'Label on the axis (hand twins share one)' }),
+          }),
+          { label: 'Members (smallest or cheapest first)', itemLabel: (props) => props.fields.label.value || props.fields.id.value },
+        ),
       },
     }),
   },

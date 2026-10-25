@@ -1,7 +1,10 @@
+import { isListed } from './visibility';
+import { resolveSuccessor } from './successors';
 import { deriveComponentStats, deriveControlsSummary, resolvePrice } from './derive';
 import type { ControlsSummary, ResolvedPrice } from './derive';
 import type { Component, Bundle, Region, UseCaseFit, Verdict, ReviewTag, GimbalType, Placement } from './schema';
 import type { ControlSection } from './control-inventory';
+import { familyIndex, validateFamilies } from './families';
 
 export interface CatalogItem {
   /** Collection ID, including the brand path; stable across region changes. */
@@ -13,6 +16,7 @@ export interface CatalogItem {
   category: Component['category'] | Bundle['category'];
   item_type: 'component' | 'bundle';
   status: Component['status'];
+  successor?: string;
   platform_compatibility?: Component['platform_compatibility'];
   verification: Component['verification'];
   prices: Component['prices'];
@@ -27,6 +31,8 @@ export interface CatalogItem {
   controlsSummary: ControlsSummary;
   controlSections?: ControlSection[];
   sensor: string | null;
+  /** At least one member has potentiometers on its primary axes. */
+  usesPotentiometers: boolean;
   gimbal: string | null;
   use_case_fit: UseCaseFit;
   verdict: Verdict | null;
@@ -50,10 +56,20 @@ export interface CatalogItem {
   /** Evidence used by the wizard; absent values remain unknown. */
   axes?: { name: string; sensor?: string }[];
   mount?: Component['mount'];
+  /** Product family membership; resolve siblings with familyOf. */
+  family?: { id: string; name: string; label: string; tier: number } | null;
 }
 
 const completeStickCategories = new Set(['stick_fixed', 'stick_combo', 'hotas_bundle', 'system']);
 const twistAxis = /twist|(^|[ _-])r?z($|[ _-])|rudder/i;
+const primaryAxis = /^(?:x|y|pitch|roll|yaw|rudder|throttle|collective|brake|aileron|elevator)(?:\b|[_ -])/i;
+
+/** Detect potentiometers on the main controls, ignoring secondary twist and slider axes. */
+export function usesPotentiometerPrimaryAxes(hardware: Component['hardware']): boolean {
+  if (!hardware) return false;
+  if (hardware.sensor?.toLowerCase() === 'potentiometer') return true;
+  return hardware.axes.some((axis) => primaryAxis.test(axis.name.trim()) && axis.sensor?.toLowerCase() === 'potentiometer');
+}
 
 /** A complete stick with a documented gimbal and axes but no twist/rudder axis. Never guessed from missing data. */
 export function needsPedals(category: string, members: Pick<Component, 'hardware'>[]) {
@@ -90,12 +106,15 @@ export function resolveCatalogRegion(item: CatalogItem, region: Region, now = ne
 
 export async function loadCatalog(region: Region = 'EU', now = new Date()) {
   const { getCollection } = await import('astro:content');
-  const [components, bundles, brands, mount_standards, reviewers] = await Promise.all([
+  const [components, bundles, brands, mount_standards, reviewers, families] = await Promise.all([
     getCollection('components'), getCollection('bundles'),
-    getCollection('brands'), getCollection('mount_standards'), getCollection('reviewers'),
+    getCollection('brands'), getCollection('mount_standards'), getCollection('reviewers'), getCollection('families'),
   ]);
+  const familyMembership = familyIndex(families);
   const reviewerNames = new Map(reviewers.map((entry) => [entry.id, entry.data.name.split(' (')[0]]));
   const componentMap = new Map(components.map((entry) => [entry.id, entry.data]));
+  const bundleMap = new Map(bundles.map((entry) => [entry.id, entry.data]));
+  const successors = new Map([...components, ...bundles].map(({ id, data }) => [id, resolveSuccessor(id, data, componentMap, bundleMap)]));
   const brandMap = new Map(brands.map((entry) => [entry.id, entry.data]));
 
   function makeItem(id: string, data: Component | Bundle, item_type: CatalogItem['item_type']): CatalogItem {
@@ -125,7 +144,7 @@ export async function loadCatalog(region: Region = 'EU', now = new Date()) {
     };
     return {
       id, slug: id, name: data.name, brand: data.brand, brandName: brand.name,
-      category: data.category, item_type, status: data.status, verification: data.verification,
+      category: data.category, item_type, status: data.status, successor: successors.get(id)?.id, verification: data.verification,
       ...(data.platform_compatibility ? { platform_compatibility: data.platform_compatibility } : {}),
       prices: data.prices, region, resolvedPrice: resolvePrice(data.prices, region, now),
       totalAxes: stats.reduce((sum, stat) => sum + stat.totalAxes, 0),
@@ -133,6 +152,7 @@ export async function loadCatalog(region: Region = 'EU', now = new Date()) {
       totalLogicalButtons: controlsSummary.totalLogicalButtons,
       hasMinistick: controlsSummary.hasMinistick, hasBrakeAxis: controlsSummary.hasBrakeAxis,
       controlsSummary, sensor: hardwareValues('sensor'), gimbal: hardwareValues('gimbal'),
+      usesPotentiometers: members.some((member) => usesPotentiometerPrimaryAxes(member.hardware)),
       controlSections: members.map(({ name, category, controls, controls_evidence }) => ({ name, category, controls, ...(controls_evidence ? { controls_evidence } : {}) })),
       use_case_fit, verdict: data.verdict ?? null, scores: data.verdict?.scores ?? null,
       ...(() => {
@@ -149,16 +169,25 @@ export async function loadCatalog(region: Region = 'EU', now = new Date()) {
       leverCount: members.flatMap((member) => member.controls).reduce((sum, control) => sum + (control.type === 'lever' ? control.count : 0), 0),
       axes: members.flatMap((member) => member.hardware?.axes ?? []),
       mount: 'components' in data ? null : data.mount ?? null,
+      family: (() => {
+        const membership = familyMembership.get(id);
+        return membership ? { id: membership.family.id, name: membership.family.data.name, label: membership.label, tier: membership.tier } : null;
+      })(),
     };
   }
-  const items = [
+  const allItems = [
     ...components.map(({ id, data }) => makeItem(id, data, 'component')),
     ...bundles.map(({ id, data }) => makeItem(id, data, 'bundle')),
   ].sort((a, b) => a.name.localeCompare(b.name) || a.id.localeCompare(b.id));
-  if (new Set(items.map((item) => item.id)).size !== items.length) {
+  if (new Set(allItems.map((item) => item.id)).size !== allItems.length) {
     throw new Error('Catalog IDs must be unique across components and bundles.');
   }
-  return { items, components, bundles, brands, mount_standards };
+  // Validate every record, including retained hidden family members.
+  const familyErrors = validateFamilies(families, allItems);
+  if (familyErrors.length) throw new Error(`Invalid product families:\n${familyErrors.join('\n')}`);
+  const listedIds = new Set([...components, ...bundles].filter(({ data }) => isListed(data)).map(({ id }) => id));
+  const items = allItems.filter((item) => listedIds.has(item.id));
+  return { items, components, bundles, brands, mount_standards, families };
 }
 
 export async function getCatalogItems(region: Region = 'EU', now = new Date()) {

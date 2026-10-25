@@ -1,6 +1,7 @@
 brand: vkb
 name: GNX MFH Multi-Functional Holder
 category: module
+catalog_kind: accessory
 platform_compatibility:
   pc: unknown
   xbox: unknown

@@ -1,6 +1,7 @@
 brand: mfg
 name: Crosswind Hydraulic Damper
 category: module
+catalog_kind: accessory
 status: current
 handedness: n/a
 mount: null

@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { ComponentSchema, BundleSchema, BrandSchema } from './schema';
+import { ComponentSchema, BundleSchema, BrandSchema, FamilySchema } from './schema';
 import { getCatalogItems, loadCatalog, resolveCatalogRegion } from './catalog';
 
 const collections = vi.hoisted(() => ({ values: {} as Record<string, unknown[]> }));
@@ -9,7 +9,7 @@ beforeEach(() => {
   collections.values = {
     brands: [{ id: 'test', data: BrandSchema.parse({ name: 'Test Flight' }) }],
     mount_standards: [],
-    reviewers: [],
+    reviewers: [], families: [],
     components: [
       { id: 'test/base', data: ComponentSchema.parse({ brand: 'test', name: 'Base', category: 'base', placement: 'both', hardware: { axes: [{ name: 'x' }, { name: 'y' }], gimbal: 'cam', sensor: 'hall' } }) },
       { id: 'test/grip', data: ComponentSchema.parse({ brand: 'test', name: 'Grip', category: 'grip', placement: 'mount_only', controls: [{ type: 'analog_ministick' }, { type: 'lever', kind: 'brake', analog: true }] }) },
@@ -19,6 +19,41 @@ beforeEach(() => {
 });
 
 describe('catalog serialization', () => {
+  it('flags potentiometers from the declared sensor or primary axes, but ignores secondary axes', async () => {
+    collections.values.components = [
+      { id: 'test/declared-pot', data: ComponentSchema.parse({ brand: 'test', name: 'Declared pot', category: 'stick_fixed', hardware: { sensor: 'potentiometer' } }) },
+      { id: 'test/axis-pot', data: ComponentSchema.parse({ brand: 'test', name: 'Axis pot', category: 'stick_fixed', hardware: { sensor: 'hall', axes: [{ name: 'Pitch', sensor: 'potentiometer' }, { name: 'Roll', sensor: 'hall' }] } }) },
+      { id: 'test/secondary-pot', data: ComponentSchema.parse({ brand: 'test', name: 'Secondary pot', category: 'stick_fixed', hardware: { sensor: 'hall', axes: [{ name: 'X', sensor: 'hall' }, { name: 'Y', sensor: 'hall' }, { name: 'Twist_Z', sensor: 'potentiometer' }] } }) },
+    ];
+    collections.values.bundles = [{ id: 'test/pot-combo', data: BundleSchema.parse({ brand: 'test', name: 'Pot combo', category: 'hotas_bundle', components: ['test/declared-pot'] }) }];
+    const items = await getCatalogItems();
+    expect(items.find(item => item.id === 'test/declared-pot')?.usesPotentiometers).toBe(true);
+    expect(items.find(item => item.id === 'test/axis-pot')?.usesPotentiometers).toBe(true);
+    expect(items.find(item => item.id === 'test/secondary-pot')?.usesPotentiometers).toBe(false);
+    expect(items.find(item => item.id === 'test/pot-combo')?.usesPotentiometers).toBe(true);
+  });
+
+  it('preserves successor IDs and rejects unresolved or non-current successors during loading', async () => {
+    collections.values.components.push({ id: 'test/old', data: ComponentSchema.parse({
+      brand: 'test', name: 'Old', category: 'stick_fixed', status: 'discontinued', successor: 'test/combo',
+    }) });
+    expect((await getCatalogItems()).find(item => item.id === 'test/old')?.successor).toBe('test/combo');
+    collections.values.bundles = [];
+    await expect(loadCatalog()).rejects.toThrow(/successor.*current item/);
+  });
+  it('validates families against retained hidden products and removes hidden successor IDs from public items', async () => {
+    const hidden = ComponentSchema.parse({ brand: 'test', name: 'Hidden', category: 'module', catalog_kind: 'panel' });
+    const old = ComponentSchema.parse({ brand: 'test', name: 'Old', category: 'stick_fixed', status: 'discontinued', successor: 'test/hidden' });
+    collections.values.components.push({ id: 'test/hidden', data: hidden }, { id: 'test/old', data: old });
+    collections.values.families = [{ id: 'test/line', data: FamilySchema.parse({ name: 'Line', brand: 'test', axis: 'Size', members: [{ id: 'test/base', label: 'Small' }, { id: 'test/hidden', label: 'Large' }] }) }];
+    const catalog = await loadCatalog();
+    expect(catalog.items.find(item => item.id === 'test/hidden')).toBeUndefined();
+    expect(catalog.items.find(item => item.id === 'test/old')?.successor).toBeUndefined();
+    expect(catalog.items.find(item => item.id === 'test/base')?.family?.id).toBe('test/line');
+    expect(catalog.components.find(entry => entry.id === 'test/hidden')).toBeDefined();
+    (collections.values.families[0] as { data: { members: { label: string }[] } }).data.members[1].label = 'Small';
+    await expect(loadCatalog()).rejects.toThrow('needs at least two distinct labels');
+  });
   it('distinguishes a documented zero-axis accessory from an unknown axis inventory', async () => {
     collections.values.components = [
       { id: 'test/passive', data: ComponentSchema.parse({ brand: 'test', name: 'Passive accessory', category: 'module', hardware: { axis_count: 0 } }) },
@@ -59,5 +94,14 @@ describe('catalog serialization', () => {
     const entry = collections.values.bundles[0] as { id: string };
     entry.id = 'test/base';
     await expect(getCatalogItems()).rejects.toThrow('must be unique');
+  });
+
+  it('records family membership on serialized items and rejects unknown members', async () => {
+    collections.values.families = [{ id: 'test/line', data: FamilySchema.parse({ name: 'Line', brand: 'test', axis: 'Size', members: [{ id: 'test/base', label: 'Small' }, { id: 'test/combo', label: 'Large' }] }) }];
+    const items = await getCatalogItems();
+    expect(items.find((item) => item.id === 'test/combo')?.family).toEqual({ id: 'test/line', name: 'Line', label: 'Large', tier: 1 });
+    expect(items.find((item) => item.id === 'test/grip')?.family).toBeNull();
+    (collections.values.families[0] as { data: { members: { id: string }[] } }).data.members[0].id = 'test/missing';
+    await expect(getCatalogItems()).rejects.toThrow('unknown member test/missing');
   });
 });

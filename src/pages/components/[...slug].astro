@@ -1,6 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
+import { productPaths } from '../../lib/visibility';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import SuccessorBanner from '../../components/detail/SuccessorBanner.astro';
+import { resolveSuccessor } from '../../lib/successors';
 import ProductHero from '../../components/detail/ProductHero.astro';
 import Verdict from '../../components/detail/Verdict.astro';
 import UseCaseFit from '../../components/detail/UseCaseFit.astro';
@@ -9,7 +12,7 @@ import PriceTable from '../../components/detail/PriceTable.astro';
 import UpgradePaths from '../../components/detail/UpgradePaths.astro';
 import Explain from '../../components/Explain.svelte';
 import { compatibleParts, resolveUpgradePaths } from '../../lib/upgrades';
-import { needsPedals } from '../../lib/catalog';
+import { needsPedals, usesPotentiometerPrimaryAxes } from '../../lib/catalog';
 import { gimbalGlossaryKey, gimbalLabels } from '../../lib/glossary';
 import ControlInventory from '../../components/ControlInventory.svelte';
 import { productJsonLd } from '../../lib/structured-data';
@@ -22,7 +25,7 @@ const componentMap = new Map(allComponents.map(x => [x.id, x.data]));
 const bundleMap = new Map(allBundles.map(x => [x.id, x.data]));
 const brandMap = new Map(brands.map(x => [x.id, x.data]));
 const mountMap = new Map(mounts.map(x => [x.id, x.data]));
-export async function getStaticPaths() { const components = await getCollection('components'); return components.map(({id,data}) => ({params:{slug:id},props:{component:{id,data}}})); }
+export async function getStaticPaths() { const components = await getCollection('components'); return productPaths(components, 'component'); }
 const { component: entry } = Astro.props;
 const { id, data: c } = entry;
 const brand = brandMap.get(c.brand);
@@ -58,6 +61,7 @@ const groups = [
 ].map(g => ({ ...g, known: g.rows.filter(([, v]) => v), missing: g.rows.filter(([, v]) => !v).map(([l]) => l) }));
 const provides = c.mount?.provides ? mountMap.get(c.mount.provides) : null;
 const accepts = (c.mount?.accepts ?? []).map(x => ({ id: x, data: mountMap.get(x) }));
+const successor = c.status === 'discontinued' ? resolveSuccessor(id, c, componentMap, bundleMap) : null;
 const showFit = !isDefaultFit(c.use_case_fit);
 const upgrades = resolveUpgradePaths(id, c.upgrade_paths, componentMap, bundleMap);
 const fits = compatibleParts(c, componentMap, mountMap);
@@ -71,8 +75,10 @@ const sections = [
 <BaseLayout title={c.name} description={description} image={c.images[0]?.file} jsonLd={jsonLd}>
 <div class="page">
   <ProductHero id={id} name={c.name} brand={c.brand} brandName={brandName} category={c.category} status={c.status} verification={c.verification}
+    potentiometer={usesPotentiometerPrimaryAxes(c.hardware)}
     releaseYear={c.release_year} handedness={c.handedness} placement={c.placement} images={c.images} prices={c.prices} notes={brand?.landed_cost_notes} compatibility={c.platform_compatibility}
     specs={specs} crumb={{ href: '/#hardware', label: 'Components' }} sections={sections} />
+  <SuccessorBanner successor={successor} />
   {c.verdict && <Verdict verdict={c.verdict} />}
   <div id="controls" class="anchor"><ControlInventory sections={[c]} /></div>
   {showFit && <UseCaseFit fit={c.use_case_fit} />}

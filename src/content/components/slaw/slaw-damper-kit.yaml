@@ -1,6 +1,7 @@
 brand: slaw
 name: Slaw Device Damper Kit
 category: module
+catalog_kind: accessory
 status: current
 handedness: n/a
 mount: null
@@ -34,7 +35,10 @@ physical:
 use_case_fit: {}
 prices: []
 verification: draft
-images: []
+images:
+  - file: /images/slaw/slaw-damper-kit.jpg
+    source: https://slawdevice.com/en/rudder-pedals/50-pre-order-rh-rotor-v2-rudder-pedals.html
+    caption: RH Rotor V2 rudder pedals with the optional hydraulic damper installed
 sources:
 - https://slawdevice.com/en/rudder-pedals/50-pre-order-rh-rotor-v2-rudder-pedals.html
 platform_compatibility:

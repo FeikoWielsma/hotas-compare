@@ -10,7 +10,7 @@ function item(overrides: Partial<CatalogItem> = {}): CatalogItem {
     category: 'stick_fixed', item_type: 'component', status: 'current', verification: 'draft',
     prices: [], region: 'EU', resolvedPrice: resolvePrice([], 'EU'),
     totalAxes: 0, totalLogicalButtons: 0, hasMinistick: false, hasBrakeAxis: false,
-    controlsSummary: deriveControlsSummary([]), sensor: null, gimbal: null,
+    controlsSummary: deriveControlsSummary([]), sensor: null, usesPotentiometers: false, gimbal: null,
     use_case_fit: { modern_jet: 1, space_hosas: 1, space_hotas: 1, heli: 1, ga: 1, airliner: 1, ww2: 1 },
     verdict: null, scores: null, images: [], componentIds: [], formerBrandNames: [], handedness: [],
     mechanics: { forceAdjustable: 'Unknown', cams: 'Unknown', damping: 'Unknown' }, leverCount: 0,
@@ -20,6 +20,16 @@ function item(overrides: Partial<CatalogItem> = {}): CatalogItem {
 const price = (amount: number) => resolvePrice([{ region: 'EU', currency: 'EUR', amount, store: 'Test', verified: '2026-10-01', incl_vat: true, kind: 'official', source: 'manual' }], 'EU');
 
 describe('catalog filters', () => {
+  it('hides only discontinued products with successors and allows opting in alongside other filters', () => {
+    for (const item_type of ['component', 'bundle'] as const) {
+      const old = item({ id: 'old', status: 'discontinued', successor: 'new', item_type });
+      const unsupported = item({ id: 'no-successor', status: 'discontinued' });
+      const current = item({ id: 'new' });
+      expect(filterCatalog([old, unsupported, current])).toEqual([unsupported, current]);
+      expect(filterCatalog([old], { showDiscontinued: true })).toEqual([old]);
+      expect(filterCatalog([old], { showDiscontinued: true, search: 'nonexistent' })).toEqual([]);
+    }
+  });
   it('requires confirmed platform support and excludes unknown or unsupported devices', () => {
     const supported = item({ platform_compatibility: { pc: 'supported', xbox: 'supported', ps5: 'unknown', sources: [] } });
     const unsupported = item({ id: 'unsupported', platform_compatibility: { pc: 'supported', xbox: 'unsupported', ps5: 'unknown', sources: [] } });

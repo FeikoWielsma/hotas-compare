@@ -1,6 +1,7 @@
 brand: winctrl
 name: 3 Glareshield
 category: system
+catalog_kind: panel
 platform_compatibility:
   pc: supported
   xbox: unknown

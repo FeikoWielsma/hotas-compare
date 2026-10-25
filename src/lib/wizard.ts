@@ -1,6 +1,7 @@
 import type { CatalogItem } from './catalog';
 import { resolvePrice, scoreItemForUseCase } from './derive';
 import type { BudgetTier, Currency, Region, Setup, UseCase } from './schema';
+import { isSuperseded } from './successors';
 
 export const PIECES = ['stick', 'second_stick', 'throttle', 'pedals', 'yoke', 'quadrant'] as const;
 export type WizardPiece = typeof PIECES[number];
@@ -22,6 +23,15 @@ export interface RecommendedPiece {
   score: number;
   explanations: string[];
   warnings: string[];
+  /** Carried over from the previous recommendation because it still fits. */
+  kept?: boolean;
+}
+/** Item ids of one recommended piece, as shown to the user (base before handle). */
+export type WizardPick = string[];
+export interface DroppedPick { ids: WizardPick; items: CatalogItem[]; reason: string }
+export interface RecommendOptions {
+  /** The user's current picks; each is kept while it still fits the new answers. */
+  keep?: WizardPick[];
 }
 export interface WizardLoadout {
   pieces: RecommendedPiece[];
@@ -32,6 +42,8 @@ export interface WizardLoadout {
   totalAxes: number;
   complete: boolean;
   warnings: string[];
+  /** Previous picks that no longer fit, with the constraint each one breaks. */
+  dropped: DroppedPick[];
 }
 const currencies: Record<Region, Currency> = { EU: 'EUR', UK: 'GBP', US: 'USD' };
 const disciplines: UseCase[] = ['modern_jet', 'space_hosas', 'space_hotas', 'heli', 'ga', 'airliner', 'ww2'];
@@ -53,11 +65,25 @@ export function normalizeWizardAnswers(value: Partial<WizardAnswers> = {}): Wiza
     ...(value.hasExistingPedals ? { hasExistingPedals: true } : {}),
   };
 }
-export function serializeWizardState(answers: WizardAnswers): string {
+const pickId = /^[a-z0-9][a-z0-9/_.-]{0,120}$/i;
+/** Picks travel as `a~b,c`: pieces separated by commas, items within a piece by `~`. */
+export function serializePicks(picks: WizardPick[]): string {
+  return picks.filter((pick) => pick.length).map((pick) => pick.join('~')).join(',');
+}
+export function deserializePicks(value: string | null | undefined): WizardPick[] {
+  if (!value) return [];
+  return value.split(',').slice(0, PIECES.length).map((pick) => pick.split('~').slice(0, 2))
+    .filter((pick) => pick.every((id) => pickId.test(id)));
+}
+export function picksOf(loadout: Pick<WizardLoadout, 'pieces'>): WizardPick[] {
+  return loadout.pieces.map((piece) => piece.items.map((item) => item.id));
+}
+export function serializeWizardState(answers: WizardAnswers, picks: WizardPick[] = []): string {
   const a = normalizeWizardAnswers(answers);
   const params = new URLSearchParams({ useCase: a.useCase, piecesNeeded: a.piecesNeeded.join(','), budgetMax: String(a.budgetMax), mountType: a.mountType, needsTwist: String(a.needsTwist) });
   if (a.targetSim) params.set('targetSim', a.targetSim);
   if (a.hasExistingPedals) params.set('hasExistingPedals', 'true');
+  if (picks.length) params.set('picks', serializePicks(picks));
   return params.toString();
 }
 export function deserializeWizardState(searchParams: URLSearchParams | string): WizardAnswers {
@@ -65,6 +91,27 @@ export function deserializeWizardState(searchParams: URLSearchParams | string): 
   return normalizeWizardAnswers({ useCase: p.get('useCase') as UseCase, targetSim: p.get('targetSim') ?? undefined,
     piecesNeeded: p.has('piecesNeeded') ? p.get('piecesNeeded')!.split(',') as WizardPiece[] : undefined,
     budgetMax: Number(p.get('budgetMax')), mountType: p.get('mountType') as WizardAnswers['mountType'], hasExistingPedals: p.get('hasExistingPedals') === 'true' });
+}
+/** Slider range per currency: an entry-level single stick up to a full high-end cockpit. */
+export const BUDGET_RANGES: Record<Currency, { min: number; max: number }> = {
+  EUR: { min: 50, max: 5000 }, USD: { min: 50, max: 5000 }, GBP: { min: 40, max: 4500 },
+};
+function niceBudget(value: number) {
+  const step = value < 200 ? 10 : value < 1000 ? 25 : value < 2000 ? 50 : 100;
+  return Math.round(value / step) * step;
+}
+/** Rounded, log-spaced slider stops so each notch is a similar relative change in budget. */
+export function budgetStops(currency: Currency, count = 80): number[] {
+  const { min, max } = BUDGET_RANGES[currency];
+  return [...new Set(Array.from({ length: count + 1 }, (_, index) => index === 0 ? min : index === count ? max : niceBudget(min * (max / min) ** (index / count))))];
+}
+/** Index of the stop closest to a budget on a log scale; typed budgets outside the range clamp to an end. */
+export function nearestBudgetStop(stops: number[], budget: number): number {
+  let best = 0;
+  for (let index = 1; index < stops.length; index++) {
+    if (Math.abs(Math.log(stops[index] / budget)) < Math.abs(Math.log(stops[best] / budget))) best = index;
+  }
+  return best;
 }
 /** Numeric tiers refer to the selected currency, never an implicit FX conversion. */
 export function budgetTier(budget: number): BudgetTier {
@@ -161,31 +208,36 @@ function candidates(items: CatalogItem[], answers: WizardAnswers, region: Region
   }
   return result;
 }
-function makeLoadout(pieces: RecommendedPiece[], region: Region, complete: boolean): WizardLoadout {
+function makeLoadout(pieces: RecommendedPiece[], region: Region, complete: boolean, dropped: DroppedPick[] = []): WizardLoadout {
   const items = pieces.flatMap((piece) => piece.items);
-  return { pieces, items, complete, currency: currencies[region], totalPrice: Math.round(pieces.reduce((sum, piece) => sum + piece.price, 0) * 100) / 100,
+  return { pieces, items, complete, dropped, currency: currencies[region], totalPrice: Math.round(pieces.reduce((sum, piece) => sum + piece.price, 0) * 100) / 100,
     totalAxes: items.reduce((sum, item) => sum + item.totalAxes, 0), totalLogicalButtons: items.reduce((sum, item) => sum + item.totalLogicalButtons, 0),
     warnings: [...new Set(pieces.flatMap((piece) => piece.warnings))] };
 }
-export function recommendLoadout(items: CatalogItem[], input: WizardAnswers, region: Region): WizardLoadout {
-  const answers = normalizeWizardAnswers(input);
-  const options = candidates(items, answers, region);
+const idsOf = (piece: RecommendedPiece) => piece.items.map((item) => item.id);
+const sameIds = (a: string[], b: string[]) => a.length === b.length && a.every((id, index) => id === b[index]);
+const isSingleStick = (piece: RecommendedPiece) => piece.roles.length === 1 && ['stick', 'second_stick'].includes(piece.roles[0]);
+function overlaps(pieces: RecommendedPiece[], option: RecommendedPiece) {
+  return pieces.some((piece) => {
+    const used = piece.items.flatMap((item) => [item.id, ...item.componentIds]);
+    const shared = option.items.some((item) => [item.id, ...item.componentIds].some((id) => used.includes(id)));
+    // Separate left/right assemblies may each purchase a copy of the same base or ambidextrous SKU.
+    return shared && !(isSingleStick(piece) && isSingleStick(option) && piece.roles[0] !== option.roles[0]);
+  });
+}
+/** Best complete loadout that contains every seed piece, or undefined when none fits. */
+function search(options: RecommendedPiece[], answers: WizardAnswers, seed: RecommendedPiece[]) {
   type State = { pieces: RecommendedPiece[]; roles: WizardPiece[]; price: number; score: number };
-  let states: State[] = [{ pieces: [], roles: [], price: 0, score: 0 }];
+  let states: State[] = [{ pieces: seed, roles: seed.flatMap((piece) => piece.roles), price: seed.reduce((sum, piece) => sum + piece.price, 0),
+    score: seed.reduce((sum, piece) => sum + piece.score * piece.roles.length, 0) }];
+  if (states[0].price > answers.budgetMax) return undefined;
   for (const role of answers.piecesNeeded) {
     const next: State[] = [];
     for (const state of states) {
       if (state.roles.includes(role)) { next.push(state); continue; }
       for (const option of options.filter((option) => option.roles.includes(role))) {
         if (option.roles.some((piece) => state.roles.includes(piece)) || state.price + option.price > answers.budgetMax) continue;
-        const isSingleStick = (piece: RecommendedPiece) => piece.roles.length === 1 && ['stick', 'second_stick'].includes(piece.roles[0]);
-        const duplicate = state.pieces.some((piece) => {
-          const used = piece.items.flatMap((item) => [item.id, ...item.componentIds]);
-          const overlaps = option.items.some((item) => [item.id, ...item.componentIds].some((id) => used.includes(id)));
-          // Separate left/right assemblies may each purchase a copy of the same base or ambidextrous SKU.
-          return overlaps && !(isSingleStick(piece) && isSingleStick(option) && piece.roles[0] !== option.roles[0]);
-        });
-        if (duplicate) continue;
+        if (overlaps(state.pieces, option)) continue;
         next.push({ pieces: [...state.pieces, option], roles: [...state.roles, ...option.roles], price: state.price + option.price,
           score: state.score + option.score * option.roles.length });
       }
@@ -197,16 +249,55 @@ export function recommendLoadout(items: CatalogItem[], input: WizardAnswers, reg
     if (!states.length) break;
   }
   const best = states.sort((a, b) => b.score - a.score || a.price - b.price)[0];
-  const complete = !!best && answers.piecesNeeded.length > 0 && answers.piecesNeeded.every((role) => best.roles.includes(role));
-  const loadout = makeLoadout(complete ? best.pieces : [], region, complete);
+  return best && answers.piecesNeeded.length > 0 && answers.piecesNeeded.every((role) => best.roles.includes(role)) ? best : undefined;
+}
+/** Names the first new constraint a previous pick breaks, checking the broadest cause first. */
+function pickMismatch(ids: WizardPick, items: CatalogItem[], answers: WizardAnswers, region: Region): string {
+  const offered = (relaxed: WizardAnswers) => candidates(items, relaxed, region).some((option) => sameIds(idsOf(option), ids));
+  if (!offered({ ...answers, mountType: 'clamp', piecesNeeded: [...PIECES], needsTwist: false })) return `No longer listed with a current ${region} price.`;
+  if (!offered({ ...answers, mountType: 'clamp', needsTwist: false })) return 'No longer one of your selected controls.';
+  if (answers.mountType === 'desk' && !offered({ ...answers, needsTwist: false })) return 'Requires a desk mount or cockpit rig and cannot sit loose on a desk.';
+  return 'Has no twist axis, and without pedals the stick must now provide yaw.';
+}
+export function recommendLoadout(items: CatalogItem[], input: WizardAnswers, region: Region, { keep = [] }: RecommendOptions = {}): WizardLoadout {
+  const answers = normalizeWizardAnswers(input);
+  const options = candidates(items, answers, region);
+  const map = new Map(items.map((item) => [item.id, item]));
+  const dropped: DroppedPick[] = [];
+  const drop = (ids: WizardPick, reason: string) => dropped.push({ ids, reason, items: ids.flatMap((id) => map.get(id) ? [map.get(id)!] : []) });
+  const kept: RecommendedPiece[] = [];
+  for (const ids of keep) {
+    const matches = options.filter((option) => sameIds(idsOf(option), ids));
+    const option = matches.find((option) => !option.roles.some((role) => kept.some((piece) => piece.roles.includes(role))) && !overlaps(kept, option));
+    if (option) kept.push({ ...option, kept: true });
+    else drop(ids, matches.length ? 'Overlaps another control already in this setup.' : pickMismatch(ids, items, answers, region));
+  }
+  // Release the most expensive kept pick until the rest of the setup fits around the ones that remain.
+  let best = search(options, answers, kept);
+  // When nothing fits at all, the kept picks are not to blame; the caller can retain them for a later change.
+  const feasible = !!best || !kept.length || !!search(options, answers, []);
+  while (!best && feasible && kept.length) {
+    const priciest = kept.reduce((top, piece) => piece.price > top.price ? piece : top);
+    kept.splice(kept.indexOf(priciest), 1);
+    drop(idsOf(priciest), priciest.price > answers.budgetMax ? 'Over the new budget on its own.' : 'Leaves too little budget for your other controls.');
+    best = search(options, answers, kept);
+  }
+  const loadout = makeLoadout(best?.pieces ?? [], region, !!best, dropped);
   loadout.warnings.push(answers.mountType === 'desk' ? 'Desktop stability and included base plates need checking against manufacturer specifications.' : 'Mount hardware, brackets and cockpit compatibility need checking; mount costs are not included.');
-  if (!complete) loadout.warnings.unshift('No complete loadout meets these pieces, yaw requirements and regional budget. Increase the budget or revise your controls.');
+  if (!best) loadout.warnings.unshift('No complete loadout meets these pieces, yaw requirements and regional budget. Increase the budget or revise your controls.');
   return loadout;
 }
 export function matchCuratedSetups(setups: WizardSetup[], items: CatalogItem[], input: WizardAnswers, region: Region) {
   const answers = normalizeWizardAnswers(input);
   const map = new Map(items.map((item) => [item.id, item]));
-  return setups.filter((setup) => setup.data.use_case === answers.useCase && setup.data.budget_tier === budgetTier(answers.budgetMax)).map((setup) => {
+  return setups.filter((setup) => setup.data.use_case === answers.useCase && setup.data.budget_tier === budgetTier(answers.budgetMax))
+    .filter((setup) => setup.data.items.every((ref) => {
+      const item = map.get(ref.id);
+      return !item || (!isSuperseded(item) && item.componentIds.every((id) => {
+        const member = map.get(id);
+        return !member || !isSuperseded(member);
+      }));
+    })).map((setup) => {
     const included = setup.data.items.map((ref) => ({ ...ref, item: map.get(ref.id) }));
     const unknownPrice = included.some(({ item }) => !item || priceOf(item, region) === undefined);
     const totalPrice = unknownPrice ? null : Math.round(included.reduce((sum, { item }) => sum + priceOf(item!, region)!, 0) * 100) / 100;

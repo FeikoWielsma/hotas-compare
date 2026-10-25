@@ -1,6 +1,7 @@
 brand: winctrl
 name: CarrierAce UFC 2
 category: module
+catalog_kind: panel
 platform_compatibility:
   pc: supported
   xbox: unknown

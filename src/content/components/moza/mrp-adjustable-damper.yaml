@@ -1,6 +1,7 @@
 brand: moza
 name: MOZA MRP Adjustable Damper
 category: module
+catalog_kind: accessory
 status: current
 handedness: n/a
 placement: mount_only

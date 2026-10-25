@@ -1,6 +1,7 @@
 brand: moza
 name: MOZA MGX1000 Instrument Panel
 category: module
+catalog_kind: panel
 status: current
 platform_compatibility:
   pc: supported

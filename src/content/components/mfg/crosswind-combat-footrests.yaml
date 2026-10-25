@@ -1,6 +1,7 @@
 brand: mfg
 name: Crosswind ME-109 Combat Footrests
 category: module
+catalog_kind: accessory
 status: current
 handedness: n/a
 mount: null

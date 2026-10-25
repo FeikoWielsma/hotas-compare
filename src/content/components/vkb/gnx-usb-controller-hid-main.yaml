@@ -1,6 +1,7 @@
 brand: vkb
 name: GNX USB Controller (HID-Main)
 category: module
+catalog_kind: controller_board
 platform_compatibility:
   pc: supported
   xbox: unsupported

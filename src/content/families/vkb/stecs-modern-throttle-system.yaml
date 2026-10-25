@@ -1,0 +1,9 @@
+name: STECS Modern Throttle System Mk.II
+brand: vkb
+axis: Size
+description: The same modern throttle in four sizes, smallest first.
+members:
+- { id: vkb/stecs-throttle-mini, label: Mini }
+- { id: vkb/stecs-throttle-mini-plus, label: Mini Plus }
+- { id: vkb/stecs-throttle-standard, label: Standard }
+- { id: vkb/stecs-throttle-max, label: Max }

@@ -64,7 +64,10 @@ use_case_fit: {}
 software: Throttle Box firmware update
 prices: []
 verification: draft
-images: []
+images:
+  - file: /images/honeycomb/foxtrot-throttle-box.webp
+    source: https://flyhoneycomb.com/products/foxtrot-takeoff-kit
+    caption: Foxtrot Throttle Box
 sources:
 - https://eu.flyhoneycomb.com/products/foxtrot-takeoff-kit
 - https://flyhoneycomb.com/pages/downloads

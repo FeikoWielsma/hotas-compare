@@ -1,6 +1,7 @@
 brand: winctrl
 name: USB 3.0 Instrument Display
 category: module
+catalog_kind: panel
 platform_compatibility:
   pc: supported
   xbox: unknown
