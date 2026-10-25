@@ -194,15 +194,7 @@ physical:
   weight_g: 2970
   materials: []
 software: Turtle Beach Flight Hangar (Windows 10/11) for profiles, RGB settings and firmware updates
-use_case_fit:
-  modern_jet: 4
-  heli: 3
-  ww2: 3
-  ga: 1
-  airliner: 1
-  space_hotas: 4
-  space_hosas: 3
-use_case_fit_source: baseline
+use_case_fit: {}
 prices:
 - region: EU
   currency: EUR

@@ -127,10 +127,9 @@ use_case_fit:
   heli: 3
   ww2: 3
   ga: 3
-  airliner: 4
+  airliner: 3
   space_hotas: 4
-  space_hosas: 2
-use_case_fit_source: baseline
+  space_hosas: 3
 prices:
 - region: EU
   currency: EUR

@@ -59,15 +59,6 @@ physical:
 connectivity:
   usb: USB-C
   standalone_usb: true
-use_case_fit:
-  modern_jet: 2
-  heli: 2
-  ww2: 2
-  ga: 2
-  airliner: 2
-  space_hotas: 4
-  space_hosas: 4
-use_case_fit_source: baseline
 prices:
 - region: EU
   currency: EUR

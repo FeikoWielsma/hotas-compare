@@ -61,13 +61,12 @@ physical:
   - 264
 use_case_fit:
   modern_jet: 4
-  heli: 5
-  ww2: 5
-  ga: 4
+  heli: 3
+  ww2: 3
+  ga: 3
   airliner: 3
-  space_hotas: 3
+  space_hotas: 4
   space_hosas: 3
-use_case_fit_source: baseline
 prices:
 - region: EU
   currency: EUR

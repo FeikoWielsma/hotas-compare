@@ -51,15 +51,6 @@ platform_compatibility:
   sources:
   - https://support.thrustmaster.com/en/product/tflighthotas4-en/
   - https://ts.thrustmaster.com/download/accessories/Manuals/TFH4/T-Flight_Hotas_4_Manual.pdf
-use_case_fit:
-  modern_jet: 2
-  heli: 2
-  ww2: 2
-  ga: 2
-  airliner: 2
-  space_hotas: 3
-  space_hosas: 2
-use_case_fit_source: baseline
 sources:
 - https://support.thrustmaster.com/en/product/tflighthotas4-en/
 - https://ts.thrustmaster.com/download/accessories/Manuals/TFH4/T-Flight_Hotas_4_Manual.pdf

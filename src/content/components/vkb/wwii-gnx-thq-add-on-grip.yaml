@@ -40,15 +40,6 @@ hardware: null
 connectivity:
   usb: none as supplied; connects through the GNX THQ/THQ-V module
   standalone_usb: false
-use_case_fit:
-  modern_jet: 2
-  heli: 3
-  ww2: 5
-  ga: 3
-  airliner: 3
-  space_hotas: 2
-  space_hosas: 2
-use_case_fit_source: baseline
 prices:
 - region: US
   currency: USD

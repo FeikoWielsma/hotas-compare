@@ -42,13 +42,12 @@ physical:
   dimensions_mm: [232, 270, 100]
 use_case_fit:
   modern_jet: 4
-  heli: 4
-  ww2: 4
+  heli: 3
+  ww2: 3
   ga: 3
-  airliner: 2
+  airliner: 3
   space_hotas: 4
   space_hosas: 3
-use_case_fit_source: baseline
 prices:
 - region: EU
   currency: EUR

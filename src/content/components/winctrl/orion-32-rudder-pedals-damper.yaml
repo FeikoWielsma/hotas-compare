@@ -58,15 +58,6 @@ physical:
   - 318
   materials:
   - metal
-use_case_fit:
-  modern_jet: 4
-  heli: 5
-  ww2: 4
-  ga: 4
-  airliner: 3
-  space_hotas: 3
-  space_hosas: 3
-use_case_fit_source: baseline
 prices:
 - region: UK
   currency: GBP

@@ -28,15 +28,6 @@ controls_evidence:
   source: https://www.thrustmaster.com/nl-nl/products/omni-extension/
   checked: '2026-10-20'
   notes: "Mechanical extension only: zero standalone buttons, hats, or electronic axes. 6-DoF describes the connected controller system."
-use_case_fit:
-  modern_jet: 3
-  heli: 3
-  ww2: 3
-  ga: 3
-  airliner: 3
-  space_hotas: 3
-  space_hosas: 3
-use_case_fit_source: baseline
 prices:
 - region: EU
   currency: EUR

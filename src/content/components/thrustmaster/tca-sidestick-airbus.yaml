@@ -77,14 +77,13 @@ physical:
   weight_g: 920
   dimensions_mm: [195, 195, 225]
 use_case_fit:
-  modern_jet: 2
-  heli: 2
-  ww2: 2
+  modern_jet: 4
+  heli: 3
+  ww2: 3
   ga: 3
-  airliner: 4
-  space_hotas: 2
-  space_hosas: 2
-use_case_fit_source: baseline
+  airliner: 3
+  space_hotas: 4
+  space_hosas: 3
 prices:
 - region: EU
   currency: EUR

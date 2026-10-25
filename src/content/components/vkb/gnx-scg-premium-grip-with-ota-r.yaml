@@ -80,15 +80,6 @@ software: VKBDevCfg
 physical:
   materials:
   - abs
-use_case_fit:
-  modern_jet: 5
-  heli: 4
-  ww2: 4
-  ga: 2
-  airliner: 1
-  space_hotas: 5
-  space_hosas: 5
-use_case_fit_source: baseline
 prices:
 - region: US
   currency: USD

@@ -62,15 +62,6 @@ controls_evidence:
   notes: Verified against official MHG user manual (pages 2-4) and AB6 manual section. Control layout itemized as 1 dual-stage
     trigger, 1 two-axis Hall mini stick, 4 dedicated pushbuttons (Launch, backlit Warning light, Mode Cycle, Nosewheel Steering Lock),
     3 five-way management switches (TMS, CMS, SMS), 1 three-way management switch (NMS), and 1 lockable twist Z-axis (yaw).
-use_case_fit:
-  modern_jet: 5
-  heli: 4
-  ww2: 4
-  ga: 2
-  airliner: 1
-  space_hotas: 5
-  space_hosas: 5
-use_case_fit_source: baseline
 verification: draft
 sources:
 - https://mozaracing.com

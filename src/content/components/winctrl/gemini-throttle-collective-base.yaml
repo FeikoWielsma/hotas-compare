@@ -44,15 +44,6 @@ physical:
   - 170
   - 107
   - 95
-use_case_fit:
-  modern_jet: 3
-  heli: 5
-  ww2: 3
-  ga: 3
-  airliner: 3
-  space_hotas: 2
-  space_hosas: 2
-use_case_fit_source: baseline
 prices:
 - region: US
   currency: USD
