@@ -32,6 +32,7 @@ hardware:
   force_adjustable: true
   cams_swappable: null
   damping: null
+  damper: none
   extension_support: null
   throw_deg: null
 connectivity:
@@ -79,6 +80,7 @@ images:
     caption: Charlie Rudder Pedals
 sources:
 - https://honeycomb.com
+- https://flyhoneycomb.com/products/charlie-rudder-pedals
 platform_compatibility:
   pc: supported
   xbox: supported

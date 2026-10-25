@@ -33,10 +33,12 @@ const sourceLabel = (source: string) => { try { return new URL(source).hostname.
 const description = `${brandName} ${c.name}: specifications, controls, compatibility and regional pricing.`;
 const jsonLd = productJsonLd(c, brandName, new URL(Astro.url.pathname, Astro.site), description);
 const h = c.hardware;
+const damperAddon = h?.damper_addon ? componentMap.get(h.damper_addon) : null;
+const damperText = h?.damper === 'built_in' ? 'Built-in' : h?.damper === 'optional' ? 'Optional' : h?.damper === 'none' ? 'None' : '';
 const axisCount = stats.totalAxes || h?.axis_count;
 const specs = keySpecs({
   axes: axisCount ? String(axisCount) : h?.axis_count === 0 ? '0' : null,
-  inputs: summary.totalLogicalButtons || inventoryComplete([c]) ? String(summary.totalLogicalButtons) : null,
+  inputs: c.category === 'pedals' ? null : summary.totalLogicalButtons || inventoryComplete([c]) ? String(summary.totalLogicalButtons) : null,
   sensor: h?.sensor, gimbal: h?.gimbal, throw: h?.throw_deg, weight: c.physical?.weight_g,
   connection: c.connectivity.standalone_usb == null ? null : c.connectivity.standalone_usb ? (c.connectivity.usb && c.connectivity.usb.length < 12 ? humanize(c.connectivity.usb) : 'Standalone USB') : 'Via compatible base',
   verdict: c.verdict ? overallVerdict(c.verdict) : null,
@@ -45,7 +47,7 @@ const groups = [
   { title: 'Mechanics', rows: [
     ['Gimbal type', h?.gimbal_type ? gimbalLabels[h.gimbal_type] : ''], ['Gimbal', humanize(h?.gimbal)], ['Primary sensor', humanize(h?.sensor)], ['Throw', h?.throw_deg != null ? `${h.throw_deg}°` : ''],
     ['Force adjustable', yesNoUnknown(h?.force_adjustable)], ['Swappable cams', yesNoUnknown(h?.cams_swappable)],
-    ['Damping', humanize(h?.damping)], ['Extension support', yesNoUnknown(h?.extension_support)],
+    ['Damping', humanize(h?.damping) || damperText], ['Extension support', yesNoUnknown(h?.extension_support)],
   ] },
   { title: 'Physical', rows: [
     ['Weight', c.physical?.weight_g != null ? `${c.physical.weight_g.toLocaleString('en')} g` : ''],
@@ -79,7 +81,7 @@ const sections = [
   <section id="specs" class="specs" aria-labelledby="specs-title">
     <p class="kicker">Specifications</p><h2 id="specs-title">The details</h2>
     <div class="sheet">
-      {groups.map(g => <div class="group"><h3>{g.title}</h3>{g.known.length ? <dl>{g.known.map(([l, v]) => <div><dt>{l}</dt><dd>{v}{l === 'Gimbal type' && h?.gimbal_type && <Explain term={gimbalGlossaryKey[h.gimbal_type]} />}</dd></div>)}</dl> : <p class="none">Not yet documented.</p>}{g.known.length > 0 && g.missing.length > 0 && <p class="missing">Not documented: {g.missing.join(', ').toLowerCase()}</p>}</div>)}
+      {groups.map(g => <div class="group"><h3>{g.title}</h3>{g.known.length ? <dl>{g.known.map(([l, v]) => <div><dt>{l}</dt><dd>{v}{l === 'Gimbal type' && h?.gimbal_type && <Explain term={gimbalGlossaryKey[h.gimbal_type]} />}{l === 'Damping' && h?.damper_addon && damperAddon && <> (<a href={`/components/${h.damper_addon}`}>{damperAddon.name}</a>)</>}</dd></div>)}</dl> : <p class="none">Not yet documented.</p>}{g.known.length > 0 && g.missing.length > 0 && <p class="missing">Not documented: {g.missing.join(', ').toLowerCase()}</p>}</div>)}
       <div class="group"><h3>Mounting</h3>
         {provides || accepts.length ? <dl>
           {provides && <div><dt>Provides</dt><dd>{provides.name}<small>{provides.description}</small></dd></div>}
@@ -107,6 +109,7 @@ const sections = [
   h3 { margin: 0 0 .75rem; font: 700 .8rem var(--font-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--color-muted); }
   dl { display: grid; margin: 0; } dl > div { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 1rem; padding: .55rem 0; border-top: 1px solid var(--color-rule); font-size: .9rem; } dl > div:first-child { border-top: 0; padding-top: 0; }
   dt { color: var(--color-muted); } dd { margin: 0; overflow-wrap: anywhere; } dd small { display: block; margin-top: .25rem; color: var(--color-muted); font-size: .8rem; line-height: 1.55; }
+  dd a { color: var(--color-accent); }
   .none, .missing { margin: .5rem 0 0; color: var(--color-muted); font-size: .8rem; } .none { margin: 0; }
   .axes { margin-top: 1rem; padding: 1.25rem; border: 1px solid var(--color-rule); background: var(--color-surface); overflow-x: auto; }
   table { width: 100%; border-collapse: collapse; font-size: .875rem; } th, td { text-align: left; padding: .55rem .75rem .55rem 0; border-bottom: 1px solid var(--color-rule); } th { font-size: .75rem; font-weight: 600; color: var(--color-muted); } tr:last-child td { border-bottom: 0; }

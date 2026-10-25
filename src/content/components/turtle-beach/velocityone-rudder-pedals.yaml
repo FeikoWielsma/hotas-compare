@@ -42,6 +42,7 @@ hardware:
   force_adjustable: true
   cams_swappable: null
   damping: null
+  damper: none
   extension_support: null
   throw_deg: null
 connectivity:
@@ -91,3 +92,4 @@ images:
   caption: VelocityOne Rudder Pedals
 sources:
 - https://turtlebeach.com
+- https://www.turtlebeach.com/products/velocity-one-rudder

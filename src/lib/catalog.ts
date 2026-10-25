@@ -1,7 +1,9 @@
 import { deriveComponentStats, deriveControlsSummary, resolvePrice } from './derive';
 import type { ControlsSummary, ResolvedPrice } from './derive';
-import type { Component, Bundle, Region, UseCaseFit, Verdict, ReviewTag, GimbalType } from './schema';
+import type { Component, Bundle, Region, UseCaseFit, Verdict, ReviewTag, GimbalType, DamperType, ControlItem } from './schema';
 import type { ControlSection } from './control-inventory';
+
+export type PedalBrakes = 'toe_brakes' | 'rudder_only' | 'unknown';
 
 export interface CatalogItem {
   /** Collection ID, including the brand path; stable across region changes. */
@@ -39,6 +41,16 @@ export interface CatalogItem {
   gimbalType?: GimbalType | null;
   /** A complete stick with no twist axis: rudder needs pedals. */
   needsPedals?: boolean;
+  /** Pedal brake configuration derived from axis controls, for pedal cards. */
+  pedalBrakes?: PedalBrakes | null;
+  /** Documented toe-brake axis count for pedals. */
+  toeBrakeAxes?: number | null;
+  /** Structured damper support for pedal cards. */
+  damper?: DamperType | null;
+  /** Optional damper add-on component in the catalog, when applicable. */
+  damperAddon?: { id: string; name: string } | null;
+  /** Documented mechanical throw in degrees for pedals. */
+  throwDeg?: number | null;
   images: Component['images'];
   componentIds: string[];
   formerBrandNames: string[];
@@ -58,6 +70,15 @@ export function needsPedals(category: string, members: Pick<Component, 'hardware
   return completeStickCategories.has(category)
     && members.some((member) => member.hardware?.gimbal_type != null && member.hardware.axes.length > 0)
     && !members.some((member) => member.hardware?.axes.some((axis) => twistAxis.test(axis.name)));
+}
+
+/** Derive pedal brake status from axis controls without guessing from missing data. */
+export function derivePedalBrakes(members: Pick<Component, 'controls'>[]): { status: PedalBrakes; toeBrakeAxes: number | null } {
+  const axes = members.flatMap((member) => member.controls).filter((c): c is Extract<ControlItem, { type: 'axis' }> => c.type === 'axis');
+  const toeBrakeAxes = axes.filter((axis) => axis.kind === 'toe_brake').reduce((sum, axis) => sum + (axis.count ?? 1), 0);
+  if (toeBrakeAxes > 0) return { status: 'toe_brakes', toeBrakeAxes };
+  if (axes.some((axis) => axis.kind === 'rudder') && !axes.some((axis) => axis.kind === 'other')) return { status: 'rudder_only', toeBrakeAxes: 0 };
+  return { status: 'unknown', toeBrakeAxes: null };
 }
 
 /** Resolve a serialized item without requiring another content query. */
@@ -83,6 +104,10 @@ export async function loadCatalog(region: Region = 'EU', now = new Date()) {
       if (!component) throw new Error(`Bundle "${id}" references missing component "${ref}"`);
       return component;
     }) : [data];
+    const addonId = members.map((member) => member.hardware?.damper_addon).find((ref): ref is string => !!ref) ?? null;
+    const addon = addonId ? componentMap.get(addonId) : null;
+    if (addonId && !addon) throw new Error(`Item "${id}" references missing damper_addon "${addonId}"`);
+    const pedalInfo = data.category === 'pedals' ? derivePedalBrakes(members) : null;
     const stats = members.map(deriveComponentStats);
     const controlsSummary = deriveControlsSummary(members.flatMap((member) => member.controls));
     // Bundle fit is the mean of its members; never invent an editorial verdict.
@@ -97,7 +122,13 @@ export async function loadCatalog(region: Region = 'EU', now = new Date()) {
       return [...new Set(values.filter((value): value is string => !!value))].join(', ') || null;
     };
     const mechanical = (field: 'force_adjustable' | 'cams_swappable' | 'damping') => {
-      const values = members.filter((member) => member.hardware).map((member) => member.hardware?.[field]);
+      const values = members.filter((member) => member.hardware).map((member) => {
+        const raw = member.hardware?.[field];
+        if (raw == null && field === 'damping' && member.hardware?.damper) {
+          return member.hardware.damper === 'built_in' ? 'built-in damper' : member.hardware.damper === 'optional' ? 'optional damper' : 'none';
+        }
+        return raw;
+      });
       return [...new Set(values.map((value) => value == null ? 'Unknown' : typeof value === 'boolean' ? value ? 'Yes' : 'No' : value.replaceAll('_', ' ')))].join(' / ') || 'Unknown';
     };
     return {
@@ -118,6 +149,13 @@ export async function loadCatalog(region: Region = 'EU', now = new Date()) {
       })(),
       gimbalType: members.map((member) => member.hardware?.gimbal_type).find((type) => type != null) ?? null,
       needsPedals: needsPedals(data.category, members),
+      ...(pedalInfo ? {
+        pedalBrakes: pedalInfo.status,
+        toeBrakeAxes: pedalInfo.toeBrakeAxes,
+        damper: members.map((member) => member.hardware?.damper).find((d) => d != null) ?? null,
+        damperAddon: addonId && addon ? { id: addonId, name: addon.name } : null,
+        throwDeg: members.map((member) => member.hardware?.throw_deg).find((t) => t != null) ?? null,
+      } : {}),
       images: data.images, componentIds: 'components' in data ? data.components : [],
       formerBrandNames: brand.former_names,
       handedness: [...new Set(members.map((member) => member.handedness).filter((hand) => hand !== 'n/a'))],

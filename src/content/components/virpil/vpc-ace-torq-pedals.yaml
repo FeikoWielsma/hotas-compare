@@ -30,9 +30,10 @@ hardware:
   axes:
     - name: Rudder
       sensor: contactless_magnetic
-  force_adjustable: false
+  force_adjustable: true
   cams_swappable: false
-  damping: null
+  damping: adjustable_clutch_damper
+  damper: built_in
   extension_support: false
   throw_deg: null
 connectivity:
@@ -102,6 +103,7 @@ verdict:
 verification: draft
 sources:
 - https://virpil-controls.eu/products/vpc-ace-torq-pedals
+- https://virpil-controls.eu/vpc-ace-torq-rudder-pedals.html
 images:
   - file: /images/virpil/vpc-ace-torq-pedals.jpg
     source: https://virpil-controls.eu/vpc-ace-torq-rudder-pedals.html

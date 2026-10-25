@@ -39,6 +39,7 @@ hardware:
   force_adjustable: true
   cams_swappable: false
   damping: null
+  damper: none
   extension_support: false
   throw_deg: null
 connectivity:
@@ -84,6 +85,7 @@ prices:
 verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/tpr-pendular-rudder/
+- https://www.thrustmaster.com/products/tpr-thrustmaster-pendular-rudder/
 images:
 - file: /images/thrustmaster/tpr-pendular-rudder.webp
   source: https://www.thrustmaster.com/products/tpr-thrustmaster-pendular-rudder/

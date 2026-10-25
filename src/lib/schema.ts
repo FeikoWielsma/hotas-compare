@@ -337,6 +337,10 @@ export type Reviewer = z.infer<typeof ReviewerSchema>;
 export const GimbalTypeEnum = z.enum(['ball_and_cup', 'pincer', 'cam_and_spring', 'force_feedback', 'other']);
 export type GimbalType = z.infer<typeof GimbalTypeEnum>;
 
+/** Pedal damper support; null = not pedals or not documented. */
+export const DamperEnum = z.enum(['built_in', 'optional', 'none']);
+export type DamperType = z.infer<typeof DamperEnum>;
+
 // Component Collection Schema
 export const HardwareSchema = z.object({
   /** Manufacturer's total, when the full individual axis mapping is unavailable. */
@@ -354,6 +358,8 @@ export const HardwareSchema = z.object({
   force_adjustable: z.boolean().nullable().optional(),
   cams_swappable: z.boolean().nullable().optional(),
   damping: z.string().nullable().optional(),
+  damper: DamperEnum.nullable().optional(),
+  damper_addon: z.string().nullable().optional(),
   extension_support: z.boolean().nullable().optional(),
   throw_deg: z.number().nullable().optional(),
 }).nullable().optional();

@@ -40,6 +40,7 @@ hardware:
   force_adjustable: false
   cams_swappable: false
   damping: null
+  damper: none
   extension_support: false
   throw_deg: null
 connectivity:

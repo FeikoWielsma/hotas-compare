@@ -39,6 +39,7 @@ hardware:
   force_adjustable: true
   cams_swappable: false
   damping: null
+  damper: none
   extension_support: false
   throw_deg: 35
   axis_count: 1

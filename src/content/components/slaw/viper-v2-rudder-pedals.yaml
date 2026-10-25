@@ -35,6 +35,8 @@ hardware:
   force_adjustable: true
   cams_swappable: true
   damping: optional hydraulic damper (not included; mounting hardware supported)
+  damper: optional
+  damper_addon: slaw/slaw-damper-kit
   extension_support: false
   throw_deg: null
 connectivity:

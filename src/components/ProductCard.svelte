@@ -32,6 +32,11 @@
     const out: { label: string; value: string; title?: string }[] = [];
     const plus = complete ? '' : '+';
     if (item.totalAxes > 0 || item.axisCountKnown) out.push({ label: 'Axes', value: String(item.totalAxes) });
+    if (item.category === 'pedals') {
+      if (item.toeBrakeAxes != null) out.push({ label: 'Toe brakes', value: String(item.toeBrakeAxes), title: item.toeBrakeAxes > 0 ? 'Independent left and right toe-brake axes' : 'Rudder axis only (no physical toe brakes)' });
+      if (item.throwDeg != null) out.push({ label: 'Throw', value: `${item.throwDeg}°`, title: 'Documented rudder travel' });
+      return out;
+    }
     if (item.totalLogicalButtons > 0) out.push({ label: 'Inputs', value: `${item.totalLogicalButtons}${plus}`, title: 'Estimated button inputs, including hat directions and switch positions' });
     const counts = controlTypes.filter((t) => short[t.type]).map((t) => ({
       label: short[t.type]!,
@@ -44,6 +49,7 @@
   const sensor = $derived(item.sensor && !/^none/i.test(item.sensor) ? humanize(item.sensor.split(', ')[0]) : null);
   const hand = $derived(item.handedness.map((h) => h === 'ambi' ? 'Ambidextrous' : `${h === 'right' ? 'Right' : 'Left'} hand`).join(' / '));
   const meta = $derived([hand, sensor && sensor.length <= 30 ? sensor : '', supported.join(' · ')].filter(Boolean));
+  const hasPedalBadges = $derived(item.category === 'pedals' || Boolean(item.pedalBrakes) || Boolean(item.damper && item.damper !== 'none'));
   onMount(() => { regionStore.init(); compareStore.init(); });
 </script>
 
@@ -58,10 +64,12 @@
     <h3><a href={detailHref(item)}>{item.name}</a></h3>
     {#if variants.length > 1}<div class="hands" role="group" aria-label="Hand">{#each variants as v, i}<button type="button" class:active={item.id === v.id} aria-pressed={item.id === v.id} onclick={() => pick = i}>{handLabel(v)}</button>{/each}</div>{/if}
     <p class="meta">{meta.join(' · ')}</p>
-    {#if review || item.gimbalType || item.needsPedals}<div class="badges">
+    {#if review || item.gimbalType || item.needsPedals || hasPedalBadges}<div class="badges">
       {#if review}<a class={`review ${review.tag}`} href={review.url} rel="external noopener" title={review.summary}>{review.reviewerName}: {tagLabels[review.tag]}</a>{/if}
       {#if item.gimbalType}<span class={`gimbal ${item.gimbalType}`}>{gimbalLabels[item.gimbalType]}<Explain term={gimbalGlossaryKey[item.gimbalType]} /></span>{/if}
       {#if item.needsPedals}<span class="pedals">No twist · add pedals<Explain term="pedals" /></span>{/if}
+      {#if item.pedalBrakes}<span class={`brakes ${item.pedalBrakes}`}>{item.pedalBrakes === 'toe_brakes' ? 'Toe brakes' : item.pedalBrakes === 'rudder_only' ? 'Rudder only' : 'Brakes: unknown'}</span>{/if}
+      {#if item.damper === 'built_in'}<span class="damper built_in">Damper: built-in</span>{:else if item.damper === 'optional'}{#if item.damperAddon}<a class="damper optional" href={`/components/${item.damperAddon.id}`} title={`Optional add-on: ${item.damperAddon.name}`}>Damper: optional</a>{:else}<span class="damper optional">Damper: optional</span>{/if}{:else if item.category === 'pedals' && !item.damper}<span class="damper unknown">Damper: unknown</span>{/if}
       {#if rankInfo && rankReasons(item).length}<span class="why">Why here<Explain title="Why it's ranked here" text={rankReasons(item)} label={`Why ${item.name} is ranked here`} /></span>{/if}
     </div>{/if}
   </div>
@@ -95,6 +103,9 @@
   .review.recommended { color: #1d6b3a; border-color: #1d6b3a55; background: #1d6b3a0d; } .review.avoid { color: #9b2c1f; border-color: #9b2c1f55; background: #9b2c1f0d; } .review.mixed { color: #8a5a00; border-color: #8a5a0055; }
   a.review:hover { text-decoration: underline; }
   .gimbal.ball_and_cup { color: #8a5a00; } .gimbal.pincer, .gimbal.cam_and_spring, .gimbal.force_feedback { color: var(--color-ink); }
+  .brakes.toe_brakes, .damper.built_in { color: var(--color-ink); }
+  .brakes.unknown, .damper.unknown { border-style: dashed; }
+  a.damper:hover { color: var(--color-accent); border-color: var(--color-accent); text-decoration: underline; }
   .pedals { border-style: dashed; } .why { border: 0; padding-left: 0; }
   dl { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; overflow: hidden; border: 1px solid var(--color-rule); }
   dl > div { padding: .5rem .5rem .45rem; min-width: 0; margin: 0 -1px -1px 0; border-right: 1px solid var(--color-rule); border-bottom: 1px solid var(--color-rule); }
