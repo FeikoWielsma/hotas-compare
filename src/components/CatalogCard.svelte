@@ -1,12 +1,20 @@
 <script lang="ts">
   import ProductCard from './ProductCard.svelte';
   import { handOf, type CatalogGroup } from '../lib/catalog-filter';
-  let { group, compact = false, row = false, rankInfo = false }: { group: CatalogGroup; compact?: boolean; row?: boolean; rankInfo?: boolean } = $props();
+  import type { CatalogItem } from '../lib/catalog';
+  import { familyCompareLineup, familyCompareTarget } from '../lib/family-compare';
+  let { group, familyItems = [], compact = false, row = false, rankInfo = false }: { group: CatalogGroup; familyItems?: CatalogItem[]; compact?: boolean; row?: boolean; rankInfo?: boolean } = $props();
   /** The variant the visitor picked. When filters remove it, the card keeps its label if that still matches, else shows the group's lead. */
   let picked = $state<{ id: string; label: string } | null>(null);
   const items = $derived(group.options.flatMap((option) => option.variants));
   const item = $derived(items.find((variant) => variant.id === picked?.id) ?? group.options.find((candidate) => candidate.label === picked?.label)?.variants[0] ?? group.lead);
   const option = $derived(group.options.find((candidate) => candidate.variants.some((variant) => variant.id === item.id))!);
+  /** One hand-matched item per family tier, just like the family detail lineup. */
+  const compareTarget = $derived.by(() => {
+    if (!group.family) return null;
+    const lineup = familyCompareLineup(familyItems, group.family!.id, item.id);
+    return familyCompareTarget(lineup.map((member) => member.id));
+  });
   /** Short label sets fit as a segmented switch; long ones (module layouts, editions) use a menu. */
   const segmented = $derived(group.options.length <= 4 && group.options.reduce((sum, { label }) => sum + label.length, 0) <= 28);
   const handLabel = (variant: typeof item) => handOf(variant) === 'left' ? 'Left' : 'Right';
@@ -26,6 +34,7 @@
     {/if}
     {#if option.variants.length > 1}<div class="switch" role="group" aria-label="Hand">{#each option.variants as variant (variant.id)}<button type="button" class:active={item.id === variant.id} aria-pressed={item.id === variant.id} onclick={() => pick(variant.id)}>{handLabel(variant)}</button>{/each}</div>{/if}
     {#if group.family && group.options.length > 1}<span class="count">{items.length} matching {items.length === 1 ? 'variant' : 'variants'}</span>{/if}
+    {#if compareTarget}<div class="family-compare"><a href={compareTarget.href}>Compare family <span aria-hidden="true">↗</span></a>{#if compareTarget.included < compareTarget.total}<span class="limit-note">First {compareTarget.included} of {compareTarget.total} versions</span>{/if}</div>{/if}
   {/snippet}
 </ProductCard>
 
@@ -38,5 +47,9 @@
   .menu span { white-space: nowrap; }
   .menu select { flex: 1; min-width: 0; max-width: 100%; padding: .25rem .4rem; border: 1px solid var(--color-rule); border-radius: 2px; background: var(--color-surface); color: var(--color-ink); font: .78rem/1.4 var(--font-sans); }
   .count { display: block; margin-top: .3rem; color: var(--color-muted); font-size: .72rem; }
+  .family-compare { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem .5rem; margin-top: .55rem; }
+  .family-compare a { display: inline-flex; align-items: center; gap: .35rem; min-height: 44px; padding: .45rem .65rem; border: 1px solid var(--color-accent); border-radius: 2px; background: var(--color-accent); color: var(--color-paper); font: 600 .75rem/1.3 var(--font-sans); text-decoration: none; }
+  .family-compare a:hover, .family-compare a:focus-visible { filter: brightness(.9); }
+  .limit-note { color: var(--color-muted); font-size: .7rem; line-height: 1.35; }
   :is(button, select):focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
 </style>
