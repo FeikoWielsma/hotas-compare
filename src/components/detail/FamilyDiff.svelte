@@ -3,10 +3,12 @@
   import type { FamilyView } from '../../lib/families';
   import type { CatalogItem } from '../../lib/catalog';
   import { familyDiffRows, type DeskSpecs } from '../../lib/family-detail';
+  import { familyCompareTarget } from '../../lib/family-compare';
   import { detailHref } from '../../lib/catalog-ui';
   import { regionStore } from '../../lib/stores/region.svelte';
   let { family, mountNames, physical }: { family: FamilyView<CatalogItem>; mountNames: Record<string, string>; physical: DeskSpecs } = $props();
   const rows = $derived(familyDiffRows(family.lineup.map(member => member.item), regionStore.region, mountNames, physical));
+  const compareTarget = familyCompareTarget(family.lineup.map(member => member.id));
   onMount(() => regionStore.init());
 </script>
 
@@ -14,6 +16,9 @@
   <p class="kicker">{family.name}</p>
   <h2 id="family-title">What changes between versions</h2>
   <p class="note">Only documented differences are shown. Missing data does not mean a feature is absent. Dimensions and weight help compare desk space and stability; desk suitability is not rated. Prices follow your selected region.</p>
+  <div class="family-actions"><a class="compare-family" href={compareTarget.href}>Compare family <span aria-hidden="true">↗</span></a>
+    {#if compareTarget.included < compareTarget.total}<p class="limit-note">Compare shows the first {compareTarget.included} of {compareTarget.total} family versions per comparison.</p>{/if}
+  </div>
   {#if rows.length}
     <p class="hint">Scroll across to compare every version.</p>
     <div class="scroll" tabindex="0" role="region" aria-label={`${family.name} differences`}>
@@ -31,6 +36,11 @@
   .kicker { margin: 0; color: var(--color-accent); font-size: .8rem; font-weight: 600; }
   h2 { margin: .25rem 0 1rem; font-size: clamp(1.9rem, 3vw, 2.5rem); text-transform: uppercase; }
   .note, .hint { color: var(--color-muted); font-size: .85rem; max-width: 85ch; line-height: 1.6; }
+  .family-actions { display: flex; align-items: center; flex-wrap: wrap; gap: .75rem; margin: 1rem 0; }
+  .compare-family { display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; padding: .65rem 1rem; border: 1px solid var(--color-accent); border-radius: 2px; background: var(--color-accent); color: var(--color-paper); font: 600 .9rem var(--font-sans); text-decoration: none; }
+  .compare-family:hover, .compare-family:focus-visible { filter: brightness(.9); }
+  .limit-note { margin: 0; color: var(--color-muted); font-size: .8rem; line-height: 1.5; }
+  .compare-family:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
   .hint { margin-bottom: .5rem; }
   .scroll { max-width: 100%; overflow-x: auto; border: 1px solid var(--color-rule); }
   table { border-collapse: collapse; width: 100%; font-size: .875rem; }
