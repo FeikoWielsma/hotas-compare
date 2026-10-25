@@ -72,6 +72,14 @@ hardware:
 connectivity:
   standalone_usb: true
   usb: USB cable (PC, PS4, PS5); RJ12 Thrustmaster rudder connector
+use_case_fit:
+  modern_jet: 2
+  heli: 3
+  ww2: 2
+  ga: 3
+  airliner: 3
+  space_hotas: 2
+  space_hosas: 3
 prices:
 - region: EU
   currency: EUR

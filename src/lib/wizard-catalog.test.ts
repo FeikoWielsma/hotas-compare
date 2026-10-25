@@ -166,3 +166,50 @@ describe('avoided hardware', () => {
     }
   });
 });
+
+// Issue #47: maintainer guidance for budget jet, space and combat HOTAS setups.
+describe('combat HOTAS picks', () => {
+  const combatHotas = 'winctrl/ursa-minor-combat-hotas';
+  const logitechOrT16000m = (id: string) => id.startsWith('logitech/') || id.startsWith('thrustmaster/t16000m');
+  it('recommends the Ursa Minor Combat HOTAS for budget jets, its twist standing in for pedals', () => {
+    for (const region of ['US', 'EU'] as const) {
+      for (const budgetMax of [250, 350]) {
+        expect(picksOf(recommend({ budgetMax }, region)), `${region} ${budgetMax}`).toEqual([[combatHotas]]);
+        const withPedals = recommend({ budgetMax, piecesNeeded: ['stick', 'throttle', 'pedals'] }, region);
+        expect(picksOf(withPedals), `${region} ${budgetMax} pedals`).toEqual([[combatHotas]]);
+        expect(withPedals.pieces[0].standIns).toEqual(['pedals']);
+      }
+    }
+    for (const region of ['US', 'EU'] as const) expect(picksOf(recommend({ useCase: 'space_hotas', budgetMax: 250 }, region)), region).toEqual([[combatHotas]]);
+  });
+  it('shows the Combat HOTAS over a $150 budget rather than X52 or T.16000M hardware', () => {
+    const result = recommend({ budgetMax: 150 });
+    expect(picksOf(result)).toEqual([[combatHotas]]);
+    expect(result.overBudget).toBeCloseTo(88.83);
+  });
+  it('adds dedicated pedals as the first upgrade once the budget allows', () => {
+    expect(ids({ budgetMax: 500, piecesNeeded: ['stick', 'throttle', 'pedals'] })).toEqual([combatHotas, 'vkb/t-rudder-mk5']);
+  });
+  it('moves up to better sticks and throttles at mid budgets', () => {
+    for (const region of ['US', 'EU'] as const) {
+      expect(ids({ budgetMax: 500 }, region), region).toEqual(['virpil/cdt-aeromax-r-flightstick', 'winctrl/ursa-minor-combat-throttle']);
+      expect(ids({ budgetMax: 750 }, region)[0], region).toBe('virpil/cdt-aeromax-r-flightstick');
+    }
+  });
+  it('only falls back to T.16000M hardware, with a warning, when nothing better fits', () => {
+    for (const [region, budgetMax] of [['EU', 150], ['US', 200]] as const) {
+      const result = recommend({ budgetMax }, region);
+      expect(picksOf(result), region).toEqual([['thrustmaster/t16000m-fcs-hotas']]);
+      expect(result.warnings.some((warning) => /rated 2\/5 for Modern jet/.test(warning))).toBe(true);
+    }
+    for (const region of ['US', 'EU'] as const) {
+      for (const useCase of ['modern_jet', 'space_hotas', 'ww2'] as const) {
+        for (const budgetMax of [250, 300, 350, 450, 500, 750, 1500]) {
+          for (const piecesNeeded of [undefined, ['stick', 'throttle', 'pedals'] as WizardAnswers['piecesNeeded']]) {
+            expect(ids({ useCase, budgetMax, piecesNeeded }, region).filter(logitechOrT16000m), `${region} ${useCase} ${budgetMax}`).toEqual([]);
+          }
+        }
+      }
+    }
+  });
+});

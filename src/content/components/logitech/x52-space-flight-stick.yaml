@@ -82,6 +82,14 @@ physical:
   - 278
   materials:
   - abs
+use_case_fit:
+  modern_jet: 2
+  heli: 2
+  ww2: 2
+  ga: 2
+  airliner: 2
+  space_hotas: 2
+  space_hosas: 2
 prices:
 - region: EU
   currency: EUR

@@ -78,12 +78,12 @@ physical:
   dimensions_mm: [195, 195, 225]
 airliner_family: airbus
 use_case_fit:
-  modern_jet: 4
+  modern_jet: 2
   heli: 3
-  ww2: 3
+  ww2: 2
   ga: 3
   airliner: 4
-  space_hotas: 4
+  space_hotas: 2
   space_hosas: 3
 prices:
 - region: EU
