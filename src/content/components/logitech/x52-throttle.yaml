@@ -98,7 +98,9 @@ use_case_fit:
   ga: 2
   airliner: 2
   space_hotas: 2
-  space_hosas: 2
+  space_hosas: 1
+use_case_fit_source: community
+tier_line: X52 Throttle
 prices:
 - region: EU
   currency: EUR

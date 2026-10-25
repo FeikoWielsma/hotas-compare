@@ -67,12 +67,13 @@ physical:
     - aluminium
 use_case_fit:
   modern_jet: 5
-  heli: 3
-  ww2: 3
-  ga: 2
-  airliner: 1
+  heli: 4
+  ww2: 4
+  ga: 4
+  airliner: 3
   space_hotas: 4
-  space_hosas: 3
+  space_hosas: 4
+use_case_fit_source: community
 prices:
   - region: EU
     currency: EUR
@@ -112,12 +113,6 @@ verdict:
   skip_if:
     - "You don't own rudder pedals or twist stick"
     - "You need a left-hand stick for HOSAS"
-  scores:
-    build: 4
-    feel: 5
-    value: 4
-    software: 3
-    qc_support: 4
 external_reviews: []
 verification: verified
 sources:

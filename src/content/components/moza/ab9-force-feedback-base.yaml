@@ -40,13 +40,14 @@ physical:
   - 184
   weight_g: 5500
 use_case_fit:
-  modern_jet: 4
-  heli: 3
-  ww2: 3
-  ga: 3
-  airliner: 3
-  space_hotas: 4
-  space_hosas: 3
+  modern_jet: 5
+  heli: 5
+  ww2: 5
+  ga: 5
+  airliner: 5
+  space_hotas: 5
+  space_hosas: 5
+use_case_fit_source: community
 prices:
 - region: EU
   currency: EUR
@@ -91,12 +92,6 @@ verdict:
   skip_if:
   - You want a plug-and-play conventional spring joystick
   - Your desk or mount cannot safely handle force feedback loads
-  scores:
-    build: 4
-    feel: 5
-    value: 3
-    software: 3
-    qc_support: 3
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=3139s

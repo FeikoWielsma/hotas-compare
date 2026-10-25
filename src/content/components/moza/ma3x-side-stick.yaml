@@ -20,6 +20,15 @@ physical:
   materials:
   - ultra-rigid composite casing
   - ABS switches
+use_case_fit:
+  modern_jet: 1
+  heli: 1
+  ww2: 1
+  ga: 5
+  airliner: 5
+  space_hotas: 1
+  space_hosas: 1
+use_case_fit_source: community
 verification: draft
 sources:
 - https://mozaracing.com

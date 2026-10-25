@@ -119,13 +119,14 @@ physical:
   - glass_fiber_pa
   - aluminium
 use_case_fit:
-  modern_jet: 4
-  heli: 4
-  ww2: 5
-  ga: 4
-  airliner: 4
-  space_hotas: 4
-  space_hosas: 2
+  modern_jet: 5
+  heli: 2
+  ww2: 3
+  ga: 3
+  airliner: 3
+  space_hotas: 5
+  space_hosas: 3
+use_case_fit_source: community
 prices:
 - region: EU
   currency: EUR
@@ -170,12 +171,6 @@ verdict:
   skip_if:
   - You want an unmounted desktop throttle (choose Mini Plus or Standard instead)
   - Less panel area and fewer controls than larger STECS editions
-  scores:
-    build: 4
-    feel: 4
-    value: 4
-    software: 4
-    qc_support: 4
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2177s

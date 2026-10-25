@@ -54,12 +54,6 @@ verdict:
   - space_hotas
   skip_if:
   - You already own one or more of the included components
-  scores:
-    build: 4
-    feel: 4
-    value: 4
-    software: 4
-    qc_support: 4
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2580s

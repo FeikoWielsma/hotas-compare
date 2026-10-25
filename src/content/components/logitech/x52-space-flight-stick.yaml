@@ -90,6 +90,8 @@ use_case_fit:
   airliner: 2
   space_hotas: 2
   space_hosas: 2
+use_case_fit_source: community
+tier_line: X52 Flight Stick
 prices:
 - region: EU
   currency: EUR

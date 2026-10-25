@@ -65,6 +65,16 @@ software: VKBDevCfg
 physical:
   materials:
   - abs
+use_case_fit:
+  modern_jet: 4
+  heli: 4
+  ww2: 4
+  ga: 4
+  airliner: 3
+  space_hotas: 4
+  space_hosas: 5
+use_case_fit_source: community
+tier_line: SCG Standard
 prices:
 - region: US
   currency: USD

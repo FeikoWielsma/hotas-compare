@@ -53,10 +53,12 @@ use_case_fit:
   modern_jet: 3
   heli: 3
   ww2: 3
-  ga: 3
+  ga: 2
   airliner: 1
   space_hotas: 3
-  space_hosas: 3
+  space_hosas: 1
+use_case_fit_source: community
+tier_line: GNX THQ Throttle Quadrant
 prices:
 - region: US
   currency: USD

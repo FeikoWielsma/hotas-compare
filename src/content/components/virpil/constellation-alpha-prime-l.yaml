@@ -105,10 +105,11 @@ use_case_fit:
   modern_jet: 5
   heli: 4
   ww2: 4
-  ga: 2
-  airliner: 1
-  space_hotas: 5
+  ga: 4
+  airliner: 3
+  space_hotas: 4
   space_hosas: 5
+use_case_fit_source: community
 prices:
 - region: EU
   currency: EUR
@@ -153,12 +154,6 @@ verdict:
   - space_hosas
   skip_if:
   - Premium price and substantial grip height
-  scores:
-    build: 4
-    feel: 4
-    value: 4
-    software: 4
-    qc_support: 4
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1757s

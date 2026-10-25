@@ -1,6 +1,7 @@
 import type { CatalogItem } from './catalog';
 import { resolvePrice, scoreItemForUseCase } from './derive';
 import type { BudgetTier, Currency, Region, Setup, UseCase } from './schema';
+import { isTiller, toFitScore } from './fit-groups';
 import { humanize } from './labels';
 import { isSuperseded } from './successors';
 import { isYokeHandle } from './yoke-parts';
@@ -215,9 +216,9 @@ function roleVariants(roles: WizardPiece[], primary: CatalogItem[], answers: Wiz
   }
   return variants;
 }
-/** A 1/5 fit marks hardware the wizard never recommends for that flying style. */
+/** A 1/5 fit marks hardware the wizard never recommends for that flying style; budget gear under a hard cap is never recommended. */
 const LAST_RESORT_FIT = 1;
-const isLastResort = (item: CatalogItem, useCase: UseCase) => item.use_case_fit[useCase] <= LAST_RESORT_FIT;
+const isLastResort = (item: CatalogItem, useCase: UseCase) => item.budgetGear === true || toFitScore(item.use_case_fit[useCase]) <= LAST_RESORT_FIT;
 /** A 2/5 fit is a fallback: it scores low enough to lose to anything better and carries a warning when shown. */
 const LIMITED_FIT = 2;
 /** Unreviewed hardware must be clearly better than a reviewed alternative before it is recommended. */
@@ -295,7 +296,7 @@ function candidates(items: CatalogItem[], answers: WizardAnswers, region: Region
   const map = new Map(items.map((item) => [item.id, item]));
   // Parts only sold inside a bundle cannot be bought on their own; the bundle is offered instead.
   // On a desk setup, surface-sitting controls marked mount_only cannot sit loose on the desktop.
-  const buyable = items.filter((item) => item.status === 'current' && item.soldStandalone !== false && (answers.mountType !== 'desk' || needsBase(item) || item.placement !== 'mount_only'));
+  const buyable = items.filter((item) => item.status === 'current' && item.soldStandalone !== false && !isTiller(item.name) && (answers.mountType !== 'desk' || needsBase(item) || item.placement !== 'mount_only'));
   const groups = buyable.filter((item) => !['base', 'module'].includes(item.category) && !needsBase(item)).map((item) => [item]);
   for (const base of buyable.filter((item) => item.category === 'base')) {
     for (const handle of buyable.filter(needsBase)) {
@@ -335,8 +336,8 @@ function candidates(items: CatalogItem[], answers: WizardAnswers, region: Region
       if (answers.needsTwist && assignment.includes('stick') && !hasTwist(sticks[assignment.indexOf('stick')])) continue;
       if (answers.needsTwist && !answers.piecesNeeded.includes('stick') && assignment.includes('second_stick') && !hasTwist(sticks[assignment.indexOf('second_stick')])) continue;
       const scores = group.map((item) => scoreWizardItem(item, answers, region, item.item_type === 'bundle' ? item.componentIds.flatMap((id) => map.get(id) ?? []) : []));
-      const limitedWarnings = [...new Set([...group, ...members])].filter((item) => item.use_case_fit[answers.useCase] <= LIMITED_FIT)
-        .map((item) => `${item.name} is rated ${item.use_case_fit[answers.useCase]}/5 for ${humanize(answers.useCase)}: a last-resort pick when nothing better fits the budget.`);
+      const limitedWarnings = [...new Set([...group, ...members])].filter((item) => toFitScore(item.use_case_fit[answers.useCase]) <= LIMITED_FIT)
+        .map((item) => `${item.name} is rated ${toFitScore(item.use_case_fit[answers.useCase])}/5 for ${humanize(answers.useCase)}: a last-resort pick when nothing better fits the budget.`);
       const score = scores.reduce((sum, item) => sum + item.score, 0) / scores.length;
       for (const { roles, standIns } of roleVariants([...assignment, ...otherRoles], primary, answers)) {
         if (!roles.length || roles.some((role) => !answers.piecesNeeded.includes(role))) continue;
@@ -453,7 +454,7 @@ export function recommendLoadout(items: CatalogItem[], input: WizardAnswers, reg
   const map = new Map(items.map((item) => [item.id, item]));
   // Bundles average their members' fit, so check each member: a pack must not slip in rejected pedals.
   const rejected = (item: CatalogItem): boolean => isLastResort(item, answers.useCase) || item.componentIds.some((id) => { const member = map.get(id); return !!member && rejected(member); });
-  const limited = (item: CatalogItem): boolean => item.use_case_fit[answers.useCase] <= LIMITED_FIT || item.componentIds.some((id) => { const member = map.get(id); return !!member && limited(member); });
+  const limited = (item: CatalogItem): boolean => toFitScore(item.use_case_fit[answers.useCase]) <= LIMITED_FIT || item.componentIds.some((id) => { const member = map.get(id); return !!member && limited(member); });
   const options = candidates(items, answers, region).filter((option) => !option.items.some(rejected));
   const dropped: DroppedPick[] = [];
   const drop = (ids: WizardPick, reason: string) => dropped.push({ ids, reason, items: ids.flatMap((id) => map.get(id) ? [map.get(id)!] : []) });

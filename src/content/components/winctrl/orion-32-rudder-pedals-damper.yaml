@@ -63,9 +63,11 @@ use_case_fit:
   heli: 3
   ww2: 3
   ga: 4
-  airliner: 4.5
+  airliner: 5
   space_hotas: 3
   space_hosas: 3
+use_case_fit_source: community
+tier_line: Orion 32 Rudder Pedals Metal
 prices:
 - region: UK
   currency: GBP

@@ -59,13 +59,14 @@ physical:
   - aluminium
   - metal
 use_case_fit:
-  modern_jet: 5
-  heli: 4
-  ww2: 4
-  ga: 3
-  airliner: 3
+  modern_jet: 4
+  heli: 5
+  ww2: 5
+  ga: 5
+  airliner: 5
   space_hotas: 5
   space_hosas: 5
+use_case_fit_source: community
 prices:
 - region: EU
   currency: EUR

@@ -49,7 +49,15 @@ physical:
   materials:
   - steel
   - aluminium
-use_case_fit: {}
+use_case_fit:
+  modern_jet: 4
+  heli: 4
+  ww2: 4
+  ga: 4
+  airliner: 4
+  space_hotas: 3
+  space_hosas: 3
+use_case_fit_source: community
 software: MFG software package v2.17 for Crosswind V1–V3 rudder pedals
 prices:
 - region: EU
@@ -80,12 +88,6 @@ verdict:
   skip_if:
     - "You need compact pedals that store away after each session"
     - "Your budget is limited to entry-level rudder pedals"
-  scores:
-    build: 5
-    feel: 5
-    value: 4
-    software: 4
-    qc_support: 4
 verification: verified
 images:
   - file: /images/mfg/crosswind-v3-graphite-pedals.jpg

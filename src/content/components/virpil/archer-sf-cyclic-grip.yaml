@@ -65,13 +65,14 @@ software: VPC Configuration Tool
 physical:
   materials: []
 use_case_fit:
-  modern_jet: 2
+  modern_jet: 3
   heli: 5
   ww2: 2
-  ga: 2
+  ga: 1
   airliner: 1
   space_hotas: 2
   space_hosas: 2
+use_case_fit_source: community
 prices:
 - region: EU
   currency: EUR

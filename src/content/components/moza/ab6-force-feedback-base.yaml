@@ -59,13 +59,14 @@ physical:
   materials:
   - aviation-grade aluminum alloy
 use_case_fit:
-  modern_jet: 3
-  heli: 4
-  ww2: 4
-  ga: 3
-  airliner: 2
-  space_hotas: 3
-  space_hosas: 2
+  modern_jet: 5
+  heli: 5
+  ww2: 5
+  ga: 5
+  airliner: 5
+  space_hotas: 5
+  space_hosas: 5
+use_case_fit_source: community
 prices: []
 verdict:
   author: feiko
@@ -83,12 +84,6 @@ verdict:
   - ww2
   skip_if:
   - You can stretch the budget to the AB9, which provides vastly superior dynamic range and headroom
-  scores:
-    build: 4
-    feel: 3
-    value: 3
-    software: 4
-    qc_support: 4
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=3183s

@@ -18,7 +18,7 @@ handedness: n/a
 mount:
   provides: null
   accepts:
-  - vkb-rev-b
+  - vkb-gnx
 placement: both
 controls:
 - type: toggle
@@ -83,13 +83,14 @@ physical:
   - glass_fiber_pa
   - steel
 use_case_fit:
-  modern_jet: 4
-  heli: 4
-  ww2: 4
-  ga: 4
+  modern_jet: 3
+  heli: 3
+  ww2: 3
+  ga: 3
   airliner: 3
-  space_hotas: 5
-  space_hosas: 5
+  space_hotas: 3
+  space_hosas: 3
+use_case_fit_source: community
 prices:
 - region: EU
   currency: EUR
@@ -135,12 +136,6 @@ verdict:
   - ww2
   skip_if:
   - You require an all-metal dual-cam gimbal mechanism
-  scores:
-    build: 4
-    feel: 4
-    value: 5
-    software: 4
-    qc_support: 5
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2580s

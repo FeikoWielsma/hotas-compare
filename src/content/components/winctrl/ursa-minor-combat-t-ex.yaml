@@ -65,6 +65,7 @@ use_case_fit:
   airliner: 3
   space_hotas: 5
   space_hosas: 2
+use_case_fit_source: community
 prices:
 - region: UK
   currency: GBP

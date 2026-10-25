@@ -87,6 +87,7 @@ use_case_fit:
   airliner: 4
   space_hotas: 1
   space_hosas: 1
+use_case_fit_source: community
 prices:
 - region: EU
   currency: EUR
@@ -133,12 +134,6 @@ verdict:
   skip_if:
   - You mainly fly combat aircraft or space sims
   - You cannot clamp a large yoke to your desk
-  scores:
-    build: 4
-    feel: 4
-    value: 3
-    software: 4
-    qc_support: 3
 verification: verified
 images:
 - file: /images/honeycomb/alpha-flight-controls-yoke.jpg

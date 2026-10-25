@@ -1,4 +1,5 @@
 import { isSuperseded } from './successors';
+import { toFitScore } from './fit-groups';
 import type { CatalogItem } from './catalog';
 import { contactless, overallScore } from './catalog-ui';
 import type { Platform } from './platforms';
@@ -45,7 +46,7 @@ export function filterCatalog(items: CatalogItem[], filters: CatalogFilters = {}
       && (filters.minimum == null || (amount != null && amount >= filters.minimum))
       && (filters.maximum == null || (amount != null && amount <= filters.maximum))
       && (!filters.ministick || item.hasMinistick) && (!filters.brake || item.hasBrakeAxis)
-      && (!filters.sensors || contactless(item)) && (!filters.fit || fit >= (filters.minimumFit ?? 4))
+      && (!filters.sensors || contactless(item)) && (!filters.fit || toFitScore(fit) >= (filters.minimumFit ?? 4))
       && (!filters.handedness || item.handedness.includes(filters.handedness))
       && meetsMinimum(item.totalAxes, filters.minimumAxes) && meetsMinimum(item.totalLogicalButtons, filters.minimumInputs)
       && (!filters.itemType || item.item_type === filters.itemType)

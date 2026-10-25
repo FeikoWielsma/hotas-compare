@@ -297,6 +297,9 @@ export const UseCaseFitSchema = z.object({
 });
 export type UseCaseFit = z.infer<typeof UseCaseFitSchema>;
 
+export const FitSourceEnum = z.enum(['seeded', 'baseline', 'community']);
+export type FitSource = z.infer<typeof FitSourceEnum>;
+
 export const defaultUseCaseFit: UseCaseFit = {
   modern_jet: 3,
   heli: 3,
@@ -424,6 +427,13 @@ export const ComponentSchema = z.object({
   software: z.string().optional(),
   physical: PhysicalSchema,
   use_case_fit: UseCaseFitSchema.default(defaultUseCaseFit),
+  /**
+   * Where the fit came from when it is not an editorial judgement: `seeded` = generated during catalog
+   * seeding and never reviewed, `baseline` = derived from specs (scripts/fit-baseline.ts), `community` = tier lists.
+   */
+  use_case_fit_source: FitSourceEnum.optional(),
+  /** Parts of one brand with the same tier line are ranked as one entry on /tiers: editions, sizes, or a base and its grips. */
+  tier_line: z.string().min(1).optional(),
   prices: z.array(PriceSchema).default([]),
   verdict: VerdictSchema.nullable().optional(),
   external_reviews: z.array(ExternalReviewSchema).default([]),

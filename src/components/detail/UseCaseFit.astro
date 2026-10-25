@@ -1,20 +1,25 @@
 ---
-import type { UseCaseFit } from '../../lib/schema';
+import type { FitSource, UseCaseFit } from '../../lib/schema';
 import { useCases } from '../../lib/catalog-ui';
 import Pips from './Pips.astro';
-interface Props { fit: UseCaseFit; note?: string }
-const { fit, note } = Astro.props;
+interface Props { fit: UseCaseFit; note?: string; source?: FitSource }
+const { fit, note, source } = Astro.props;
+const sourceNotes: Record<FitSource, string> = {
+  seeded: 'Early estimate from 1 (limited) to 5 (excellent), made when the catalog was seeded; not yet reviewed by hand.',
+  baseline: 'Estimated from 1 (limited) to 5 (excellent) using the recorded controls and mechanics; not yet reviewed by hand.',
+  community: 'Community score from 1 (limited) to 5 (excellent): the median of shared tier lists.',
+};
 const rows = useCases.map(u => ({ ...u, value: fit[u.key] })).toSorted((a, b) => b.value - a.value);
 ---
 <section id="fit" class="fit" aria-labelledby="fit-title">
-  <div><p class="kicker">Flying-style fit</p><h2 id="fit-title">Where it shines</h2><p class="note">{note ?? 'Editorial estimate from 1 (limited) to 5 (excellent), based on the controls and mechanics.'}</p></div>
+  <div><p class="kicker">Flying-style fit</p><h2 id="fit-title">Where it shines</h2><p class="note">{note ?? (source ? sourceNotes[source] : null) ?? 'Editorial estimate from 1 (limited) to 5 (excellent), based on the controls and mechanics.'}</p><p class="note"><a href="/tiers">Disagree? Rank the hardware in a tier list.</a></p></div>
   <dl>{rows.map(r => <div class:list={{ top: r.value >= 4.5 }}><dt>{r.label}</dt><dd><Pips value={r.value} label={r.label} /><b>{Number(r.value.toFixed(1))}</b></dd></div>)}</dl>
 </section>
 <style>
   .fit { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 2rem; padding: 2rem 0; border-top: 1px solid var(--color-rule); }
   .kicker { margin: 0; color: var(--color-accent); font-size: .8rem; font-weight: 600; }
   h2 { margin: .25rem 0 .75rem; font-size: clamp(1.9rem, 3vw, 2.5rem); text-transform: uppercase; }
-  .note { color: var(--color-muted); font-size: .875rem; max-width: 40ch; margin: 0; }
+  .note { color: var(--color-muted); font-size: .875rem; max-width: 40ch; margin: 0; } .note + .note { margin-top: .5rem; } .note a { color: var(--color-accent); }
   dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem 2rem; margin: 0; align-content: start; }
   dl > div { display: grid; grid-template-columns: 8.5rem 1fr 1.75rem; align-items: center; gap: .75rem; font-size: .875rem; }
   dt { color: var(--color-muted); } .top dt { color: var(--color-ink); font-weight: 600; } dd { display: contents; } b { text-align: right; font-variant-numeric: tabular-nums; }

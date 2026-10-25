@@ -98,12 +98,14 @@ physical:
   - aluminium
 use_case_fit:
   modern_jet: 5
-  heli: 5
-  ww2: 3
-  ga: 2
-  airliner: 1
-  space_hotas: 3
-  space_hosas: 2
+  heli: 4
+  ww2: 4
+  ga: 4
+  airliner: 3
+  space_hotas: 4
+  space_hosas: 5
+use_case_fit_source: community
+tier_line: Modern Combat Grip Ultimate
 prices:
 - region: US
   currency: USD
@@ -139,12 +141,6 @@ verdict:
   - heli
   skip_if:
   - Heavy grip is best paired with Gunfighter base
-  scores:
-    build: 4
-    feel: 4
-    value: 4
-    software: 4
-    qc_support: 4
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=3096s

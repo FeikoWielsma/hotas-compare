@@ -91,6 +91,7 @@ use_case_fit:
   airliner: 4
   space_hotas: 2
   space_hosas: 2
+use_case_fit_source: seeded
 prices:
 - region: EU
   currency: EUR
@@ -132,12 +133,6 @@ verdict:
   great_for: []
   skip_if:
   - Occupies desk or panel mounting area
-  scores:
-    build: 4
-    feel: 4
-    value: 4
-    software: 4
-    qc_support: 4
 verification: draft
 sources:
 - https://virpil-controls.eu/products/vpc-universal-control-panel-2

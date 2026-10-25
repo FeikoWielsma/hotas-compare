@@ -1,0 +1,3 @@
+# Community tier lists for `pnpm tiers:import`: one share link per line (https://hotas.razortek.nl/tiers?...).
+# Anything after the link is ignored, so note where it came from, e.g.
+# https://hotas.razortek.nl/tiers?uc=heli&g=throttles&r=... from r/hotas thread, 2026-11-02

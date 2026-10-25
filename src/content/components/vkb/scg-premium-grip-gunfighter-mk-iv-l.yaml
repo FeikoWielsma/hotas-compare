@@ -1,0 +1,106 @@
+brand: vkb
+name: SCG Premium Add-On Grip for Gunfighter Mk.IV (Left)
+category: grip
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs
+    and not compatible with Xbox, PS5, Apple or other platforms. Requires a compatible
+    Gunfighter Mk.IV base on Windows PC.
+  sources:
+  - https://vkbsimcontrollers.com/products/scg-add-on-grip-for-gunfighter-mk-iv-us
+  - https://vkb-sim.com.au/collections/all-controllers
+status: current
+handedness: left
+mount:
+  provides: vkb-rev-c
+  accepts: []
+placement: mount_only
+controls:
+- type: trigger
+  count: 1
+  location: grip
+  stages: 2
+  action: sequential
+  label: Main dual-action trigger
+  source: https://vkbsimcontrollers.com/products/scg-add-on-grip-for-gunfighter-mk-iv-us
+- type: trigger
+  count: 1
+  location: grip
+  label: Rapid-fire trigger
+  notes: Bidirectional 2-stage push/pull secondary trigger confirmed by official VKB template.
+  source: https://vkbsimcontrollers.com/products/scg-add-on-grip-for-gunfighter-mk-iv-us
+  stages: 2
+  action: bidirectional
+- type: hat
+  ways: 4
+  push: true
+  count: 3
+  location: grip
+  label: Center-push hats
+  source: https://vkbsimcontrollers.com/products/scg-add-on-grip-for-gunfighter-mk-iv-us
+- type: analog_ministick
+  count: 1
+  push: true
+  location: grip
+  label: A1 analog ministick
+  source: https://vkbsimcontrollers.com/products/scg-add-on-grip-for-gunfighter-mk-iv-us
+- type: button
+  count: 3
+  location: grip
+  label: Installed buttons; C1 supplied module is a replacement
+  source: https://vkbsimcontrollers.com/products/scg-add-on-grip-for-gunfighter-mk-iv-us
+  backlit: false
+controls_evidence:
+  coverage: complete
+  source: https://vkbsimcontrollers.com/products/scg-add-on-grip-for-gunfighter-mk-iv-us
+  checked: '2026-10-25'
+  notes: Premium option on the VKB US Mk.IV listing - all SCG Standard features plus a rapid-fire
+    trigger, an 8-way analog ministick with center push, and C1 button and A1 hat modules. Installed
+    controls follow the Gladiator SCG Premium inventory; the C1 and A1 modules are swap-ins.
+hardware:
+  axis_count: 1
+  gimbal: null
+  sensor: contactless_magnetic
+  axes:
+  - name: Twist
+    sensor: contactless_magnetic
+  force_adjustable: false
+  cams_swappable: false
+  damping: null
+  extension_support: false
+  throw_deg: null
+connectivity:
+  usb: none; connects via VKB REV.C connector to Gunfighter Mk.IV base
+  standalone_usb: false
+software: VKBDevCfg
+physical:
+  materials:
+  - abs
+use_case_fit:
+  modern_jet: 4
+  heli: 4
+  ww2: 4
+  ga: 4
+  airliner: 3
+  space_hotas: 5
+  space_hosas: 5
+use_case_fit_source: community
+tier_line: SCG Premium
+prices:
+- region: US
+  currency: USD
+  amount: 101.15
+  incl_vat: false
+  store: vkbsimcontrollers.com
+  url: https://vkbsimcontrollers.com/products/scg-add-on-grip-for-gunfighter-mk-iv-us
+  verified: '2026-10-25'
+  source: manual
+verification: draft
+sources:
+- https://vkbsimcontrollers.com/products/scg-add-on-grip-for-gunfighter-mk-iv-us
+images:
+- file: /images/vkb/scg-standard-grip-gunfighter-mk-iv-l.jpg
+  source: https://vkbsimcontrollers.com/products/scg-add-on-grip-for-gunfighter-mk-iv-us
+  caption: SCG Premium Add-On Grip for Gunfighter Mk.IV (Left)

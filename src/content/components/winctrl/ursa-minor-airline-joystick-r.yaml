@@ -62,10 +62,11 @@ use_case_fit:
   modern_jet: 2
   heli: 2
   ww2: 2
-  ga: 3
-  airliner: 5
+  ga: 5
+  airliner: 4
   space_hotas: 2
   space_hosas: 2
+use_case_fit_source: community
 prices:
 - region: EU
   currency: EUR

@@ -14,7 +14,7 @@ platform_compatibility:
 status: current
 handedness: right
 mount:
-  provides: vkb-rev-b
+  provides: vkb-gnx
   accepts: []
 placement: mount_only
 controls:
@@ -80,6 +80,15 @@ software: VKBDevCfg
 physical:
   materials:
   - abs
+use_case_fit:
+  modern_jet: 1
+  heli: 1
+  ww2: 1
+  ga: 2
+  airliner: 1
+  space_hotas: 5
+  space_hosas: 4
+use_case_fit_source: community
 prices:
 - region: US
   currency: USD

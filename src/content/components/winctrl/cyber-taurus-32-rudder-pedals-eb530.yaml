@@ -65,13 +65,15 @@ physical:
   materials:
   - metal
 use_case_fit:
-  modern_jet: 3
+  modern_jet: 4
   heli: 3
   ww2: 3
   ga: 4
-  airliner: 4.5
+  airliner: 5
   space_hotas: 3
   space_hosas: 3
+use_case_fit_source: community
+tier_line: Cyber Taurus 32 Rudder Pedals
 prices:
 - region: UK
   currency: GBP

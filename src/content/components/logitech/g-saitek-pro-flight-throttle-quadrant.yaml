@@ -58,9 +58,10 @@ use_case_fit:
   heli: 1
   ww2: 1
   ga: 1
-  airliner: 1
+  airliner: 2
   space_hotas: 1
   space_hosas: 1
+use_case_fit_source: community
 prices:
 - region: EU
   currency: EUR

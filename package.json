@@ -17,6 +17,10 @@
     "audit:bundles": "node scripts/audit-bundles.ts",
     "audit:links": "node scripts/audit-links.ts",
     "prices:refresh": "node scripts/refresh-prices.ts",
+    "fit:duel": "node scripts/fit-duel.ts",
+    "fit:retune": "node scripts/fit-retune.ts",
+    "tiers:import": "node scripts/tiers-import.ts",
+    "fit:baseline": "node scripts/fit-baseline.ts",
     "check": "astro check"
   },
   "dependencies": {

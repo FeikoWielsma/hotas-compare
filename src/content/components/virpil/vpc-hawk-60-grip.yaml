@@ -78,11 +78,12 @@ physical:
 use_case_fit:
   modern_jet: 2
   heli: 5
-  ww2: 3
-  ga: 5
-  airliner: 2
+  ww2: 1
+  ga: 1
+  airliner: 1
   space_hotas: 2
-  space_hosas: 2
+  space_hosas: 1
+use_case_fit_source: community
 prices:
 - region: EU
   currency: EUR
@@ -126,12 +127,6 @@ verdict:
   - ga
   skip_if:
   - Helicopter-specific use limits versatility
-  scores:
-    build: 4
-    feel: 4
-    value: 4
-    software: 4
-    qc_support: 4
 verification: draft
 sources:
 - https://virpil-controls.eu/products/vpc-hawk-60-grip

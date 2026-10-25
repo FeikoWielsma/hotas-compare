@@ -1,4 +1,4 @@
-name: VKB Rev.B Grip Mount
-description: Proprietary keyed 3-pin mechanical socket secured by a single hex clamping bolt. Used on VKB Gunfighter and Gladiator NXT EVO (screwed sub-assembly).
+name: VKB Gunfighter Rev.B Grip Mount
+description: Grip connector of the Gunfighter Mk.II and Mk.III bases. VKB lists Mk.IV add-on grips as incompatible with Mk.III.
 physical_type: keyed_clamp
 compatible_with: []

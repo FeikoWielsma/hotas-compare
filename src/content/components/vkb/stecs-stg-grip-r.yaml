@@ -76,6 +76,16 @@ hardware:
 connectivity:
   usb: none as supplied; connects through the STECS right-hand base
   standalone_usb: false
+tier_line: STECS Space Throttle System
+use_case_fit:
+  modern_jet: 1
+  heli: 1
+  ww2: 1
+  ga: 1
+  airliner: 2
+  space_hotas: 5
+  space_hosas: 5
+use_case_fit_source: community
 prices:
 - region: US
   currency: USD
