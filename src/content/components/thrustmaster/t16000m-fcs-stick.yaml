@@ -107,7 +107,6 @@ prices:
 verdict:
   author: feiko
   hands_on: true
-  owned_hours: 800
   take: The universal budget entry point. Accurate H.E.A.R.T hall sensor on the main X/Y axes and true ambidextrous
     modular grips make it cheap to start HOSAS, but the twist potentiometer is notorious for early failure.
   pros:

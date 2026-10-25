@@ -124,7 +124,6 @@ prices:
 verdict:
   author: feiko
   hands_on: true
-  owned_hours: 600
   take: The default budget throttle for flight sim and DCS entry. It gives you an analog ministick and rear rudder
     rocker, but the stock S.M.A.R.T sliding rails suffer from sticktion unless re-greased with Nyogel 767A or modified
     with polymer bearings.
