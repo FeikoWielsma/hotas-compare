@@ -23,6 +23,15 @@ const canonical = (value: string) => {
 };
 
 describe('content correctness (offline)', () => {
+  it('offers every bundle-only part through a current, priced bundle', () => {
+    const bundleOnly = catalog.filter((p) => p.collection === 'components' && 'sold_standalone' in p.data && p.data.sold_standalone === false).map((p) => p.id);
+    // Regression: the X52 throttle is only sold in the X52 HOTAS and must never be recommended on its own.
+    expect(bundleOnly).toContain('logitech/x52-throttle');
+    for (const id of bundleOnly) {
+      const bundles = catalog.filter((p) => p.collection === 'bundles' && 'components' in p.data && p.data.components.includes(id) && p.data.status === 'current' && p.data.prices.length > 0);
+      expect(bundles.map((p) => p.id), id).not.toEqual([]);
+    }
+  });
   it('resolves every successor to a different current component or bundle', () => {
     const components = new Map(catalog.filter(p => p.collection === 'components').map(p => [p.id, p.data]));
     const bundles = new Map(catalog.filter(p => p.collection === 'bundles').map(p => [p.id, p.data]));

@@ -2,6 +2,7 @@ brand: logitech
 name: Logitech G Flight Yoke System - Yoke
 category: yoke
 status: current
+sold_standalone: false
 handedness: n/a
 mount: null
 controls:
@@ -44,6 +45,8 @@ controls_evidence:
   notes: Logitech Flight Yoke System manual product-tour page 4 shows the handle and chronograph controls with their physical locations. The manual's feature list confirms six 2-way rocker directions, two single-function handle buttons, and one 8-way POV hat; its six directions are represented by three physical rocker switches. The three display buttons operate chronograph functions. Coverage applies to this yoke component.
 hardware:
   gimbal: shaft
+  # Maintainer-confirmed 2026-10-25: potentiometers.
+  sensor: potentiometer
   axes:
   - name: Pitch
   - name: Roll
