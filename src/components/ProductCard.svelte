@@ -26,6 +26,9 @@
     return { key, label: style.short, title: `${style.label} fit: ${Number(value.toFixed(1))}/5`, value: Number(value.toFixed(1)), filled: Math.round(value) };
   }));
   const match = $derived(styles.length > 1 ? matchScore(item, styles) : null);
+  /** A reviewer's verdict sits in the photo corner: no extra card height. Neutral says nothing yet, so it is not shown. */
+  const review = $derived(item.latestReview?.tag && item.latestReview.tag !== 'neutral' ? item.latestReview : null);
+  const reviewLabels: Record<string, string> = { recommended: 'recommends', mixed: 'mixed', avoid: 'avoid' };
   const caveats = $derived(item.placement === 'mount_only' || item.needsPedals);
   onMount(() => { regionStore.init(); compareStore.init(); });
 </script>
@@ -34,6 +37,7 @@
   <div class="photo">
     <a href={detailHref(item)} aria-label={`View ${item.name}`} tabindex="-1">{#if photo}<img src={photo} alt={item.name} loading="lazy" />{:else}<span class="nophoto">No photo available</span>{/if}</a>
     <div class="flags">
+      {#if review}<a class={`review ${review.tag}`} href={review.url} rel="external noopener" title={`${review.reviewerName}: ${review.summary}`}>{review.reviewerName} {reviewLabels[review.tag]}</a>{/if}
       {#if item.status !== 'current'}<span class={`status ${item.status}`}>{statusLabels[item.status]}</span>{/if}
       {#if match != null}<span class="match" class:high={match >= 4.5} class:good={match >= 3.5 && match < 4.5} title="Average fit across your flying styles">{Number(match.toFixed(1))} match</span>{/if}
     </div>
@@ -69,6 +73,9 @@
   .nophoto { color: #586875; font-size: .8125rem; padding: 1rem; }
   .flags { position: absolute; top: .5rem; left: .5rem; display: flex; flex-direction: column; align-items: flex-start; gap: .25rem; pointer-events: none; }
   .flags span { font-size: .7rem; font-weight: 700; padding: .15rem .45rem; color: #fff; background: #586875; }
+  .flags .review { pointer-events: auto; padding: .1rem .4rem; border: 1px solid currentColor; border-radius: 2px; background: #fffdf7e6; font: 600 .66rem/1.3 var(--font-sans); text-decoration: none; opacity: .85; }
+  .review.recommended { color: #1d6b3a; } .review.mixed { color: #8a5a00; } .review.avoid { color: #9b2c1f; }
+  .flags .review:hover { opacity: 1; text-decoration: underline; }
   .status { background: #192f43 !important; } .status.discontinued { background: #7a2a22 !important; }
   .match.good { background: #b4532f; } .match.high { background: #bf421f; }
   .compare { position: absolute; top: .4rem; right: .4rem; }

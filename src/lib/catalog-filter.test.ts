@@ -100,15 +100,15 @@ describe('catalog filters', () => {
     expect(filterCatalog([ambi], { handedness: 'right' })).toEqual([]);
   });
 
-  it('ranks Recommended by review consensus: recommended first, avoid below unreviewed, own scores still count', () => {
-    const scores = (n: number) => ({ build: n, feel: n, value: n, software: n, qc_support: n });
-    const recommended = item({ id: 'rec', name: 'Rec', reviewTag: 'recommended' });
-    const unreviewed = item({ id: 'none', name: 'None' });
-    const avoided = item({ id: 'avoid', name: 'Avoid', reviewTag: 'avoid' });
-    const ownedTop = item({ id: 'owned', name: 'Owned', scores: scores(5) });
-    const both = item({ id: 'both', name: 'Both', reviewTag: 'recommended', scores: scores(5) });
-    const order = filterCatalog([avoided, unreviewed, recommended, ownedTop, both], { sort: 'featured' }).map((i) => i.id);
-    expect(order).toEqual(['both', 'owned', 'rec', 'none', 'avoid']);
+  it('ranks Recommended by fit first: a recommendation breaks ties, avoid sinks, verdict scores are paused', () => {
+    const fits = (n: number) => ({ modern_jet: n, space_hosas: n, space_hotas: n, heli: n, ga: n, airliner: n, ww2: n });
+    const strong = item({ id: 'strong', name: 'Strong', use_case_fit: fits(4.5) });
+    const recommended = item({ id: 'rec', name: 'Rec', reviewTag: 'recommended', use_case_fit: fits(3.5) });
+    const unreviewed = item({ id: 'none', name: 'None', use_case_fit: fits(3.5) });
+    const avoided = item({ id: 'avoid', name: 'Avoid', reviewTag: 'avoid', use_case_fit: fits(5) });
+    const scored = item({ id: 'scored', name: 'Scored', use_case_fit: fits(3), scores: { build: 5, feel: 5, value: 5, software: 5, qc_support: 5 } });
+    const order = filterCatalog([avoided, scored, unreviewed, recommended, strong], { sort: 'featured' }).map((i) => i.id);
+    expect(order).toEqual(['strong', 'rec', 'none', 'scored', 'avoid']);
   });
 
   it('ranks by average fit across the chosen flying styles, or by one style column', () => {
@@ -134,10 +134,10 @@ describe('catalog filters', () => {
   });
 
   it('explains the Recommended rank in plain words', () => {
-    const scores = { build: 4, feel: 5, value: 4, software: 4, qc_support: 5 };
-    const reasons = rankReasons(item({ reviewTag: 'recommended', latestReview: { reviewer: 'mysh', reviewerName: 'Mysh', tag: 'recommended', url: 'https://x.test', summary: '', date: '2026-10-24' }, scores, verification: 'verified' }));
-    expect(reasons).toEqual(['Mysh: recommended', 'Our verdict 4.4/5', 'Main flight control', 'Specs verified', 'Currently sold', 'First 12 cards balance categories and brands; family variants share one place']);
-    expect(rankReasons(item({ reviewTag: 'avoid', latestReview: { reviewer: 'mysh', reviewerName: 'Mysh', tag: 'avoid', url: 'https://x.test', summary: '', date: '2026-10-24' } }))[0]).toBe('Mysh: avoid (ranked lower)');
+    const use_case_fit = { modern_jet: 5, space_hosas: 1, space_hotas: 4, heli: 1, ga: 1, airliner: 1, ww2: 1 };
+    const reasons = rankReasons(item({ reviewTag: 'recommended', latestReview: { reviewer: 'mysh', reviewerName: 'Mysh', tag: 'recommended', url: 'https://x.test', summary: '', date: '2026-10-24' }, use_case_fit, verification: 'verified' }));
+    expect(reasons).toEqual(['Best fit 4.5/5', 'Mysh: recommended', 'Main flight control', 'Specs verified', 'Currently sold', 'First 12 cards spread across flying styles, categories, brands and gimbal types; family variants share one place']);
+    expect(rankReasons(item({ reviewTag: 'avoid', latestReview: { reviewer: 'mysh', reviewerName: 'Mysh', tag: 'avoid', url: 'https://x.test', summary: '', date: '2026-10-24' } }))).toContain('Mysh: avoid (ranked lower)');
   });
 
   it('recognises left/right naming styles and keeps non-hand variants apart', () => {
@@ -164,13 +164,14 @@ describe('catalog filters', () => {
 describe('catalog family grouping', () => {
   it('diversifies a representative first page by cards while keeping hidden parts and avoid out', () => {
     const scores = { build: 5, feel: 5, value: 5, software: 5, qc_support: 5 };
+    const best = (style: keyof CatalogItem['use_case_fit']) => ({ modern_jet: 1, space_hosas: 1, space_hotas: 1, heli: 1, ga: 1, airliner: 1, ww2: 1, [style]: 1.2 });
     const fixture = [
       ...Array.from({ length: 10 }, (_, i) => item({ id: `family-${i}`, name: `Family ${i}`, category: 'throttle', brand: 'alpha', reviewTag: 'recommended', family: { id: 'alpha/throttle', name: 'Throttle', axis: 'Size', label: `${i}`, tier: i } })),
       ...Array.from({ length: 8 }, (_, i) => item({ id: `stick-${i}`, name: `Stick ${i}`, brand: 'alpha', reviewTag: 'recommended' })),
       item({ id: 'hotas', name: 'HOTAS', category: 'hotas_bundle', item_type: 'bundle', brand: 'bravo', reviewTag: 'recommended' }),
-      item({ id: 'yoke', name: 'Yoke', category: 'yoke', brand: 'charlie', reviewTag: 'recommended' }),
-      item({ id: 'pedals', name: 'Pedals', category: 'pedals', brand: 'delta', reviewTag: 'recommended' }),
-      item({ id: 'quadrant', name: 'Quadrant', category: 'quadrant', brand: 'echo', reviewTag: 'recommended' }),
+      item({ id: 'yoke', name: 'Yoke', category: 'yoke', brand: 'charlie', reviewTag: 'recommended', use_case_fit: best('airliner') }),
+      item({ id: 'pedals', name: 'Pedals', category: 'pedals', brand: 'delta', reviewTag: 'recommended', use_case_fit: best('heli') }),
+      item({ id: 'quadrant', name: 'Quadrant', category: 'quadrant', brand: 'echo', reviewTag: 'recommended', use_case_fit: best('ga') }),
       item({ id: 'module', name: 'Module', category: 'module' }),
       item({ id: 'avoid', name: 'Avoid', category: 'system', item_type: 'bundle', brand: 'unique', reviewTag: 'avoid', scores }),
       item({ id: 'old', status: 'discontinued', successor: 'hotas', scores }),
@@ -195,14 +196,26 @@ describe('catalog family grouping', () => {
     expect(groupCatalog(filterCatalog(fixture, { sort: 'name' }), 'name')[0].lead.name).toBe('Avoid');
   });
 
-  it('prefers complete setups at equal review strength but lets strong reviews lift separate parts', () => {
-    const bundle = item({ id: 'bundle', category: 'hotas_bundle', item_type: 'bundle' });
-    const stick = item({ id: 'stick' });
-    const part = item({ id: 'part', category: 'grip' });
-    const reviewedPart = item({ id: 'reviewed-part', category: 'base', reviewTag: 'recommended', scores: { build: 5, feel: 5, value: 5, software: 5, qc_support: 5 } });
-    expect(filterCatalog([part, stick, bundle, reviewedPart], { sort: 'featured' }).map((i) => i.id)).toEqual(['reviewed-part', 'bundle', 'stick', 'part']);
+  it('prefers complete setups at equal fit but lets a clearly better fit lift separate parts', () => {
+    const fits = (n: number) => ({ modern_jet: n, space_hosas: n, space_hotas: n, heli: n, ga: n, airliner: n, ww2: n });
+    const bundle = item({ id: 'bundle', category: 'hotas_bundle', item_type: 'bundle', use_case_fit: fits(4) });
+    const stick = item({ id: 'stick', use_case_fit: fits(4) });
+    const part = item({ id: 'part', category: 'grip', use_case_fit: fits(4) });
+    const betterPart = item({ id: 'better-part', category: 'base', use_case_fit: fits(5) });
+    expect(filterCatalog([part, stick, bundle, betterPart], { sort: 'featured' }).map((i) => i.id)).toEqual(['better-part', 'bundle', 'stick', 'part']);
     expect(rankReasons(bundle)).toContain('Complete setup bundle');
     expect(rankReasons(part)).toContain('Separate part or module (lower setup priority)');
+  });
+
+  it('spreads the first cards across flying styles and gimbal types instead of one strong niche', () => {
+    const fit = (style: keyof CatalogItem['use_case_fit'], n: number) => ({ modern_jet: 2, space_hosas: 2, space_hotas: 2, heli: 2, ga: 2, airliner: 2, ww2: 2, [style]: n });
+    const ffb = Array.from({ length: 5 }, (_, i) => item({ id: `ffb-${i}`, name: `FFB ${i}`, brand: `ffb-${i}`, gimbalType: 'force_feedback', use_case_fit: fit('modern_jet', 5) }));
+    const yoke = item({ id: 'yoke', name: 'Yoke', category: 'yoke', brand: 'y', use_case_fit: fit('airliner', 4.5) });
+    const space = item({ id: 'space', name: 'Space', brand: 's', gimbalType: 'cam_and_spring', use_case_fit: fit('space_hotas', 4.5) });
+    const first = groupCatalog(filterCatalog([...ffb, yoke, space], { sort: 'featured' }), 'featured').slice(0, 4).map((g) => g.lead.id);
+    expect(first[0]).toBe('ffb-0');
+    expect(first).toContain('yoke');
+    expect(first).toContain('space');
   });
 
   const family = (label: string, tier: number) => ({ id: 'test/stecs', name: 'STECS', axis: 'Size', label, tier });
