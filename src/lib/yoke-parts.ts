@@ -1,6 +1,6 @@
 import type { Component } from './schema';
 
-type Mountable = Pick<Component, 'category' | 'mount'>;
+type Mountable = { category: string; mount?: Component['mount'] };
 
 export type YokePart = 'handle' | 'base';
 
