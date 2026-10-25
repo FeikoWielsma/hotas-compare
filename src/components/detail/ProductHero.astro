@@ -2,12 +2,14 @@
 import BrandMark from '../BrandMark.svelte';
 import PlatformCompatibility from '../PlatformCompatibility.astro';
 import PricePanel from '../PricePanel.svelte';
+import Explain from '../Explain.svelte';
 import { productImageSrc, categoryLabels } from '../../lib/catalog-ui';
 import { statusLabels } from '../../lib/labels';
 import type { Component, Price, PlatformCompatibility as Compat, ProductImage } from '../../lib/schema';
 interface Props {
   id: string; name: string; brand: string; brandName: string; category: keyof typeof categoryLabels;
   status: Component['status']; verification: Component['verification']; releaseYear?: number; handedness?: string;
+  potentiometer?: boolean;
   images: ProductImage[]; prices: Price[]; notes?: Record<string, string>; compatibility?: Compat;
   lead?: string; specs: { label: string; value: string; hint?: string }[]; crumb: { href: string; label: string };
   sections: { href: string; label: string }[];
@@ -24,6 +26,7 @@ const hand = p.handedness && p.handedness !== 'n/a' ? (p.handedness === 'ambi' ?
     <h1>{p.name}</h1>
     <ul class="tags">
       <li>{categoryLabels[p.category]}</li>
+      {p.potentiometer && <li class="potentiometer">Potentiometer<Explain title="Potentiometer axes" label={`Why ${p.name} uses potentiometers`} text="Potentiometers use physical contacts that can wear, causing jitter or drift over time. Hall and other contactless sensors avoid that contact and are generally preferred for long-term consistency." /></li>}
       {p.status !== 'current' && <li class={`status ${p.status}`}>{statusLabels[p.status]}</li>}
       {p.releaseYear && <li>Released {p.releaseYear}</li>}
       {hand && <li>{hand}</li>}
@@ -47,6 +50,7 @@ const hand = p.handedness && p.handedness !== 'n/a' ? (p.handedness === 'ambi' ?
   h1 { margin: 0; font: 700 clamp(2.4rem, 4.5vw, 3.6rem)/.98 var(--font-display); text-wrap: balance; overflow-wrap: anywhere; }
   .tags { display: flex; flex-wrap: wrap; gap: .4rem; list-style: none; margin: 0; padding: 0; } .tags li { padding: .2rem .55rem; border: 1px solid var(--color-rule); font-size: .8rem; color: var(--color-muted); }
   .tags .verified { color: var(--color-success); border-color: color-mix(in srgb, var(--color-success) 40%, transparent); } .tags .draft { border-style: dashed; }
+  .tags .potentiometer { display: inline-flex; align-items: center; color: #8a5a00; border-color: #8a5a0055; background: #8a5a000d; }
   .tags .status { font-weight: 600; } .tags .discontinued { color: var(--color-danger); border-color: color-mix(in srgb, var(--color-danger) 40%, transparent); } .tags .announced { color: var(--color-accent); border-color: var(--color-accent); }
   .lead { margin: 0; font-size: 1.05rem; line-height: 1.65; max-width: 62ch; }
   .specs { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); margin: 0; overflow: hidden; background: var(--color-surface); border: 1px solid var(--color-rule); }

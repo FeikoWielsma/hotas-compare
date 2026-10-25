@@ -19,6 +19,19 @@ beforeEach(() => {
 });
 
 describe('catalog serialization', () => {
+  it('flags potentiometers from the declared sensor or primary axes, but ignores secondary axes', async () => {
+    collections.values.components = [
+      { id: 'test/declared-pot', data: ComponentSchema.parse({ brand: 'test', name: 'Declared pot', category: 'stick_fixed', hardware: { sensor: 'potentiometer' } }) },
+      { id: 'test/axis-pot', data: ComponentSchema.parse({ brand: 'test', name: 'Axis pot', category: 'stick_fixed', hardware: { sensor: 'hall', axes: [{ name: 'Pitch', sensor: 'potentiometer' }, { name: 'Roll', sensor: 'hall' }] } }) },
+      { id: 'test/secondary-pot', data: ComponentSchema.parse({ brand: 'test', name: 'Secondary pot', category: 'stick_fixed', hardware: { sensor: 'hall', axes: [{ name: 'X', sensor: 'hall' }, { name: 'Y', sensor: 'hall' }, { name: 'Twist_Z', sensor: 'potentiometer' }] } }) },
+    ];
+    collections.values.bundles = [];
+    const items = await getCatalogItems();
+    expect(items.find(item => item.id === 'test/declared-pot')?.usesPotentiometers).toBe(true);
+    expect(items.find(item => item.id === 'test/axis-pot')?.usesPotentiometers).toBe(true);
+    expect(items.find(item => item.id === 'test/secondary-pot')?.usesPotentiometers).toBe(false);
+  });
+
   it('preserves successor IDs and rejects unresolved or non-current successors during loading', async () => {
     collections.values.components.push({ id: 'test/old', data: ComponentSchema.parse({
       brand: 'test', name: 'Old', category: 'stick_fixed', status: 'discontinued', successor: 'test/combo',

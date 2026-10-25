@@ -30,6 +30,8 @@ export interface CatalogItem {
   controlsSummary: ControlsSummary;
   controlSections?: ControlSection[];
   sensor: string | null;
+  /** At least one member has potentiometers on its primary axes. */
+  usesPotentiometers: boolean;
   gimbal: string | null;
   use_case_fit: UseCaseFit;
   verdict: Verdict | null;
@@ -57,6 +59,14 @@ export interface CatalogItem {
 
 const completeStickCategories = new Set(['stick_fixed', 'stick_combo', 'hotas_bundle', 'system']);
 const twistAxis = /twist|(^|[ _-])r?z($|[ _-])|rudder/i;
+const primaryAxis = /^(?:x|y|pitch|roll|yaw|rudder|throttle|collective|brake|aileron|elevator)(?:\b|[_ -])/i;
+
+/** Detect potentiometers on the main controls, ignoring secondary twist and slider axes. */
+export function usesPotentiometerPrimaryAxes(hardware: Component['hardware']): boolean {
+  if (!hardware) return false;
+  if (hardware.sensor?.toLowerCase() === 'potentiometer') return true;
+  return hardware.axes.some((axis) => primaryAxis.test(axis.name.trim()) && axis.sensor?.toLowerCase() === 'potentiometer');
+}
 
 /** A complete stick with a documented gimbal and axes but no twist/rudder axis. Never guessed from missing data. */
 export function needsPedals(category: string, members: Pick<Component, 'hardware'>[]) {
@@ -116,6 +126,7 @@ export async function loadCatalog(region: Region = 'EU', now = new Date()) {
       totalLogicalButtons: controlsSummary.totalLogicalButtons,
       hasMinistick: controlsSummary.hasMinistick, hasBrakeAxis: controlsSummary.hasBrakeAxis,
       controlsSummary, sensor: hardwareValues('sensor'), gimbal: hardwareValues('gimbal'),
+      usesPotentiometers: members.some((member) => usesPotentiometerPrimaryAxes(member.hardware)),
       controlSections: members.map(({ name, category, controls, controls_evidence }) => ({ name, category, controls, ...(controls_evidence ? { controls_evidence } : {}) })),
       use_case_fit, verdict: data.verdict ?? null, scores: data.verdict?.scores ?? null,
       ...(() => {
