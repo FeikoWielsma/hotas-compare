@@ -55,6 +55,14 @@ images:
 - file: /images/moza/mfy-yoke-pro.webp
   source: https://eu.mozaracing.com/products/mfy-pro-yoke
   caption: MOZA MFY Yoke Pro
+use_case_fit:
+  modern_jet: 1
+  heli: 1
+  ww2: 2
+  ga: 4
+  airliner: 5
+  space_hotas: 1
+  space_hosas: 1
 prices:
 - region: EU
   currency: EUR

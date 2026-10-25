@@ -55,6 +55,14 @@ physical:
   weight_g: 1300
   materials: []
 verification: draft
+use_case_fit:
+  modern_jet: 1
+  heli: 1
+  ww2: 2
+  ga: 4
+  airliner: 5
+  space_hotas: 1
+  space_hosas: 1
 prices:
 - region: US
   currency: USD

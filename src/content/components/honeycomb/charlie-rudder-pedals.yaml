@@ -49,7 +49,14 @@ physical:
   - aluminium
   - metal
   - rubber
-use_case_fit: {}
+use_case_fit:
+  modern_jet: 3
+  heli: 3
+  ww2: 3
+  ga: 3.5
+  airliner: 3.5
+  space_hotas: 3
+  space_hosas: 3
 prices:
 - region: EU
   currency: EUR

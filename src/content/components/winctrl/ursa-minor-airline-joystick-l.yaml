@@ -87,14 +87,15 @@ physical:
   materials:
   - glass_fiber_nylon
   - abs
+airliner_family: airbus
 use_case_fit:
-  modern_jet: 4
-  heli: 3
-  ww2: 3
+  modern_jet: 2
+  heli: 2
+  ww2: 2
   ga: 3
-  airliner: 3
-  space_hotas: 4
-  space_hosas: 3
+  airliner: 5
+  space_hotas: 2
+  space_hosas: 2
 prices:
 - region: US
   currency: USD

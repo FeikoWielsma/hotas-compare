@@ -2,7 +2,7 @@
   import { onMount, tick, untrack } from 'svelte';
   import HardwareIcon from './HardwareIcon.svelte';
   import type { CatalogItem } from '../lib/catalog';
-  import { detailHref, productImageSrc, useCases } from '../lib/catalog-ui';
+  import { detailHref, itemCategoryLabel, productImageSrc, useCases } from '../lib/catalog-ui';
   import { regionStore, isRegion } from '../lib/stores/region.svelte';
   import { MAX_COMPARE_ITEMS } from '../lib/stores/compare.svelte';
   import { budgetStops, budgetTier, defaultPieces, deserializePicks, deserializeWizardState, matchCuratedSetups, nearestBudgetStop, normalizeWizardAnswers, picksOf, recommendLoadout, serializeWizardState, PIECES } from '../lib/wizard';
@@ -31,9 +31,10 @@
   let liveStatus = $state('');
   const LIVE_DELAY = 300;
   const steps = ['Flying style', 'Controls', 'Budget', 'Your space', 'Recommendations'];
-  const labels: Record<WizardPiece, string> = { stick: 'Primary stick', second_stick: 'Secondary stick', throttle: 'Throttle', pedals: 'Rudder pedals', yoke: 'Flight yoke', quadrant: 'Throttle quadrant' };
+  const labels: Record<WizardPiece, string> = { stick: 'Primary stick', second_stick: 'Secondary stick', throttle: 'Throttle', collective: 'Collective', pedals: 'Rudder pedals', yoke: 'Flight yoke', quadrant: 'Throttle quadrant' };
+  const label = (piece: WizardPiece) => answers.useCase === 'heli' && piece === 'stick' ? 'Cyclic stick' : labels[piece];
   const aircraftIcons: Record<UseCase, string> = { modern_jet: 'jet', space_hosas: 'hosas', space_hotas: 'space', heli: 'heli', ga: 'ga', airliner: 'airliner', ww2: 'warbird' };
-  const pieceIcons: Record<WizardPiece, string> = { stick: 'stick', second_stick: 'grip', throttle: 'throttle', pedals: 'pedals', yoke: 'yoke', quadrant: 'quadrant' };
+  const pieceIcons: Record<WizardPiece, string> = { stick: 'stick', second_stick: 'grip', throttle: 'throttle', collective: 'control-lever', pedals: 'pedals', yoke: 'yoke', quadrant: 'quadrant' };
   const mountIcons: Record<string, string> = { desk: 'desk', clamp: 'clamp', chair_pit: 'cockpit' };
   const descriptions: Record<UseCase, string> = {
     modern_jet: 'Precision, avionics and combat systems.', space_hosas: 'Two sticks. Six degrees of freedom.',
@@ -56,6 +57,18 @@
   }
   function togglePiece(piece: WizardPiece) {
     answers = normalizeWizardAnswers({ ...answers, ...(piece === 'pedals' ? { hasExistingPedals: false } : {}), piecesNeeded: answers.piecesNeeded.includes(piece) ? answers.piecesNeeded.filter((p) => p !== piece) : [...answers.piecesNeeded, piece] });
+  }
+  /** GA and airliner pilots fly either a yoke or a (side)stick; swapping keeps the other selected pieces. */
+  function choosePrimary(primary: 'yoke' | 'stick') {
+    const other = primary === 'yoke' ? 'stick' : 'yoke';
+    answers = normalizeWizardAnswers({ ...answers, piecesNeeded: [...answers.piecesNeeded.filter((piece) => piece !== other && piece !== primary), primary] });
+  }
+  function pieceDescription(piece: WizardPiece) {
+    if (piece === 'second_stick') return 'Left-hand strafe control for HOSAS';
+    if (piece === 'pedals') return 'Dedicated yaw and optional toe brakes';
+    if (piece === 'collective') return 'Helicopter lift lever; a throttle, left-hand stick or stick throttle axis can stand in';
+    if (piece === 'stick' && answers.useCase === 'heli') return 'Cyclic for pitch and roll';
+    return 'Add to your recommended package';
   }
   const pickKey = (ids: WizardPick) => ids.join('~');
   const isPinned = (ids: WizardPick) => pinned.some((pin) => pickKey(pin) === pickKey(ids));
@@ -166,9 +179,19 @@
           <p class="hint">Recommendations use flying style and hardware specifications; the sim choice is saved with your setup.</p>
         {:else if step === 1}
           <p class="intro">Select only the controls you need to buy. Leave out equipment you already own.</p>
+          {#if answers.useCase === 'ga' || answers.useCase === 'airliner'}
+            <fieldset class="primary-control">
+              <legend>Main flight control</legend>
+              <div class="segmented">
+                <button aria-pressed={answers.piecesNeeded.includes('yoke')} onclick={() => choosePrimary('yoke')}>{answers.useCase === 'airliner' ? 'Yoke · Boeing' : 'Yoke'}</button>
+                <button aria-pressed={answers.piecesNeeded.includes('stick') && !answers.piecesNeeded.includes('yoke')} onclick={() => choosePrimary('stick')}>{answers.useCase === 'airliner' ? 'Sidestick · Airbus' : 'Stick'}</button>
+              </div>
+              <p class="hint">{answers.useCase === 'airliner' ? 'Pick the cockpit you fly most: Boeing and most regional airliners use a yoke, the Airbus family a sidestick. Recommendations favour matching replica quadrants.' : 'Yoke for Cessna, Piper twins and most tourers; stick for Cubs, Diamonds, Cirrus, gliders and aerobatic aircraft.'} Without pedals, a yoke with rudder triggers or a twist stick can cover yaw on a tighter budget.</p>
+            </fieldset>
+          {/if}
           <div class="choice-grid">
             {#each PIECES as piece}
-              <button class="choice" class:chosen={answers.piecesNeeded.includes(piece)} aria-pressed={answers.piecesNeeded.includes(piece)} onclick={() => togglePiece(piece)}><span class="choice-art"><HardwareIcon name={pieceIcons[piece]} size={38} /></span><span class="choice-top"><strong>{labels[piece]}</strong><span aria-hidden="true">{answers.piecesNeeded.includes(piece) ? '☑' : '□'}</span></span><span class="description">{piece === 'second_stick' ? 'Left-hand strafe control for HOSAS' : piece === 'pedals' ? 'Dedicated yaw and optional toe brakes' : 'Add to your recommended package'}</span></button>
+              <button class="choice" class:chosen={answers.piecesNeeded.includes(piece)} aria-pressed={answers.piecesNeeded.includes(piece)} onclick={() => togglePiece(piece)}><span class="choice-art"><HardwareIcon name={pieceIcons[piece]} size={38} /></span><span class="choice-top"><strong>{label(piece)}</strong><span aria-hidden="true">{answers.piecesNeeded.includes(piece) ? '☑' : '□'}</span></span><span class="description">{pieceDescription(piece)}</span></button>
             {/each}
           </div>
           {#if !answers.piecesNeeded.length}<p class="notice">Choose at least one control to continue.</p>{/if}
@@ -214,11 +237,15 @@
           {/if}
           {#if loadout}
             {#if loadout.complete}
-              <p class="success">All selected controls fit within your regional budget.</p>
+              {#if loadout.overBudget !== undefined}
+                <p class="notice over-budget"><strong>{money(loadout.overBudget)} over your budget.</strong> Nothing we recommend for these controls fits {budgetMoney(answers.budgetMax)}, so this is the setup we would recommend if you can stretch it.</p>
+              {:else}
+                <p class="success">All selected controls fit within your regional budget.</p>
+              {/if}
               {#each loadout.pieces as piece, index}
                 {@const ids = piece.items.map((item) => item.id)}
-                <article class="piece" class:pinned={piece.pinned}><div class="piece-heading"><span class="eyebrow">{String(index + 1).padStart(2, '0')} / {piece.roles.map((role) => labels[role]).join(' + ')}{#if edited && changed.includes(pickKey(ids))}<span class="badge">Changed</span>{/if}</span><span class="piece-meta"><strong>{money(piece.price)}</strong><button class="pin" aria-pressed={!!piece.pinned} title={piece.pinned ? 'Unpin: let this pick change with your settings' : 'Pin: keep this pick while it fits your settings'} onclick={() => togglePin(ids)}>{piece.pinned ? 'Pinned' : 'Pin'}</button></span></div>
-                  {#each piece.items as item}{@const photo = productImageSrc(item.images[0]?.file)}<div class="piece-product">{#if photo}<img src={photo} alt="" />{/if}<h3><a href={detailHref(item)}>{item.name} ↗</a></h3></div>{/each}
+                <article class="piece" class:pinned={piece.pinned}><div class="piece-heading"><span class="eyebrow">{String(index + 1).padStart(2, '0')} / {piece.roles.map((role) => label(role) + (piece.standIns.includes(role) ? ' (stand-in)' : '')).join(' + ')}{#if piece.items.length > 1}<span class="badge">{piece.items.length} parts, bought separately</span>{/if}{#if edited && changed.includes(pickKey(ids))}<span class="badge">Changed</span>{/if}</span><span class="piece-meta"><strong>{money(piece.price)}</strong><button class="pin" aria-pressed={!!piece.pinned} title={piece.pinned ? 'Unpin: let this pick change with your settings' : 'Pin: keep this pick while it fits your settings'} onclick={() => togglePin(ids)}>{piece.pinned ? 'Pinned' : 'Pin'}</button></span></div>
+                  {#each piece.items as item}{@const photo = productImageSrc(item.images[0]?.file)}<div class="piece-product">{#if photo}<img src={photo} alt="" />{/if}<div>{#if piece.items.length > 1}<span class="part">{itemCategoryLabel(item)}</span>{/if}<h3><a href={detailHref(item)}>{item.name} ↗</a></h3></div></div>{/each}
                   <ul class="pills">{#each piece.explanations as explanation}<li>{explanation}</li>{/each}</ul>
                 </article>
               {/each}
@@ -260,7 +287,7 @@
         </div>
         <fieldset class="setting">
           <legend class="setting-label">Controls to buy</legend>
-          <div class="piece-toggles">{#each PIECES as piece}<label><input type="checkbox" checked={answers.piecesNeeded.includes(piece)} onchange={() => togglePiece(piece)} />{labels[piece]}</label>{/each}</div>
+          <div class="piece-toggles">{#each PIECES as piece}<label><input type="checkbox" checked={answers.piecesNeeded.includes(piece)} onchange={() => togglePiece(piece)} />{label(piece)}</label>{/each}</div>
           <label class="owned"><input type="checkbox" checked={answers.hasExistingPedals ?? false} onchange={(event) => answers = normalizeWizardAnswers({ ...answers, hasExistingPedals: event.currentTarget.checked, piecesNeeded: event.currentTarget.checked ? answers.piecesNeeded.filter((piece) => piece !== 'pedals') : answers.piecesNeeded })} />I already own pedals</label>
           {#if !answers.piecesNeeded.length}<p class="notice">Choose at least one control.</p>{:else if normalized.needsTwist}<p class="setting-note">No pedals, so the stick must provide twist yaw.</p>{/if}
         </fieldset>
@@ -276,7 +303,7 @@
         <p class="live-status" role="status" aria-live="polite">{updating ? 'Updating recommendations…' : liveStatus}</p>
       </aside>
     {:else}
-    <aside class="manifest" aria-label="Your setup summary"><p class="eyebrow">Your setup at a glance</p><div class="summary-art" aria-hidden="true"><HardwareIcon name={aircraftIcons[answers.useCase]} size={58} /></div><h3>{useCases.find((useCase) => useCase.key === answers.useCase)?.label}</h3><p class="hint">{answers.targetSim ? sims.find((sim) => sim.id === answers.targetSim)?.label ?? answers.targetSim : 'Simulation independent'}</p><dl><div><dt>Controls to buy</dt><dd>{answers.piecesNeeded.map((piece) => labels[piece]).join(' / ') || 'None selected'}</dd></div><div><dt>Your budget</dt><dd>{validBudget ? money(answers.budgetMax) : 'Set a budget'} <small>{regionStore.region}</small></dd></div><div><dt>Your space</dt><dd>{answers.mountType === 'desk' ? 'Desktop' : answers.mountType === 'clamp' ? 'Desk mounts' : 'Chair / cockpit'}</dd></div><div><dt>Yaw control</dt><dd>{answers.hasExistingPedals ? 'Existing pedals' : answers.piecesNeeded.includes('pedals') ? 'Dedicated pedals' : normalized.needsTwist ? 'Stick twist required' : 'Existing / external input'}</dd></div></dl><p class="manifest-note">Recommendations explained.<br />Prices for your region.<br />A setup that fits you.</p></aside>
+    <aside class="manifest" aria-label="Your setup summary"><p class="eyebrow">Your setup at a glance</p><div class="summary-art" aria-hidden="true"><HardwareIcon name={aircraftIcons[answers.useCase]} size={58} /></div><h3>{useCases.find((useCase) => useCase.key === answers.useCase)?.label}</h3><p class="hint">{answers.targetSim ? sims.find((sim) => sim.id === answers.targetSim)?.label ?? answers.targetSim : 'Simulation independent'}</p><dl><div><dt>Controls to buy</dt><dd>{answers.piecesNeeded.map((piece) => label(piece)).join(' / ') || 'None selected'}</dd></div><div><dt>Your budget</dt><dd>{validBudget ? money(answers.budgetMax) : 'Set a budget'} <small>{regionStore.region}</small></dd></div><div><dt>Your space</dt><dd>{answers.mountType === 'desk' ? 'Desktop' : answers.mountType === 'clamp' ? 'Desk mounts' : 'Chair / cockpit'}</dd></div><div><dt>Yaw control</dt><dd>{answers.hasExistingPedals ? 'Existing pedals' : answers.piecesNeeded.includes('pedals') ? 'Dedicated pedals' : normalized.needsTwist ? 'Stick twist required' : 'Existing / external input'}</dd></div></dl><p class="manifest-note">Recommendations explained.<br />Prices for your region.<br />A setup that fits you.</p></aside>
     {/if}
   </div>
 </div>
@@ -320,6 +347,10 @@
   .budget-input { display: flex; align-items: center; border: 1px solid var(--color-rule); border-bottom: 2px solid var(--color-accent); background: var(--color-paper); }
   .budget-input span { padding-left: 1rem; color: var(--color-accent); font-weight: 600; }
   .budget-input input { font-size: 2rem; border: 0; background: transparent; }
+  .primary-control { border: 0; padding: 0; margin: 0 0 1.5rem; }
+  .primary-control legend { font-size: .9375rem; font-weight: 600; margin-bottom: .6rem; }
+  .segmented { display: flex; gap: .6rem; }
+  .segmented button[aria-pressed='true'] { border-color: var(--color-accent); background: color-mix(in srgb, var(--color-accent) 7%, var(--color-surface)); box-shadow: inset 3px 0 var(--color-accent); }
   .presets { display: flex; flex-wrap: wrap; gap: .6rem; margin-block: 1.25rem; }
   .presets button, .presets a { font-size: .875rem; text-decoration: none; }
   .mounts { display: grid; gap: .85rem; }
@@ -360,6 +391,7 @@
   .piece-heading .eyebrow { margin: 0; }
   .piece-heading > strong { font-size: 1rem; white-space: nowrap; }
   .piece h3 { font-size: 1rem; margin: 0; }
+  .piece .part { display: block; font-size: .75rem; color: var(--color-muted); }
   .piece-product + .piece-product { margin-top: .75rem; }
   .piece h3 a { text-decoration: none; }
   .piece h3 a:hover { color: var(--color-accent); text-decoration: underline; }
