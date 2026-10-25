@@ -23,7 +23,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Brand', name: b.nam
   <JournalHeader eyebrow="Meet the maker" title={b.name} description={`${own.length} products${reviewed ? `, ${reviewed} with a verdict` : ''}. Find the controls that fit your kind of flying.`}><div slot="art"><BrandMark brand={id} name={b.name} size={100} /></div></JournalHeader>
   <div class="brand-links">{b.country && <span>Based in {countries[b.country] ?? b.country}</span>}{b.former_names.map(n => <span>Formerly {n}</span>)}{b.website && <a href={b.website} rel="external noopener">Visit {b.name} ↗</a>}</div>
   {groups.length > 1 && <nav class="jump" aria-label="Product types">{groups.map(g => <a href={`#${g.cat}`}>{g.label} <span>{g.items.length}</span></a>)}</nav>}
-  {groups.map(g => <section id={g.cat} aria-labelledby={`${g.cat}-title`}><h2 id={`${g.cat}-title`}>{g.label} <span>{g.items.length}</span></h2><div class="grid">{g.items.map(item => <ProductCard client:visible item={cardItem(item)} compact />)}</div></section>)}
+  {groups.map(g => <section id={g.cat} aria-labelledby={`${g.cat}-title`}><h2 id={`${g.cat}-title`}>{g.label} <span>{g.items.length}</span></h2><div class="grid">{g.items.map(item => <ProductCard client:visible item={cardItem(item)} />)}</div></section>)}
   {!own.length && <p>No product listings yet.</p>}
   <section class="shipping" aria-labelledby="shipping-title"><h2 id="shipping-title">Shipping &amp; landed cost</h2><div class="notes">{(['EU','UK','US'] as const).map(r => <div><b>{r}</b><p>{b.landed_cost_notes[r] ?? 'No regional delivery notes available.'}</p></div>)}</div></section>
 </div>

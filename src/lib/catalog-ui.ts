@@ -17,6 +17,15 @@ export const categoryLabels: Record<CatalogItem['category'], string> = {
 export function itemCategoryLabel(item: Pick<CatalogItem, 'category' | 'yokePart'>) {
   return item.yokePart ? yokePartLabels[item.yokePart] : categoryLabels[item.category];
 }
+/** Catalog category tabs: label → item categories (empty = everything) and its icon. */
+export const catalogCategories: Record<string, { categories: string[]; icon: string }> = {
+  All: { categories: [], icon: 'all' },
+  'Sticks & Combos': { categories: ['stick_fixed', 'stick_combo', 'hotas_bundle', 'hosas_bundle', 'system'], icon: 'stick' },
+  Throttles: { categories: ['throttle'], icon: 'throttle' }, Bases: { categories: ['base'], icon: 'base' },
+  Grips: { categories: ['grip'], icon: 'grip' }, Pedals: { categories: ['pedals'], icon: 'pedals' },
+  Yokes: { categories: ['yoke', 'yoke_bundle'], icon: 'yoke' }, Quadrants: { categories: ['quadrant'], icon: 'quadrant' },
+  Modules: { categories: ['module'], icon: 'module' },
+};
 export const useCases: { key: UseCase; label: string }[] = [
   { key: 'modern_jet', label: 'Modern Jet' }, { key: 'space_hosas', label: 'Space HOSAS' },
   { key: 'space_hotas', label: 'Space HOTAS' }, { key: 'heli', label: 'Helicopter' },
