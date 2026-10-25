@@ -61,6 +61,14 @@ hardware:
   - name: Ry
   - name: Slider
   standalone_usb: true
+use_case_fit:
+  modern_jet: 3
+  heli: 4
+  ww2: 3
+  ga: 3
+  airliner: 3
+  space_hotas: 3
+  space_hosas: 3
 prices:
 - region: EU
   currency: EUR

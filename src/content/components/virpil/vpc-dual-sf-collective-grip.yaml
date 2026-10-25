@@ -74,6 +74,14 @@ connectivity:
 software: VPC Configuration Tool
 physical:
   materials: []
+use_case_fit:
+  modern_jet: 1
+  heli: 5
+  ww2: 1
+  ga: 1
+  airliner: 1
+  space_hotas: 1
+  space_hosas: 1
 prices:
 - region: EU
   currency: EUR

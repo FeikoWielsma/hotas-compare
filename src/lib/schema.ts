@@ -427,6 +427,13 @@ export const ComponentSchema = z.object({
   prices: z.array(PriceSchema).default([]),
   verdict: VerdictSchema.nullable().optional(),
   external_reviews: z.array(ExternalReviewSchema).default([]),
+  /** Replica of an Airbus or Boeing cockpit control; the wizard matches it to a sidestick or yoke setup. */
+  airliner_family: z.enum(['airbus', 'boeing']).optional(),
+  /** No independent reviews could be found when checked; the setup wizard marks the product as a tentative pick. */
+  reviews_pending: z.object({
+    checked: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+    notes: z.string().optional(),
+  }).optional(),
   upgrade_paths: z.array(UpgradePathSchema).default([]),
   verification: VerificationStatusEnum.default('draft'),
   sources: z.array(z.string()).default([]),
