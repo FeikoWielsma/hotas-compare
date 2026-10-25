@@ -10,7 +10,7 @@ platform_compatibility:
   sources:
   - https://eu.winctrl.com/mobileview/goods-details.html?id=307
   - https://eu.winctrl.com/static/download/QmRTrd8xqZo8sNRZRLQv4dGq8ukc6bb37WuBBuESup4Yaq?filename=J1-SUPER-LIBRA-JOYSTICK-BASE-MANUAL-EN-V1.1.pdf
-status: current
+status: discontinued
 handedness: n/a
 mount:
   provides: winctrl-super-libra-base
