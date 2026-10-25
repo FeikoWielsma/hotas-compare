@@ -1,0 +1,48 @@
+brand: vkb
+name: Gladiator NXT EVO 'Space Combat Edition' Standard (Left)
+category: stick_combo
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: "VKB Australia FAQ states VKB controllers are compatible with Windows PCs and not compatible with Xbox, PS5, Apple or other platforms. Bundled VKB hardware therefore inherits the Windows PC-only restriction."
+  sources:
+    - https://vkbcontrollers.com/products/gladiator-nxt-evo-sce-l
+    - https://vkb-sim.com.au/collections/all-controllers
+status: current
+components:
+- vkb/gladiator-nxt-evo-base
+- vkb/scg-standard-grip-gladiator-l
+prices:
+  - region: EU
+    currency: EUR
+    amount: 161
+    incl_vat: true
+    store: flightsimcontrols.com
+    verified: '2026-10-24'
+    source: manual
+  - region: US
+    currency: USD
+    amount: 119
+    incl_vat: false
+    store: vkbsimcontrollers.com
+    url: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-space-combat-edition-left-hand-us
+    verified: '2026-10-24'
+    source: manual
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2580s
+  summary: "Best value base in the US and his best long-term base everywhere: smooth pincer gimbal, great build and service, and an upgrade path to the Gunfighter."
+  tag: recommended
+  date: '2026-10-24'
+upgrade_paths:
+- to: vkb/gunfighter-iv-base
+  note: "VKB's conversion kit lets the Gladiator grip move to the Gunfighter Mk.IV cam base later, a big step up in smoothness and precision."
+  source: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2626s
+verification: draft
+sources:
+  - https://vkbsimcontrollers.com/products/gladiator-nxt-evo-space-combat-edition-left-hand-us
+images:
+  - file: /images/vkb/gladiator-nxt-evo-sce-l.jpg
+    source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-space-combat-edition-left-hand-us
+    caption: Gladiator NXT EVO (Premium grip shown) 'Space Combat Edition' (Left)

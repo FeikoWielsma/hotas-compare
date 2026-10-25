@@ -67,6 +67,7 @@ controls_evidence:
     throttle button 17 as the extra event. Hat direction count is not stated. Four axes are stick X, stick Y, twist,
     and the throttle.
 hardware:
+  gimbal_type: ball_and_cup
   axis_count: 4
   sensor: hall
   axes:
@@ -102,6 +103,12 @@ prices:
   url: https://www.thrustmaster.com/en-us/products/tca-sidestick-x-airbus-edition/
   verified: '2026-10-20'
   source: manual
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=266s
+  summary: "Hall sensors on the main axes are a plus, but the ball-and-cup gimbal is mediocre and the potentiometer twist is a known weak point."
+  tag: mixed
+  date: '2026-10-24'
 verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/tca-sidestick-x-airbus-edition/

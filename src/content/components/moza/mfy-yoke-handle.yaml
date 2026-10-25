@@ -10,6 +10,9 @@ platform_compatibility:
     Used with the AY90 and AY210 yoke bases.
   sources:
   - https://us.mozaracing.com/products/mfy-yoke
+mount:
+  provides: moza-yoke
+  accepts: []
 controls:
 - type: hat
   count: 2

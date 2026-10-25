@@ -56,6 +56,7 @@ controls_evidence:
     Exact right-hand V1.3 manual (2025.07.08) inspected. Physical inventory confirms 2-stage trigger, HAT switch, Rx/Ry mini-joystick, 14 base button switches, and 38mm potentiometer throttle slider.
 hardware:
   gimbal: pincer
+  gimbal_type: pincer
   sensor: contactless_magnetic
   axes:
   - name: X
@@ -140,11 +141,15 @@ verdict:
     software: 3
     qc_support: 4
 external_reviews:
-  - reviewer: mysh
-    url: https://youtube.com/watch?v=sample-viper-grip
-    summary: "Best budget stick in EU. Glass fiber pincer gimbal, contactless sensors, lockable twist, integrated dampers. Everything else is decent; the hats are the weak spot."
-    tag: recommended
-    date: '2024-03-25'
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2540s
+  summary: "Best value base in Europe: excellent pincer gimbal with dampers and good ergonomics; the hats are the weak point."
+  tag: recommended
+  date: '2026-10-24'
+upgrade_paths:
+- to: winctrl/orion-2-viperace-joystick
+  note: "The next step up is the Orion2 base with the ViperAce grip, his best value high-end entry; the Combat throttle is good enough to keep."
+  source: https://www.youtube.com/watch?v=p_OwPVv_gog&t=3046s
 verification: verified
 sources:
   - https://eu.winctrl.com/view/goods-details.html?id=551

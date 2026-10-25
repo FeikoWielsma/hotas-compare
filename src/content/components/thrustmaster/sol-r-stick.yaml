@@ -96,6 +96,7 @@ controls_evidence:
     separate analog mechanisms.
 hardware:
   gimbal: ball_joint
+  gimbal_type: ball_and_cup
   sensor: hall
   axes:
   - name: X
@@ -158,6 +159,12 @@ prices:
   url: https://eshop.thrustmaster.com/en_us/sol-r-1-flighstick.html
   verified: '2026-10-21'
   source: manual
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=661s
+  summary: "Probably the best small ball-and-cup gimbal Thrustmaster has made, with a good control set, but centering is stiff and nothing is adjustable; a niche pick."
+  tag: mixed
+  date: '2026-10-24'
 verification: draft
 sources:
 - https://www.thrustmaster.com/nl-nl/products/sol-r-1-flightstick/

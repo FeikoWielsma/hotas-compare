@@ -1,5 +1,5 @@
 brand: vkb
-name: Gladiator NXT EVO 'Space Combat Edition' (Right)
+name: Gladiator NXT EVO 'Space Combat Edition' Premium (Right)
 category: stick_combo
 platform_compatibility:
   pc: supported
@@ -16,10 +16,10 @@ components:
 prices:
   - region: EU
     currency: EUR
-    amount: 195
+    amount: 201
     incl_vat: true
     store: flightsimcontrols.com
-    verified: '2026-10-01'
+    verified: '2026-10-24'
     source: manual
   - region: UK
     currency: GBP
@@ -62,11 +62,15 @@ verdict:
     software: 4
     qc_support: 5
 external_reviews:
-  - reviewer: mysh
-    url: https://youtube.com/watch?v=sample-gladiator-sce
-    summary: "The default flight stick recommendation for 90% of sim pilots."
-    tag: recommended
-    date: '2024-07-01'
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2580s
+  summary: "Best value base in the US and his best long-term base everywhere: smooth pincer gimbal, great build and service, and an upgrade path to the Gunfighter."
+  tag: recommended
+  date: '2026-10-24'
+upgrade_paths:
+- to: vkb/gunfighter-iv-base
+  note: "VKB's conversion kit lets the Gladiator grip move to the Gunfighter Mk.IV cam base later, a big step up in smoothness and precision."
+  source: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2626s
 verification: verified
 sources:
   - https://vkbcontrollers.com/products/gladiator-nxt-evo-space-combat-edition

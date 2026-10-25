@@ -44,7 +44,7 @@ prices:
 - region: EU
   currency: EUR
   amount: 12.95
-  incl_vat: true
+  incl_vat: false
   store: virpil-controls.eu
   url: https://virpil-controls.eu/prm-hat-module.html
   verified: '2026-10-20'
@@ -52,7 +52,7 @@ prices:
 - region: UK
   currency: GBP
   amount: 12.95
-  incl_vat: true
+  incl_vat: false
   store: virpil-controls.co.uk
   url: https://virpil-controls.co.uk/prm-hat-module.html
   verified: '2026-10-21'

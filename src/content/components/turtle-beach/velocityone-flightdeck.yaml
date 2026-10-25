@@ -183,6 +183,7 @@ controls_evidence:
     return behavior and undocumented click/backlight properties remain unknown. Combined mass is stick
     1460 g plus throttle 1510 g; no single overall assembled dimension is published.
 hardware:
+  gimbal_type: ball_and_cup
   sensor: contactless_magnetic
   axes: []
   axis_count: 15
@@ -195,6 +196,14 @@ physical:
 software: Turtle Beach Flight Hangar (Windows 10/11) for profiles, RGB settings and firmware updates
 use_case_fit: {}
 prices:
+- region: EU
+  currency: EUR
+  amount: 383
+  incl_vat: true
+  kind: street
+  store: Street price (fluctuates)
+  verified: '2026-10-24'
+  source: manual
 - region: US
   currency: USD
   amount: 429.99
@@ -226,6 +235,16 @@ platform_compatibility:
   notes: Official page lists Windows 10/11 PC compatibility only; Xbox and PS5 are not mentioned.
   sources:
   - https://www.turtlebeach.com/products/velocity-one-flight-deck
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1346s
+  summary: "Ball-and-cup gimbal at this price, shaky build and no physical throttle detents; a hard pass."
+  tag: avoid
+  date: '2026-10-24'
+upgrade_paths:
+- to: winctrl/ursa-minor-combat-hotas
+  note: "The Ursa Minor Combat HOTAS costs about the same or less and plays in a different league."
+  source: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1214s
 verification: draft
 images:
 - file: /images/turtle-beach/velocityone-flightdeck.png

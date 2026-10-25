@@ -37,6 +37,7 @@ controls_evidence:
     tilting rudder alternative; hat directions and push behavior remain unconfirmed. Coverage remains partial.
 hardware:
   gimbal: ball_joint
+  gimbal_type: ball_and_cup
   sensor: potentiometer
   axes:
   - name: X
@@ -96,6 +97,12 @@ prices:
   url: https://eshop.thrustmaster.com/en_us/t-flight-hotas-one.html
   verified: '2026-10-21'
   source: manual
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=222s
+  summary: "Budget ball-and-cup HOTAS with a separate throttle and lockable twist; fine for consoles, but expect potentiometer wear."
+  tag: mixed
+  date: '2026-10-24'
 verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/t-flight-hotas-one/

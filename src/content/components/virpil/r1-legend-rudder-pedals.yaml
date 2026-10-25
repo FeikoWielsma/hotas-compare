@@ -57,7 +57,7 @@ prices:
 - region: EU
   currency: EUR
   amount: 309.95
-  incl_vat: true
+  incl_vat: false
   store: virpil-controls.eu
   url: https://virpil-controls.eu/r1-legend-rudder-pedals.html
   verified: '2026-10-20'
@@ -65,7 +65,7 @@ prices:
 - region: UK
   currency: GBP
   amount: 329.95
-  incl_vat: true
+  incl_vat: false
   store: virpil-controls.co.uk
   url: https://virpil-controls.co.uk/r1-legend-rudder-pedals.html
   verified: '2026-10-21'

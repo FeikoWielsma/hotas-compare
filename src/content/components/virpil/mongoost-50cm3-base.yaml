@@ -11,7 +11,11 @@ platform_compatibility:
 status: current
 release_year: 2021
 handedness: n/a
-mount: null
+mount:
+  provides: null
+  accepts:
+  - virpil-grip
+  - tm-din5
 controls: []
 controls_evidence:
   coverage: complete
@@ -20,6 +24,7 @@ controls_evidence:
   notes: 'Bare flightstick gimbal/base; manufacturer describes two sensor axes and mechanical adjustment, with no installed standalone buttons, hats, switches, or controls panel.'
 hardware:
   gimbal: dual_cam
+  gimbal_type: cam_and_spring
   sensor: contactless_magnetic
   axes:
   - name: X
@@ -54,7 +59,7 @@ prices:
   - region: EU
     currency: EUR
     amount: 319.95
-    incl_vat: true
+    incl_vat: false
     store: virpil-controls.eu
     url: https://virpil-controls.eu/vpc-mongoost-50cm3-base.html
     verified: '2026-10-19'
@@ -62,7 +67,7 @@ prices:
   - region: UK
     currency: GBP
     amount: 349.95
-    incl_vat: true
+    incl_vat: false
     store: virpil-controls.co.uk
     url: https://virpil-controls.co.uk/vpc-mongoost-50cm3-base.html
     verified: '2026-10-21'
@@ -102,6 +107,12 @@ verdict:
     value: 4
     software: 4
     qc_support: 4
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=3096s
+  summary: "Full-metal cam bases with integrated dampers and pretensioners, built to a higher standard than most; the CM3 suits rigs with extensions."
+  tag: recommended
+  date: '2026-10-24'
 verification: draft
 sources:
 - https://virpil-controls.eu/products/vpc-mongoost-50cm3-base

@@ -75,8 +75,15 @@ sources:
 - https://ts.thrustmaster.com/download/accessories/Manuals/TFHX/t-flight_hotas_X_manual.pdf
 - https://shop.thrustmaster.com/en_eu/t-flight-hotas-x.html
 - https://shop.thrustmaster.com/en_gb/t-flight-hotas-x.html
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=222s
+  summary: "Oldest T-Flight variant with the least precise potentiometers; if buying a T-Flight, pick a newer one."
+  tag: avoid
+  date: '2026-10-24'
 verification: draft
 hardware:
+  gimbal_type: ball_and_cup
   axis_count: 5
   force_adjustable: true
   axes:

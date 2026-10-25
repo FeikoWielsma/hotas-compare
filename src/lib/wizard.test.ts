@@ -8,7 +8,7 @@ import type { WizardSetup } from './wizard';
 function hardware(id: string, category: CatalogItem['category'], amount: number, overrides: Partial<CatalogItem> = {}): CatalogItem {
   const component = ComponentSchema.parse({ brand: 'test', name: id, category: 'stick_fixed', controls: [{ type: 'button', count: 4 }], hardware: { axes: [{ name: 'X' }, { name: 'Y' }, { name: 'twist', sensor: 'hall' }] } });
   const { controlsSummary, totalAxes } = deriveComponentStats(component);
-  const prices = [{ region: 'EU' as const, currency: 'EUR' as const, amount, verified: '2026-10-01', incl_vat: true, store: 'Test', source: 'manual' as const }];
+  const prices = [{ region: 'EU' as const, currency: 'EUR' as const, amount, verified: '2026-10-01', incl_vat: true, store: 'Test', kind: 'official' as const, source: 'manual' as const }];
   return { id, slug: id, name: id, brand: 'test', brandName: 'Test', category, item_type: 'component', status: 'current', verification: 'verified', prices, region: 'EU', resolvedPrice: resolvePrice(prices), totalAxes, totalLogicalButtons: controlsSummary.totalLogicalButtons, hasMinistick: false, hasBrakeAxis: false, controlsSummary, sensor: 'hall', gimbal: null, use_case_fit: component.use_case_fit, verdict: null, scores: null, images: [], componentIds: [], formerBrandNames: [], handedness: ['ambi'], mechanics: { forceAdjustable: 'Unknown', cams: 'Unknown', damping: 'Unknown' }, leverCount: 0, axes: component.hardware?.axes, ...overrides };
 }
 
@@ -51,6 +51,18 @@ describe('loadout rules', () => {
     expect(recommendLoadout([hardware('stick', 'stick_fixed', 20)], answers, 'UK').complete).toBe(false);
     expect(recommendLoadout([base, { ...grip, mount: { provides: 'A' } }], answers, 'EU').totalPrice).toBe(50);
   });
+  it('never offers a yoke handle on its own and pairs it with a base that accepts it', () => {
+    const handle = hardware('handle', 'yoke', 140, { mount: { provides: 'yoke-qr' } });
+    const base = hardware('yoke-base', 'base', 400, { mount: { accepts: ['yoke-qr'] } });
+    const complete = hardware('desk-yoke', 'yoke', 250, { mount: { provides: 'desk' } });
+    const answers = normalizeWizardAnswers({ piecesNeeded: ['yoke'], budgetMax: 1000 });
+    expect(recommendLoadout([handle], answers, 'EU').complete).toBe(false);
+    const paired = recommendLoadout([handle, base], answers, 'EU');
+    expect(paired.complete).toBe(true);
+    expect(paired.items.map((i) => i.id).sort()).toEqual(['handle', 'yoke-base']);
+    expect(paired.totalPrice).toBe(540);
+    expect(recommendLoadout([complete], answers, 'EU').items.map((i) => i.id)).toEqual(['desk-yoke']);
+  });
   it('requires primary twist without pedals and does not claim non-twist yaw', () => {
     const stick = hardware('stick', 'stick_fixed', 50, { axes: [{ name: 'X' }, { name: 'Y' }] });
     expect(recommendLoadout([stick], normalizeWizardAnswers({ piecesNeeded: ['stick'] }), 'EU').complete).toBe(false);
@@ -82,7 +94,7 @@ describe('loadout rules', () => {
 
 describe('curated reference matching', () => {
   it('matches discipline and tier while honestly marking unknown and over-budget totals', () => {
-    const setups: WizardSetup[] = [{ id: 'reference', data: { title: 'Reference', description: 'Reference', reasoning: 'Reason', use_case: 'modern_jet', budget_tier: 'mid', items: [{ item_type: 'component', id: 'stick', role: 'Primary' }] } }];
+    const setups: WizardSetup[] = [{ id: 'reference', data: { title: 'Reference', description: 'Reference', reasoning: 'Reason', use_case: 'modern_jet', budget_tier: 'mid', pick: false, items: [{ item_type: 'component', id: 'stick', role: 'Primary' }] } }];
     const answers = normalizeWizardAnswers({ budgetMax: 500 });
     expect(budgetTier(500)).toBe('mid');
     expect(matchCuratedSetups(setups, [hardware('stick', 'stick_fixed', 600)], answers, 'EU')[0]).toMatchObject({ totalPrice: 600, withinBudget: false });
@@ -90,7 +102,7 @@ describe('curated reference matching', () => {
     expect(matchCuratedSetups(setups, [], { ...answers, useCase: 'heli' }, 'EU')).toEqual([]);
   });
   it('flags an incomplete reference instead of suggesting its listed price buys a complete stick', () => {
-    const setups: WizardSetup[] = [{ id: 'incomplete', data: { title: 'Incomplete', description: 'Reference', reasoning: 'Reason', use_case: 'space_hosas', budget_tier: 'mid', items: [{ item_type: 'component', id: 'base', role: 'Second stick' }] } }];
+    const setups: WizardSetup[] = [{ id: 'incomplete', data: { title: 'Incomplete', description: 'Reference', reasoning: 'Reason', use_case: 'space_hosas', budget_tier: 'mid', pick: false, items: [{ item_type: 'component', id: 'base', role: 'Second stick' }] } }];
     const result = matchCuratedSetups(setups, [hardware('base', 'base', 100)], normalizeWizardAnswers({ useCase: 'space_hosas', budgetMax: 500 }), 'EU');
     expect(result[0].warnings.some((warning) => warning.includes('unpaired'))).toBe(true);
   });

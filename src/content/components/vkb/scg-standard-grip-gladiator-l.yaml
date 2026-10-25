@@ -1,0 +1,88 @@
+brand: vkb
+name: Space Combat Grip (SCG) Standard (Left)
+category: grip
+platform_compatibility:
+  pc: supported
+  xbox: unsupported
+  ps5: unsupported
+  notes: VKB Australia FAQ states VKB controllers are compatible with Windows PCs
+    and not compatible with Xbox, PS5, Apple or other platforms. Detached grip or
+    module use requires its compatible VKB base/controller on Windows PC.
+  sources:
+  - https://vkbcontrollers.com/products/scg-space-combat-grip
+  - https://vkb-sim.com.au/collections/all-controllers
+status: current
+release_year: 2020
+handedness: left
+mount:
+  provides: vkb-rev-b
+  accepts: []
+controls:
+- type: trigger
+  count: 1
+  location: grip
+  stages: 2
+  action: sequential
+  label: Main dual-action trigger
+  source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-space-combat-edition-left-hand-us
+- type: hat
+  ways: 4
+  push: true
+  count: 3
+  location: grip
+  label: Center-push hats
+  source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-space-combat-edition-left-hand-us
+- type: button
+  count: 4
+  location: grip
+  label: Programmable buttons
+  source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-space-combat-edition-left-hand-us
+controls_evidence:
+  coverage: complete
+  source: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-space-combat-edition-left-hand-us
+  checked: '2026-10-24'
+  notes: Standard variant per the VKB US listing - dual-action trigger, three 4-way center-push hats, four buttons and the lockable contactless twist. Premium adds the rapid-fire trigger, A1 ministick and C1 button module.
+hardware:
+  gimbal: null
+  sensor: contactless_magnetic
+  axes:
+  - name: Twist
+    sensor: contactless_magnetic
+  force_adjustable: false
+  cams_swappable: false
+  damping: null
+  extension_support: false
+  throw_deg: null
+  axis_count: 1
+connectivity:
+  usb: none; connects via VKB Rev.B connector to Gladiator NXT/EVO base
+  standalone_usb: false
+software: VKBDevCfg
+physical:
+  materials:
+  - abs
+use_case_fit:
+  modern_jet: 4
+  heli: 3
+  ww2: 3
+  ga: 2
+  airliner: 1
+  space_hotas: 5
+  space_hosas: 5
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2580s
+  summary: "Best value base in the US and his best long-term base everywhere: smooth pincer gimbal, great build and service, and an upgrade path to the Gunfighter."
+  tag: recommended
+  date: '2026-10-24'
+upgrade_paths:
+- to: vkb/gunfighter-iv-base
+  note: "VKB's conversion kit lets the Gladiator grip move to the Gunfighter Mk.IV cam base later, a big step up in smoothness and precision."
+  source: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2626s
+verification: draft
+sources:
+- https://vkbsimcontrollers.com/products/gladiator-nxt-evo-space-combat-edition-left-hand-us
+images:
+- file: /images/vkb/scg-space-combat-grip-l.jpg
+  source: https://vkbsimcontrollers.com/products/gnx-scg-add-on-grip-us
+  caption: Space Combat Grip (SCG) - Premium shown; Standard has no ministick or rapid-fire trigger

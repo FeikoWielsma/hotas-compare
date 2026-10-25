@@ -58,8 +58,15 @@ sources:
 - https://shop.thrustmaster.com/en_eu/t-flight-hotas-4.html
 - https://shop.thrustmaster.com/en_gb/t-flight-hotas-4.html
 - https://eshop.thrustmaster.com/en_us/t-flight-hotas-4.html
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=222s
+  summary: "Budget ball-and-cup HOTAS with a separate throttle and lockable twist; fine for consoles, but expect potentiometer wear."
+  tag: mixed
+  date: '2026-10-24'
 verification: draft
 hardware:
+  gimbal_type: ball_and_cup
   axis_count: 5
   force_adjustable: true
 connectivity:

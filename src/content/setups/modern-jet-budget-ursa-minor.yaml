@@ -1,0 +1,11 @@
+title: Best-Value Modern Jet HOTAS
+use_case: modern_jet
+budget_tier: budget
+pick: true
+description: WINCTRL Ursa Minor Combat HOTAS - a pincer-gimbal stick with dampers and a throttle with metal internals, split levers, idle cut-off and afterburner detents.
+reasoning: Mysh's mid-range champion in his 2026 roundup. Nothing else near this price has a gimbal or throttle this good, and the throttle is good enough to keep when you upgrade the stick later.
+items:
+  - item_type: bundle
+    id: winctrl/ursa-minor-combat-hotas
+    role: Stick and throttle
+notes: Bolt the throttle down (or get the EX version, which tips less and adds inputs for about 50 more). In the US, a VKB Gladiator NXT EVO Premium plus the Ursa Minor Combat throttle is the stronger combo for a little more.

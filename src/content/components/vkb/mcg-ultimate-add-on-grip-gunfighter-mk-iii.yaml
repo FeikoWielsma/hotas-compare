@@ -144,6 +144,12 @@ verdict:
     value: 4
     software: 4
     qc_support: 4
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=3096s
+  summary: "MCG Ultimate on a Gunfighter Mk.IV is one of his can't-go-wrong high-end combos, with the best premium grip ergonomics he has used."
+  tag: recommended
+  date: '2026-10-24'
 verification: draft
 sources:
 - https://vkbsimcontrollers.com/products/mcg-ultimate-add-on-grip-for-gunfighter-mk-iii

@@ -155,6 +155,12 @@ prices:
   verified: '2026-10-19'
   source: manual
   url: https://eshop.thrustmaster.com/en_us/hotas-warthog-dual-throttle.html
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1387s
+  summary: "Classic A-10 replica with solid hall sensors, but an older, heavy, partly plastic design that newer gear beats on value."
+  tag: mixed
+  date: '2026-10-24'
 verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/hotas-warthog-dual-throttle/

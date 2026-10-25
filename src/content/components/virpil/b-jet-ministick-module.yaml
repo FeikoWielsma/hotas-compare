@@ -53,7 +53,7 @@ prices:
 - region: EU
   currency: EUR
   amount: 16.95
-  incl_vat: true
+  incl_vat: false
   store: virpil-controls.eu
   url: https://virpil-controls.eu/b-jet-ministick-module.html
   verified: '2026-10-20'
@@ -61,7 +61,7 @@ prices:
 - region: UK
   currency: GBP
   amount: 16.95
-  incl_vat: true
+  incl_vat: false
   store: virpil-controls.co.uk
   url: https://virpil-controls.co.uk/b-jet-ministick-module.html
   verified: '2026-10-21'

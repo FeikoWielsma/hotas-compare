@@ -171,8 +171,38 @@ export function deriveComponentStats(component: Component): DerivedComponentStat
   };
 }
 
+/** Standard VAT rates used to estimate a comparable price when a store lists EU/UK prices ex VAT. EU uses the Dutch rate. */
+export const VAT_RATES: Partial<Record<Region, number>> = { EU: 0.21, UK: 0.2 };
+
+/** A price as shown to visitors: ex-VAT EU/UK listings get VAT added so they compare fairly with incl-VAT listings. */
+export interface DisplayPrice extends Price {
+  vatEstimated: boolean;
+  /** The amount the store actually lists, before any VAT estimate. */
+  listedAmount: number;
+}
+
+export function displayPrice(price: Price): DisplayPrice {
+  const rate = VAT_RATES[price.region];
+  if (price.incl_vat || rate == null) return { ...price, vatEstimated: false, listedAmount: price.amount };
+  return { ...price, amount: Math.round(price.amount * (1 + rate) * 100) / 100, incl_vat: true, vatEstimated: true, listedAmount: price.amount };
+}
+
+export function regionalPrices(prices: Price[], region: Region): DisplayPrice[] {
+  return prices.filter(price => price.region === region).map(displayPrice).sort((a, b) => a.amount - b.amount);
+}
+
+export function priceOfferLabel(price: Price): string {
+  const amount = new Intl.NumberFormat('en', { style: 'currency', currency: price.currency }).format(price.amount);
+  return price.kind === 'street' ? `${amount} street · ${price.store}` : `${amount} official · ${price.store}`;
+}
+
+/** Short tax label for a displayed price. */
+export function vatLabel(price: DisplayPrice): string {
+  return price.vatEstimated ? 'incl. VAT, est.' : price.incl_vat ? 'incl. VAT' : 'excl. tax';
+}
+
 export interface ResolvedPrice {
-  price?: Price;
+  price?: DisplayPrice;
   isStale: boolean;
   daysOld?: number;
   formatted?: string;
@@ -183,7 +213,7 @@ export function resolvePrice(
   targetRegion: Region = 'EU',
   referenceDate: Date = new Date()
 ): ResolvedPrice {
-  const match = prices.find((p) => p.region === targetRegion);
+  const match = regionalPrices(prices, targetRegion)[0];
   if (!match) {
     return { isStale: false };
   }
@@ -194,7 +224,7 @@ export function resolvePrice(
   const isStale = daysOld > 90;
 
   const symbol = match.currency === 'EUR' ? '€' : match.currency === 'GBP' ? '£' : '$';
-  const formatted = `${symbol}${match.amount}${match.incl_vat ? ' (incl. VAT)' : ' (excl. tax)'}`;
+  const formatted = `${symbol}${match.amount} (${vatLabel(match)})`;
 
   return {
     price: match,

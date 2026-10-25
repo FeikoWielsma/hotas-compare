@@ -139,11 +139,14 @@ verdict:
     qc_support: 5
 external_reviews:
 - reviewer: mysh
-  url: https://youtube.com/watch?v=sample-vkb-scg
-  summary: The benchmark ergonomic space sim grip. Fast actuation and intuitive button
-    placements.
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2580s
+  summary: "Best value base in the US and his best long-term base everywhere: smooth pincer gimbal, great build and service, and an upgrade path to the Gunfighter."
   tag: recommended
-  date: '2024-06-12'
+  date: '2026-10-24'
+upgrade_paths:
+- to: vkb/gunfighter-iv-base
+  note: "VKB's conversion kit lets the Gladiator grip move to the Gunfighter Mk.IV cam base later, a big step up in smoothness and precision."
+  source: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2626s
 verification: verified
 sources:
 - https://vkbcontrollers.com/products/scg-space-combat-grip

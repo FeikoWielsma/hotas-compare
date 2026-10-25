@@ -150,11 +150,20 @@ verdict:
     qc_support: 3
 external_reviews:
 - reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=838s
+  summary: "Sliding throttle that is good value once greased, with a rudder rocker and ministick. The Sol-R 6 adds USB-C and an adjustable detent."
+  tag: recommended
+  date: '2026-10-24'
+- reviewer: mysh
   url: https://www.youtube.com/watch?v=2z54NHzy_Gc
   summary: Cheap sliding rail throttle and okay-ish stock. Grease it with Nyogel 767A, 774VH, or Tribosyn 320 and
     it goes from okay to good. Aftermarket slider and detent mods exist.
   tag: recommended
   date: '2026-09-15'
+upgrade_paths:
+- to: winctrl/ursa-minor-combat-throttle
+  note: "Grease it rather than modding heavily: by then you are close to the Ursa Minor Combat throttle, which is miles ahead out of the box."
+  source: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2680s
 verification: verified
 sources:
 - https://www.thrustmaster.com/en-us/products/twcs-throttle/

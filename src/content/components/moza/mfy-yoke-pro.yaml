@@ -3,6 +3,9 @@ name: MOZA MFY Yoke Pro
 category: yoke
 status: current
 handedness: n/a
+mount:
+  provides: moza-yoke
+  accepts: []
 controls:
 - type: analog_ministick
   location: handle

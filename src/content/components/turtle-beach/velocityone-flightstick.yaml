@@ -60,6 +60,7 @@ controls_evidence:
     as a count of standalone physical buttons.
 hardware:
   gimbal: null
+  gimbal_type: ball_and_cup
   sensor: contactless_magnetic
   axes:
   - name: Pitch
@@ -96,6 +97,15 @@ physical:
 use_case_fit: {}
 software: Turtle Beach Flightstick Companion App for iOS and Android
 prices:
+- region: EU
+  currency: EUR
+  amount: 99
+  incl_vat: true
+  kind: street
+  store: Tweakers Pricewatch (lowest)
+  url: https://tweakers.net/pricewatch/1904256/turtle-beach-velocityone-flight-stick.html
+  verified: '2026-10-24'
+  source: manual
 - region: US
   currency: USD
   amount: 139.99
@@ -129,6 +139,16 @@ platform_compatibility:
   sources:
   - https://www.turtlebeach.com/products/velocity-one-flight-stick
   - https://uk.turtlebeach.com/products/velocity-one-flight-stick
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=397s
+  summary: "Feature-packed and now under 100 euros, but the stiff ball-and-cup gimbal is the weak spot and the trackpad is unreliable."
+  tag: mixed
+  date: '2026-10-24'
+upgrade_paths:
+- to: winctrl/ursa-minor-fighter-joystick-r
+  note: "For similar money the Ursa Minor Fighter gives you a much better gimbal; gimbal quality beats feature count."
+  source: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2580s
 verification: draft
 images:
 - file: /images/turtle-beach/velocityone-flightstick.png

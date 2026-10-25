@@ -31,6 +31,7 @@ controls_evidence:
 hardware:
   axis_count: 2
   gimbal: force_feedback
+  gimbal_type: force_feedback
   sensor: magnetic_encoder
   axes:
   - name: X
@@ -88,6 +89,11 @@ verdict:
     software: 4
     qc_support: 4
 external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=3183s
+  summary: "Half the torque of the AB9 and still some cogging; no longer his affordable FFB entry pick."
+  tag: mixed
+  date: '2026-10-24'
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=2z54NHzy_Gc
   summary: Skip the MOZA AB6. The MOZA AB9 is far better and well worth the step up for force feedback fidelity.

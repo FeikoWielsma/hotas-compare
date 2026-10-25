@@ -1,0 +1,4 @@
+name: VIRPIL Yoke Quick Connect
+description: Quick-connect interface between VIRPIL Constellation yoke handles (such as VEGA) and the VPC Vector Flight Yoke Base.
+physical_type: quick_release
+compatible_with: []

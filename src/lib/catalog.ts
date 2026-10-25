@@ -1,6 +1,6 @@
 import { deriveComponentStats, deriveControlsSummary, resolvePrice } from './derive';
 import type { ControlsSummary, ResolvedPrice } from './derive';
-import type { Component, Bundle, Region, UseCaseFit, Verdict } from './schema';
+import type { Component, Bundle, Region, UseCaseFit, Verdict, ReviewTag, GimbalType } from './schema';
 import type { ControlSection } from './control-inventory';
 
 export interface CatalogItem {
@@ -31,6 +31,14 @@ export interface CatalogItem {
   use_case_fit: UseCaseFit;
   verdict: Verdict | null;
   scores: Verdict['scores'] | null;
+  /** Tag of the most recent external review (e.g. Mysh's latest roundup), if any. */
+  reviewTag?: ReviewTag | null;
+  /** The most recent external review, for review chips and rank explanations. */
+  latestReview?: { reviewer: string; reviewerName: string; tag: ReviewTag; url: string; summary: string; date: string } | null;
+  /** Stick gimbal family of the member that carries the stick gimbal, if documented. */
+  gimbalType?: GimbalType | null;
+  /** A complete stick with no twist axis: rudder needs pedals. */
+  needsPedals?: boolean;
   images: Component['images'];
   componentIds: string[];
   formerBrandNames: string[];
@@ -42,6 +50,16 @@ export interface CatalogItem {
   mount?: Component['mount'];
 }
 
+const completeStickCategories = new Set(['stick_fixed', 'stick_combo', 'hotas_bundle', 'system']);
+const twistAxis = /twist|(^|[ _-])r?z($|[ _-])|rudder/i;
+
+/** A complete stick with a documented gimbal and axes but no twist/rudder axis. Never guessed from missing data. */
+export function needsPedals(category: string, members: Pick<Component, 'hardware'>[]) {
+  return completeStickCategories.has(category)
+    && members.some((member) => member.hardware?.gimbal_type != null && member.hardware.axes.length > 0)
+    && !members.some((member) => member.hardware?.axes.some((axis) => twistAxis.test(axis.name)));
+}
+
 /** Resolve a serialized item without requiring another content query. */
 export function resolveCatalogRegion(item: CatalogItem, region: Region, now = new Date()): CatalogItem {
   return { ...item, region, resolvedPrice: resolvePrice(item.prices, region, now) };
@@ -49,10 +67,11 @@ export function resolveCatalogRegion(item: CatalogItem, region: Region, now = ne
 
 export async function loadCatalog(region: Region = 'EU', now = new Date()) {
   const { getCollection } = await import('astro:content');
-  const [components, bundles, brands, mount_standards] = await Promise.all([
+  const [components, bundles, brands, mount_standards, reviewers] = await Promise.all([
     getCollection('components'), getCollection('bundles'),
-    getCollection('brands'), getCollection('mount_standards'),
+    getCollection('brands'), getCollection('mount_standards'), getCollection('reviewers'),
   ]);
+  const reviewerNames = new Map(reviewers.map((entry) => [entry.id, entry.data.name.split(' (')[0]]));
   const componentMap = new Map(components.map((entry) => [entry.id, entry.data]));
   const brandMap = new Map(brands.map((entry) => [entry.id, entry.data]));
 
@@ -93,6 +112,12 @@ export async function loadCatalog(region: Region = 'EU', now = new Date()) {
       controlsSummary, sensor: hardwareValues('sensor'), gimbal: hardwareValues('gimbal'),
       controlSections: members.map(({ name, category, controls, controls_evidence }) => ({ name, category, controls, ...(controls_evidence ? { controls_evidence } : {}) })),
       use_case_fit, verdict: data.verdict ?? null, scores: data.verdict?.scores ?? null,
+      ...(() => {
+        const review = [...data.external_reviews].sort((a, b) => b.date.localeCompare(a.date))[0];
+        return { reviewTag: review?.tag ?? null, latestReview: review ? { ...review, reviewerName: reviewerNames.get(review.reviewer) ?? review.reviewer } : null };
+      })(),
+      gimbalType: members.map((member) => member.hardware?.gimbal_type).find((type) => type != null) ?? null,
+      needsPedals: needsPedals(data.category, members),
       images: data.images, componentIds: 'components' in data ? data.components : [],
       formerBrandNames: brand.former_names,
       handedness: [...new Set(members.map((member) => member.handedness).filter((hand) => hand !== 'n/a'))],

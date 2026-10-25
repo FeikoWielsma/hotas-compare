@@ -56,6 +56,7 @@ controls_evidence:
     MAPPING as separate buttons, a D-pad hat, Slider 0, and X, Y, and RZ. "3 axes plus integrated throttle" on the
     product page is those same four axes. Hat direction count is not stated. The resistance dial and LED are not inputs.
 hardware:
+  gimbal_type: ball_and_cup
   axis_count: 4
   axes:
   - name: X
@@ -72,6 +73,12 @@ physical:
   - 220
   - 240
   materials: []
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=222s
+  summary: "Oldest T-Flight variant with the least precise potentiometers; if buying a T-Flight, pick a newer one."
+  tag: avoid
+  date: '2026-10-24'
 verification: draft
 prices:
 - region: EU

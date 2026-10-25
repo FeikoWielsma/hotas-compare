@@ -5,8 +5,8 @@ status: current
 release_year: 2010
 handedness: right
 mount:
-  accepts:
-  - tm-din5
+  provides: tm-din5
+  accepts: []
 controls:
 - type: trigger
   count: 1
@@ -95,6 +95,19 @@ prices:
   verified: '2026-10-19'
   source: manual
   url: https://eshop.thrustmaster.com/en_us/hotas-warthog-flight-stick.html
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1387s
+  summary: "Classic A-10 replica with solid hall sensors, but an older, heavy, partly plastic design that newer gear beats on value."
+  tag: mixed
+  date: '2026-10-24'
+upgrade_paths:
+- to: thrustmaster/ava-base
+  note: "Keep the Warthog grip but put it on Thrustmaster's dual-cam AVA base instead of the ball-and-cup base."
+  source: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1435s
+- to: virpil/warbrd-d-base
+  note: "Or use a Virpil WarBRD-D: it takes Thrustmaster grips without an adapter and has better integrated dampers."
+  source: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1435s
 verification: draft
 sources:
 - https://www.thrustmaster.com/en-us/products/hotas-warthog-mk-ii/

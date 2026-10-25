@@ -1,6 +1,6 @@
 brand: virpil
 name: VPC Vector Flight Yoke Base
-category: yoke
+category: base
 platform_compatibility:
   pc: supported
   xbox: unsupported
@@ -11,7 +11,10 @@ platform_compatibility:
 status: announced
 release_year: 2026
 handedness: n/a
-mount: null
+mount:
+  provides: null
+  accepts:
+  - virpil-yoke
 controls:
 - type: axis
   kind: pitch
@@ -55,7 +58,7 @@ prices:
 - region: EU
   currency: EUR
   amount: 349.95
-  incl_vat: true
+  incl_vat: false
   store: virpil-controls.eu
   url: https://virpil-controls.eu/vector-flight-yoke-base.html
   verified: '2026-10-20'
@@ -63,7 +66,7 @@ prices:
 - region: UK
   currency: GBP
   amount: 359.95
-  incl_vat: true
+  incl_vat: false
   store: virpil-controls.co.uk
   url: https://virpil-controls.co.uk/vector-flight-yoke-base.html
   verified: '2026-10-21'

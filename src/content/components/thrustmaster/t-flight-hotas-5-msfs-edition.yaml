@@ -55,6 +55,7 @@ controls:
   label: Lockable twist rudder (RZ axis)
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TFH5/T.Flight_Hotas_5_user_manual.pdf
 hardware:
+  gimbal_type: ball_and_cup
   axis_count: 5
   axes:
   - name: X
@@ -105,6 +106,12 @@ controls_evidence:
     on the base. The hat, throttle axis, twist axis, and rudder rocker are drawn separately. Pedal axes on the same
     page belong to the optional TFRP and are not part of this device. The product page's "14 buttons" is a marketing
     total and is not the numbered physical count. Hat direction count is not stated.
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=222s
+  summary: "Budget ball-and-cup HOTAS with a separate throttle and lockable twist; fine for consoles, but expect potentiometer wear."
+  tag: mixed
+  date: '2026-10-24'
 verification: draft
 sources:
 - https://www.thrustmaster.com/nl-nl/products/t-flight-hotas-5-microsoft-flight-simulator-edition/

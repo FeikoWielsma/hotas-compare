@@ -223,6 +223,7 @@ export type ControlItem = z.infer<typeof ControlItemSchema>;
 
 // Price Schema
 export const PriceSchema = z.object({
+  kind: z.enum(['official', 'street']).default('official'),
   region: RegionEnum,
   currency: CurrencyEnum,
   amount: z.number().nonnegative(),
@@ -265,6 +266,14 @@ export const ExternalReviewSchema = z.object({
   date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Must be YYYY-MM-DD'),
 });
 export type ExternalReview = z.infer<typeof ExternalReviewSchema>;
+
+/** An opinionated next step from this item, e.g. a better base for the same grip. `to` is a component or bundle id. */
+export const UpgradePathSchema = z.object({
+  to: z.string(),
+  note: z.string(),
+  source: z.string().url().optional(),
+});
+export type UpgradePath = z.infer<typeof UpgradePathSchema>;
 
 // Use Case Fit Schema
 export const UseCaseFitSchema = z.object({
@@ -324,11 +333,16 @@ export const ReviewerSchema = z.object({
 });
 export type Reviewer = z.infer<typeof ReviewerSchema>;
 
+/** Stick gimbal families, as used by reviewers to judge quality; null = not a stick or not documented. */
+export const GimbalTypeEnum = z.enum(['ball_and_cup', 'pincer', 'cam_and_spring', 'force_feedback', 'other']);
+export type GimbalType = z.infer<typeof GimbalTypeEnum>;
+
 // Component Collection Schema
 export const HardwareSchema = z.object({
   /** Manufacturer's total, when the full individual axis mapping is unavailable. */
   axis_count: z.number().int().nonnegative().optional(),
   gimbal: z.string().nullable().optional(),
+  gimbal_type: GimbalTypeEnum.nullable().optional(),
   sensor: z.string().nullable().optional(),
   axes: z.array(
     z.object({
@@ -384,6 +398,7 @@ export const ComponentSchema = z.object({
   prices: z.array(PriceSchema).default([]),
   verdict: VerdictSchema.nullable().optional(),
   external_reviews: z.array(ExternalReviewSchema).default([]),
+  upgrade_paths: z.array(UpgradePathSchema).default([]),
   verification: VerificationStatusEnum.default('draft'),
   sources: z.array(z.string()).default([]),
   images: z.array(ImageSchema).default([]),
@@ -401,6 +416,7 @@ export const BundleSchema = z.object({
   prices: z.array(PriceSchema).default([]),
   verdict: VerdictSchema.nullable().optional(),
   external_reviews: z.array(ExternalReviewSchema).default([]),
+  upgrade_paths: z.array(UpgradePathSchema).default([]),
   verification: VerificationStatusEnum.default('draft'),
   sources: z.array(z.string()).default([]),
   images: z.array(ImageSchema).default([]),
@@ -422,5 +438,7 @@ export const SetupSchema = z.object({
     })
   ),
   notes: z.string().optional(),
+  /** Our opinionated first choice for this flying style and budget tier; listed before alternatives. */
+  pick: z.boolean().default(false),
 });
 export type Setup = z.infer<typeof SetupSchema>;

@@ -71,6 +71,7 @@ controls_evidence:
   notes: Exact-SKU product page embeds a labeled grip diagram (dual-stage trigger, flip trigger, three 4-way hats with push, three push buttons, analogue ministick, 2-way slider, paddle switch, brake lever axis, lockable twist). The AEROMAX mapping sheet linked from these listings names X/Y, twist Z, brake RZ, ministick RX/RY with a center push, and slider axis SL. Two side levers drawn on that sheet, one marked DL, are the optional throttle modules sold separately and are not part of this bare stick. Programmable LEDs on the diagram are indicators, not inputs.
 hardware:
   gimbal: cam_and_spring
+  gimbal_type: cam_and_spring
   sensor: contactless_magnetic
   axes:
   - name: X
@@ -107,7 +108,7 @@ prices:
 - region: EU
   currency: EUR
   amount: 199.95
-  incl_vat: true
+  incl_vat: false
   store: virpil-controls.eu
   url: https://virpil-controls.eu/cdt-aeromax-l-flightstick.html
   verified: '2026-10-19'
@@ -115,7 +116,7 @@ prices:
 - region: UK
   currency: GBP
   amount: 199.95
-  incl_vat: true
+  incl_vat: false
   store: virpil-controls.co.uk
   url: https://virpil-controls.co.uk/cdt-aeromax-l-flightstick.html
   verified: '2026-10-19'
@@ -150,6 +151,11 @@ verdict:
     software: 4
     qc_support: 5
 external_reviews:
+  - reviewer: mysh
+    url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1033s
+    summary: "Compact all-metal cam gimbal between the Gladiator and full-size bases, with an excellent throttle module; a near all-in-one stick."
+    tag: recommended
+    date: '2026-10-24'
   - reviewer: mysh
     url: https://www.youtube.com/watch?v=2z54NHzy_Gc
     summary: "Left-handed variant of the compact all-metal cam and spring stick. Excellent option for dual-stick HOSAS."

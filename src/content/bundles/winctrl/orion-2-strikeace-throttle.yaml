@@ -16,12 +16,12 @@ components:
 prices:
 - region: EU
   currency: EUR
-  amount: 253.72
+  amount: 204.33
   incl_vat: true
   store: eu.winctrl.com
   url: https://eu.winctrl.com/view/goods-details.html?id=385
-  verified: '2026-10-21'
-  source: manual
+  verified: '2026-10-24'
+  source: feed
 - region: US
   currency: USD
   amount: 242.99
@@ -32,12 +32,12 @@ prices:
   source: manual
 - region: UK
   currency: GBP
-  amount: 248.05
+  amount: 195.05
   incl_vat: true
   store: uk.winctrl.com
   url: https://uk.winctrl.com/p/385.html
-  verified: '2026-10-21'
-  source: manual
+  verified: '2026-10-24'
+  source: feed
 verification: draft
 sources: *id001
 images:

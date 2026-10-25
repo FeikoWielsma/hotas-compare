@@ -1,10 +1,14 @@
 title: Budget Space Sim Duo HOSAS
 use_case: space_hosas
 budget_tier: budget
-description: Dual Thrustmaster T.16000M FCS flight sticks providing 6DOF translational and rotational control on a tight entry budget.
-reasoning: The ambidextrous modular grip design of the T.16000M makes it the cheapest route to dual-stick space flight with 16-bit Hall effect magnetic precision on main axes.
+pick: true
+description: WINCTRL Ursa Minor Fighter (right) plus the angled Ursa Minor Space joystick (left) - two pincer gimbals with dampers for six degrees of freedom.
+reasoning: The first rung of Mysh's dual-stick space ladder. Both sticks use the glass-fibre pincer gimbal that beats everything else at this price.
 items:
-  - item_type: bundle
-    id: thrustmaster/t16000m-fcs-space-sim-duo
-    role: Dual 6DOF Space Flight Sticks
-notes: Great entry into Star Citizen or Elite Dangerous without breaking the bank.
+  - item_type: component
+    id: winctrl/ursa-minor-fighter-joystick-r
+    role: Right stick
+  - item_type: component
+    id: winctrl/ursa-minor-space-joystick-l
+    role: Left stick / strafe
+notes: The Ursa Minor's shorter throw makes it a weaker throttle than a Gladiator omni-throttle; step up to the Gladiator combo if you can.

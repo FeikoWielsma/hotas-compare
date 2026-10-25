@@ -209,6 +209,12 @@ prices:
   url: https://us.mozaracing.com/products/mtp-throttle
   verified: '2026-10-20'
   source: manual
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=3139s
+  summary: "With the MTLP panel the MTP is a great combat throttle with excellent mechanics; without it the controls are too startup-focused."
+  tag: recommended
+  date: '2026-10-24'
 verification: draft
 sources:
 - https://us.mozaracing.com/products/mtp-throttle

@@ -4,8 +4,9 @@ category: base
 status: current
 handedness: n/a
 mount:
-  provides: moza-flight-qr
-  accepts: []
+  provides: null
+  accepts:
+  - moza-flight-qr
 controls: []
 controls_evidence:
   coverage: complete
@@ -17,6 +18,7 @@ controls_evidence:
 hardware:
   axis_count: 2
   gimbal: force_feedback
+  gimbal_type: force_feedback
   sensor: encoder
   axes:
   - name: Pitch
@@ -94,6 +96,12 @@ verdict:
     value: 3
     software: 3
     qc_support: 3
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=3139s
+  summary: "Solid FFB base with good out-of-box effects in DCS, IL-2 and MSFS; be aware of the controversy around parts of its FFB code."
+  tag: recommended
+  date: '2026-10-24'
 verification: verified
 sources:
 - https://mozaracing.com/collections/flight-series

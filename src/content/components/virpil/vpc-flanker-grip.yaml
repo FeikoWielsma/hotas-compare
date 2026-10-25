@@ -109,7 +109,7 @@ prices:
 - region: EU
   currency: EUR
   amount: 329.95
-  incl_vat: true
+  incl_vat: false
   store: virpil-controls.eu
   url: https://virpil-controls.eu/vpc-flnkr-grip.html
   verified: '2026-10-19'
@@ -117,7 +117,7 @@ prices:
 - region: UK
   currency: GBP
   amount: 349.95
-  incl_vat: true
+  incl_vat: false
   store: virpil-controls.co.uk
   url: https://virpil-controls.co.uk/vpc-flnkr-grip.html
   verified: '2026-10-19'
@@ -156,6 +156,12 @@ verdict:
     value: 4
     software: 4
     qc_support: 4
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2316s
+  summary: "Virpil's flagship metal grip with a triple-trigger setup; his top high-end grip on a WarBRD-D or CM3 base."
+  tag: recommended
+  date: '2026-10-24'
 verification: draft
 sources:
 - https://virpil-controls.eu/products/vpc-flnkr-grip

@@ -112,7 +112,7 @@ prices:
 - region: EU
   currency: EUR
   amount: 249.95
-  incl_vat: true
+  incl_vat: false
   store: virpil-controls.eu
   url: https://virpil-controls.eu/vpc-constellation-alpha-prime-l.html
   verified: '2026-10-19'
@@ -120,7 +120,7 @@ prices:
 - region: UK
   currency: GBP
   amount: 279.95
-  incl_vat: true
+  incl_vat: false
   store: virpil-controls.co.uk
   url: https://virpil-controls.co.uk/vpc-constellation-alpha-prime-l.html
   verified: '2026-10-19'
@@ -158,6 +158,12 @@ verdict:
     value: 4
     software: 4
     qc_support: 4
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1757s
+  summary: "Premium all-metal space grip with twist, three-stage trigger and analog brake; tops his space recommendations."
+  tag: recommended
+  date: '2026-10-24'
 verification: draft
 sources:
 - https://virpil-controls.eu/products/vpc-constellation-alpha-prime-l

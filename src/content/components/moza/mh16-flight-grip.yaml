@@ -92,6 +92,12 @@ prices:
   url: https://uk.mozaracing.com/products/mh16-flightstick
   verified: '2026-10-20'
   source: manual
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=3139s
+  summary: "Not on the level of the Flanker or MCG Ultimate, but still a good high-end buy."
+  tag: recommended
+  date: '2026-10-24'
 verification: draft
 sources:
 - https://mozaracing.com/collections/flight-series

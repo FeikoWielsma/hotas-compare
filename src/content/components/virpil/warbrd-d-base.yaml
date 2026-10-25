@@ -24,6 +24,7 @@ controls_evidence:
   notes: 'Bare VPC-106-001 base has two analog X/Y axes and adjustable gimbal hardware but no installed grip or standalone buttons/switches; compatible grips are sold separately.'
 hardware:
   gimbal: dual_spring
+  gimbal_type: cam_and_spring
   sensor: contactless_magnetic
   axes:
     - name: X
@@ -58,7 +59,7 @@ prices:
   - region: EU
     currency: EUR
     amount: 219.95
-    incl_vat: true
+    incl_vat: false
     store: virpil-controls.eu
     url: https://virpil-controls.eu/vpc-warbrd-d-base.html
     verified: '2026-10-19'
@@ -66,7 +67,7 @@ prices:
   - region: UK
     currency: GBP
     amount: 239.95
-    incl_vat: true
+    incl_vat: false
     store: virpil-controls.co.uk
     url: https://virpil-controls.co.uk/vpc-warbrd-d-base.html
     verified: '2026-10-21'
@@ -104,11 +105,11 @@ verdict:
     software: 4
     qc_support: 5
 external_reviews:
-  - reviewer: mysh
-    url: https://youtube.com/watch?v=sample-warbrd-d
-    summary: "Clutches add tremendous damping control. Perfect desktop form factor."
-    tag: recommended
-    date: '2025-02-15'
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=3096s
+  summary: "Full-metal cam bases with integrated dampers and pretensioners, built to a higher standard than most; the CM3 suits rigs with extensions."
+  tag: recommended
+  date: '2026-10-24'
 verification: verified
 sources:
   - https://virpil-controls.eu/vpc-warbrd-d-base.html

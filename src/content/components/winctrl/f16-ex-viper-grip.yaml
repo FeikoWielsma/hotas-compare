@@ -118,12 +118,7 @@ verdict:
     value: 4
     software: 3
     qc_support: 4
-external_reviews:
-  - reviewer: mysh
-    url: https://youtube.com/watch?sample-viper-grip
-    summary: "The go-to grip for DCS F-16 pilots. EX head expansion makes it versatile across other jets."
-    tag: recommended
-    date: '2024-03-25'
+external_reviews: []
 verification: verified
 sources:
   - https://eu.winctrl.com/view/goods-details.html?id=314

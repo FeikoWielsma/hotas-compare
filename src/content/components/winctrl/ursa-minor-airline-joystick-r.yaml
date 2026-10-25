@@ -47,6 +47,7 @@ controls_evidence:
   notes: 'Right-hand airline V1.3 manual matches the left-hand control classes: 14 buttons, hidden five-way
     switch, HAT and slider. HAT way count is not stated. Mass 0.98 kg. Dimensions 227×217×230 mm.'
 hardware:
+  gimbal_type: pincer
   throw_deg: 30
   axes:
   - name: X
@@ -82,6 +83,12 @@ prices:
   verified: '2026-10-21'
   source: manual
 
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2395s
+  summary: "His budget pick under 100 euros: a glass-fibre pincer gimbal copied from the Gladiator, far better than anything else in its range."
+  tag: recommended
+  date: '2026-10-24'
 verification: draft
 sources: *id001
 images:

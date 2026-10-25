@@ -36,12 +36,12 @@ prices:
   source: manual
 - region: EU
   currency: EUR
-  amount: 49
+  amount: 51
   incl_vat: true
   store: flightsimcontrols.com
   url: https://flightsimcontrols.com/product/vkb-main-controller-blackbox-stand-alone/
-  verified: '2026-10-21'
-  source: manual
+  verified: '2026-10-24'
+  source: feed
 verification: draft
 sources:
 - https://vkbsimcontrollers.com/products/blackbox-mk2

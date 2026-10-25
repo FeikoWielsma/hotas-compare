@@ -57,7 +57,7 @@ prices:
   - region: EU
     currency: EUR
     amount: 14.95
-    incl_vat: true
+    incl_vat: false
     store: virpil-controls.eu
     url: https://virpil-controls.eu/cdt-aeromax-throttle-module.html
     verified: '2026-10-19'
@@ -65,7 +65,7 @@ prices:
   - region: UK
     currency: GBP
     amount: 14.95
-    incl_vat: true
+    incl_vat: false
     store: virpil-controls.co.uk
     url: https://virpil-controls.co.uk/cdt-aeromax-throttle-module.html
     verified: '2026-10-21'
@@ -101,7 +101,12 @@ verdict:
     value: 5
     software: 4
     qc_support: 5
-external_reviews: []
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1033s
+  summary: "Compact all-metal cam gimbal between the Gladiator and full-size bases, with an excellent throttle module; a near all-in-one stick."
+  tag: recommended
+  date: '2026-10-24'
 verification: draft
 sources:
   - https://virpil-controls.eu/cdt-aeromax-r-flightstick.html

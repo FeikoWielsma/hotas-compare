@@ -3,6 +3,7 @@ import {
   deriveControlsSummary,
   deriveComponentStats,
   resolvePrice,
+  displayPrice,
   checkMountCompatibility,
   scoreItemForUseCase,
 } from './derive';
@@ -76,6 +77,7 @@ describe('deriveComponentStats', () => {
       },
       prices: [],
       external_reviews: [],
+      upgrade_paths: [],
       verification: 'verified',
       sources: [],
       images: [],
@@ -99,7 +101,7 @@ describe('resolvePrice', () => {
         incl_vat: true,
         store: 'virpil-controls.eu',
         verified: '2026-10-01',
-        source: 'manual' as const,
+        kind: 'official' as const, source: 'manual' as const,
       },
       {
         region: 'US' as const,
@@ -108,7 +110,7 @@ describe('resolvePrice', () => {
         incl_vat: false,
         store: 'virpil-controls.us',
         verified: '2026-05-01', // Stale! (> 90 days before Oct 2026)
-        source: 'manual' as const,
+        kind: 'official' as const, source: 'manual' as const,
       },
     ];
 
@@ -153,6 +155,7 @@ describe('checkMountCompatibility', () => {
     },
     prices: [],
     external_reviews: [],
+    upgrade_paths: [],
     verification: 'verified',
     sources: [],
     images: [],
@@ -180,6 +183,7 @@ describe('checkMountCompatibility', () => {
     },
     prices: [],
     external_reviews: [],
+    upgrade_paths: [],
     verification: 'verified',
     sources: [],
     images: [],
@@ -207,6 +211,7 @@ describe('checkMountCompatibility', () => {
     },
     prices: [],
     external_reviews: [],
+    upgrade_paths: [],
     verification: 'verified',
     sources: [],
     images: [],
@@ -283,5 +288,30 @@ describe('scoreItemForUseCase', () => {
     expect(rec.score).toBe(95);
     expect(rec.fitScore).toBe(5);
     expect(rec.verdictScore).toBeCloseTo(4.4);
+  });
+});
+
+describe('displayPrice', () => {
+  const base = { currency: 'EUR' as const, store: 'virpil-controls.eu', verified: '2026-10-24', kind: 'official' as const, source: 'manual' as const };
+
+  it('adds estimated VAT to ex-VAT EU and UK prices', () => {
+    const eu = displayPrice({ ...base, region: 'EU', amount: 199.95, incl_vat: false });
+    expect(eu.amount).toBe(241.94);
+    expect(eu.incl_vat).toBe(true);
+    expect(eu.vatEstimated).toBe(true);
+    expect(eu.listedAmount).toBe(199.95);
+    const uk = displayPrice({ ...base, region: 'UK', currency: 'GBP', amount: 199.95, incl_vat: false });
+    expect(uk.amount).toBe(239.94);
+  });
+
+  it('leaves incl-VAT prices and US sales-tax-exclusive prices alone', () => {
+    expect(displayPrice({ ...base, region: 'EU', amount: 100, incl_vat: true })).toMatchObject({ amount: 100, vatEstimated: false });
+    expect(displayPrice({ ...base, region: 'US', currency: 'USD', amount: 100, incl_vat: false })).toMatchObject({ amount: 100, incl_vat: false, vatEstimated: false });
+  });
+
+  it('is what resolvePrice returns, so sorting and cards use the comparable amount', () => {
+    const r = resolvePrice([{ ...base, region: 'EU', amount: 100, incl_vat: false }], 'EU', new Date('2026-10-24'));
+    expect(r.price?.amount).toBe(121);
+    expect(r.formatted).toBe('€121 (incl. VAT, est.)');
   });
 });

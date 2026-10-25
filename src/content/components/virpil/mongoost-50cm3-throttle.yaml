@@ -154,7 +154,7 @@ prices:
   - region: EU
     currency: EUR
     amount: 369.95
-    incl_vat: true
+    incl_vat: false
     store: virpil-controls.eu
     verified: '2026-10-01'
     source: manual
@@ -184,10 +184,10 @@ verdict:
     qc_support: 5
 external_reviews:
   - reviewer: mysh
-    url: https://www.youtube.com/watch?v=sample-cm3-throttle
-    summary: "The definitive enthusiast throttle. Detent system is unmatched and input versatility covers everything from DCS jets to space simulators."
+    url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1855s
+    summary: "Precision throttles with split levers, contactless sensors, adjustable detents and an all-metal frame; half of his top high-end combo."
     tag: recommended
-    date: '2024-03-12'
+    date: '2026-10-24'
 verification: verified
 sources:
   - https://virpil-controls.eu/vpc-mongoost-50cm3-throttle.html

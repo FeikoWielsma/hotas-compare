@@ -1,14 +1,15 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import AddCompare from './AddCompare.svelte';
-  import { resolvePrice } from '../lib/derive';
+  import { resolvePrice, regionalPrices, priceOfferLabel, type DisplayPrice } from '../lib/derive';
   import { regionStore } from '../lib/stores/region.svelte';
   import type { Price, Region } from '../lib/schema';
   let { id, prices, notes = {} }: { id: string; prices: Price[]; notes?: Record<string, string> } = $props();
   const regions: Region[] = ['EU', 'UK', 'US'];
-  const money = (p: Price) => new Intl.NumberFormat('en', { style: 'currency', currency: p.currency }).format(p.amount);
+  const money = (p: Price | DisplayPrice) => new Intl.NumberFormat('en', { style: 'currency', currency: p.currency }).format(p.amount);
   const active = $derived(resolvePrice(prices, regionStore.region));
-  const others = $derived(regions.filter((r) => r !== regionStore.region).map((region) => ({ region, price: prices.find((p) => p.region === region) })));
+  const offers = $derived(regionalPrices(prices, regionStore.region));
+  const others = $derived(regions.filter((r) => r !== regionStore.region).map((region) => ({ region, price: resolvePrice(prices, region).price })));
   onMount(() => regionStore.init());
 </script>
 
@@ -16,7 +17,8 @@
   <p class="label">Price in {regionStore.region}</p>
   {#if active.price}
     <p class="amount">{money(active.price)}</p>
-    <p class="meta">{active.price.incl_vat ? 'Incl. VAT' : 'Excl. sales tax'} · checked {active.price.verified}{#if active.isStale}<span class="stale"> · over 90 days old</span>{/if}</p>
+    {#each offers as offer}<p class="meta">{#if offer.url}<a href={offer.url} rel="external noopener">{priceOfferLabel(offer)}</a>{:else}{priceOfferLabel(offer)}{/if}</p>{/each}
+    <p class="meta">{active.price.vatEstimated ? `Incl. VAT (est.; listed ${money({ ...active.price, amount: active.price.listedAmount })} ex VAT)` : active.price.incl_vat ? 'Incl. VAT' : 'Excl. sales tax'} · checked {active.price.verified}{#if active.isStale}<span class="stale"> · over 90 days old</span>{/if}</p>
     {#if active.price.url}<a class="store" href={active.price.url} rel="external noopener">View at {active.price.store} <span aria-hidden="true">↗</span></a>{:else}<p class="meta">Listed by {active.price.store}</p>{/if}
   {:else}
     <p class="amount none">No {regionStore.region} price listed</p>

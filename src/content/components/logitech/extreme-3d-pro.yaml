@@ -23,6 +23,7 @@ controls_evidence:
   notes: >-
     Official Logitech G product page states 12 programmable buttons and an 8-way hat switch. Individual button locations, trigger stages, and throttle details are not stated, so coverage stays partial.
 hardware:
+  gimbal_type: ball_and_cup
   axes:
     - name: X
     - name: Y
@@ -74,10 +75,19 @@ verdict:
     qc_support: 3
 external_reviews:
   - reviewer: mysh
+    url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=176s
+    summary: "Workable first stick, but the old ball-and-cup gimbal and potentiometers drift over time and it appears discontinued; only worth it cheap or used."
+    tag: mixed
+    date: '2026-10-24'
+  - reviewer: mysh
     url: https://www.youtube.com/watch?v=2z54NHzy_Gc
     summary: "Testing the waters budget tier. It's ancient, runs on potentiometers and will develop drift eventually. But it flies, and if you're not sure the hobby sticks, don't spend more than that. Being phased out."
     tag: neutral
     date: '2026-09-15'
+upgrade_paths:
+- to: winctrl/ursa-minor-airline-joystick-r
+  note: "At 50-60 euros the Ursa Minor Airline is the better buy, with a far better gimbal."
+  source: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2395s
 verification: verified
 sources:
   - https://www.logitechg.com/en-us/products/flight.html

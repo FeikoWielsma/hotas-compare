@@ -102,6 +102,7 @@ controls_evidence:
     analog throttle wheel, rotary encoder, and 3 base buttons).
 hardware:
   gimbal: gimbal_ring
+  gimbal_type: pincer
   sensor: contactless_magnetic
   axes:
   - name: X
@@ -149,7 +150,7 @@ prices:
   amount: 207.0
   incl_vat: true
   store: flightsimcontrols.co.uk
-  url: https://flightsimcontrols.co.uk/product/gladiator-nxt-evo-omni-throttle-left/
+  url: https://flightsimcontrols.co.uk/product/gladiator-nxt-evo-omni-throttle-right/
   verified: '2026-10-21'
   source: manual
 - region: US
@@ -185,6 +186,12 @@ verdict:
     value: 4
     software: 4
     qc_support: 4
+external_reviews:
+- reviewer: mysh
+  url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2867s
+  summary: "Gladiator plus Omni-Throttle is his ultra-flexible combo, ideal for space sims and the top option for left-handers."
+  tag: recommended
+  date: '2026-10-24'
 verification: draft
 sources:
 - https://vkbcontrollers.com/products/gladiator-nxt-evo-omni-throttle

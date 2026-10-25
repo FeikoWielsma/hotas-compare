@@ -109,12 +109,16 @@ export function scoreWizardItem(item: CatalogItem, answers: WizardAnswers, regio
 }
 
 /** Only complete sticks (fixed, SKU bundles, or direct-compatible base + grip pairs) enter the search. */
+/** Grips and yoke handles that mount onto a base; never a complete control on their own. */
+function needsBase(item: CatalogItem) {
+  return item.category === 'grip' || (item.category === 'yoke' && !!item.mount?.provides && item.mount.provides !== 'desk');
+}
 function candidates(items: CatalogItem[], answers: WizardAnswers, region: Region): RecommendedPiece[] {
   const map = new Map(items.map((item) => [item.id, item]));
-  const groups = items.filter((item) => item.status === 'current' && !['base', 'grip', 'module'].includes(item.category)).map((item) => [item]);
+  const groups = items.filter((item) => item.status === 'current' && !['base', 'module'].includes(item.category) && !needsBase(item)).map((item) => [item]);
   for (const base of items.filter((item) => item.category === 'base' && item.status === 'current')) {
-    for (const grip of items.filter((item) => item.category === 'grip' && item.status === 'current')) {
-      if (grip.mount?.provides && base.mount?.accepts?.includes(grip.mount.provides)) groups.push([base, grip]);
+    for (const handle of items.filter((item) => needsBase(item) && item.status === 'current')) {
+      if (handle.mount?.provides && base.mount?.accepts?.includes(handle.mount.provides)) groups.push([base, handle]);
     }
   }
   const result: RecommendedPiece[] = [];
@@ -125,7 +129,7 @@ function candidates(items: CatalogItem[], answers: WizardAnswers, region: Region
     const members = leaves as CatalogItem[];
     const grips = members.filter((item) => item.category === 'grip');
     const bases = members.filter((item) => item.category === 'base');
-    if (grips.length !== bases.length) continue;
+    if (members.filter(needsBase).length !== bases.length) continue;
     // Bundles declare assembled compatibility; separate pairs require a direct mount match above.
     const sticks = [...members.filter((item) => item.category === 'stick_fixed'), ...grips];
     const otherRoles = members.flatMap((item): WizardPiece[] => ['throttle', 'pedals', 'yoke', 'quadrant'].includes(item.category) ? [item.category as WizardPiece] : []);
@@ -144,7 +148,7 @@ function candidates(items: CatalogItem[], answers: WizardAnswers, region: Region
       const scores = group.map((item) => scoreWizardItem(item, answers, region));
       result.push({ items: group, roles, price: group.reduce((sum, item) => sum + priceOf(item, region)!, 0),
         score: scores.reduce((sum, item) => sum + item.score, 0) / scores.length,
-        explanations: [...new Set(scores.flatMap((item) => item.explanations)), ...(group.length === 2 ? ['+ Base and grip share a direct mount standard'] : []),
+        explanations: [...new Set(scores.flatMap((item) => item.explanations)), ...(group.length === 2 ? [`+ Base and ${group[1].category === 'yoke' ? 'yoke handle' : 'grip'} share a direct mount standard`] : []),
           ...(assignment.includes('second_stick') ? ['+ Left-hand or ambidextrous control supplies the second stick'] : [])],
         warnings: [...new Set(scores.flatMap((item) => item.warnings))] });
     }
@@ -207,5 +211,5 @@ export function matchCuratedSetups(setups: WizardSetup[], items: CatalogItem[], 
     if (bases !== grips) warnings.push('This reference includes an unpaired base or grip. Additional compatible hardware is required and is not included in the listed total.');
     if (answers.needsTwist && !members.some((item) => hasTwist(item) && ['grip', 'stick_fixed'].includes(item.category)) && !members.some((item) => item.category === 'pedals')) warnings.push('This reference has no documented twist or pedal yaw control. Plan an additional yaw input.');
     return { ...setup, included, totalPrice, warnings, currency: currencies[region], withinBudget: totalPrice !== null && totalPrice <= answers.budgetMax };
-  }).sort((a, b) => Number(b.withinBudget) - Number(a.withinBudget) || (a.totalPrice ?? Infinity) - (b.totalPrice ?? Infinity));
+  }).sort((a, b) => Number(b.withinBudget) - Number(a.withinBudget) || Number(b.data.pick) - Number(a.data.pick) || (a.totalPrice ?? Infinity) - (b.totalPrice ?? Infinity));
 }

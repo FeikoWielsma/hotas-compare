@@ -26,6 +26,7 @@ controls_evidence:
 
 hardware:
   gimbal: cam
+  gimbal_type: cam_and_spring
   sensor: hall
   axes:
     - name: X
@@ -108,10 +109,10 @@ verdict:
     qc_support: 4
 external_reviews:
   - reviewer: mysh
-    url: https://youtube.com/watch?sample-orion2-base
-    summary: "Rock solid gimbal at a disruptive price point. Very stiff centering if desired."
+    url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=3046s
+    summary: "Best value high-end entry: all-metal dual-cam gimbal and a light cast-aluminium ViperAce grip. No twist, so budget for pedals."
     tag: recommended
-    date: '2024-04-10'
+    date: '2026-10-24'
 verification: verified
 sources:
   - https://eu.winctrl.com/view/goods-details.html?id=333

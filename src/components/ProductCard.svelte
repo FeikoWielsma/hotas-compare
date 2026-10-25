@@ -6,9 +6,19 @@
   import { platforms } from '../lib/platforms';
   import { categoryLabels, detailHref, formatAmount, overallScore, productImageSrc, resolveItemRegion } from '../lib/catalog-ui';
   import { humanize, statusLabels } from '../lib/labels';
+  import { vatLabel } from '../lib/derive';
+  import Explain from './Explain.svelte';
+  import { gimbalGlossaryKey, gimbalLabels } from '../lib/glossary';
+  import { handVariant, rankReasons } from '../lib/catalog-filter';
   import { regionStore } from '../lib/stores/region.svelte';
   import { compareStore, MAX_COMPARE_ITEMS } from '../lib/stores/compare.svelte';
-  let { item, compact = false, row = false }: { item: CatalogItem; compact?: boolean; row?: boolean } = $props();
+  let { item: given, variants = [], compact = false, row = false, rankInfo = false }: { item: CatalogItem; variants?: CatalogItem[]; compact?: boolean; row?: boolean; rankInfo?: boolean } = $props();
+  /** Mirrored left/right twins share one card; the switch picks which one the card shows. */
+  let pick = $state(0);
+  const item = $derived(variants.length > 1 ? variants[Math.min(pick, variants.length - 1)] : given);
+  const handLabel = (v: CatalogItem) => handVariant(v.name)?.hand === 'left' ? 'Left' : 'Right';
+  const review = $derived(item.latestReview);
+  const tagLabels: Record<string, string> = { recommended: 'Recommended', mixed: 'Mixed', avoid: 'Avoid', neutral: 'Not yet rated' };
   const active = $derived(resolveItemRegion(item, regionStore.region));
   const selected = $derived(compareStore.hasItem(item.id));
   const full = $derived(!selected && compareStore.items.length >= MAX_COMPARE_ITEMS);
@@ -46,13 +56,20 @@
   <div class="identity">
     <p class="brand"><BrandMark brand={item.brand} name={item.brandName} size={20} /><span>{item.brandName}</span><span class="category">{categoryLabels[item.category]}</span></p>
     <h3><a href={detailHref(item)}>{item.name}</a></h3>
+    {#if variants.length > 1}<div class="hands" role="group" aria-label="Hand">{#each variants as v, i}<button type="button" class:active={item.id === v.id} aria-pressed={item.id === v.id} onclick={() => pick = i}>{handLabel(v)}</button>{/each}</div>{/if}
     <p class="meta">{meta.join(' · ')}</p>
+    {#if review || item.gimbalType || item.needsPedals}<div class="badges">
+      {#if review}<a class={`review ${review.tag}`} href={review.url} rel="external noopener" title={review.summary}>{review.reviewerName}: {tagLabels[review.tag]}</a>{/if}
+      {#if item.gimbalType}<span class={`gimbal ${item.gimbalType}`}>{gimbalLabels[item.gimbalType]}<Explain term={gimbalGlossaryKey[item.gimbalType]} /></span>{/if}
+      {#if item.needsPedals}<span class="pedals">No twist · add pedals<Explain term="pedals" /></span>{/if}
+      {#if rankInfo && rankReasons(item).length}<span class="why">Why here<Explain title="Why it's ranked here" text={rankReasons(item)} label={`Why ${item.name} is ranked here`} /></span>{/if}
+    </div>{/if}
   </div>
   <div class="specifications">
     {#if highlights.length}<dl>{#each highlights as h}<div title={h.title}><dt>{h.label}</dt><dd>{h.value}</dd></div>{/each}</dl>{:else}<p class="undocumented">Controls not yet documented</p>{/if}
   </div>
   <div class="purchase">
-    <div class="price"><strong class:none={!active.resolvedPrice.price}>{active.resolvedPrice.price ? formatAmount(active) : `No ${regionStore.region} price listed`}</strong>{#if active.resolvedPrice.price}<span>{active.resolvedPrice.price.incl_vat ? 'incl. VAT' : 'excl. tax'}</span>{/if}</div>
+    <div class="price"><strong class:none={!active.resolvedPrice.price}>{active.resolvedPrice.price ? formatAmount(active) : `No ${regionStore.region} price listed`}</strong>{#if active.resolvedPrice.price}<span>{vatLabel(active.resolvedPrice.price)}</span>{/if}</div>
     {#if active.resolvedPrice.isStale}<p class="stale" title={`Last checked ${active.resolvedPrice.price?.verified}`}>Price over 90 days old</p>{/if}
     <div class="actions"><a href={detailHref(item)} aria-label={`View details for ${item.name}`}>Details →</a><span title={full ? 'Comparison is full. Remove an item to add another (maximum 4).' : undefined}><button type="button" aria-label={`${selected ? 'Remove' : 'Add'} ${item.name} ${selected ? 'from' : 'to'} comparison`} aria-pressed={selected} disabled={full} onclick={() => selected ? compareStore.removeItem(item.id) : compareStore.addItem(item.id)}>{selected ? '✓ Comparing' : '+ Compare'}</button></span></div>
   </div>
@@ -72,6 +89,13 @@
   .category { margin-left: auto; color: var(--color-muted); font-weight: 500; font-size: .75rem; white-space: nowrap; }
   h3 { font: 600 1.075rem/1.35 var(--font-sans); letter-spacing: -.01em; margin: 0; overflow-wrap: anywhere; text-wrap: balance; } h3 a { color: inherit; text-decoration: none; } h3 a:hover { color: var(--color-accent); }
   .meta { color: var(--color-muted); font-size: .8rem; line-height: 1.5; margin: .4rem 0 .9rem; min-height: 1.2em; }
+  .hands { display: inline-flex; margin-top: .45rem; border: 1px solid var(--color-rule); border-radius: 2px; } .hands button { padding: .2rem .6rem; border: 0; background: transparent; color: var(--color-muted); font: 600 .72rem/1.4 var(--font-sans); cursor: pointer; } .hands button + button { border-left: 1px solid var(--color-rule); } .hands button.active { color: var(--color-accent); background: color-mix(in srgb, var(--color-accent) 8%, var(--color-surface)); }
+  .badges { display: flex; flex-wrap: wrap; gap: .35rem; margin: -.4rem 0 .9rem; font-size: .72rem; font-weight: 600; }
+  .badges > * { display: inline-flex; align-items: center; padding: .15rem .45rem; border: 1px solid var(--color-rule); border-radius: 2px; color: var(--color-muted); text-decoration: none; }
+  .review.recommended { color: #1d6b3a; border-color: #1d6b3a55; background: #1d6b3a0d; } .review.avoid { color: #9b2c1f; border-color: #9b2c1f55; background: #9b2c1f0d; } .review.mixed { color: #8a5a00; border-color: #8a5a0055; }
+  a.review:hover { text-decoration: underline; }
+  .gimbal.ball_and_cup { color: #8a5a00; } .gimbal.pincer, .gimbal.cam_and_spring, .gimbal.force_feedback { color: var(--color-ink); }
+  .pedals { border-style: dashed; } .why { border: 0; padding-left: 0; }
   dl { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; overflow: hidden; border: 1px solid var(--color-rule); }
   dl > div { padding: .5rem .5rem .45rem; min-width: 0; margin: 0 -1px -1px 0; border-right: 1px solid var(--color-rule); border-bottom: 1px solid var(--color-rule); }
   dt { color: var(--color-muted); font-size: .7rem; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }

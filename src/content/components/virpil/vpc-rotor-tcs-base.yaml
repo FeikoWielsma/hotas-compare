@@ -80,7 +80,7 @@ prices:
 - region: EU
   currency: EUR
   amount: 299.95
-  incl_vat: true
+  incl_vat: false
   store: virpil-controls.eu
   url: https://virpil-controls.eu/vpc-rotor-tcs-plus-base-upgraded.html
   verified: '2026-10-19'
@@ -88,7 +88,7 @@ prices:
 - region: UK
   currency: GBP
   amount: 329.95
-  incl_vat: true
+  incl_vat: false
   store: virpil-controls.co.uk
   url: https://virpil-controls.co.uk/vpc-rotor-tcs-plus-base-upgraded.html
   verified: '2026-10-21'

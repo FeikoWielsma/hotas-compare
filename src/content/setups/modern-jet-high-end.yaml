@@ -1,0 +1,17 @@
+title: Buy-Once Modern Jet HOTAS
+use_case: modern_jet
+budget_tier: high_end
+pick: true
+description: VKB Gunfighter Mk.IV with the MCG Ultimate grip and a STECS Standard throttle, plus T-Rudder pedals.
+reasoning: One of Mysh's two can't-go-wrong high-end combos, with the best premium grip ergonomics he has used, the smallest cam base footprint with integrated dampers, a modular throttle and VKB's outstanding support.
+items:
+  - item_type: bundle
+    id: vkb/gunfighter-iv-mcg-ultimate
+    role: Stick
+  - item_type: component
+    id: vkb/stecs-throttle-standard
+    role: Throttle
+  - item_type: component
+    id: vkb/t-rudder-mk5
+    role: Rudder pedals
+notes: The other combo he rates equally is a Virpil FLNKR grip on a WarBRD-D or CM3 base with a CM4 or VMAX Prime throttle.
