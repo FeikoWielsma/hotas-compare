@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import type { CatalogItem } from './catalog';
 import { deriveControlsSummary, resolvePrice } from './derive';
 import { resolveCatalogRegion } from './catalog';
-import { filterCatalog, groupCatalog, groupHandVariants, handVariant, rankReasons, type CatalogGroup } from './catalog-filter';
+import { filterCatalog, groupCatalog, groupHandVariants, handVariant, matchScore, rankReasons, type CatalogGroup } from './catalog-filter';
 
 function item(overrides: Partial<CatalogItem> = {}): CatalogItem {
   return {
@@ -109,6 +109,20 @@ describe('catalog filters', () => {
     const both = item({ id: 'both', name: 'Both', reviewTag: 'recommended', scores: scores(5) });
     const order = filterCatalog([avoided, unreviewed, recommended, ownedTop, both], { sort: 'featured' }).map((i) => i.id);
     expect(order).toEqual(['both', 'owned', 'rec', 'none', 'avoid']);
+  });
+
+  it('ranks by average fit across the chosen flying styles, or by one style column', () => {
+    const fit = (modern_jet: number, ww2: number) => ({ modern_jet, space_hosas: 1, space_hotas: 1, heli: 1, ga: 1, airliner: 1, ww2 });
+    const jet = item({ id: 'jet', name: 'Jet', use_case_fit: fit(5, 2) });
+    const both = item({ id: 'both', name: 'Both', use_case_fit: fit(4, 4) });
+    const warbird = item({ id: 'warbird', name: 'Warbird', use_case_fit: fit(2, 5) });
+    const reviewedTwin = item({ id: 'twin', name: 'Twin', use_case_fit: fit(4, 4), reviewTag: 'recommended' });
+    const ids = (filters: Parameters<typeof filterCatalog>[1]) => filterCatalog([jet, both, warbird, reviewedTwin], filters).map(({ id }) => id);
+    expect(ids({ sort: 'match', fits: ['modern_jet', 'ww2'] })).toEqual(['twin', 'both', 'jet', 'warbird']);
+    expect(ids({ sort: 'match', fits: ['ww2'] })).toEqual(['warbird', 'twin', 'both', 'jet']);
+    expect(ids({ sort: 'fit:modern_jet', fits: ['modern_jet', 'ww2'] })).toEqual(['jet', 'twin', 'both', 'warbird']);
+    expect(matchScore(both, ['modern_jet', 'ww2'])).toBe(4);
+    expect(matchScore(both, [])).toBeNull();
   });
 
   it('filters by gimbal family and leaves undocumented gimbals out of a gimbal filter', () => {

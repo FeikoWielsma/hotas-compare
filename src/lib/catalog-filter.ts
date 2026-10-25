@@ -2,6 +2,7 @@ import { isSuperseded } from './successors';
 import type { CatalogItem } from './catalog';
 import { contactless, overallScore } from './catalog-ui';
 import type { Platform } from './platforms';
+import type { UseCase } from './schema';
 
 export interface CatalogFilters {
   showDiscontinued?: boolean;
@@ -24,6 +25,13 @@ export interface CatalogFilters {
   sort?: string;
   platform?: Platform | '';
   gimbalTypes?: string[];
+  /** The visitor's flying styles; `sort: 'match'` ranks by their average fit. */
+  fits?: UseCase[];
+}
+
+/** Average fit across the chosen flying styles, or null when none are chosen. */
+export function matchScore(item: Pick<CatalogItem, 'use_case_fit'>, fits: UseCase[]): number | null {
+  return fits.length ? fits.reduce((sum, key) => sum + item.use_case_fit[key], 0) / fits.length : null;
 }
 
 /** Filter a regional catalog projection. Unknown counts cannot meet a positive minimum. */
@@ -59,7 +67,11 @@ export function filterCatalog(items: CatalogItem[], filters: CatalogFilters = {}
     } else if (filters.sort === 'buttons') result = b.totalLogicalButtons - a.totalLogicalButtons;
     else if (filters.sort === 'axes') result = b.totalAxes - a.totalAxes;
     else if (filters.sort === 'score') result = (overallScore(b) ?? -1) - (overallScore(a) ?? -1);
-    else if (filters.sort === 'featured') {
+    else if (filters.sort === 'match' && filters.fits?.length) result = matchScore(b, filters.fits)! - matchScore(a, filters.fits)! || featuredRank(b) - featuredRank(a);
+    else if (filters.sort?.startsWith('fit:')) {
+      const key = filters.sort.slice(4) as UseCase;
+      result = (b.use_case_fit[key] ?? 0) - (a.use_case_fit[key] ?? 0) || featuredRank(b) - featuredRank(a);
+    } else if (filters.sort === 'featured' || filters.sort === 'match') {
       // Shopping readiness and review signals first; card diversity follows grouping.
       result = featuredRank(b) - featuredRank(a);
     }

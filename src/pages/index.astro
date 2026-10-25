@@ -2,46 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CatalogFilter from '../components/CatalogFilter.svelte';
 import { getCatalogItems } from '../lib/catalog';
-import { cardItem, detailHref } from '../lib/catalog-ui';
+import { cardItem } from '../lib/catalog-ui';
 const items = await getCatalogItems();
-const featured = items.find((item) => item.id === 'vkb/gladiator-nxt-evo-sce-r');
 const brandCount = new Set(items.map((item) => item.brand)).size;
 ---
 
 <BaseLayout title="Flight sim hardware, compared">
-  <section class="journal-hero" aria-labelledby="catalog-title">
-    <div class="hero-copy">
-      <p class="eyebrow">For the hours you spend up there</p>
-      <h1 id="catalog-title">More feel.<br /><span>More flight.</span></h1>
-      <p class="intro">Find the hardware that makes your sim feel right. Independent comparisons and useful advice, from your first stick to your forever setup.</p>
-      <div class="hero-actions"><a class="primary" href="#hardware">Explore the hardware <span aria-hidden="true">↗</span></a><a class="secondary" href="/wizard">Help me choose →</a></div>
-    </div>
-    <div class="hero-art">
-      <a class="printed-photo" href={featured ? detailHref(featured) : '#hardware'} aria-label="Explore the VKB Gladiator NXT EVO"><img src="/images/vkb/gladiator-nxt-evo-sce-r.jpg" alt="VKB Gladiator NXT EVO Space Combat Edition flight stick" width="520" height="520" fetchpriority="high" /><span>A good place to start ↗</span></a>
-      <span class="photo-note" aria-hidden="true">A closer look / Gladiator EVO</span>
-    </div>
-  </section>
-  <div class="catalog-facts" aria-label="About the catalog"><span><strong>{items.length} products</strong> to explore</span><span><strong>{brandCount} specialist brands</strong></span><span>Local prices for <strong>EU, UK &amp; US</strong></span><span>Made by <strong>sim enthusiasts</strong></span></div>
-  <section id="hardware" class="hardware" aria-labelledby="hardware-title"><div class="section-heading"><h2 id="hardware-title">The gear behind the hours.</h2><a href="/brands">Meet the brands ↗</a></div><CatalogFilter client:load initialItems={items.map(cardItem)} /></section>
-  <section class="setup-guide" aria-labelledby="setup-title"><div><p class="guide-kicker">Find your starting point</p><h2 id="setup-title">A better setup starts with your kind of flying.</h2><p>Space, airliners, or low-level flying. Find controls that fit your flying, your space, and your budget.</p></div><a href="/wizard">Find my setup →</a></section>
+  <CatalogFilter client:load initialItems={items.map(cardItem)} {brandCount} />
 </BaseLayout>
-
-<style>
-  .journal-hero { display: grid; grid-template-columns: 1.05fr 1fr; align-items: center; gap: 3rem; position: relative; padding: 2.5rem 3rem 3rem; background: var(--color-navy); color: var(--color-on-navy); overflow: hidden; }
-  .journal-hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 10px; background: repeating-linear-gradient(120deg, var(--color-highlight) 0 28px, #f5f2e9 28px 33px, var(--color-navy) 33px 45px); }
-  .eyebrow { font-size: .75rem; letter-spacing: .12em; color: #f6ad88; font-weight: 600; margin: 0 0 1.25rem; }
-  h1 { font: 700 clamp(3.75rem, 6.5vw, 5.75rem)/.9 var(--font-display); text-transform: uppercase; letter-spacing: -.015em; margin: 0; } h1 span { color: #f69b70; }
-  .intro { font-size: 1rem; line-height: 1.85; color: #d8e0e5; max-width: 44ch; margin: 1.75rem 0 1.6rem; }
-  .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; }
-  .primary { display: inline-flex; gap: 1.5rem; align-items: center; padding: .9rem 1.2rem; font-size: .875rem; font-weight: 600; text-decoration: none; background: var(--color-highlight); color: #172e42; } .primary:hover { background: #f69b70; }
-  .secondary { color: var(--color-on-navy); font-size: .875rem; text-decoration: underline; text-underline-offset: .35em; }
-  .hero-art { position: relative; min-width: 0; padding: .75rem 1.5rem .75rem .25rem; }
-  .printed-photo { display: block; padding: .75rem .75rem .85rem; transform: rotate(-4deg); background: #fffdf7; color: #172e42; box-shadow: .6rem 1rem 2rem #08182735; text-decoration: none; max-width: 340px; margin-inline: auto; }
-  .printed-photo img { width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; background: white; display: block; } .printed-photo > span { display: block; text-align: right; padding: .65rem .3rem 0; font-size: .8rem; font-weight: 500; }
-  .photo-note { position: absolute; right: -.1rem; top: 0; writing-mode: vertical-rl; color: #c1cbd3; font-size: .7rem; letter-spacing: .1em; }
-  .catalog-facts { display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between; gap: .75rem 1.5rem; border-bottom: 1px solid var(--color-rule); padding: 1.25rem 0; margin-bottom: 2rem; color: var(--color-muted); font-size: .8rem; } .catalog-facts strong { color: var(--color-ink); font-weight: 600; }
-  .hardware { scroll-margin-top: 1.5rem; } .section-heading { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; margin-bottom: 1.5rem; } .section-heading h2 { margin: 0; font-size: clamp(2.1rem, 4vw, 3.25rem); text-transform: uppercase; } .section-heading a { font-size: .875rem; color: var(--color-accent); flex: none; }
-  .setup-guide { display: flex; align-items: center; justify-content: space-between; gap: 2rem; border-left: 5px solid var(--color-accent); background: var(--color-photo); padding: 2rem; margin-top: 3rem; } .guide-kicker { font-size: .75rem; color: var(--color-accent); margin: 0 0 .65rem; font-weight: 600; } .setup-guide h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); margin: 0 0 .75rem; text-transform: uppercase; } .setup-guide p:last-child { color: var(--color-muted); font-size: .9rem; margin: 0; } .setup-guide > a { font-size: .9rem; color: var(--color-accent); text-decoration: none; border-bottom: 1px solid currentColor; padding-block: .4rem; flex: none; }
-  @media (max-width: 1000px) { .journal-hero { padding: 2.5rem 2rem 3rem; gap: 1.5rem; } h1 { font-size: clamp(4rem, 8.8vw, 6rem); } .intro { font-size: .95rem; } .hero-actions { gap: .9rem; } }
-  @media (max-width: 700px) { .journal-hero { grid-template-columns: 1fr; padding: 2rem 1.5rem 2.5rem; gap: 2rem; } h1 { font-size: clamp(4.2rem, 14vw, 6rem); } .hero-art { max-width: 360px; width: 100%; margin: auto; } .printed-photo { max-width: 280px; } .catalog-facts { justify-content: flex-start; font-size: .75rem; } .section-heading { align-items: start; } .section-heading a { font-size: .75rem; margin-top: .4rem; } .setup-guide { flex-direction: column; align-items: start; padding: 1.5rem; gap: 1rem; } }
-</style>
