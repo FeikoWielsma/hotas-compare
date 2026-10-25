@@ -1,8 +1,9 @@
+import { isListed } from './visibility';
 import { checkMountCompatibility } from './derive';
 import type { Bundle, Component, MountStandard, ReviewTag, UpgradePath } from './schema';
 
 export interface LinkedItem { id: string; name: string; href: string; reviewTag: ReviewTag | null }
-export interface ResolvedUpgrade extends LinkedItem { note: string; source?: string }
+export interface ResolvedUpgrade extends Omit<LinkedItem, 'href'> { href: string | null; note: string; source?: string }
 
 const latestTag = (data: Component | Bundle): ReviewTag | null =>
   [...data.external_reviews].sort((a, b) => b.date.localeCompare(a.date))[0]?.tag ?? null;
@@ -15,7 +16,7 @@ export function resolveUpgradePaths(
     const component = components.get(path.to), bundle = bundles.get(path.to);
     const data = component ?? bundle;
     if (!data) throw new Error(`"${owner}" has an upgrade path to missing item "${path.to}"`);
-    return { id: path.to, name: data.name, href: `/${component ? 'components' : 'bundles'}/${path.to}`, reviewTag: latestTag(data), note: path.note, ...(path.source ? { source: path.source } : {}) };
+    return { id: path.to, name: data.name, href: isListed(data) ? `/${component ? 'components' : 'bundles'}/${path.to}` : null, reviewTag: latestTag(data), note: path.note, ...(path.source ? { source: path.source } : {}) };
   });
 }
 
@@ -35,7 +36,7 @@ export function compatibleParts(
   const fits = (base: Component, handle: Component) => handle.category === 'grip'
     ? checkMountCompatibility(base, handle, standards).compatible
     : !!handle.mount?.provides && (base.mount?.accepts ?? []).includes(handle.mount.provides);
-  const items = [...components].filter(([, other]) => other.status !== 'discontinued' && (isBase
+  const items = [...components].filter(([, other]) => isListed(other) && other.status !== 'discontinued' && (isBase
     ? mountsOnBase(other) && fits(item, other)
     : other.category === 'base' && fits(other, item)))
     .map(([id, data]) => ({ id, name: data.name, href: `/components/${id}`, reviewTag: latestTag(data) }))

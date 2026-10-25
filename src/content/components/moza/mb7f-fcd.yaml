@@ -1,6 +1,7 @@
 brand: moza
 name: MOZA MB7F Flight Computer Display
 category: module
+catalog_kind: panel
 status: current
 platform_compatibility:
   pc: supported

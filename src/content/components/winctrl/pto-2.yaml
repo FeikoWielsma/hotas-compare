@@ -1,6 +1,7 @@
 brand: winctrl
 name: PTO 2 Panel of Take Off
 category: module
+catalog_kind: panel
 platform_compatibility:
   pc: supported
   xbox: unknown

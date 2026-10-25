@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { productPaths } from '../../lib/visibility';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProductHero from '../../components/detail/ProductHero.astro';
 import Verdict from '../../components/detail/Verdict.astro';
@@ -22,7 +23,7 @@ const componentMap = new Map(allComponents.map(x => [x.id, x.data]));
 const bundleMap = new Map(allBundles.map(x => [x.id, x.data]));
 const brandMap = new Map(brands.map(x => [x.id, x.data]));
 const mountMap = new Map(mounts.map(x => [x.id, x.data]));
-export async function getStaticPaths() { const components = await getCollection('components'); return components.map(({id,data}) => ({params:{slug:id},props:{component:{id,data}}})); }
+export async function getStaticPaths() { const components = await getCollection('components'); return productPaths(components, 'component'); }
 const { component: entry } = Astro.props;
 const { id, data: c } = entry;
 const brand = brandMap.get(c.brand);

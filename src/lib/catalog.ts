@@ -1,3 +1,4 @@
+import { isListed } from './visibility';
 import { deriveComponentStats, deriveControlsSummary, resolvePrice } from './derive';
 import type { ControlsSummary, ResolvedPrice } from './derive';
 import type { Component, Bundle, Region, UseCaseFit, Verdict, ReviewTag, GimbalType } from './schema';
@@ -128,8 +129,8 @@ export async function loadCatalog(region: Region = 'EU', now = new Date()) {
     };
   }
   const items = [
-    ...components.map(({ id, data }) => makeItem(id, data, 'component')),
-    ...bundles.map(({ id, data }) => makeItem(id, data, 'bundle')),
+    ...components.filter(({ data }) => isListed(data)).map(({ id, data }) => makeItem(id, data, 'component')),
+    ...bundles.filter(({ data }) => isListed(data)).map(({ id, data }) => makeItem(id, data, 'bundle')),
   ].sort((a, b) => a.name.localeCompare(b.name) || a.id.localeCompare(b.id));
   if (new Set(items.map((item) => item.id)).size !== items.length) {
     throw new Error('Catalog IDs must be unique across components and bundles.');

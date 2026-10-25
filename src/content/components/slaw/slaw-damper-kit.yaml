@@ -1,6 +1,7 @@
 brand: slaw
 name: Slaw Device Damper Kit
 category: module
+catalog_kind: accessory
 status: current
 handedness: n/a
 mount: null

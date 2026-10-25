@@ -1,6 +1,7 @@
 brand: logitech
 name: Logitech G Flight Radio Panel
 category: module
+catalog_kind: panel
 status: current
 handedness: n/a
 mount: null

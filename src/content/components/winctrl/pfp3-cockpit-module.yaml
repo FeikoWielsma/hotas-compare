@@ -1,6 +1,7 @@
 brand: winctrl
 name: Panel of Auto Pilot 3
 category: module
+catalog_kind: panel
 platform_compatibility:
   pc: supported
   xbox: unknown
