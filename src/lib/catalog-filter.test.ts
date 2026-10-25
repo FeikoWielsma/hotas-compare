@@ -20,6 +20,19 @@ function item(overrides: Partial<CatalogItem> = {}): CatalogItem {
 const price = (amount: number) => resolvePrice([{ region: 'EU', currency: 'EUR', amount, store: 'Test', verified: '2026-10-01', incl_vat: true, kind: 'official', source: 'manual' }], 'EU');
 
 describe('catalog filters', () => {
+  it('hides curated and strictly bundle-only parts, with independent opt-ins and normal filters', () => {
+    const soft = item({ id: 'soft', soldMainlyInBundle: true });
+    const strict = item({ id: 'strict', soldStandalone: false });
+    const normal = item({ id: 'normal' });
+    const old = item({ id: 'old', soldMainlyInBundle: true, status: 'discontinued', successor: 'normal' });
+    expect(filterCatalog([soft, strict, normal, old])).toEqual([normal]);
+    expect(filterCatalog([soft, strict], { showIndividualParts: true })).toEqual([soft, strict]);
+    expect(filterCatalog([old], { showIndividualParts: true })).toEqual([]);
+    expect(filterCatalog([old], { showDiscontinued: true })).toEqual([]);
+    expect(filterCatalog([old], { showIndividualParts: true, showDiscontinued: true })).toEqual([old]);
+    expect(filterCatalog([soft], { showIndividualParts: true, search: 'absent' })).toEqual([]);
+    expect(filterCatalog([normal], { categories: ['base'] })).toEqual([]);
+  });
   it('hides only discontinued products with successors and allows opting in alongside other filters', () => {
     for (const item_type of ['component', 'bundle'] as const) {
       const old = item({ id: 'old', status: 'discontinued', successor: 'new', item_type });

@@ -19,6 +19,18 @@ beforeEach(() => {
 });
 
 describe('catalog serialization', () => {
+  it('projects bundle preference without restricting standalone sales or removing parts', async () => {
+    collections.values.components = [
+      { id: 'test/base', data: ComponentSchema.parse({ brand: 'test', name: 'Base', category: 'base', sold_mainly_in_bundle: true }) },
+      { id: 'test/grip', data: ComponentSchema.parse({ brand: 'test', name: 'Grip', category: 'grip', sold_standalone: false }) },
+    ];
+    const items = await getCatalogItems();
+    expect(items.find(i => i.id === 'test/base')).toMatchObject({ soldMainlyInBundle: true });
+    expect(items.find(i => i.id === 'test/base')).not.toHaveProperty('soldStandalone');
+    expect(items.find(i => i.id === 'test/grip')).toMatchObject({ soldStandalone: false });
+    expect(items.find(i => i.id === 'test/combo')).not.toHaveProperty('soldMainlyInBundle');
+    expect(items).toHaveLength(3);
+  });
   it('flags potentiometers from the declared sensor or primary axes, but ignores secondary axes', async () => {
     collections.values.components = [
       { id: 'test/declared-pot', data: ComponentSchema.parse({ brand: 'test', name: 'Declared pot', category: 'stick_fixed', hardware: { sensor: 'potentiometer' } }) },

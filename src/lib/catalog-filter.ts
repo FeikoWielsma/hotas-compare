@@ -5,6 +5,7 @@ import type { Platform } from './platforms';
 
 export interface CatalogFilters {
   showDiscontinued?: boolean;
+  showIndividualParts?: boolean;
   search?: string;
   categories?: string[];
   brands?: string[];
@@ -36,6 +37,7 @@ export function filterCatalog(items: CatalogItem[], filters: CatalogFilters = {}
     const amount = item.resolvedPrice.price?.amount;
     const fit = filters.fit === 'ga_airliner' ? Math.max(item.use_case_fit.ga, item.use_case_fit.airliner) : item.use_case_fit[filters.fit as keyof CatalogItem['use_case_fit']] ?? 0;
     return (filters.showDiscontinued || !isSuperseded(item))
+      && (filters.showIndividualParts || item.item_type !== 'component' || (item.soldStandalone !== false && !item.soldMainlyInBundle))
       && query.every((word) => text.includes(word))
       && (!filters.categories?.length || filters.categories.includes(item.category))
       && (!filters.gimbalTypes?.length || (item.gimbalType != null && filters.gimbalTypes.includes(item.gimbalType)))

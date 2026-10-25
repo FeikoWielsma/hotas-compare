@@ -241,6 +241,13 @@ describe('live editing', () => {
 });
 
 describe('bundle-only parts', () => {
+  it('still recommends a curated bundle-preferred base and grip pair', () => {
+    const base = hardware('base', 'base', 100, { mount: { accepts: ['A'] }, soldMainlyInBundle: true });
+    const grip = hardware('grip', 'grip', 100, { mount: { provides: 'A' }, soldMainlyInBundle: true });
+    const result = recommendLoadout([base, grip], normalizeWizardAnswers({ piecesNeeded: ['stick'], budgetMax: 500 }), 'EU');
+    expect(result.complete).toBe(true);
+    expect(result.items.map(i => i.id).sort()).toEqual(['base', 'grip']);
+  });
   it('never recommends the X52 throttle on its own and offers the X52 HOTAS instead', () => {
     const stick = hardware('logitech/x52-space-flight-stick', 'stick_fixed', 100, { soldStandalone: false });
     const throttle = hardware('logitech/x52-throttle', 'throttle', 100, { soldStandalone: false });

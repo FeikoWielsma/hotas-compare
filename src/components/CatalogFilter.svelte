@@ -11,6 +11,7 @@
   import { platforms, type Platform } from '../lib/platforms';
   import { regionStore } from '../lib/stores/region.svelte';
   let { initialItems }: { initialItems: CatalogItem[] } = $props();
+  let showIndividualParts = $state(false);
   let showDiscontinued = $state(false);
   let urlReady = $state(false);
   let search = $state('');
@@ -47,14 +48,14 @@
     search.trim().length > 0, category !== 'All', ...brands.map(() => true),
     minimum != null, maximum != null, ministick, brake, sensors, !!fit,
     !!handedness, (minimumAxes ?? 0) > 0, (minimumInputs ?? 0) > 0,
-    showDiscontinued, !!itemType, !!priceAvailability, !!platform, ...gimbalTypes.map(() => true),
+    showIndividualParts, showDiscontinued, !!itemType, !!priceAvailability, !!platform, ...gimbalTypes.map(() => true),
   ].filter(Boolean).length);
   const categories: Record<string, string[]> = { All: [], 'Sticks & Combos': ['stick_fixed', 'stick_combo', 'hotas_bundle', 'hosas_bundle', 'system'], Throttles: ['throttle'], Bases: ['base'], Grips: ['grip'], Pedals: ['pedals'], Yokes: ['yoke', 'yoke_bundle'], Quadrants: ['quadrant'], Modules: ['module'] };
   const categoryIcons: Record<string, string> = { All: 'all', 'Sticks & Combos': 'stick', Throttles: 'throttle', Bases: 'base', Grips: 'grip', Pedals: 'pedals', Yokes: 'yoke', Quadrants: 'quadrant', Modules: 'module' };
   const brandOptions = $derived([...new Map(initialItems.map((item) => [item.brand, item.brandName])).entries()].sort((a, b) => a[1].localeCompare(b[1])));
   const items = $derived(initialItems.map((item) => resolveItemRegion(item, regionStore.region)));
   const filtered = $derived(filterCatalog(items, {
-    showDiscontinued, search, categories: categories[category], brands, minimum, maximum, ministick, brake, sensors,
+    showIndividualParts, showDiscontinued, search, categories: categories[category], brands, minimum, maximum, ministick, brake, sensors,
     fit, minimumFit, handedness, minimumAxes, minimumInputs, itemType, priceAvailability, sort, platform, gimbalTypes,
   }));
   const grouped = $derived(groupCatalog(filtered));
@@ -62,11 +63,15 @@
     search = ''; category = 'All'; brands = []; minimum = undefined; maximum = undefined;
     ministick = false; brake = false; sensors = false; fit = ''; minimumFit = 4; sort = 'featured';
     handedness = ''; minimumAxes = undefined; minimumInputs = undefined; itemType = ''; priceAvailability = '';
-    platform = ''; gimbalTypes = []; showDiscontinued = false;
+    platform = ''; gimbalTypes = []; showDiscontinued = false; showIndividualParts = false;
   }
   onMount(() => {
     regionStore.init();
-    const restore = () => { showDiscontinued = new URL(location.href).searchParams.get('showDiscontinued') === '1'; };
+    const restore = () => {
+      const params = new URL(location.href).searchParams;
+      showIndividualParts = params.get('showIndividualParts') === '1';
+      showDiscontinued = params.get('showDiscontinued') === '1';
+    };
     restore();
     urlReady = true;
     window.addEventListener('popstate', restore);
@@ -81,6 +86,8 @@
     const url = new URL(location.href);
     if (showDiscontinued) url.searchParams.set('showDiscontinued', '1');
     else url.searchParams.delete('showDiscontinued');
+    if (showIndividualParts) url.searchParams.set('showIndividualParts', '1');
+    else url.searchParams.delete('showIndividualParts');
     history.replaceState(history.state, '', url);
   });
 </script>
@@ -96,7 +103,7 @@
     <fieldset><legend>Price / {regionStore.currency}</legend><div class="range"><label>Min<input type="number" min="0" step="any" bind:value={minimum} placeholder="0" /></label><span>—</span><label>Max<input type="number" min="0" step="any" bind:value={maximum} placeholder="Any" /></label></div><label class="fit-label">Price availability<select bind:value={priceAvailability}><option value="">All hardware</option><option value="available">Price listed in {regionStore.region}</option><option value="unavailable">No {regionStore.region} price listed</option></select></label></fieldset>
     <fieldset><legend>Hardware & controls</legend><label class="fit-label">Item type<select bind:value={itemType}><option value="">Components & bundles</option><option value="component">Component</option><option value="bundle">Bundle</option></select></label><label class="fit-label">Handedness<select bind:value={handedness}><option value="">Any handedness</option><option value="right">Right hand</option><option value="left">Left hand</option><option value="ambi">Ambidextrous</option></select></label><label class="fit-label">Minimum axes<input type="number" min="0" step="1" bind:value={minimumAxes} placeholder="Any" /></label><label class="fit-label" title="Estimated button inputs, including hat directions and switch positions">Minimum est. button inputs<input type="number" min="0" step="1" bind:value={minimumInputs} placeholder="Any" /></label></fieldset>
     <fieldset><legend>Platform compatibility</legend><label class="fit-label">Platform<select bind:value={platform}><option value="">All platforms</option>{#each platforms as {key, label}}<option value={key}>{label}</option>{/each}</select></label><p class="note">Shows confirmed support. Check product notes for required accessories and supported console generations.</p></fieldset>
-    <fieldset class="checks"><legend>Product availability</legend><label><input type="checkbox" bind:checked={showDiscontinued} /> Show discontinued</label><p class="note">Include discontinued products with a current successor.</p></fieldset>
+    <fieldset class="checks"><legend>Product availability</legend><label><input type="checkbox" bind:checked={showIndividualParts} /> Show individual parts</label><p class="note">Include parts usually bought in combos and parts only sold inside a bundle.</p><label><input type="checkbox" bind:checked={showDiscontinued} /> Show discontinued</label><p class="note">Include discontinued products with a current successor.</p></fieldset>
     <fieldset class="checks"><legend>Features</legend><label><input type="checkbox" bind:checked={ministick} /> Has ministick</label><label><input type="checkbox" bind:checked={brake} /> Has brake axis</label><label><input type="checkbox" bind:checked={sensors} /> Contactless sensors</label></fieldset>
     <fieldset><legend>Primary fit</legend><label class="fit-label">Use case<select bind:value={fit}><option value="">Any flying style</option><option value="modern_jet">Modern Jet</option><option value="space_hosas">Space HOSAS</option><option value="space_hotas">Space HOTAS</option><option value="heli">Helicopter</option><option value="ga_airliner">GA / Airliner</option><option value="ww2">WWII</option></select></label><label class="fit-label">Minimum fit<select bind:value={minimumFit} disabled={!fit}>{#each [1, 2, 3, 4, 5] as score}<option value={score}>{score} / 5</option>{/each}</select></label></fieldset>
   </aside><div class="results"><div class="results-toolbar"><p class="counter" role="status">Showing <strong>{grouped.length}</strong> {grouped.length === 1 ? 'product' : 'products'}{grouped.length !== filtered.length ? ` (${filtered.length} variants)` : ''} of {initialItems.length} items <span>{regionStore.region} prices</span></p><div class="layouts" role="group" aria-label="Catalog layout">{#each layouts as view}<button type="button" class:active={layout === view.value} aria-pressed={layout === view.value} onclick={() => chooseLayout(view.value)}><HardwareIcon name={view.icon} size={19} /><span>{view.label}</span></button>{/each}</div></div>

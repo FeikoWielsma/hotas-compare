@@ -21,6 +21,7 @@ export interface CatalogItem {
   successor?: string;
   /** False for a component that is only sold inside a bundle; never set on bundles. */
   soldStandalone?: false;
+  soldMainlyInBundle?: boolean;
   platform_compatibility?: Component['platform_compatibility'];
   verification: Component['verification'];
   prices: Component['prices'];
@@ -178,6 +179,7 @@ export async function loadCatalog(region: Region = 'EU', now = new Date()) {
     return {
       id, slug: id, name: data.name, brand: data.brand, brandName: brand.name,
       category: data.category, item_type, status: data.status, successor: successors.get(id)?.id, verification: data.verification,
+      ...('sold_mainly_in_bundle' in data && data.sold_mainly_in_bundle === true ? { soldMainlyInBundle: true } : {}),
       ...('sold_standalone' in data && data.sold_standalone === false ? { soldStandalone: false as const } : {}),
       ...(data.platform_compatibility ? { platform_compatibility: data.platform_compatibility } : {}),
       prices: data.prices, region, resolvedPrice: resolvePrice(data.prices, region, now),
