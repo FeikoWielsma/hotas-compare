@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { onMount, type Snippet } from 'svelte';
   import BrandMark from './BrandMark.svelte';
   import { controlTypes, inventoryComplete } from '../lib/control-inventory';
   import type { CatalogItem } from '../lib/catalog';
@@ -9,14 +9,11 @@
   import { vatLabel } from '../lib/derive';
   import Explain from './Explain.svelte';
   import { gimbalGlossaryKey, gimbalLabels } from '../lib/glossary';
-  import { handVariant, rankReasons } from '../lib/catalog-filter';
+  import { rankReasons } from '../lib/catalog-filter';
   import { regionStore } from '../lib/stores/region.svelte';
   import { compareStore, MAX_COMPARE_ITEMS } from '../lib/stores/compare.svelte';
-  let { item: given, variants = [], compact = false, row = false, rankInfo = false }: { item: CatalogItem; variants?: CatalogItem[]; compact?: boolean; row?: boolean; rankInfo?: boolean } = $props();
-  /** Mirrored left/right twins share one card; the switch picks which one the card shows. */
-  let pick = $state(0);
-  const item = $derived(variants.length > 1 ? variants[Math.min(pick, variants.length - 1)] : given);
-  const handLabel = (v: CatalogItem) => handVariant(v.name)?.hand === 'left' ? 'Left' : 'Right';
+  /** `picker` renders under the name; CatalogCard uses it to switch between family and hand variants. */
+  let { item, compact = false, row = false, rankInfo = false, picker }: { item: CatalogItem; compact?: boolean; row?: boolean; rankInfo?: boolean; picker?: Snippet } = $props();
   const review = $derived(item.latestReview);
   const tagLabels: Record<string, string> = { recommended: 'Recommended', mixed: 'Mixed', avoid: 'Avoid', neutral: 'Not yet rated' };
   const active = $derived(resolveItemRegion(item, regionStore.region));
@@ -62,7 +59,7 @@
   <div class="identity">
     <p class="brand"><BrandMark brand={item.brand} name={item.brandName} size={20} /><span>{item.brandName}</span><span class="category">{categoryLabels[item.category]}</span></p>
     <h3><a href={detailHref(item)}>{item.name}</a></h3>
-    {#if variants.length > 1}<div class="hands" role="group" aria-label="Hand">{#each variants as v, i}<button type="button" class:active={item.id === v.id} aria-pressed={item.id === v.id} onclick={() => pick = i}>{handLabel(v)}</button>{/each}</div>{/if}
+    {@render picker?.()}
     <p class="meta">{meta.join(' · ')}</p>
     {#if review || item.gimbalType || item.needsPedals || item.usesPotentiometers || hasPedalBadges}<div class="badges">
       {#if review}<a class={`review ${review.tag}`} href={review.url} rel="external noopener" title={review.summary}>{review.reviewerName}: {tagLabels[review.tag]}</a>{/if}
@@ -98,7 +95,6 @@
   .category { margin-left: auto; color: var(--color-muted); font-weight: 500; font-size: .75rem; white-space: nowrap; }
   h3 { font: 600 1.075rem/1.35 var(--font-sans); letter-spacing: -.01em; margin: 0; overflow-wrap: anywhere; text-wrap: balance; } h3 a { color: inherit; text-decoration: none; } h3 a:hover { color: var(--color-accent); }
   .meta { color: var(--color-muted); font-size: .8rem; line-height: 1.5; margin: .4rem 0 .9rem; min-height: 1.2em; }
-  .hands { display: inline-flex; margin-top: .45rem; border: 1px solid var(--color-rule); border-radius: 2px; } .hands button { padding: .2rem .6rem; border: 0; background: transparent; color: var(--color-muted); font: 600 .72rem/1.4 var(--font-sans); cursor: pointer; } .hands button + button { border-left: 1px solid var(--color-rule); } .hands button.active { color: var(--color-accent); background: color-mix(in srgb, var(--color-accent) 8%, var(--color-surface)); }
   .badges { display: flex; flex-wrap: wrap; gap: .35rem; margin: -.4rem 0 .9rem; font-size: .72rem; font-weight: 600; }
   .badges > * { display: inline-flex; align-items: center; padding: .15rem .45rem; border: 1px solid var(--color-rule); border-radius: 2px; color: var(--color-muted); text-decoration: none; }
   .review.recommended { color: #1d6b3a; border-color: #1d6b3a55; background: #1d6b3a0d; } .review.avoid { color: #9b2c1f; border-color: #9b2c1f55; background: #9b2c1f0d; } .review.mixed { color: #8a5a00; border-color: #8a5a0055; }
