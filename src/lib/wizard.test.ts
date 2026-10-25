@@ -34,6 +34,14 @@ describe('wizard state', () => {
 });
 
 describe('loadout rules', () => {
+  it('excludes superseded components and bundles containing them', () => {
+    const old = hardware('old', 'stick_fixed', 10, { status: 'discontinued', successor: 'new' });
+    const bundle = hardware('bundle', 'stick_combo', 10, { item_type: 'bundle', componentIds: ['old'] });
+    const answers = normalizeWizardAnswers({ piecesNeeded: ['stick'], budgetMax: 100 });
+    expect(recommendLoadout([old, bundle], answers, 'EU').items).toEqual([]);
+    const current = hardware('new', 'stick_fixed', 50);
+    expect(recommendLoadout([old, bundle, current], answers, 'EU').items.map(item => item.id)).toEqual(['new']);
+  });
   it('finds a complete package under the total budget and sums controls', () => {
     const items = [hardware('fancy', 'stick_fixed', 300, { use_case_fit: { ...ComponentSchema.parse({ brand: 'test', name: 'x', category: 'stick_fixed' }).use_case_fit, modern_jet: 5 } }), hardware('stick', 'stick_fixed', 90), hardware('throttle', 'throttle', 70)];
     const result = recommendLoadout(items, normalizeWizardAnswers({ budgetMax: 180 }), 'EU');
@@ -93,6 +101,15 @@ describe('loadout rules', () => {
 });
 
 describe('curated reference matching', () => {
+  it('excludes references to superseded items and bundles with superseded members', () => {
+    const old = hardware('old', 'stick_fixed', 10, { status: 'discontinued', successor: 'new' });
+    const bundle = hardware('bundle', 'stick_combo', 10, { item_type: 'bundle', componentIds: ['old'] });
+    const setups: WizardSetup[] = [old, bundle].map(item => ({ id: item.id, data: {
+      title: item.name, description: 'Reference', reasoning: 'Reason', use_case: 'modern_jet', budget_tier: 'mid', pick: false,
+      items: [{ item_type: item.item_type, id: item.id, role: 'Primary' }],
+    } }));
+    expect(matchCuratedSetups(setups, [old, bundle], normalizeWizardAnswers({ budgetMax: 500 }), 'EU')).toEqual([]);
+  });
   it('matches discipline and tier while honestly marking unknown and over-budget totals', () => {
     const setups: WizardSetup[] = [{ id: 'reference', data: { title: 'Reference', description: 'Reference', reasoning: 'Reason', use_case: 'modern_jet', budget_tier: 'mid', pick: false, items: [{ item_type: 'component', id: 'stick', role: 'Primary' }] } }];
     const answers = normalizeWizardAnswers({ budgetMax: 500 });
