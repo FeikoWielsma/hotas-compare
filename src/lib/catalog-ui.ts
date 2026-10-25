@@ -1,6 +1,7 @@
 import type { CatalogItem } from './catalog';
 import type { Region, UseCase } from './schema';
 import { resolvePrice } from './derive';
+import { yokePartLabels } from './yoke-parts';
 
 /** Client-safe regional projection: do not import the content loader into islands. */
 export function resolveItemRegion(item: CatalogItem, region: Region): CatalogItem {
@@ -12,6 +13,10 @@ export const categoryLabels: Record<CatalogItem['category'], string> = {
   yoke: 'Yoke', pedals: 'Pedals', module: 'Module', hotas_bundle: 'HOTAS Bundle',
   hosas_bundle: 'HOSAS Bundle', stick_combo: 'Stick Combo', yoke_bundle: 'Yoke Bundle', system: 'System',
 };
+/** Card/badge label: yoke handles and yoke bases are named as the half of a yoke they are. */
+export function itemCategoryLabel(item: Pick<CatalogItem, 'category' | 'yokePart'>) {
+  return item.yokePart ? yokePartLabels[item.yokePart] : categoryLabels[item.category];
+}
 export const useCases: { key: UseCase; label: string }[] = [
   { key: 'modern_jet', label: 'Modern Jet' }, { key: 'space_hosas', label: 'Space HOSAS' },
   { key: 'space_hotas', label: 'Space HOTAS' }, { key: 'heli', label: 'Helicopter' },

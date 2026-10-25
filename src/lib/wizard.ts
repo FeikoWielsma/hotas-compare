@@ -2,6 +2,7 @@ import type { CatalogItem } from './catalog';
 import { resolvePrice, scoreItemForUseCase } from './derive';
 import type { BudgetTier, Currency, Region, Setup, UseCase } from './schema';
 import { isSuperseded } from './successors';
+import { isYokeHandle } from './yoke-parts';
 
 export const PIECES = ['stick', 'second_stick', 'throttle', 'pedals', 'yoke', 'quadrant'] as const;
 export type WizardPiece = typeof PIECES[number];
@@ -161,7 +162,7 @@ export function scoreWizardItem(item: CatalogItem, answers: WizardAnswers, regio
 /** Only complete sticks (fixed, SKU bundles, or direct-compatible base + grip pairs) enter the search. */
 /** Grips and yoke handles that mount onto a base; never a complete control on their own. */
 function needsBase(item: CatalogItem) {
-  return item.category === 'grip' || (item.category === 'yoke' && !!item.mount?.provides && item.mount.provides !== 'desk');
+  return item.category === 'grip' || isYokeHandle(item);
 }
 function candidates(items: CatalogItem[], answers: WizardAnswers, region: Region): RecommendedPiece[] {
   const map = new Map(items.map((item) => [item.id, item]));

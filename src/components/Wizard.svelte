@@ -2,7 +2,7 @@
   import { onMount, tick, untrack } from 'svelte';
   import HardwareIcon from './HardwareIcon.svelte';
   import type { CatalogItem } from '../lib/catalog';
-  import { detailHref, productImageSrc, useCases } from '../lib/catalog-ui';
+  import { detailHref, itemCategoryLabel, productImageSrc, useCases } from '../lib/catalog-ui';
   import { regionStore, isRegion } from '../lib/stores/region.svelte';
   import { MAX_COMPARE_ITEMS } from '../lib/stores/compare.svelte';
   import { budgetStops, budgetTier, defaultPieces, deserializePicks, deserializeWizardState, matchCuratedSetups, nearestBudgetStop, normalizeWizardAnswers, picksOf, recommendLoadout, serializeWizardState, PIECES } from '../lib/wizard';
@@ -217,8 +217,8 @@
               <p class="success">All selected controls fit within your regional budget.</p>
               {#each loadout.pieces as piece, index}
                 {@const ids = piece.items.map((item) => item.id)}
-                <article class="piece" class:pinned={piece.pinned}><div class="piece-heading"><span class="eyebrow">{String(index + 1).padStart(2, '0')} / {piece.roles.map((role) => labels[role]).join(' + ')}{#if edited && changed.includes(pickKey(ids))}<span class="badge">Changed</span>{/if}</span><span class="piece-meta"><strong>{money(piece.price)}</strong><button class="pin" aria-pressed={!!piece.pinned} title={piece.pinned ? 'Unpin: let this pick change with your settings' : 'Pin: keep this pick while it fits your settings'} onclick={() => togglePin(ids)}>{piece.pinned ? 'Pinned' : 'Pin'}</button></span></div>
-                  {#each piece.items as item}{@const photo = productImageSrc(item.images[0]?.file)}<div class="piece-product">{#if photo}<img src={photo} alt="" />{/if}<h3><a href={detailHref(item)}>{item.name} ↗</a></h3></div>{/each}
+                <article class="piece" class:pinned={piece.pinned}><div class="piece-heading"><span class="eyebrow">{String(index + 1).padStart(2, '0')} / {piece.roles.map((role) => labels[role]).join(' + ')}{#if piece.items.length > 1}<span class="badge">{piece.items.length} parts, bought separately</span>{/if}{#if edited && changed.includes(pickKey(ids))}<span class="badge">Changed</span>{/if}</span><span class="piece-meta"><strong>{money(piece.price)}</strong><button class="pin" aria-pressed={!!piece.pinned} title={piece.pinned ? 'Unpin: let this pick change with your settings' : 'Pin: keep this pick while it fits your settings'} onclick={() => togglePin(ids)}>{piece.pinned ? 'Pinned' : 'Pin'}</button></span></div>
+                  {#each piece.items as item}{@const photo = productImageSrc(item.images[0]?.file)}<div class="piece-product">{#if photo}<img src={photo} alt="" />{/if}<div>{#if piece.items.length > 1}<span class="part">{itemCategoryLabel(item)}</span>{/if}<h3><a href={detailHref(item)}>{item.name} ↗</a></h3></div></div>{/each}
                   <ul class="pills">{#each piece.explanations as explanation}<li>{explanation}</li>{/each}</ul>
                 </article>
               {/each}
@@ -360,6 +360,7 @@
   .piece-heading .eyebrow { margin: 0; }
   .piece-heading > strong { font-size: 1rem; white-space: nowrap; }
   .piece h3 { font-size: 1rem; margin: 0; }
+  .piece .part { display: block; font-size: .75rem; color: var(--color-muted); }
   .piece-product + .piece-product { margin-top: .75rem; }
   .piece h3 a { text-decoration: none; }
   .piece h3 a:hover { color: var(--color-accent); text-decoration: underline; }

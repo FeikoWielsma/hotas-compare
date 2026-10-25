@@ -4,7 +4,7 @@
   import { controlTypes, inventoryComplete } from '../lib/control-inventory';
   import type { CatalogItem } from '../lib/catalog';
   import { platforms } from '../lib/platforms';
-  import { categoryLabels, detailHref, formatAmount, overallScore, productImageSrc, resolveItemRegion } from '../lib/catalog-ui';
+  import { itemCategoryLabel, detailHref, formatAmount, overallScore, productImageSrc, resolveItemRegion } from '../lib/catalog-ui';
   import { humanize, statusLabels } from '../lib/labels';
   import { vatLabel } from '../lib/derive';
   import Explain from './Explain.svelte';
@@ -57,7 +57,7 @@
     {#if score != null}<span class="score" title="Verdict score"><b>{Number(score.toFixed(1))}</b>/5</span>{/if}
   </a>
   <div class="identity">
-    <p class="brand"><BrandMark brand={item.brand} name={item.brandName} size={20} /><span>{item.brandName}</span><span class="category">{categoryLabels[item.category]}</span></p>
+    <p class="brand"><BrandMark brand={item.brand} name={item.brandName} size={20} /><span>{item.brandName}</span><span class="category">{itemCategoryLabel(item)}</span></p>
     <h3><a href={detailHref(item)}>{item.name}</a></h3>
     {@render picker?.()}
     <p class="meta">{meta.join(' · ')}</p>

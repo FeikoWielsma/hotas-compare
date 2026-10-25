@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import type { CatalogItem } from './catalog';
 import { deriveComponentStats, resolvePrice } from './derive';
 import { ComponentSchema } from './schema';
+import { readContent } from '../../scripts/content';
 import { BUDGET_RANGES, budgetStops, budgetTier, deserializePicks, deserializeWizardState, matchCuratedSetups, nearestBudgetStop, normalizeWizardAnswers, picksOf, recommendLoadout, serializeWizardState } from './wizard';
 import type { WizardSetup } from './wizard';
 
@@ -282,5 +283,38 @@ describe('budget slider scale', () => {
     expect(stops[nearestBudgetStop(stops, 750)]).toBe(750);
     expect(nearestBudgetStop(stops, 20000)).toBe(stops.length - 1);
     expect(nearestBudgetStop(stops, 1)).toBe(0);
+  });
+});
+
+describe('Virpil Vector yoke parts', () => {
+  // Real catalog records; status is forced to current because the parts are still pre-order.
+  const real = (id: string) => {
+    const data = ComponentSchema.parse(readContent(`src/content/components/${id}.yaml`));
+    const prices = data.prices.filter((price) => price.region === 'EU');
+    return hardware(id, data.category, 0, { status: 'current', mount: data.mount, placement: data.placement, prices, resolvedPrice: resolvePrice(prices), use_case_fit: data.use_case_fit, handedness: [] });
+  };
+  const base = real('virpil/vector-flight-yoke-base');
+  const vega = real('virpil/constellation-vega-yoke-handle');
+  const bjet = real('virpil/b-jet-yoke-handle');
+
+  it.each(['ga', 'airliner'] as const)('pairs the Vector base with a VEGA or B-JET handle for a %s yoke pick', (useCase) => {
+    const answers = normalizeWizardAnswers({ useCase, piecesNeeded: ['yoke'], budgetMax: 800, mountType: 'clamp' });
+    const result = recommendLoadout([base, vega, bjet], answers, 'EU');
+    expect(result.complete).toBe(true);
+    expect(result.pieces).toHaveLength(1);
+    const ids = result.pieces[0].items.map((item) => item.id);
+    expect(ids[0]).toBe('virpil/vector-flight-yoke-base');
+    expect(['virpil/constellation-vega-yoke-handle', 'virpil/b-jet-yoke-handle']).toContain(ids[1]);
+    const amount = (item: CatalogItem) => item.resolvedPrice.price!.amount;
+    expect(result.totalPrice).toBeCloseTo(amount(base) + amount(ids[1] === vega.id ? vega : bjet), 2);
+    expect(result.pieces[0].explanations).toContain('+ Base and yoke handle share a direct mount standard');
+  });
+  it('never recommends a bare handle or bare base, even when only a handle fits the budget', () => {
+    const answers = normalizeWizardAnswers({ useCase: 'ga', piecesNeeded: ['yoke'], budgetMax: 400, mountType: 'clamp' });
+    const result = recommendLoadout([base, vega, bjet], answers, 'EU');
+    expect(result.complete).toBe(false);
+    expect(result.items).toEqual([]);
+    expect(recommendLoadout([vega, bjet], { ...answers, budgetMax: 5000 }, 'EU').items).toEqual([]);
+    expect(recommendLoadout([base], { ...answers, budgetMax: 5000 }, 'EU').items).toEqual([]);
   });
 });
