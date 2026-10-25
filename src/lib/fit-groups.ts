@@ -50,6 +50,11 @@ export function isPlaceholderFit(fit: UseCaseFit): boolean {
   return modern_jet === 4 && space_hotas === 4 && Object.values(rest).every((v) => v === 3);
 }
 
+/** True when nobody has judged this fit yet: a placeholder, or values generated at seeding or from specs. */
+export function isUnreviewedFit(fit: UseCaseFit, source?: FitSource): boolean {
+  return isPlaceholderFit(fit) || source === 'seeded' || source === 'baseline';
+}
+
 /** Stored fit scores are whole numbers from 1 to 5. */
 export const toFitScore = (score: number) => Math.min(5, Math.max(1, Math.round(score)));
 

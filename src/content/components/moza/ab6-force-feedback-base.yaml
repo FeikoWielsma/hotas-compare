@@ -66,6 +66,7 @@ use_case_fit:
   airliner: 2
   space_hotas: 3
   space_hosas: 2
+use_case_fit_source: seeded
 prices: []
 verdict:
   author: feiko

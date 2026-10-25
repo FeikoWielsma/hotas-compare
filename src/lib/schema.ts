@@ -297,7 +297,7 @@ export const UseCaseFitSchema = z.object({
 });
 export type UseCaseFit = z.infer<typeof UseCaseFitSchema>;
 
-export const FitSourceEnum = z.enum(['baseline', 'community']);
+export const FitSourceEnum = z.enum(['seeded', 'baseline', 'community']);
 export type FitSource = z.infer<typeof FitSourceEnum>;
 
 export const defaultUseCaseFit: UseCaseFit = {
@@ -427,7 +427,10 @@ export const ComponentSchema = z.object({
   software: z.string().optional(),
   physical: PhysicalSchema,
   use_case_fit: UseCaseFitSchema.default(defaultUseCaseFit),
-  /** Where the fit came from: `baseline` = derived from specs (scripts/fit-baseline.ts), `community` = tier lists. Absent = editorial. */
+  /**
+   * Where the fit came from when it is not an editorial judgement: `seeded` = generated during catalog
+   * seeding and never reviewed, `baseline` = derived from specs (scripts/fit-baseline.ts), `community` = tier lists.
+   */
   use_case_fit_source: FitSourceEnum.optional(),
   prices: z.array(PriceSchema).default([]),
   verdict: VerdictSchema.nullable().optional(),

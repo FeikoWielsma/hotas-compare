@@ -18,8 +18,11 @@ export function itemCode(id: string): string {
   return hash.toString(36).padStart(CODE_LENGTH, '0').slice(-CODE_LENGTH);
 }
 
-/** What the tier list page needs per part; `scored` is false while the fit is still a placeholder (see isPlaceholderFit). */
-export interface TierItem { id: string; name: string; brandName: string; image: string | null; group: FitGroup; fit: UseCaseFit; scored: boolean }
+/**
+ * What the tier list page needs per part. `fit` is the editorial score, or the spec baseline when `estimated`;
+ * `scored` is false when even that is an uninformative placeholder, so the part starts unranked.
+ */
+export interface TierItem { id: string; name: string; brandName: string; image: string | null; group: FitGroup; fit: UseCaseFit; estimated: boolean; scored: boolean }
 
 export interface TierList { useCase: UseCase; group: FitGroup; by?: string; tiers: Map<string, Tier> }
 

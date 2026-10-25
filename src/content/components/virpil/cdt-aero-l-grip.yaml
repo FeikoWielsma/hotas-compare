@@ -106,6 +106,7 @@ use_case_fit:
   airliner: 2
   space_hotas: 4
   space_hosas: 4
+use_case_fit_source: seeded
 prices:
 - region: EU
   currency: EUR

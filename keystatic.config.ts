@@ -412,6 +412,11 @@ export default config({
           space_hotas: fields.integer({ label: 'Space HOTAS (1–5)', defaultValue: 3 }),
           space_hosas: fields.integer({ label: 'Space HOSAS (1–5)', defaultValue: 3 }),
         }),
+        use_case_fit_source: optionalSelect('Fit source (clear after reviewing by hand)', [
+          { label: 'Seeded, not reviewed', value: 'seeded' },
+          { label: 'Baseline from specs', value: 'baseline' },
+          { label: 'Community tier lists', value: 'community' },
+        ]),
         prices: pricesField(),
         verdict: verdictField(),
         external_reviews: externalReviewsField(),

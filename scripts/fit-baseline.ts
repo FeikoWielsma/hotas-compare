@@ -1,21 +1,25 @@
 /**
  * Propose use-case fit scores from recorded specs (rules in src/lib/fit-baseline.ts).
  *
- *   pnpm fit:baseline                 report: agreement with hand scores, and proposals for unscored parts
- *   pnpm fit:baseline --write         fill placeholder fits and refresh earlier baseline fits (marked
- *                                     `use_case_fit_source: baseline`); editorial and community scores are left alone
+ *   pnpm fit:baseline                  report: agreement with editorial scores, and proposals for unreviewed parts
+ *   pnpm fit:baseline --write          fill placeholder fits and refresh earlier baseline fits (marked
+ *                                      `use_case_fit_source: baseline`); editorial and community scores are left alone
+ *   --write --include-seeded           also replace `seeded` fits. The setup wizard's tests are tuned on current
+ *                                      scores, so expect to re-check its picks after this.
  *   --group=<sticks|bases|…>  --verbose (list every part)  --report=<file.md>
+ *
+ * The /tiers page uses the same baseline as its starting point for unreviewed parts, so it needs no --write.
  */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { products } from './content.ts';
 import { baselineFit } from '../src/lib/fit-baseline.ts';
-import { groupOf, isPlaceholderFit, setFitInYaml } from '../src/lib/fit-groups.ts';
+import { groupOf, isPlaceholderFit, isUnreviewedFit, setFitInYaml } from '../src/lib/fit-groups.ts';
 import { UseCaseEnum, type Component } from '../src/lib/schema.ts';
 import { isListed } from '../src/lib/visibility.ts';
 
 const args = process.argv.slice(2);
 const option = (name: string) => args.find((a) => a.startsWith(`--${name}=`))?.split('=')[1];
-const write = args.includes('--write'), verbose = args.includes('--verbose');
+const write = args.includes('--write'), verbose = args.includes('--verbose'), includeSeeded = args.includes('--include-seeded');
 const short = { modern_jet: 'jet', heli: 'heli', ww2: 'ww2', ga: 'ga', airliner: 'air', space_hotas: 'spT', space_hosas: 'spS' } as const;
 const fmt = (fit: Component['use_case_fit']) => UseCaseEnum.options.map((u) => fit[u]).join('');
 
@@ -23,10 +27,10 @@ const parts = products()
   .filter((p) => p.collection === 'components')
   .map((p) => ({ ...p, data: p.data as Component }))
   .filter((p) => isListed(p.data) && (!option('group') || groupOf(p.data.category, p.data.name) === option('group')))
-  .map((p) => ({ ...p, group: groupOf(p.data.category, p.data.name), placeholder: isPlaceholderFit(p.data.use_case_fit) || p.data.use_case_fit_source === 'baseline', baseline: baselineFit(p.data) }));
+  .map((p) => ({ ...p, group: groupOf(p.data.category, p.data.name), placeholder: isUnreviewedFit(p.data.use_case_fit, p.data.use_case_fit_source), baseline: baselineFit(p.data) }));
 
 const scored = parts.filter((p) => !p.placeholder);
-const lines: string[] = [`# Fit baseline — ${parts.length} listed parts, ${scored.length} scored by hand or community, ${parts.length - scored.length} placeholder or baseline`, ''];
+const lines: string[] = [`# Fit baseline — ${parts.length} listed parts, ${scored.length} editorial or community, ${parts.length - scored.length} unreviewed (placeholder, seeded or baseline)`, ''];
 
 // Agreement with hand scores: mean absolute difference per use case and share within one point.
 lines.push('## Agreement with hand scores', '', '| Use case | Mean abs. diff | Within 1 |', '|---|---|---|');
@@ -42,7 +46,7 @@ for (const p of scored.toSorted((a, b) => gap(b) - gap(a)).slice(0, verbose ? sc
   lines.push(`- ${p.id} (${p.group}): ${fmt(p.data.use_case_fit)} → ${fmt(p.baseline.fit)} — ${p.baseline.reasons.join(', ') || 'no rules'}`);
 }
 
-lines.push('', '## Proposals for placeholder and baseline parts', '');
+lines.push('', '## Proposals for unreviewed parts (current → baseline)', '');
 for (const p of parts.filter((x) => x.placeholder).toSorted((a, b) => a.group.localeCompare(b.group) || a.id.localeCompare(b.id))) {
   lines.push(`- ${p.id} (${p.group}): ${fmt(p.data.use_case_fit)} → ${fmt(p.baseline.fit)} — ${p.baseline.reasons.join(', ') || 'group default'}`);
 }
@@ -53,7 +57,8 @@ console.log(report);
 if (option('report')) writeFileSync(option('report')!, report + '\n');
 
 if (write) {
-  const targets = parts.filter((p) => p.placeholder && (fmt(p.baseline.fit) !== fmt(p.data.use_case_fit) || p.data.use_case_fit_source !== 'baseline'));
+  const writable = (p: (typeof parts)[number]) => isPlaceholderFit(p.data.use_case_fit) || p.data.use_case_fit_source === 'baseline' || (includeSeeded && p.data.use_case_fit_source === 'seeded');
+  const targets = parts.filter((p) => writable(p) && (fmt(p.baseline.fit) !== fmt(p.data.use_case_fit) || p.data.use_case_fit_source !== 'baseline'));
   for (const p of targets) writeFileSync(p.file, setFitInYaml(readFileSync(p.file, 'utf8'), p.baseline.fit, 'baseline'));
   console.log(`\nWrote ${targets.length} component files.`);
 }

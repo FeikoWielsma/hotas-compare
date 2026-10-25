@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount, tick } from 'svelte';
-  import { fitGroupIds, fitGroupLabels, type FitGroup } from '../lib/fit-groups';
+  import { fitGroupIds, fitGroupLabels, toFitScore, type FitGroup } from '../lib/fit-groups';
   import { TIERS, parseTierList, serializeTierList, tierLabels, tierListText, type Tier, type TierItem } from '../lib/fit-tiers';
   import { useCases } from '../lib/catalog-ui';
   import type { UseCase } from '../lib/schema';
@@ -31,9 +31,9 @@
   const rankedCount = $derived(groupItems.filter((item) => tiers.has(item.id)).length);
   const title = $derived(`${fitGroupLabels[group].plural} for ${caseLabel(useCase)}`);
 
-  /** Site scores as a starting point; parts still on the unscored default start unranked. */
+  /** Site scores (or the spec baseline for unreviewed parts) as a starting point; half points round to a tier. */
   function fromSite() {
-    tiers = new Map(groupItems.filter((item) => item.scored).map((item) => [item.id, item.fit[useCase] as Tier]));
+    tiers = new Map(groupItems.filter((item) => item.scored).map((item) => [item.id, toFitScore(item.fit[useCase]) as Tier]));
   }
   function choose(nextCase: UseCase, nextGroup: FitGroup) {
     useCase = nextCase; group = nextGroup; sharedBy = null; selected = null; filter = ''; status = '';
@@ -132,8 +132,8 @@
   <div class="toolbar">
     <h2>{title}</h2>
     <span class="count">{rankedCount} of {groupItems.length} ranked</span>
-    <label class="check"><input type="checkbox" bind:checked={showSite} /> Show site scores</label>
-    <button type="button" class="link" onclick={() => { fromSite(); sharedBy = null; }}>Reset to site scores</button>
+    <label class="check"><input type="checkbox" bind:checked={showSite} /> Show starting scores</label>
+    <button type="button" class="link" onclick={() => { fromSite(); sharedBy = null; }}>Reset to starting scores</button>
     <button type="button" class="link" onclick={() => { tiers = new Map(); sharedBy = null; }}>Start blank</button>
   </div>
 
@@ -183,7 +183,7 @@
     <span class="img">{#if item.image}<img src={item.image} alt="" loading="lazy" />{/if}</span>
     <span class="brand">{item.brandName}</span>
     <span class="name">{item.name}</span>
-    {#if showSite}<span class="site">{item.scored ? `site ${item.fit[useCase]}` : 'unscored'}</span>{/if}
+    {#if showSite}<span class="site">{item.scored ? `${item.estimated ? 'estimate' : 'site'} ${item.fit[useCase]}` : 'unscored'}</span>{/if}
   </button>
 {/snippet}
 

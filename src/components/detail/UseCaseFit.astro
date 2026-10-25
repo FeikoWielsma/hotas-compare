@@ -5,6 +5,7 @@ import Pips from './Pips.astro';
 interface Props { fit: UseCaseFit; note?: string; source?: FitSource }
 const { fit, note, source } = Astro.props;
 const sourceNotes: Record<FitSource, string> = {
+  seeded: 'Early estimate from 1 (limited) to 5 (excellent), made when the catalog was seeded; not yet reviewed by hand.',
   baseline: 'Estimated from 1 (limited) to 5 (excellent) using the recorded controls and mechanics; not yet reviewed by hand.',
   community: 'Community score from 1 (limited) to 5 (excellent): the median of shared tier lists.',
 };

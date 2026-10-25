@@ -71,6 +71,7 @@ use_case_fit:
   airliner: 1
   space_hotas: 5
   space_hosas: 5
+use_case_fit_source: seeded
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2580s
