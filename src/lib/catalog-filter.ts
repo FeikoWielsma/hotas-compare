@@ -27,7 +27,7 @@ export interface CatalogFilters {
 }
 
 /** Filter a regional catalog projection. Unknown counts cannot meet a positive minimum. */
-const reviewTagWeight: Record<string, number> = { recommended: 30, mixed: 0, neutral: 0, avoid: -40 };
+const reviewTagWeight: Record<string, number> = { recommended: 60, mixed: 0, neutral: 0, avoid: -300 };
 
 export function filterCatalog(items: CatalogItem[], filters: CatalogFilters = {}): CatalogItem[] {
   const query = (filters.search ?? '').trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
@@ -60,30 +60,42 @@ export function filterCatalog(items: CatalogItem[], filters: CatalogFilters = {}
     else if (filters.sort === 'axes') result = b.totalAxes - a.totalAxes;
     else if (filters.sort === 'score') result = (overallScore(b) ?? -1) - (overallScore(a) ?? -1);
     else if (filters.sort === 'featured') {
-      // Known-good hardware first: our own verdict scores plus the latest external review tag
-      // (recommended lifts, avoid sinks below unreviewed items); then verified, current, documented.
+      // Shopping readiness and review signals first; card diversity follows grouping.
       result = featuredRank(b) - featuredRank(a);
     }
     return result || a.name.localeCompare(b.name);
   });
 }
 
-/** Recommended-sort weight: our verdict scores, the latest review tag, then data quality. */
+/** Shopping readiness, independent of whether the catalog stores a product as a bundle. */
+function setupWeight(item: CatalogItem): number {
+  if (['hotas_bundle', 'hosas_bundle', 'system', 'yoke_bundle'].includes(item.category)) return 80;
+  if (['stick_fixed', 'stick_combo', 'throttle', 'yoke'].includes(item.category)) return 60;
+  if (['pedals', 'quadrant'].includes(item.category)) return 20;
+  return 0;
+}
+
+/** Review signals outweigh documentation bonuses; avoid remains below unreviewed setups. */
 export function featuredRank(item: CatalogItem) {
-  return (overallScore(item) ?? 0) * 10 + (reviewTagWeight[item.reviewTag ?? ''] ?? 0)
+  return setupWeight(item) + (overallScore(item) ?? 0) * 20 + (reviewTagWeight[item.reviewTag ?? ''] ?? 0)
     + (item.verification === 'verified' ? 5 : 0)
     + (item.status === 'current' ? 2 : 0) + (item.images.length ? 1 : 0) + (item.totalLogicalButtons > 0 ? 1 : 0);
 }
 
-/** Human-readable reasons behind featuredRank, strongest first. */
+/** Human-readable factors behind the base rank and the card diversity pass. */
 export function rankReasons(item: CatalogItem): string[] {
   const out: string[] = [];
   const review = item.latestReview;
   if (review) out.push(`${review.reviewerName}: ${review.tag}${review.tag === 'avoid' ? ' (ranked lower)' : ''}`);
   const score = overallScore(item);
   if (score != null) out.push(`Our verdict ${Number(score.toFixed(1))}/5`);
+  const setup = setupWeight(item);
+  out.push(setup === 80 ? 'Complete setup bundle' : setup === 60 ? 'Main flight control' : setup === 20 ? 'Additional flight control' : 'Separate part or module (lower setup priority)');
   if (item.verification === 'verified') out.push('Specs verified');
   if (item.status === 'current') out.push('Currently sold');
+  if (item.images.length) out.push('Product photo available');
+  if (item.totalLogicalButtons > 0) out.push('Inputs documented');
+  out.push('First 12 cards balance categories and brands; family variants share one place');
   return out;
 }
 
@@ -137,7 +149,7 @@ export interface CatalogGroup {
  * Run after filtering: a group appears if any member matched and lists only matching members.
  * Groups keep the sort position of their best-placed member.
  */
-export function groupCatalog(items: CatalogItem[]): CatalogGroup[] {
+export function groupCatalog(items: CatalogItem[], sort?: string): CatalogGroup[] {
   const position = new Map(items.map((item, index) => [item.id, index]));
   const families = new Map<string, CatalogItem[]>();
   const loose: CatalogItem[] = [];
@@ -160,5 +172,29 @@ export function groupCatalog(items: CatalogItem[]): CatalogGroup[] {
   });
   for (const twins of groupHandVariants(loose)) groups.push({ key: `item|${twins[0].id}`, family: null, lead: twins[0], options: [{ label: '', variants: twins }] });
   const first = (group: CatalogGroup) => Math.min(...group.options.flatMap((option) => option.variants.map((item) => position.get(item.id)!)));
-  return groups.sort((a, b) => first(a) - first(b));
+  const ordered = groups.sort((a, b) => first(a) - first(b));
+  return sort === 'featured' ? diversifyFeatured(ordered) : ordered;
+}
+
+/** Soft repetition penalties applied to cards, never individual family members.
+ * No quotas: a weak part cannot earn a place merely by being a new category.
+ * After the first 12 cards the remaining results keep their base ranking.
+ */
+function diversifyFeatured(groups: CatalogGroup[]): CatalogGroup[] {
+  const remaining = [...groups];
+  const selected: CatalogGroup[] = [];
+  const categories = new Map<string, number>();
+  const brands = new Map<string, number>();
+  const score = ({ lead }: CatalogGroup) => featuredRank(lead)
+    - Math.min(80, 35 * (categories.get(lead.category) ?? 0) + 20 * (brands.get(lead.brand) ?? 0));
+  while (remaining.length && selected.length < 12) {
+    const eligible = remaining.filter((group) => group.lead.reviewTag !== 'avoid');
+    const pool = eligible.length ? eligible : remaining;
+    const best = pool.reduce((a, b) => score(b) > score(a) ? b : a);
+    selected.push(best);
+    remaining.splice(remaining.indexOf(best), 1);
+    categories.set(best.lead.category, (categories.get(best.lead.category) ?? 0) + 1);
+    brands.set(best.lead.brand, (brands.get(best.lead.brand) ?? 0) + 1);
+  }
+  return [...selected, ...remaining];
 }
