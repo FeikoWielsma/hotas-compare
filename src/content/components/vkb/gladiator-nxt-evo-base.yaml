@@ -1,5 +1,6 @@
 brand: vkb
 name: Gladiator NXT EVO Base
+sold_mainly_in_bundle: true
 category: base
 platform_compatibility:
   pc: supported

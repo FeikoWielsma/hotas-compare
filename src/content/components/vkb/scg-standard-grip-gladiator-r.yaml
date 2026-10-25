@@ -1,5 +1,6 @@
 brand: vkb
 name: Space Combat Grip (SCG) Standard (Right)
+sold_mainly_in_bundle: true
 category: grip
 platform_compatibility:
   pc: supported

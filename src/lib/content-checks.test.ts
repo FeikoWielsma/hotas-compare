@@ -23,6 +23,11 @@ const canonical = (value: string) => {
 };
 
 describe('content correctness (offline)', () => {
+  it('gives every curated bundle-preferred part a listed combo to navigate to', () => {
+    const parts = catalog.filter(p => p.collection === 'components' && 'sold_mainly_in_bundle' in p.data && p.data.sold_mainly_in_bundle);
+    expect(parts.length).toBeGreaterThan(0);
+    for (const part of parts) expect(catalog.some(p => p.collection === 'bundles' && 'components' in p.data && p.data.components.includes(part.id) && (!p.data.catalog_kind || p.data.catalog_kind === 'core')), part.id).toBe(true);
+  });
   it('offers every bundle-only part through a current, priced bundle', () => {
     const bundleOnly = catalog.filter((p) => p.collection === 'components' && 'sold_standalone' in p.data && p.data.sold_standalone === false).map((p) => p.id);
     // Regression: the X52 throttle is only sold in the X52 HOTAS and must never be recommended on its own.

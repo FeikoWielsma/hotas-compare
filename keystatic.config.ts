@@ -103,6 +103,7 @@ export default config({
           ],
           defaultValue: 'grip',
         }),
+        sold_mainly_in_bundle: fields.checkbox({ label: 'Usually bought in a combo (hidden by default in catalog)' }),
         catalog_kind: fields.select({
           label: 'Catalog kind (non-core hardware is hidden)',
           options: ['core', 'panel', 'accessory', 'controller_board'].map(value => ({ label: value, value })),
