@@ -102,3 +102,8 @@ platform_compatibility:
   notes: Manufacturer product page describes a plug-and-play HID USB rudder for Windows, Mac OS and Linux; configurator software is Windows only. Xbox and PS5 are not mentioned.
   sources:
   - https://mfg-sim.com/rudders/mfg-crosswind-v3-base.html
+
+upgrade_paths:
+- to: mfg/crosswind-hydraulic-damper
+  note: Optional damper add-on, sold separately. See the manufacturer for availability and fitting details.
+  source: https://mfg-sim.com/rudder-acessories/hydraulic-damper-universal-kit-for-v1-3-pedals.html

@@ -75,7 +75,7 @@ describe('catalog serialization', () => {
   it('derives pedal brake status, damper status, and optional damper add-on links without affecting non-pedals', async () => {
     collections.values.components = [
       ...collections.values.components,
-      { id: 'test/damper-kit', data: ComponentSchema.parse({ brand: 'test', name: 'Hydraulic Damper Kit', category: 'module' }) },
+      { id: 'test/damper-kit', data: ComponentSchema.parse({ brand: 'test', name: 'Hydraulic Damper Kit', category: 'module', catalog_kind: 'accessory' }) },
       { id: 'test/pedals-toe', data: ComponentSchema.parse({ brand: 'test', name: 'Toe Pedals', category: 'pedals', controls: [{ type: 'axis', kind: 'rudder', count: 1 }, { type: 'axis', kind: 'toe_brake', count: 2 }], hardware: { damper: 'optional', damper_addon: 'test/damper-kit', throw_deg: 38 } }) },
       { id: 'test/pedals-rudder', data: ComponentSchema.parse({ brand: 'test', name: 'Rudder Only Pedals', category: 'pedals', controls: [{ type: 'axis', kind: 'rudder', count: 1 }], hardware: { damper: 'built_in' } }) },
     ];
@@ -84,7 +84,7 @@ describe('catalog serialization', () => {
       pedalBrakes: 'toe_brakes',
       toeBrakeAxes: 2,
       damper: 'optional',
-      damperAddon: { id: 'test/damper-kit', name: 'Hydraulic Damper Kit' },
+      damperAddon: { id: 'test/damper-kit', name: 'Hydraulic Damper Kit', href: null },
       throwDeg: 38,
     });
     expect(items.find(i => i.id === 'test/pedals-rudder')).toMatchObject({

@@ -110,3 +110,8 @@ platform_compatibility:
   sources:
   - https://support.mozaracing.com/en/support/solutions/articles/70000684204-mrp-rudder-pedals
 software: MOZA Cockpit
+
+upgrade_paths:
+- to: moza/mrp-adjustable-damper
+  note: Optional damper add-on, sold separately. See the manufacturer for availability and fitting details.
+  source: https://eu.mozaracing.com/products/mrp-damper

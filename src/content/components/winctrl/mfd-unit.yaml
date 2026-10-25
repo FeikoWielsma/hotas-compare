@@ -1,6 +1,7 @@
 brand: winctrl
 name: MFD Unit
 category: module
+catalog_kind: panel
 platform_compatibility:
   pc: supported
   xbox: unknown

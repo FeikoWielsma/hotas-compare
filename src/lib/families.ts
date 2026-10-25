@@ -1,9 +1,10 @@
+import { isListed } from './visibility';
 import type { Family } from './schema';
 
 export interface FamilyEntry { id: string; data: Family }
 
 /** The minimum an item needs to take part in a family; CatalogItem satisfies it. */
-export interface FamilyItem { id: string; brand?: string; handedness?: readonly string[] }
+export interface FamilyItem { catalog_kind?: Parameters<typeof isListed>[0]['catalog_kind']; id: string; brand?: string; handedness?: readonly string[] }
 
 export interface FamilyMember<T> {
   id: string;
@@ -49,13 +50,14 @@ const sameHand = (a: FamilyItem, b: FamilyItem) => [...(a.handedness ?? [])].sor
 
 /**
  * The family an item belongs to, with its members resolved against `items`. Members absent from
- * `items` (e.g. filtered out) are left out; the current item is always kept. Null when the item
- * belongs to no family.
+ * `items` (e.g. filtered out) and hidden products are left out; a listed current item is always kept.
+ * Null when the current item is hidden or belongs to no family.
  */
 export function familyOf<T extends FamilyItem>(item: T, families: FamilyEntry[], items: T[]): FamilyView<T> | null {
+  if (!isListed(item)) return null;
   const family = families.find((entry) => entry.data.members.some((member) => member.id === item.id));
   if (!family) return null;
-  const byId = new Map(items.map((entry) => [entry.id, entry]));
+  const byId = new Map(items.filter(isListed).map((entry) => [entry.id, entry]));
   byId.set(item.id, item);
   const labels = [...new Set(family.data.members.map((member) => member.label))];
   const members = family.data.members.flatMap(({ id, label }) => {

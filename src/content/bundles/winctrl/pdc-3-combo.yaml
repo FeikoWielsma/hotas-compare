@@ -1,6 +1,7 @@
 brand: winctrl
 name: 3 PDC Combo
 category: system
+catalog_kind: panel
 platform_compatibility:
   pc: supported
   xbox: unknown

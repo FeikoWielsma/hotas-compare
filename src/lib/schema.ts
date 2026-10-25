@@ -342,6 +342,9 @@ export type GimbalType = z.infer<typeof GimbalTypeEnum>;
 export const DamperEnum = z.enum(['built_in', 'optional', 'none']);
 export type DamperType = z.infer<typeof DamperEnum>;
 
+// Optional classification keeps non-core hardware available to content and price tooling.
+export const CatalogKindEnum = z.enum(['core', 'panel', 'accessory', 'controller_board']);
+
 // Component Collection Schema
 export const HardwareSchema = z.object({
   /** Manufacturer's total, when the full individual axis mapping is unavailable. */
@@ -385,6 +388,7 @@ export const ComponentSchema = z.object({
   brand: z.string(),
   name: z.string(),
   category: ComponentCategoryEnum,
+  catalog_kind: CatalogKindEnum.optional(),
   platform_compatibility: PlatformCompatibilitySchema.optional(),
   status: ProductStatusEnum.default('current'),
   successor: z.string().min(1).optional(),
@@ -418,6 +422,7 @@ export const BundleSchema = z.object({
   brand: z.string(),
   name: z.string(),
   category: BundleCategoryEnum,
+  catalog_kind: CatalogKindEnum.optional(),
   platform_compatibility: PlatformCompatibilitySchema.optional(),
   status: ProductStatusEnum.default('current'),
   successor: z.string().min(1).optional(),

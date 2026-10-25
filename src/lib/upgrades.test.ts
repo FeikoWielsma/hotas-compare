@@ -29,7 +29,14 @@ describe('compatibleParts', () => {
 describe('resolveUpgradePaths', () => {
   it('omits superseded upgrade targets', () => {
     const old = c({ name: 'Old', category: 'grip', status: 'discontinued', successor: 't/grip-good' });
-    expect(resolveUpgradePaths('t/x', [{ to: 'old', note: 'Old option' }], new Map([['old', old]]), new Map())).toEqual([]);
+    expect(resolveUpgradePaths('t/x', [{ to: 'old', note: 'Old option' }], new Map([...components, ['old', old]]), new Map())).toEqual([]);
+  });
+  it('keeps an upgrade when its replacement is hidden, without linking hidden upgrade targets', () => {
+    const old = c({ name: 'Old', category: 'grip', status: 'discontinued', successor: 'hidden' });
+    const hidden = c({ name: 'Hidden', category: 'module', catalog_kind: 'panel' });
+    const targets = new Map([['old', old], ['hidden', hidden]]);
+    expect(resolveUpgradePaths('t/x', [{ to: 'old', note: 'Still available' }, { to: 'hidden', note: 'Accessory' }], targets, new Map()))
+      .toMatchObject([{ id: 'old', href: '/components/old' }, { id: 'hidden', href: null }]);
   });
   const bundles = new Map([['t/set', BundleSchema.parse({ brand: 'test', name: 'Set', category: 'hotas_bundle', components: ['t/base'] })]]);
   it('links components and bundles and keeps the note', () => {

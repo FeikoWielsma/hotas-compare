@@ -70,7 +70,7 @@
       {#if item.gimbalType}<span class={`gimbal ${item.gimbalType}`}>{gimbalLabels[item.gimbalType]}<Explain term={gimbalGlossaryKey[item.gimbalType]} /></span>{/if}
       {#if item.needsPedals}<span class="pedals">No twist · add pedals<Explain term="pedals" /></span>{/if}
       {#if item.pedalBrakes}<span class={`brakes ${item.pedalBrakes}`}>{item.pedalBrakes === 'toe_brakes' ? 'Toe brakes' : item.pedalBrakes === 'rudder_only' ? 'Rudder only' : 'Brakes: unknown'}</span>{/if}
-      {#if item.damper === 'built_in'}<span class="damper built_in">Damper: built-in</span>{:else if item.damper === 'optional'}{#if item.damperAddon}<a class="damper optional" href={`/components/${item.damperAddon.id}`} title={`Optional add-on: ${item.damperAddon.name}`}>Damper: optional</a>{:else}<span class="damper optional">Damper: optional</span>{/if}{:else if item.category === 'pedals' && !item.damper}<span class="damper unknown">Damper: unknown</span>{/if}
+      {#if item.damper === 'built_in'}<span class="damper built_in">Damper: built-in</span>{:else if item.damper === 'optional'}{#if item.damperAddon?.href}<a class="damper optional" href={item.damperAddon.href} title={`Optional add-on: ${item.damperAddon.name}`}>Damper: optional</a>{:else}<span class="damper optional" title={item.damperAddon ? `Optional add-on: ${item.damperAddon.name}` : undefined}>Damper: optional</span>{/if}{:else if item.category === 'pedals' && !item.damper}<span class="damper unknown">Damper: unknown</span>{/if}
       {#if rankInfo && rankReasons(item).length}<span class="why">Why here<Explain title="Why it's ranked here" text={rankReasons(item)} label={`Why ${item.name} is ranked here`} /></span>{/if}
     </div>{/if}
   </div>

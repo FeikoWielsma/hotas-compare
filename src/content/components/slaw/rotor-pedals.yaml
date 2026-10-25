@@ -75,3 +75,8 @@ platform_compatibility:
   notes: Manufacturer provides rudder calibration software for these pedals; the downloads page does not state an operating system. No Xbox or PS5 statement appears.
   sources:
   - https://slawdevice.com/en/content/7-downloads
+
+upgrade_paths:
+- to: slaw/slaw-damper-kit
+  note: Optional damper add-on, sold separately. See the manufacturer for availability and fitting details.
+  source: https://slawdevice.com/en/rudder-pedals/50-pre-order-rh-rotor-v2-rudder-pedals.html

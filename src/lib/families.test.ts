@@ -50,6 +50,21 @@ describe('familyOf', () => {
     expect(view.tiers.map((tier) => tier.label)).toEqual(['Mini', 'Mini Plus', 'Max']);
   });
 
+  it('excludes hidden members from every public family view without weakening integrity checks', () => {
+    const mixed = items.map(entry => entry.id === 'vkb/mini-r' || entry.id === 'vkb/plus-r'
+      ? { ...entry, catalog_kind: 'panel' as const } : entry);
+    const view = familyOf(mixed[0], [stecs], mixed)!;
+    expect(ids(view.members)).toEqual(['vkb/mini-l', 'vkb/plus-l', 'vkb/max']);
+    expect(ids(view.siblings)).toEqual(['vkb/mini-l', 'vkb/plus-l']);
+    expect(ids(view.lineup)).toEqual(['vkb/mini-l', 'vkb/plus-l', 'vkb/max']);
+    expect(view.tiers.flatMap(tier => ids(tier.members))).toEqual(ids(view.members));
+    expect(familyOf(mixed[1], [stecs], mixed)).toBeNull();
+    expect(familyOf(mixed[1], [stecs], [])).toBeNull();
+    expect(validateFamilies([stecs], mixed)).toEqual([]);
+    expect(validateFamilies([stecs], mixed.map(entry => entry.id === 'vkb/plus-r' ? { ...entry, brand: 'other' } : entry)))
+      .toContain('vkb/stecs: member vkb/plus-r is brand other, not vkb');
+  });
+
   it('returns null for an item outside every family', () => {
     expect(familyOf(items[5], [stecs], items)).toBeNull();
   });
