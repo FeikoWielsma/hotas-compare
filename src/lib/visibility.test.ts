@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from 'vitest';
 import fs from 'node:fs';
 import path from 'node:path';
 import { parse } from 'yaml';
-import { BrandSchema, BundleSchema, ComponentSchema } from './schema';
+import { BrandSchema, BundleSchema, ComponentSchema, FamilySchema } from './schema';
 import { getCatalogItems, loadCatalog } from './catalog';
 import { isListed, productPaths } from './visibility';
 import { compatibleParts, resolveUpgradePaths } from './upgrades';
@@ -20,7 +20,7 @@ describe('public product visibility', () => {
   it('excludes every hidden YAML item from detail routes and the shared catalog/brand/compare/wizard listing, while retaining raw content', async () => {
     collections.values = {
       components: readCollection('components', ComponentSchema), bundles: readCollection('bundles', BundleSchema),
-      brands: readCollection('brands', BrandSchema), mount_standards: [], reviewers: [],
+      brands: readCollection('brands', BrandSchema), mount_standards: [], reviewers: [], families: readCollection('families', FamilySchema),
     };
     const catalog = await loadCatalog();
     const listed = new Set((await getCatalogItems()).map(item => item.id));
@@ -46,7 +46,7 @@ describe('public product visibility', () => {
     const accessory = ComponentSchema.parse({ brand: 'test', name: 'Damper', category: 'module', catalog_kind: 'accessory' });
     const combo = BundleSchema.parse({ brand: 'test', name: 'Combo', category: 'system', components: ['test/base', 'test/damper'] });
     collections.values = {
-      brands: [{ id: 'test', data: BrandSchema.parse({ name: 'Test' }) }], reviewers: [], mount_standards: [],
+      brands: [{ id: 'test', data: BrandSchema.parse({ name: 'Test' }) }], reviewers: [], mount_standards: [], families: [],
       components: [{ id: 'test/base', data: base }, { id: 'test/damper', data: accessory }],
       bundles: [{ id: 'test/combo', data: combo }, { id: 'test/hidden', data: { ...combo, catalog_kind: 'panel' } }],
     };

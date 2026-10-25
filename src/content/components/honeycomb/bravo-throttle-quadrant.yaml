@@ -76,7 +76,9 @@ controls_evidence:
     remains unpublished. Indicator lights are outputs, not controls.
 hardware:
   gimbal: null
-  sensor: contactless_magnetic
+  # Owner correction in issue #10; manufacturer response is reported secondhand.
+  # Evidence limitations: docs/research/issue-10-honeycomb-sensors.md (2026-10-25).
+  sensor: potentiometer
   axes:
   - name: Lever 1
   - name: Lever 2
@@ -125,13 +127,22 @@ prices:
   url: https://flyhoneycomb.com/products/bravo-throttle-quadrant
   verified: '2026-10-21'
   source: manual
+verdict:
+  author: feiko
+  hands_on: false
+  take: Six configurable levers cover GA through four-engine airliners, with an
+    autopilot panel and trim wheel. The lever axes use potentiometers, so buyers
+    prioritizing contactless sensing should consider alternatives.
+  cons:
+  - Potentiometer wear and input jitter are a longevity concern; a 2018 forum report attributes Honeycomb's choice to quality potentiometers and the cost of Hall sensors (original statement not independently verified)
 verification: draft
 images:
 - file: /images/honeycomb/bravo-throttle-quadrant.jpg
   source: https://flyhoneycomb.com/products/bravo-throttle-quadrant
   caption: Bravo Throttle Quadrant
 sources:
-- https://honeycomb.com
+- https://www.avsim.com/forums/topic/534412-new-throttle-quadrant-considerations/
+- https://github.com/FeikoWielsma/hotas-compare/issues/10
 - https://flyhoneycomb.com/products/bravo-throttle-quadrant
 - https://flyhoneycomb.com/cdn/shop/files/HC003042_BravoThrottleQuadrant_1.jpg?v=1756653266&width=2000
 platform_compatibility:

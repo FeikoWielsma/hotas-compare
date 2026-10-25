@@ -2,6 +2,7 @@ brand: slaw
 name: Viper V2 Rudder Pedals
 category: pedals
 status: discontinued
+successor: slaw/rx-viper-v3-rudder-pedals
 handedness: n/a
 mount: null
 controls:

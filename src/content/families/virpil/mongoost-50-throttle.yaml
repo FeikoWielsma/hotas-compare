@@ -1,0 +1,7 @@
+name: VPC MongoosT-50 Throttle
+brand: virpil
+axis: Generation
+description: The CM3 throttle and its CM4 successor.
+members:
+- { id: virpil/mongoost-50cm3-throttle, label: CM3 }
+- { id: virpil/mongoost-50cm4-throttle, label: CM4 }

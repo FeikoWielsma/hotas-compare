@@ -9,6 +9,7 @@ platform_compatibility:
   sources:
     - https://virpil-controls.eu/vpc-mongoost-50cm3-throttle-b-stock.html
 status: discontinued
+successor: virpil/mongoost-50cm4-throttle
 release_year: 2021
 handedness: n/a
 mount: null

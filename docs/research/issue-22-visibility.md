@@ -82,8 +82,18 @@ Panel-only bundles also hidden: `winctrl/efis-combo`, `winctrl/glareshield-3`, `
 ## Verification
 
 - `pnpm check`: 0 errors, 0 warnings; 5 existing Zod deprecation hints.
-- `pnpm test`: 13 files / 78 tests passed, including real-YAML route/listing and hidden-reference regressions.
+- `pnpm test`: 16 files / 104 tests passed, including real-YAML route/listing and hidden-reference regressions.
 - `pnpm build`: production build and Pagefind index passed (288 indexed pages); existing large-chunk warning remains.
 - Generated-output audit: all 51 hidden records have no detail HTML route, catalog API entry, or internal HTML link; 274 public products remain.
 - Browser: BlackBox catalog search gives zero cards; Crosswind Combo retains damper as plain text and pedal card; production MRP page retains damper upgrade text with only an external manufacturer source link; hidden BlackBox Mk3 URL returns 404. Production Pagefind BlackBox search returns no hidden product URL.
-- Browser limitation: preview screenshots time out, fallback browser became unresponsive when resizing, and preview resize reports a requested 390px viewport while actual `innerWidth` stays 1280px. Desktop behavior was verified; narrow-width visual evidence could not be obtained.
+- Narrow browser verification completed after merging main: Brave measured 312 CSS pixels at its existing zoom. BlackBox search gives zero cards, Crosswind Combo retains plain-text damper contents, and the MRP pedal add-on has only its external source link; these pages have no horizontal overflow. The visible CM3-to-CM4 successor banner was also verified at 390 CSS pixels without horizontal overflow. Temporary viewport overrides were reset. T3 preview resize still reports 390 requested but 1280 actual; fallback browser measurements establish the narrow result.
+
+## Integration with merged main (#23, #24, #25)
+
+Merged `origin/main` at `0793fb2`, retaining sensor/verdict updates, successor fields/filtering, and family data/helpers. The only textual conflict was the catalog imports; both imports remain.
+
+Family validation now uses the full derived inventory before public visibility filtering, so hidden members remain valid content references. Public `familyOf` members, tiers, siblings, and switcher lineup exclude hidden products, including a hidden current item. Integrity errors involving retained hidden members still fail validation.
+
+Successor resolution validates all retained records before suppressing links involving hidden products. Public catalog serialization omits hidden successor IDs, preventing them from affecting discontinued filtering or wizard recommendations. Upgrade targets with a hidden replacement remain available; their hidden targets render as plain text. Regression tests cover hidden component/bundle successors, invalid hidden successor records, family exclusion, and validation with hidden members.
+
+Post-merge checks: `pnpm check` passes (0 errors/warnings; 5 existing hints), `pnpm test` passes (104 tests), and `pnpm build` plus Pagefind passes (288 pages). The first build attempt encountered a Windows directory lock held by the previous static server; stopping that server resolved it. The fresh production-output audit confirms 51 hidden records have no generated route, catalog API entry, or internal HTML link; the visible CM3 successor remains intact.

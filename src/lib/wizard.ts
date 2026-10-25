@@ -1,6 +1,7 @@
 import type { CatalogItem } from './catalog';
 import { resolvePrice, scoreItemForUseCase } from './derive';
 import type { BudgetTier, Currency, Region, Setup, UseCase } from './schema';
+import { isSuperseded } from './successors';
 
 export const PIECES = ['stick', 'second_stick', 'throttle', 'pedals', 'yoke', 'quadrant'] as const;
 export type WizardPiece = typeof PIECES[number];
@@ -200,7 +201,14 @@ export function recommendLoadout(items: CatalogItem[], input: WizardAnswers, reg
 export function matchCuratedSetups(setups: WizardSetup[], items: CatalogItem[], input: WizardAnswers, region: Region) {
   const answers = normalizeWizardAnswers(input);
   const map = new Map(items.map((item) => [item.id, item]));
-  return setups.filter((setup) => setup.data.use_case === answers.useCase && setup.data.budget_tier === budgetTier(answers.budgetMax)).map((setup) => {
+  return setups.filter((setup) => setup.data.use_case === answers.useCase && setup.data.budget_tier === budgetTier(answers.budgetMax))
+    .filter((setup) => setup.data.items.every((ref) => {
+      const item = map.get(ref.id);
+      return !item || (!isSuperseded(item) && item.componentIds.every((id) => {
+        const member = map.get(id);
+        return !member || !isSuperseded(member);
+      }));
+    })).map((setup) => {
     const included = setup.data.items.map((ref) => ({ ...ref, item: map.get(ref.id) }));
     const unknownPrice = included.some(({ item }) => !item || priceOf(item, region) === undefined);
     const totalPrice = unknownPrice ? null : Math.round(included.reduce((sum, { item }) => sum + priceOf(item!, region)!, 0) * 100) / 100;

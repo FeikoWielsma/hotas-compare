@@ -2,6 +2,8 @@
 import { getCollection } from 'astro:content';
 import { productPaths } from '../../lib/visibility';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import SuccessorBanner from '../../components/detail/SuccessorBanner.astro';
+import { resolveSuccessor } from '../../lib/successors';
 import ProductHero from '../../components/detail/ProductHero.astro';
 import Verdict from '../../components/detail/Verdict.astro';
 import UseCaseFit from '../../components/detail/UseCaseFit.astro';
@@ -59,6 +61,7 @@ const groups = [
 ].map(g => ({ ...g, known: g.rows.filter(([, v]) => v), missing: g.rows.filter(([, v]) => !v).map(([l]) => l) }));
 const provides = c.mount?.provides ? mountMap.get(c.mount.provides) : null;
 const accepts = (c.mount?.accepts ?? []).map(x => ({ id: x, data: mountMap.get(x) }));
+const successor = c.status === 'discontinued' ? resolveSuccessor(id, c, componentMap, bundleMap) : null;
 const showFit = !isDefaultFit(c.use_case_fit);
 const upgrades = resolveUpgradePaths(id, c.upgrade_paths, componentMap, bundleMap);
 const fits = compatibleParts(c, componentMap, mountMap);
@@ -74,6 +77,7 @@ const sections = [
   <ProductHero id={id} name={c.name} brand={c.brand} brandName={brandName} category={c.category} status={c.status} verification={c.verification}
     releaseYear={c.release_year} handedness={c.handedness} images={c.images} prices={c.prices} notes={brand?.landed_cost_notes} compatibility={c.platform_compatibility}
     specs={specs} crumb={{ href: '/#hardware', label: 'Components' }} sections={sections} />
+  <SuccessorBanner successor={successor} />
   {c.verdict && <Verdict verdict={c.verdict} />}
   <div id="controls" class="anchor"><ControlInventory sections={[c]} /></div>
   {showFit && <UseCaseFit fit={c.use_case_fit} />}

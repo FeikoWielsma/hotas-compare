@@ -1,0 +1,9 @@
+---
+interface Props { successor: { name: string; href: string } | null }
+const { successor } = Astro.props;
+---
+{successor && <aside aria-label="Product successor"><p>This product is discontinued. Replaced by <a href={successor.href}>{successor.name}</a>.</p></aside>}
+<style>
+  aside { padding: 1rem 1.25rem; margin: 1rem 0 2rem; border: 1px solid var(--color-rule); border-left: 3px solid var(--color-accent); background: var(--color-surface); overflow-wrap: anywhere; }
+  p { margin: 0; } a { color: var(--color-accent); font-weight: 600; }
+</style>

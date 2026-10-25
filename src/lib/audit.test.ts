@@ -18,7 +18,7 @@ const benchmarkIds = [
 describe('catalog audit', () => {
   it('reports accurate numbers for the catalog at a fixed reference date', async () => {
     collections.values = {
-      brands: [{ id: 'test', data: BrandSchema.parse({ name: 'Test' }) }], mount_standards: [], reviewers: [],
+      brands: [{ id: 'test', data: BrandSchema.parse({ name: 'Test' }) }], mount_standards: [], reviewers: [], families: [],
       components: [
         { id: 'test/old', data: ComponentSchema.parse({ brand: 'test', name: 'Old', category: 'base', verification: 'draft', prices: [{ region: 'EU', currency: 'EUR', amount: 5, store: 'Test', verified: '2026-01-01' }] }) },
         { id: 'test/no-price', data: ComponentSchema.parse({ brand: 'test', name: 'No price', category: 'grip', verification: 'verified' }) },

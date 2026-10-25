@@ -1,5 +1,6 @@
 import { isListed } from './visibility';
 import { checkMountCompatibility } from './derive';
+import { isSuperseded, resolveSuccessor } from './successors';
 import type { Bundle, Component, MountStandard, ReviewTag, UpgradePath } from './schema';
 
 export interface LinkedItem { id: string; name: string; href: string; reviewTag: ReviewTag | null }
@@ -12,7 +13,10 @@ const latestTag = (data: Component | Bundle): ReviewTag | null =>
 export function resolveUpgradePaths(
   owner: string, paths: UpgradePath[], components: Map<string, Component>, bundles: Map<string, Bundle>,
 ): ResolvedUpgrade[] {
-  return paths.map((path) => {
+  return paths.filter((path) => {
+    const target = components.get(path.to) ?? bundles.get(path.to);
+    return !target || !isSuperseded(target) || !resolveSuccessor(path.to, target, components, bundles);
+  }).map((path) => {
     const component = components.get(path.to), bundle = bundles.get(path.to);
     const data = component ?? bundle;
     if (!data) throw new Error(`"${owner}" has an upgrade path to missing item "${path.to}"`);
