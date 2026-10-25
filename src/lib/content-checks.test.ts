@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest';
 import sharedProductPages from './fixtures/shared-product-pages.json';
 import { derivePedalBrakes } from './catalog';
 import { contentFiles, products, readContent, urls } from '../../scripts/content';
+import { PriceHistorySchema } from './schema';
 import { resolveSuccessor } from './successors';
 
 const catalog = products();
@@ -23,6 +24,13 @@ const canonical = (value: string) => {
 };
 
 describe('content correctness (offline)', () => {
+  it('keeps component and bundle price histories valid, unique and capped', () => {
+    for (const product of catalog) {
+      for (const price of readContent(product.file).prices ?? []) {
+        if (price.history !== undefined) expect(PriceHistorySchema.safeParse(price.history).success, product.id).toBe(true);
+      }
+    }
+  });
   it('gives every curated bundle-preferred part a listed combo to navigate to', () => {
     const parts = catalog.filter(p => p.collection === 'components' && 'sold_mainly_in_bundle' in p.data && p.data.sold_mainly_in_bundle);
     expect(parts.length).toBeGreaterThan(0);

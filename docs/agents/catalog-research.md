@@ -13,6 +13,7 @@ For an extended research run, finish each batch with supported corrections, rema
 - Preserve unknown, unsupported, and conflicting states distinctly. Missing evidence does not establish false, zero, or incompatibility. A complete physical inventory does not verify every optional property or the entire product record.
 - Match product identity before transferring facts: handedness, Standard/Premium, hardware revision, standalone component versus bundle, and regional SKU can matter.
 - Distinguish physical controls from electrical contacts and software mappings; installed controls from spare modules; and bare hardware dimensions/weight from packaged or bundle totals. Follow the current schema and control-inventory tests. The [integration review](../research/controls-integration-review.md) contains worked examples.
+- Price entries may include `history: [{amount, verified}]` for previous observations in the same currency and listing context. Keep entries oldest first (newest last), capped at the last 10 unique amount/date pairs. `pnpm prices:refresh --write` records the previous amount and verification date only when the amount changes; `--touch` alone does not add history.
 - For prices, preserve currency, region, VAT treatment, price basis, and exact listing. Separate deposits, sale/street prices, and full purchase prices. Treat blocked or JavaScript-only pages as unverifiable until inspected, rather than declaring their products unavailable.
 
 ## Integrate and verify

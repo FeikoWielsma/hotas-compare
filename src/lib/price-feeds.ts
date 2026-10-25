@@ -1,3 +1,6 @@
+import { parse, stringify } from 'yaml';
+import { PriceHistorySchema } from './schema.ts';
+
 /**
  * Store price feeds: turn a stored price URL into a machine-readable request, and read the
  * current price back out. Pure functions; the network lives in scripts/refresh-prices.ts.
@@ -107,7 +110,7 @@ export function updatePriceText(text: string, region: string, url: string, amoun
     let end = start + 1;
     while (end < lines.length && lines[end].startsWith(indent) && !lines[end].startsWith(`${head[1]}- `)) end++;
     const block = lines.slice(start, end);
-    const field = (key: string) => block.findIndex((line, i) => (i === 0 ? line.replace(/^(\s*)- /, '$1  ') : line).trim().startsWith(`${key}:`));
+    const field = (key: string) => block.findIndex((line, i) => (i === 0 ? line.replace(/^(\s*)- /, '$1  ') : line).startsWith(`${indent}${key}:`));
     const urlAt = field('url');
     if (urlAt < 0 || block[urlAt].split('url:')[1].trim().replace(/^['"]|['"]$/g, '') !== url) continue;
     const set = (key: string, value: string) => {
@@ -115,6 +118,22 @@ export function updatePriceText(text: string, region: string, url: string, amoun
       if (at > 0) block[at] = `${indent}${key}: ${value}`;
       else block.push(`${indent}${key}: ${value}`);
     };
+    // Parse the matching entry so nested history fields cannot shadow current values.
+    const previous = parse(block.join('\n'))[0];
+    if (previous.amount !== amount) {
+      const history = [...PriceHistorySchema.parse(previous.history ?? []), { amount: previous.amount, verified: previous.verified }];
+      const unique = history.filter((entry, index) => !history.slice(index + 1).some(
+        (later) => later.amount === entry.amount && later.verified === entry.verified,
+      ));
+      const nextHistory = PriceHistorySchema.parse(unique.slice(-10));
+      const historyAt = block.findIndex((line) => line.startsWith(`${indent}history:`));
+      if (historyAt >= 0) {
+        let historyEnd = historyAt + 1;
+        while (historyEnd < block.length && (block[historyEnd].startsWith(`${indent}  `) || block[historyEnd].startsWith(`${indent}- `))) historyEnd++;
+        block.splice(historyAt, historyEnd - historyAt);
+      }
+      block.push(...stringify({ history: nextHistory }).trimEnd().split('\n').map((line) => indent + line));
+    }
     set('amount', String(amount));
     set('verified', `'${verified}'`);
     set('source', 'feed');

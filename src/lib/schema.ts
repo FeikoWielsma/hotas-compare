@@ -222,11 +222,21 @@ export const ControlItemSchema = z.discriminatedUnion('type', [
 export type ControlItem = z.infer<typeof ControlItemSchema>;
 
 // Price Schema
+export const PriceHistorySchema = z.array(z.object({
+  amount: z.number().nonnegative(),
+  verified: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Must be YYYY-MM-DD'),
+})).max(10).refine(
+  (history) => new Set(history.map(({ amount, verified }) => `${amount}:${verified}`)).size === history.length,
+  'Price history must not contain duplicate amount/date pairs',
+);
+
 export const PriceSchema = z.object({
   kind: z.enum(['official', 'street']).default('official'),
   region: RegionEnum,
   currency: CurrencyEnum,
   amount: z.number().nonnegative(),
+  /** Previous observations, oldest first; at most 10 unique amount/date pairs. */
+  history: PriceHistorySchema.optional(),
   incl_vat: z.boolean().default(true),
   store: z.string(),
   url: z.string().url().optional(),

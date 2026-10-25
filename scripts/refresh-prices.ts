@@ -2,7 +2,7 @@
  * Check stored prices against store feeds (VKB US, flightsimcontrols, WINCTRL, VIRPIL).
  *
  *   pnpm prices:refresh                   report only
- *   pnpm prices:refresh --write           apply changed amounts (source: feed, verified: today)
+ *   pnpm prices:refresh --write           apply changed amounts and retain previous observations (last 10, newest last)
  *   pnpm prices:refresh --write --touch   also bump `verified` on prices that are unchanged
  *   --store=<host>  --brand=<id>  --report=<file.md>
  *   --force         also write big moves (> 25%) and announced products, normally held for review
