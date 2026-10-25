@@ -238,7 +238,7 @@
           {#if loadout}
             {#if loadout.complete}
               {#if loadout.overBudget !== undefined}
-                <p class="notice over-budget"><strong>{money(loadout.overBudget)} over your budget.</strong> Nothing we recommend for these controls fits {budgetMoney(answers.budgetMax)}, so this is the cheapest setup we would recommend.</p>
+                <p class="notice over-budget"><strong>{money(loadout.overBudget)} over your budget.</strong> Nothing we recommend for these controls fits {budgetMoney(answers.budgetMax)}, so this is the setup we would recommend if you can stretch it.</p>
               {:else}
                 <p class="success">All selected controls fit within your regional budget.</p>
               {/if}

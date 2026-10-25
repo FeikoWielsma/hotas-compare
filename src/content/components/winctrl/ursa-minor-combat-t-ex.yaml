@@ -57,6 +57,14 @@ controls_evidence:
     two of them. The 35 mm push-button travel is printed in the manual; it is not converted to 0.35 mm.
 connectivity:
   standalone_usb: false
+use_case_fit:
+  modern_jet: 5
+  heli: 2
+  ww2: 4
+  ga: 3
+  airliner: 3
+  space_hotas: 5
+  space_hosas: 2
 prices:
 - region: UK
   currency: GBP

@@ -1,6 +1,7 @@
 import type { CatalogItem } from './catalog';
 import { resolvePrice, scoreItemForUseCase } from './derive';
 import type { BudgetTier, Currency, Region, Setup, UseCase } from './schema';
+import { humanize } from './labels';
 import { isSuperseded } from './successors';
 
 export const PIECES = ['stick', 'second_stick', 'throttle', 'collective', 'pedals', 'yoke', 'quadrant'] as const;
@@ -175,7 +176,15 @@ const lightRudderStandIns: StandIn[] = [
   { role: 'quadrant', via: 'throttle_axis', penalty: 10, note: 'Built-in throttle levers stand in for a separate quadrant' },
   { role: 'throttle', via: 'throttle_axis', penalty: 10, note: 'Built-in throttle lever stands in for a separate throttle' },
 ];
+// On a tight budget a stick's twist axis is the rudder; pedals are the first upgrade once the budget allows.
+const twistRudderStandIn = (penalty: number, note: string): StandIn[] => [{ role: 'pedals', via: 'yaw_axis', penalty, note }];
+const combatRudderStandIns = twistRudderStandIn(20, 'Stick twist stands in for rudder pedals on a budget; add pedals later for finer rudder control');
 export const STAND_INS: Partial<Record<UseCase, StandIn[]>> = {
+  modern_jet: combatRudderStandIns,
+  space_hotas: combatRudderStandIns,
+  space_hosas: combatRudderStandIns,
+  // Taildraggers lean on the rudder for takeoff and landing, so pedals win sooner than for jets.
+  ww2: twistRudderStandIn(30, 'Stick twist stands in for rudder pedals on a budget; pedals with toe brakes make taildragger takeoffs and landings much easier'),
   // Rudder is mostly used on takeoff, landing and crosswind, so an integrated axis is a sound budget start.
   airliner: lightRudderStandIns,
   ga: lightRudderStandIns,
@@ -208,19 +217,19 @@ function roleVariants(roles: WizardPiece[], primary: CatalogItem[], answers: Wiz
 /** A 1/5 fit marks hardware the wizard never recommends for that flying style. */
 const LAST_RESORT_FIT = 1;
 const isLastResort = (item: CatalogItem, useCase: UseCase) => item.use_case_fit[useCase] <= LAST_RESORT_FIT;
+/** A 2/5 fit is a fallback: it scores low enough to lose to anything better and carries a warning when shown. */
+const LIMITED_FIT = 2;
 /** Unreviewed hardware must be clearly better than a reviewed alternative before it is recommended. */
 const REVIEWS_PENDING_PENALTY = 12;
-export function scoreWizardItem(item: CatalogItem, answers: WizardAnswers, region: Region) {
+const NO_STICK: CatalogItem['category'][] = ['throttle', 'pedals', 'quadrant', 'module', 'base'];
+/** How well one control suits the answers, before its price is weighed against the budget. */
+function qualityOf(item: CatalogItem, answers: WizardAnswers) {
   const fit = scoreItemForUseCase(item.use_case_fit, item.verdict, answers.useCase);
   let score = fit.score;
   const explanations = [...fit.breakdown];
   const warnings: string[] = [];
-  const price = priceOf(item, region);
-  if (price !== undefined && price <= answers.budgetMax) {
-    score += 5 * (1 - price / answers.budgetMax);
-    explanations.push('+ Regional price fits within the total budget; package cost checked separately');
-  }
-  if (hasTwist(item) && answers.needsTwist) {
+  // Only the stick's twist replaces pedals; a throttle's Z axis or rudder rocker earns no yaw bonus.
+  if (hasTwist(item) && answers.needsTwist && !NO_STICK.includes(item.category)) {
     score += 12;
     const twist = item.axes?.find((axis) => /twist|(^|[ _-])r?z($|[ _-])/i.test(axis.name));
     explanations.push(/hall|magnetic|contactless|tmr/i.test(twist?.sensor ?? '')
@@ -248,6 +257,27 @@ export function scoreWizardItem(item: CatalogItem, answers: WizardAnswers, regio
   }
   if (item.reviewsPending) warnings.push(`${item.name} has no published reviews yet: treat it as a tentative pick.`);
   if (item.verification !== 'verified') warnings.push('Draft specifications: verify before buying.');
+  return { score, explanations, warnings };
+}
+/**
+ * `members` are a bundle's parts. A bundle without its own editorial verdict is judged like its parts bought
+ * separately (add-on modules aside), so it wins on price rather than on how its fit is averaged.
+ */
+export function scoreWizardItem(item: CatalogItem, answers: WizardAnswers, region: Region, members: CatalogItem[] = []) {
+  const parts = item.verdict ? [] : members.filter((member) => member.category !== 'module');
+  let { score, explanations, warnings } = qualityOf(item, answers);
+  if (parts.length) {
+    const scored = parts.map((part) => qualityOf(part, answers));
+    score = scored.reduce((sum, part) => sum + part.score, 0) / scored.length;
+    // Bonus lines read the same for every part; fit and verdict lines name the part they describe.
+    explanations = [...new Set(scored.flatMap((part, index) => part.explanations.map((line) => /^[+-] /.test(line) ? line : `${parts[index].name}: ${line}`)))];
+    warnings = [...new Set([...warnings, ...scored.flatMap((part) => part.warnings)])];
+  }
+  const price = priceOf(item, region);
+  if (price !== undefined && price <= answers.budgetMax) {
+    score += 5 * (1 - price / answers.budgetMax);
+    explanations.push('+ Regional price fits within the total budget; package cost checked separately');
+  }
   if (resolvePrice(item.prices, region).isStale) warnings.push('Regional price is over 90 days old.');
   return { score, explanations, warnings };
 }
@@ -300,7 +330,9 @@ function candidates(items: CatalogItem[], answers: WizardAnswers, region: Region
       // Twist is required on the primary stick if yaw cannot be supplied by selected pedals.
       if (answers.needsTwist && assignment.includes('stick') && !hasTwist(sticks[assignment.indexOf('stick')])) continue;
       if (answers.needsTwist && !answers.piecesNeeded.includes('stick') && assignment.includes('second_stick') && !hasTwist(sticks[assignment.indexOf('second_stick')])) continue;
-      const scores = group.map((item) => scoreWizardItem(item, answers, region));
+      const scores = group.map((item) => scoreWizardItem(item, answers, region, item.item_type === 'bundle' ? item.componentIds.flatMap((id) => map.get(id) ?? []) : []));
+      const limitedWarnings = [...new Set([...group, ...members])].filter((item) => item.use_case_fit[answers.useCase] <= LIMITED_FIT)
+        .map((item) => `${item.name} is rated ${item.use_case_fit[answers.useCase]}/5 for ${humanize(answers.useCase)}: a last-resort pick when nothing better fits the budget.`);
       const score = scores.reduce((sum, item) => sum + item.score, 0) / scores.length;
       for (const { roles, standIns } of roleVariants([...assignment, ...otherRoles], primary, answers)) {
         if (!roles.length || roles.some((role) => !answers.piecesNeeded.includes(role))) continue;
@@ -310,7 +342,7 @@ function candidates(items: CatalogItem[], answers: WizardAnswers, region: Region
             ...(roles.includes('second_stick') ? ['+ Left-hand or ambidextrous control supplies the second stick'] : []),
             ...(collective ? ['+ Dedicated collective with a long, friction-held stroke'] : []),
             ...standIns.map((standIn) => `+ ${standIn.note}`)],
-          warnings: [...new Set(scores.flatMap((item) => item.warnings))] });
+          warnings: [...new Set([...scores.flatMap((item) => item.warnings), ...limitedWarnings])] });
       }
     }
   }
@@ -362,11 +394,28 @@ function search(options: RecommendedPiece[], answers: WizardAnswers, seed: Recom
   }
   const complete = states.filter((state) => answers.piecesNeeded.length > 0 && answers.piecesNeeded.every((role) => state.roles.includes(role)));
   if (!complete.length) return undefined;
-  if (cheapest) return complete.sort((a, b) => a.price - b.price || b.score - a.score)[0];
+  if (cheapest) return preferBundles(complete.sort((a, b) => a.price - b.price || b.score - a.score)[0], options);
   // Among equally scored setups, keep the one sharing most picks with the current result, then the cheapest.
   const top = Math.max(...complete.map((state) => state.score));
   const shared = (state: State) => state.pieces.filter((piece) => prefer.some((ids) => sameIds(ids, idsOf(piece)))).length;
-  return complete.filter((state) => top - state.score < 1e-6).sort((a, b) => shared(b) - shared(a) || a.price - b.price)[0];
+  return preferBundles(complete.filter((state) => top - state.score < 1e-6).sort((a, b) => shared(b) - shared(a) || a.price - b.price)[0], options);
+}
+const sameSet = (a: string[], b: string[]) => a.length === b.length && [...a].sort().every((value, index) => value === [...b].sort()[index]);
+/**
+ * Bundles are scored as a whole and separate parts one by one, so the search can pick the parts of a bundle
+ * separately. When the same hardware in the same roles costs less as the bundle, buy the bundle.
+ */
+function preferBundles<T extends { pieces: RecommendedPiece[]; price: number }>(state: T, options: RecommendedPiece[]): T {
+  let pieces = state.pieces;
+  for (const bundle of options.filter((option) => option.items.length === 1 && option.items[0].item_type === 'bundle')) {
+    const members = bundle.items[0].componentIds;
+    const parts = pieces.filter((piece) => !piece.pinned && piece.items.length === 1 && members.includes(piece.items[0].id));
+    if (!sameSet(parts.map((piece) => piece.items[0].id), members) || !sameSet(parts.flatMap((piece) => piece.roles), bundle.roles)
+      || !sameSet(parts.flatMap((piece) => piece.standIns), bundle.standIns) || bundle.price >= parts.reduce((sum, piece) => sum + piece.price, 0)) continue;
+    const at = pieces.indexOf(parts[0]);
+    pieces = pieces.flatMap((piece, index) => index === at ? [bundle] : parts.includes(piece) ? [] : [piece]);
+  }
+  return pieces === state.pieces ? state : { ...state, pieces, price: pieces.reduce((sum, piece) => sum + piece.price, 0) };
 }
 /** Names the first new constraint a pinned pick breaks, checking the broadest cause first. */
 function pickMismatch(ids: WizardPick, items: CatalogItem[], answers: WizardAnswers, region: Region): string {
@@ -379,6 +428,8 @@ function pickMismatch(ids: WizardPick, items: CatalogItem[], answers: WizardAnsw
   if (answers.mountType === 'desk' && !offered({ ...answers, needsTwist: false })) return 'Requires a desk mount or cockpit rig and cannot sit loose on a desk.';
   return 'Has no twist axis, and without pedals the stick must now provide yaw.';
 }
+/** Over budget, setups up to this multiple of the cheapest acceptable setup's price compete on score. */
+const OVER_BUDGET_TOLERANCE = 1.1;
 /** Every way to take one role variant per pin without two pins sharing a role or hardware. */
 function seeds(groups: RecommendedPiece[][]): RecommendedPiece[][] {
   return groups.reduce<RecommendedPiece[][]>((combos, group) => combos.flatMap((combo) => group
@@ -398,6 +449,7 @@ export function recommendLoadout(items: CatalogItem[], input: WizardAnswers, reg
   const map = new Map(items.map((item) => [item.id, item]));
   // Bundles average their members' fit, so check each member: a pack must not slip in rejected pedals.
   const rejected = (item: CatalogItem): boolean => isLastResort(item, answers.useCase) || item.componentIds.some((id) => { const member = map.get(id); return !!member && rejected(member); });
+  const limited = (item: CatalogItem): boolean => item.use_case_fit[answers.useCase] <= LIMITED_FIT || item.componentIds.some((id) => { const member = map.get(id); return !!member && limited(member); });
   const options = candidates(items, answers, region).filter((option) => !option.items.some(rejected));
   const dropped: DroppedPick[] = [];
   const drop = (ids: WizardPick, reason: string) => dropped.push({ ids, reason, items: ids.flatMap((id) => map.get(id) ? [map.get(id)!] : []) });
@@ -430,13 +482,19 @@ export function recommendLoadout(items: CatalogItem[], input: WizardAnswers, reg
       drop(idsOf(pin[0]), pin[0].price > answers.budgetMax ? 'Over the new budget on its own.' : 'Does not fit the new budget alongside your other controls.');
     }
   }
-  // Rather than an empty result or rejected hardware, show the cheapest recommended setup over budget.
+  // Rather than an empty result or rejected hardware, show the cheapest recommended setup over budget. A buyer who
+  // has to stretch anyway is not steered to last-resort hardware while a setup without it exists, and a clearly
+  // better setup costing only a little more than the cheapest one wins.
   let overBudget: number | undefined;
   if (!best) {
     const relaxed = { ...answers, budgetMax: Infinity };
-    const cheapest = seeds(pins).map((seed) => search(options, relaxed, seed, prefer, true)).find(Boolean) ?? search(options, relaxed, [], prefer, true);
+    const cheapestOf = (pool: RecommendedPiece[]) => seeds(pins).map((seed) => search(pool, relaxed, seed, prefer, true)).find(Boolean) ?? search(pool, relaxed, [], prefer, true);
+    const sound = options.filter((option) => !option.items.some(limited));
+    let pool = sound;
+    let cheapest = cheapestOf(sound);
+    if (!cheapest) { pool = options; cheapest = cheapestOf(options); }
     if (cheapest) {
-      best = search(options, { ...answers, budgetMax: cheapest.price }, cheapest.pieces.filter((piece) => piece.pinned), prefer) ?? cheapest;
+      best = search(pool, { ...answers, budgetMax: cheapest.price * OVER_BUDGET_TOLERANCE }, cheapest.pieces.filter((piece) => piece.pinned), prefer) ?? cheapest;
       overBudget = Math.round((best.price - answers.budgetMax) * 100) / 100;
     }
   }

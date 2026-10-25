@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import type { CatalogItem } from './catalog';
 import { deriveComponentStats, resolvePrice } from './derive';
 import { ComponentSchema } from './schema';
-import { BUDGET_RANGES, budgetStops, budgetTier, deserializePicks, deserializeWizardState, matchCuratedSetups, nearestBudgetStop, normalizeWizardAnswers, picksOf, recommendLoadout, serializeWizardState } from './wizard';
+import { BUDGET_RANGES, budgetStops, budgetTier, deserializePicks, deserializeWizardState, matchCuratedSetups, nearestBudgetStop, normalizeWizardAnswers, picksOf, recommendLoadout, scoreWizardItem, serializeWizardState } from './wizard';
 import type { WizardAnswers, WizardSetup } from './wizard';
 
 function hardware(id: string, category: CatalogItem['category'], amount: number, overrides: Partial<CatalogItem> = {}): CatalogItem {
@@ -189,7 +189,8 @@ describe('live editing', () => {
     expect(pinned.pieces.map((piece) => !!piece.pinned)).toEqual([true, false, false]);
   });
   it('re-optimises on a budget cut instead of dropping the priciest pin', () => {
-    const items = [...catalog(), hardware('cheap-pedals', 'pedals', 50)];
+    // Good pedals, so dedicated pedals beat the stick's twist standing in for them once they fit.
+    const items = [...catalog(), hardware('cheap-pedals', 'pedals', 50, { use_case_fit: fit(5) })];
     const answers = normalizeWizardAnswers({ piecesNeeded: ['stick', 'pedals'], budgetMax: 1000 });
     const pinned = [['great-stick'], ['pedals']];
     expect(picksOf(recommendLoadout(items, answers, 'EU', { pinned }))).toEqual([['great-stick'], ['pedals']]);
@@ -319,7 +320,8 @@ describe('stand-ins and suitability', () => {
     expect(recommendLoadout([stick, hardware('pedals', 'pedals', 200)], heli(400), 'EU').pieces.find((piece) => piece.roles.includes('pedals'))?.items[0].id).toBe('pedals');
   });
   it('only uses stand-ins for flying styles that accept them', () => {
-    const jet = normalizeWizardAnswers({ useCase: 'modern_jet', piecesNeeded: ['yoke', 'pedals'], budgetMax: 400 });
+    // Jets accept a twist rudder in place of pedals, but never yoke levers in place of a throttle quadrant.
+    const jet = normalizeWizardAnswers({ useCase: 'modern_jet', piecesNeeded: ['yoke', 'quadrant'], budgetMax: 400 });
     expect(recommendLoadout([allInOne()], jet, 'EU').complete).toBe(false);
   });
   it('keeps a pinned all-in-one and lets it give up a stand-in role to pinned pedals', () => {
@@ -394,5 +396,36 @@ describe('budget slider scale', () => {
     expect(stops[nearestBudgetStop(stops, 750)]).toBe(750);
     expect(nearestBudgetStop(stops, 20000)).toBe(stops.length - 1);
     expect(nearestBudgetStop(stops, 1)).toBe(0);
+  });
+});
+
+describe('combat HOTAS scoring', () => {
+  const fit = (modern_jet: number) => ({ ...ComponentSchema.parse({ brand: 'test', name: 'x', category: 'stick_fixed' }).use_case_fit, modern_jet });
+  const jet = (budgetMax: number, piecesNeeded: WizardAnswers['piecesNeeded'] = ['stick', 'throttle', 'pedals']) => normalizeWizardAnswers({ useCase: 'modern_jet', budgetMax, piecesNeeded });
+  const stick = () => hardware('stick', 'stick_fixed', 100, { use_case_fit: fit(5) });
+  const throttle = () => hardware('throttle', 'throttle', 150, { use_case_fit: fit(5), axes: [{ name: 'Throttle Z' }, { name: 'Rudder rocker RZ' }] });
+  it('lets stick twist stand in for jet pedals on a budget, and buys pedals once they fit', () => {
+    const items = [stick(), throttle(), hardware('pedals', 'pedals', 200, { use_case_fit: fit(5) })];
+    expect(recommendLoadout(items, jet(300), 'EU').pieces).toMatchObject([{ roles: ['stick', 'pedals'], standIns: ['pedals'] }, { roles: ['throttle'] }]);
+    expect(picksOf(recommendLoadout(items, jet(500), 'EU'))).toEqual([['stick'], ['throttle'], ['pedals']]);
+  });
+  it('gives the twist yaw bonus to sticks only, not to a throttle Z axis or rudder rocker', () => {
+    const answers = jet(500, ['stick', 'throttle']);
+    const plain = hardware('plain', 'throttle', 150, { use_case_fit: fit(5), axes: [{ name: 'Throttle' }] });
+    expect(scoreWizardItem(throttle(), answers, 'EU').score).toBe(scoreWizardItem(plain, answers, 'EU').score);
+  });
+  it('buys a bundle instead of the same parts separately when the bundle is cheaper', () => {
+    const bundle = hardware('bundle', 'hotas_bundle', 230, { item_type: 'bundle', componentIds: ['stick', 'throttle'] });
+    for (const answers of [jet(300), jet(300, ['stick', 'throttle'])]) {
+      expect(picksOf(recommendLoadout([stick(), throttle(), bundle], answers, 'EU'))).toEqual([['bundle']]);
+    }
+  });
+  it('warns about 2/5 hardware and, over budget, prefers a setup without it', () => {
+    const weak = hardware('weak', 'stick_fixed', 40, { use_case_fit: fit(2) });
+    const weakOnly = recommendLoadout([weak], jet(100, ['stick']), 'EU');
+    expect(weakOnly.warnings.some((warning) => /rated 2\/5 for Modern jet/.test(warning))).toBe(true);
+    const over = recommendLoadout([hardware('weak', 'stick_fixed', 140, { use_case_fit: fit(2) }), stick()], jet(50, ['stick']), 'EU');
+    expect(picksOf(over)).toEqual([['stick']]);
+    expect(over.overBudget).toBe(50);
   });
 });

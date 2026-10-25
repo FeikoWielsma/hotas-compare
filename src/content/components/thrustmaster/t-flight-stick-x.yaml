@@ -80,6 +80,14 @@ external_reviews:
   tag: avoid
   date: '2026-10-24'
 verification: draft
+use_case_fit:
+  modern_jet: 2
+  heli: 2
+  ww2: 2
+  ga: 3
+  airliner: 2
+  space_hotas: 2
+  space_hosas: 2
 prices:
 - region: EU
   currency: EUR
