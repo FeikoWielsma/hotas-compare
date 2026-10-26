@@ -20,7 +20,10 @@
   let by = $state('');
   let sharedBy = $state<string | null>(null);
   let selected = $state<string | null>(null);
-  let dragging = $state<string | null>(null);
+  /** A part being dragged, where the pointer is, and where it would land. */
+  let drag = $state<{ id: string; x: number; y: number; target: DropTarget | null } | null>(null);
+  let barHeight = $state(0);
+  let root: HTMLDivElement;
   let showSite = $state(false);
   let filter = $state('');
   let status = $state('');
@@ -33,6 +36,9 @@
     : [...tiers].flatMap(([id, t]) => { const item = itemById.get(id); return t === tier && item?.group === group ? [item] : []; });
   const unranked = $derived(inTier(null).filter((item) => !filter || `${item.brandName} ${item.name}`.toLowerCase().includes(filter.toLowerCase())));
   const rankedCount = $derived(groupItems.filter((item) => tiers.has(item.id)).length);
+  const selectedItem = $derived(selected ? itemById.get(selected) : undefined);
+  const selectedTier = $derived(selected ? tiers.get(selected) : undefined);
+  const selectedPeers = $derived(selectedTier ? inTier(selectedTier).map((item) => item.id) : []);
   const title = $derived(`${fitGroupLabels[group].plural} for ${caseLabel(useCase)}`);
 
   /** Site scores (or the spec baseline for unreviewed parts) as a starting point, best first within each tier. */
@@ -68,12 +74,15 @@
   async function place(tier: Tier | null) {
     if (!selected) return;
     const id = selected;
-    // Keep the keyboard flow going: move on to the next unranked part.
+    // Keep the ranking flow going: after placing an unranked part, move on to the next one.
+    // A part that was already ranked stays selected so it can be nudged into position.
+    const fromPool = !tiers.has(id);
     const queue = unranked.filter((item) => item.id !== id);
     move(id, tier);
-    selected = tier && queue.length ? queue[0].id : null;
+    if (!tier) selected = null;
+    else if (fromPool) selected = queue[0]?.id ?? null;
     await tick();
-    if (selected) document.querySelector<HTMLButtonElement>(`[data-id="${CSS.escape(selected)}"]`)?.focus();
+    if (selected && selected !== id) document.querySelector<HTMLButtonElement>(`[data-id="${CSS.escape(selected)}"]`)?.focus();
   }
   function onKey(event: KeyboardEvent) {
     if (!selected || (event.target instanceof Element && event.target.matches('input, select, textarea'))) return;
@@ -83,12 +92,81 @@
     else if (event.key === '0' || event.key === 'Delete' || event.key === 'Backspace') { event.preventDefault(); place(null); }
     else if (event.key === 'Escape') selected = null;
   }
-  function drop(event: DragEvent, tier: Tier | null, before: string | null = null) {
-    event.preventDefault();
-    event.stopPropagation();
-    const id = event.dataTransfer?.getData('text/plain') || dragging;
-    if (id && id !== before) move(id, tier, before);
-    dragging = null;
+  // Dragging uses pointer events rather than native drag and drop, which touch browsers handle poorly:
+  // a mouse drag starts after a short move, a touch drag after holding still, so swipes still scroll.
+  type DropTarget = { tier: Tier | null; over: string | null; after: boolean; before: string | null };
+  const HOLD_MS = 300, SLOP = 8, EDGE = 72;
+  let pending: { id: string; pointerId: number; x: number; y: number; touch: boolean; timer?: number } | null = null;
+  let suppressClick = false;
+  let frame = 0;
+
+  function pointerDown(event: PointerEvent, id: string) {
+    if (event.button !== 0 || pending || drag) return;
+    const touch = event.pointerType !== 'mouse';
+    pending = { id, pointerId: event.pointerId, x: event.clientX, y: event.clientY, touch };
+    if (touch) pending.timer = window.setTimeout(() => pending && startDrag(pending.x, pending.y), HOLD_MS);
+    window.addEventListener('pointermove', pointerMove);
+    window.addEventListener('pointerup', pointerUp);
+    window.addEventListener('pointercancel', endDrag);
+  }
+  function pointerMove(event: PointerEvent) {
+    if (!pending || event.pointerId !== pending.pointerId) return;
+    if (!drag) {
+      if (Math.hypot(event.clientX - pending.x, event.clientY - pending.y) <= SLOP) return;
+      // A touch that moves before the hold is a scroll, not a drag.
+      if (pending.touch) return endDrag();
+      startDrag(event.clientX, event.clientY);
+    }
+    drag!.x = event.clientX; drag!.y = event.clientY;
+    drag!.target = dropTarget(event.clientX, event.clientY);
+  }
+  function startDrag(x: number, y: number) {
+    if (!pending) return;
+    clearTimeout(pending.timer);
+    if (pending.touch) navigator.vibrate?.(10);
+    selected = null; suppressClick = true;
+    drag = { id: pending.id, x, y, target: dropTarget(x, y) };
+    frame = requestAnimationFrame(autoScroll);
+  }
+  function pointerUp(event: PointerEvent) {
+    if (pending && event.pointerId !== pending.pointerId) return;
+    const target = drag?.target;
+    if (drag && target && target.before !== drag.id) move(drag.id, target.tier, target.before);
+    endDrag();
+  }
+  function endDrag() {
+    clearTimeout(pending?.timer);
+    cancelAnimationFrame(frame);
+    window.removeEventListener('pointermove', pointerMove);
+    window.removeEventListener('pointerup', pointerUp);
+    window.removeEventListener('pointercancel', endDrag);
+    pending = null; drag = null;
+    // The click that follows a drag's pointerup should not toggle selection.
+    setTimeout(() => (suppressClick = false));
+  }
+  /** The tier (or the pool) under the pointer, and the ranked part to land in front of. */
+  function dropTarget(x: number, y: number): DropTarget | null {
+    const el = document.elementFromPoint(x, y);
+    const zone = el?.closest<HTMLElement>('[data-tier]');
+    if (!drag && !pending || !zone || !root.contains(zone)) return null;
+    const id = (drag ?? pending)!.id;
+    const tier = zone.dataset.tier ? Number(zone.dataset.tier) as Tier : null;
+    const over = el!.closest<HTMLElement>('[data-id]')?.dataset.id;
+    if (!tier || !over || over === id || !tiers.has(over)) return { tier, over: null, after: false, before: null };
+    const rect = document.querySelector(`[data-id="${CSS.escape(over)}"]`)!.getBoundingClientRect();
+    const after = x > rect.left + rect.width / 2;
+    const peers = inTier(tier).map((item) => item.id).filter((key) => key !== id);
+    return { tier, over, after, before: after ? peers[peers.indexOf(over) + 1] ?? null : over };
+  }
+  /** Scroll while the pointer is near the top of the screen or just above the sticky pool. */
+  function autoScroll() {
+    if (!drag) return;
+    const pool = root.querySelector<HTMLElement>('.pool')!;
+    const poolTop = pool.getBoundingClientRect().top;
+    const bottom = getComputedStyle(pool).position === 'sticky' && poolTop < innerHeight ? poolTop : innerHeight;
+    const step = drag.y < EDGE ? drag.y - EDGE : drag.y > bottom - EDGE && drag.y < bottom ? drag.y - bottom + EDGE : 0;
+    if (step) { scrollBy(0, step / 4); drag.target = dropTarget(drag.x, drag.y); }
+    frame = requestAnimationFrame(autoScroll);
   }
 
   const memberList = () => ({ useCase, group, by, tiers: expandTiers(items, tiers), order: expandOrder(items, tiers) });
@@ -112,6 +190,9 @@
   }
 
   onMount(() => {
+    // Registered by hand because it must be able to cancel scrolling once a touch drag has started.
+    const holdScroll = (event: TouchEvent) => { if (drag) event.preventDefault(); };
+    root.addEventListener('touchmove', holdScroll, { passive: false });
     by = localStorage.getItem(NAME_KEY) ?? '';
     const restore = () => {
       const shared = parseTierList(location.search, ids);
@@ -123,7 +204,7 @@
     };
     restore(); ready = true;
     window.addEventListener('popstate', restore);
-    return () => window.removeEventListener('popstate', restore);
+    return () => { window.removeEventListener('popstate', restore); root.removeEventListener('touchmove', holdScroll); endDrag(); };
   });
   $effect(() => {
     if (!ready) return;
@@ -136,7 +217,7 @@
 
 <svelte:window onkeydown={onKey} />
 
-<div class="tiers">
+<div class="tiers" bind:this={root} class:is-dragging={!!drag} style:--bar="{selectedItem ? barHeight : 0}px">
   <div class="setup">
     <label>Flying style
       <select value={useCase} onchange={(e) => choose(e.currentTarget.value as UseCase, group)}>
@@ -162,12 +243,12 @@
     <button type="button" class="link" onclick={() => { tiers = new Map(); sharedBy = null; }}>Start blank</button>
   </div>
 
-  <p class="hint">Click a part, then click a tier, or press <kbd>S</kbd> or <kbd>5</kbd>–<kbd>1</kbd> (<kbd>0</kbd> to unrank). Order counts: best first within a tier. Drag a part onto another to put it in front, or use <kbd>←</kbd> <kbd>→</kbd> on a selected part. Leave parts you don't know unranked.</p>
+  <p class="hint">Tap a part, then pick its tier in the bar that appears, or press <kbd>S</kbd> or <kbd>5</kbd>–<kbd>1</kbd> (<kbd>0</kbd> to unrank). Order counts: best first within a tier. Drag a part before or after another (on a touch screen, hold it first), or use ◀ ▶ in the bar or <kbd>←</kbd> <kbd>→</kbd>. Leave parts you don't know unranked.</p>
 
   <div class="board">
     {#each TIERS as tier (tier)}
       <!-- svelte-ignore a11y_click_events_have_key_events -->
-      <div class="row t{tier}" class:target={!!selected} role="listitem" ondragover={(e) => e.preventDefault()} ondrop={(e) => drop(e, tier)} onclick={(e) => { if (e.target === e.currentTarget) place(tier); }}>
+      <div class="row t{tier}" class:target={!!selected} class:drop={drag?.target?.tier === tier} data-tier={tier} role="listitem" onclick={(e) => { if (e.target === e.currentTarget) place(tier); }}>
         <button type="button" class="label" onclick={() => place(tier)} disabled={!selected} aria-label={`Move to ${tierBadge(tier)} ${tierLabels[tier]}`}><b>{tierBadge(tier)}</b><span>{tierLabels[tier]}</span></button>
         <div class="tiles">
           {#each inTier(tier) as item (item.id)}{@render tile(item)}{/each}
@@ -176,17 +257,43 @@
     {/each}
   </div>
 
-  <section class="pool" ondragover={(e) => e.preventDefault()} ondrop={(e) => drop(e, null)} aria-label="Not ranked">
+  <section class="pool" class:drop={!!drag?.target && drag.target.tier === null} data-tier="" aria-label="Not ranked">
     <div class="pool-head">
       <h3>Not ranked <span class="count">{inTier(null).length}</span></h3>
       <input type="search" placeholder="Filter by name" bind:value={filter} aria-label="Filter unranked parts" />
-      {#if selected && tiers.has(selected)}<button type="button" class="link" onclick={() => place(null)}>Unrank selected</button>{/if}
     </div>
     <div class="tiles">
       {#each unranked as item (item.id)}{@render tile(item)}{/each}
       {#if !unranked.length}<p class="empty">{inTier(null).length ? 'No matches.' : 'Everything is ranked.'}</p>{/if}
     </div>
   </section>
+
+  {#if selectedItem}
+    <div class="bar" bind:offsetHeight={barHeight} role="toolbar" aria-label="Move the selected part">
+      <div class="bar-head">
+        <span class="bar-name"><span class="brand">{selectedItem.brandName}</span> {selectedItem.name}</span>
+        {#if selectedTier}
+          <button type="button" onclick={() => nudge(selectedItem.id, -1)} disabled={selectedPeers[0] === selectedItem.id} aria-label="Move earlier in tier">◀</button>
+          <button type="button" onclick={() => nudge(selectedItem.id, 1)} disabled={selectedPeers.at(-1) === selectedItem.id} aria-label="Move later in tier">▶</button>
+        {/if}
+        <button type="button" onclick={() => (selected = null)} aria-label="Deselect">✕</button>
+      </div>
+      <div class="bar-tiers">
+        {#each TIERS as tier (tier)}
+          <button type="button" class="t{tier}" class:current={selectedTier === tier} aria-pressed={selectedTier === tier} onclick={() => place(tier)} aria-label={`Move to ${tierBadge(tier)} ${tierLabels[tier]}`}>{tierBadge(tier)}</button>
+        {/each}
+        {#if selectedTier}<button type="button" class="unrank" onclick={() => place(null)}>Unrank</button>{/if}
+      </div>
+    </div>
+  {/if}
+
+  {#if drag}
+    {@const item = itemById.get(drag.id)!}
+    <div class="ghost" style:left="{drag.x}px" style:top="{drag.y}px" aria-hidden="true">
+      <span class="img">{#if item.image}<img src={item.image} alt="" />{/if}</span>
+      <span class="name">{item.name}</span>
+    </div>
+  {/if}
 
   <section class="share">
     <label>Your name or handle (optional)<input type="text" maxlength="40" bind:value={by} placeholder="e.g. Reddit or Discord name" /></label>
@@ -201,12 +308,12 @@
 </div>
 
 {#snippet tile(item: TierItem)}
-  <button type="button" class="tile" class:selected={selected === item.id} class:dragging={dragging === item.id} data-id={item.id}
-    draggable="true" title={`${item.brandName} ${item.name}`}
-    ondragstart={(e) => { dragging = item.id; e.dataTransfer?.setData('text/plain', item.id); }} ondragend={() => (dragging = null)}
-    ondragover={(e) => e.preventDefault()} ondrop={(e) => drop(e, tiers.get(item.id) ?? null, tiers.has(item.id) ? item.id : null)}
-    onclick={() => (selected = selected === item.id ? null : item.id)} aria-pressed={selected === item.id}>
-    <span class="img">{#if item.image}<img src={item.image} alt="" loading="lazy" />{/if}</span>
+  <button type="button" class="tile" class:selected={selected === item.id} class:dragging={drag?.id === item.id}
+    class:drop-before={drag?.target?.over === item.id && !drag.target.after} class:drop-after={drag?.target?.over === item.id && drag.target.after}
+    data-id={item.id} title={`${item.brandName} ${item.name}`}
+    onpointerdown={(e) => pointerDown(e, item.id)} oncontextmenu={(e) => { if (pending || drag) e.preventDefault(); }}
+    onclick={() => { if (!suppressClick) selected = selected === item.id ? null : item.id; }} aria-pressed={selected === item.id}>
+    <span class="img">{#if item.image}<img src={item.image} alt="" loading="lazy" draggable="false" />{/if}</span>
     <span class="brand">{item.brandName}</span>
     <span class="name">{item.name}</span>
     {#if item.members.length > 1}<span class="variants">{item.members.length} variants</span>{/if}
@@ -215,7 +322,8 @@
 {/snippet}
 
 <style>
-  .tiers { display: grid; gap: 1.25rem; margin: 1.5rem 0 3rem; }
+  .tiers { display: grid; gap: 1.25rem; margin: 1.5rem 0 3rem; padding-bottom: var(--bar); }
+  .tiers.is-dragging { cursor: grabbing; user-select: none; -webkit-user-select: none; }
   label { display: grid; gap: .4rem; font-size: .875rem; color: var(--color-muted); }
   select, input[type=text], input[type=search], textarea { border: 1px solid var(--color-rule); border-radius: 2px; padding: .65rem .75rem; background: var(--color-surface); color: var(--color-ink); font: .875rem/1.4 var(--font-sans); min-width: 0; }
   button { cursor: pointer; font: .875rem/1.4 var(--font-sans); color: var(--color-ink); border: 1px solid var(--color-rule); border-radius: 2px; background: var(--color-surface); padding: .6rem .8rem; text-decoration: none; }
@@ -238,23 +346,27 @@
   .board { display: grid; gap: 2px; background: var(--color-rule); border: 1px solid var(--color-rule); }
   .row { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); min-height: 7.5rem; background: var(--color-surface); }
   .row.target { cursor: pointer; }
-  .row.target:hover { background: color-mix(in srgb, var(--color-accent) 6%, var(--color-surface)); }
+  .row.target:hover, .row.drop { background: color-mix(in srgb, var(--color-accent) 6%, var(--color-surface)); }
   .label { display: grid; place-content: center; text-align: center; gap: .1rem; border: 0; border-radius: 0; color: var(--color-navy); }
   .label:disabled { cursor: default; opacity: 1; }
   .label b { font: 700 2rem/1 var(--font-display); }
   .label span { font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
   .t6 .label { background: #b9a4e0; } .t5 .label { background: #7fbf7f; } .t4 .label { background: #bfdf7f; } .t3 .label { background: #f5df80; } .t2 .label { background: #f5bf7f; } .t1 .label { background: #f08f7f; }
   .tiles { display: flex; flex-wrap: wrap; gap: .4rem; padding: .4rem; align-content: flex-start; min-width: 0; }
-  .tile { display: grid; grid-template-rows: 4.5rem auto auto auto; width: 7.25rem; padding: .3rem; gap: .1rem; text-align: left; font-size: .75rem; line-height: 1.25; background: var(--color-paper); }
+  .tile { display: grid; grid-template-rows: 4.5rem auto auto auto; align-content: start; width: 7.25rem; padding: .3rem; gap: .1rem; text-align: left; font-size: .75rem; line-height: 1.25; background: var(--color-paper); }
   .tile.selected { border-color: var(--color-accent); box-shadow: 0 0 0 2px var(--color-accent); }
+  .tile { touch-action: manipulation; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
   .tile.dragging { opacity: .4; }
+  .tile.drop-before { box-shadow: -4px 0 0 var(--color-accent); }
+  .tile.drop-after { box-shadow: 4px 0 0 var(--color-accent); }
   .img { display: grid; place-items: center; background: #fff; border-radius: 2px; overflow: hidden; }
   .img img { max-width: 100%; max-height: 4.5rem; object-fit: contain; }
   .brand { color: var(--color-muted); font-size: .6875rem; text-transform: uppercase; letter-spacing: .03em; }
   .name { font-weight: 600; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; overflow-wrap: anywhere; }
   .site { color: var(--color-accent); font-weight: 600; }
   .variants { color: var(--color-muted); font-size: .6875rem; }
-  .pool { border: 1px dashed var(--color-rule); padding: .75rem; display: grid; gap: .5rem; }
+  .pool { border: 1px dashed var(--color-rule); padding: .75rem; display: grid; gap: .5rem; background: var(--color-surface); }
+  .pool.drop { border-color: var(--color-accent); background: color-mix(in srgb, var(--color-accent) 6%, var(--color-surface)); }
   .pool-head { display: flex; flex-wrap: wrap; gap: .5rem 1rem; align-items: center; }
   .pool-head input { flex: 0 1 16rem; }
   .empty { color: var(--color-muted); margin: .5rem; font-size: .875rem; }
@@ -262,10 +374,34 @@
   .share-buttons { display: flex; flex-wrap: wrap; gap: .5rem; }
   .status { margin: 0; min-height: 1.4em; color: var(--color-muted); font-size: .875rem; }
   textarea { width: 100%; }
+  .bar { box-sizing: border-box; position: fixed; z-index: 20; inset: auto 0 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: .5rem; width: min(100%, 40rem); margin: 0 auto; padding: .6rem .75rem calc(.6rem + env(safe-area-inset-bottom)); background: var(--color-surface); border: 1px solid var(--color-rule); border-bottom: 0; box-shadow: 0 -4px 16px rgb(0 0 0 / .12); }
+  .bar-head { display: flex; align-items: center; gap: .4rem; }
+  .bar-name { flex: 1; min-width: 0; font-size: .875rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .bar-head button { padding: .4rem .7rem; }
+  .bar-head button:disabled { opacity: .35; cursor: default; }
+  .bar-tiers { display: flex; gap: .3rem; }
+  .bar-tiers button { flex: 1; min-width: 0; min-height: 2.75rem; padding: .3rem; font: 700 1.25rem/1 var(--font-display); color: var(--color-navy); border-color: transparent; }
+  .bar-tiers .current { box-shadow: inset 0 0 0 3px var(--color-navy); }
+  .bar-tiers .unrank { flex: 1.6; font: 600 .8125rem/1 var(--font-sans); color: var(--color-ink); border-color: var(--color-rule); }
+  .bar-tiers .t6 { background: #b9a4e0; } .bar-tiers .t5 { background: #7fbf7f; } .bar-tiers .t4 { background: #bfdf7f; } .bar-tiers .t3 { background: #f5df80; } .bar-tiers .t2 { background: #f5bf7f; } .bar-tiers .t1 { background: #f08f7f; }
+  .ghost { position: fixed; z-index: 30; display: grid; grid-template-rows: 3rem auto; width: 5.5rem; padding: .3rem; gap: .15rem; font-size: .6875rem; line-height: 1.2; background: var(--color-paper); border: 1px solid var(--color-accent); border-radius: 2px; box-shadow: 0 6px 18px rgb(0 0 0 / .2); pointer-events: none; transform: translate(-50%, calc(-100% - 12px)); }
+  .ghost .img img { max-height: 3rem; }
+  /* Phones: compact tiles so more of the board fits, and the pool as a strip that stays on screen. */
   @media (max-width: 640px) {
-    .row { grid-template-columns: 3.25rem minmax(0, 1fr); }
+    .row { grid-template-columns: 2.5rem minmax(0, 1fr); min-height: 4.25rem; }
     .label span { display: none; }
-    .tile { width: calc(33.33% - .3rem); grid-template-rows: 3.5rem auto auto auto; }
-    .img img { max-height: 3.5rem; }
+    .label b { font-size: 1.5rem; }
+    .tiles { gap: .3rem; padding: .3rem; }
+    .tile { width: calc((100% - .9rem) / 4); grid-template-rows: 2.5rem auto auto auto; padding: .2rem; font-size: .6875rem; line-height: 1.2; }
+    .tile .brand { font-size: .5625rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .img img { max-height: 2.5rem; }
+    .pool { position: sticky; z-index: 10; bottom: var(--bar); padding: .5rem; gap: .35rem; border-style: solid; box-shadow: 0 -4px 12px rgb(0 0 0 / .08); }
+    .pool-head { flex-wrap: nowrap; }
+    .pool-head h3 { white-space: nowrap; font-size: .875rem; }
+    .pool-head input { flex: 1 1 auto; padding: .4rem .5rem; }
+    .pool .tiles { flex-wrap: nowrap; overflow-x: auto; padding: .1rem; overscroll-behavior-x: contain; }
+    .pool .empty { margin: .25rem; }
+    .pool .tile { flex: none; width: calc((100% - .9rem) / 4.4); }
+    .bar { border-inline: 0; }
   }
 </style>
