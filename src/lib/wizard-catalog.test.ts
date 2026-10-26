@@ -23,8 +23,7 @@ const avoided = ['logitech/g-saitek-pro-flight-yoke', 'logitech/g-saitek-pro-fli
 const velocityOne = 'turtle-beach/velocityone-flight-yoke-system';
 
 describe('airliner and GA picks', () => {
-  // Pending the maintainer's ordered tier-list re-rank: re-check these picks then, don't update blindly.
-  it.skip('recommends the VelocityOne all-in-one when a budget buyer has no pedals', () => {
+  it('recommends the VelocityOne all-in-one when a budget buyer has no pedals', () => {
     for (const useCase of ['airliner', 'ga'] as const) {
       for (const budgetMax of useCase === 'airliner' ? [350, 400, 450, 500] : [350, 400, 450]) {
         const result = recommend({ useCase, budgetMax });
@@ -56,17 +55,18 @@ describe('airliner and GA picks', () => {
       }
     }
   });
-  // Pending the maintainer's ordered tier-list re-rank: re-check these picks then, don't update blindly.
-  it.skip('moves a Boeing (yoke) airliner to a dedicated yoke, Boeing-style quadrant and pedals once the budget allows', () => {
+  // Re-checked against the maintainer's ordered tier lists (#71 airliner yokes, #76 GA throttles).
+  it('moves a Boeing (yoke) airliner to a dedicated yoke, Boeing-style quadrant and pedals once the budget allows', () => {
     const mid = recommend({ useCase: 'airliner', budgetMax: 750 });
     expect(mid.pieces.map((piece) => piece.roles)).toEqual([['pedals'], ['yoke'], ['quadrant']]);
     expect(mid.pieces.every((piece) => piece.standIns.length === 0)).toBe(true);
     expect(mid.items.map((item) => item.id)).toEqual(['winctrl/orion-32-rudder-pedals', 'honeycomb/alpha-flight-controls-lite', 'honeycomb/bravo-throttle-quadrant-lite']);
     // Maintainer: the Bravo's reverser, spoiler, flap and autopilot features make it the Boeing quadrant.
-    for (const budgetMax of [1000, 1500]) {
-      expect(ids({ useCase: 'airliner', budgetMax }), String(budgetMax)).toEqual(['winctrl/orion-32-rudder-pedals', 'honeycomb/alpha-flight-controls-lite', 'honeycomb/bravo-throttle-quadrant']);
-    }
-    expect(ids({ useCase: 'ga', budgetMax: 750 })).toContain('honeycomb/bravo-throttle-quadrant-lite');
+    expect(ids({ useCase: 'airliner', budgetMax: 1000 })).toEqual(['winctrl/orion-32-rudder-pedals', 'honeycomb/alpha-flight-controls-xpc', 'honeycomb/bravo-throttle-quadrant']);
+    // The S-tier MOZA yoke once it fits.
+    expect(ids({ useCase: 'airliner', budgetMax: 1500 })).toEqual(['winctrl/orion-32-rudder-pedals', 'moza/ay90-yoke-base', 'moza/mfy-yoke-pro', 'honeycomb/bravo-throttle-quadrant']);
+    // GA ranks the Sierra prop/mixture module in S tier.
+    expect(ids({ useCase: 'ga', budgetMax: 750 })).toContain('honeycomb/sierra-tpm-module');
   });
   it('never offers the generic VKB GNX THQ as an airliner quadrant while a Bravo or replica fits', () => {
     for (const region of ['US', 'EU'] as const) {
@@ -99,10 +99,10 @@ describe('airliner and GA picks', () => {
     const full = recommend({ useCase: 'airliner', budgetMax: 1500, piecesNeeded: ['stick', 'quadrant', 'pedals'] });
     expect(full.items.map((item) => item.id)).toEqual(['winctrl/ursa-minor-airline-joystick-r', 'winctrl/orion-32-rudder-pedals', 'winctrl/ursa-minor-32-throttle']);
   });
-  // Pending the maintainer's ordered tier-list re-rank: re-check these picks then, don't update blindly.
-  it.skip('recommends the Foxtrot stick for GA pilots who fly a stick', () => {
-    for (const budgetMax of [250, 400, 1500]) {
-      expect(ids({ useCase: 'ga', budgetMax, piecesNeeded: ['stick', 'quadrant', 'pedals'] }).some((id) => id.startsWith('honeycomb/foxtrot')), String(budgetMax)).toBe(true);
+  // The GA sticks tier list (#74) ranks the Ursa Minor Airline stick Excellent and the Foxtrot only Fine.
+  it('recommends the Ursa Minor Airline stick for GA pilots who fly a stick', () => {
+    for (const budgetMax of [250, 400, 750, 1500]) {
+      expect(ids({ useCase: 'ga', budgetMax, piecesNeeded: ['stick', 'quadrant', 'pedals'] }), String(budgetMax)).toContain('winctrl/ursa-minor-airline-joystick-r');
     }
   });
   it('marks the unreviewed TCA Sky Yoke as tentative when it is picked', () => {
@@ -114,8 +114,7 @@ describe('airliner and GA picks', () => {
 });
 
 describe('helicopter picks', () => {
-  // Pending the maintainer's ordered tier-list re-rank: re-check these picks then, don't update blindly.
-  it.skip('builds cyclic, collective and pedals by default', () => {
+  it('builds cyclic, collective and pedals by default', () => {
     expect(normalizeWizardAnswers({ useCase: 'heli' }).piecesNeeded).toEqual(['stick', 'collective', 'pedals']);
     for (const budgetMax of [400, 750, 1500]) {
       const result = recommend({ useCase: 'heli', budgetMax });
@@ -175,7 +174,7 @@ describe('avoided hardware', () => {
 describe('combat HOTAS picks', () => {
   const combatHotas = 'winctrl/ursa-minor-combat-hotas';
   const logitechOrT16000m = (id: string) => id.startsWith('logitech/') || id.startsWith('thrustmaster/t16000m');
-  // Pending the maintainer's ordered tier-list re-rank: re-check these picks then, don't update blindly.
+  // Pending the maintainer's ordered Modern Jet and Space HOTAS re-rank: re-check these picks then, don't update blindly.
   it.skip('recommends the Ursa Minor Combat HOTAS for budget jets, its twist standing in for pedals', () => {
     for (const region of ['US', 'EU'] as const) {
       for (const budgetMax of [250, 300]) {
@@ -192,8 +191,7 @@ describe('combat HOTAS picks', () => {
     expect(picksOf(result)).toEqual([[combatHotas]]);
     expect(result.overBudget).toBeCloseTo(88.83);
   });
-  // Pending the maintainer's ordered tier-list re-rank: re-check these picks then, don't update blindly.
-  it.skip('adds dedicated pedals as the first upgrade once the budget allows', () => {
+  it('adds dedicated pedals as the first upgrade once the budget allows', () => {
     expect(ids({ budgetMax: 500, piecesNeeded: ['stick', 'throttle', 'pedals'] })).toEqual([combatHotas, 'vkb/t-rudder-mk5']);
   });
   it('moves up to better sticks and throttles at mid budgets', () => {

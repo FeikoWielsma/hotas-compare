@@ -129,7 +129,7 @@ use_case_fit:
   heli: 1
   ww2: 2
   ga: 4
-  airliner: 4
+  airliner: 4.38
   space_hotas: 1
   space_hosas: 1
 use_case_fit_source: community

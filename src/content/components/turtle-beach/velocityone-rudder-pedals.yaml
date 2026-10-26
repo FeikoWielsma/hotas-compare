@@ -53,9 +53,9 @@ physical:
   - metal
 use_case_fit:
   modern_jet: 3
-  heli: 3
-  ww2: 3
-  ga: 3
+  heli: 4
+  ww2: 4
+  ga: 4.25
   airliner: 3
   space_hotas: 3
   space_hosas: 3
