@@ -26,22 +26,6 @@ prices:
   url: https://vkbsimcontrollers.com/products/stecs-space-throttle-system-standard-us
   verified: '2026-10-19'
   source: manual
-verdict:
-  author: feiko
-  hands_on: false
-  take: 'Draft assessment: An official VKB coordinated combo for space simulation
-    pairing STECS Space 6-DOF throttle with a Gladiator EVO right stick.'
-  pros:
-  - Complete coordinated control set with well-matched components
-  - Components remain independently configurable and modular
-  cons:
-  - Requires compatible desk or mount space
-  - Bundle regional stock can vary
-  great_for:
-  - space_hotas
-  - space_hosas
-  skip_if:
-  - You already own one or more of the included components
 verification: draft
 sources:
 - https://vkbsimcontrollers.com/products/stecs-space-throttle-system-standard-us

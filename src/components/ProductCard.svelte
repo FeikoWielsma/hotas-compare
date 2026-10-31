@@ -41,7 +41,7 @@
       {#if item.status !== 'current'}<span class={`status ${item.status}`}>{statusLabels[item.status]}</span>{/if}
       {#if match != null}<span class="match" class:high={match >= 4.5} class:good={match >= 3.5 && match < 4.5} title="Average fit across your flying styles">{Number(match.toFixed(1))} match</span>{/if}
     </div>
-    <span class="compare" title={full ? 'Comparison is full. Remove an item to add another (maximum 4).' : undefined}><button type="button" aria-label={`${selected ? 'Remove' : 'Add'} ${item.name} ${selected ? 'from' : 'to'} comparison`} aria-pressed={selected} disabled={full} onclick={() => selected ? compareStore.removeItem(item.id) : compareStore.addItem(item.id)}><span class="box" aria-hidden="true">{selected ? '✓' : ''}</span>Compare</button></span>
+    <span class="compare" title={full ? 'Comparison is full. Remove an item to add another (maximum 4).' : undefined}><button type="button" aria-label={`${selected ? 'Remove' : 'Add'} ${item.name} ${selected ? 'from' : 'to'} comparison`} aria-pressed={selected} disabled={full} onclick={() => selected ? compareStore.removeItem(item.id) : compareStore.addItem(item.id)}><span class="box" aria-hidden="true">{selected ? '✓' : ''}</span><span class="compare-word">Compare</span></button></span>
     {#if item.gimbalType || caveats}<div class="chips">
       {#if item.gimbalType}<GimbalBadge type={item.gimbalType} />{/if}
       {#if item.placement === 'mount_only'}<span class="caveat">Mount required<Explain term="mount_only" /></span>{/if}
@@ -73,7 +73,7 @@
   .nophoto { color: #586875; font-size: .8125rem; padding: 1rem; }
   .flags { position: absolute; top: .5rem; left: .5rem; display: flex; flex-direction: column; align-items: flex-start; gap: .25rem; pointer-events: none; }
   .flags span { font-size: .7rem; font-weight: 700; padding: .15rem .45rem; color: #fff; background: #586875; }
-  .flags .review { pointer-events: auto; padding: .1rem .4rem; border: 1px solid currentColor; border-radius: 2px; background: #fffdf7e6; font: 600 .66rem/1.3 var(--font-sans); text-decoration: none; opacity: .85; }
+  .flags .review { pointer-events: auto; padding: .1rem .4rem; border: 1px solid currentColor; border-radius: 2px; background: #fffdf7e6; font: 600 .6875rem/1.3 var(--font-sans); text-decoration: none; opacity: .85; }
   .review.recommended { color: #1d6b3a; } .review.mixed { color: #8a5a00; } .review.avoid { color: #9b2c1f; }
   .flags .review:hover { opacity: 1; text-decoration: underline; }
   .status { background: #192f43 !important; } .status.discontinued { background: #7a2a22 !important; }
@@ -84,8 +84,8 @@
   .box { display: inline-grid; place-items: center; width: .85rem; height: .85rem; border: 1.5px solid #586875; border-radius: 2px; font-size: .6rem; color: #fff; }
   .selected .compare button { border-color: #bf421f; } .selected .box { background: #bf421f; border-color: #bf421f; }
   .body { display: flex; flex-direction: column; gap: .4rem; flex: 1; padding: .7rem .8rem .8rem; }
-  .brand { display: flex; align-items: center; gap: .4rem; margin: 0; color: var(--color-accent); font-size: .75rem; font-weight: 600; min-width: 0; }
-  .category { margin-left: auto; color: var(--color-muted); font-weight: 500; white-space: nowrap; }
+  .brand { display: flex; flex-wrap: wrap; align-items: center; gap: .1rem .4rem; margin: 0; color: var(--color-accent); font-size: .75rem; font-weight: 600; min-width: 0; }
+  .category { margin-left: auto; color: var(--color-muted); font-weight: 500; }
   h3 { font: 600 .95rem/1.3 var(--font-sans); margin: 0; overflow-wrap: anywhere; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; } h3 a { color: inherit; text-decoration: none; } h3 a:hover { color: var(--color-accent); }
   .facts { margin: 0; color: var(--color-muted); font-size: .75rem; line-height: 1.45; }
   .chips { position: absolute; left: .5rem; bottom: .5rem; right: .5rem; display: flex; flex-wrap: wrap-reverse; align-items: center; gap: .3rem; }
@@ -99,5 +99,6 @@
   .stale { color: var(--color-danger); font-size: .7rem; }
   .purchase a { color: var(--color-accent); font-size: .8125rem; font-weight: 600; text-decoration: none; padding-block: .35rem; } .purchase a:hover { text-decoration: underline; }
   :is(a, button):focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+  @media (max-width: 480px) { .compare-word { display: none; } }
   @media (prefers-reduced-motion: reduce) { article, .photo img { transition: none; } article:hover .photo img { transform: none; } }
 </style>

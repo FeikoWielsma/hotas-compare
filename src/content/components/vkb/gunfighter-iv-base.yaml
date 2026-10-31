@@ -79,27 +79,6 @@ prices:
   url: https://vkbsimcontrollers.com/products/gunfighter-mk-iv-base-only-us
   verified: '2026-10-21'
   source: manual
-verdict:
-  author: feiko
-  hands_on: false
-  take: 'Draft assessment: Gunfighter Mk.IV Base is a purpose-built base for sim pilots
-    who value precise inputs and configurable controls. Confirm regional configuration
-    and included accessories before purchase.'
-  pros:
-  - Metal gimbal with interchangeable space and aviation cams
-  - Spring selection and adjustable dry clutches
-  - Rev.C connector and extension support
-  cons:
-  - Base requires a separate compatible grip
-  - Setup and cam tuning are more involved than entry-level sticks
-  great_for:
-  - modern_jet
-  - heli
-  - airliner
-  - space_hotas
-  - space_hosas
-  skip_if:
-  - Base requires a separate compatible grip
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=3096s

@@ -128,25 +128,6 @@ prices:
   url: https://virpil-controls.us.com/vpc-constellation-alpha-prime-r.html
   verified: '2026-10-19'
   source: manual
-verdict:
-  author: feiko
-  hands_on: true
-  take: The undisputed gold standard for space sims and multi-role flight. The metal casing, flip trigger, and analog brake axis provide unmatched tactile feedback.
-  pros:
-  - Full metal casing with cold-to-the-touch premium feel
-  - Analog brake lever doubles as an extra flight or strafe axis
-  - Dual-stage flip trigger with tactile microswitches
-  - Available in dedicated left and right versions for HOSAS
-  cons:
-  - Tall grip height requires desk mount or low profile base
-  - VPC software configuration has a steep learning curve
-  great_for:
-  - space_hosas
-  - space_hotas
-  - modern_jet
-  skip_if:
-  - You want a compact, desktop-only stick without mounting
-  - Budget is under €200 for a complete setup
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1757s

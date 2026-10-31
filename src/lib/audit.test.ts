@@ -23,15 +23,15 @@ describe('catalog audit', () => {
         { id: 'test/old', data: ComponentSchema.parse({ brand: 'test', name: 'Old', category: 'base', verification: 'draft', prices: [{ region: 'EU', currency: 'EUR', amount: 5, store: 'Test', verified: '2026-01-01' }] }) },
         { id: 'test/no-price', data: ComponentSchema.parse({ brand: 'test', name: 'No price', category: 'grip', verification: 'verified' }) },
       ],
-      bundles: [{ id: 'test/combo', data: BundleSchema.parse({ brand: 'test', name: 'Combo', category: 'stick_combo', components: ['test/old'], verification: 'verified', verdict: { author: 'test', take: 'Fine', scores: { build: 3, feel: 3, value: 3, software: 3, qc_support: 3 } } }) }],
+      bundles: [{ id: 'test/combo', data: BundleSchema.parse({ brand: 'test', name: 'Combo', category: 'stick_combo', components: ['test/old'], verification: 'verified' }) }],
     };
     const summary = await auditCatalog(new Date('2026-10-19T00:00:00Z'));
-    expect(summary).toMatchObject({ totalItems: 3, verifiedCount: 2, draftCount: 1, stalePriceCount: 1, missingPriceCount: 2, missingVerdictCount: 2 });
+    expect(summary).toMatchObject({ totalItems: 3, verifiedCount: 2, draftCount: 1, stalePriceCount: 1, missingPriceCount: 2 });
     const sample = createAuditSummary([
       { id: 'old', name: 'Old', item_type: 'component', verification: 'draft', prices: [{ verified: '2026-01-01' }] },
-      { id: 'none', name: 'None', item_type: 'bundle', verification: 'verified', prices: [], verdict: {} },
+      { id: 'none', name: 'None', item_type: 'bundle', verification: 'verified', prices: [] },
     ], new Date('2026-10-19T00:00:00Z'));
-    expect(sample).toMatchObject({ totalItems: 2, verifiedCount: 1, draftCount: 1, stalePriceCount: 1, missingPriceCount: 1, missingVerdictCount: 1 });
+    expect(sample).toMatchObject({ totalItems: 2, verifiedCount: 1, draftCount: 1, stalePriceCount: 1, missingPriceCount: 1 });
   });
 
   it('keeps all benchmark reference items verified', async () => {
@@ -39,8 +39,6 @@ describe('catalog audit', () => {
       const file = path.resolve(process.cwd(), `src/content/components/${id}.yaml`);
       const contents = fs.readFileSync(file, 'utf8');
       expect(contents, id).toMatch(/verification:\s*verified/);
-      expect(contents, id).toMatch(/author:\s*feiko/);
-      expect(contents, id).toMatch(/hands_on:\s*true/);
     }
   });
 

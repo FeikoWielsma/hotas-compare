@@ -1,9 +1,9 @@
-title: Mid-Range Space HOSAS Rig
+title: Mid-range space HOSAS rig
 use_case: space_hosas
 budget_tier: mid
 pick: true
 description: Dual VKB Gladiator NXT EVO setup (Space Combat Edition Right + Left OTA Omni-Throttle). The community favorite for 6DOF space simulation in Star Citizen and Elite Dangerous.
-reasoning: Mysh's ultra-flexibility combo - a Gladiator for the main hand and an Omni-Throttle for the other. Perfect for Star Citizen and Elite Dangerous, and still usable as a throttle in flight sims; the grip can later move to a Gunfighter base.
+reasoning: Mysh's ultra-flexibility combo, a Gladiator for the main hand and an Omni-Throttle for the other. Perfect for Star Citizen and Elite Dangerous, and still usable as a throttle in flight sims; the grip can later move to a Gunfighter base.
 items:
   - item_type: bundle
     id: vkb/gladiator-nxt-evo-sce-r

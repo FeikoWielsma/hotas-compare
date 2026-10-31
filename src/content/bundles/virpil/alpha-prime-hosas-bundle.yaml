@@ -39,23 +39,6 @@ prices:
     url: https://virpil-controls.us.com/warbrd-d-hosas-bundle-alpha-prime-edition.html
     verified: '2026-10-21'
     source: manual
-verdict:
-  author: feiko
-  hands_on: false
-  take: 'Draft assessment: Matched left and right Alpha Prime grips with dual WarBRD-D
-    bases provide a high-control dual-stick space configuration.'
-  pros:
-  - Complete coordinated control set with well-matched components
-  - Components remain independently configurable and replaceable
-  - Useful combination for the stated simulation role
-  cons:
-  - Check exact connector and included grip/base configuration before ordering
-  - Bundle pricing and regional stock can change
-  great_for:
-  - space_hosas
-  - space_hotas
-  skip_if:
-  - You already own one or more of the included components
 verification: draft
 sources:
 - https://virpil-controls.eu/products/alpha-prime-hosas-bundle

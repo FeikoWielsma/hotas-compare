@@ -37,23 +37,6 @@ prices:
   url: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-space-combat-edition-left-hand-us
   verified: '2026-10-21'
   source: manual
-verdict:
-  author: feiko
-  hands_on: false
-  take: 'Draft assessment: A left-hand Gladiator and SCG package for an ambidextrous
-    single-stick setup or HOSAS pairing.'
-  pros:
-  - Complete coordinated control set with well-matched components
-  - Components remain independently configurable and replaceable
-  - Useful combination for the stated simulation role
-  cons:
-  - Check exact connector and included grip/base configuration before ordering
-  - Bundle pricing and regional stock can change
-  great_for:
-  - modern_jet
-  - space_hotas
-  skip_if:
-  - You already own one or more of the included components
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2580s

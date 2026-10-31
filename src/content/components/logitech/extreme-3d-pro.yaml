@@ -51,22 +51,6 @@ prices:
     url: https://www.logitechg.com/en-us/shop/p/extreme-3d-pro-joystick
     verified: '2026-10-20'
     source: manual
-verdict:
-  author: feiko
-  hands_on: true
-  take: "The legendary $40 entry stick. It's ancient and runs on potentiometers that will eventually wear out, but it's cheap enough to test the flight sim waters."
-  pros:
-    - "Extremely affordable and globally available"
-    - "Stable weighted base"
-    - "Built-in twist rudder and mini throttle lever"
-  cons:
-    - "Potentiometers prone to jitter and drift over time"
-    - "Stiff ball-and-cup center detent"
-    - "Phasing out from retail channels"
-  great_for:
-    - ga
-  skip_if:
-    - "You know you love flight sims and can invest $90-$160 for contactless pincer gimbals (Ursa Minor or Gladiator)"
 external_reviews:
   - reviewer: mysh
     url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=176s

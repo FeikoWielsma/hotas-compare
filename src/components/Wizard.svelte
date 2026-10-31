@@ -67,22 +67,19 @@
   function budgetMoney(amount: number) { return new Intl.NumberFormat('en', { style: 'currency', currency: regionStore.currency, maximumFractionDigits: 0 }).format(amount); }
   const styleLabel = (label: string) => label === 'WWII' ? 'Warbird WWII' : label;
   /**
-   * Specific reasons first, then fit and review scores in short form (a range when a pick has several parts).
+   * Specific reasons first, then the fit score in short form (a range when a pick has several parts).
    * The budget-fit reason holds for every pick, so it is left out.
    */
   function reasons(explanations: string[]) {
-    const fits: number[] = [], verdicts: number[] = [];
-    let unreviewed = false;
+    const fits: number[] = [];
     const specific = explanations.flatMap((explanation) => {
-      const fit = explanation.match(/Use-case fit for \w+: ([\d.]+)\/5$/), verdict = explanation.match(/Editorial verdict average: ([\d.]+)\/5$/);
+      const fit = explanation.match(/Use-case fit for \w+: ([\d.]+)\/5$/);
       if (fit) fits.push(Number(fit[1]));
-      else if (verdict) verdicts.push(Number(verdict[1]));
-      else if (/No editorial review yet/.test(explanation)) unreviewed = true;
       else if (!explanation.includes('fits within the total budget')) return [explanation.replace(/^[+-]\s*/, '')];
       return [];
     });
     const span = (values: number[]) => Math.min(...values) === Math.max(...values) ? `${values[0]}` : `${Math.min(...values)}–${Math.max(...values)}`;
-    return [...new Set(specific), ...(fits.length ? [`Fit ${span(fits)}/5`] : []), ...(verdicts.length ? [`Reviews ${span(verdicts)}/5`] : unreviewed ? ['No review yet'] : [])].join(' · ');
+    return [...new Set(specific), ...(fits.length ? [`Fit ${span(fits)}/5`] : [])].join(' · ');
   }
   function chooseDiscipline(useCase: UseCase) {
     if (answers.useCase !== useCase) answers = normalizeWizardAnswers({ ...answers, useCase, piecesNeeded: defaultPieces(useCase) });

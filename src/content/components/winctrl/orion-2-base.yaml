@@ -85,24 +85,6 @@ prices:
     store: winwing.cn
     verified: '2026-10-01'
     source: manual
-verdict:
-  author: feiko
-  hands_on: true
-  take: "WinCtrl's (formerly WinWing) heavy-duty cam base. All-metal construction with adjustable damping clutches and native extension support. Exceptional DCS modern jet foundation at competitive pricing."
-  pros:
-    - "Full die-cast aluminum construction"
-    - "Dual-cam mechanism with swappable cams and springs"
-    - "Adjustable axis dampers"
-    - "Direct mechanical support for stick extensions"
-  cons:
-    - "Bulky desktop profile almost mandates desk mounting"
-    - "SimApp Pro software has frequent background update prompts"
-  great_for:
-    - modern_jet
-    - ww2
-    - heli
-  skip_if:
-    - "You need a small, low-profile desktop base without clamp mounts"
 external_reviews:
   - reviewer: mysh
     url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=3046s

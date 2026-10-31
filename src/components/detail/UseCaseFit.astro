@@ -12,7 +12,7 @@ const sourceNotes: Record<FitSource, string> = {
 const rows = useCases.map(u => ({ ...u, value: fit[u.key] })).toSorted((a, b) => b.value - a.value);
 ---
 <section id="fit" class="fit" aria-labelledby="fit-title">
-  <div><p class="kicker">Flying-style fit</p><h2 id="fit-title">Where it shines</h2><p class="note">{note ?? (source ? sourceNotes[source] : null) ?? 'Editorial estimate from 1 (limited) to 5 (excellent), based on the controls and mechanics.'}</p><p class="note"><a href="/tiers">Disagree? Rank the hardware in a tier list.</a></p></div>
+  <div><p class="kicker">Flying-style fit</p><h2 id="fit-title">Fit by flying style</h2><p class="note">{note ?? (source ? sourceNotes[source] : null) ?? 'Estimate from 1 (limited) to 5 (excellent), based on the controls and mechanics.'}</p><p class="note"><a href="/tiers">Disagree? Rank the hardware in a tier list.</a></p></div>
   <dl>{rows.map(r => <div class:list={{ top: r.value >= 4.5 }}><dt>{r.label}</dt><dd><Pips value={r.value} label={r.label} /><b>{Number(r.value.toFixed(1))}</b></dd></div>)}</dl>
 </section>
 <style>

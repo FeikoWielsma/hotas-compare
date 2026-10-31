@@ -233,15 +233,17 @@ const NO_STICK: CatalogItem['category'][] = ['throttle', 'pedals', 'quadrant', '
 /** Per-item warnings; the wizard groups these by count instead of repeating them. */
 export const DRAFT_SPECS_WARNING = 'Draft specifications: verify before buying.';
 export const STALE_PRICE_WARNING = 'Regional price is over 90 days old.';
+/** Only the stick's twist replaces pedals; a throttle's Z axis or rudder rocker earns no yaw bonus. */
+const TWIST_BONUS = 12;
+const twistStandsInForPedals = (item: CatalogItem, answers: WizardAnswers) => hasTwist(item) && answers.needsTwist && !NO_STICK.includes(item.category);
 /** How well one control suits the answers, before its price is weighed against the budget. */
 function qualityOf(item: CatalogItem, answers: WizardAnswers) {
-  const fit = scoreItemForUseCase(item.use_case_fit, item.verdict, answers.useCase);
+  const fit = scoreItemForUseCase(item.use_case_fit, answers.useCase);
   let score = fit.score;
   const explanations = [...fit.breakdown];
   const warnings: string[] = [];
-  // Only the stick's twist replaces pedals; a throttle's Z axis or rudder rocker earns no yaw bonus.
-  if (hasTwist(item) && answers.needsTwist && !NO_STICK.includes(item.category)) {
-    score += 12;
+  if (twistStandsInForPedals(item, answers)) {
+    score += TWIST_BONUS;
     const twist = item.axes?.find((axis) => /twist|(^|[ _-])r?z($|[ _-])/i.test(axis.name));
     explanations.push(/hall|magnetic|contactless|tmr/i.test(twist?.sensor ?? '')
       ? '+ Contactless twist axis provides yaw without dedicated pedals'
@@ -253,6 +255,8 @@ function qualityOf(item: CatalogItem, answers: WizardAnswers) {
   if (answers.useCase === 'heli' && /dry.clutch/i.test(item.mechanics.damping)) {
     score += 10; explanations.push('+ Dry clutch damping supports a cyclic setup; check spring removal instructions');
   }
+  if (item.latestReview?.tag === 'recommended') explanations.push(`+ ${item.latestReview.reviewerName} recommends it`);
+  if (item.latestReview?.tag === 'avoid') explanations.push(`- ${item.latestReview.reviewerName} says avoid`);
   if (item.reviewsPending) { score -= REVIEWS_PENDING_PENALTY; explanations.push('- No published reviews yet'); }
   const family = airlinerFamily(answers);
   if (family && item.airlinerFamily) {
@@ -271,16 +275,18 @@ function qualityOf(item: CatalogItem, answers: WizardAnswers) {
   return { score, explanations, warnings };
 }
 /**
- * `members` are a bundle's parts. A bundle without its own editorial verdict is judged like its parts bought
+ * `members` are a bundle's parts. A bundle is judged like its parts bought
  * separately (add-on modules aside), so it wins on price rather than on how its fit is averaged.
  */
 export function scoreWizardItem(item: CatalogItem, answers: WizardAnswers, region: Region, members: CatalogItem[] = []) {
-  const parts = item.verdict ? [] : members.filter((member) => member.category !== 'module');
+  const parts = members.filter((member) => member.category !== 'module');
   let { score, explanations, warnings } = qualityOf(item, answers);
   if (parts.length) {
     const scored = parts.map((part) => qualityOf(part, answers));
-    score = scored.reduce((sum, part) => sum + part.score, 0) / scored.length;
-    // Bonus lines read the same for every part; fit and verdict lines name the part they describe.
+    // The stick's twist gives the whole setup its yaw, so that bonus is not diluted by the other parts.
+    const twisting = parts.filter((part) => twistStandsInForPedals(part, answers)).length;
+    score = (scored.reduce((sum, part) => sum + part.score, 0) + (twisting ? TWIST_BONUS * (parts.length - twisting) : 0)) / scored.length;
+    // Bonus lines read the same for every part; fit lines name the part they describe.
     explanations = [...new Set(scored.flatMap((part, index) => part.explanations.map((line) => /^[+-] /.test(line) ? line : `${parts[index].name}: ${line}`)))];
     warnings = [...new Set([...warnings, ...scored.flatMap((part) => part.warnings)])];
   }

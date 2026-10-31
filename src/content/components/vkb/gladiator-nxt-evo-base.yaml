@@ -116,26 +116,6 @@ prices:
   url: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-base-only-us
   verified: '2026-10-21'
   source: manual
-verdict:
-  author: feiko
-  hands_on: true
-  take: The undisputed bang-for-the-buck king of flight simulation. Ball bearings
-    on all axes, adjustable dry clutches, and an integrated base plate with encoders
-    and throttle slider.
-  pros:
-  - Unmatched price-to-performance ratio in the entry-to-mid market
-  - Dry clutches allow smooth resistance without grease damping decay
-  - Built-in throttle axis, 2 encoders, and 3 buttons right on the desktop base
-  - Sturdy steel weighted baseplate sits securely on any desk
-  cons:
-  - Plastic gimbal ring (though reinforced glass-fiber ABS)
-  - VKB DevCfg software is functional but looks like industrial engineering software
-  great_for:
-  - space_hosas
-  - modern_jet
-  - ww2
-  skip_if:
-  - You require an all-metal dual-cam gimbal mechanism
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2580s

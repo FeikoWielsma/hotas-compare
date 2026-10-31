@@ -136,14 +136,6 @@ prices:
   url: https://flyhoneycomb.com/products/bravo-throttle-quadrant
   verified: '2026-10-21'
   source: manual
-verdict:
-  author: feiko
-  hands_on: false
-  take: Six configurable levers cover GA through four-engine airliners, with an
-    autopilot panel and trim wheel. The lever axes use potentiometers, so buyers
-    prioritizing contactless sensing should consider alternatives.
-  cons:
-  - Potentiometer wear and input jitter are a longevity concern; a 2018 forum report attributes Honeycomb's choice to quality potentiometers and the cost of Hall sensors (original statement not independently verified)
 verification: draft
 images:
 - file: /images/honeycomb/bravo-throttle-quadrant.jpg

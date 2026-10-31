@@ -130,23 +130,6 @@ prices:
   url: https://virpil-controls.us.com/cdt-aeromax-rz-flightstick-omnithrottle.html
   verified: '2026-10-19'
   source: manual
-verdict:
-  author: feiko
-  hands_on: false
-  take: "The RZ variant of the CDT-Aeromax is the right-handed omnithrottle, with a built-in Z-extension on the same compact metal cam-and-spring gimbal. Lockable twist is also on the straight R stick."
-  pros:
-    - "Compact metal cam-and-spring gimbal with contactless twist Z-axis"
-    - "No separate base required: ready out of the box for desktop flying"
-    - "Integrated dry clutch dampers for dead-stick stability"
-    - "Can attach 1 optional throttle lever module"
-  cons:
-    - "Z-axis mechanism limits throttle lever modules to max 1 (vs 2 on standard R)"
-  great_for:
-    - space_hosas
-    - space_hotas
-    - modern_jet
-  skip_if:
-    - "You already own high-end rudder pedals and prefer a locked rigid stick"
 external_reviews:
   - reviewer: mysh
     url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1033s

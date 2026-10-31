@@ -97,7 +97,6 @@ export function topFit(item: Pick<CatalogItem, 'use_case_fit'>): number {
 
 /**
  * Fit leads: a 4.5 fit outranks a 3.5 fit whatever the setup type or review.
- * Editorial verdict scores are paused until there is enough data, so they do not count.
  */
 export function featuredRank(item: CatalogItem) {
   return topFit(item) * 40 + setupWeight(item) + (reviewTagWeight[item.reviewTag ?? ''] ?? 0)

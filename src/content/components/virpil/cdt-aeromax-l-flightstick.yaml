@@ -130,21 +130,6 @@ prices:
   url: https://virpil-controls.us.com/cdt-aeromax-l-flightstick.html
   verified: '2026-10-19'
   source: manual
-verdict:
-  author: feiko
-  hands_on: false
-  take: "Left-handed version of the CDT-Aeromax. Ideal for southpaw pilots, Airbus captain side-stick setups, and 6DOF space HOSAS pilots wanting premium metal cam feel on the strafe hand."
-  pros:
-    - "Full left-handed ergonomic grip on compact metal cam-and-spring gimbal"
-    - "Can mount up to 2 optional throttle lever modules on each side"
-    - "Adjustable dry clutches for non-centering translation control in space"
-  cons:
-    - "Straight desktop stick. The LZ listing is the one with the built-in Z-extension omnithrottle. This stick still has the lockable twist axis shown on its grip diagram."
-  great_for:
-    - space_hosas
-    - airliner
-  skip_if:
-    - "You fly right-handed flight sticks only"
 external_reviews:
   - reviewer: mysh
     url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1033s

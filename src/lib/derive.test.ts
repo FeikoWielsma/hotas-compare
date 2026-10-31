@@ -264,30 +264,9 @@ describe('scoreItemForUseCase', () => {
       space_hosas: 5,
     };
 
-    const verdict = {
-      author: 'feiko',
-      hands_on: true,
-      take: 'Excellent',
-      pros: [],
-      cons: [],
-      great_for: [],
-      skip_if: [],
-      scores: {
-        build: 5,
-        feel: 5,
-        value: 4,
-        software: 4,
-        qc_support: 4, // Average = 4.4
-      },
-    };
-
-    const rec = scoreItemForUseCase(useCaseFit, verdict, 'space_hosas');
-    // fit = 5, verdict avg = 4.4
-    // weighted = (5 * 0.6) + (4.4 * 0.4) = 3.0 + 1.76 = 4.76
-    // 4.76 * 20 = 95.2 -> round = 95
-    expect(rec.score).toBe(95);
+    const rec = scoreItemForUseCase(useCaseFit, 'space_hosas');
+    expect(rec.score).toBe(88);
     expect(rec.fitScore).toBe(5);
-    expect(rec.verdictScore).toBeCloseTo(4.4);
   });
 });
 

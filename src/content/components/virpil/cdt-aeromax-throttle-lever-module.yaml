@@ -80,23 +80,6 @@ prices:
     url: https://virpil-controls.us.com/cdt-aeromax-throttle-module.html
     verified: '2026-10-21'
     source: manual
-verdict:
-  author: feiko
-  hands_on: false
-  take: "Modular add-on throttle lever for the VPC CDT-Aeromax flightstick series. Mounts directly to the side of the stick body to add physical throttle control for €14.95 (excl. VAT). Supports up to 2 modules on standard R and L sticks, or max 1 module on RZ and LZ twist variants."
-  pros:
-    - "Very inexpensive (€14.95 excl. VAT) way to add analog throttle control directly onto the stick base"
-    - "Contactless digital magnetic angle sensor"
-    - "Can stack up to 2 levers on standard non-twist R and L sticks"
-  cons:
-    - "Limited to max 1 lever on RZ and LZ twist models due to internal wiring / body clearance"
-    - "Requires CDT-Aeromax stick (not standalone USB)"
-  great_for:
-    - ga
-    - modern_jet
-    - space_hotas
-  skip_if:
-    - "You already use a dedicated standalone throttle unit like MongoosT-50CM3 or STECS"
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1033s

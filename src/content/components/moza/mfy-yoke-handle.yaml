@@ -19,17 +19,17 @@ controls:
   count: 2
   ways: 8
   location: handle
-  label: 8-way switches (called hat switches in FAQ)
+  label: 8-way switches (Trim Switch and View Switch)
   source: https://us.mozaracing.com/products/mfy-yoke
 - type: analog_ministick
   count: 2
   location: handle
-  label: Hall effect joysticks
+  label: Hall effect joysticks (Auxiliary Axis and POV Control Axis)
   source: https://us.mozaracing.com/products/mfy-yoke
 - type: button
   count: 2
   location: handle
-  label: LB/RB buttons
+  label: LB/RB buttons (Intercomm PTT and Microphone PPT)
   source: https://us.mozaracing.com/products/mfy-yoke
 - type: trigger
   count: 2
@@ -39,15 +39,24 @@ controls:
 - type: button
   count: 8
   location: panel
-  label: Centre panel buttons (4 right column, HOME, 2 side, 1 lower round)
-  source: https://cdn.shopify.com/s/files/1/0937/0802/6176/files/MFY-Yoke-Handle-Manual-EN.pdf
+  label: Centre panel buttons (Menu, Auxiliary 1 and 2, Screen shot, Heading Hold, Navigation Mode, Altitude Hold, Approach Mode)
+  source: https://back.mozaracing.com/wp-content/uploads/2025/manual/MFY-Yoke-Handle-Manual.pdf
+- type: button
+  count: 2
+  location: handle
+  label: AP Disconnect buttons
+  source: https://back.mozaracing.com/wp-content/uploads/2025/manual/MFY-Yoke-Handle-Manual.pdf
 controls_evidence:
-  coverage: partial
-  source: https://us.mozaracing.com/products/mfy-yoke
-  checked: '2026-10-20'
-  notes: Official spec lists 2 eight-way switches, 2 Hall effect joysticks, 2 LB/RB buttons and 2 triggers. Its
-    "up to 34 configurable inputs" is a mapping total, not a physical count. Hat push, trigger stages and rotaries
-    are not stated. Dimensions are unlabeled (142.5 x 202 x 313 mm) and are not assigned to width/depth/height.
+  coverage: complete
+  source: https://back.mozaracing.com/wp-content/uploads/2025/manual/MFY-Yoke-Handle-Manual.pdf
+  checked: '2026-10-31'
+  notes: >-
+    Exact MFY Yoke Handle quick guide, Buttons / Switches Description (page 1), inspected as a rendered page. Its
+    17 callouts cover the whole handle. The two axis switches are the Hall effect joysticks, the Trim and View
+    switches are the 8-way switches, callouts 15 and 17 are the LB/RB buttons, and callout 16 (Rudder Axis) marks
+    the two triggers. The two AP Disconnect buttons were missing from the earlier record. "Up to 34 signals" is a
+    mapping total, not a physical count. Hat push and trigger stages are not stated. Dimensions are unlabeled
+    (142.5 x 202 x 313 mm) and are not assigned to width/depth/height.
 connectivity:
   usb: null
   standalone_usb: null

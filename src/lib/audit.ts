@@ -7,7 +7,6 @@ export interface AuditItem {
   item_type: 'component' | 'bundle';
   verification: 'verified' | 'draft';
   prices: { verified: string }[];
-  verdict?: unknown;
 }
 
 export interface AuditSummary {
@@ -17,7 +16,6 @@ export interface AuditSummary {
   draftCount: number;
   stalePriceCount: number;
   missingPriceCount: number;
-  missingVerdictCount: number;
 }
 
 /** Count an item as stale when it has prices, but every price is over 90 days old. */
@@ -31,7 +29,6 @@ export function createAuditSummary(items: AuditItem[], referenceDate = new Date(
     draftCount: items.filter((item) => item.verification === 'draft').length,
     stalePriceCount: items.filter((item) => item.prices.length > 0 && item.prices.every((price) => new Date(`${price.verified}T00:00:00Z`) < cutoff)).length,
     missingPriceCount: items.filter((item) => item.prices.length === 0).length,
-    missingVerdictCount: items.filter((item) => !item.verdict).length,
   };
 }
 
@@ -39,10 +36,10 @@ export async function auditCatalog(referenceDate = new Date()): Promise<AuditSum
   const catalog = await loadCatalog('EU', referenceDate);
   const items: AuditItem[] = [
     ...catalog.components.map(({ id, data }: { id: string; data: Component }) => ({
-      id, name: data.name, item_type: 'component' as const, verification: data.verification, prices: data.prices, verdict: data.verdict,
+      id, name: data.name, item_type: 'component' as const, verification: data.verification, prices: data.prices,
     })),
     ...catalog.bundles.map(({ id, data }: { id: string; data: Bundle }) => ({
-      id, name: data.name, item_type: 'bundle' as const, verification: data.verification, prices: data.prices, verdict: data.verdict,
+      id, name: data.name, item_type: 'bundle' as const, verification: data.verification, prices: data.prices,
     })),
   ];
   return createAuditSummary(items, referenceDate);
@@ -59,6 +56,5 @@ export function formatAuditMarkdown(summary: AuditSummary): string {
     `| Draft | ${summary.draftCount} |`,
     `| Stale prices (>90 days) | ${summary.stalePriceCount} |`,
     `| Missing prices | ${summary.missingPriceCount} |`,
-    `| Missing verdicts | ${summary.missingVerdictCount} |`,
   ].join('\n');
 }

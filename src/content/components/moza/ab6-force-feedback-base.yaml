@@ -68,22 +68,6 @@ use_case_fit:
   space_hosas: 5
 use_case_fit_source: community
 prices: []
-verdict:
-  author: feiko
-  hands_on: false
-  take: MOZA's entry-level 6Nm direct drive force feedback flight base. While more accessible in price than the
-    AB9, the lower torque headroom limits fidelity in high-G maneuvers and aerodynamic force saturation.
-  pros:
-  - Direct drive active force feedback at lower price point
-  - Aviation-grade aluminum housing
-  cons:
-  - Noticeably less dynamic headroom and torque authority than the AB9
-  - Requires dedicated desk or cockpit mounting due to motor weight
-  great_for:
-  - heli
-  - ww2
-  skip_if:
-  - You can stretch the budget to the AB9, which provides vastly superior dynamic range and headroom
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=3183s

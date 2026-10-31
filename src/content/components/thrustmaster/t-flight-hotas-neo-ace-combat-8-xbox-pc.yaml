@@ -20,11 +20,7 @@ controls:
 - type: trigger
   count: 1
   location: grip
-  label: Rapid-fire trigger
-  source: https://www.thrustmaster.com/nl-nl/products/thrustmaster-t-flight-hotas-neo-ace-combat-8-wings-of-theve-edition-xbox-pc/
-- type: button
-  location: grip
-  label: High-G Turns button
+  label: Rapid-fire trigger (PC map button 1)
   source: https://www.thrustmaster.com/nl-nl/products/thrustmaster-t-flight-hotas-neo-ace-combat-8-wings-of-theve-edition-xbox-pc/
 - type: lever
   kind: throttle_single
@@ -39,9 +35,10 @@ controls:
   label: Rudder via rocking button (PC map Slider 0)
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TFHNEO/T-Flight_Hotas_NEO_XBOX_user_manual.pdf
 - type: button
-  count: 16
-  label: Official action-button total; individual physical mechanisms/layout not mapped
-  source: https://www.thrustmaster.com/nl-nl/products/thrustmaster-t-flight-hotas-neo-ace-combat-8-wings-of-theve-edition-xbox-pc/
+  count: 15
+  label: Buttons 2-16 on the PC map
+  notes: The product page's dedicated High-G Turns button is not identified on the manual maps, so it stays inside this count.
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TFHNEO/T-Flight_Hotas_NEO_XBOX_user_manual.pdf
 hardware:
   gimbal_type: ball_and_cup
   axis_count: 7
@@ -95,13 +92,16 @@ prices:
   verified: '2026-10-20'
   source: manual
 controls_evidence:
-  coverage: partial
+  coverage: complete
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TFHNEO/T-Flight_Hotas_NEO_XBOX_user_manual.pdf
-  checked: '2026-10-21'
+  checked: '2026-10-31'
   notes: >-
-    Feature callout 18 is the rudder rocking button, and the PC map (printed page 23) draws it as Rocker Slider 0.
-    The same map draws the hat as a POV cross and the mini-stick as Rx and Ry, without a center-push number or a
-    4-way or 8-way label. Buttons 1-16 stay one aggregate. The pedal axes on that map belong to the optional TFRP.
+    Exact-SKU manual, feature pages and PC map (printed page 23) inspected as rendered pages. The map numbers 16
+    buttons, and that total includes the trigger (1) and the small throttle-base button (15, the SHARE button).
+    Every drawn control is the trigger, one of buttons 2-16, the hat, the mini-stick, the rocker (callout 18,
+    Slider 0), the twist axis or the throttle. The product page lists 16 buttons plus a trigger and a High-G Turns
+    button, which the manual does not support as extra bodies; the earlier 18-button sum double-counted. Hat ways
+    and mini-stick push are not stated. The pedal axes on that map belong to the optional TFRP.
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=266s

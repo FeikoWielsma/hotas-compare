@@ -393,7 +393,7 @@
     .label b { font-size: 1.5rem; }
     .tiles { gap: .3rem; padding: .3rem; }
     .tile { width: calc((100% - .9rem) / 4); grid-template-rows: 2.5rem auto auto auto; padding: .2rem; font-size: .6875rem; line-height: 1.2; }
-    .tile .brand { font-size: .5625rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .tile .brand { font-size: .6875rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .img img { max-height: 2.5rem; }
     .pool { position: sticky; z-index: 10; bottom: var(--bar); padding: .5rem; gap: .35rem; border-style: solid; box-shadow: 0 -4px 12px rgb(0 0 0 / .08); }
     .pool-head { flex-wrap: nowrap; }

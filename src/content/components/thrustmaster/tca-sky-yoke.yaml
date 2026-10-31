@@ -17,7 +17,9 @@ controls:
   label: POV hat switch
   source: https://www.thrustmaster.com/nl-nl/products/tca-sky-yoke-xbox-pc/
 - type: analog_ministick
+  push: true
   location: grip
+  label: Analog mini-stick (press is PC button 9)
   source: https://www.thrustmaster.com/nl-nl/products/tca-sky-yoke-xbox-pc/
 - type: trigger
   count: 2
@@ -29,16 +31,43 @@ controls:
   location: base
   label: Integrated throttle
   source: https://www.thrustmaster.com/nl-nl/products/tca-sky-yoke-xbox-pc/
-- type: rotary
-  mode: analog
+- type: encoder
+  count: 1
   location: base
-  label: Trim wheel
-  source: https://www.thrustmaster.com/nl-nl/products/tca-sky-yoke-xbox-pc/
-- type: button
-  count: 24
+  label: Trim wheel (PC encoder contacts 20 and 21)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Sky_Yoke_X/TCA_Sky_Yoke_XBOX_user_manual.pdf
+- type: scroll_wheel
+  count: 1
   location: grip
-  label: Action buttons (official stated total; individual mechanisms not identified)
-  source: https://www.thrustmaster.com/en-ie/products/tca-sky-yoke-xbox-pc/
+  label: Scroll wheel (PC contacts 6, 7 and 8)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Sky_Yoke_X/TCA_Sky_Yoke_XBOX_user_manual.pdf
+- type: switch
+  count: 4
+  location: grip
+  label: Two-contact grip controls (PC 1/2, 3/4, 11/12 and 13/14)
+  notes: The manual lists these under action buttons and draws one body with two numbered contacts each. The mechanism is not named.
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Sky_Yoke_X/TCA_Sky_Yoke_XBOX_user_manual.pdf
+- type: switch
+  count: 1
+  positions: 5
+  location: base
+  label: Five-position selector switch (PC 15-19)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Sky_Yoke_X/TCA_Sky_Yoke_XBOX_user_manual.pdf
+- type: button
+  count: 2
+  location: grip
+  label: Grip action buttons (PC 5 and 10)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Sky_Yoke_X/TCA_Sky_Yoke_XBOX_user_manual.pdf
+- type: button
+  count: 3
+  location: base
+  label: VIEW, MENU and XBOX buttons (PC 22-24)
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Sky_Yoke_X/TCA_Sky_Yoke_XBOX_user_manual.pdf
+- type: button
+  count: 1
+  location: base
+  label: SHARE button
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Sky_Yoke_X/TCA_Sky_Yoke_XBOX_user_manual.pdf
 hardware:
   axis_count: 7
   sensor: 16-bit H.E.A.R.T.
@@ -52,10 +81,17 @@ hardware:
   damping: Self-centering damped pitch, 9 cm travel; rotation up to 180 degrees
   throw_deg: 180
 controls_evidence:
-  coverage: partial
-  source: https://www.thrustmaster.com/nl-nl/products/tca-sky-yoke-xbox-pc/
-  checked: '2026-10-20'
-  notes: Official page states 24 action buttons, an 8-way hat, mini-stick, two analog triggers, integrated throttle, trim wheel and seven axes. Button count is recorded; individual action-button mechanisms and remaining named axes are not broken down in official documentation.
+  coverage: complete
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Sky_Yoke_X/TCA_Sky_Yoke_XBOX_user_manual.pdf
+  checked: '2026-10-31'
+  notes: >-
+    Exact-SKU manual, technical features (printed pages 7-8), control-panel view (page 25) and PC map (page 31)
+    inspected as rendered pages. The 24 software buttons are not 24 physical buttons. Contacts 1-4 and 11-14 are
+    four two-contact grip controls, 6-8 are the scroll wheel, 9 is the mini-stick, 15-19 are the five selector
+    positions, 20-21 are the trim wheel, which the panel calls an encoder, and 5, 10 and 22-24 are buttons. The
+    SHARE button (callout 7) is physical and unnumbered. Two analog triggers, the built-in throttle, the yoke axes
+    and the hat complete the inventory. Scroll-wheel press behavior is not stated. Mounting and USB/RJ12 ports are
+    not inputs.
 connectivity:
   usb: USB (plug and play; dual-yoke connection supported)
   standalone_usb: true

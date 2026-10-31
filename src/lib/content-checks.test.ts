@@ -1,4 +1,4 @@
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { resolve, sep } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import sharedProductPages from './fixtures/shared-product-pages.json';
@@ -78,6 +78,12 @@ describe('content correctness (offline)', () => {
 
   it('contains no placeholder URLs in any content collection', () => {
     const errors = contentFiles().flatMap(file => urls(readContent(file)).filter(url => /sample-|example\.com|TODO/i.test(url)).map(url => `${file}: ${url}`));
+    expect(errors).toEqual([]);
+  });
+
+  it('states no unsourced superlatives in any catalog text', () => {
+    const superlatives = /\b(undisputed|unmatched|unrivaled|unrivalled|unbeatable|flawless|indestructible|gold standard|best in (class|the)|single best)\b/i;
+    const errors = contentFiles().flatMap(file => readFileSync(file, 'utf8').split(/\r?\n/).flatMap((line, index) => superlatives.test(line) ? [`${file}:${index + 1}: ${line.trim()}`] : []));
     expect(errors).toEqual([]);
   });
 

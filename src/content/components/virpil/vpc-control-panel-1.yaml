@@ -118,22 +118,6 @@ prices:
   url: https://virpil-controls.us.com/vpc-control-panel-1.html
   verified: '2026-10-21'
   source: manual
-verdict:
-  author: feiko
-  hands_on: false
-  take: 'Draft assessment: VPC Universal Control Panel #1 is a purpose-built module
-    for sim pilots who value precise inputs and configurable controls. Confirm regional
-    configuration and included accessories before purchase.'
-  pros:
-  - Dedicated switch and button box for cockpit workflows
-  - USB device adds programmable inputs to a sim setup
-  - Mounting options support cockpit integration
-  cons:
-  - Niche panel rather than a primary flight control
-  - Needs space and mapping
-  great_for: []
-  skip_if:
-  - Niche panel rather than a primary flight control
 verification: draft
 sources:
 - https://virpil-controls.eu/products/vpc-universal-control-panel-1

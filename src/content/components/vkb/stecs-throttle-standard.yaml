@@ -198,25 +198,6 @@ prices:
   url: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-standard-us
   verified: '2026-10-21'
   source: manual
-verdict:
-  author: feiko
-  hands_on: false
-  take: 'Draft assessment: STECS Throttle Standard is a purpose-built throttle for
-    sim pilots who value precise inputs and configurable controls. Confirm regional
-    configuration and included accessories before purchase.'
-  pros:
-  - Modular throttle lever and configurable detents
-  - Numerous controls in a compact standalone throttle
-  - Interchangeable modules and adjustable friction
-  cons:
-  - Configuration options can overwhelm new users
-  - Mostly polymer exterior
-  great_for:
-  - modern_jet
-  - ww2
-  - space_hotas
-  skip_if:
-  - Configuration options can overwhelm new users
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2177s

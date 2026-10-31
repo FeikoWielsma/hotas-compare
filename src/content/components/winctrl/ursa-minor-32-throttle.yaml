@@ -27,43 +27,49 @@ controls:
   count: 2
   location: handle
   label: One trigger per throttle handle, 78° travel
+  notes: Listed as component 1. The key-position diagram assigns it no key number.
   source: https://eu.winctrl.com/static/download/QmQewYduBVWvwYSvVxzH9GAseJyDfFVeUspknKwbzpeuZo?filename=WINCTRL-URSA-MINOR-32-Throttle-Metal-1.0-User-manual-20260310.pdf
 - type: button
   count: 2
   location: handle
-  label: One grip button per throttle handle, 3 mm travel
+  label: One grip button per throttle handle, 3 mm travel (keys 10 and 11)
   source: https://eu.winctrl.com/static/download/QmQewYduBVWvwYSvVxzH9GAseJyDfFVeUspknKwbzpeuZo?filename=WINCTRL-URSA-MINOR-32-Throttle-Metal-1.0-User-manual-20260310.pdf
 - type: button
   count: 2
   location: base
-  label: FIRE/FAULT pushbuttons, 0.3 mm travel
+  label: FIRE/FAULT pushbuttons, 0.3 mm travel (keys 5 and 6)
   source: https://eu.winctrl.com/static/download/QmQewYduBVWvwYSvVxzH9GAseJyDfFVeUspknKwbzpeuZo?filename=WINCTRL-URSA-MINOR-32-Throttle-Metal-1.0-User-manual-20260310.pdf
-- type: button
+- type: switch
   count: 1
+  positions: 2
   location: base
-  label: Scale cancellation key
+  label: Scale cancellation switch (ON/OFF)
+  notes: Turns the throttle detents on or off. The key-position diagram assigns it no key number.
   source: https://eu.winctrl.com/static/download/QmQewYduBVWvwYSvVxzH9GAseJyDfFVeUspknKwbzpeuZo?filename=WINCTRL-URSA-MINOR-32-Throttle-Metal-1.0-User-manual-20260310.pdf
 - type: rotary
   count: 1
   mode: selector
   positions: 3
   location: base
-  label: Three-position switch, 90°
+  label: Three-position MODE switch, 90° (CRANK, NORM, IGN/START)
+  notes: Keys 7, 8 and 9 are its positions. The diagram also ties key 24 to this switch without explaining it.
   source: https://eu.winctrl.com/static/download/QmQewYduBVWvwYSvVxzH9GAseJyDfFVeUspknKwbzpeuZo?filename=WINCTRL-URSA-MINOR-32-Throttle-Metal-1.0-User-manual-20260310.pdf
 - type: toggle
-  count: 1
+  count: 2
   ways: 2
   location: base
-  label: Two-position switch
+  label: Two-position ENG 1 and ENG 2 switches (keys 1/2 and 3/4)
   source: https://eu.winctrl.com/static/download/QmQewYduBVWvwYSvVxzH9GAseJyDfFVeUspknKwbzpeuZo?filename=WINCTRL-URSA-MINOR-32-Throttle-Metal-1.0-User-manual-20260310.pdf
 controls_evidence:
-  coverage: partial
+  coverage: complete
   source: https://eu.winctrl.com/static/download/QmQewYduBVWvwYSvVxzH9GAseJyDfFVeUspknKwbzpeuZo?filename=WINCTRL-URSA-MINOR-32-Throttle-Metal-1.0-User-manual-20260310.pdf
-  checked: '2026-10-20'
-  notes: The V1.0 manual diagram shows separate RX and RY axes and two throttle handles; both are represented. Its
-    key-position drawing visually identifies two base FIRE/FAULT pushbuttons, which are counted. Any additional
-    short-travel button group without identifiable physical keys is left unset. Published weight is inconsistent
-    (1.3 kg and 1.1 lb); weight is unset. USB-C.
+  checked: '2026-10-31'
+  notes: >-
+    V1.0 manual sections 1.1, 3.2 and 3.4 inspected as rendered pages. Key positions show ENG 1 and ENG 2 two-
+    position switches (1-4), FIRE/FAULT buttons (5, 6), the MODE selector (7-9, 24), grip buttons (10, 11) and
+    RX/RY throttle axes. Keys 12-23 mark throttle regions on those axes and add no physical controls. The
+    resistance roller is a mechanical adjustment and is excluded. Published weight is inconsistent (1.3 kg and 1.1
+    lb); weight is unset. USB-C.
 hardware:
   axis_count: 2
   axes:

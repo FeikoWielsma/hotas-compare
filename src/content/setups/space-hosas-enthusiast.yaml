@@ -1,8 +1,8 @@
-title: Enthusiast Dual Alpha Prime HOSAS
+title: Enthusiast dual Alpha Prime HOSAS
 use_case: space_hosas
 budget_tier: enthusiast
 description: Dual VIRPIL Constellation Alpha Prime grips mounted on WarBRD-D bases with adjustable dry clutch damping, paired with VPC ACE Torq pedals.
-reasoning: Unmatched tactile feedback, all-metal cam gimbals, contactless twist, and extensive button and analog ministick inputs across both hands.
+reasoning: All-metal cam gimbals, contactless twist, and extensive button and analog ministick inputs across both hands.
 items:
   - item_type: bundle
     id: virpil/alpha-prime-hosas-bundle

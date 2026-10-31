@@ -137,22 +137,6 @@ prices:
     url: https://virpil-controls.us.com/vpc-vmax-prime-throttle.html
     verified: '2026-10-21'
     source: manual
-verdict:
-  author: feiko
-  hands_on: true
-  take: "VIRPIL's flagship modern throttle. Refines the CM3 with swappable control modules on the grip and improved metal construction, making it the apex desktop throttle for DCS and modern jet sims."
-  pros:
-    - "Modular swappable controls on the throttle grips"
-    - "Refined all-metal detent mechanism with 4 included plate sets"
-    - "Extensive control layout with backlit RGB buttons and multi-mode dial"
-  cons:
-    - "Premium price point"
-    - "Heavy unit demanding robust mounting"
-  great_for:
-    - modern_jet
-    - space_hotas
-  skip_if:
-    - "You fly exclusively general aviation or simple warbirds"
 external_reviews:
   - reviewer: mysh
     url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1855s

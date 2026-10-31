@@ -105,24 +105,6 @@ prices:
   url: https://virpil-controls.us.com/vpc-rotor-tcs-plus-base-upgraded.html
   verified: '2026-10-21'
   source: manual
-verdict:
-  author: feiko
-  hands_on: false
-  take: 'Draft assessment: VPC Rotor TCS Plus Base is a purpose-built base for sim
-    pilots who value precise inputs and configurable controls. Confirm regional configuration
-    and included accessories before purchase.'
-  pros:
-  - Collective-specific long travel and adjustable friction
-  - Designed for compatible VIRPIL rotor grips
-  - Standalone USB connection
-  cons:
-  - Grip sold separately
-  - Large helicopter-oriented control takes dedicated mounting
-  great_for:
-  - heli
-  - ga
-  skip_if:
-  - Grip sold separately
 verification: draft
 sources:
 - https://virpil-controls.eu/products/vpc-rotor-tcs-plus-base

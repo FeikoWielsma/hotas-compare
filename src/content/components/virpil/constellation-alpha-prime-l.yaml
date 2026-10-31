@@ -135,25 +135,6 @@ prices:
   url: https://virpil-controls.us.com/vpc-constellation-alpha-prime-l.html
   verified: '2026-10-19'
   source: manual
-verdict:
-  author: feiko
-  hands_on: false
-  take: 'Draft assessment: Constellation Alpha Prime (Left) is a purpose-built grip
-    for sim pilots who value precise inputs and configurable controls. Confirm regional
-    configuration and included accessories before purchase.'
-  pros:
-  - Metal shell and dense tactile control layout
-  - Analog thumb control and brake axis add assignable axes
-  - Dedicated left-hand ergonomics support HOSAS
-  cons:
-  - Premium price and substantial grip height
-  - Configuration takes time
-  great_for:
-  - modern_jet
-  - space_hotas
-  - space_hosas
-  skip_if:
-  - Premium price and substantial grip height
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1757s

@@ -38,23 +38,6 @@ prices:
   verified: '2026-10-19'
   source: manual
   url: https://eshop.thrustmaster.com/en_us/t-16000m-fcs-hotas.html
-verdict:
-  author: feiko
-  hands_on: true
-  take: The quintessential starter HOTAS for DCS, MSFS, and Elite. Outstanding control density on the throttle paired
-    with accurate hall sensors on the stick.
-  pros:
-  - Most complete starter package for under €150
-  - Abundant controls on throttle grip (ministick, rocker, hats)
-  - Magnetic hall sensors on primary X/Y stick axes
-  cons:
-  - Twist potentiometer failure risk on stick
-  - Throttle slide stiction needs Nyogel 767A lube
-  great_for:
-  - modern_jet
-  - space_hotas
-  skip_if:
-  - You can stretch budget to VKB Gladiator EVO
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2442s

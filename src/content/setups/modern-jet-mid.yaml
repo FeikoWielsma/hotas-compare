@@ -1,8 +1,8 @@
-title: High-End Entry Metal HOTAS
+title: High-end entry metal HOTAS
 use_case: modern_jet
 budget_tier: mid
 pick: true
-description: WINCTRL Orion2 HOTAS Metal - an all-metal dual-cam gimbal with the light cast-aluminium ViperAce grip and the Orion2 throttle, plus pedals for rudder.
+description: WINCTRL Orion2 HOTAS Metal, an all-metal dual-cam gimbal with the light cast-aluminium ViperAce grip and the Orion2 throttle, plus pedals for rudder.
 reasoning: Mysh's best value high-end entry for 2026, with no competition at its price. The stick does not twist, so rudder pedals are part of the setup rather than an optional extra.
 items:
   - item_type: bundle

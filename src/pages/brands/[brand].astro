@@ -14,13 +14,12 @@ const order = ['stick_fixed', 'base', 'grip', 'throttle', 'pedals', 'yoke', 'qua
 const plural: Record<string, string> = { stick_fixed: 'Sticks', base: 'Bases', grip: 'Grips', throttle: 'Throttles', pedals: 'Pedals', yoke: 'Yokes', quadrant: 'Quadrants', module: 'Modules & panels', hotas_bundle: 'HOTAS bundles', hosas_bundle: 'HOSAS bundles', stick_combo: 'Stick combos', yoke_bundle: 'Yoke bundles', system: 'Systems' };
 const groups = order.map(cat => ({ cat, label: plural[cat] ?? categoryLabels[cat], items: own.filter(x => (x.yokePart ? 'yoke' : x.category) === cat) })).filter(g => g.items.length);
 const countries: Record<string, string> = { US: 'United States', CH: 'Switzerland', HR: 'Croatia', CN: 'China', PL: 'Poland', FR: 'France', BY: 'Belarus' };
-const reviewed = own.filter(x => x.verdict).length;
 const jsonLd = { '@context': 'https://schema.org', '@type': 'Brand', name: b.name, url: b.website ?? new URL(Astro.url.pathname, Astro.site).href, ...(b.website ? { sameAs: b.website } : {}) };
 ---
 <BaseLayout title={b.name} jsonLd={jsonLd} description={`${b.name} flight simulation hardware, products and shipping notes.`}>
 <div class="wrap">
   <nav class="crumb" aria-label="Breadcrumb"><a href="/">Catalog</a> / <a href="/brands">Brands</a> / <span aria-current="page">{b.name}</span></nav>
-  <JournalHeader eyebrow="Meet the maker" title={b.name} description={`${own.length} products${reviewed ? `, ${reviewed} with a verdict` : ''}. Find the controls that fit your kind of flying.`}><div slot="art"><BrandMark brand={id} name={b.name} size={100} /></div></JournalHeader>
+  <JournalHeader eyebrow="Meet the maker" title={b.name} description={`${own.length} products. Find the controls that fit your kind of flying.`}><div slot="art"><BrandMark brand={id} name={b.name} size={100} /></div></JournalHeader>
   <div class="brand-links">{b.country && <span>Based in {countries[b.country] ?? b.country}</span>}{b.former_names.map(n => <span>Formerly {n}</span>)}{b.website && <a href={b.website} rel="external noopener">Visit {b.name} ↗</a>}</div>
   {groups.length > 1 && <nav class="jump" aria-label="Product types">{groups.map(g => <a href={`#${g.cat}`}>{g.label} <span>{g.items.length}</span></a>)}</nav>}
   {groups.map(g => <section id={g.cat} aria-labelledby={`${g.cat}-title`}><h2 id={`${g.cat}-title`}>{g.label} <span>{g.items.length}</span></h2><div class="grid">{g.items.map(item => <ProductCard client:visible item={cardItem(item)} />)}</div></section>)}

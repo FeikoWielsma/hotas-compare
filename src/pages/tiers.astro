@@ -16,18 +16,15 @@ const items = buildTierItems(catalog
 ---
 <BaseLayout title="Rank the hardware" image="/social/tiers.png" description="Make a tier list of flight sim sticks, throttles, yokes and pedals for your kind of flying, and share it to help tune our fit scores.">
   <header class="guide-header">
-    <p class="eyebrow">The independent sim hardware guide / Tier lists</p>
-    <h1>Which hardware<br /><span>suits which flying?</span></h1>
-    <p class="intro">Our flying-style fit scores are editorial estimates. Rank the parts you know for one kind of flying, then share the link. We combine lists from the community to retune the scores.</p>
+    <h1>Tier lists</h1>
+    <p class="intro">Fit scores come from shared tier lists. Rank the parts you know for one kind of flying, then share the link.</p>
   </header>
   <TierList client:load {items} />
   <noscript>Enable JavaScript to make a tier list. You can also <a href="/">browse the hardware catalog</a>.</noscript>
 </BaseLayout>
 <style>
-  .guide-header { position: relative; margin-top: 1rem; padding: clamp(1.5rem, 4vw, 3rem); padding-bottom: clamp(2rem, 4vw, 3.5rem); background: var(--color-navy); color: var(--color-on-navy); }
+  .guide-header { position: relative; margin-top: 1rem; padding: 1.25rem 1.5rem 1.75rem; background: var(--color-navy); color: var(--color-on-navy); }
   .guide-header::after { content: ''; position: absolute; inset: auto 0 0; height: 7px; background: repeating-linear-gradient(120deg, var(--color-highlight) 0 26px, var(--color-on-navy) 26px 30px, var(--color-navy) 30px 40px); }
-  .eyebrow { font: 600 .8125rem/1.6 var(--font-sans); margin: 0 0 1.25rem; }
-  h1 { font: 700 clamp(2.5rem, 5.5vw, 5rem)/.98 var(--font-display); letter-spacing: .01em; text-transform: uppercase; margin: 0; }
-  h1 span { color: var(--color-highlight); }
-  .intro { font: 1rem/1.8 var(--font-sans); max-width: 62ch; margin: 1.5rem 0 0; }
+  h1 { font: 700 2rem/1 var(--font-display); letter-spacing: .01em; text-transform: uppercase; margin: 0; }
+  .intro { font: .9375rem/1.6 var(--font-sans); max-width: 62ch; margin: .5rem 0 0; }
 </style>

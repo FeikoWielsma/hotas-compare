@@ -3,7 +3,7 @@ import { isListed } from './visibility';
 import { resolveSuccessor } from './successors';
 import { deriveComponentStats, deriveControlsSummary, resolvePrice } from './derive';
 import type { ControlsSummary, ResolvedPrice } from './derive';
-import type { Component, Bundle, Region, UseCaseFit, Verdict, ReviewTag, GimbalType, DamperType, ControlItem, Placement } from './schema';
+import type { Component, Bundle, Region, UseCaseFit, ReviewTag, GimbalType, DamperType, ControlItem, Placement } from './schema';
 import type { ControlSection } from './control-inventory';
 import { familyIndex, validateFamilies } from './families';
 import { yokePart, yokeStandards } from './yoke-parts';
@@ -45,8 +45,6 @@ export interface CatalogItem {
   use_case_fit: UseCaseFit;
   /** Some part is under a maintainer hard cap (budget gear to avoid), so the wizard never recommends it. */
   budgetGear?: true;
-  verdict: Verdict | null;
-  scores: Verdict['scores'] | null;
   /** Tag of the most recent external review (e.g. Mysh's latest roundup), if any. */
   reviewTag?: ReviewTag | null;
   /** The most recent external review, for review chips and rank explanations. */
@@ -167,7 +165,7 @@ export async function loadCatalog(region: Region = 'EU', now = new Date()) {
     const pedalInfo = data.category === 'pedals' ? derivePedalBrakes(members) : null;
     const stats = members.map(deriveComponentStats);
     const controlsSummary = deriveControlsSummary(members.flatMap((member) => member.controls));
-    // Bundle fit is the mean of its members; never invent an editorial verdict.
+    // Bundle fit is the mean of its members.
     const use_case_fit = { ...members[0].use_case_fit };
     for (const key of Object.keys(use_case_fit) as (keyof UseCaseFit)[]) {
       use_case_fit[key] = members.reduce((sum, member) => sum + member.use_case_fit[key], 0) / members.length;
@@ -208,7 +206,7 @@ export async function loadCatalog(region: Region = 'EU', now = new Date()) {
         return families.length === 1 ? { airlinerFamily: families[0] } : {};
       })(),
       ...(members.some((member) => fitCap(member).reasons.length) ? { budgetGear: true as const } : {}),
-      use_case_fit, verdict: data.verdict ?? null, scores: data.verdict?.scores ?? null,
+      use_case_fit,
       ...(() => {
         const review = [...data.external_reviews].sort((a, b) => b.date.localeCompare(a.date))[0];
         return { reviewTag: review?.tag ?? null, latestReview: review ? { ...review, reviewerName: reviewerNames.get(review.reviewer) ?? review.reviewer } : null };

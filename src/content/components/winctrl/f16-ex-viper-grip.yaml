@@ -96,23 +96,6 @@ prices:
     store: winwing.cn
     verified: '2026-10-01'
     source: manual
-verdict:
-  author: feiko
-  hands_on: true
-  take: "An authentic replica of the F-16 Viper flight stick, enhanced with WinCtrl's 'EX' expansion module providing extra hats and an analog ministick for modern DCS multi-role fighters."
-  pros:
-    - "Authentic F-16 / A-10C ergonomics with 1:1 scale feel"
-    - "EX expansion module adds a ministick and extra 5-way hat"
-    - "Stepped dual-stage trigger"
-  cons:
-    - "No twist (Z) axis — requires rudder pedals"
-    - "Right-hand only"
-  great_for:
-    - modern_jet
-    - space_hotas
-  skip_if:
-    - "You don't own rudder pedals or twist stick"
-    - "You need a left-hand stick for HOSAS"
 external_reviews: []
 verification: verified
 sources:

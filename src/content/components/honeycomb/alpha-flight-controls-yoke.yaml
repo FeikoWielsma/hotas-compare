@@ -112,28 +112,6 @@ prices:
   url: https://flyhoneycomb.com/products/alpha-flight-controls
   verified: '2026-10-21'
   source: manual
-verdict:
-  author: feiko
-  hands_on: true
-  take: A polished entry point for general aviation and airliner flying, with a broad,
-    smooth yoke arc and useful cockpit-style controls. It is a substantial desktop
-    unit, so measure your mounting space and pair it with a throttle quadrant for
-    a complete setup.
-  pros:
-  - Comfortable, wide yoke travel suits GA and commercial aircraft
-  - Integrated switches and buttons reduce reliance on keyboard commands
-  - Straightforward USB setup and broad simulator compatibility
-  cons:
-  - Potentiometer wear and input jitter are a longevity concern; a 2018 forum report attributes Honeycomb's choice to quality potentiometers and the cost of Hall sensors (original statement not independently verified)
-  - Requires a sizeable, secure desk mounting area
-  - No throttle quadrant included
-  - Price is high for users who mainly fly with a joystick
-  great_for:
-  - ga
-  - airliner
-  skip_if:
-  - You mainly fly combat aircraft or space sims
-  - You cannot clamp a large yoke to your desk
 verification: verified
 images:
 - file: /images/honeycomb/alpha-flight-controls-yoke.jpg

@@ -8,7 +8,7 @@ export const glossary = {
   cam_and_spring: { term: 'Cam-and-spring gimbal', text: 'Springs press on swappable cams, usually in a metal base with bearings. Very smooth and precise, with tunable feel; what most high-end bases use.' },
   force_feedback: { term: 'Force feedback', text: 'Motors push back on the stick to simulate trim, stalls and turbulence. Expensive, and game support and smoothness vary between bases.' },
   other_gimbal: { term: 'Other gimbal', text: 'A hybrid or unusual design that does not fit the main families; see the product notes.' },
-  hall: { term: 'Contactless (Hall / magnetic) sensors', text: 'Read the stick position with magnets instead of a wiper on a track, so they do not wear out or drift. Potentiometers are cheaper but develop jitter over time.' },
+  hall: { term: 'Contactless (Hall / magnetic) sensors', text: 'Read the stick position with magnets instead of a wiper on a track, so no contact track wears out. Potentiometers are cheaper but develop jitter over time.' },
   hosas: { term: 'HOSAS', text: 'Hands On Stick And Stick: two joysticks instead of stick and throttle. Popular for space sims, where you need six degrees of freedom.' },
   omni: { term: 'Omni-throttle', text: 'A joystick mounted on an angled adapter and used as a throttle, often with one axis locked. Flexible for space sims, but without detents or twin engines.' },
   detent: { term: 'Detent', text: 'A physical notch in the throttle travel, for example idle cut-off or afterburner, so you can feel where you are without looking.' },

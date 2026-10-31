@@ -6,7 +6,7 @@
   let { type, variant = 'badge' }: { type: GimbalType; variant?: 'badge' | 'pill' } = $props();
   const ladder: { type: GimbalType; note: string }[] = [
     { type: 'ball_and_cup', note: 'Budget sticks; centre bump and friction' },
-    { type: 'pincer', note: 'Smooth and durable; the value sweet spot' },
+    { type: 'pincer', note: 'Smooth and durable; usually mid-priced' },
     { type: 'cam_and_spring', note: 'Swappable cams and tunable feel; high end' },
     { type: 'force_feedback', note: 'Motors push back; game support varies' },
   ];

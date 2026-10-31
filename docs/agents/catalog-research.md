@@ -26,4 +26,4 @@ Research is complete when the assigned fields have supported corrections or expl
 
 Prefer automated detection that produces a deduplicated report or proposed diff. Keep fast deterministic content checks separate from network checks. Classify blocked requests and ambiguous redirects separately from confirmed broken links.
 
-Use existing tickets for integrity checks, link health, price refresh, and price history. Implement and validate the checks before scheduling them; introduce recurring work only when requested. Keep editorial verdicts and disputed evidence visible for maintainer judgment.
+Use existing tickets for integrity checks, link health, price refresh, and price history. Implement and validate the checks before scheduling them; introduce recurring work only when requested. Keep disputed evidence visible for maintainer judgment.

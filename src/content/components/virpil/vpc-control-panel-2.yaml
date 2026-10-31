@@ -117,22 +117,6 @@ prices:
   url: https://virpil-controls.us.com/vpc-control-panel-2.html
   verified: '2026-10-21'
   source: manual
-verdict:
-  author: feiko
-  hands_on: false
-  take: 'Draft assessment: VPC Universal Control Panel #2 is a purpose-built module
-    for sim pilots who value precise inputs and configurable controls. Confirm regional
-    configuration and included accessories before purchase.'
-  pros:
-  - High density of programmable switches and encoders
-  - Useful for cockpit and aircraft systems bindings
-  - Standalone USB control panel
-  cons:
-  - Occupies desk or panel mounting area
-  - Configuration effort required
-  great_for: []
-  skip_if:
-  - Occupies desk or panel mounting area
 verification: draft
 sources:
 - https://virpil-controls.eu/products/vpc-universal-control-panel-2

@@ -37,23 +37,6 @@ prices:
     url: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-space-combat-edition-right-hand-us
     verified: '2026-10-19'
     source: manual
-verdict:
-  author: feiko
-  hands_on: true
-  take: "The single best value joystick bundle in flight simulation history. Combining the EVO base dry clutches with the SCG Premium grip provides desktop comfort, contactless twist, and unmatched precision below €200."
-  pros:
-    - "Unbeatable quality-to-price ratio"
-    - "Ball bearings and dry clutches for smooth, zero-stiction motion"
-    - "Contactless twist Z-axis on grip"
-    - "Integrated base throttle and encoders"
-  cons:
-    - "Requires simple 10-minute assembly out of the box (connecting grip ribbon cable)"
-  great_for:
-    - space_hosas
-    - modern_jet
-    - space_hotas
-  skip_if:
-    - "You already own a high-end metal cam base like WarBRD or Gunfighter"
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2580s

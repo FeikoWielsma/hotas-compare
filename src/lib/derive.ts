@@ -297,35 +297,11 @@ export function checkMountCompatibility(
 export interface ScoredRecommendation {
   score: number;
   fitScore: number;
-  verdictScore: number;
   breakdown: string[];
 }
 
-export function scoreItemForUseCase(
-  useCaseFit: Component['use_case_fit'],
-  verdict: Component['verdict'],
-  useCase: UseCase
-): ScoredRecommendation {
-  const breakdown: string[] = [];
+/** Out of 100: each fit point is worth 12, on a floor of 28 that the wizard's bonuses and penalties are tuned against. */
+export function scoreItemForUseCase(useCaseFit: Component['use_case_fit'], useCase: UseCase): ScoredRecommendation {
   const fitScore = useCaseFit[useCase] ?? 3;
-  breakdown.push(`Use-case fit for ${useCase}: ${fitScore}/5`);
-
-  let verdictScore = 3.5;
-  if (verdict?.scores) {
-    const s = verdict.scores;
-    verdictScore = (s.build + s.feel + s.value + s.software + s.qc_support) / 5;
-    breakdown.push(`Editorial verdict average: ${verdictScore.toFixed(1)}/5`);
-  } else {
-    breakdown.push(`No editorial review yet (baseline: 3.5)`);
-  }
-
-  // Overall score out of 100
-  const normalized = Math.round(((fitScore * 0.6) + (verdictScore * 0.4)) * 20);
-
-  return {
-    score: normalized,
-    fitScore,
-    verdictScore,
-    breakdown,
-  };
+  return { score: Math.round(28 + fitScore * 12), fitScore, breakdown: [`Use-case fit for ${useCase}: ${fitScore}/5`] };
 }

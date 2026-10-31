@@ -1,11 +1,5 @@
-import type { UseCaseFit, Verdict } from './schema';
+import type { UseCaseFit } from './schema';
 import { humanize } from './labels';
-
-export function overallVerdict(verdict: Verdict) {
-  if (!verdict.scores) return null;
-  const values = Object.values(verdict.scores);
-  return `${Number((values.reduce((a, b) => a + b, 0) / values.length).toFixed(1))} / 5`;
-}
 
 /** Schema defaults every fit to 3; an all-3 profile means the product has not been rated. */
 export function isDefaultFit(fit: UseCaseFit) {
@@ -14,14 +8,13 @@ export function isDefaultFit(fit: UseCaseFit) {
 
 interface SpecInput {
   axes?: string | null; inputs?: string | null; sensor?: string | null; gimbal?: string | null;
-  throw?: number | null; weight?: number | null; connection?: string | null; verdict?: string | null;
+  throw?: number | null; weight?: number | null; connection?: string | null;
 }
 
 /** Headline specifications for the product hero. Unknown values are omitted, not shown as "Unknown". */
 export function keySpecs(s: SpecInput) {
   const shortText = (value?: string | null) => value && value.length <= 40 && !/^not applicable|^none/i.test(value) ? humanize(value) : null;
   return [
-    s.verdict && { label: 'Our score', value: s.verdict },
     s.axes && { label: 'Axes', value: s.axes },
     s.inputs && { label: 'Est. button inputs', value: s.inputs, hint: 'Estimated logical inputs, including hat directions and switch positions' },
     shortText(s.sensor) && { label: 'Sensor', value: shortText(s.sensor)! },

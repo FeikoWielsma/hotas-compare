@@ -114,23 +114,6 @@ prices:
   url: https://vkbsimcontrollers.com/products/gnx-kg12-add-on-grip-us
   verified: '2026-10-21'
   source: manual
-verdict:
-  author: feiko
-  hands_on: false
-  take: 'Draft assessment: KG12 WWII Grip is a purpose-built grip for sim pilots who
-    value precise inputs and configurable controls. Confirm regional configuration
-    and included accessories before purchase.'
-  pros:
-  - Simple vintage WWII control layout
-  - Lightweight grip pairs well with compatible VKB bases
-  - Good match for period aircraft
-  cons:
-  - Very few controls compared with modern grips
-  - Limited appeal outside WWII flying
-  great_for:
-  - ww2
-  skip_if:
-  - Very few controls compared with modern grips
 verification: draft
 sources:
 - https://vkbcontrollers.com/products/kg12-grip
