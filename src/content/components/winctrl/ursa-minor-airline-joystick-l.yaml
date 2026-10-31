@@ -18,45 +18,41 @@ controls:
 - type: trigger
   count: 1
   location: grip
-  label: Trigger; stage count not stated in manual diagram
-  source: https://eu.winctrl.com/view/goods-details.html?id=559
-- type: button
-  count: 14
-  backlit: false
-  location: base
-  label: Button switches
+  label: Trigger (key 21)
   source: https://eu.winctrl.com/static/download/QmTNG9wYC7V5h4a5U4m2ZbYY55uag2c3wQc2MUw9m7KXHK?filename=URSA+MINOR-Airlines-Joystick+L-User+Manual-V1.3.pdf
-- type: switch
+- type: button
   count: 1
-  positions: 2
-  momentary: false
-  push: false
   location: grip
-  label: Multifunction switch (key 20)
+  label: Grip pushbutton (key 22)
   source: https://eu.winctrl.com/static/download/QmTNG9wYC7V5h4a5U4m2ZbYY55uag2c3wQc2MUw9m7KXHK?filename=URSA+MINOR-Airlines-Joystick+L-User+Manual-V1.3.pdf
 - type: hat
   count: 1
   ways: 4
   push: true
   location: grip
-  label: Hidden five-way switch under magnetic cover
+  label: HAT multifunction switch under magnetic cover (key 20)
+  notes: The manual also calls this the hidden 5-way switch. It draws four directions around key 20.
   source: https://eu.winctrl.com/static/download/QmTNG9wYC7V5h4a5U4m2ZbYY55uag2c3wQc2MUw9m7KXHK?filename=URSA+MINOR-Airlines-Joystick+L-User+Manual-V1.3.pdf
-  notes: Manufacturer calls this a five-way control; direction count versus center-push interpretation is not confirmed.
-    Neither five directional contacts nor center push is assumed.
-- type: slider
-  analog: true
-  positions: 2
-  center_detent: false
-  count: 1
+- type: button
+  count: 14
   location: base
-  label: 38 mm throttle slider
+  label: Button switches
+  source: https://eu.winctrl.com/static/download/QmTNG9wYC7V5h4a5U4m2ZbYY55uag2c3wQc2MUw9m7KXHK?filename=URSA+MINOR-Airlines-Joystick+L-User+Manual-V1.3.pdf
+- type: slider
+  count: 1
+  analog: true
+  location: base
+  label: 38 mm potentiometer slider
   source: https://eu.winctrl.com/static/download/QmTNG9wYC7V5h4a5U4m2ZbYY55uag2c3wQc2MUw9m7KXHK?filename=URSA+MINOR-Airlines-Joystick+L-User+Manual-V1.3.pdf
 controls_evidence:
-  coverage: partial
+  coverage: complete
   source: https://eu.winctrl.com/static/download/QmTNG9wYC7V5h4a5U4m2ZbYY55uag2c3wQc2MUw9m7KXHK?filename=URSA+MINOR-Airlines-Joystick+L-User+Manual-V1.3.pdf
-  checked: '2026-10-19'
-  notes: Exact left-hand manual diagram inspected. HAT is four-way; the multifunction hat has a documented press
-    action. Trigger is shown without a documented stage count. Diagram key indices are not treated as physical counts.
+  checked: '2026-10-31'
+  notes: >-
+    Exact-hand V1.3 manual, section 2.1, inspected as rendered pages. The grip diagram shows only key 20, trigger
+    key 21 and button key 22, and keys 23-25 are twist-axis zones. Key 20 is the HAT, the multifunction switch and
+    the hidden 5-way switch revealed by removing the magnetic cover, so the earlier separate entries for these
+    were one control. The base diagram shows 14 button switches and the slider. Trigger stage count is not stated.
 hardware:
   gimbal: pincer
   gimbal_type: pincer

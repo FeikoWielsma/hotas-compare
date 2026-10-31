@@ -1,12 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import JournalHeader from '../components/JournalHeader.astro';
-import CompareArt from '../components/CompareArt.astro';
 import CompareView from '../components/CompareView.svelte';
 import { getCatalogItems } from '../lib/catalog';
 const items = await getCatalogItems();
 ---
 <BaseLayout title="Compare hardware" noindex>
-  <JournalHeader eyebrow="Hardware, side by side" title="The details matter." emphasis="Find your fit." description="Up to four pieces of hardware. Every axis, every input, side by side."><CompareArt slot="art" /></JournalHeader>
+  <JournalHeader compact title="Compare" description="Up to four products, side by side." />
   <CompareView client:load initialItems={items} />
 </BaseLayout>

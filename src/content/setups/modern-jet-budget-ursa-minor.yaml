@@ -1,8 +1,8 @@
-title: Best-Value Modern Jet HOTAS
+title: Best-value modern jet HOTAS
 use_case: modern_jet
 budget_tier: budget
 pick: true
-description: WINCTRL Ursa Minor Combat HOTAS - a pincer-gimbal stick with dampers and a throttle with metal internals, split levers, idle cut-off and afterburner detents.
+description: WINCTRL Ursa Minor Combat HOTAS, a pincer-gimbal stick with dampers and a throttle with metal internals, split levers, idle cut-off and afterburner detents.
 reasoning: Mysh's mid-range champion in his 2026 roundup. Nothing else near this price has a gimbal or throttle this good, and the throttle is good enough to keep when you upgrade the stick later.
 items:
   - item_type: bundle

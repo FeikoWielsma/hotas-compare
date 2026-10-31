@@ -12,7 +12,7 @@ function item(overrides: Partial<CatalogItem> = {}): CatalogItem {
     totalAxes: 0, totalLogicalButtons: 0, hasMinistick: false, hasBrakeAxis: false,
     controlsSummary: deriveControlsSummary([]), sensor: null, usesPotentiometers: false, gimbal: null,
     use_case_fit: { modern_jet: 1, space_hosas: 1, space_hotas: 1, heli: 1, ga: 1, airliner: 1, ww2: 1 },
-    verdict: null, scores: null, images: [], componentIds: [], formerBrandNames: [], handedness: [],
+    images: [], componentIds: [], formerBrandNames: [], handedness: [],
     mechanics: { forceAdjustable: 'Unknown', cams: 'Unknown', damping: 'Unknown' }, leverCount: 0,
     ...overrides,
   };
@@ -100,13 +100,13 @@ describe('catalog filters', () => {
     expect(filterCatalog([ambi], { handedness: 'right' })).toEqual([]);
   });
 
-  it('ranks Recommended by fit first: a recommendation breaks ties, avoid sinks, verdict scores are paused', () => {
+  it('ranks Recommended by fit first: a recommendation breaks ties, avoid sinks', () => {
     const fits = (n: number) => ({ modern_jet: n, space_hosas: n, space_hotas: n, heli: n, ga: n, airliner: n, ww2: n });
     const strong = item({ id: 'strong', name: 'Strong', use_case_fit: fits(4.5) });
     const recommended = item({ id: 'rec', name: 'Rec', reviewTag: 'recommended', use_case_fit: fits(3.5) });
     const unreviewed = item({ id: 'none', name: 'None', use_case_fit: fits(3.5) });
     const avoided = item({ id: 'avoid', name: 'Avoid', reviewTag: 'avoid', use_case_fit: fits(5) });
-    const scored = item({ id: 'scored', name: 'Scored', use_case_fit: fits(3), scores: { build: 5, feel: 5, value: 5, software: 5, qc_support: 5 } });
+    const scored = item({ id: 'scored', name: 'Scored', use_case_fit: fits(3) });
     const order = filterCatalog([avoided, scored, unreviewed, recommended, strong], { sort: 'featured' }).map((i) => i.id);
     expect(order).toEqual(['strong', 'rec', 'none', 'scored', 'avoid']);
   });
@@ -162,9 +162,7 @@ describe('catalog filters', () => {
 });
 
 describe('catalog family grouping', () => {
-  it('diversifies a representative first page by cards while keeping hidden parts and avoid out', () => {
-    const scores = { build: 5, feel: 5, value: 5, software: 5, qc_support: 5 };
-    const best = (style: keyof CatalogItem['use_case_fit']) => ({ modern_jet: 1, space_hosas: 1, space_hotas: 1, heli: 1, ga: 1, airliner: 1, ww2: 1, [style]: 1.2 });
+  it('diversifies a representative first page by cards while keeping hidden parts and avoid out', () => {    const best = (style: keyof CatalogItem['use_case_fit']) => ({ modern_jet: 1, space_hosas: 1, space_hotas: 1, heli: 1, ga: 1, airliner: 1, ww2: 1, [style]: 1.2 });
     const fixture = [
       ...Array.from({ length: 10 }, (_, i) => item({ id: `family-${i}`, name: `Family ${i}`, category: 'throttle', brand: 'alpha', reviewTag: 'recommended', family: { id: 'alpha/throttle', name: 'Throttle', axis: 'Size', label: `${i}`, tier: i } })),
       ...Array.from({ length: 8 }, (_, i) => item({ id: `stick-${i}`, name: `Stick ${i}`, brand: 'alpha', reviewTag: 'recommended' })),
@@ -173,10 +171,10 @@ describe('catalog family grouping', () => {
       item({ id: 'pedals', name: 'Pedals', category: 'pedals', brand: 'delta', reviewTag: 'recommended', use_case_fit: best('heli') }),
       item({ id: 'quadrant', name: 'Quadrant', category: 'quadrant', brand: 'echo', reviewTag: 'recommended', use_case_fit: best('ga') }),
       item({ id: 'module', name: 'Module', category: 'module' }),
-      item({ id: 'avoid', name: 'Avoid', category: 'system', item_type: 'bundle', brand: 'unique', reviewTag: 'avoid', scores }),
-      item({ id: 'old', status: 'discontinued', successor: 'hotas', scores }),
-      item({ id: 'combo-part', soldStandalone: false, scores }),
-      item({ id: 'curated-part', soldMainlyInBundle: true, scores }),
+      item({ id: 'avoid', name: 'Avoid', category: 'system', item_type: 'bundle', brand: 'unique', reviewTag: 'avoid' }),
+      item({ id: 'old', status: 'discontinued', successor: 'hotas' }),
+      item({ id: 'combo-part', soldStandalone: false }),
+      item({ id: 'curated-part', soldMainlyInBundle: true }),
     ];
     const cards = (items: CatalogItem[]) => groupCatalog(filterCatalog(items, { sort: 'featured' }), 'featured');
     const result = cards(fixture);

@@ -134,23 +134,6 @@ prices:
   url: https://vkbsimcontrollers.com/products/gnx-f-14-add-on-grip-us
   verified: '2026-10-21'
   source: manual
-verdict:
-  author: feiko
-  hands_on: false
-  take: 'Draft assessment: F-14 Combat Grip is a purpose-built grip for sim pilots
-    who value precise inputs and configurable controls. Confirm regional configuration
-    and included accessories before purchase.'
-  pros:
-  - Tomcat-inspired weapon selector and DLC axis
-  - Lockable contactless twist axis
-  - Tactile dual-stage trigger and programmable buttons
-  cons:
-  - Specialist layout has fewer general-purpose hats
-  - Grip is an add-on; verify base compatibility
-  great_for:
-  - modern_jet
-  skip_if:
-  - Specialist layout has fewer general-purpose hats
 verification: draft
 sources:
 - https://vkbcontrollers.com/products/f-14-gnx-combat-grip-add-on

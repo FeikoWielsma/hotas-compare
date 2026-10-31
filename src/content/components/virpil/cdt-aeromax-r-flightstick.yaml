@@ -130,25 +130,6 @@ prices:
   url: https://virpil-controls.us.com/cdt-aeromax-r-flightstick.html
   verified: '2026-10-19'
   source: manual
-verdict:
-  author: feiko
-  hands_on: false
-  take: "VIRPIL's groundbreaking standalone desktop flight stick. Packs a true compact all-metal cam-and-spring gimbal with interchangeable cams, springs, adjustable grip offset, and integrated dry clutches directly into a compact desktop form factor for €199.95 (excl. VAT)."
-  pros:
-    - "First truly compact all-metal cam and spring standalone flightstick"
-    - "Integrated adjustable dry clutch dampers for smooth motion or dead-stick heli flying"
-    - "Contactless digital sensors across all axes"
-    - "Adjustable grip offset angle"
-    - "Supports up to 2 optional add-on throttle lever modules on each side"
-  cons:
-    - "Straight desktop stick. The RZ listing is the one with the built-in Z-extension omnithrottle. This stick still has the lockable twist axis shown on its grip diagram."
-    - "Check batch pre-order availability on EU store"
-  great_for:
-    - modern_jet
-    - space_hotas
-    - ww2
-  skip_if:
-    - "You want the built-in Z-extension omnithrottle (that is the RZ listing)"
 external_reviews:
   - reviewer: mysh
     url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1033s

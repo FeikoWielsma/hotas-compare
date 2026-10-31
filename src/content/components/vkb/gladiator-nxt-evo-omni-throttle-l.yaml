@@ -162,25 +162,6 @@ prices:
   url: https://vkbsimcontrollers.com/products/gladiator-nxt-evo-omni-throttle-left-hand-us
   verified: '2026-10-21'
   source: manual
-verdict:
-  author: feiko
-  hands_on: false
-  take: 'Draft assessment: Gladiator NXT EVO Omni-Throttle (Left) is a purpose-built
-    stick_fixed for sim pilots who value precise inputs and configurable controls.
-    Confirm regional configuration and included accessories before purchase.'
-  pros:
-  - Angled Omni-Throttle adapter creates natural left-hand throttle posture
-  - Can be configured with axis springs/clutch for space movement
-  - Full SCG control set and integrated base controls
-  cons:
-  - Angle is specialized and takes desk space
-  - Not a conventional linear throttle
-  great_for:
-  - ww2
-  - space_hotas
-  - space_hosas
-  skip_if:
-  - Angle is specialized and takes desk space
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2867s

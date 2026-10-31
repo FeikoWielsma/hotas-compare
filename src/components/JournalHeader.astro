@@ -1,9 +1,10 @@
 ---
-interface Props { eyebrow: string; title: string; emphasis?: string; description?: string }
-const { eyebrow, title, emphasis, description } = Astro.props;
+/** `compact` is for tool pages, where the tool itself should start near the top of the screen. */
+interface Props { eyebrow?: string; title: string; emphasis?: string; description?: string; compact?: boolean }
+const { eyebrow, title, emphasis, description, compact } = Astro.props;
 ---
-<header class="journal-header">
-  <div class="journal-copy"><p class="journal-eyebrow">{eyebrow}</p><h1>{title}{emphasis && <><br /><span>{emphasis}</span></>}</h1>{description && <p class="journal-description">{description}</p>}</div>
+<header class="journal-header" class:list={{ compact }}>
+  <div class="journal-copy">{eyebrow && <p class="journal-eyebrow">{eyebrow}</p>}<h1>{title}{emphasis && <><br /><span>{emphasis}</span></>}</h1>{description && <p class="journal-description">{description}</p>}</div>
   {Astro.slots.has('art') && <div class="journal-art"><slot name="art" /></div>}
 </header>
 <style>
@@ -12,5 +13,6 @@ const { eyebrow, title, emphasis, description } = Astro.props;
   .journal-copy { min-width: 0; } .journal-eyebrow { color: #f6ad88; font-size: .8rem; font-weight: 500; margin: 0 0 1.2rem; }
   h1 { color: var(--color-on-navy); font: 700 clamp(2.75rem, 6vw, 5.5rem)/.95 var(--font-display); text-transform: uppercase; margin: 0; letter-spacing: -.015em; }
   h1 span { color: #f69b70; } .journal-description { color: #d8e0e5; font-size: 1rem; line-height: 1.8; max-width: 56ch; margin: 1.3rem 0 0; }
-  .journal-art { flex: none; } @media(max-width:600px) { .journal-header { flex-direction: column; align-items: start; gap: 1.5rem; } h1 { font-size: clamp(2.6rem, 11vw, 4rem); } .journal-description { font-size: .9rem; } }
+  .compact { padding: 1.25rem 1.5rem 1.75rem; margin-bottom: 1rem; } .compact h1 { font-size: 2rem; line-height: 1; } .compact .journal-description { font-size: .9375rem; line-height: 1.6; margin-top: .5rem; }
+  .journal-art { flex: none; } @media(max-width:600px) { .journal-header { flex-direction: column; align-items: start; gap: 1.5rem; } .journal-header:not(.compact) h1 { font-size: clamp(2.6rem, 11vw, 4rem); } .journal-description { font-size: .9rem; } }
 </style>

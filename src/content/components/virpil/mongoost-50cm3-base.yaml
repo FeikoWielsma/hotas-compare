@@ -82,27 +82,6 @@ prices:
     url: https://virpil-controls.us.com/vpc-mongoost-50cm3-base.html
     verified: '2026-10-21'
     source: manual
-verdict:
-  author: feiko
-  hands_on: false
-  take: 'Draft assessment: VPC MongoosT-50CM3 Base is a purpose-built base for sim
-    pilots who value precise inputs and configurable controls. Confirm regional configuration
-    and included accessories before purchase.'
-  pros:
-  - Interchangeable cams and springs with adjustable clutches
-  - Long-extension cockpit base with compact 32-degree throw
-  - Robust metal gimbal for center-stick installations
-  cons:
-  - Cockpit mount is strongly recommended
-  - Grip sold separately
-  great_for:
-  - modern_jet
-  - heli
-  - ww2
-  - space_hotas
-  - space_hosas
-  skip_if:
-  - Cockpit mount is strongly recommended
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=3096s

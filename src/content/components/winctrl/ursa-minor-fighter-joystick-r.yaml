@@ -19,20 +19,20 @@ controls:
     stages: 2
     action: sequential
     location: grip
-    label: First and second stage trigger
+    label: Two-stage trigger (keys 37 and 38)
     source: https://eu.winctrl.com/static/download/QmTvHcYNoR17Ro8AHmA7j6jpqwnHHbaYWS8dXGxM8QbTgh?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+V1.3+20250708.pdf
   - type: hat
     count: 1
-    ways: 8
-    push: false
+    ways: 4
+    push: true
     location: grip
-    label: HAT switch
+    label: HAT multifunction switch (key 21)
     source: https://eu.winctrl.com/static/download/QmTvHcYNoR17Ro8AHmA7j6jpqwnHHbaYWS8dXGxM8QbTgh?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+V1.3+20250708.pdf
   - type: analog_ministick
     count: 1
-    push: false
+    push: true
     location: grip
-    label: Rx/Ry mini joystick
+    label: Rx/Ry mini joystick (press key 34)
     source: https://eu.winctrl.com/static/download/QmTvHcYNoR17Ro8AHmA7j6jpqwnHHbaYWS8dXGxM8QbTgh?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+V1.3+20250708.pdf
   - type: button
     count: 14
@@ -48,12 +48,38 @@ controls:
     location: base
     label: Throttle slider axis
     source: https://eu.winctrl.com/static/download/QmTvHcYNoR17Ro8AHmA7j6jpqwnHHbaYWS8dXGxM8QbTgh?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+V1.3+20250708.pdf
+  - type: hat
+    count: 3
+    ways: 4
+    push: true
+    location: grip
+    label: Multifunction direction and press switches (keys 23, 29 and 40)
+    source: https://eu.winctrl.com/static/download/QmTvHcYNoR17Ro8AHmA7j6jpqwnHHbaYWS8dXGxM8QbTgh?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+V1.3+20250708.pdf
+  - type: switch
+    count: 1
+    location: grip
+    label: Grip paddle with two contacts (keys 35 and 36)
+    notes: The manual draws one lever arc between two contacts and gives their force. It does not name the mechanism.
+    source: https://eu.winctrl.com/static/download/QmTvHcYNoR17Ro8AHmA7j6jpqwnHHbaYWS8dXGxM8QbTgh?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+V1.3+20250708.pdf
+  - type: button
+    count: 4
+    location: grip
+    label: Grip pushbuttons (keys 20, 22, 28 and 39)
+    source: https://eu.winctrl.com/static/download/QmTvHcYNoR17Ro8AHmA7j6jpqwnHHbaYWS8dXGxM8QbTgh?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+V1.3+20250708.pdf
 controls_evidence:
   coverage: complete
   source: https://eu.winctrl.com/static/download/QmTvHcYNoR17Ro8AHmA7j6jpqwnHHbaYWS8dXGxM8QbTgh?filename=URSA+MINOR-Fighter-Joystick+R-User+Manual+V1.3+20250708.pdf
-  checked: '2026-10-20'
+  checked: '2026-10-31'
   notes: >-
-    Exact right-hand V1.3 manual (2025.07.08) inspected. Physical inventory confirms 2-stage trigger, HAT switch, Rx/Ry mini-joystick, 14 base button switches, and 38mm potentiometer throttle slider.
+    Exact right-hand manual, section 2.1 (printed pages 7-8), inspected as rendered pages from the cited V1.3
+    20250708 file; its cover still reads V1.0 2024.04. The key diagrams and mechanical-strength table cover every
+    grip and base control. Keys 21, 23, 29 and 40 are each listed as both a multifunctional press switch and
+    direction switch, with four directions around one center key, so the earlier 8-way, no-push hat was wrong. Key
+    34 has its own press force. Keys 45-48 are direction events of the mini joystick and keys 49-51 are twist-axis
+    zones, so neither adds a physical control. The table's first row repeats key 29 where key 39 would be
+    expected; the diagram still draws 39 as its own button. The earlier record omitted the three other
+    multifunction switches, the paddle and the four grip buttons. The Z-axis lock screw is mechanical and is
+    excluded.
 hardware:
   gimbal: pincer
   gimbal_type: pincer
@@ -118,23 +144,6 @@ prices:
     store: winwing.cn
     verified: '2026-10-01'
     source: manual
-verdict:
-  author: feiko
-  hands_on: true
-  take: "The best budget desktop flight stick in the EU. Offers a glass-fiber pincer gimbal, contactless magnetic sensors, and lockable twist with integrated dampers for under €100."
-  pros:
-    - "Glass fiber reinforced pincer gimbal is far smoother and more durable than ball-and-cup"
-    - "Contactless magnetic sensors on primary axes and twist Z-axis"
-    - "Integrated dampers prevent oscillating bounce-back"
-    - "Outstanding price-to-performance ratio in Europe"
-  cons:
-    - "Hat switches are the known weak point and prone to wear under heavy abuse"
-    - "Software requires account login"
-  great_for:
-    - modern_jet
-    - space_hotas
-  skip_if:
-    - "You live in the US, where VKB Gladiator EVO pricing offers superior component longevity"
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2540s

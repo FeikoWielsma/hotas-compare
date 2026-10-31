@@ -16,20 +16,48 @@ mount:
   provides: null
   accepts: []
 controls:
+- type: trigger
+  count: 1
+  stages: 2
+  action: sequential
+  location: grip
+  label: Two-stage trigger (keys 37 and 38)
+  source: https://eu.winctrl.com/static/download/QmRCiq3fVwnXeQQu4re2geG4oPFSPxYYCbjtFGE9WR1CXJ?filename=URSA-MINOR-Space-Joystick-R-User-Manual-V1.3.pdf
+- type: switch
+  count: 1
+  location: grip
+  label: Grip paddle with two contacts (keys 35 and 36)
+  notes: The manual draws one lever arc between two contacts and gives their force. It does not name the mechanism.
+  source: https://eu.winctrl.com/static/download/QmRCiq3fVwnXeQQu4re2geG4oPFSPxYYCbjtFGE9WR1CXJ?filename=URSA-MINOR-Space-Joystick-R-User-Manual-V1.3.pdf
+- type: button
+  count: 4
+  location: grip
+  label: Grip pushbuttons (keys 20, 22, 28 and 39)
+  source: https://eu.winctrl.com/static/download/QmRCiq3fVwnXeQQu4re2geG4oPFSPxYYCbjtFGE9WR1CXJ?filename=URSA-MINOR-Space-Joystick-R-User-Manual-V1.3.pdf
+- type: hat
+  count: 1
+  ways: 4
+  push: true
+  location: grip
+  label: HAT multifunction switch (key 21)
+  source: https://eu.winctrl.com/static/download/QmRCiq3fVwnXeQQu4re2geG4oPFSPxYYCbjtFGE9WR1CXJ?filename=URSA-MINOR-Space-Joystick-R-User-Manual-V1.3.pdf
+- type: hat
+  count: 3
+  ways: 4
+  push: true
+  location: grip
+  label: Multifunction direction and press switches (keys 23, 29 and 40)
+  source: https://eu.winctrl.com/static/download/QmRCiq3fVwnXeQQu4re2geG4oPFSPxYYCbjtFGE9WR1CXJ?filename=URSA-MINOR-Space-Joystick-R-User-Manual-V1.3.pdf
+- type: analog_ministick
+  count: 1
+  push: true
+  location: grip
+  label: Rx/Ry mini joystick (press key 34)
+  source: https://eu.winctrl.com/static/download/QmRCiq3fVwnXeQQu4re2geG4oPFSPxYYCbjtFGE9WR1CXJ?filename=URSA-MINOR-Space-Joystick-R-User-Manual-V1.3.pdf
 - type: button
   count: 14
   location: base
   label: Button switches
-  source: https://eu.winctrl.com/static/download/QmRCiq3fVwnXeQQu4re2geG4oPFSPxYYCbjtFGE9WR1CXJ?filename=URSA-MINOR-Space-Joystick-R-User-Manual-V1.3.pdf
-- type: hat
-  count: 1
-  location: grip
-  label: HAT
-  source: https://eu.winctrl.com/static/download/QmRCiq3fVwnXeQQu4re2geG4oPFSPxYYCbjtFGE9WR1CXJ?filename=URSA-MINOR-Space-Joystick-R-User-Manual-V1.3.pdf
-- type: analog_ministick
-  count: 1
-  location: grip
-  label: Mini joystick
   source: https://eu.winctrl.com/static/download/QmRCiq3fVwnXeQQu4re2geG4oPFSPxYYCbjtFGE9WR1CXJ?filename=URSA-MINOR-Space-Joystick-R-User-Manual-V1.3.pdf
 - type: slider
   count: 1
@@ -38,11 +66,17 @@ controls:
   label: 38 mm potentiometer slider
   source: https://eu.winctrl.com/static/download/QmRCiq3fVwnXeQQu4re2geG4oPFSPxYYCbjtFGE9WR1CXJ?filename=URSA-MINOR-Space-Joystick-R-User-Manual-V1.3.pdf
 controls_evidence:
-  coverage: partial
+  coverage: complete
   source: https://eu.winctrl.com/static/download/QmRCiq3fVwnXeQQu4re2geG4oPFSPxYYCbjtFGE9WR1CXJ?filename=URSA-MINOR-Space-Joystick-R-User-Manual-V1.3.pdf
-  checked: '2026-10-20'
-  notes: V1.3 space-right manual states 14 button switches, a HAT and a 38 mm slider. Mini-joystick calibration
-    is in the same manual family. Published mass is 0.98 kg.
+  checked: '2026-10-31'
+  notes: >-
+    Exact-hand manual, section 2.1 (printed page 11 onward), inspected as rendered pages. The key diagrams and
+    mechanical-strength table cover every grip and base control. Keys 21, 23, 29 and 40 are each listed as both a
+    multifunctional press switch and direction switch, with four directions around one center key. Keys 45-48 are
+    direction events of the mini joystick and keys 49-51 are twist-axis zones, so neither adds a physical control.
+    The table's first row repeats key 29 where key 39 would be expected; the diagram still draws 39 as its own
+    button. Earlier records listed one hat and omitted the three other multifunction switches, the paddle and the
+    four grip buttons. The Z-axis lock screw is mechanical and is excluded.
 hardware:
   gimbal_type: pincer
   throw_deg: 30

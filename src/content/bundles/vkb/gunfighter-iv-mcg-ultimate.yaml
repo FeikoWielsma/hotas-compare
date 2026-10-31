@@ -35,23 +35,6 @@ prices:
   store: vkbcontrollers.com
   verified: '2026-10-01'
   source: manual
-verdict:
-  author: feiko
-  hands_on: false
-  take: 'Draft assessment: A high-end metal gimbal and configurable combat grip for
-    demanding modern aircraft and center-stick setups.'
-  pros:
-  - Complete coordinated control set with well-matched components
-  - Components remain independently configurable and replaceable
-  - Useful combination for the stated simulation role
-  cons:
-  - Check exact connector and included grip/base configuration before ordering
-  - Bundle pricing and regional stock can change
-  great_for:
-  - modern_jet
-  - space_hotas
-  skip_if:
-  - You already own one or more of the included components
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=3096s

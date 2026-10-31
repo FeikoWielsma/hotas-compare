@@ -24,10 +24,9 @@ controls:
   label: POV hat
   source: https://ts.thrustmaster.com/download/accessories/pc/hotas/manual/HOTAS_Warthog/HOTAS_Warthog_Manual.pdf
 - type: hat
-  ways: 8
   push: true
   location: handle
-  label: Mouse hat / slew control
+  label: Mouse hat / slew control (X and Y axes)
   source: https://ts.thrustmaster.com/download/accessories/pc/hotas/manual/HOTAS_Warthog/HOTAS_Warthog_Manual.pdf
 - type: hat
   ways: 4
@@ -68,7 +67,7 @@ controls:
   count: 5
   ways: 2
   location: panel
-  label: Panel two-position switches; manual identifies two permanent switches
+  label: Panel two-position switches, both positions permanent
   source: https://ts.thrustmaster.com/download/accessories/pc/hotas/manual/HOTAS_Warthog/HOTAS_Warthog_Manual.pdf
 - type: toggle
   count: 2
@@ -90,14 +89,15 @@ controls:
   label: Trim wheel axis
   source: https://ts.thrustmaster.com/download/accessories/pc/hotas/manual/HOTAS_Warthog/HOTAS_Warthog_Manual.pdf
 controls_evidence:
-  coverage: partial
+  coverage: complete
   source: https://ts.thrustmaster.com/download/accessories/pc/hotas/manual/HOTAS_Warthog/HOTAS_Warthog_Manual.pdf
-  checked: '2026-10-19'
-  notes: Manual pages 3-4 inventory throttle grip and panel separately. The 17 action-button aggregate excludes
-    separately listed POV and mouse hats. Manual also describes a friction adjustment wheel, which is mechanical
-    and not an electrical input; schema lacks a passive adjustment-wheel type so it is not included as a control.
-    Panel has one actual trim-wheel axis. Mixed momentary/latching sets are grouped because exact individual switch
-    identity is not clear from the text list.
+  checked: '2026-10-31'
+  notes: >-
+    Manual page 3 itemizes every throttle and control-panel control by class, and the configuration diagrams
+    (printed pages 5-6) inspected as rendered pages reconcile with it. Panel inputs 16-28, 31 and 32 total the
+    stated 15. Throttle inputs 1-15 with the 29 and 30 IDLE contacts total the stated 17, which excludes the
+    mouse-hat axes and the 8-way hat. Switch classes are recorded by manual group, not by named function. The
+    friction adjustment is mechanical and is excluded. Panel has one trim-wheel axis.
 hardware:
   axis_count: 5
   gimbal: null

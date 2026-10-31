@@ -31,8 +31,8 @@ controls:
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TFHX/t-flight_hotas_X_manual.pdf
 - type: button
   count: 12
-  label: Action buttons (12 total per Thrustmaster product page)
-  source: https://www.thrustmaster.com/products/t-flight-hotas-x/
+  label: Action buttons numbered 1-12 on the PC automatic-preset diagram
+  source: https://ts.thrustmaster.com/download/accessories/Manuals/TFHX/t-flight_hotas_X_manual.pdf
 - type: button
   count: 1
   location: base
@@ -55,11 +55,15 @@ controls:
   notes: Sets the USB mode before connection; not a game input.
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TFHX/t-flight_hotas_X_manual.pdf
 controls_evidence:
-  coverage: partial
+  coverage: complete
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TFHX/t-flight_hotas_X_manual.pdf
-  checked: '2026-10-20'
-  notes: Inventory from the official T.Flight HOTAS X user manual technical-features list (callouts 1-13) and the PC
-    automatic-preset diagram (X, Y, Z, RZ and Slider 0 axes). The PC automatic-preset diagram maps the 12 installed action-button inputs. The three separately listed preset, mapping and home buttons are additional physical buttons. Button mechanisms and hat direction count are not specified; controls are listed by the documented aggregate.
+  checked: '2026-10-31'
+  notes: >-
+    Technical-features list (callouts 1-13) and the PC automatic-preset diagram (printed page 5) cover the whole
+    device. Buttons 1-4 are on the stick, 5-10 on the throttle and 11-12 on the throttle base, and PRESET, MAPPING
+    and HOME are separate buttons. X, Y, Z, RZ and Slider 0 are the axes. Button mechanisms and hat direction
+    count are not stated, and the 12 stay one aggregate. The resistance dial, rudder locking screw and Allen key
+    are not inputs.
 platform_compatibility:
   pc: supported
   xbox: unsupported

@@ -32,21 +32,6 @@ prices:
   url: https://flightsimcontrols.com/product/gunfighter-iv-modern-combat-edition/
   verified: '2026-10-21'
   source: manual
-verdict:
-  author: feiko
-  hands_on: false
-  take: 'Draft assessment: An official VKB coordinated combo for modern jet and high-end
-    combat flight simulation with metal dual-cam base and MCG Pro grip.'
-  pros:
-  - Complete coordinated control set with well-matched components
-  - Components remain independently configurable and modular
-  cons:
-  - Requires compatible desk or mount space
-  - Bundle regional stock can vary
-  great_for:
-  - modern_jet
-  skip_if:
-  - You already own one or more of the included components
 verification: draft
 sources:
 - https://vkbsimcontrollers.com/products/gunfighter-iv-modern-combat-edition-tabletop-us

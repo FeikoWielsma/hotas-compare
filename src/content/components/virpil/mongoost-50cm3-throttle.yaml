@@ -160,23 +160,6 @@ prices:
     store: virpil-controls.eu
     verified: '2026-10-01'
     source: manual
-verdict:
-  author: feiko
-  hands_on: true
-  take: "The benchmark high-end dual throttle. The swappable finger-lift detent system is the best in the business for transitioning between afterburner and idle cut-off across different aircraft modules."
-  pros:
-    - "Superb swappable physical detent system"
-    - "Huge number of programmable switches, encoders, and RGB buttons"
-    - "Heavy all-metal construction"
-  cons:
-    - "Large footprint requires dedicated desk mounts"
-    - "VPC software has a steep initial learning curve"
-    - "High price point"
-  great_for:
-    - modern_jet
-    - space_hotas
-  skip_if:
-    - "You want a simple plug-and-play desktop throttle without complex profile mapping"
 external_reviews:
   - reviewer: mysh
     url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1855s

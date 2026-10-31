@@ -10,7 +10,7 @@ function hardware(id: string, category: CatalogItem['category'], amount: number,
   const component = ComponentSchema.parse({ brand: 'test', name: id, category: 'stick_fixed', controls: [{ type: 'button', count: 4 }], hardware: { axes: [{ name: 'X' }, { name: 'Y' }, { name: 'twist', sensor: 'hall' }] } });
   const { controlsSummary, totalAxes } = deriveComponentStats(component);
   const prices = [{ region: 'EU' as const, currency: 'EUR' as const, amount, verified: '2026-10-01', incl_vat: true, store: 'Test', kind: 'official' as const, source: 'manual' as const }];
-  return { id, slug: id, name: id, brand: 'test', brandName: 'Test', category, item_type: 'component', status: 'current', verification: 'verified', prices, region: 'EU', resolvedPrice: resolvePrice(prices), totalAxes, totalLogicalButtons: controlsSummary.totalLogicalButtons, hasMinistick: false, hasBrakeAxis: false, controlsSummary, sensor: 'hall', usesPotentiometers: false, gimbal: null, use_case_fit: component.use_case_fit, verdict: null, scores: null, images: [], componentIds: [], formerBrandNames: [], handedness: ['ambi'], mechanics: { forceAdjustable: 'Unknown', cams: 'Unknown', damping: 'Unknown' }, leverCount: 0, axes: component.hardware?.axes, ...overrides };
+  return { id, slug: id, name: id, brand: 'test', brandName: 'Test', category, item_type: 'component', status: 'current', verification: 'verified', prices, region: 'EU', resolvedPrice: resolvePrice(prices), totalAxes, totalLogicalButtons: controlsSummary.totalLogicalButtons, hasMinistick: false, hasBrakeAxis: false, controlsSummary, sensor: 'hall', usesPotentiometers: false, gimbal: null, use_case_fit: component.use_case_fit, images: [], componentIds: [], formerBrandNames: [], handedness: ['ambi'], mechanics: { forceAdjustable: 'Unknown', cams: 'Unknown', damping: 'Unknown' }, leverCount: 0, axes: component.hardware?.axes, ...overrides };
 }
 
 describe('wizard state', () => {
@@ -358,6 +358,15 @@ describe('stand-ins and suitability', () => {
     const answers = airliner(400, { piecesNeeded: ['yoke'] });
     expect(picksOf(recommendLoadout([pending, reviewed], answers, 'EU'))).toEqual([['reviewed-yoke']]);
     expect(picksOf(recommendLoadout([{ ...pending, use_case_fit: fit({ airliner: 5 }) }, reviewed], answers, 'EU'))).toEqual([['pending-yoke']]);
+  });
+  it('names a trusted reviewer as a reason without changing the score', () => {
+    const answers = airliner(400, { piecesNeeded: ['yoke'] });
+    const plain = hardware('yoke-a', 'yoke', 100, { use_case_fit: fit({ airliner: 4 }) });
+    const review = { reviewer: 'mysh', reviewerName: 'Mysh', url: 'https://x.test', summary: 'Good', date: '2026-01-01' };
+    const liked = scoreWizardItem({ ...plain, latestReview: { ...review, tag: 'recommended' } }, answers, 'EU');
+    expect(liked.explanations).toContain('+ Mysh recommends it');
+    expect(liked.score).toBe(scoreWizardItem(plain, answers, 'EU').score);
+    expect(scoreWizardItem({ ...plain, latestReview: { ...review, tag: 'avoid' } }, answers, 'EU').explanations).toContain('- Mysh says avoid');
   });
   it('marks products awaiting reviews as tentative', () => {
     const result = recommendLoadout([hardware('new-yoke', 'yoke', 200, { reviewsPending: '2026-10-25' })], airliner(400, { piecesNeeded: ['yoke'] }), 'EU');

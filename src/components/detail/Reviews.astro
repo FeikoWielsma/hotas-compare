@@ -7,7 +7,7 @@ const reviewerMap = new Map((await getCollection('reviewers')).map(x => [x.id, x
 const tags = { recommended: 'Recommended', mixed: 'Mixed', avoid: 'Avoid', neutral: 'Neutral' } as const;
 ---
 <section id="reviews" class="reviews" aria-labelledby="reviews-title">
-  <p class="kicker">Second opinions</p><h2 id="reviews-title">External reviews</h2>
+  <p class="kicker">Trusted reviewers</p><h2 id="reviews-title">Reviews</h2>
   <div class="list">{reviews.map(r => { const who = reviewerMap.get(r.reviewer); return <article>
     <header><a href={r.url} rel="external noopener">{who?.name ?? r.reviewer} ↗</a><span class={`tag ${r.tag}`}>{tags[r.tag]}</span></header>
     <p>{r.summary}</p>

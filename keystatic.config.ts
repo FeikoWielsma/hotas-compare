@@ -110,23 +110,6 @@ const pricesField = () => fields.array(
   { label: 'Prices' },
 );
 
-const verdictField = () => fields.object({
-  author: fields.text({ label: 'Reviewer' }),
-  hands_on: fields.checkbox({ label: 'Hands-on Experience' }),
-  take: fields.text({ label: 'Verdict', multiline: true }),
-  pros: fields.array(fields.text({ label: 'Pro' }), { label: 'Pros' }),
-  cons: fields.array(fields.text({ label: 'Con' }), { label: 'Cons' }),
-  great_for: fields.array(fields.text({ label: 'Use Case' }), { label: 'Great For' }),
-  skip_if: fields.array(fields.text({ label: 'Caveat' }), { label: 'Skip If' }),
-  scores: fields.object({
-    build: fields.integer({ label: 'Build (1–5)' }),
-    feel: fields.integer({ label: 'Feel (1–5)' }),
-    value: fields.integer({ label: 'Value (1–5)' }),
-    software: fields.integer({ label: 'Software (1–5)' }),
-    qc_support: fields.integer({ label: 'QC & Support (1–5)' }),
-  }),
-});
-
 const externalReviewsField = () => fields.array(
   fields.object({
     reviewer: fields.text({ label: 'Reviewer' }),
@@ -419,7 +402,6 @@ export default config({
         ]),
         tier_line: fields.text({ label: 'Tier line', description: 'Parts of this brand with the same tier line are ranked as one entry in community tier lists, e.g. "Orion 2 Throttle" for a base and its grips.' }),
         prices: pricesField(),
-        verdict: verdictField(),
         external_reviews: externalReviewsField(),
         airliner_family: optionalSelect('Airliner family (replica cockpit controls only)', [
           { label: 'Airbus', value: 'airbus' },
@@ -479,7 +461,6 @@ export default config({
           label: 'Included Components',
         }),
         prices: pricesField(),
-        verdict: verdictField(),
         external_reviews: externalReviewsField(),
         upgrade_paths: upgradePathsField(),
         verification: fields.select({

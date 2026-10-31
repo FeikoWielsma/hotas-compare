@@ -3,7 +3,6 @@ import { contentFiles, readContent } from '../../scripts/content';
 import { BrandSchema, ComponentSchema } from './schema';
 import { getCatalogItems } from './catalog';
 import { contactless } from './catalog-ui';
-import { overallVerdict } from './detail';
 
 vi.mock('astro:content', () => ({
   getCollection: (name: string) => name === 'components'
@@ -22,7 +21,6 @@ describe('Honeycomb sensor provenance and catalog projection', () => {
       const item = items.find(item => item.id === `honeycomb/${slug}`)!;
       expect(item.sensor).toBe('potentiometer');
       expect(contactless(item)).toBe(false);
-      expect(item.verdict?.cons.join(' ')).toMatch(/Potentiometer wear/);
     }
     for (const slug of ['alpha-flight-controls-xpc', 'charlie-rudder-pedals']) {
       const item = items.find(item => item.id === `honeycomb/${slug}`)!;
@@ -38,13 +36,4 @@ describe('Honeycomb sensor provenance and catalog projection', () => {
     }
   });
 
-  it('publishes Bravo commentary without inventing scores or hands-on experience', async () => {
-    const bravo = (await getCatalogItems()).find(item => item.id === 'honeycomb/bravo-throttle-quadrant')!;
-    expect(bravo.verdict).toMatchObject({ hands_on: false });
-    expect(bravo.scores).toBeNull();
-    expect(overallVerdict(bravo.verdict!)).toBeNull();
-    expect(ComponentSchema.safeParse({ brand: 'test', name: 'Invalid partial rating', category: 'quadrant',
-      verdict: { author: 'test', take: 'Test', scores: { build: 4 } },
-    }).success).toBe(false);
-  });
 });

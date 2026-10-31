@@ -10,8 +10,8 @@ const countries: Record<string, string> = { US: 'United States', CH: 'Switzerlan
 const sorted = brands.toSorted((a, b) => a.data.name.localeCompare(b.data.name));
 const categories = (id: string) => [...new Set(components.filter(x => x.data.brand === id && isListed(x.data)).map(x => categoryLabels[x.data.category]))].slice(0, 4).join(' · ');
 ---
-<BaseLayout title="Flight sim brands" description="Meet the makers behind your next flight sim setup. Explore brands, flight controls and regional buying information.">
-  <JournalHeader eyebrow="Meet the makers" title="The names behind" emphasis="the feel." description="From your first flight stick to a setup built around you. Get to know the makers, explore their hardware, and find your next favorite.">
+<BaseLayout title="Flight sim brands" description="Flight sim hardware brands, their products and regional shipping notes.">
+  <JournalHeader title="Brands" description="Browse each maker's hardware and regional shipping notes.">
     <div class="brand-collage" slot="art" aria-hidden="true">{['vkb','honeycomb','thrustmaster','turtle-beach'].map(brand => <BrandMark brand={brand} size={65} />)}</div>
   </JournalHeader>
   <div class="directory-heading"><h2>Find your kind of hardware.</h2><span>{brands.length} specialist brands</span></div>

@@ -33,22 +33,6 @@ prices:
   url: https://flightsimcontrols.com/product/gnx-dual-thq-sem-v-combo/
   verified: '2026-10-21'
   source: manual
-verdict:
-  author: feiko
-  hands_on: false
-  take: 'Draft assessment: An official VKB coordinated combo for twin throttle levers
-    with vertical flap and gear extensions.'
-  pros:
-  - Complete coordinated control set with well-matched components
-  - Components remain independently configurable and modular
-  cons:
-  - Requires compatible desk or mount space
-  - Bundle regional stock can vary
-  great_for:
-  - ga
-  - ww2
-  skip_if:
-  - You already own one or more of the included components
 verification: draft
 sources:
 - https://vkbsimcontrollers.com/products/gnx-dual-thq-sem-v-combo-us

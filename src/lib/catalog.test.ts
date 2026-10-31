@@ -70,12 +70,12 @@ describe('catalog serialization', () => {
     expect(items.find(i => i.id === 'test/base')?.platform_compatibility).toEqual(entry.data.platform_compatibility);
     expect(items.find(i => i.id === 'test/combo')?.platform_compatibility).toBeUndefined();
   });
-  it('combines bundle controls and hardware, preserving the SKU price and unknown verdict', async () => {
+  it('combines bundle controls and hardware, preserving the SKU price', async () => {
     const { items, brands, mount_standards } = await loadCatalog('UK', new Date('2026-10-19'));
     expect(brands).toHaveLength(1);
     expect(mount_standards).toEqual([]);
     const combo = items.find((item) => item.id === 'test/combo')!;
-    expect(combo).toMatchObject({ item_type: 'bundle', totalAxes: 5, totalLogicalButtons: 0, hasMinistick: true, hasBrakeAxis: true, sensor: 'hall', gimbal: 'cam', brandName: 'Test Flight', verdict: null, scores: null, placement: 'both' });
+    expect(combo).toMatchObject({ item_type: 'bundle', totalAxes: 5, totalLogicalButtons: 0, hasMinistick: true, hasBrakeAxis: true, sensor: 'hall', gimbal: 'cam', brandName: 'Test Flight', placement: 'both' });
     expect(combo.controlSections?.map(s => s.name)).toEqual(['Base', 'Grip']);
     expect(combo.controlSections?.[1].controls[0]).toMatchObject({ type: 'analog_ministick' });
     expect(combo.controlSections?.[1].controls[0]).not.toHaveProperty('push');

@@ -82,23 +82,6 @@ prices:
     url: https://virpil-controls.us.com/vpc-warbrd-d-base.html
     verified: '2026-10-21'
     source: manual
-verdict:
-  author: feiko
-  hands_on: true
-  take: "The best desktop-friendly cam base on the market. The addition of adjustable dry clutches in the 'D' revision makes it exceptionally versatile across helicopters, space, and jets."
-  pros:
-    - "Dual-cam metal gimbal with interchangeable cams and springs"
-    - "Independently adjustable dry clutch dampers for smooth resistance or dead-stick heli flying"
-    - "Large deflection angle (44 degrees total throw) gives great precision without an extension"
-    - "Heavy metal desktop baseplate included"
-  cons:
-    - "Not designed for long extensions (use MongoosT-50CM3 for cockpit center mounts)"
-  great_for:
-    - space_hosas
-    - modern_jet
-    - heli
-  skip_if:
-    - "You need a long 200mm floor/center extension"
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=3096s

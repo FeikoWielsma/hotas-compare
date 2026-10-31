@@ -36,22 +36,6 @@ prices:
     store: vkbcontrollers.com
     verified: '2026-10-01'
     source: manual
-verdict:
-  author: feiko
-  hands_on: false
-  take: 'Draft assessment: A modular throttle and right-hand Gladiator stick form a balanced midrange HOTAS for flight and space sims.'
-  pros:
-    - Complete coordinated control set with well-matched components
-    - Components remain independently configurable and replaceable
-    - Useful combination for the stated simulation role
-  cons:
-    - Check exact connector and included grip/base configuration before ordering
-    - Bundle pricing and regional stock can change
-  great_for:
-    - modern_jet
-    - space_hotas
-  skip_if:
-    - You already own one or more of the included components
 verification: draft
 sources:
   - https://vkbcontrollers.com/products/stecs-throttle-system-standard

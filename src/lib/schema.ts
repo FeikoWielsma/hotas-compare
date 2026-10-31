@@ -245,28 +245,6 @@ export const PriceSchema = z.object({
 });
 export type Price = z.infer<typeof PriceSchema>;
 
-// Verdict Schema
-export const VerdictScoreSchema = z.object({
-  build: z.number().min(1).max(5),
-  feel: z.number().min(1).max(5),
-  value: z.number().min(1).max(5),
-  software: z.number().min(1).max(5),
-  qc_support: z.number().min(1).max(5),
-});
-
-export const VerdictSchema = z.object({
-  author: z.string(),
-  hands_on: z.boolean().default(false),
-  take: z.string(),
-  pros: z.array(z.string()).default([]),
-  cons: z.array(z.string()).default([]),
-  great_for: z.array(z.string()).default([]),
-  skip_if: z.array(z.string()).default([]),
-  // Evidence-based commentary can exist before the maintainer assigns scores.
-  scores: VerdictScoreSchema.optional(),
-});
-export type Verdict = z.infer<typeof VerdictSchema>;
-
 // External Review Schema
 export const ExternalReviewSchema = z.object({
   reviewer: z.string(),
@@ -435,7 +413,6 @@ export const ComponentSchema = z.object({
   /** Parts of one brand with the same tier line are ranked as one entry on /tiers: editions, sizes, or a base and its grips. */
   tier_line: z.string().min(1).optional(),
   prices: z.array(PriceSchema).default([]),
-  verdict: VerdictSchema.nullable().optional(),
   external_reviews: z.array(ExternalReviewSchema).default([]),
   /** Replica of an Airbus or Boeing cockpit control; the wizard matches it to a sidestick or yoke setup. */
   airliner_family: z.enum(['airbus', 'boeing']).optional(),
@@ -466,7 +443,6 @@ export const BundleSchema = z.object({
   successor: z.string().min(1).optional(),
   components: z.array(z.string()).min(1),
   prices: z.array(PriceSchema).default([]),
-  verdict: VerdictSchema.nullable().optional(),
   external_reviews: z.array(ExternalReviewSchema).default([]),
   upgrade_paths: z.array(UpgradePathSchema).default([]),
   verification: VerificationStatusEnum.default('draft'),

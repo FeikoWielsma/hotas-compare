@@ -105,24 +105,6 @@ prices:
   verified: '2026-10-19'
   source: manual
   url: https://eshop.thrustmaster.com/en_us/products-joysticks/t-16000m-fcs.html
-verdict:
-  author: feiko
-  hands_on: true
-  take: The universal budget entry point. Accurate H.E.A.R.T hall sensor on the main X/Y axes and true ambidextrous
-    modular grips make it cheap to start HOSAS, but the twist potentiometer is notorious for early failure.
-  pros:
-  - 16-bit Hall effect magnetic sensors on primary X/Y axes
-  - Fully ambidextrous with swappable left/right thumb rests
-  - Very affordable and widely available in stores worldwide
-  cons:
-  - Single-spring ball-and-cup gimbal has a distinct center clunk and noticeable breakout force
-  - Twist (Z) axis uses a cheap potentiometer prone to jitter and failure after 6-12 months
-  - Only one hat and three buttons on the stick grip itself
-  great_for:
-  - space_hosas
-  - modern_jet
-  skip_if:
-  - You have a budget over €150 and want durable contactless twist or modular cams
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=266s

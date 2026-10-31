@@ -36,22 +36,6 @@ prices:
     store: vkbcontrollers.com
     verified: '2026-10-01'
     source: manual
-verdict:
-  author: feiko
-  hands_on: false
-  take: 'Draft assessment: Right-hand SCE paired with a left Omni-Throttle creates a versatile space control arrangement.'
-  pros:
-    - Complete coordinated control set with well-matched components
-    - Components remain independently configurable and replaceable
-    - Useful combination for the stated simulation role
-  cons:
-    - Check exact connector and included grip/base configuration before ordering
-    - Bundle pricing and regional stock can change
-  great_for:
-    - space_hosas
-    - space_hotas
-  skip_if:
-    - You already own one or more of the included components
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2867s

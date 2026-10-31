@@ -16,36 +16,45 @@ mount:
   provides: null
   accepts: []
 controls:
+- type: trigger
+  count: 1
+  location: grip
+  label: Trigger (key 21)
+  source: https://eu.winctrl.com/static/download/QmRwKSeCfwDz515Bk8qVY5weZbPCGbgqE4dMHjxbQFgc4T?filename=URSA-MINOR-Airlines-Joystick-R-User-Manual-V1.3.pdf
+- type: button
+  count: 1
+  location: grip
+  label: Grip pushbutton (key 22)
+  source: https://eu.winctrl.com/static/download/QmRwKSeCfwDz515Bk8qVY5weZbPCGbgqE4dMHjxbQFgc4T?filename=URSA-MINOR-Airlines-Joystick-R-User-Manual-V1.3.pdf
+- type: hat
+  count: 1
+  ways: 4
+  push: true
+  location: grip
+  label: HAT multifunction switch under magnetic cover (key 20)
+  notes: The manual also calls this the hidden 5-way switch. It draws four directions around key 20.
+  source: https://eu.winctrl.com/static/download/QmRwKSeCfwDz515Bk8qVY5weZbPCGbgqE4dMHjxbQFgc4T?filename=URSA-MINOR-Airlines-Joystick-R-User-Manual-V1.3.pdf
 - type: button
   count: 14
   location: base
   label: Button switches
   source: https://eu.winctrl.com/static/download/QmRwKSeCfwDz515Bk8qVY5weZbPCGbgqE4dMHjxbQFgc4T?filename=URSA-MINOR-Airlines-Joystick-R-User-Manual-V1.3.pdf
-- type: hat
-  count: 1
-  ways: 5
-  push: false
-  location: grip
-  label: Hidden five-way switch under magnetic cover
-  source: https://eu.winctrl.com/static/download/QmRwKSeCfwDz515Bk8qVY5weZbPCGbgqE4dMHjxbQFgc4T?filename=URSA-MINOR-Airlines-Joystick-R-User-Manual-V1.3.pdf
-  notes: The manual calls this a five-way switch. Direction count versus center press is not separated.
-- type: hat
-  count: 1
-  location: grip
-  label: HAT
-  source: https://eu.winctrl.com/static/download/QmRwKSeCfwDz515Bk8qVY5weZbPCGbgqE4dMHjxbQFgc4T?filename=URSA-MINOR-Airlines-Joystick-R-User-Manual-V1.3.pdf
 - type: slider
   count: 1
   analog: true
   location: base
-  label: Potentiometer slider
+  label: 38 mm potentiometer slider
   source: https://eu.winctrl.com/static/download/QmRwKSeCfwDz515Bk8qVY5weZbPCGbgqE4dMHjxbQFgc4T?filename=URSA-MINOR-Airlines-Joystick-R-User-Manual-V1.3.pdf
 controls_evidence:
-  coverage: partial
+  coverage: complete
   source: https://eu.winctrl.com/static/download/QmRwKSeCfwDz515Bk8qVY5weZbPCGbgqE4dMHjxbQFgc4T?filename=URSA-MINOR-Airlines-Joystick-R-User-Manual-V1.3.pdf
-  checked: '2026-10-20'
-  notes: 'Right-hand airline V1.3 manual matches the left-hand control classes: 14 buttons, hidden five-way
-    switch, HAT and slider. HAT way count is not stated. Mass 0.98 kg. Dimensions 227×217×230 mm.'
+  checked: '2026-10-31'
+  notes: >-
+    Exact-hand V1.3 manual, section 2.1, inspected as rendered pages. The grip diagram shows only key 20, trigger
+    key 21 and button key 22, and keys 23-25 are twist-axis zones. Key 20 is the HAT, the multifunction switch and
+    the hidden 5-way switch revealed by removing the magnetic cover, so the earlier separate entries for these
+    were one control. The base diagram shows 14 button switches and the slider. Trigger stage count is not stated.
+    Published mass is 0.98 kg and dimensions are 227×217×230 mm.
 hardware:
   gimbal_type: pincer
   throw_deg: 30

@@ -119,25 +119,6 @@ prices:
   url: https://vkbsimcontrollers.com/products/gnx-scg-add-on-grip-us
   verified: '2026-10-25'
   source: manual
-verdict:
-  author: feiko
-  hands_on: true
-  take: Ergonomic perfection for medium and large hands. The secondary bidirectional
-    trigger and analog ministick make this the default recommendation for Elite Dangerous
-    and Star Citizen pilots.
-  pros:
-  - Superb ergonomics with adjustable palm rest plate
-  - Bidirectional secondary rapid-fire trigger
-  - Lockable contactless twist (Z) rudder axis included
-  - Modular hat / ministick swap components included in Premium box
-  cons:
-  - Polymer shell rather than cast metal
-  great_for:
-  - space_hosas
-  - space_hotas
-  - modern_jet
-  skip_if:
-  - You want a strict 1:1 replica of an F-16 or F/A-18 stick
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2580s

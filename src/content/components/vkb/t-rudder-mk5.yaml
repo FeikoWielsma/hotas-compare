@@ -90,26 +90,6 @@ prices:
   url: https://vkbsimcontrollers.com/products/t-rudders-mk-v-rudder-pedals-us
   verified: '2026-10-21'
   source: manual
-verdict:
-  author: feiko
-  hands_on: true
-  take: The best pedal choice if you fly from an office chair on wheels. Up-and-down
-    heel push motion prevents your chair from rolling backwards, built entirely from
-    solid steel and aluminum.
-  pros:
-  - Heel-press vertical axis prevents office chairs on castors from pushing back
-  - Indestructible all-metal construction
-  - Compact footprint fits easily under any standard computer desk
-  - Reversible cam profile for hard or soft center detent
-  cons:
-  - Single rudder axis only — no physical toe brakes (relies on virtual differential
-    braking in software)
-  great_for:
-  - heli
-  - space_hotas
-  - modern_jet
-  skip_if:
-  - You fly warbirds or GA and insist on physical toe brakes on both pedals
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=3275s

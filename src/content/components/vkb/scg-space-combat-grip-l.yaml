@@ -119,24 +119,6 @@ prices:
   url: https://vkbsimcontrollers.com/products/gnx-scg-add-on-grip-us
   verified: '2026-10-25'
   source: manual
-verdict:
-  author: feiko
-  hands_on: false
-  take: 'Draft assessment: Space Combat Grip (SCG) Premium (Left) is a purpose-built
-    grip for sim pilots who value precise inputs and configurable controls. Confirm
-    regional configuration and included accessories before purchase.'
-  pros:
-  - Ambidextrous product family with dedicated left grip
-  - Twist rudder axis and rich space-sim controls
-  - Premium kit offers swappable hat/ministick parts
-  cons:
-  - Polymer shell
-  - Small control spacing may not suit every hand
-  great_for:
-  - space_hotas
-  - space_hosas
-  skip_if:
-  - Polymer shell
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2580s

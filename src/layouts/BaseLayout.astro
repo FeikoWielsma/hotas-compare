@@ -19,11 +19,13 @@ interface Props {
 }
 const {
   title = 'Flight sim hardware, compared',
-  description = 'Compare flight sticks, throttles, yokes and rudder pedals. Independent specs, regional prices and community verdicts for your next cockpit.',
+  description = 'Compare flight sticks, throttles, yokes and rudder pedals. Specs, regional prices, community fit scores and reviews from trusted sources.',
   image = '/social/default.png', canonical, canonicalUrl: suppliedCanonical, jsonLd, noindex = false, pageSearch = false,
 } = Astro.props;
 const pageTitle = `${title} | HOTAS Compare`;
 const socialCard = image.startsWith('/social/');
+// These pages either are the comparison or dock their own bar to the bottom of the screen.
+const trayHidden = ['/compare', '/tiers', '/wizard'].includes(Astro.url.pathname.replace(/\/$/, ''));
 const canonicalUrl = new URL(suppliedCanonical ?? canonical ?? Astro.url.pathname, Astro.site ?? 'https://hotas.razortek.nl');
 // Escape HTML-sensitive characters so catalog text cannot terminate the script element.
 const structuredData = jsonLd == null ? undefined : JSON.stringify(typeof jsonLd === 'string' ? JSON.parse(jsonLd) : jsonLd).replace(/</g, '\\u003c');
@@ -68,6 +70,6 @@ const initialRegion = isRegion(cookieRegion) ? cookieRegion : regionFromCountry(
     <Navbar initialRegion={initialRegion} {pageSearch} />
     <main id="main-content" tabindex="-1" data-pagefind-body data-pagefind-ignore={noindex ? 'all' : undefined}><slot /></main>
     <Footer />
-    <CompareTray client:load />
+    {!trayHidden && <CompareTray client:load />}
   </body>
 </html>

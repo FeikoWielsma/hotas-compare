@@ -118,23 +118,6 @@ prices:
   url: https://vkbsimcontrollers.com/products/gnx-sem-side-extension-module-us
   verified: '2026-10-21'
   source: manual
-verdict:
-  author: feiko
-  hands_on: false
-  take: 'Draft assessment: GNX SEM Side Extension Module is a purpose-built module
-    for sim pilots who value precise inputs and configurable controls. Confirm regional
-    configuration and included accessories before purchase.'
-  pros:
-  - Adds flap and systems controls to compatible GNX devices
-  - Side-by-side expansion supports cockpit workflows
-  - Configurable switches and analog levers
-  cons:
-  - Requires a compatible GNX controller and physical mounting
-  - Standalone value depends on existing VKB gear
-  great_for:
-  - ww2
-  skip_if:
-  - Requires a compatible GNX controller and physical mounting
 verification: draft
 sources:
 - https://vkbcontrollers.com/products/gnx-sem-side-extension-module

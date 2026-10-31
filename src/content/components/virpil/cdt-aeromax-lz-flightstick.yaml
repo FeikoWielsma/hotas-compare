@@ -130,21 +130,6 @@ prices:
   url: https://virpil-controls.us.com/cdt-aeromax-lz-flightstick-omnithrottle.html
   verified: '2026-10-19'
   source: manual
-verdict:
-  author: feiko
-  hands_on: false
-  take: "The left-handed omnithrottle version of the CDT-Aeromax, with the built-in Z-extension. Lockable twist is also on the straight L stick. All-metal cam-and-spring gimbal with dry clutches for space HOSAS strafe."
-  pros:
-    - "Left-hand ergonomic flight stick with integrated contactless twist Z-axis"
-    - "All-metal compact cam and spring gimbal"
-    - "Adjustable dry clutches for non-centering throttle/strafe use in space flight"
-  cons:
-    - "Max 1 optional throttle lever module can be installed on Z-axis variant"
-  great_for:
-    - space_hosas
-    - airliner
-  skip_if:
-    - "You use foot pedals for vertical/lateral strafe"
 external_reviews:
   - reviewer: mysh
     url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=1033s

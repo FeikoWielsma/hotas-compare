@@ -123,24 +123,6 @@ prices:
   url: https://flightsimcontrols.com/product/modern-combat-grip-ultimate-edition/
   verified: '2026-10-21'
   source: manual
-verdict:
-  author: feiko
-  hands_on: false
-  take: 'Draft assessment: Modern Combat Grip Ultimate is a purpose-built grip for
-    sim pilots who value precise inputs and configurable controls. Confirm regional
-    configuration and included accessories before purchase.'
-  pros:
-  - Metal construction with modular hats and ministick
-  - Extensive controls for modern combat aircraft
-  - Configurable grip modules and twist adapter
-  cons:
-  - Heavy grip is best paired with Gunfighter base
-  - Premium price
-  great_for:
-  - modern_jet
-  - heli
-  skip_if:
-  - Heavy grip is best paired with Gunfighter base
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=3096s

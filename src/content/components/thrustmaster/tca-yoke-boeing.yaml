@@ -19,20 +19,20 @@ controls:
   label: Point-of-view hat
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Yoke_Boeing/TCA_Yoke_Boeing_Edition_user_manual.pdf
 - type: button
-  count: 18
+  count: 16
   location: handle
-  label: Mapped buttons on yoke grips and hub (Xbox mapping names Y, X, Prev, B01, B02, F1, A, B03, Next, B04, B, F2, B05, Menu, Share, View, B06, XBOX)
+  label: Physical buttons (Xbox mapping names Y, X, Prev, B01, B02, F1, A, B03, Next, B04, B, F2, Menu, Share, View, XBOX)
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Yoke_Boeing/TCA_Yoke_Boeing_Edition_user_manual.pdf
 - type: analog_ministick
   push: true
   count: 1
-  label: Mini-stick
+  label: Mini-stick (press is mapped as B05)
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Yoke_Boeing/TCA_Yoke_Boeing_Edition_user_manual.pdf
 - type: switch
   count: 1
   location: base
-  label: Landing gear
-  notes: Feature callout 10, drawn as a small round control separate from the 18 action buttons. Positions and push-versus-toggle behavior are not stated.
+  label: Landing gear (mapped as B06)
+  notes: Feature callout 10. The Xbox mapping leader for B06 ends on this control. Positions are not stated.
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Yoke_Boeing/TCA_Yoke_Boeing_Edition_user_manual.pdf
 - type: switch
   count: 1
@@ -42,13 +42,14 @@ controls:
   notes: Selects the host before connection. Not a game input.
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Yoke_Boeing/TCA_Yoke_Boeing_Edition_user_manual.pdf
 controls_evidence:
-  coverage: partial
+  coverage: complete
   source: https://ts.thrustmaster.com/download/accessories/Manuals/TCA_Yoke_Boeing/TCA_Yoke_Boeing_Edition_user_manual.pdf
-  checked: '2026-10-20'
+  checked: '2026-10-31'
   notes: >-
-    The Xbox mapping (manual printed page 7) names 18 buttons, matching the feature-list aggregate, with the 8-way
-    hat and axes drawn separately. Push versus switch is not stated for those 18, so they stay one button count. PC
-    properties also show buttons 1-18. Feature callout 10 is the landing gear and is not one of the 18. The Xbox/PC
+    Manual pages 1-2 and the Xbox mapping (printed page 7) inspected as rendered pages. The 18 mapped names
+    include two contacts on other controls. The B05 leader ends on the mini-stick, which the feature list calls a
+    mini-stick with button, and the B06 leader ends on the landing gear control, so 16 are separate button bodies
+    and the earlier 18 plus gear double-counted. The hat and six axes are drawn separately, and the Xbox/PC
     selector is callout 6. TFRP and TPR rudder axes belong to the optional pedals and are not on this device.
 hardware:
   axis_count: 6

@@ -93,25 +93,6 @@ prices:
   store: virpil-controls.us
   verified: '2026-10-01'
   source: manual
-verdict:
-  author: feiko
-  hands_on: false
-  take: 'Draft assessment: VPC ACE Interceptor Pedals is a purpose-built pedals for
-    sim pilots who value precise inputs and configurable controls. Confirm regional
-    configuration and included accessories before purchase.'
-  pros:
-  - Rudder axis plus independent differential toe brakes
-  - Wide stable metal pedal construction
-  - Adjustable pedal geometry for different seating positions
-  cons:
-  - Requires floor space and a suitable chair or cockpit
-  - More controls than space-only pilots may need
-  great_for:
-  - modern_jet
-  - ww2
-  - ga
-  skip_if:
-  - Requires floor space and a suitable chair or cockpit
 verification: draft
 sources:
 - https://virpil-controls.eu/products/vpc-ace-interceptor-pedals

@@ -210,24 +210,6 @@ prices:
   url: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-max-us
   verified: '2026-10-21'
   source: manual
-verdict:
-  author: feiko
-  hands_on: false
-  take: 'Draft assessment: STECS Max Throttle is a purpose-built throttle for sim
-    pilots who value precise inputs and configurable controls. Confirm regional configuration
-    and included accessories before purchase.'
-  pros:
-  - Largest modular STECS package with ATRAX and STEM modules
-  - Extensive controls and configurable detents
-  - Dual throttle axes for aircraft and space use
-  cons:
-  - Largest footprint and highest price in STECS range
-  - Requires time to configure modules
-  great_for:
-  - modern_jet
-  - space_hotas
-  skip_if:
-  - Largest footprint and highest price in STECS range
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2177s

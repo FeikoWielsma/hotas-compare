@@ -122,26 +122,6 @@ prices:
   verified: '2026-10-19'
   source: manual
   url: https://eshop.thrustmaster.com/en_us/twcs-throttle.html
-verdict:
-  author: feiko
-  hands_on: true
-  take: The default budget throttle for flight sim and DCS entry. It gives you an analog ministick and rear rudder
-    rocker, but the stock S.M.A.R.T sliding rails suffer from sticktion unless re-greased with Nyogel 767A or modified
-    with polymer bearings.
-  pros:
-  - Generous control layout with analog ministick and finger rudder paddle
-  - Hall sensor on main throttle sliding axis
-  - Accessible budget pricing for standalone throttle
-  cons:
-  - Stock rail sticktion causes stutters during fine carrier landings or formation flying
-  - Single throttle axis (not split for dual engine)
-  - Lightweight plastic body tends to slide on desks without sticky pads or clamping
-  great_for:
-  - modern_jet
-  - space_hotas
-  - ww2
-  skip_if:
-  - You want a dual-engine split throttle or heavy metal base
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=838s

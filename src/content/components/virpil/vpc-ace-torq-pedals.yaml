@@ -77,24 +77,6 @@ prices:
     store: virpil-controls.us
     verified: '2026-10-01'
     source: manual
-verdict:
-  author: feiko
-  hands_on: false
-  take: 'Draft assessment: VPC ACE-TORQ Pedals is a purpose-built pedals for sim pilots
-    who value precise inputs and configurable controls. Confirm regional configuration
-    and included accessories before purchase.'
-  pros:
-  - Compact single-axis rudder pedal design
-  - Adjustable clutch dampers tune resistance
-  - No toe-brake axes to complicate bindings
-  cons:
-  - No differential toe brakes
-  - Less suited to aircraft requiring brake pedals
-  great_for:
-  - heli
-  - ga
-  skip_if:
-  - No differential toe brakes
 verification: draft
 sources:
 - https://virpil-controls.eu/products/vpc-ace-torq-pedals

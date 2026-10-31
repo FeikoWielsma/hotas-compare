@@ -96,7 +96,7 @@ export function setFitInYaml(text: string, fit: UseCaseFit, source?: FitSource):
     while (end < lines.length && /^\s+\S/.test(lines[end])) end++;
     lines.splice(start, end - start, ...block);
   } else {
-    const before = lines.findIndex((line) => /^(prices|verdict|external_reviews|upgrade_paths|verification|sources|images):/.test(line));
+    const before = lines.findIndex((line) => /^(prices|external_reviews|upgrade_paths|verification|sources|images):/.test(line));
     lines.splice(before >= 0 ? before : lines.at(-1) === '' ? lines.length - 1 : lines.length, 0, ...block);
   }
   return lines.join(eol);

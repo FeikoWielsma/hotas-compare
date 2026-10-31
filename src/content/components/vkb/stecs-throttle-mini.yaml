@@ -152,25 +152,6 @@ prices:
   url: https://vkbsimcontrollers.com/products/stecs-throttle-system-mk-ii-mini-us
   verified: '2026-10-21'
   source: manual
-verdict:
-  author: feiko
-  hands_on: false
-  take: 'Draft assessment: STECS Mini Throttle is a purpose-built throttle for sim
-    pilots who value precise inputs and configurable controls. Confirm regional configuration
-    and included accessories before purchase.'
-  pros:
-  - Compact STECS control unit for mounted setups
-  - Modular throttle grip and tactile controls
-  - Integrated base control options
-  cons:
-  - Less panel area and fewer controls than larger STECS editions
-  - Compact base lacks MFH expansion rails
-  - Lightweight plastic baseplate requires mounting; not suitable for loose desktop use
-  great_for:
-  - ww2
-  skip_if:
-  - You want an unmounted desktop throttle (choose Mini Plus or Standard instead)
-  - Less panel area and fewer controls than larger STECS editions
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2177s

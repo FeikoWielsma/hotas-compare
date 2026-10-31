@@ -132,26 +132,6 @@ prices:
   url: https://virpil-controls.us.com/vpc-flnkr-grip.html
   verified: '2026-10-19'
   source: manual
-verdict:
-  author: feiko
-  hands_on: false
-  take: 'Draft assessment: VPC FLNKR Grip is a purpose-built grip for sim pilots who
-    value precise inputs and configurable controls. Confirm regional configuration
-    and included accessories before purchase.'
-  pros:
-  - Flanker-family layout and metal construction
-  - Numerous tactile controls suited to combat aircraft
-  - Purposeful replica ergonomics
-  cons:
-  - Aircraft-specific layout is less universal
-  - High cost and requires VIRPIL base
-  great_for:
-  - modern_jet
-  - heli
-  - ww2
-  - airliner
-  skip_if:
-  - Aircraft-specific layout is less universal
 external_reviews:
 - reviewer: mysh
   url: https://www.youtube.com/watch?v=p_OwPVv_gog&t=2316s
